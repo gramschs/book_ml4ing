@@ -40,7 +40,9 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_exercise
+    - sphinx_proof
     - sphinx_togglebutton
+
 
 #######################################################################################
 # Parse and render settings from  
