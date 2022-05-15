@@ -4,9 +4,15 @@
 format: jb-book
 root: intro
 parts:
+- caption: Getting started...
+  chapters:
+  - file: chapter01/sec01_installation
+  - file: chapter01/sec02_jupyter_notebooks
+  - file: chapter02/sec01_pandas
 - caption: ML-Verfahren
   chapters:
   - file: chapter08/sec00
     sections:
     - file: chapter08/sec01
+    - file: chapter08/sec02
   

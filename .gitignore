@@ -1,6 +1,7 @@
 # Project specific settings
 doc/_build
 doc/.vscode/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
