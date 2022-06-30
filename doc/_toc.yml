@@ -11,8 +11,8 @@ parts:
   - file: chapter02/sec01_pandas
 - caption: ML-Verfahren
   chapters:
-  - file: chapter08/sec00
+  - file: chapter08/sec00.md
     sections:
-    - file: chapter08/sec01
-    - file: chapter08/sec02
+    - file: chapter08/sec01.md
+    - file: chapter08/sec02.md
   

@@ -38,10 +38,15 @@ html:
 
 # https://ebp-sphinx-exercise.readthedocs.io/en/latest/
 sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    html_show_copyright: false
+
   extra_extensions:
     - sphinx_exercise
     - sphinx_proof
     - sphinx_togglebutton
+    - sphinx_carousel.carousel
 
 
 #######################################################################################
