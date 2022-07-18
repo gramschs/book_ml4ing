@@ -6,9 +6,11 @@ root: intro
 parts:
 - caption: Getting started...
   chapters:
-  - file: chapter01/sec01_installation
-  - file: chapter01/sec02_jupyter_notebooks
-  - file: chapter02/sec01_pandas
+  - file: chapter01/sec00.md
+    sections:
+    - file: chapter01/sec01.md
+    - file: chapter01/sec02.md
+    - file: chapter01/sec03.md
 - caption: ML-Verfahren
   chapters:
   - file: chapter08/sec00.md
