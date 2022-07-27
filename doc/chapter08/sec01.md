@@ -67,16 +67,18 @@ ja         | ja               | ja
 
 +++
 
-```{exercise}
-:label: exercise_08_01
+```{admonition} Mini-Übung
+:class: miniexercise
 Schreiben Sie ein kurzes Python-Programm, das abfragt, ob es regnet und ob der Rasensprenger eingeschaltet ist. Dann soll der Python-Interpreter ausgeben, ob der Rasen nass wird oder nicht. 
 ```
 
+```{code-cell} ipython3
+# Ihr Code:
+```
 +++
 
-````{solution} exercise_08_01
-:label: solution_08_01
-:class: dropdown
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
 # Eingabe
 x1 = input('Regnet es (j/n)?')
@@ -111,16 +113,20 @@ x1 | x2 | y
 
 +++
 
-```{exercise}
-:label: exercise_08_02
-Schreiben Sie Ihren Programm-Code aus {ref}`exercise_08_01` um. Verwenden Sie Integer 0 und 1 für die Eingaben.
+```{admonition} Mini-Übung
+:class: miniexercise
+Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Verwenden Sie Integer 0 und 1 für die Eingaben.
 ```
 
 +++
 
-````{solution} exercise_08_02
-:label: solution_08_02
-:class: dropdown
+```{code-cell} ipython3
+# Ihr Code:
+```
++++
+
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
 # Eingabe
 x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
@@ -159,16 +165,19 @@ Beispielsweise $\omega_1 = 0.3$, $\omega_2=0.3$ und $\theta = 0.2$ passen:
 
 +++
 
-```{exercise}
-:label: exercise_08_03
-Schreiben Sie Ihren Programm-Code aus {ref}`exercise_08_02` um. Ersetzen Sie das logische ODER durch die linke Seite der Ungleichung und vergleichen Sie anschließend mit $0.2$, um zu entscheiden, ob der Rasen nass wird oder nicht. 
+```{admonition} Mini-Übung
+:class: miniexercise
+Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Ersetzen Sie das logische ODER durch die linke Seite der Ungleichung und vergleichen Sie anschließend mit $0.2$, um zu entscheiden, ob der Rasen nass wird oder nicht. 
+```
+
+```{code-cell} ipython3
+# Ihr Code:
 ```
 
 +++
 
-````{solution} exercise_08_03
-:label: solution_08_03
-:class: dropdown
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
 # Eingabe
 x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
@@ -225,16 +234,19 @@ In dem Modul NumPy ist die Heaviside-Funktion schon hinterlegt, siehe
 
 +++
 
-```{exercise}
-:label: exercise_08_04
+```{admonition} Mini-Übung
+:class: miniexercise
 Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101 Punkten. Setzen Sie das zweite Argument einmal auf 0 und einmal auf 2. Was bewirkt das zweite Argument? Sehen Sie einen Unterschied in der Visualisierung? Erhöhen Sie auch die Anzahl der Punkte im Intervall. Wählen Sie dabei immer eine ungerade Anzahl, damit die 0 dabei ist.
+```
+
+```{code-cell} ipython3
+# Ihr Code:
 ```
 
 +++
 
-````{solution} exercise_08_04
-:label: solution_08_04
-:class: dropdown
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
 import matplotlib.pylab as plt
 import numpy as np
@@ -324,12 +336,11 @@ wird anstatt der Heaviside-Funktion auch die Signum-Funktion verwendet. Im
 Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird,
 **Aktivierungsfunktion**.
 
-````{prf:definition}
-:label: def:08:01:01
+````{admonition} Was ist ... ein Perzeptron?
+:class: note
 Das Perzeptron ist ein künstliches Neuron mit Gewichten $\boldsymbol{\omega}$ und einem Schwellenwert $\theta$. Das Perzeptron berechnet eine gewichtete Summe der Inputs $\mathbf{x}\in\mathbb{R}^n$ und wendet dann eine Aktivierungsfunktion $\Phi$ an, um den Output $y$ zu berechnen:
 
 $$y = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(-\theta + x_1 \omega_1 + \ldots + x_n \omega_n).$$
-
 ````
 
 +++
@@ -338,7 +349,7 @@ Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
 {ref}`fig_perzeptron` gezeigt. Die Inputs und der Bias werden durch Kreise
 symbolisiert. Die Multiplikation der Inputs $x_i$ wird durch Kanten dargestellt,
 die mit den Gewichten $\omega_i$ beschriftet sind. Die einzelnen Summanden
-$\omega_i x_i$ treffen sich sozusagen im mittleren Kreis, wo auf die gewichtete
+$x_i \omega_i$ treffen sich sozusagen im mittleren Kreis, wo auf die gewichtete
 Summe dann eine Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output
 $y$ wird dann berechnet und wiederum als Kreis gezeichnet. 
 

@@ -1,4 +1,4 @@
-\documentclass[11pt, aspectratio=169]{beamer}
+\documentclass[11pt, aspectratio=169, t]{beamer}
 
 % Layout
 \usetheme{frankfurt}
@@ -37,18 +37,18 @@
 \usepackage{csquotes}
 
 
+\setbeamertemplate{frametitle}[default][center]
+
 
 \begin{document}
 
+% 1. Iteration
 \begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
 \begin{small}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-aktuelle Iteration:  1\\
-aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0, 0, 0 \end{pmatrix}$ }\\
-\end{column}
-\begin{column}{0.4\textwidth}  %%<--- here
-\begin{center} \begin{footnotesize}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
 \begin{tabular}{cccc} \toprule
 $x_0$ & $x_1$ & $x_2$ & y \\ \midrule
 1 & 0 & 0 & 0 \\
@@ -56,11 +56,19 @@ $x_0$ & $x_1$ & $x_2$ & y \\ \midrule
 1 & 1 & 0 & 1 \\
 1 & 1 & 1 & 1 \\ \bottomrule
 \end{tabular} \end{footnotesize}
-\end{center}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 0)$ \\
+aktueller Output: & $y=0$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$ }
 \end{column}
 \end{columns}
 prognostizierter Output:
-\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 0, 0, 0 \end{pmatrix}\cdot \begin{pmatrix} 1 \\ 0 \\ 0 \end{pmatrix} \right) = \Phi(0) = 1 \qquad \neq \qquad y = 0\]
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad \neq \qquad y = 0\]
 Aktualisierung notwendig:
 \begin{align*}
 \omega_0^{\text{neu}} &= 0 + 1\cdot (0-1)\cdot 1 = -1\\
@@ -70,15 +78,13 @@ Aktualisierung notwendig:
 \end{small}
 \end{frame}
 
+% 2. Iteration
 \begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
 \begin{small}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-aktuelle Iteration:  2\\
-aktuelle Gewichte: $\alert{\boldsymbol{\omega} = \begin{pmatrix} -1, 0, 0 \end{pmatrix}}$ \\
-\end{column}
-\begin{column}{0.4\textwidth}  %%<--- here
-\begin{center} \begin{footnotesize}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
 \begin{tabular}{cccc} \toprule
 $x_0$ & $x_1$ & $x_2$ & y \\ \midrule
 1 & 0 & 0 & 0 \\
@@ -86,16 +92,420 @@ $x_0$ & $x_1$ & $x_2$ & y \\ \midrule
 1 & 1 & 0 & 1 \\
 1 & 1 & 1 & 1 \\ \bottomrule
 \end{tabular} \end{footnotesize}
-\end{center}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 0 \\ 0 \end{pmatrix}$ }
 \end{column}
 \end{columns}
 prognostizierter Output:
-\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} -1, 0, 0 \end{pmatrix}\cdot \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \right) = \Phi(-1) = 0 \qquad \neq \qquad y = 1\]
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 0 \\ 0 \end{pmatrix}} \right) = \Phi(-1) = 0 \qquad \neq \qquad y = 1\]
 Aktualisierung notwendig:
 \begin{align*}
-\omega_0^{\text{neu}} &= -1 + 1\cdot (1-0)\cdot 1 = 0\\
-\omega_1^{\text{neu}} &= 0 + 1\cdot (1-0)\cdot 0 = 1\\
-\omega_2^{\text{neu}} &= 0 + 1\cdot (1-0)\cdot 0 = 1
+\omega_0^{\text{neu}} &= -1 + 1\cdot (1-0)\cdot 1 = 0 \\
+\omega_1^{\text{neu}} &=  0 + 1\cdot (1-0)\cdot 0 = 0 \\
+\omega_2^{\text{neu}} &=  0 + 1\cdot (1-0)\cdot 1 = 1
+\end{align*}
+\end{small}
+\end{frame}
+
+% 3. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 0)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 4. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}} \right) = \Phi(1) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 5. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 0)$ \\
+aktueller Output: & $y=0$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad \neq \qquad y = 0\]
+Aktualisierung notwendig:
+\begin{align*}
+\omega_0^{\text{neu}} &=  0 + 1\cdot (0-1)\cdot 1 = -1 \\
+\omega_1^{\text{neu}} &=  0 + 1\cdot (0-1)\cdot 0 = 0 \\
+\omega_2^{\text{neu}} &=  0 + 1\cdot (0-1)\cdot 0 = 1
+\end{align*}
+\end{small}
+\end{frame}
+
+% 6. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 7. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 0)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}} \right) = \Phi(-1) = 0 \qquad \neq \qquad y = 1\]
+Aktualisierung notwendig:
+\begin{align*}
+\omega_0^{\text{neu}} &= -1 + 1\cdot (1-0)\cdot 1 = 0 \\
+\omega_1^{\text{neu}} &=  0 + 1\cdot (1-0)\cdot 1 = 1 \\
+\omega_2^{\text{neu}} &=  1 + 1\cdot (1-0)\cdot 0 = 1
+\end{align*}
+\end{small}
+\end{frame}
+
+% 8. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(2) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 9. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 0)$ \\
+aktueller Output: & $y=0$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad \neq \qquad y = 0\]
+Aktualisierung notwendig:
+\begin{align*}
+\omega_0^{\text{neu}} &=  0 + 1\cdot (0-1)\cdot 1 = -1 \\
+\omega_1^{\text{neu}} &=  1 + 1\cdot (0-1)\cdot 0 = 1 \\
+\omega_2^{\text{neu}} &=  1 + 1\cdot (0-1)\cdot 0 = 1
+\end{align*}
+\end{small}
+\end{frame}
+
+% 10. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 11. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 0)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(0) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 12. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 1, 1)$ \\
+aktueller Output: & $y=1$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 1, 1 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(1) = 1 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
+\end{align*}
+\end{small}
+\end{frame}
+
+% 13. Iteration
+\begin{frame}{Beispiel: Training eines Perzeptrons für das logische ODER}
+\begin{small}
+\begin{columns}
+\begin{column}{0.25\textwidth}
+\hspace{0.5cm}
+\begin{footnotesize}
+\begin{tabular}{cccc} \toprule
+$x_0$ & $x_1$ & $x_2$ & y \\ \midrule
+1 & 0 & 0 & 0 \\
+1 & 0 & 1 & 1 \\
+1 & 1 & 0 & 1 \\
+1 & 1 & 1 & 1 \\ \bottomrule
+\end{tabular} \end{footnotesize}
+\end{column}
+\begin{column}{0.4\textwidth}
+\begin{tabular}{ll}
+aktueller Input: & $\mathbf{x}^{T} = (1, 0, 0)$ \\
+aktueller Output: & $y=0$ \\
+\end{tabular}
+\end{column}
+\begin{column}{0.4\textwidth}
+aktuelle Gewichte: \alert{ $\boldsymbol{\omega} = \begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}$ }
+\end{column}
+\end{columns}
+prognostizierter Output:
+\[\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi\left( \begin{pmatrix} 1, 0, 0 \end{pmatrix}\cdot \alert{\begin{pmatrix} -1 \\ 1 \\ 1 \end{pmatrix}} \right) = \Phi(-1) = 0 \qquad = \qquad y = 1\]
+keine Aktualisierung notwendig!
+\begin{align*} % dummy for horizontal space
+\phantom{\omega_0^{\text{neu}}} & \\
+\phantom{\omega_1^{\text{neu}}} & \\
+\phantom{\omega_2^{\text{neu}}} &
 \end{align*}
 \end{small}
 \end{frame}

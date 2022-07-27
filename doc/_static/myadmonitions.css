@@ -20,15 +20,20 @@ div.miniexercise p.admonition-title::before {
 div.minisolution{
     border-color: var(--first-color);
     background-color: none;
-  }
+}
   
-  div.minisolution p.admonition-title {
+div.minisolution p.admonition-title {
     background-color: transparent;
     text-decoration: none;
-  }
+}
   
   /* Remove content box */
-  div.minisolution p.admonition-title::before {
+div.minisolution p.admonition-title::before {
     content: none;
-  }
-  
+}
+
+.scbs-carousel-control-prev,
+.scbs-carousel-control-next{
+          bottom: 88%;
+}
+

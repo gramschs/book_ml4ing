@@ -96,7 +96,7 @@ meinen, den das Perzeptron prognostiziert oder den echten (gemessenen) Output.
 Über berechnete bzw. prognostizierte Outputs setzen wir ein kleines Dachsymbol
 $\wedge$. Etwas präziser bezeichnen wir den prognostizierten Output, den das
 Perzeptron mit den aktuellen Gewichten $(\omega_0^{\text{aktuell}},
-\omega_1^{\text{aktuell}}, \ldots, \omega_m^{\text{aktuell}})$ berechnen würde
+\omega_1^{\text{aktuell}}, \ldots, \omega_m^{\text{aktuell}})$ berechnen würde,
 mit der Abkürzung $\hat{y}^{\text{aktuell}}$ . Für den echten Output bleiben wir
 einfach bei der Bezeichnung $y$. 
 
@@ -146,7 +146,7 @@ Im Folgenden wird das Training eines Perzeptrons Schritt für Schritt vorgerechn
 Wir brauchen für die drei Inputs drei Gewichte und setzen diese drei Gewichte
 jeweils auf 0. Wir sammeln die Gewichte als Vektor, also
 
-$$\boldsymbol{\omega}^{T} = (\omega_0, \omega_1, \omega_2) = (0, 0, 0).$$
+$$\boldsymbol{\omega} = \begin{pmatrix}\omega_0 \\ \omega_1 \\ \omega_2\end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0\end{pmatrix}.$$
 
 Darüber hinaus müssen wir uns für eine Lernrate $\alpha$ entscheiden. Obwohl
 normalerweise ein kleiner (aber positiver) Wert gewählt wird, setzen wir der
@@ -165,25 +165,54 @@ Formel
 $$\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(x_0
 \omega_0 + x_1 \omega_1 + x_2 \omega_2 ).\strut$$
 
+Blättern Sie Seite für Seite durch:
+
 ````{carousel}
 :show_controls:
+:show_shadows:
 
 
-```{figure} pics/part08_training_perceptron_01.pdf
+
+```{figure} pics/part08_training_perceptron_0001.pdf
 
 ```
 
-```{figure} pics/part08_training_perceptron_02.pdf
-TODO
+```{figure} pics/part08_training_perceptron_0002.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0003.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0004.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0005.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0006.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0007.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0008.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0009.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0010.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0011.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0012.pdf
+```
+
+```{figure} pics/part08_training_perceptron_0013.pdf
 ```
 ````
-
-
-```{code-cell} ipython3
-:tags: [remove-input]
-
-SVG('pics/part08_training_perzeptron.svg')
-```
 
 ### Schritt 3: Terminierung
 

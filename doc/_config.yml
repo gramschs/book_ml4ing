@@ -24,8 +24,13 @@ bibtex_bibfiles:
 repository:
   url: https://github.com/gramschs/book_ml4ing  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
+  branch: main  # Which branch of the repository should be used when creating links (optional)
   
+launch_buttons:
+  notebook_interface: "jupyterlab"
+  thebe: true
+  binderhub_url: "https://mybinder.org"
+
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
@@ -35,6 +40,7 @@ html:
     <div>
     <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
     </div>
+
 
 # https://ebp-sphinx-exercise.readthedocs.io/en/latest/
 sphinx:
