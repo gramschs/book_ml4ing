@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -40,9 +41,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -79,6 +83,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Maschinelles Lernen für Studierende der Ingenieurwissenschaften</h1>
@@ -92,7 +101,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Willkommen zum interaktiven Vorlesungsskript Maschinelles Lernen für Studierende der Ingenieurwissenschaften
+   Willkommen zu ML4ING
   </a>
  </li>
 </ul>
@@ -102,20 +111,32 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="chapter01/sec01_installation.html">
-   Installation
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="chapter01/sec00.html">
+   Zu Beginn …
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="chapter01/sec02_jupyter_notebooks.html">
-   Überschrift
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="chapter02/sec01_pandas.html">
-   Pandas
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter01/sec01.html">
+     Was ist maschinelles Lernen?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter01/sec02.html">
+     Technische Voraussetzungen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter01/sec03.html">
+     Grundlegender Ablauf eines ML-Projektes
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -128,8 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="chapter08/sec00.html">
    Neuronale Netze
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -142,6 +163,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="chapter08/sec02.html">
      Die Perzeptron-Lernregel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter08/sec03.html">
+     Training eines Perzeptrons mit Scikit-Learn
     </a>
    </li>
   </ul>
@@ -271,7 +297,6 @@ const thebe_selector_output = ".output, .cell_output"
     
       By Simone Gramsch<br/>
     
-        &copy; Copyright 2022.<br/>
       <div class="extra_footer">
         <div>
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.

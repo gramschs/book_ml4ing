@@ -1,1 +1,0 @@
-# Erste Schritte mit Jupyter Notebooks

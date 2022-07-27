@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -39,9 +40,12 @@
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -77,6 +81,11 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Maschinelles Lernen für Studierende der Ingenieurwissenschaften</h1>
@@ -90,7 +99,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
-   Willkommen zum interaktiven Vorlesungsskript Maschinelles Lernen für Studierende der Ingenieurwissenschaften
+   Willkommen zu ML4ING
   </a>
  </li>
 </ul>
@@ -100,20 +109,32 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../chapter01/sec01_installation.html">
-   Installation
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter01/sec00.html">
+   Zu Beginn …
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chapter01/sec02_jupyter_notebooks.html">
-   Überschrift
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chapter02/sec01_pandas.html">
-   Pandas
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter01/sec01.html">
+     Was ist maschinelles Lernen?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter01/sec02.html">
+     Technische Voraussetzungen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter01/sec03.html">
+     Grundlegender Ablauf eines ML-Projektes
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -126,8 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="sec00.html">
    Neuronale Netze
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -140,6 +161,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="sec02.html">
      Die Perzeptron-Lernregel
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec03.html">
+     Training eines Perzeptrons mit Scikit-Learn
     </a>
    </li>
   </ul>
@@ -183,11 +209,14 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter08/sec01.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+        <a class="dropdown-buttons"
+            href="../_sources/chapter08/sec01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapter08/sec01.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -223,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/master?urlpath=tree/docs/chapter08/sec01.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter08/sec01.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -231,6 +260,9 @@ const thebe_selector_output = ".output, .cell_output"
         
         
         
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
         
     </div>
 </div>
@@ -245,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#die-hirnzelle-dient-als-vorlage-fur-kunstliche-neuronen">
+   Die Hirnzelle dient als Vorlage für künstliche Neuronen
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#eine-mathematische-ungleichung-ersetzt-das-logische-oder">
    Eine mathematische Ungleichung ersetzt das logische Oder
@@ -286,6 +323,11 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#die-hirnzelle-dient-als-vorlage-fur-kunstliche-neuronen">
+   Die Hirnzelle dient als Vorlage für künstliche Neuronen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#eine-mathematische-ungleichung-ersetzt-das-logische-oder">
    Eine mathematische Ungleichung ersetzt das logische Oder
   </a>
@@ -316,17 +358,36 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="das-perzeptron">
 <h1>Das Perzeptron<a class="headerlink" href="#das-perzeptron" title="Permalink to this headline">¶</a></h1>
+<p>Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste künstliche neuronale Netz ist das <strong>Perzeptron</strong>. In diesem Abschnitt werden wir das Perzeptron vorstellen.</p>
+<div class="hint admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>Sie können das Perzeptron als mathematische Funktion formulieren und in dem Zusammenhang die folgenden Begriffe erklären:</p>
+<ul>
+<li><p>gewichtete Summe (Weighted Sum),</p></li>
+<li><p>Bias oder Bias-Einheit (Bias),</p></li>
+<li><p>Schwellenwert (Threshold)</p></li>
+<li><p>Heaviside-Funktion (Heaviside Function) und</p></li>
+<li><p>Aktivierungsfunktion (Activation Function).</p></li>
+</ul>
+</li>
+<li><p>Sie können das Perzeptron als ein binäres Klassifikationsproblem des überwachten Lernens einordnen.</p></li>
+</ul>
+</div>
+<div class="section" id="die-hirnzelle-dient-als-vorlage-fur-kunstliche-neuronen">
+<h2>Die Hirnzelle dient als Vorlage für künstliche Neuronen<a class="headerlink" href="#die-hirnzelle-dient-als-vorlage-fur-kunstliche-neuronen" title="Permalink to this headline">¶</a></h2>
 <p>1943 haben die Forscher Warren McCulloch und Walter Pitts das erste Modell einer vereinfachten Hirnzelle präsentiert. Zu Ehren der beiden Forscher heißt dieses Modell MCP-Neuron. Darauf aufbauend publizierte Frank Rosenblatt 1957 seine Idee einer Lernregel für das künstliche Neuron. Das sogenannte Perzeptron bildet bis heute die Grundlage der künstlichen neuronalen Netze. Inspiriert wurden die Forscher dabei durch den Aufbau des Gehirns und der Verknüpfung der Nervenzellen.</p>
 <div class="figure align-default" id="fig-neuron-wikipedia">
-<a class="reference internal image-reference" href="../_images/neuron_wikipedia.png"><img alt="../_images/neuron_wikipedia.png" src="../_images/neuron_wikipedia.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Schematische Darstellung einer Nervenzelle</span><a class="headerlink" href="#fig-neuron-wikipedia" title="Permalink to this image">¶</a></p>
+<a class="reference internal image-reference" href="../_images/neuron_wikipedia.svg"><img alt="../_images/neuron_wikipedia.svg" src="../_images/neuron_wikipedia.svg" width="600px" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Schematische Darstellung einer Nervenzelle</span><a class="headerlink" href="#fig-neuron-wikipedia" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://de.wikipedia.org/wiki/K%C3%BCnstliches_Neuron#/media/Datei:Neuron_(deutsch)-1.svg">Quelle:</a> “Schematische Darstellung einer Nervenzelle” von Autor unbekannt. Lizenz: <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</p>
 </div>
 </div>
-<p>Elektrische und chemische Eingabesignale kommen bei den Dendriten an und laufen im Zellkörper zusammen. Sobald ein bestimmter Schwellwert überschritten wird, wird ein Ausgabesignal erzeugt und über das Axon weitergeleitet. Mehr Details zu Nervenzellen finden Sie bei Wikipedia: <a class="reference external" href="https://de.wikipedia.org/wiki/Nervenzelle">https://de.wikipedia.org/wiki/Nervenzelle</a>.</p>
+<p>Elektrische und chemische Eingabesignale kommen bei den Dendriten an und laufen im Zellkörper zusammen. Sobald ein bestimmter Schwellwert überschritten wird, wird ein Ausgabesignal erzeugt und über das Axon weitergeleitet. Mehr Details zu Nervenzellen finden Sie bei <a class="reference external" href="https://de.wikipedia.org/wiki/Nervenzelle">Wikipedia/Nervenzelle</a>.</p>
+</div>
 <div class="section" id="eine-mathematische-ungleichung-ersetzt-das-logische-oder">
-<h2>Eine mathematische Ungleichung ersetzt das logische Oder<a class="headerlink" href="#eine-mathematische-ungleichung-ersetzt-das-logische-oder" title="Permalink to this headline">¶</a></h2>
+<span id="rasen-nass-problem"></span><h2>Eine mathematische Ungleichung ersetzt das logische Oder<a class="headerlink" href="#eine-mathematische-ungleichung-ersetzt-das-logische-oder" title="Permalink to this headline">¶</a></h2>
 <p>Das einfachste künstliche Neuron besteht aus zwei Inputs und einem Output. Dabei sind für die beiden Inputs nur zwei Zustände zugelassen und auch der Output besteht nur aus zwei verschiedenen Zuständen. In der Sprache des maschinellen Lernens liegt also eine <strong>binäre Klassifikationsaufgabe</strong> innerhalb des <strong>Supervised Learnings</strong> vor.</p>
 <p>Beispiel:</p>
 <ul class="simple">
@@ -361,17 +422,19 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<div class="exercise admonition" id="exercise_08_01">
-
-<p class="admonition-title"><span class="caption-number">Exercise 3 </span></p>
-<div class="section" id="exercise-content">
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
 <p>Schreiben Sie ein kurzes Python-Programm, das abfragt, ob es regnet und ob der Rasensprenger eingeschaltet ist. Dann soll der Python-Interpreter ausgeben, ob der Rasen nass wird oder nicht.</p>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ihr Code:</span>
+</pre></div>
 </div>
-<div class="solution dropdown admonition" id="solution_08_01">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#exercise_08_01"> Exercise 3</a></p>
-<div class="section" id="solution-content">
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eingabe</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Regnet es (j/n)?&#39;</span><span class="p">)</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ist der Rasensprenger eingeschaltet? (j/n)&#39;</span><span class="p">)</span>
@@ -387,8 +450,12 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</div>
-<p>Für das maschinelle Lernen müssen die Daten als Zahlen aufbereitet werde, damit die maschinellen Lernverfahren in der Lage sind, Muster in den Daten zu erlernen. Anstatt “Regnet es? Nein.” oder Variablen mit True/False setzen wir jetzt Zahlen ein. Die Inputklassen kürzen wir mit x1 für Regen und x2 für Rasensprenger ab. Die 1 steht für ja, die 0 für nein. Den Output bezeichnen wir mit y. Dann lautet die obige Tabelle für das “Ist-der-Rasen-nass-Problem”:</p>
+<p>Für das maschinelle Lernen müssen die Daten als Zahlen aufbereitet werde, damit
+die maschinellen Lernverfahren in der Lage sind, Muster in den Daten zu
+erlernen. Anstatt “Regnet es? Nein.” oder Variablen mit True/False setzen wir
+jetzt Zahlen ein. Die Inputklassen kürzen wir mit x1 für Regen und x2 für
+Rasensprenger ab. Die 1 steht für ja, die 0 für nein. Den Output bezeichnen wir
+mit y. Dann lautet die obige Tabelle für das “Ist-der-Rasen-nass-Problem”:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>x1</p></th>
@@ -415,17 +482,19 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </tbody>
 </table>
-<div class="exercise admonition" id="exercise_08_02">
-
-<p class="admonition-title"><span class="caption-number">Exercise 4 </span></p>
-<div class="section" id="exercise-content">
-<p>Schreiben Sie Ihren Programm-Code aus <a class="reference internal" href="#exercise_08_01"><span class="std std-numref">Exercise 3</span></a> um. Verwenden Sie Integer 0 und 1 für die Eingaben.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Verwenden Sie Integer 0 und 1 für die Eingaben.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ihr Code:</span>
+</pre></div>
 </div>
 </div>
-<div class="solution dropdown admonition" id="solution_08_02">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#exercise_08_02"> Exercise 4</a></p>
-<div class="section" id="solution-content">
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eingabe</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Regnet es (ja = 1 | nein = 0)?&#39;</span><span class="p">))</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)&#39;</span><span class="p">))</span>
@@ -441,30 +510,35 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 </div>
-</div>
-<p>Als nächstes ersetzen wir das logische ODER durch ein mathematisches Konstrukt:
+<p>Nun ersetzen wir das logische ODER durch ein mathematisches Konstrukt:
 Wenn die Ungleichung</p>
 <div class="math notranslate nohighlight">
-\[\omega_1 x_1 + \omega_2 x_2 \geq \theta\]</div>
-<p>erfüllt ist, dann ist <span class="math notranslate nohighlight">\(y = 1\)</span> oder anders ausgedrückt, der Rasen wird nass. Und ansonsten ist <span class="math notranslate nohighlight">\(y = 0\)</span>, der Rasen wird nicht nass. Allerdings müssen wir noch die Gewichte <span class="math notranslate nohighlight">\(\omega_1\)</span> und <span class="math notranslate nohighlight">\(\omega_2\)</span> (in Englisch: weights) geschickt wählen. Die Zahl <span class="math notranslate nohighlight">\(\theta\)</span> ist der griechische Buchstabe Theta und steht als Abkürzung für den sogenannten Schwellenwert (in Englisch: threshold).</p>
+\[x_1 \omega_1  +  x_2 \omega_2 \geq \theta \strut\]</div>
+<p>erfüllt ist, dann ist <span class="math notranslate nohighlight">\(y = 1\)</span> oder anders ausgedrückt, der Rasen wird nass. Und
+ansonsten ist <span class="math notranslate nohighlight">\(y = 0\)</span>, der Rasen wird nicht nass. Allerdings müssen wir noch die
+<strong>Gewichte</strong> <span class="math notranslate nohighlight">\(\omega_1\)</span> und <span class="math notranslate nohighlight">\(\omega_2\)</span> (auf Englisch: weights) geschickt wählen.
+Die Zahl <span class="math notranslate nohighlight">\(\theta\)</span> ist der griechische Buchstabe Theta und steht als Abkürzung
+für den sogenannten <strong>Schwellenwert</strong> (auf Englisch: threshold).</p>
 <p>Beispielsweise <span class="math notranslate nohighlight">\(\omega_1 = 0.3\)</span>, <span class="math notranslate nohighlight">\(\omega_2=0.3\)</span> und <span class="math notranslate nohighlight">\(\theta = 0.2\)</span> passen:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(0.3\cdot 0 + 0.3\cdot 0 = 0.0 \geq 0.2\)</span> nicht erfüllt</p></li>
-<li><p><span class="math notranslate nohighlight">\(0.3\cdot 1 + 0.3\cdot 0 = 0.3 \geq 0.2\)</span> erfüllt</p></li>
-<li><p><span class="math notranslate nohighlight">\(0.3\cdot 0 + 0.3\cdot 1 = 0.3 \geq 0.2\)</span> erfüllt</p></li>
-<li><p><span class="math notranslate nohighlight">\(0.3\cdot 1 + 0.3\cdot 1 = 0.6 \geq 0.2\)</span> erfüllt</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 \cdot 0.3 + 0 \cdot 0.3 = 0.0 \geq 0.2\)</span> nicht erfüllt</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 \cdot 0.3 + 1 \cdot 0.3 = 0.3 \geq 0.2\)</span> erfüllt</p></li>
+<li><p><span class="math notranslate nohighlight">\(1 \cdot 0.3 + 0 \cdot 0.3 = 0.3 \geq 0.2\)</span> erfüllt</p></li>
+<li><p><span class="math notranslate nohighlight">\(1 \cdot 0.3 + 1 \cdot 0.3 = 0.6 \geq 0.2\)</span> erfüllt</p></li>
 </ul>
-<div class="exercise admonition" id="exercise_08_03">
-
-<p class="admonition-title"><span class="caption-number">Exercise 5 </span></p>
-<div class="section" id="exercise-content">
-<p>Schreiben Sie Ihren Programm-Code aus <a class="reference internal" href="#exercise_08_02"><span class="std std-numref">Exercise 4</span></a> um. Ersetzen Sie das logische ODER durch die linke Seite der Ungleichung und vergleichen Sie anschließend mit <span class="math notranslate nohighlight">\(0.2\)</span>, um zu entscheiden, ob der Rasen nass wird oder nicht.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Ersetzen Sie das logische ODER durch die linke Seite der Ungleichung und vergleichen Sie anschließend mit <span class="math notranslate nohighlight">\(0.2\)</span>, um zu entscheiden, ob der Rasen nass wird oder nicht.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ihr Code:</span>
+</pre></div>
 </div>
 </div>
-<div class="solution dropdown admonition" id="solution_08_03">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#exercise_08_03"> Exercise 5</a></p>
-<div class="section" id="solution-content">
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eingabe</span>
 <span class="n">x1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Regnet es (ja = 1 | nein = 0)?&#39;</span><span class="p">))</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)&#39;</span><span class="p">))</span>
@@ -481,16 +555,24 @@ Wenn die Ungleichung</p>
 </div>
 </div>
 </div>
-</div>
 <div class="section" id="die-heaviside-funktion-ersetzt-die-ungleichung">
 <h2>Die Heaviside-Funktion ersetzt die Ungleichung<a class="headerlink" href="#die-heaviside-funktion-ersetzt-die-ungleichung" title="Permalink to this headline">¶</a></h2>
-<p>Noch sind wir aber nicht fertig, denn auch die Frage “Ist die Ungleichung erfüllt oder nicht?” muss noch in eine mathematische Funktion umgeschrieben werden. Dazu subtrahieren wir zuerst auf beiden Seiten der Ungleichung den Schwellenwert <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<p>Noch sind wir aber nicht fertig, denn auch die Frage “Ist die Ungleichung
+erfüllt oder nicht?” muss noch in eine mathematische Funktion umgeschrieben
+werden. Dazu subtrahieren wir zuerst auf beiden Seiten der Ungleichung den
+Schwellenwert <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[-\theta + \omega_1 x_1 + \omega_2 x_2 \geq 0.\]</div>
-<p>Damit haben wir jetzt nicht mehr einen Vergleich mit dem Schwellenwert, sondern müssen nur noch entscheiden, ob der Ausdruck <span class="math notranslate nohighlight">\(-\theta + \omega_1 x_1 + \omega_2 x_2\)</span> negativ oder positiv ist. Bei negativen Werten, soll <span class="math notranslate nohighlight">\(y = 0\)</span> sein und bei positiven Werten (inklusive der Null) soll <span class="math notranslate nohighlight">\(y = 1\)</span> sein. Dafür gibt es in der Mathematik eine passende Funktion, die sogenannte Heaviside-Funktion (manchmal auch Theta-, Stufen- oder Treppenfunktion genannt), siehe <a class="reference external" href="https://de.wikipedia.org/wiki/Heaviside-Funktion">https://de.wikipedia.org/wiki/Heaviside-Funktion</a>.</p>
+\[-\theta + x_1 \omega_1  +  x_2 \omega_2 \geq 0. \strut\]</div>
+<p>Damit haben wir jetzt nicht mehr einen Vergleich mit dem Schwellenwert, sondern
+müssen nur noch entscheiden, ob der Ausdruck <span class="math notranslate nohighlight">\(-\theta + x_1 \omega_1 + x_2
+\omega_2\)</span> negativ oder positiv ist. Bei negativen Werten, soll <span class="math notranslate nohighlight">\(y = 0\)</span> sein und
+bei positiven Werten (inklusive der Null) soll <span class="math notranslate nohighlight">\(y = 1\)</span> sein. Dafür gibt es in
+der Mathematik eine passende Funktion, die sogenannte
+<a class="reference external" href="https://de.wikipedia.org/wiki/Heaviside-Funktion">Heaviside-Funktion</a> (manchmal
+auch Theta-, Stufen- oder Treppenfunktion genannt).</p>
 <div class="figure align-default" id="fig-heaviside-wikipedia">
-<a class="reference internal image-reference" href="../_images/heaviside_wikipedia.png"><img alt="../_images/heaviside_wikipedia.png" src="../_images/heaviside_wikipedia.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Schaubild der Heaviside-Funktion</span><a class="headerlink" href="#fig-heaviside-wikipedia" title="Permalink to this image">¶</a></p>
+<a class="reference internal image-reference" href="../_images/heaviside_wikipedia.svg"><img alt="../_images/heaviside_wikipedia.svg" src="../_images/heaviside_wikipedia.svg" width="600px" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Schaubild der Heaviside-Funktion</span><a class="headerlink" href="#fig-heaviside-wikipedia" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://de.wikipedia.org/wiki/Heaviside-Funktion#/media/Datei:Heaviside.svg">Quelle:</a> “Verlauf der Heaviside-Funktion auf <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>” von Lennart Kudling. Lizenz: gemeinfrei)</p>
 </div>
@@ -502,17 +584,19 @@ Wenn die Ungleichung</p>
 <blockquote>
 <div><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html">https://numpy.org/doc/stable/reference/generated/numpy.heaviside.html</a></p>
 </div></blockquote>
-<div class="exercise admonition" id="exercise_08_04">
-
-<p class="admonition-title"><span class="caption-number">Exercise 6 </span></p>
-<div class="section" id="exercise-content">
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
 <p>Visualisieren Sie die Heaviside-Funktion für das Intervall <span class="math notranslate nohighlight">\([-3,3]\)</span> mit 101 Punkten. Setzen Sie das zweite Argument einmal auf 0 und einmal auf 2. Was bewirkt das zweite Argument? Sehen Sie einen Unterschied in der Visualisierung? Erhöhen Sie auch die Anzahl der Punkte im Intervall. Wählen Sie dabei immer eine ungerade Anzahl, damit die 0 dabei ist.</p>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ihr Code:</span>
+</pre></div>
 </div>
-<div class="solution dropdown admonition" id="solution_08_04">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#exercise_08_04"> Exercise 6</a></p>
-<div class="section" id="solution-content">
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -528,8 +612,10 @@ Wenn die Ungleichung</p>
 </pre></div>
 </div>
 </div>
-</div>
-<p>Mit der Heaviside-Funktion können wir nun den Vergleich in der Programmverzweigung mit <span class="math notranslate nohighlight">\(0.2\)</span> durch eine direkte Berechnung ersetzen. Schauen Sie sich im folgenden Programm-Code an, wie wir jetzt ohne logisches Oder und ohne Programmverzweigung if-else auskommen:</p>
+<p>Mit der Heaviside-Funktion können wir nun den Vergleich in der
+Programmverzweigung mit <span class="math notranslate nohighlight">\(0.2\)</span> durch eine direkte Berechnung ersetzen. Schauen
+Sie sich im folgenden Programm-Code an, wie wir jetzt ohne logisches Oder und
+ohne Programmverzweigung if-else auskommen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import der notwendigen Module</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -548,51 +634,67 @@ Wenn die Ungleichung</p>
 </div>
 <div class="section" id="das-perzeptron-mit-mehreren-eingabewerten">
 <h2>Das Perzeptron mit mehreren Eingabewerten<a class="headerlink" href="#das-perzeptron-mit-mehreren-eingabewerten" title="Permalink to this headline">¶</a></h2>
-<p>Das Perzeptron für zwei Eingabewerte lässt sich in sehr natürlicher Weise auf viele Eingabewerte verallgemeinern.</p>
-<p>Wenn wir nicht nur zwei, sondern <span class="math notranslate nohighlight">\(n\)</span> Eingabewerte <span class="math notranslate nohighlight">\(x_i\)</span> haben, brauchen wir entsprechend auch <span class="math notranslate nohighlight">\(n\)</span> Gewichte <span class="math notranslate nohighlight">\(\omega_i\)</span>. Die Eingabewerte können wir in einem Spaltenvektor zusammenfassen, also</p>
+<p>Das Perzeptron für zwei Eingabewerte lässt sich in sehr natürlicher Weise auf
+viele Eingabewerte verallgemeinern, die auch mehrere Zustände annehmen können.
+Bei den Outputs bleiben wir jedoch dabei, dass nur zwei Zustände angenommen
+werden können, die wir mit 0 und 1 bezeichnen. Wir betrachten also weiterhin
+binäre Klassifikationsaufgaben.</p>
+<p>Wenn wir nicht nur zwei, sondern <span class="math notranslate nohighlight">\(n\)</span> Eingabewerte <span class="math notranslate nohighlight">\(x_i\)</span> haben, brauchen wir
+entsprechend auch <span class="math notranslate nohighlight">\(n\)</span> Gewichte <span class="math notranslate nohighlight">\(\omega_i\)</span>. Die Eingabewerte können wir in einem
+Spaltenvektor zusammenfassen, also</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.\end{split}\]</div>
 <p>Auch die Gewichte können wir in einem Spaltenvektor zusammenfassen, also</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{\omega} = \begin{pmatrix} \omega_1 \\ \omega_2 \\ \vdots \\ \omega_n\end{pmatrix}\end{split}\]</div>
-<p>schreiben. Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt abkürzen:</p>
+\[\begin{split}\boldsymbol{\omega} = \begin{pmatrix} \omega_1 \\ \omega_2 \\ \vdots \\
+\omega_n\end{pmatrix}\end{split}\]</div>
+<p>schreiben. Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt
+abkürzen:</p>
 <div class="math notranslate nohighlight">
-\[\boldsymbol{\omega}^{T}\mathbf{x} = \omega_1 x_1 + \omega_2 x_2 + \ldots + \omega_n x_n \geq \theta.\]</div>
-<p>Wie bei dem Perzeptron mit zwei Eingängen wird der Schwellenwert <span class="math notranslate nohighlight">\(\theta\)</span> durch Subtraktion auf die linke Seite gebracht. Wenn wir jetzt bei dem Vektor <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> mit den Gewichten vorne den Vektor um das Element <span class="math notranslate nohighlight">\(\omega_0 = -\theta\)</span> ergänzen und den Vektor <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> mit <span class="math notranslate nohighlight">\(x_0 = 1\)</span> erweitern, dann erhalten wir</p>
+\[\mathbf{x}^{T}\boldsymbol{\omega} = x_1 \omega_1 +  x_2 \omega_2 + \ldots +
+x_n \omega_n \geq \theta.\strut\]</div>
+<p>Wie bei dem Perzeptron mit zwei Eingängen wird der Schwellenwert <span class="math notranslate nohighlight">\(\theta\)</span> durch
+Subtraktion auf die linke Seite gebracht. Wenn wir jetzt bei dem Vektor
+<span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> mit den Gewichten vorne den Vektor um das Element
+<span class="math notranslate nohighlight">\(\omega_0 = -\theta\)</span> ergänzen und den Vektor <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> mit <span class="math notranslate nohighlight">\(x_0 = 1\)</span>
+erweitern, dann erhalten wir</p>
 <div class="math notranslate nohighlight">
-\[\boldsymbol{\omega}^{T}\mathbf{x} = -\theta \cdot 1+ \omega_1 x_1 + + \omega_2 x_2 + \ldots + \omega_n x_n \geq 0.\]</div>
-<p>Genaugenommen hätten wir jetzt natürlich für die Vektoren <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> und <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> neue Bezeichnungen einführen müssen, aber ab sofort gehen wir immer davon aus, dass die mit dem negativen Schwellenwert <span class="math notranslate nohighlight">\(-\theta\)</span> und <span class="math notranslate nohighlight">\(1\)</span> erweiterten Vektoren gemeint sind. Der negative Schwellenwert wird übrigens in der ML-Community <strong>Bias</strong> oder <strong>Bias-Einheit (Bias Unit)</strong> genannt.</p>
-<p>Um jetzt klassfizieren zu können, wird auf die gewichtete Summe <span class="math notranslate nohighlight">\(\boldsymbol{\omega}^{T}\mathbf{x}\)</span> die Heaviside-Funktion angewendet. Manchmal wird anstatt der Heaviside-Funktion auch die Signum-Funktion verwendet. Im Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird, <strong>Aktivierungsfunktion</strong>.</p>
-<div class="proof definition admonition" id="def:08:01:01">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span></p>
-<div class="definition-content section" id="proof-content">
+\[\mathbf{x}^{T}\boldsymbol{\omega} = 1 \cdot (-\theta) + x_1 \omega_1 + x_2
+\omega_2 + \ldots + x_n \omega_n \geq 0.\strut\]</div>
+<p>Genaugenommen hätten wir jetzt natürlich für die Vektoren <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span>
+und <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> neue Bezeichnungen einführen müssen, aber ab sofort gehen wir
+immer davon aus, dass die mit dem negativen Schwellenwert <span class="math notranslate nohighlight">\(-\theta\)</span> und <span class="math notranslate nohighlight">\(1\)</span>
+erweiterten Vektoren gemeint sind. Der negative Schwellenwert wird übrigens in
+der ML-Community <strong>Bias</strong> oder <strong>Bias-Einheit (Bias Unit)</strong> genannt.</p>
+<p>Um jetzt klassfizieren zu können, wird auf die gewichtete Summe
+<span class="math notranslate nohighlight">\(\mathbf{x}^{T}\boldsymbol{\omega}\)</span> die Heaviside-Funktion angewendet. Manchmal
+wird anstatt der Heaviside-Funktion auch die Signum-Funktion verwendet. Im
+Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird,
+<strong>Aktivierungsfunktion</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">Was ist … ein Perzeptron?</p>
 <p>Das Perzeptron ist ein künstliches Neuron mit Gewichten <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> und einem Schwellenwert <span class="math notranslate nohighlight">\(\theta\)</span>. Das Perzeptron berechnet eine gewichtete Summe der Inputs <span class="math notranslate nohighlight">\(\mathbf{x}\in\mathbb{R}^n\)</span> und wendet dann eine Aktivierungsfunktion <span class="math notranslate nohighlight">\(\Phi\)</span> an, um den Output <span class="math notranslate nohighlight">\(y\)</span> zu berechnen:</p>
 <div class="math notranslate nohighlight">
-\[y = \Phi(\boldsymbol{\omega}^{T}\mathbf{x}) = \Phi(-\theta + \omega_1 x_1 + \ldots + \omega_n x_n).\]</div>
+\[y = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(-\theta + x_1 \omega_1 + \ldots + x_n \omega_n).\]</div>
 </div>
-</div><p>Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung <a class="reference internal" href="#fig-perzeptron"><span class="std std-ref">Schematische Darstellung eines Perzeptrons</span></a> gezeigt. Die Inputs und der Bias werden durch Kreise symbolisiert. Die Multiplikation der Inputs <span class="math notranslate nohighlight">\(x_i\)</span> wird durch Kanten dargestellt, die mit den Gewichten <span class="math notranslate nohighlight">\(\omega_i\)</span> beschriftet sind. Die einzelnen Summanden <span class="math notranslate nohighlight">\(\omega_i x_i\)</span> treffen sich sozusagen im mittleren Kreis, wo auf die gewichtete Summe dann eine Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output <span class="math notranslate nohighlight">\(y\)</span> wird dann berechnet und wiederum als Kreis gezeichnet.</p>
+<p>Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
+<a class="reference internal" href="#fig-perzeptron"><span class="std std-ref">Schematische Darstellung eines Perzeptrons</span></a> gezeigt. Die Inputs und der Bias werden durch Kreise
+symbolisiert. Die Multiplikation der Inputs <span class="math notranslate nohighlight">\(x_i\)</span> wird durch Kanten dargestellt,
+die mit den Gewichten <span class="math notranslate nohighlight">\(\omega_i\)</span> beschriftet sind. Die einzelnen Summanden
+<span class="math notranslate nohighlight">\(x_i \omega_i\)</span> treffen sich sozusagen im mittleren Kreis, wo auf die gewichtete
+Summe dann eine Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output
+<span class="math notranslate nohighlight">\(y\)</span> wird dann berechnet und wiederum als Kreis gezeichnet.</p>
 <div class="figure align-default" id="fig-perzeptron">
 <a class="reference internal image-reference" href="../_images/perzeptron.png"><img alt="../_images/perzeptron.png" src="../_images/perzeptron.png" style="width: 600px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#fig-perzeptron" title="Permalink to this image">¶</a></p>
-</div>
-<div class="exercise admonition" id="exercise_08_05">
-
-<p class="admonition-title"><span class="caption-number">Exercise 7 </span></p>
-<div class="section" id="exercise-content">
-<p>TODO</p>
-</div>
-</div>
-<div class="solution dropdown admonition" id="solution_08_05">
-
-<p class="admonition-title">Solution to<a class="reference internal" href="#exercise_08_05"> Exercise 7</a></p>
-<div class="section" id="solution-content">
-<p>TODO</p>
-</div>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#fig-perzeptron" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">¶</a></h2>
-<p>TODO</p>
+<p>In diesem Abschnitt haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
+aus den Daten mit Hilfe von Gewichten und einer Aktivierungsfunktion der binäre
+Zustand prognostiziert wird. Im nächsten Abschnitt beschäftigen wir uns mit der
+Frage, wie die Gewichte gefunden werden.</p>
 </div>
 </div>
 
@@ -600,8 +702,8 @@ Wenn die Ungleichung</p>
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "gramschs/book_ml4ing",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -644,7 +746,6 @@ Wenn die Ungleichung</p>
     
       By Simone Gramsch<br/>
     
-        &copy; Copyright 2022.<br/>
       <div class="extra_footer">
         <div>
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
