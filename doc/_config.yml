@@ -3,8 +3,7 @@
 
 title: Maschinelles Lernen für Studierende der Ingenieurwissenschaften
 author: Simone Gramsch
-copyright: "2022"  # Copyright year to be placed in the footer
-#logo: pics/book_matlab_logo.png
+logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
