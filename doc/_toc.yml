@@ -17,4 +17,5 @@ parts:
     sections:
     - file: chapter08/sec01.md
     - file: chapter08/sec02.md
+    - file: chapter08/sec03.md
   

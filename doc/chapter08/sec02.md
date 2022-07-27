@@ -12,15 +12,6 @@ kernelspec:
   name: python3
 ---
 
-```{code-cell} ipython3
-:tags: [remove-input]
-
-from __future__ import print_function
-import ipywidgets as widgets
-from ipywidgets import interact
-from IPython.display import SVG
-```
-
 # Die Perzeptron-Lernregel
 
 In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann. 
@@ -123,8 +114,13 @@ werden, werden sie noch mit einem Vorfaktor $\alpha$ multipliziert, der zwischen
 0 und 1 liegt. Ein typischer Wert von $\alpha$ ist $0.0001$. Dieser Vorfaktor
 $\alpha$ wird **Lernrate** genannt.
 
+```{admonition} Was ist ... die Lernrate?
+Die Lernrate ist eine Zahl, die zu Beginn des ML-Trainings gesetzt wird (ein sogenannter Hyperparameter). Sie bestimmt, wie stark die neuen Gewichte auf Fehler zwischen Prognose und tatsächlichem Output des aktuellen Durchgangs reagieren.
+```
+
 +++
 
+(perzeptron_training_logisches_oder)=
 ## Perzeptron-Training am Beispiel des logischen ODER
 
 Das logische Oder ist bereits durch die Angabe der folgenden vier Datensätzen
@@ -165,7 +161,7 @@ Formel
 $$\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(x_0
 \omega_0 + x_1 \omega_1 + x_2 \omega_2 ).\strut$$
 
-Blättern Sie Seite für Seite durch:
+Blättern Sie Seite für Seite durch. Jede Seite entspricht einem Durchgang. Ein Durchgang wird im ML (wie auch in der Mathematik) als eine **Iteration** bezeichnet.
 
 ````{carousel}
 :show_controls:
@@ -218,3 +214,13 @@ Blättern Sie Seite für Seite durch:
 
 Die letzten vier Iterationen mit den Gewichten $(-1,1,1)$ prognostizierten
 jeweils das richtige Ergebnis. Daher können wir nun mit den Iterationen stoppen.
+
+Insgesamt brauchten wir 13 Iterationen, bis wir die Gewichte für unser Perzeptron gefunden haben. Die finalen Gewichte haben wir bereits nach neun Iterationen gefunden. Weitere vier Iterationen brauchten wir, um zu überprüfen, ob das Perzeptron die vier Datensätze korrekt prognostiziert. Oder anders ausgedrückt, mussten alle vier Datensätze noch einmal durchlaufen werden. Das Durchlaufen aller Datensätze kommt beim mschinellen Lernen häufig vor, so dass es dafür einen eigenen Fachbegriff gibt, nämlich die Epoche.
+
+```{admonition} Was ist ... eine Epoche?
+Das komplette Durchlaufen aller Trainingsdaten wird eine Epoche genannt.
+```
+
+## Zusammenfassung und Ausblick
+
+In diesem Abschnitt haben wir uns mit dem händischen Training eines Perzeptrons beschäftigt. Als nächstes werden wir dazu eine Bibliothek kennenlernen, die diese Arbeit für uns übernimmt.
