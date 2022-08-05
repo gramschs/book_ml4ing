@@ -18,4 +18,10 @@ parts:
     - file: chapter08/sec01.md
     - file: chapter08/sec02.md
     - file: chapter08/sec03.md
+  - file: chapter09/sec00.md
+    sections:
+    - file: chapter09/sec01.md
+  - file: chapter10/sec00.md
+    sections:
+    - file: chapter10/sec01.md
   

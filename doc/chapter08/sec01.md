@@ -195,7 +195,6 @@ else:
 ````
 
 +++
-
 ## Die Heaviside-Funktion ersetzt die Ungleichung 
 
 Noch sind wir aber nicht fertig, denn auch die Frage "Ist die Ungleichung
@@ -338,7 +337,7 @@ Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird,
 
 ````{admonition} Was ist ... ein Perzeptron?
 :class: note
-Das Perzeptron ist ein künstliches Neuron mit Gewichten $\boldsymbol{\omega}$ und einem Schwellenwert $\theta$. Das Perzeptron berechnet eine gewichtete Summe der Inputs $\mathbf{x}\in\mathbb{R}^n$ und wendet dann eine Aktivierungsfunktion $\Phi$ an, um den Output $y$ zu berechnen:
+Das Perzeptron ist ein künstliches Neuron mit Gewichten $\boldsymbol{\omega}$ und einem Schwellenwert $\theta$. Das Perzeptron berechnet eine gewichtete Summe der Inputs $\mathbf{x}\in\mathbb{R}^n$ und wendet dann die Heaviside-Funktion als Aktivierungsfunktion $\Phi$ an, um den Output $y$ zu berechnen:
 
 $$y = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(-\theta + x_1 \omega_1 + \ldots + x_n \omega_n).$$
 ````
