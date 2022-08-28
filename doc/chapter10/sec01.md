@@ -30,7 +30,16 @@ Die logistische Funktion ist defininiert als
 
 $$\phi(z) = \frac{1}{1+e^{-z}}.$$
 
+In der folgenden Abbildung sehen Sie den Funktionsgraphen der logistischen
+Funktion.
 
+```{figure} pics/plot_logit_function.pdf
+---
+width: 600px
+name: plot_logit_function
+---
+Funktionsgraph der logistischen Funktion
+```
 
 
 ## Chance für Wahrscheinlichkeiten im Alltag
