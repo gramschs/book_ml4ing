@@ -1,8 +1,7 @@
 import numpy as np
-import matplotlib.pylab as plt
+import matplotlib.pylab as plt; plt.style.use('bmh')
+plt.rcParams['font.family'] = ['TeX Gyre Heros', 'sans-serif']
 import pandas as pd
-import seaborn as sns
-sns.set_theme();
 
 
 # import data
@@ -31,6 +30,6 @@ ax.set_xlabel('Marktwert in Mio. Euro')
 ax.set_title('Marktwerte deutscher Männerfußball am 01.08.2022')
 ax.legend()
 
-plt.savefig('bundesliga_decision_function.pdf')
+plt.savefig('/Users/gramschs/lectures/book_ml4ing/src/chapter10_logistic_regression/bundesliga_decision_function.pdf')
 
 
