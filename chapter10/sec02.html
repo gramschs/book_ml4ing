@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Series für eindimensionale Daten &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Logistische Regression lernt mit Maximum-Likelihood &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logistische Regression" href="../chapter10/sec00.html" />
-    <link rel="prev" title="Pandas anstatt Excel" href="sec00.html" />
+    <link rel="prev" title="Logistische Regression ersetzt Perzeptron" href="sec01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -198,41 +199,41 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec00.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Series für eindimensionale Daten
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter10/sec00.html">
-   Logistische Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec01.html">
+    <a class="reference internal" href="../chapter09/sec01.html">
+     Series für eindimensionale Daten
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec00.html">
+   Logistische Regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec01.html">
      Logistische Regression ersetzt Perzeptron
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec02.html">
-     Logistisches Regression lernt mit Maximum-Likelihood
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
   </ul>
@@ -296,7 +297,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter09/sec01.md"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter10/sec02.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -370,24 +371,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chapter09/sec01.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/chapter09/sec01.md"
+        <a href="../_sources/chapter10/sec02.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -398,7 +382,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -452,14 +436,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-von-pandas">
-   Import von pandas
+  <a class="reference internal nav-link" href="#wir-basteln-eine-kostenfunktion">
+   Wir basteln eine Kostenfunktion
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#series-aus-liste-erzeugen">
-   Series aus Liste erzeugen
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kostenfunktion-wenn-klasse-1-richtig-ware">
+     Kostenfunktion, wenn Klasse 1 richtig wäre
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kostenfunktion-wenn-klasse-1-nicht-richtig-ware">
+     Kostenfunktion, wenn Klasse 1 nicht richtig wäre
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -470,7 +461,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Series für eindimensionale Daten</h1>
+                <h1>Logistische Regression lernt mit Maximum-Likelihood</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -486,14 +477,21 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-von-pandas">
-   Import von pandas
+  <a class="reference internal nav-link" href="#wir-basteln-eine-kostenfunktion">
+   Wir basteln eine Kostenfunktion
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#series-aus-liste-erzeugen">
-   Series aus Liste erzeugen
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kostenfunktion-wenn-klasse-1-richtig-ware">
+     Kostenfunktion, wenn Klasse 1 richtig wäre
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kostenfunktion-wenn-klasse-1-nicht-richtig-ware">
+     Kostenfunktion, wenn Klasse 1 nicht richtig wäre
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -505,115 +503,108 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="series-fur-eindimensionale-daten">
-<h1>Series für eindimensionale Daten<a class="headerlink" href="#series-fur-eindimensionale-daten" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistische-regression-lernt-mit-maximum-likelihood">
+<h1>Logistische Regression lernt mit Maximum-Likelihood<a class="headerlink" href="#logistische-regression-lernt-mit-maximum-likelihood" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>TODO</p></li>
+<li><p>Sie kennen die Begriffe <strong>Fehlermaß</strong>, <strong>Kostenfunktion</strong> und <strong>Verlustfunktion</strong>.</p></li>
 </ul>
 </div>
 </section>
-<section id="import-von-pandas">
-<h2>Import von pandas<a class="headerlink" href="#import-von-pandas" title="Permalink to this headline">#</a></h2>
-<p>Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Tabellen und Zeitreihen. Die beiden grundlegenden Datenstrukturen sind
-<strong>Series</strong> und <strong>DataFrame</strong>. Dabei wird Series für Datenreihen genommen, also
-sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
-Datentyp DataFrame repräsentiert Tabllen, also sozusagen Matrizen bzw.
-verallgemeinerte zweidimensionale Arrays.</p>
-<p>Um das Modul pandas benutzen zu können, müssen wir es zunächst importieren. Es
-ist üblich, dabei dem Modul die Abkürzung <strong>pd</strong> zu geben, damit wir nicht immer
-pandas schreiben müssen, wenn wir eine Funktion aus dem pandas-Modul benutzen.</p>
+<section id="wir-basteln-eine-kostenfunktion">
+<h2>Wir basteln eine Kostenfunktion<a class="headerlink" href="#wir-basteln-eine-kostenfunktion" title="Permalink to this headline">#</a></h2>
+<p>Bei der linearen Regression werden die prognostizierten Daten <span class="math notranslate nohighlight">\(\hat{y}\)</span> mit den
+echten Daten <span class="math notranslate nohighlight">\(y\)</span> verglichen. Dazu wird der Abstand der beiden Werte berechnet
+und quadriert, damit der Fehler immer positiv ist. Zuletzt wird der Mittelwert
+aller Fehler für alle Trainingsdaten gebildet. Die Gewichte des linearen
+Regressionsmodells werden dann so berechnet, dass die mittlere Summe der
+Fehlerquadrate möglichst klein, also minimiert wird. In der Wirtschaft
+verursachen Fehler Kosten. Daher wird ein Fehlermaß, in der ML Community auch
+Kostenfunktion (cost function) genannt. Da das Fehlermaß bzw. die Kostenfunktion
+minimiert werden soll, sprechen mache auch von Verlustfunktion (loss function).
+So ein Maß, egal wie wir es am Ende nennen, brauchen wir hier auch. Wir müssen
+beurteilen können, ob die gewählten Gewichte gut oder schlecht sind, also kleine
+Fehler oder große Fehler produzieren. Nur passt diesmal leider die kleinste
+Summe der Fehlerquadrate nicht.</p>
+<p>Bei der binären Klassifikation gibt es nämlich nur zwei Fehler. Entweder, ich
+prognostiziere Klasse 1, aber es wäre Klasse 0 gewesen. Oder ich prognostiziere
+<em>nicht</em> Klasse 1, obwohl Klasse 1 richtig gewesen wäre. Damit haben wir auch
+zwei Fehlerarten. Für beide Fehlerarten führen wir ein eigenes Fehlermaß bzw.
+Kostenfunktion bzw. Verlustfunktion ein.</p>
+<section id="kostenfunktion-wenn-klasse-1-richtig-ware">
+<h3>Kostenfunktion, wenn Klasse 1 richtig wäre<a class="headerlink" href="#kostenfunktion-wenn-klasse-1-richtig-ware" title="Permalink to this headline">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\sigma(z)\)</span> gibt die Wahrscheinlichkeit an, dass der prognostizierte Output
+<span class="math notranslate nohighlight">\(\hat{y}\)</span> in Klasse 1 einsortiert werden sollte. Wenn das richtig ist, also
+tatsächlich für den echten Output <span class="math notranslate nohighlight">\(y=1\)</span> gilt, dann ist der Fehler bzw. sind die
+Kosten 0. Sollte jedoch das logistische Regressionsmodell <span class="math notranslate nohighlight">\(\sigma(z)\)</span> fehlerhaft
+Richtung 0 trendieren, so sollten auch hohe Kosten anfallen. Die Kostenfunktion
+muss also stark steigen, je mehr sich die Wahrscheinlichkeit
+<span class="math notranslate nohighlight">\(\sigma(z)=\sigma(\sum_{i=0}^{N})\)</span> der 0 nähert.</p>
+<p>Es gibt einige Funktionen, die ein solches Verhalten beschreiben. Wir verwenden
+die folgende Kostenfunktion:</p>
+<div class="math notranslate nohighlight">
+\[c_{1}(\mathbf{x}, \boldsymbol{\omega}) = 
+- \log\left(\sigma\left(\sum_{i=0}^{N} x_i \omega_i\right)\right), \quad \text{
+  falls } y=1.\]</div>
+<p>Vielleicht mag man sich jetzt wundern, wie man auf diese Funktion kommt. Diese
+Funktion wie auch die nachfolgenden Überlegungen basieren auf der
+<a class="reference external" href="https://de.wikipedia.org/wiki/Maximum-Likelihood-Methode">Maximum-Likelihood-Methode</a>,
+einem sehr bekannten statistischen Verfahren.</p>
+<p>Am einfachsten ist es wahrscheinlich, sich den Graph der Funktion anzusehen. Da
+<span class="math notranslate nohighlight">\(\sigma(z)\)</span> für jede Kombination von Inputs <span class="math notranslate nohighlight">\(x_i\)</span> und Gewichten <span class="math notranslate nohighlight">\(\omega_i\)</span>
+zwischen 0 und 1 liegt, brauchen wir die Kostenfunktion <span class="math notranslate nohighlight">\(c_1\)</span> auch nur auf dem
+Intervall <span class="math notranslate nohighlight">\([0, 1]\)</span> plotten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># kürze das Modul pandas als pd ab, um Schreibarbeit zu sparen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TeX Gyre Heros&#39;</span><span class="p">,</span> <span class="s1">&#39;sans-serif&#39;</span><span class="p">]</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sigma_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">cost_1</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">,</span><span class="n">cost_1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Kosten $c_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Kostenfunktion, falls Klasse 1 korrekt (y=1)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sec02_3_0.png" src="../_images/sec02_3_0.png" />
 </div>
 </div>
 </section>
-<section id="series-aus-liste-erzeugen">
-<h2>Series aus Liste erzeugen<a class="headerlink" href="#series-aus-liste-erzeugen" title="Permalink to this headline">#</a></h2>
-<p>Erzeugt werden kann ein Series-Objekt beispielsweise direkt aus einer Liste. Im
-folgenden Beispiel haben wir Altersangaben in einer Liste, also <code class="docutils literal notranslate"><span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> und initialisieren über <code class="docutils literal notranslate"><span class="pre">Series</span></code> die Variable <code class="docutils literal notranslate"><span class="pre">alter</span></code>:</p>
+<section id="kostenfunktion-wenn-klasse-1-nicht-richtig-ware">
+<h3>Kostenfunktion, wenn Klasse 1 nicht richtig wäre<a class="headerlink" href="#kostenfunktion-wenn-klasse-1-nicht-richtig-ware" title="Permalink to this headline">#</a></h3>
+<p>Nun betrachten wir den zweiten Fall. Der echte Output soll nicht der Klasse 1 angehören, also <span class="math notranslate nohighlight">\(y=0\)</span>.
+Sollte die Wahrscheinlichkeit des logistischen Regressionsmodells <span class="math notranslate nohighlight">\(\sigma(z)\)</span> in Richtung 0 gehen, so sollen kaum Kosten anfallen. Falls korrekterweise die Wahrscheinlicheit 0 ist, so sollen gar keine Kosten anfallen. Und umgekehrt, wenn die Wahrscheinlichkeit des logistischen Regressionsmodells Richtung 1 tendiert, so sollen die Kosten stark steigen. Wir nehmen als zweite Kostenfunktion für den Fall <span class="math notranslate nohighlight">\(y=0\)</span> die folgende Funktion:</p>
+<div class="math notranslate nohighlight">
+\[c_{0}(\mathbf{x}, \boldsymbol{\omega}) = 
+- \log\left(1-\sigma\left(\sum_{i=0}^{N} x_i \omega_i\right)\right), \quad \text{
+  falls } y=0.\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sigma_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cost_0</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sigma_z</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sigma_z</span><span class="p">,</span><span class="n">cost_0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\sigma(z)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Kosten $c_0$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Kostenfunktion, falls Klasse 1 nicht korrekt (y=0)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    25
-1    22
-2    43
-3    37
-dtype: int64
-</pre></div>
+<img alt="../_images/sec02_5_0.png" src="../_images/sec02_5_0.png" />
 </div>
 </div>
-</div>
-<p>Was ist aber jetzt der Vorteil von Pandas? Warum nicht einfach bei der Liste
-bleiben oder aber, wenn Performance wichtig sein sollte, ein eindimensionales
-Numpy-Array nehmen? Der wichtigste Unterschied ist der <strong>Index</strong>.</p>
-<p>Bei einer Liste oder einem Numpy-Array ist der Index implizit definiert. Damit
-ist gemeint, dass bei der Initialisierung automatisch ein Index 0, 1, 2, 3, …
-angelegt wird. Wenn bei einer Liste <code class="docutils literal notranslate"><span class="pre">l</span> <span class="pre">=</span> <span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> auf das zweite
-Element zugegriffen werden soll, dann verwenden wir den Index 1 (zur Erinnerung:
-Python zählt ab 0) und schreiben</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Element der Liste: &quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. Element der Liste:  22
-</pre></div>
-</div>
-</div>
-</div>
-<p>Das gleiche gilt für das Numpy-Array, das ebenfalls die Integer 0, 1, 2, 3
-verwendet, um das folgende Array zu indizieren:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Element des Arrays: &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. Element des Arrays:  22
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Datenstruktur Series ermöglich es aber, einen expliziten Index zu setzen.
-Über den optionalen Parameter <code class="docutils literal notranslate"><span class="pre">index=</span></code> speichern wir als Zusatzinformation noch
-ab, von welcher Person das Alter abgefragt wurde. In dem Fall sind es die vier
-Personen Alice, Bob, Charlie und Dora.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Dora&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
-Bob        22
-Charlie    43
-Dora       30
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 </section>
 
@@ -630,7 +621,7 @@ dtype: int64
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapter09"
+            path: "./chapter10"
         },
         predefinedOutput: true
     }
@@ -644,19 +635,12 @@ dtype: int64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sec00.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="sec01.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pandas anstatt Excel</p>
+            <p class="prev-next-title">Logistische Regression ersetzt Perzeptron</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="../chapter10/sec00.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logistische Regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

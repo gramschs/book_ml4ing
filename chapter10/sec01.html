@@ -57,6 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistische Regression lernt mit Maximum-Likelihood" href="sec02.html" />
     <link rel="prev" title="Logistische Regression" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -229,6 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Logistische Regression ersetzt Perzeptron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
   </ul>
@@ -661,15 +667,31 @@ Wir betrachten nun nur noch 2. und 3. Liga.</p>
 <img alt="../_images/sec01_9_0.png" src="../_images/sec01_9_0.png" />
 </div>
 </div>
-<p>Anstatt eine Gerade zur Trennung einzuziehen, nehmen wir eine S-förmige
-Funktion. Diese S-förmige Funktion interpretieren wir als Wahrscheinlichkeit der
-Ligazugehörigkeit. Die Werte liegen dabei zwischen 0 und 1. Bei einer
-Wahrscheinlichkeit von 1 sind wir also 100 % sicher, dass der Verein zur 2.
-Bundesliga gehört.</p>
+<p>Als erstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
+Bezeichnungen wie “3. Liga” und “2. Bundesliga” kann Python nämlich nicht
+rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
+üblicherweise die Zahlen 0 und 1 verwendet, also</p>
+<ul>
+    <li>3. Liga --> 0</li>
+    <li>2. Bundesliga --> 1</li>
+</ul>
+<p>Das Klassifikationsproblem lautet also: angenommen, ein
+Verein hat den Marktwert x. Gehört der Verein dann zur Klasse 1 (= 2.
+Bundesliga)?</p>
+<p>Als zweites verabschieden wir uns von dem Perzeptron. Anstatt eine Gerade zur
+Trennung einzuziehen, nehmen wir eine S-förmige Funktion. Diese S-förmige
+Funktion interpretieren wir als <strong>Wahrscheinlichkeit</strong> der Ligazugehörigkeit.
+Die Werte liegen dabei zwischen 0 und 1. Bei einer Wahrscheinlichkeit von 1 sind
+wir also 100 % sicher, dass der Verein zur Klasse 1 (= 2. Bundesliga) gehört.
+Bei einem Wert von 0.7 gehen wir mit 70 % Wahrscheinlichkeit davon aus, dass der
+Verein zur Klasse 1 (= 2. Bundesliga) gehört.</p>
+<p>Als drittes verwandeln wir die Wahrscheinlichkeit mit Werten <em>zwischen</em> 0 und 1
+in die Klassen 0 oder 1. Dazu nutzen wir die Heaviside-Funktion. Die komplette
+Vorgehensweise ist in der folgenden Grafik dargestellt.</p>
 <figure class="align-default" id="bundesliga-decision-function-annotated">
 <a class="reference internal image-reference" href="../_images/bundesliga_decision_function_annotated.pdf"><img alt="../_images/bundesliga_decision_function_annotated.pdf" src="../_images/bundesliga_decision_function_annotated.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Die S-förmige schwarz gestrichelte Kurve gibt die Wahrscheinlichkeit an, dass ein Verein zur 2. Bundesliga gehört. Da nicht nach einer Wahrscheinlichkeit gefragt ist, sondern nur nach 2. Bundesliga – ja oder nein – werden alle Vereine mit einer Wahrscheinlichkeit kleiner 50 % (also 0.5) als Drittligisten klassifiziert.</span><a class="headerlink" href="#bundesliga-decision-function-annotated" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Die S-förmige schwarz gestrichelte Kurve gibt die Wahrscheinlichkeit an, dass ein Verein zur 2. Bundesliga gehört. Da nicht nach einer Wahrscheinlichkeit gefragt ist, sondern nur nach 2. Bundesliga – ja oder nein – werden alle Vereine mit einer Wahrscheinlichkeitgrößer 50 % (also <span class="math notranslate nohighlight">\(\geq 0.5\)</span>) als Zweitligisten klassifiziert.</span><a class="headerlink" href="#bundesliga-decision-function-annotated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jetzt brauchen wir eine Funktion für die S-förmige Kurve, das wir dann mittels
@@ -678,39 +700,45 @@ eines ML-Verfahrens an unsere Trainingsdaten anpassen können.</p>
 <section id="logistische-funktion-ersetzt-heaviside-funktion">
 <h2>Logistische Funktion ersetzt Heaviside-Funktion<a class="headerlink" href="#logistische-funktion-ersetzt-heaviside-funktion" title="Permalink to this headline">#</a></h2>
 <p>Beim Perzeptron wird auf die gewichtete Summe von Inputs die Heaviside-Funktion
-angewandt. So simpel die Heaviside-Funktion auch ist, sie hat einen
+angewandt. So simpel die Heaviside-Funktion <span class="math notranslate nohighlight">\(\phi\)</span> auch ist, sie hat einen
 entscheidenen Nachteil. Die Heaviside-Funktion ist unstetig, sie springt von
 Null auf Eins. Diese Sprungstelle hat die <strong>logistische Funktion</strong> nicht.</p>
 <p>Die logistische Funktion ist defininiert als</p>
 <div class="math notranslate nohighlight">
-\[\phi(z) = \frac{1}{1+e^{-z}}.\]</div>
-<p>In der folgenden Abbildung sehen Sie den Funktionsgraphen der logistischen
-Funktion.</p>
+\[\sigma(z) = \frac{1}{1+e^{-z}}.\]</div>
+<p>Wir verwenden dabei den griechischen Buchstaben Sigma <span class="math notranslate nohighlight">\(\sigma\)</span>, weil die
+logistische Funktion auch <strong>Sigmoid-Funktion</strong> genannt wird. In der folgenden
+Abbildung sehen Sie den Funktionsgraphen der logistischen Funktion.</p>
 <figure class="align-default" id="plot-logit-function">
 <a class="reference internal image-reference" href="../_images/plot_logit_function.pdf"><img alt="../_images/plot_logit_function.pdf" src="../_images/plot_logit_function.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Funktionsgraph der logistischen Funktion</span><a class="headerlink" href="#plot-logit-function" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Funktionsgraph der logistischen Funktion, auch Sigmoid-Funktion genannt</span><a class="headerlink" href="#plot-logit-function" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Damit haben wir die Bausteine der logistischen Regression komplettiert. Genau
-wie bei der linearen Regression oder beim Perzeptron werden die einzelnen Inputs
-gewichtet und aufsummiert. Auf die gewichtete Summe wird dann die logistische
-Funktion angewendet. Visualisiert sieht die logistische Regression also
-folgendermaßen aus:</p>
+<p>Damit haben wir die Bausteine des logistischen Regressionmodells komplettiert.
+Genau wie bei der linearen Regression oder beim Perzeptron werden zuerst die
+einzelnen Inputs gewichtet und aufsummiert. Auf die gewichtete Summe wird dann
+die logistische Funktion als Aktivierungsfunktione angewendet. Das Ergebnis ist
+die Wahrscheinlichkeit für die Klasse mit der Bezeichnung 1 (in unserem Beispiel
+die Zugehörigkeit zur 2. Bundesliga). Zuletzt wird noch die Heaviside-Funktion
+als Schwellenwertfunktion angewendet, um aus der Wahrscheinlichkeit eine Klasse
+zu machen.</p>
+<p>Visualisiert sieht die logistische Regression also folgendermaßen aus:</p>
 <figure class="align-default" id="topology-logistic-regression">
 <a class="reference internal image-reference" href="../_images/topology_logistic_regression.svg"><img alt="../_images/topology_logistic_regression.svg" src="../_images/topology_logistic_regression.svg" width="600px" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">Das logistische Regressionsmodell als neuronales Netz formuliert.</span><a class="headerlink" href="#topology-logistic-regression" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Als mathematische Funktion formuliert lautet das logistische Regressionsmodell:</p>
+<p>Mathematisch formuliert lautet das logistische Regressionsmodell folgendermaßen:</p>
 <div class="math notranslate nohighlight">
-\[\hat{y} = \phi\left(\sum_{i=0}^N \omega_i x_i\right) = \frac{1}{1+e^{-\sum_{i=0}^{N} \omega_i x_i}}.\]</div>
+\[\begin{split}\hat{P} = \sigma\left(\sum_{i=0}^{N} x_i \omega_i\right) = \frac{1}{1+e^{-\sum x_i \omega_i}} 
+\rightsquigarrow \hat{y} = \begin{cases} 0: &amp; \hat{P} &lt; 0.5 \\ 1: &amp; \hat{P} \geq 0.5 \end{cases} \end{split}\]</div>
 </section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
 <p>In diesem Abschnitt haben wir das logistische Regressionsmodell formuliert. Als
-nächstes betrachten wir Lernverfahren, um die Gewichte des logistischen
+nächstes betrachten wir ein Lernverfahren, um die Gewichte des logistischen
 Regressionsmodells zu erlernen.</p>
 </section>
 </section>
@@ -748,6 +776,13 @@ Regressionsmodells zu erlernen.</p>
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Logistische Regression</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="sec02.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistische Regression lernt mit Maximum-Likelihood</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
