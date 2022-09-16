@@ -26,5 +26,7 @@ parts:
     - file: chapter09/sec01.md
   - file: chapter10/sec00.md
     sections:
-    - file: chapter10/sec01.md
+    - file: chapter10/sec01.ipynb
+    - file: chapter10/sec02.ipynb
+    
   

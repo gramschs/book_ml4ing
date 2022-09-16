@@ -2,8 +2,7 @@
 \usepackage{amssymb, amsthm}
 \usepackage[fleqn]{amsmath}
 
-\usepackage{geometry}
-\geometry{paperwidth=12.5cm,margin=0mm}
+
 
 \usepackage[no-math]{fontspec}
 \usepackage{unicode-math}
@@ -17,6 +16,7 @@ UprightFont = {*-regular},
 ItalicFont = {*-italic}, 
 BoldFont = {*-bold}, 
 BoldItalicFont = {*-bolditalic}] 
+\setmathfont{Stix Two Math}
 
 \usepackage{polyglossia}
 \setmainlanguage[babelshorthands=true]{german}
@@ -37,21 +37,27 @@ BoldItalicFont = {*-bolditalic}]
 \begin{axis}[
     axis lines = center,
     xlabel = {$z$},
-    ylabel = {$\sigma(z)$},
+    ylabel = {$\phi(z)$},
     height=6cm, width=12cm, 
     grid=major,
     grid style={dashed, gray!30},
-    xmin=-10.5, xmax=10.5, ymin=0, ymax=1.0,  
-    xtick = {-10, -8, ..., 10},
+    xmin=-3.2, xmax=3.2, ymin=-0.5, ymax=1.5,  
+    xtick = {-3, -2, ..., 3},
     after end axis/.code={
         \path (axis cs:0,0) 
             node [anchor=north west,yshift=-0.075cm] {0}
             node [anchor=south east,xshift=-0.075cm] {0};
     }
 ]
-\addplot[draw=itwm_blue_04, smooth, thick, domain=-10:10]{1/(1+exp(-x)};
+\addplot[draw=itwm_blue_04, smooth, thick, domain=-3:0]{0};
+\addplot[color=itwm_blue_04,fill=background, only marks, mark=*] coordinates{(0,0)};
+\addplot[draw=itwm_blue_04, smooth, thick, domain=0:3]{1};
+\addplot[color=itwm_blue_04,only marks, mark=*] coordinates{(0,1)};
 \end{axis};
-\node [anchor=west] (note) at (0.25,3.1) {$\sigma(z)=\frac{1}{1+e^{-z}}$};
+\node [anchor=west] (note) at (0.25,3.1) {$\phi(z)=\begin{cases}
+0: & z < 0 \\
+1: & z \geq 0
+\end{cases}$};
 \end{tikzpicture}
 
 \end{document}
