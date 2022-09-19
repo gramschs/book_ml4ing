@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Neuronale Netze: Grundbaustein
+# Neuronale Netze: Grundbaustein Perzeptron
 
 Durch neuronale Netze, die tief verschachtelt sind (= tiefe neuronale Netze = deep neural network), gab es im Bereich des maschinellen Lernens einen Durchbruch. Neuronale Netze sind eine Technik aus der Statistik, die bereits in den 1940er Jahren entwickelt wurde. Seit ca. 10 Jahren erlebt diese Technik verbunden mit Fortschritten in der Computertechnologie eine Renaissance.
 

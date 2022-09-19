@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Woche 02 - Python &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,8 +18,12 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -29,10 +31,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,13 +42,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,21 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -89,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -110,15 +96,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    Willkommen zu ML4ING
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Willkommen zu ML4ING
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting started...
  </span>
@@ -234,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter10/sec02.html">
-     Logistisches Regression lernt mit Maximum-Likelihood
+     Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
   </ul>
@@ -242,17 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -260,177 +240,94 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter03/sec01.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/gramschs/book_ml4ing"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-
-</a>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chapter03/sec01.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapter03/sec01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gramschs/book_ml4ing"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter03/sec01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Woche 02 - Python
@@ -505,11 +402,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Woche 02 - Python</h1>
@@ -600,12 +498,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="woche-02-python">
-<h1>Woche 02 - Python<a class="headerlink" href="#woche-02-python" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="woche-02-python">
+<h1>Woche 02 - Python<a class="headerlink" href="#woche-02-python" title="Permalink to this headline">¶</a></h1>
 <p>In dieser Woche werden wir uns mit den Themen</p>
 <ul class="simple">
 <li><p>Datentypen</p></li>
@@ -613,8 +510,8 @@ title="Print to PDF"
 <li><p>Kontrollstrukturen</p></li>
 </ul>
 <p>beschäftigen.</p>
-<section id="datentypen-einfuhrung">
-<h2>Datentypen - Einführung<a class="headerlink" href="#datentypen-einfuhrung" title="Permalink to this headline">#</a></h2>
+<div class="section" id="datentypen-einfuhrung">
+<h2>Datentypen - Einführung<a class="headerlink" href="#datentypen-einfuhrung" title="Permalink to this headline">¶</a></h2>
 <p>Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir datengestütztes Prozessmanagement folgendermaßen dar:</p>
 <p>Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0 und 1 gespeichert. Damit es für uns Programmierinnen und Programmier einfacher wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.</p>
 <p>Datentypen fassen gleichartige Objekte zusammen und stellen den Programmiererinnen und Programmieren passende Operationen zur Verfügung. Es hängt von der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</p>
@@ -625,9 +522,9 @@ title="Print to PDF"
 <li><p>String</p></li>
 <li><p>Bool</p></li>
 </ul>
-</section>
-<section id="datentypen-integer-und-float">
-<h2>Datentypen Integer und Float<a class="headerlink" href="#datentypen-integer-und-float" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="datentypen-integer-und-float">
+<h2>Datentypen Integer und Float<a class="headerlink" href="#datentypen-integer-und-float" title="Permalink to this headline">¶</a></h2>
 <p>In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten, den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden in der Mathematik als ganze Zahlen bezeichnet. In der Informatik ist der englische Begriff am gebräuchlisten: Integer.</p>
 <p>Mit Integern können wir ganz normal rechnen, also Operationen ausführen:</p>
 <div class="cell docutils container">
@@ -781,9 +678,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=VtiDkRDPA_c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=2">https://www.youtube.com/watch?v=VtiDkRDPA_c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=2</a></p>
 </div></blockquote>
-</div></section>
-<section id="datentyp-string">
-<h2>Datentyp String<a class="headerlink" href="#datentyp-string" title="Permalink to this headline">#</a></h2>
+</div></div>
+<div class="section" id="datentyp-string">
+<h2>Datentyp String<a class="headerlink" href="#datentyp-string" title="Permalink to this headline">¶</a></h2>
 <p>Daten sind aber sehr oft keine Zahlen. Beispielsweise könnte man sich vorstellen, eine Einkaufsliste zu erstellen und diese im Computer oder in einer Notiz-App auf dem Handy zu speichern. Eine solche Zeichenkette heißt in der Informatik String. Mit Zeichen meint man dabei Zahlen, Buchstaben oder andere wie beispielsweise !”§$%&amp;/()=?.</p>
 <p>Strings werden in Python durch einfache Hochkomma oder Anführungszeichen definiert.</p>
 <div class="cell docutils container">
@@ -828,9 +725,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=sTEf4_mrLvw&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=3">https://www.youtube.com/watch?v=sTEf4_mrLvw&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=3</a></p>
 </div></blockquote>
-</div></section>
-<section id="variablen">
-<h2>Variablen<a class="headerlink" href="#variablen" title="Permalink to this headline">#</a></h2>
+</div></div>
+<div class="section" id="variablen">
+<h2>Variablen<a class="headerlink" href="#variablen" title="Permalink to this headline">¶</a></h2>
 <p>Variablen sind beschriftete Schubladen. Oder anders formuliert sind Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von Pi oder die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
 <p>Bitte lesen Sie dazu Kapitel 2 in dem Buch “Python 3” von Kalista.</p>
 <p>Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu speichern. Eine Variable wird durch Zuweisung erzeugt. Damit meinen wir, dass eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt wird. Das erstmalige Füllen der Schublade nennt man in der Informatik auch Initialisieren.</p>
@@ -948,9 +845,9 @@ title="Print to PDF"
 <a class="reference external" href="https://www.youtube.com/watch?v=XKFQ2_et5k8&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=8">https://www.youtube.com/watch?v=XKFQ2_et5k8&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=8</a></p>
 </div></blockquote>
 </div>
-</section>
-<section id="datentypen-int-float-str-und-typumwandlungen-type-casting">
-<h2>Datentypen int, float, str und Typumwandlungen (Type Casting)<a class="headerlink" href="#datentypen-int-float-str-und-typumwandlungen-type-casting" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="datentypen-int-float-str-und-typumwandlungen-type-casting">
+<h2>Datentypen int, float, str und Typumwandlungen (Type Casting)<a class="headerlink" href="#datentypen-int-float-str-und-typumwandlungen-type-casting" title="Permalink to this headline">¶</a></h2>
 <p>Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in einen Float umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den Python-Intrepreter bestimmen lassen, welcher Datentyp in einer Variable gespeichert ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1021,9 +918,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=u_ECGvn1Z2c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=7">https://www.youtube.com/watch?v=u_ECGvn1Z2c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=7</a></p>
 </div></blockquote>
-</div></section>
-<section id="datentyp-bool">
-<h2>Datentyp bool<a class="headerlink" href="#datentyp-bool" title="Permalink to this headline">#</a></h2>
+</div></div>
+<div class="section" id="datentyp-bool">
+<h2>Datentyp bool<a class="headerlink" href="#datentyp-bool" title="Permalink to this headline">¶</a></h2>
 <p>Später möchten wir Werte miteinander vergleichen. Ein simples Beispiel für einen einfachen Vergleich ist beispielsweise das Alter einer Person mit der Zahl 18. Dieser Vergleich ist entweder wahr (True) oder falsch (False). Oder anders formuliert, diese Bedingung ist entweder erfüllt oder nicht erfüllt.</p>
 <p>Um den Wahrheitswert eines Vergleichs zu beschrieben, hat Python einen eigenen Datentyp namens <code class="docutils literal notranslate"><span class="pre">bool</span></code>. Eine Variable des Datentyps <code class="docutils literal notranslate"><span class="pre">bool</span></code> kann dabei nur zwei verschiedene Werte annehmen, nämlich</p>
 <ul class="simple">
@@ -1055,13 +952,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="kontrollstrukturen-einfuhrung">
-<h2>Kontrollstrukturen - Einführung<a class="headerlink" href="#kontrollstrukturen-einfuhrung" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="kontrollstrukturen-einfuhrung">
+<h2>Kontrollstrukturen - Einführung<a class="headerlink" href="#kontrollstrukturen-einfuhrung" title="Permalink to this headline">¶</a></h2>
 <p>Durch Kontrollstrukturen wird festgelegt, in welcher Reihenfolge Anweisungen ausgeführt werden. Normalerweise wird der Code vom Python-Interpreter Zeile für Zeile abgearbeitet. Ein Programm, das nur aus einer einfachen Aneinanderreihung von Befehlen besteht, nennt man linear.</p>
-</section>
-<section id="vergleiche">
-<h2>Vergleiche<a class="headerlink" href="#vergleiche" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="vergleiche">
+<h2>Vergleiche<a class="headerlink" href="#vergleiche" title="Permalink to this headline">¶</a></h2>
 <p>Ein Vergleich ist ein Ausdruck mit zwei Operanden und einem Vergleichsoperator in der Mitte. Die beiden Operanden können auch unterschiedliche Datentypen haben, dann muss der Vergleichsoperator aber sinnvoll für diese Datentypen definiert sein. Z.B. darf man einen Integer mit einem Float vergleichen <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">17.2</span></code>, aber <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">'vier'</span></code>ist nicht sinnvoll und undefiniert. Es gibt die folgenden Vergleichsoperatoren in Python:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> kleiner</p></li>
@@ -1175,9 +1072,9 @@ title="Print to PDF"
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=ucsv_Nhhxmk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=9">https://www.youtube.com/watch?v=ucsv_Nhhxmk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=9</a></p>
 </div></blockquote>
-</div></section>
-<section id="kontrollstruktur-if">
-<h2>Kontrollstruktur: if<a class="headerlink" href="#kontrollstruktur-if" title="Permalink to this headline">#</a></h2>
+</div></div>
+<div class="section" id="kontrollstruktur-if">
+<h2>Kontrollstruktur: if<a class="headerlink" href="#kontrollstruktur-if" title="Permalink to this headline">¶</a></h2>
 <p>Bei einer Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt. Im einfachsten Fall liegt ein <code class="docutils literal notranslate"><span class="pre">if</span></code>-Block vor. Die Syntax lautet wie folgt:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
     <span class="n">anweisungsblock</span>
@@ -1224,7 +1121,7 @@ Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/homebrew/anaconda3/envs/python39/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="nn">File /usr/local/anaconda3/envs/python39/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
 <span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="sd"> </span>
 <span class="g g-Whitespace">   </span><span class="mi">1067</span><span class="sd"> Raises</span>
@@ -1252,9 +1149,9 @@ Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...
 <blockquote>
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=b6KzYbM-Hvg&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=10">https://www.youtube.com/watch?v=b6KzYbM-Hvg&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=10</a></p>
 </div></blockquote>
-</div></section>
-<section id="kontrollstrukturen-if-elif-else">
-<h2>Kontrollstrukturen: if - elif - else<a class="headerlink" href="#kontrollstrukturen-if-elif-else" title="Permalink to this headline">#</a></h2>
+</div></div>
+<div class="section" id="kontrollstrukturen-if-elif-else">
+<h2>Kontrollstrukturen: if - elif - else<a class="headerlink" href="#kontrollstrukturen-if-elif-else" title="Permalink to this headline">¶</a></h2>
 <p>Es gibt auch zweiteilige Programmverzweigungen. Die Syntax wird folgendermaßen erweitert:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
     <span class="n">anweisungsblock</span> <span class="mi">1</span>
@@ -1340,9 +1237,9 @@ Jetzt haben wir aber genug über den Alkoholkauf geredet...
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=f3YdEdYSNdk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=11">https://www.youtube.com/watch?v=f3YdEdYSNdk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=11</a></p>
 </div></blockquote>
 </div>
-</section>
-<section id="vergleiche-digitale-logik-und-oder-nicht">
-<h2>Vergleiche - digitale Logik: und, oder, nicht<a class="headerlink" href="#vergleiche-digitale-logik-und-oder-nicht" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="vergleiche-digitale-logik-und-oder-nicht">
+<h2>Vergleiche - digitale Logik: und, oder, nicht<a class="headerlink" href="#vergleiche-digitale-logik-und-oder-nicht" title="Permalink to this headline">¶</a></h2>
 <p>Vorhin haben wir den boolschen Datentyp kennengelernt: wahr oder falsch. Man kann solche Ausdrücke auch kombinieren, z.B. könnte man fordern, dass zwei Bedingungen gleichzeitg erfüllt sein sollen.</p>
 <p>Beispiel beim Busfahren: Kinder unter 6 Jahren können kostenlos Bus fahren. Ab 6 Jahren braucht man eine Fahrkarte. Bis 14 Jahre zahlt man den Kinderpreis, ab 15 Jahren den Erwachsenenpreis:</p>
 <div class="cell docutils container">
@@ -1516,9 +1413,9 @@ Jetzt haben wir aber genug über den Alkoholkauf geredet...
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=075l6R42tkQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=12">https://www.youtube.com/watch?v=075l6R42tkQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=12</a></p>
 </div></blockquote>
 </div>
-</section>
-<section id="kontrollstrukturen-schleifen-mit-bedingung-while">
-<h2>Kontrollstrukturen: Schleifen mit Bedingung “while”<a class="headerlink" href="#kontrollstrukturen-schleifen-mit-bedingung-while" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="kontrollstrukturen-schleifen-mit-bedingung-while">
+<h2>Kontrollstrukturen: Schleifen mit Bedingung “while”<a class="headerlink" href="#kontrollstrukturen-schleifen-mit-bedingung-while" title="Permalink to this headline">¶</a></h2>
 <p>Bei einer Wiederholung mit Bedingung wird eine Anweisung solange wiederholt, bis die Bedingung erfüllt wird. Sie hat folgende Struktur:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">while</span> <span class="n">Bedingung</span><span class="p">:</span> 
         <span class="n">anweisungsblock</span>
@@ -1563,10 +1460,10 @@ Die Summe aller bisher eingegeben Zahlen ist:  10.0
 <div><p><a class="reference external" href="https://www.youtube.com/watch?v=sXLicTuJzB4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=13">https://www.youtube.com/watch?v=sXLicTuJzB4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=13</a></p>
 </div></blockquote>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ubungsaufgaben">
-<h1>Übungsaufgaben<a class="headerlink" href="#ubungsaufgaben" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ubungsaufgaben">
+<h1>Übungsaufgaben<a class="headerlink" href="#ubungsaufgaben" title="Permalink to this headline">¶</a></h1>
 <div class="alert alert-block alert-success">
 <b>Aufgabe 2.1: Kostenkalkulation Urlaubsreise</b> 
 <p>Schreiben Sie ein Programm, das die Kosten für eine Urlaubsreise für eine Reisegruppe mit einem Bus berechnet. Vom Benutzer werden folgende Angaben erfragt:</p>
@@ -1628,7 +1525,7 @@ Die Gesamtkosten betragen 10500 EUR. Die Kosten pro Person sind 350 EUR.
 <p>Erweitern Sie dann das Programm so, dass erst überprüft wird, ob die eingegebene Zahl <span class="math notranslate nohighlight">\(b\)</span> auch wirklich größer als <span class="math notranslate nohighlight">\(a\)</span> ist. Wenn dies nicht der Fall ist, soll solange weiter nach einer Zahl <span class="math notranslate nohighlight">\(b\)</span> gefragt werden, bis diese größer als a ist.</p>
 <p>Testen Sie Ihr Programm für die Beispiele <span class="math notranslate nohighlight">\(a=4\)</span> und <span class="math notranslate nohighlight">\(b=10\)</span> und anschließend für <span class="math notranslate nohighlight">\(a=10\)</span> und <span class="math notranslate nohighlight">\(b=4\)</span>.</p>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1652,11 +1549,9 @@ Die Gesamtkosten betragen 10500 EUR. Die Kosten pro Person sind 350 EUR.
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="../chapter01/sec03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1672,33 +1567,29 @@ Die Gesamtkosten betragen 10500 EUR. Die Kosten pro Person sind 350 EUR.
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Simone Gramsch<br/>
-  
-    <div class="extra_footer">
-      <div>
+    <footer class="footer">
+  <p>
+    
+      By Simone Gramsch<br/>
+    
+      <div class="extra_footer">
+        <div>
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
 </div>
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
-</div>
+      </div>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
