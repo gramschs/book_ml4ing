@@ -28,5 +28,6 @@ parts:
     sections:
     - file: chapter10/sec01.ipynb
     - file: chapter10/sec02.ipynb
+    - file: chapter10/sec03.ipynb
     
   
