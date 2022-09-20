@@ -58,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Die Perzeptron-Lernregel" href="sec02.html" />
-    <link rel="prev" title="Neuronale Netze: Grundbaustein" href="sec00.html" />
+    <link rel="prev" title="Neuronale Netze: Grundbaustein Perzeptron" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,19 +149,31 @@ const thebe_selector_output = ".output, .cell_output"
      Grundlegender Ablauf eines ML-Projektes
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter03/sec00.html">
+   Crashkurs Python (Teil 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec01.html">
-     Woche 02 - Python
+     Datentypen, Variablen und Vergleiche
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec02.html">
-     Woche 03 - Python Crashkurs (Teil 2)
+     Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec03.html">
-     Woche 04 - Objektorientierte Programmierung und Module
+     Digitale Logik und Schleife mit Bedingung
     </a>
    </li>
   </ul>
@@ -175,10 +187,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="sec00.html">
-   Neuronale Netze: Grundbaustein
+   Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -204,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -221,8 +233,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -234,7 +246,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter10/sec02.html">
-     Logistisches Regression lernt mit Maximum-Likelihood
+     Logistische Regression lernt mit Maximum-Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter10/sec03.html">
+     Logistische Regression mit Scikit-Learn
     </a>
    </li>
   </ul>
@@ -551,7 +568,7 @@ title="Print to PDF"
 <figure class="align-default" id="fig-neuron-wikipedia">
 <a class="reference internal image-reference" href="../_images/neuron_wikipedia.svg"><img alt="../_images/neuron_wikipedia.svg" src="../_images/neuron_wikipedia.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Schematische Darstellung einer Nervenzelle</span><a class="headerlink" href="#fig-neuron-wikipedia" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Schematische Darstellung einer Nervenzelle</span><a class="headerlink" href="#fig-neuron-wikipedia" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://de.wikipedia.org/wiki/K%C3%BCnstliches_Neuron#/media/Datei:Neuron_(deutsch)-1.svg">Quelle:</a> “Schematische Darstellung einer Nervenzelle” von Autor unbekannt. Lizenz: <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>)</p>
 </div>
@@ -746,7 +763,7 @@ auch Theta-, Stufen- oder Treppenfunktion genannt).</p>
 <figure class="align-default" id="fig-heaviside-wikipedia">
 <a class="reference internal image-reference" href="../_images/heaviside_wikipedia.svg"><img alt="../_images/heaviside_wikipedia.svg" src="../_images/heaviside_wikipedia.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Schaubild der Heaviside-Funktion</span><a class="headerlink" href="#fig-heaviside-wikipedia" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Schaubild der Heaviside-Funktion</span><a class="headerlink" href="#fig-heaviside-wikipedia" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://de.wikipedia.org/wiki/Heaviside-Funktion#/media/Datei:Heaviside.svg">Quelle:</a> “Verlauf der Heaviside-Funktion auf <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>” von Lennart Kudling. Lizenz: gemeinfrei)</p>
 </div>
@@ -862,7 +879,7 @@ Summe dann eine Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output
 <figure class="align-default" id="fig-perzeptron">
 <a class="reference internal image-reference" href="../_images/perzeptron.png"><img alt="../_images/perzeptron.png" src="../_images/perzeptron.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#fig-perzeptron" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#fig-perzeptron" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -906,7 +923,7 @@ Frage, wie die Gewichte gefunden werden.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Neuronale Netze: Grundbaustein</p>
+            <p class="prev-next-title">Neuronale Netze: Grundbaustein Perzeptron</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="sec02.html" title="next page">

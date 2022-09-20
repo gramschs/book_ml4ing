@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Woche 04 - Objektorientierte Programmierung und Module &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Digitale Logik und Schleife mit Bedingung &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,12 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Neuronale Netze: Grundbaustein" href="../chapter08/sec00.html" />
-    <link rel="prev" title="Woche 03 - Python Crashkurs (Teil 2)" href="sec02.html" />
+    <link rel="next" title="Neuronale Netze: Grundbaustein Perzeptron" href="../chapter08/sec00.html" />
+    <link rel="prev" title="Bool, Vergleiche und Programmverzweigung" href="sec02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,16 +122,16 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter01/sec00.html">
    Zu Beginn …
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter01/sec01.html">
      Was ist maschinelles Lernen?
@@ -149,19 +147,31 @@ const thebe_selector_output = ".output, .cell_output"
      Grundlegender Ablauf eines ML-Projektes
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec00.html">
+   Crashkurs Python (Teil 1)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="sec01.html">
-     Woche 02 - Python
+     Datentypen, Variablen und Vergleiche
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec02.html">
-     Woche 03 - Python Crashkurs (Teil 2)
+     Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Woche 04 - Objektorientierte Programmierung und Module
+     Digitale Logik und Schleife mit Bedingung
     </a>
    </li>
   </ul>
@@ -175,10 +185,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
-   Neuronale Netze: Grundbaustein
+   Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -204,8 +214,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -221,8 +231,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -234,7 +244,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter10/sec02.html">
-     Logistisches Regression lernt mit Maximum-Likelihood
+     Logistische Regression lernt mit Maximum-Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter10/sec03.html">
+     Logistische Regression mit Scikit-Learn
     </a>
    </li>
   </ul>
@@ -376,6 +391,23 @@ title="Source repository"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/chapter03/sec03.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
 title="Download source file"
 >
   
@@ -383,7 +415,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -431,48 +463,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Woche 04 - Objektorientierte Programmierung und Module
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#objektorientierte-programmierung">
-     Objektorientierte Programmierung
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#was-ist-objektorientierung">
-       Was ist Objektorientierung?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-benutzen">
-       Klassen benutzen
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-definieren-attribute">
-       Klassen definieren - Attribute
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-definieren-methoden">
-       Klassen definieren - Methoden
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module">
-     Module
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubungsaufgaben">
-   Übungsaufgaben
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vergleiche-kombinieren-digitale-logik">
+   Vergleiche kombinieren - digitale Logik
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schleifen-mit-bedingung-while">
+   Schleifen mit Bedingung “while”
   </a>
  </li>
 </ul>
@@ -484,7 +487,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Woche 04 - Objektorientierte Programmierung und Module</h1>
+                <h1>Digitale Logik und Schleife mit Bedingung</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -494,48 +497,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Woche 04 - Objektorientierte Programmierung und Module
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#objektorientierte-programmierung">
-     Objektorientierte Programmierung
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#was-ist-objektorientierung">
-       Was ist Objektorientierung?
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-benutzen">
-       Klassen benutzen
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-definieren-attribute">
-       Klassen definieren - Attribute
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#klassen-definieren-methoden">
-       Klassen definieren - Methoden
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module">
-     Module
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubungsaufgaben">
-   Übungsaufgaben
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vergleiche-kombinieren-digitale-logik">
+   Vergleiche kombinieren - digitale Logik
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#schleifen-mit-bedingung-while">
+   Schleifen mit Bedingung “while”
   </a>
  </li>
 </ul>
@@ -548,602 +522,245 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="woche-04-objektorientierte-programmierung-und-module">
-<h1>Woche 04 - Objektorientierte Programmierung und Module<a class="headerlink" href="#woche-04-objektorientierte-programmierung-und-module" title="Permalink to this headline">#</a></h1>
-<p>In dieser Woche werden wir den Crashkurs in Python mit einem Ausflug in die objektorientierte Programmierung abschließen. Die Themen sind also:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="digitale-logik-und-schleife-mit-bedingung">
+<h1>Digitale Logik und Schleife mit Bedingung<a class="headerlink" href="#digitale-logik-und-schleife-mit-bedingung" title="Permalink to this headline">#</a></h1>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<div class="hint admonition">
+<p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Objektorientierte Programmierung</p>
-<ul>
-<li><p>Was ist Objektorientierung?</p></li>
-<li><p>Klassen definieren: Attribute und Methoden</p></li>
+<li><p>Sie können Vergleiche kombinieren und dazu digitale Logik verwenden: <strong>and</strong>, <strong>or</strong> und <strong>not</strong>.</p></li>
+<li><p>Sie können eine Schleife mit Bedingung <strong>while</strong> programmieren.</p></li>
 </ul>
-</li>
-<li><p>Module</p>
-<ul>
-<li><p>Was ist ein Modul?</p></li>
-<li><p>Wie importiere ich einzelne oder alle Funktionen eines Moduls?</p></li>
-<li><p>Wie kürze ich importierte Module ab?</p></li>
-</ul>
-</li>
-</ul>
-<section id="objektorientierte-programmierung">
-<h2>Objektorientierte Programmierung<a class="headerlink" href="#objektorientierte-programmierung" title="Permalink to this headline">#</a></h2>
-<p>In den ersten beiden Teilen unseres Crashkurses Python haben wir uns die Grundlagen der Programmierung erarbeitet:</p>
-<ul class="simple">
-<li><p>Datentypen (Integer, Float, String, Bool, List)</p></li>
-<li><p>Ein- und Ausgabe (input, print)</p></li>
-<li><p>Kontrollstrukturen</p>
-<ul>
-<li><p>Programmverzweigungen (if - elif - else)</p></li>
-<li><p>Schleifen (while oder for)</p></li>
-</ul>
-</li>
-<li><p>Funktionen.</p></li>
-</ul>
-<p>In einigen Programmiersprachen wie beispielsweise C hätten wir damit auch alle Sprachelement kennengelernt. Diese Programmierung nennt man <strong>prozedurale Programmierung</strong>. Python gehört jedoch zu den objektorientierten Programmiersprachen, so dass wir uns diese Woche dem Thema Objektorientierung widmen.</p>
-<section id="was-ist-objektorientierung">
-<h3>Was ist Objektorientierung?<a class="headerlink" href="#was-ist-objektorientierung" title="Permalink to this headline">#</a></h3>
-<p>Bei der bisherigen prozeduralen Programmierweise haben wir Funktionen und Daten getrennt. Die Daten werden in Variablen gespeichert. Funktionen funktionieren nach dem EVA-Prinzip. In der Regel erwartet eine Funktion eine Eingabe von Daten, verarbeitet diese Daten und gibt Daten zurück.</p>
-<p>Angenommen, wir wollten ein Programm zur Verwaltung von Lottoscheinen schreiben. Zu einem Lottoschein wollen wir Name, Adresse und die angekreuzten Zahlen speichern. Dann müssten wir mit unserem bisherigen Wissen folgende Variablen pro Lottoschein einführen:</p>
-<ul class="simple">
-<li><p>vorname</p></li>
-<li><p>nachname</p></li>
-<li><p>strasse</p></li>
-<li><p>postleitzahl</p></li>
-<li><p>stadt</p></li>
-<li><p>liste_mit_sechs_zahlen</p></li>
-</ul>
-<p>Wenn jetzt viele Spielerinnen und Spieler Lotto spielen wollen, wie gehen wir jetzt mit den Daten um? Legen wir eine Liste für die Vornamen und eine Liste für die Nachnamen usw. an? Und wenn jetzt der 17. Eintrag in der Liste mit den sechs angekreuzten Lottozahlen sechs Richtige hat, suchen wir dann den 17. Eintrag in der Liste mit den Vornamen und den 17. Eintrag in der Liste mit den Nachnamen usw.? Umständlich…</p>
-<p>Die Idee der objektorientierten Programmierung ist, für solche Szenarien <strong>Objekte</strong> einzuführen. Ein Objekt fasst verschiedene Eigenschaften wie hier Vorname, Nachname, Straße, usw. zu einem Objekt Lottoschein zusammen. In der Informatik wird eine Eigenschaft eines Objekts <strong>Attribut</strong> genannt.</p>
-<p>Damit hätten wir erst einmal nur einen neuen Datentyp. Ein Objekt macht noch mehr aus, denn zu dem neuen Datentyp kommen noch Funktionen dazu, die die Verwaltung des Objektes erleichtern. Funktionen, die zu einem Objekt gehören, nennt man <strong>Methoden</strong>.</p>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie ein YouTube-Video “Objektorientierung (Konzept)” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=46yolPy-2VQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=21">https://www.youtube.com/watch?v=46yolPy-2VQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=21</a></p>
-</div></blockquote>
-</div></section>
-<section id="klassen-benutzen">
-<h3>Klassen benutzen<a class="headerlink" href="#klassen-benutzen" title="Permalink to this headline">#</a></h3>
-<p>Im Folgenden sehen Sie, wie ein Objekt in Python definiert wird. Die Implementierung erfolgt als sogenannte <strong>Klasse</strong>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Beispiel</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span> <span class="o">=</span> <span class="n">vorname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">=</span> <span class="n">nachname</span>
-        
-    <span class="k">def</span> <span class="nf">schreibe_vorname_nachname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vorname</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">schreibe_nachname_vorname</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span><span class="p">)</span>
-   
-</pre></div>
 </div>
-</div>
-</div>
-<p>Jetzt erzeugen wir ein Objekt vom Typ <code class="docutils literal notranslate"><span class="pre">Beispiel</span></code> und speichern es in der Variable <code class="docutils literal notranslate"><span class="pre">person</span></code>. Mit der Funnktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> checken wir kurz, welcher Datentyp in der Variablen <code class="docutils literal notranslate"><span class="pre">person</span></code>steckt:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="n">Beispiel</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Wunderland&#39;</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>__main__.Beispiel
-</pre></div>
-</div>
-</div>
-</div>
-<p>Nun können wir auch die beiden Methoden ausprobieren, die zu dem Objekt gehören. Der Aufruf einer Methode funktioniert anders als eine Funktion. Man hängt an die Variable, in der das Objekt gespeichert wurde, einen Punkt und dann die Methode mit runden Klammern. Den Punkt nennt man in der Informatik <strong>Punktoperator</strong>.</p>
-<p>Hier ein Beispiel zu der Methode <code class="docutils literal notranslate"><span class="pre">schreibe_vorname_nachname()</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">schreibe_vorname_nachname</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice Wunderland
-</pre></div>
-</div>
-</div>
-</div>
-<p>Dann die zweite Methode, also <code class="docutils literal notranslate"><span class="pre">schreibe_nachname_vorname()</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span><span class="o">.</span><span class="n">schreibe_nachname_vorname</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wunderland, Alice
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Klassen und Objekte” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=XxCZrT7Z3G4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=22">https://www.youtube.com/watch?v=XxCZrT7Z3G4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=22</a></p>
-</div></blockquote>
-</div></section>
-<section id="klassen-definieren-attribute">
-<h3>Klassen definieren - Attribute<a class="headerlink" href="#klassen-definieren-attribute" title="Permalink to this headline">#</a></h3>
-<p>Jetzt definieren wir eine eigene Klasse, die eine Adresse verwalten soll. Ein erstes Beispiel haben Sie ja oben schon gesehen.</p>
-<p>Eingeleitet wird eine Klasse mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">class</span></code> und dann dem Namen der Klasse. Da Klassen Objekte sind, ist es Standard, den ersten Buchstaben des Klassennamens groß zu schreiben.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Klassenname</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>Bemerkung: Um Variablen von Objekten leichter zu unterscheiden, werden Variablennamen klein geschrieben.</p>
-<p>Danach folgt ein Abschnitt namens <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">__init__(self):</span></code>, in dem die Eigenschaften der Klasse aufgelistet werden. <code class="docutils literal notranslate"><span class="pre">init</span></code> steht dabei für initialisieren, also den ersten Zustand, den das Objekt später haben wird.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Klassenname</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eigenschaft1</span><span class="p">,</span> <span class="n">eigenschaft2</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attribut1</span> <span class="o">=</span> <span class="n">eigenschaft1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">attribut2</span> <span class="o">=</span> <span class="n">eigenschaft2</span>
-</pre></div>
-</div>
-<p>Probieren wir es mit der Adresse aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bundesland</span> <span class="o">=</span> <span class="n">b</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wie Sie sehen, können die Eingabe-Parameter der <code class="docutils literal notranslate"><span class="pre">init()</span></code>-Methode die gleichen Namen tragen wie die Attribute der Klasse, also <code class="docutils literal notranslate"><span class="pre">self.strasse</span> <span class="pre">=</span> <span class="pre">strasse</span></code>, müssen sie aber nicht. Das Beispiel <code class="docutils literal notranslate"><span class="pre">self.postleitzahl</span> <span class="pre">=</span> <span class="pre">plz</span></code> zeigt, dass das Attribut <code class="docutils literal notranslate"><span class="pre">self.postleitzahl</span></code> einfach den Wert des 4. Parameters bekommt, egal wie der heißt.</p>
-<p>Definieren wir jetzt unsere erste Adresse, der Eingabe-Parameter <code class="docutils literal notranslate"><span class="pre">self</span></code> wird dabei weggelassen (warum kommt später).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [6],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: __init__() missing 1 required positional argument: &#39;b&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Geben wir als nächstes aus, was in der Variable <code class="docutils literal notranslate"><span class="pre">adresse_fra_uas</span></code> gespeichert ist. Probieren wir es mit der <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Funktion:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wie Sie sehen, wird der Name der Klasse und der Speicherort im RAM angegeben, aber nicht der Inhalt. Die Funktion <code class="docutils literal notranslate"><span class="pre">print()</span></code> ist nicht für den Datentyp <code class="docutils literal notranslate"><span class="pre">Adresse</span></code> entwickelt worden. Schließlich können die Python-Entwickler nicht wissen, welche Klassen Sie entwickeln…</p>
-<p>Aber wir kommen wir jetzt an den Inhalt des Objektes <code class="docutils literal notranslate"><span class="pre">adresse_fra_uas</span></code>? Mit dem Punktoperator.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Damit können wir auch ganz normal rechnen, wenn das Attribut eine Zahl ist:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">+</span> <span class="mi">11111</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Mit dem Punktoperator können wir Attribute eines Objektes auch verändern. Schauen wir uns zunächst an, welchen Inhalt <code class="docutils literal notranslate"><span class="pre">adress_fra_uas.postleitzahl</span></code> hat, dann setzen wir eine neue Postleitzahl und schauen erneut, welchen Inhalt <code class="docutils literal notranslate"><span class="pre">adress_fra_uas.postleitzahl</span></code> jetzt hat:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;davor: &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="mi">77777</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;danach: &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Mini-Übung</strong></p>
-<p>Schreiben Sie eine Klasse, die Studierende mit den Eigenschaften</p>
-<ul class="simple">
-<li><p>Vorname</p></li>
-<li><p>Nachname</p></li>
-<li><p>Matrikel-Nummer
-verwalten kann.</p></li>
-</ul>
-<p>Testen Sie anschließend Ihre Klasse, indem Sie ein Beispiel ausprobieren.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-
-<span class="k">class</span> <span class="nc">Studierende</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">,</span> <span class="n">matrikelnummer</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span> <span class="o">=</span> <span class="n">vorname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">=</span> <span class="n">nachname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span> <span class="o">=</span> <span class="n">matrikelnummer</span>
-        
-<span class="c1"># Test der Klasse</span>
-<span class="n">student1</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Wunderland&#39;</span><span class="p">,</span> <span class="mi">123456</span><span class="p">)</span>
-<span class="n">student2</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Baumeister&#39;</span><span class="p">,</span> <span class="mi">234567</span><span class="p">)</span>
-<span class="n">student3</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;Brown&#39;</span><span class="p">,</span> <span class="mi">345678</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">student1</span><span class="o">.</span><span class="n">vorname</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Der self Parameter” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=CLoK-_qNTnU&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=23">https://www.youtube.com/watch?v=CLoK-_qNTnU&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=23</a></p>
-</div></blockquote>
-</div></section>
-<section id="klassen-definieren-methoden">
-<h3>Klassen definieren - Methoden<a class="headerlink" href="#klassen-definieren-methoden" title="Permalink to this headline">#</a></h3>
-<p>Es ist bedauerlich, dass wir nicht eine <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Funktion für unsere Adressen-Klasse zur Verfügung haben. Definieren wir uns einfach eine …</p>
-<p>Da diese Funktion nicht allgemeingültig sein kann, sondern nur für die Objekte <code class="docutils literal notranslate"><span class="pre">Adresse</span></code> funktionieren kann, gehört sie auch folgerichtig zur Klasse selbst. Sie ist also keine Funktion, sondern eine Methode.</p>
-<p>Eine Methode wird definiert, indem innerhalb des Anweisungsblocks der Klasse eine Funktion mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">def</span></code> definiert wird. Der erste Eingabewert muss zwingend der <code class="docutils literal notranslate"><span class="pre">self</span></code>-Parameter sein. Hier ein Beispiel für eine Print-Methode:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-    
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hausnummer = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postleitzahl = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stadt = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Vielleicht möchten wir die Print-Ausgabe unterschiedlich haben, z.B. alles in einer Zeile. Wir erweitern unsere Klasse mit einer neuen Methode namens <code class="docutils literal notranslate"><span class="pre">print_einzeilig()</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-    
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hausnummer: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postleitzahl: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stadt: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="p">)</span>
-        
-    <span class="k">def</span> <span class="nf">print_einzeilig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zuerst so:&#39;</span><span class="p">)</span>
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> und </span><span class="se">\n</span><span class="s1">dann einzeilig:&#39;</span><span class="p">)</span>
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print_einzeilig</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Mini-Übung</strong></p>
-<p>Fügen Sie Ihrer Klasse zum Verwalten von Studierenden zwei Print-Funktionen hinzu. Die erste Print-Funktion soll in einer Zeile <code class="docutils literal notranslate"><span class="pre">Vorname</span> <span class="pre">Nachname</span> <span class="pre">(xxxxxx)</span></code> ausgeben, wobei das xxxxxx für die Matrikel-Nummer steht, also z.B.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Alice</span> <span class="n">Wunderland</span> <span class="p">(</span><span class="mi">123456</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>ausgeben. Die zweite soll <code class="docutils literal notranslate"><span class="pre">Nachname,</span> <span class="pre">Vorname</span> <span class="pre">(Matrikel-Nummer:</span> <span class="pre">xxxxxx)</span></code> ausgeben, also z.B.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Wunderland</span><span class="p">,</span> <span class="n">Alice</span> <span class="p">(</span><span class="n">Matrikel</span><span class="o">-</span><span class="n">Nummer</span><span class="p">:</span> <span class="mi">123456</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ihr Code:</span>
-
-<span class="k">class</span> <span class="nc">Studierende</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">,</span> <span class="n">matrikelnummer</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span> <span class="o">=</span> <span class="n">vorname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">=</span> <span class="n">nachname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span> <span class="o">=</span> <span class="n">matrikelnummer</span>
-        
-    <span class="k">def</span> <span class="nf">print_vorname_nachname_matrikelnummer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span><span class="p">))</span>
-        
-    <span class="k">def</span> <span class="nf">print_nachname_vorname_matrikelnummer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> (Matrikel-Nummer: </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nachname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span><span class="p">))</span>
-        
-<span class="c1"># Test der Klasse</span>
-<span class="n">student1</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Wunderland&#39;</span><span class="p">,</span> <span class="mi">123456</span><span class="p">)</span>
-<span class="n">student1</span><span class="o">.</span><span class="n">print_vorname_nachname_matrikelnummer</span><span class="p">()</span>
-<span class="n">student1</span><span class="o">.</span><span class="n">print_nachname_vorname_matrikelnummer</span><span class="p">()</span>
-
-<span class="n">student2</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Baumeister&#39;</span><span class="p">,</span> <span class="mi">234567</span><span class="p">)</span>
-<span class="n">student2</span><span class="o">.</span><span class="n">print_vorname_nachname_matrikelnummer</span><span class="p">()</span>
-<span class="n">student2</span><span class="o">.</span><span class="n">print_nachname_vorname_matrikelnummer</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Bisher hatten wir nur Methoden ohne weitere Eingabe-Parameter (natürlich mit dem self-Parameter, der gehört zu allen Methoden dazu). Methoden können aber auch weitere Parameter haben. Beispielsweise könnte man eine Print-Funktion schreiben, bei der durch einen Parameter gesteuert wird, ob die Adresse in vier oder in einer Zeile angezeigt wird:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-    
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">einzeilig</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">einzeilig</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>    
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hausnummer: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postleitzahl: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stadt: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="p">)</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-<p>Probieren wir es aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zuerst einzeilig:&#39;</span><span class="p">)</span>
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">und dann vierzeilig:&#39;</span><span class="p">)</span>
-<span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Zuletzt betrachten wir noch Methoden mit Rückgabewert. Wie bei Funktionen auch genügt es mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">return</span></code> den Rückgabewert zu definieren. Sehr häufig ist dabei der Fall, dass eine Eigenschaft des Objektes zurückgegeben wird. Dann wird in der Regel der Methodenname</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">get_attribut</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>gewählt.</p>
-<p>Aber prinzipiell kann der Rückgabewert auch eine Berechnung oder ähnliches enthalten.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-    
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">einzeilig</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">einzeilig</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>    
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hausnummer: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postleitzahl: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stadt: &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="p">)</span>
- 
-    <span class="k">def</span> <span class="nf">get_stadt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grossschreibung</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">grossschreibung</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Und auch diese Methode probieren wir aus. Je nachdem, ob die Methode mit <code class="docutils literal notranslate"><span class="pre">True</span></code> oder <code class="docutils literal notranslate"><span class="pre">False</span></code> aufgerufen wird, gibt die Methode den String <code class="docutils literal notranslate"><span class="pre">self.stadt</span></code> zurück, entweder normal geschrieben oder in Großbuchstaben. Dabei haben wir die Methode <code class="docutils literal notranslate"><span class="pre">.upper()</span></code> verwendet, die alle Buchstaben eines Strings in Großbuchstaben verwandelt.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;zuerst normal:&#39;</span><span class="p">)</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">get_stadt</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">und dann groß geschrieben:&#39;</span><span class="p">)</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">get_stadt</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Mini-Übung</strong><br />
-Erweitern Sie die Klasse zum Verwalten von Studierenden (Vorname, Name, Matrikel-Nummer) um ein Attribut vorleistung_bestanden. Anfangs sollte dieses Attribut auf <code class="docutils literal notranslate"><span class="pre">False</span></code> gesetzt werden. Implementieren Sie eine Methode, die es ermöglicht, dieses Attribut auf <code class="docutils literal notranslate"><span class="pre">True</span></code> zu setzen.</p>
-<p>Testen Sie anschließend Ihre erweiterte Klasse.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-
-<span class="k">class</span> <span class="nc">Studierende</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">,</span> <span class="n">matrikelnummer</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span> <span class="o">=</span> <span class="n">vorname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">=</span> <span class="n">nachname</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span> <span class="o">=</span> <span class="n">matrikelnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorleistung_bestanden</span> <span class="o">=</span> <span class="kc">False</span>
-
-    <span class="k">def</span> <span class="nf">print_vorname_nachname_matrikelnummer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> (Matrikel-Nummer: </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span><span class="p">))</span>
-
-    <span class="k">def</span> <span class="nf">print_nachname_vorname_matrikelnummer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1"> (Matrikel-Nummer: </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nachname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vorname</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">matrikelnummer</span><span class="p">))</span>
-        
-    <span class="k">def</span> <span class="nf">setze_vorleistung_bestanden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vorleistung_bestanden</span> <span class="o">=</span> <span class="kc">True</span>
-        
-<span class="n">student</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Baumeister&#39;</span><span class="p">,</span> <span class="mi">234567</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vorleistung bestanden???&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">vorleistung_bestanden</span><span class="p">)</span>
-
-<span class="n">student</span><span class="o">.</span><span class="n">setze_vorleistung_bestanden</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vorleistung bestanden???&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">vorleistung_bestanden</span><span class="p">)</span>
-        
-    
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Methoden in Klassen” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=58IjjwHs_4A&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=24">https://www.youtube.com/watch?v=58IjjwHs_4A&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=24</a></p>
-</div></blockquote>
-</div></section>
 </section>
-<section id="module">
-<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">#</a></h2>
-<p>Python bietet schon einige Standard-Funktionen, die Sie ja bereits in den letzten Kapiteln kennengelernt haben. Natürlich gehören dazu Funktionen wie <code class="docutils literal notranslate"><span class="pre">input()</span></code> und <code class="docutils literal notranslate"><span class="pre">print()</span></code>, aber auch eingebaute Sprachelemente wie <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code> und <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
-<p>Rund um diesen Python-Kern haben Programmiererinnen und Programmierer neue Funktionen implementiert, meistens zusammenhängend zu einem bestimmten Thema. Zwei Module haben wir schon erwähnt, das <code class="docutils literal notranslate"><span class="pre">math</span></code>- und das <code class="docutils literal notranslate"><span class="pre">random</span></code>-Modul.</p>
-<p><strong>Mini-Übung</strong><br />
-Lesen Sie nach: Welche Funktionalitäten beinhaltet das <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul? Hier finden Sie die offizielle Dokumentation:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://docs.python.org/3/library/math.html">https://docs.python.org/3/library/math.html</a></p>
-</div></blockquote>
-<p>Bitte suchen Sie eine Funktion heraus und übersetzen Sie deren Beschreibung ins Deutsche:</p>
-<p>…</p>
-<p>Es gibt mehrere Möglichkeiten, die Funktionen eines Moduls zu laden. Üblicherweise werden alle benötigten Module zu Beginn geladen, auch wenn man sie erst später braucht. Mit</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modul</span> <span class="kn">import</span> <span class="n">funktion</span>
-</pre></div>
-</div>
-<p>importiert man aus dem Module <code class="docutils literal notranslate"><span class="pre">modul</span></code> die Funktion <code class="docutils literal notranslate"><span class="pre">funktion</span></code>. Beispielsweise importieren wir mit</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-</pre></div>
-</div>
-<p>die Wurzelfunktion.</p>
+<section id="vergleiche-kombinieren-digitale-logik">
+<h2>Vergleiche kombinieren - digitale Logik<a class="headerlink" href="#vergleiche-kombinieren-digitale-logik" title="Permalink to this headline">#</a></h2>
+<p>Vorhin haben wir den boolschen Datentyp kennengelernt: wahr oder falsch. Man
+kann solche Ausdrücke auch kombinieren, z.B. könnte man fordern, dass zwei
+Bedingungen gleichzeitg erfüllt sein sollen.</p>
+<p>Beispiel beim Busfahren: Kinder unter 6 Jahren können kostenlos Bus fahren. Ab 6
+Jahren braucht man eine Fahrkarte. Bis 14 Jahre zahlt man den Kinderpreis, ab 15
+Jahren den Erwachsenenpreis:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="n">sqrt</span><span class="p">(</span><span class="mi">49</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="k">if</span> <span class="p">(</span><span class="mi">6</span> <span class="o">&lt;=</span> <span class="n">alter</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">alter</span> <span class="o">&lt;=</span> <span class="mi">14</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Du darfst eine Kinderfahrkarte kaufen.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Du darfst eine Kinderfahrkarte kaufen.
 </pre></div>
 </div>
 </div>
 </div>
-<p>Zu einem Modul können nicht nur Funktionen gehören, sondern auch Konstanten. Hier sehen Sie <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
-<span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Das andere Modul, das wir schon gesehen haben, ist eine Sammlung von Funktionen rund um alles, was mit Zufall zu tun hat. Raten Sie, was könnte folgender Code bedeuten?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Oft ist es so, dass Sie eine bestimmte Problemstellung durch die Programmierung lösen wollen und daher sehr viele Funktionen oder Konstanten des gleichen Moduls benötigen. Wir können durch den Befehl</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">modul</span> <span class="kn">import</span> <span class="o">*</span>
-</pre></div>
-</div>
-<p><em>alle</em> Funktionen und Konstanten des Moduls gleichzeitig importieren.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die Kreiszahl ist: &#39;</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die eulersche Zahl ist: &#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Und exp(0) = &#39;</span><span class="p">,</span> <span class="n">exp</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Auch wenn diese Möglichkeit besteht, sollten Sie nur sehr selten und wohlüberlegt davon Gebrauch machen. In den seltesten Fällen kennen wir nämlich alle dort definierten Funktionen und Konstanten. Es könnte sein, dass Sie mit dem <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> zufällig eine Konstante importieren, die Sie selbst schon definiert haben und damit Ihre Arbeit überschreiben.</p>
-<p>Daher ist folgende Lösung die Variante, die von den meisten Programmiererinnen und Programmieren verwendet wird:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">modul</span> <span class="k">as</span> <span class="nn">modulabkuerzung</span>
-</pre></div>
-</div>
-<p>Dann müssen sämtliche Konstanten und Funktionen aufgerufen werden, indem wir den Abkürzungsnamen des Moduls mit einem Punkt vor die Funktion setzen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">rnd</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">rnd</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">49</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="nn">math</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Warum sollte man diese etwas kompliziertere Schreibweise nehmen? Viele Module haben Überschneidungen.  Die Konstante <span class="math notranslate nohighlight">\(\pi\)</span> ist beispielsweise nicht nur im Modul <code class="docutils literal notranslate"><span class="pre">math</span></code>, sondern auch in den Modulen <code class="docutils literal notranslate"><span class="pre">sympy</span></code> und <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Wenn Sie jedoch explizit den Namen des Moduls davor schreiben, gibt es keine Verwechslungsgefahr. Bei einer Konstanten mag dieser Aufwand übertrieben wirken, aber bei Funktionen kann der Unterschied der verschiedenen Implementierungen zu völlig unerwarteten Verhalten führen.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ubungsaufgaben">
-<h1>Übungsaufgaben<a class="headerlink" href="#ubungsaufgaben" title="Permalink to this headline">#</a></h1>
-<div class="alert alert-block alert-success">
-<b>Aufgabe 4.1: Datumsklasse </b> 
-<p>Implementieren Sie eine Klasse Datum. Diese Klasse speichert Tag, Monat und Jahr als Attribut.</p>
+<p>Im Folgenden beschäftigen wir uns daher mit der Verknüpfung von booleschen
+Ausdrücken. Dieses Fachgebiet nennt man auch boolsche Algebra oder digitale
+Logik. Wikipedia fasst hier die wichtigsten Regeln zur booleschen Algebra
+zusammen: <a class="reference external" href="https://de.wikipedia.org/wiki/Boolesche_Algebra">https://de.wikipedia.org/wiki/Boolesche_Algebra</a></p>
+<p>Wir werden in dieser Vorlesung uns aber auf die logischen Verknüpfungen oder
+logischen Operatoren</p>
 <ul class="simple">
-<li><p>Implementieren Sie Methoden, die diese Attribute verändern können. Dabei soll die Methode per Print()-Funktion warnen, wenn eine nicht zulässige Zahl verwendet wird und dann nicht die Änderung durchführen.</p></li>
-<li><p>Implementieren Sie eine Methode <code class="docutils literal notranslate"><span class="pre">get_datum_deutsch()</span></code>, die das Datum als String nach dem Muster <code class="docutils literal notranslate"><span class="pre">TT.MM.JJJJ</span></code> zurückgibt, also z.B. ‘06.12.2021’.</p></li>
-<li><p>Implementieren Sie eine Methode <code class="docutils literal notranslate"><span class="pre">get_datum_britisch()</span></code>, die das Datum als String nach dem Muster <code class="docutils literal notranslate"><span class="pre">TT/MM/JJJJ</span></code> zurückgibt, also z.B. ‘06/12/2021’.</p></li>
-<li><p>Implementieren Sie eine Methode <code class="docutils literal notranslate"><span class="pre">get_datum_amerikanisch()</span></code>, die das Datum als String nach dem Muster <code class="docutils literal notranslate"><span class="pre">MM/TT/JJJJ</span></code> zurückgibt, also z.B. ‘12/06/2021’.</p></li>
+<li><p>UND</p></li>
+<li><p>ODER</p></li>
+<li><p>NICHT</p></li>
 </ul>
-</div><div class="alert alert-block alert-success">
-<b>Aufgabe 4.2: Auto </b> 
-<p>Implementieren Sie eine Klasse Auto. Diese Klasse speichert Marke, Erstzulassung, Kilometerstand und Verkaufspreis.</p>
-<ul class="simple">
-<li><p>Mit jeder Probefahrt steigt der Kilometerstand. Implementieren Sie eine Methode, die einen neuen Kilometerstand setzt. Wenn aber der neue Kilometerstand, der gesetzt werden soll, kleiner als der aktuelle ist, soll eine Fehlermeldung angezeigt werden.</p></li>
-<li><p>Erweitern Sie die Klasse Auto um ein Attribut Sonstiges. Anfangs soll dieses Attribut leer sein.</p></li>
-<li><p>Implementieren Sie eine Methode, mit dem Sie das Attribut Sonstiges füllen können (Freitext, also String).</p></li>
-</ul>
-</div></section>
+<p>beschränken. Nun wenden wir uns der Umsetzung von logischen Verknüpfungen in
+Python zu.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
+<th class="head"><p>Bedingung 2</p></th>
+<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">and</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel: Zwei Personen wollen einen Kinofilm sehen, der erst ab 18 erlaubt ist. Nur wenn beide volljährig sind, können sie den Film gemeinsam besuchen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter_person1</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="n">alter_person2</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">alter_person1</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">alter_person2</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen beide den Film sehen.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vielleicht darf einer von Ihnen den Film sehen, aber nicht beide.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen beide den Film sehen.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die sogenannte Wahrheitstabelle für die OR-Verknüpfung sieht folgendermaßen aus:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
+<th class="head"><p>Bedingung 2</p></th>
+<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">or</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel: Zwei Personen wollen ein Auto mieten, dazu muss aber mindestens einer von beiden den Führerschein besitzen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person1_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">person2_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">person1_hat_fuehrerschein</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">person2_hat_fuehrerschein</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen das Auto mieten.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiner von beiden hat einen Fuehrerschein, geht nicht.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen das Auto mieten.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Übrigens, der Vergleich <code class="docutils literal notranslate"><span class="pre">person1_hat_fuehrerschein</span> <span class="pre">==</span> <span class="pre">True</span></code> ist eigentlich
+doppelt gemoppelt, da ja die Variable bereits den Datentyp bool hat. Wir könnten
+also auch kürzer schreiben</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person1_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">person2_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="n">person1_hat_fuehrerschein</span> <span class="ow">or</span> <span class="n">person2_hat_fuehrerschein</span> <span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen das Auto mieten.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiner von beiden hat einen Fuehrerschein, geht nicht.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen das Auto mieten.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die sogenannte Wahrheitstabelle für die NOT-Verknüpfung sieht folgendermaßen aus:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
+<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">not</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<p>Beispiel: Wenn eine Person keinen Führerschein hat, muss sie den Bus nehmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">person_hat_fuehrerschein</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie muessen Bus fahren.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen Auto fahren.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie muessen Bus fahren.
+</pre></div>
+</div>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/075l6R42tkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="schleifen-mit-bedingung-while">
+<h2>Schleifen mit Bedingung “while”<a class="headerlink" href="#schleifen-mit-bedingung-while" title="Permalink to this headline">#</a></h2>
+<p>Bei einer Wiederholung mit Bedingung wird eine Anweisung solange wiederholt, bis
+die Bedingung erfüllt wird. Sie hat folgende Struktur:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">while</span> <span class="n">Bedingung</span><span class="p">:</span> 
+        <span class="n">anweisungsblock</span>
+</pre></div>
+</div>
+<p>Die bedingte Wiederholung wird mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">while</span></code> eingeleitet. Dann
+folgt die Bedingung, die mit einem <code class="docutils literal notranslate"><span class="pre">:</span></code> abgeschlossen wird. Alle Anweisungen, die
+wiederholt werden sollen, werden eingerückt. Diesen Teil nennt man das
+Schleifeninnere, die Zeile <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">Bedingung:</span></code> nennt man den Schleifenkopf.</p>
+<p>Beispiel: Wir möchten ein Programm schreiben, das von 10 bis 0 herunterzählt.
+Für den Countdown benutzen wir eine Variable als Zwischenspeicher. Dies würde in
+Python wie folgt umgesetzt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dieses Programm zählt von 10 runter...&#39;</span><span class="p">)</span>
+<span class="n">countdown</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">while</span> <span class="n">countdown</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">countdown</span><span class="p">)</span>
+    <span class="n">countdown</span> <span class="o">=</span> <span class="n">countdown</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jetzt hebt die Rakete ab!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dieses Programm zählt von 10 runter...
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+Jetzt hebt die Rakete ab!
+</pre></div>
+</div>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sXLicTuJzB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1176,13 +793,13 @@ Lesen Sie nach: Welche Funktionalitäten beinhaltet das <code class="docutils li
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Woche 03 - Python Crashkurs (Teil 2)</p>
+            <p class="prev-next-title">Bool, Vergleiche und Programmverzweigung</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../chapter08/sec00.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Neuronale Netze: Grundbaustein</p>
+        <p class="prev-next-title">Neuronale Netze: Grundbaustein Perzeptron</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

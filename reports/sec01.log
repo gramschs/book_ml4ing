@@ -17,18 +17,23 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-alter = int(input('Wie alt sind Sie?'))
-if alter >= 18:
-    print('Sie dürfen Alkohol kaufen.')
-print('Bananen dürfen Sie immer kaufen, egal wie alt Sie sind...')
+print('Dieses Programm addiert ganze Zahlen solange, bis Sie 0 eingeben.')
+zahl = float(input('Geben Sie die erste Zahl ein: '))
+
+summe = 0
+while zahl != 0:
+    summe = summe + zahl
+    zahl = float(input('Geben Sie eine weitere Zahl ein: '))
+print('Die Summe aller bisher eingegeben Zahlen ist: ', summe)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-Input [0;32mIn [40][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0m alter [38;5;241m=[39m [38;5;28mint[39m([38;5;28;43minput[39;49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mWie alt sind Sie?[39;49m[38;5;124;43m'[39;49m[43m)[49m)
-[1;32m      2[0m [38;5;28;01mif[39;00m alter [38;5;241m>[39m[38;5;241m=[39m [38;5;241m18[39m:
-[1;32m      3[0m     [38;5;28mprint[39m([38;5;124m'[39m[38;5;124mSie dürfen Alkohol kaufen.[39m[38;5;124m'[39m)
+Input [0;32mIn [46][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;124mDieses Programm addiert ganze Zahlen solange, bis Sie 0 eingeben.[39m[38;5;124m'[39m)
+[0;32m----> 2[0m zahl [38;5;241m=[39m [38;5;28mfloat[39m([38;5;28;43minput[39;49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mGeben Sie die erste Zahl ein: [39;49m[38;5;124;43m'[39;49m[43m)[49m)
+[1;32m      4[0m summe [38;5;241m=[39m [38;5;241m0[39m
+[1;32m      5[0m [38;5;28;01mwhile[39;00m zahl [38;5;241m!=[39m [38;5;241m0[39m:
 
 File [0;32m/opt/homebrew/anaconda3/envs/python39/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072[0m, in [0;36mKernel.raw_input[0;34m(self, prompt)[0m
 [1;32m   1065[0m [38;5;124;03m"""Forward raw_input to frontends[39;00m

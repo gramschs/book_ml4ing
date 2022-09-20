@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Woche 02 - Python &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Datentypen, Variablen und Vergleiche &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,12 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Woche 03 - Python Crashkurs (Teil 2)" href="sec02.html" />
-    <link rel="prev" title="Grundlegender Ablauf eines ML-Projektes" href="../chapter01/sec03.html" />
+    <link rel="next" title="Bool, Vergleiche und Programmverzweigung" href="sec02.html" />
+    <link rel="prev" title="Crashkurs Python (Teil 1)" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,16 +122,16 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter01/sec00.html">
    Zu Beginn …
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter01/sec01.html">
      Was ist maschinelles Lernen?
@@ -149,19 +147,31 @@ const thebe_selector_output = ".output, .cell_output"
      Grundlegender Ablauf eines ML-Projektes
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec00.html">
+   Crashkurs Python (Teil 1)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Woche 02 - Python
+     Datentypen, Variablen und Vergleiche
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec02.html">
-     Woche 03 - Python Crashkurs (Teil 2)
+     Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec03.html">
-     Woche 04 - Objektorientierte Programmierung und Module
+     Digitale Logik und Schleife mit Bedingung
     </a>
    </li>
   </ul>
@@ -175,10 +185,10 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
-   Neuronale Netze: Grundbaustein
+   Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -204,8 +214,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -221,8 +231,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -234,7 +244,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter10/sec02.html">
-     Logistisches Regression lernt mit Maximum-Likelihood
+     Logistische Regression lernt mit Maximum-Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter10/sec03.html">
+     Logistische Regression mit Scikit-Learn
     </a>
    </li>
   </ul>
@@ -376,6 +391,23 @@ title="Source repository"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="../_sources/chapter03/sec01.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
 title="Download source file"
 >
   
@@ -383,7 +415,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -431,77 +463,54 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Woche 02 - Python
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-einfuhrung">
-     Datentypen - Einführung
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#einfache-datentypen">
+   Einfache Datentypen
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integer-und-float">
+     Integer und Float
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-integer-und-float">
-     Datentypen Integer und Float
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentyp-string">
-     Datentyp String
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variablen">
-     Variablen
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-int-float-str-und-typumwandlungen-type-casting">
-     Datentypen int, float, str und Typumwandlungen (Type Casting)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentyp-bool">
-     Datentyp bool
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-einfuhrung">
-     Kontrollstrukturen - Einführung
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vergleiche">
-     Vergleiche
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstruktur-if">
-     Kontrollstruktur: if
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-if-elif-else">
-     Kontrollstrukturen: if - elif - else
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vergleiche-digitale-logik-und-oder-nicht">
-     Vergleiche - digitale Logik: und, oder, nicht
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-schleifen-mit-bedingung-while">
-     Kontrollstrukturen: Schleifen mit Bedingung “while”
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string">
+     String
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubungsaufgaben">
-   Übungsaufgaben
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variablen">
+   Variablen
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zuweisung">
+     Zuweisung
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">
+     Richtlinien für Variablennamen:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mischen-von-datentypen">
+     Mischen von Datentypen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typumwandlungen-type-casting">
+     Typumwandlungen (Type Casting)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -512,7 +521,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Woche 02 - Python</h1>
+                <h1>Datentypen, Variablen und Vergleiche</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -522,77 +531,54 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Woche 02 - Python
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-einfuhrung">
-     Datentypen - Einführung
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#einfache-datentypen">
+   Einfache Datentypen
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integer-und-float">
+     Integer und Float
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-integer-und-float">
-     Datentypen Integer und Float
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentyp-string">
-     Datentyp String
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#variablen">
-     Variablen
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentypen-int-float-str-und-typumwandlungen-type-casting">
-     Datentypen int, float, str und Typumwandlungen (Type Casting)
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#datentyp-bool">
-     Datentyp bool
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-einfuhrung">
-     Kontrollstrukturen - Einführung
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vergleiche">
-     Vergleiche
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstruktur-if">
-     Kontrollstruktur: if
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-if-elif-else">
-     Kontrollstrukturen: if - elif - else
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vergleiche-digitale-logik-und-oder-nicht">
-     Vergleiche - digitale Logik: und, oder, nicht
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kontrollstrukturen-schleifen-mit-bedingung-while">
-     Kontrollstrukturen: Schleifen mit Bedingung “while”
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string">
+     String
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ubungsaufgaben">
-   Übungsaufgaben
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variablen">
+   Variablen
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#zuweisung">
+     Zuweisung
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">
+     Richtlinien für Variablennamen:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mischen-von-datentypen">
+     Mischen von Datentypen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#typumwandlungen-type-casting">
+     Typumwandlungen (Type Casting)
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -604,31 +590,57 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="woche-02-python">
-<h1>Woche 02 - Python<a class="headerlink" href="#woche-02-python" title="Permalink to this headline">#</a></h1>
-<p>In dieser Woche werden wir uns mit den Themen</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="datentypen-variablen-und-vergleiche">
+<h1>Datentypen, Variablen und Vergleiche<a class="headerlink" href="#datentypen-variablen-und-vergleiche" title="Permalink to this headline">#</a></h1>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<div class="hint admonition">
+<p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Datentypen</p></li>
-<li><p>Variablen</p></li>
-<li><p>Kontrollstrukturen</p></li>
+<li><p>Sie kennen die einfachen Datentypen:</p>
+<ul>
+<li><p><strong>Integer</strong></p></li>
+<li><p><strong>Float</strong></p></li>
+<li><p><strong>String</strong></p></li>
 </ul>
-<p>beschäftigen.</p>
-<section id="datentypen-einfuhrung">
-<h2>Datentypen - Einführung<a class="headerlink" href="#datentypen-einfuhrung" title="Permalink to this headline">#</a></h2>
-<p>Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir datengestütztes Prozessmanagement folgendermaßen dar:</p>
-<p>Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0 und 1 gespeichert. Damit es für uns Programmierinnen und Programmier einfacher wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.</p>
-<p>Datentypen fassen gleichartige Objekte zusammen und stellen den Programmiererinnen und Programmieren passende Operationen zur Verfügung. Es hängt von der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</p>
-<p>Diese Woche beschäftigen wir uns mit den einfachen Datentypen</p>
-<ul class="simple">
-<li><p>Integer</p></li>
-<li><p>Float</p></li>
-<li><p>String</p></li>
-<li><p>Bool</p></li>
+</li>
+<li><p>Sie wissen, was eine <strong>Variable</strong> ist und kennen den <strong>Zuweisungsoperator</strong>.</p></li>
+<li><p>Sie kennen den <strong>print</strong>-Befehl.</p></li>
 </ul>
+</div>
 </section>
-<section id="datentypen-integer-und-float">
-<h2>Datentypen Integer und Float<a class="headerlink" href="#datentypen-integer-und-float" title="Permalink to this headline">#</a></h2>
-<p>In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten, den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden in der Mathematik als ganze Zahlen bezeichnet. In der Informatik ist der englische Begriff am gebräuchlisten: Integer.</p>
+<section id="einfache-datentypen">
+<h2>Einfache Datentypen<a class="headerlink" href="#einfache-datentypen" title="Permalink to this headline">#</a></h2>
+<p>Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und
+Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
+datengestütztes Prozessmanagement folgendermaßen dar:</p>
+<figure class="align-default" id="fig01-prozess">
+<a class="reference internal image-reference" href="../_images/fig01_prozess.png"><img alt="../_images/fig01_prozess.png" src="../_images/fig01_prozess.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Schematische Darstellung der Vorgehensweise im datengestützten Prozessmanagement</span><a class="headerlink" href="#fig01-prozess" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem
+Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0
+und 1 gespeichert. Damit es für uns Programmierinnen und Programmier einfacher
+wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.</p>
+<p><strong>Datentypen</strong> fassen gleichartige Objekte zusammen und stellen den
+Programmiererinnen und Programmieren passende Operationen zur Verfügung. Es
+hängt von der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie
+diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</p>
+<p>In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen</p>
+<ul class="simple">
+<li><p>Integer,</p></li>
+<li><p>Float,</p></li>
+<li><p>String und</p></li>
+<li><p>Bool.</p></li>
+</ul>
+<section id="integer-und-float">
+<h3>Integer und Float<a class="headerlink" href="#integer-und-float" title="Permalink to this headline">#</a></h3>
+<p>In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
+den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
+in der Mathematik als ganze Zahlen bezeichnet. In der Informatik ist der
+englische Begriff am gebräuchlisten: Integer.</p>
 <p>Mit Integern können wir ganz normal rechnen, also Operationen ausführen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,8 +714,12 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Mit einer Operation verlassen wir aber bereits den Bereich der ganzen Zahlen, den Bereich der Integers. <code class="docutils literal notranslate"><span class="pre">25/5</span></code> ist wieder eine ganze Zahl, nicht jedoch  <code class="docutils literal notranslate"><span class="pre">25/3</span></code>. Damit sind wir bei den Fließkommazahlen, den sogenannten Floats. Zur Verfügung stehen auch hier die üblichen Operationen.</p>
-<p>Achtung: Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein Komma.</p>
+<p>Mit einer Operation verlassen wir aber bereits den Bereich der ganzen Zahlen,
+den Bereich der Integers. <code class="docutils literal notranslate"><span class="pre">25/5</span></code> ist wieder eine ganze Zahl, nicht jedoch
+<code class="docutils literal notranslate"><span class="pre">25/3</span></code>. Damit sind wir bei den Fließkommazahlen, den sogenannten Floats. Zur
+Verfügung stehen auch hier die üblichen Operationen.</p>
+<p>Achtung: Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein
+Komma.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.3</span> <span class="o">+</span> <span class="mf">4.5</span>
@@ -776,16 +792,16 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Zahlen” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=VtiDkRDPA_c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=2">https://www.youtube.com/watch?v=VtiDkRDPA_c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=2</a></p>
-</div></blockquote>
-</div></section>
-<section id="datentyp-string">
-<h2>Datentyp String<a class="headerlink" href="#datentyp-string" title="Permalink to this headline">#</a></h2>
-<p>Daten sind aber sehr oft keine Zahlen. Beispielsweise könnte man sich vorstellen, eine Einkaufsliste zu erstellen und diese im Computer oder in einer Notiz-App auf dem Handy zu speichern. Eine solche Zeichenkette heißt in der Informatik String. Mit Zeichen meint man dabei Zahlen, Buchstaben oder andere wie beispielsweise !”§$%&amp;/()=?.</p>
-<p>Strings werden in Python durch einfache Hochkomma oder Anführungszeichen definiert.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VtiDkRDPA_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this headline">#</a></h3>
+<p>Daten sind aber sehr oft keine Zahlen. Beispielsweise könnte man sich
+vorstellen, eine Einkaufsliste zu erstellen und diese im Computer oder in einer
+Notiz-App auf dem Handy zu speichern. Eine solche Zeichenkette heißt in der
+Informatik String. Mit Zeichen meint man dabei Zahlen, Buchstaben oder andere
+Zeichen wie beispielsweise !”§$%&amp;/()=?.</p>
+<p>Strings werden in Python durch einfache Hochkomma oder Anführungszeichen
+definiert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Dies ist ein String!&#39;</span>
@@ -823,17 +839,23 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Strings” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=sTEf4_mrLvw&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=3">https://www.youtube.com/watch?v=sTEf4_mrLvw&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=3</a></p>
-</div></blockquote>
-</div></section>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sTEf4_mrLvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
 <section id="variablen">
 <h2>Variablen<a class="headerlink" href="#variablen" title="Permalink to this headline">#</a></h2>
-<p>Variablen sind beschriftete Schubladen. Oder anders formuliert sind Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von Pi oder die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
-<p>Bitte lesen Sie dazu Kapitel 2 in dem Buch “Python 3” von Kalista.</p>
-<p>Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu speichern. Eine Variable wird durch Zuweisung erzeugt. Damit meinen wir, dass eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt wird. Das erstmalige Füllen der Schublade nennt man in der Informatik auch Initialisieren.</p>
+<p>Variablen sind beschriftete Schubladen. Oder anders formuliert sind Variablen
+Objekte, denen man einen Namen gibt. Technisch gesehen sind diese Schubladen ein
+kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen Schubladen
+aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
+Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von Pi oder die
+aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
+<section id="zuweisung">
+<h3>Zuweisung<a class="headerlink" href="#zuweisung" title="Permalink to this headline">#</a></h3>
+<p>Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu
+speichern. Eine Variable wird durch Zuweisung erzeugt. Damit meinen wir, dass
+eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt wird. Das
+erstmalige Füllen der Schublade nennt man in der Informatik auch Initialisieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -841,7 +863,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Sobald die Variable <code class="docutils literal notranslate"><span class="pre">x</span></code>in diesem Beispiel durch eine Zuweisung von 0.5 erstellt wurde, können wir sie verwenden:</p>
+<p>Sobald die Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in diesem Beispiel durch eine Zuweisung von 0.5 erstellt
+wurde, können wir sie verwenden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">*</span> <span class="mi">3</span>
@@ -866,11 +889,19 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Wichtig ist, dass das <code class="docutils literal notranslate"><span class="pre">=</span></code>in der Informatik eine andere Bedeutung hat als in der Mathematik. <code class="docutils literal notranslate"><span class="pre">=</span></code> meint nicht das Gleichheitszeichen, sondern den sogenannten Zuweisungsoperator. Das ist in der Programmierung ein Kommando, das eine Schublade befüllt oder technischer ausgedrückt, ein Objekt einer Variable zuweist.</p>
-<p>Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor sie verwendet werden können, sonst tritt ein Fehler auf:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jfOLXKPGXJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Wichtig ist, dass das <code class="docutils literal notranslate"><span class="pre">=</span></code> in der Informatik eine andere Bedeutung hat als in der
+Mathematik. <code class="docutils literal notranslate"><span class="pre">=</span></code> meint nicht das Gleichheitszeichen, sondern den sogenannten
+<strong>Zuweisungsoperator</strong>. Das ist in der Programmierung ein Kommando, das eine
+Schublade befüllt oder technischer ausgedrückt, ein Objekt einer Variable
+zuweist.</p>
+<p>Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
+sie verwendet werden können, sonst tritt ein Fehler auf:</p>
+<p>Schreiben Sie in die folgende Code-Zelle <code class="docutils literal notranslate"><span class="pre">n</span></code> und lassen Sie sie ausführen. Was
+passiert?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># n</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code</span>
 </pre></div>
 </div>
 </div>
@@ -883,11 +914,18 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Würden wir dies als Gleichung lesen, wie wir es aus der Mathematik gewohnt sind, x = x + 1, könnten wir x auf beiden Seiten subtrahieren und erhalten 0 = 1. Wir wissen, dass dies nicht wahr ist, also stimmt hier etwas nicht.</p>
-<p>In Python sind “Gleichungen” keine mathematischen Gleichungen, sondern Zuweisungen. “=” ist kein Gleichheitszeichen im mathematischen Sinne, sondern eine Zuweisung. Die Zuweisung muss immer in der folgenden Weise zweistufig gelesen werden:</p>
+<p>Würden wir dies als Gleichung lesen, wie wir es aus der Mathematik gewohnt sind,
+x = x + 1, könnten wir x auf beiden Seiten subtrahieren und erhalten 0 = 1. Wir
+wissen, dass dies nicht wahr ist, also stimmt hier etwas nicht.</p>
+<p>In Python sind “Gleichungen” keine mathematischen Gleichungen, sondern
+Zuweisungen. “=” ist kein Gleichheitszeichen im mathematischen Sinne, sondern
+eine Zuweisung. Die Zuweisung muss immer in der folgenden Weise zweistufig
+gelesen werden:</p>
 <ol class="simple">
 <li><p>Berechne den Wert auf der rechten Seite (also x+1).</p></li>
-<li><p>Weise den Wert auf der rechten Seite dem auf der linken Seite stehenden Variablennamen zu (in Python-Sprechweise: binde dem Namen auf der linken Seite an das auf der rechten Seite angezeigte Objekt).</p></li>
+<li><p>Weise den Wert auf der rechten Seite dem auf der linken Seite stehenden
+Variablennamen zu (in Python-Sprechweise: binde dem Namen auf der linken
+Seite an das auf der rechten Seite angezeigte Objekt).</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -903,8 +941,15 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Richtlinien für Variablennamen:</p>
-<p>Früher war der Speicherplatz von Computern klein, daher wurden häufig nur kurze Variablennamen wie beispielsweise <code class="docutils literal notranslate"><span class="pre">i</span></code> oder <code class="docutils literal notranslate"><span class="pre">N</span></code> verwendet. Heutzutage ist es Standard, nur in Ausnahmefällen (z.B. in Schleifen, dazu kommen wir noch) kurze Variablennamen zu nehmen. Stattdessen werden Namen benutzt, bei denen man erraten kann, was die Variable für einen Einsatzzweck hat. Beispielsweise lässt der Code</p>
+</section>
+<section id="richtlinien-fur-variablennamen">
+<h3>Richtlinien für Variablennamen:<a class="headerlink" href="#richtlinien-fur-variablennamen" title="Permalink to this headline">#</a></h3>
+<p>Früher war der Speicherplatz von Computern klein, daher wurden häufig nur kurze
+Variablennamen wie beispielsweise <code class="docutils literal notranslate"><span class="pre">i</span></code> oder <code class="docutils literal notranslate"><span class="pre">N</span></code> verwendet. Heutzutage ist es
+Standard, nur in Ausnahmefällen (z.B. in Schleifen, dazu kommen wir noch) kurze
+Variablennamen zu nehmen. Stattdessen werden Namen benutzt, bei denen man
+erraten kann, was die Variable für einen Einsatzzweck hat. Beispielsweise lässt
+der Code</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mf">0.19</span>
@@ -920,7 +965,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>nur schwer vermuten, was damit bezweckt wird. Dagegen erahnt man bei diesem Code schon eher, was bezweckt wird:</p>
+<p>nur schwer vermuten, was damit bezweckt wird. Dagegen erahnt man bei diesem Code
+schon eher, was bezweckt wird:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mehrwertsteuersatz</span> <span class="o">=</span> <span class="mi">19</span><span class="o">/</span><span class="mi">100</span>
@@ -936,22 +982,23 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll, lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise</p>
+<p>Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü
+oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll,
+lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte
+Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise</p>
 <p><code class="docutils literal notranslate"><span class="pre">dateiname_alt</span></code> oder <code class="docutils literal notranslate"><span class="pre">dateiname_neu</span></code></p>
-<p>wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.</p>
-<p>Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz, die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung. Mehr Details zur <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung finden Sie hier:
+<p>wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
+der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.</p>
+<p>Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz,
+die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung. Mehr Details zur <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung finden Sie hier:
 <a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">https://docs.python.org/3/tutorial/inputoutput.html</a></p>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie die beiden YouTube-Videos “Variablen” und “Zuweisungsoperator” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=jfOLXKPGXJ0&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=4">https://www.youtube.com/watch?v=jfOLXKPGXJ0&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=4</a>
-<a class="reference external" href="https://www.youtube.com/watch?v=XKFQ2_et5k8&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=8">https://www.youtube.com/watch?v=XKFQ2_et5k8&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=8</a></p>
-</div></blockquote>
-</div>
-</section>
-<section id="datentypen-int-float-str-und-typumwandlungen-type-casting">
-<h2>Datentypen int, float, str und Typumwandlungen (Type Casting)<a class="headerlink" href="#datentypen-int-float-str-und-typumwandlungen-type-casting" title="Permalink to this headline">#</a></h2>
-<p>Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in einen Float umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den Python-Intrepreter bestimmen lassen, welcher Datentyp in einer Variable gespeichert ist.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<section id="mischen-von-datentypen">
+<h3>Mischen von Datentypen<a class="headerlink" href="#mischen-von-datentypen" title="Permalink to this headline">#</a></h3>
+<p>Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in
+einen Float umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den
+Python-Interpreter bestimmen lassen, welcher Datentyp in einer Variable
+gespeichert ist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">5</span>
@@ -978,7 +1025,19 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Es ist aber auch möglich, einen Datentyp explizit in einen anderen Datentyp umzuwandeln. Informatiker sagen dazu, einen Type Cast vorzunehmen. Soll ein Datentyp in einen Integer umgewandelt werden, so verwenden wir die Funktion <code class="docutils literal notranslate"><span class="pre">int()</span></code>. Due Umwandlung in einen Float erfolgt per <code class="docutils literal notranslate"><span class="pre">float()</span></code> und in einen String wandeln wir mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">str()</span></code> um. Das klappt nicht mit jedem Variableninhalt, die Umwandlung muss machbar sein, wie die folgenden Beispiele zeigen.</p>
+<p>Nicht immer ist es aber möglich, Datentypen zu mischen. Dann meldet Python einen
+Fehler.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1WqFJ5wsA4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+<section id="typumwandlungen-type-casting">
+<h3>Typumwandlungen (Type Casting)<a class="headerlink" href="#typumwandlungen-type-casting" title="Permalink to this headline">#</a></h3>
+<p>Es ist aber auch möglich, einen Datentyp explizit in einen anderen Datentyp
+umzuwandeln. Informatiker sagen dazu, einen Type Cast vorzunehmen. Soll ein
+Datentyp in einen Integer umgewandelt werden, so verwenden wir die Funktion
+<code class="docutils literal notranslate"><span class="pre">int()</span></code>. Die Umwandlung in einen Float erfolgt per <code class="docutils literal notranslate"><span class="pre">float()</span></code> und in einen String
+wandeln wir mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">str()</span></code> um. Das klappt nicht mit jedem
+Variableninhalt, die Umwandlung muss machbar sein, wie die folgenden Beispiele
+zeigen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_old</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1007,627 +1066,15 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#x_old = &#39;drei&#39;</span>
-<span class="c1">#x_new = int(x_old)</span>
-<span class="c1">#type(x_new)</span>
+<p>Der folgende Code ist in Markdown geschrieben, da ansonsten eine Fehlermeldung
+erzeugt würde:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_old</span> <span class="o">=</span> <span class="s1">&#39;drei&#39;</span>
+<span class="n">x_new</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_old</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Type-Casting-Funktionen” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=u_ECGvn1Z2c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=7">https://www.youtube.com/watch?v=u_ECGvn1Z2c&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=7</a></p>
-</div></blockquote>
-</div></section>
-<section id="datentyp-bool">
-<h2>Datentyp bool<a class="headerlink" href="#datentyp-bool" title="Permalink to this headline">#</a></h2>
-<p>Später möchten wir Werte miteinander vergleichen. Ein simples Beispiel für einen einfachen Vergleich ist beispielsweise das Alter einer Person mit der Zahl 18. Dieser Vergleich ist entweder wahr (True) oder falsch (False). Oder anders formuliert, diese Bedingung ist entweder erfüllt oder nicht erfüllt.</p>
-<p>Um den Wahrheitswert eines Vergleichs zu beschrieben, hat Python einen eigenen Datentyp namens <code class="docutils literal notranslate"><span class="pre">bool</span></code>. Eine Variable des Datentyps <code class="docutils literal notranslate"><span class="pre">bool</span></code> kann dabei nur zwei verschiedene Werte annehmen, nämlich</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: Wahrheitswert ist wahr oder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: Wahrheitswert ist falsch.</p></li>
-</ul>
-<p>Und auch für diesen Datentyp gibt es Operationen, wie man diese einsetzt ist eine andere Frage.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">/</span> <span class="kc">True</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
-</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
 </section>
-<section id="kontrollstrukturen-einfuhrung">
-<h2>Kontrollstrukturen - Einführung<a class="headerlink" href="#kontrollstrukturen-einfuhrung" title="Permalink to this headline">#</a></h2>
-<p>Durch Kontrollstrukturen wird festgelegt, in welcher Reihenfolge Anweisungen ausgeführt werden. Normalerweise wird der Code vom Python-Interpreter Zeile für Zeile abgearbeitet. Ein Programm, das nur aus einer einfachen Aneinanderreihung von Befehlen besteht, nennt man linear.</p>
-</section>
-<section id="vergleiche">
-<h2>Vergleiche<a class="headerlink" href="#vergleiche" title="Permalink to this headline">#</a></h2>
-<p>Ein Vergleich ist ein Ausdruck mit zwei Operanden und einem Vergleichsoperator in der Mitte. Die beiden Operanden können auch unterschiedliche Datentypen haben, dann muss der Vergleichsoperator aber sinnvoll für diese Datentypen definiert sein. Z.B. darf man einen Integer mit einem Float vergleichen <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">17.2</span></code>, aber <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">'vier'</span></code>ist nicht sinnvoll und undefiniert. Es gibt die folgenden Vergleichsoperatoren in Python:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> kleiner</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> kleiner oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> größer</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> größer oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> ungleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">not</span></code> Umkehrung/Verneinung</p></li>
-</ul>
-<p>Im interaktiven Modus können wir leicht den Wahrheitsgehalt von Vergleichen überprüfen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">30</span>          
-<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">15</span>          
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">30</span>    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">30</span>  
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">30</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “Vergleichsoperatoren und der Datentyp bool” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=ucsv_Nhhxmk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=9">https://www.youtube.com/watch?v=ucsv_Nhhxmk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=9</a></p>
-</div></blockquote>
-</div></section>
-<section id="kontrollstruktur-if">
-<h2>Kontrollstruktur: if<a class="headerlink" href="#kontrollstruktur-if" title="Permalink to this headline">#</a></h2>
-<p>Bei einer Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt. Im einfachsten Fall liegt ein <code class="docutils literal notranslate"><span class="pre">if</span></code>-Block vor. Die Syntax lautet wie folgt:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span>
-</pre></div>
-</div>
-<p>Ist die Bedingung erfüllt, also <code class="docutils literal notranslate"><span class="pre">True</span></code>, so wird der eingerückte Anweisungsblock ausgeführt, ansonsten übersprungen.</p>
-<p>Wichtig ist, dass die Anweisung oder mehrere Anweisungen (d.h. der Anweisungsblock) eingerückt ist. Hier kommt eine Python-spezifische Eigenschaft zum Tragen. Der Block wird nicht durch Klammern oder ein begin/end gekennzeichnet, sondern nur durch die Einrückung. Empfehlenswert sind hier vier Leerzeichen. Was immer man wählt, in einer Python-Datei muss stets dieselbe Einrückungstiefe verwendet werden. Daher ist es ungünstig, Tabulatore und Leerzeichen zu mischen, weil man bei Weitergabe des Codes nicht weiß, wie auf dem Zielsystem die Tabulatorbreite definiert ist.</p>
-<p>Wir betrachten nun ein Beispiel:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">19</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie dürfen Alkohol kaufen.
-Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...
-</pre></div>
-</div>
-</div>
-</div>
-<p>Damit wir auch Daten abfragen können, führe wir noch die <code class="docutils literal notranslate"><span class="pre">input()</span></code>-Funktion ein. Mittels <code class="docutils literal notranslate"><span class="pre">input()</span></code> wird der Benutzer oder die Benutzerin nach einer Eingabe gefragt. Das Ergebnis (In Informatik-Sprache der Rückgabewert) der <code class="docutils literal notranslate"><span class="pre">input()</span></code>-Funktion ist ein String. Einen String können wir in eine Zahl umwandeln, indem wir die Funktionen <code class="docutils literal notranslate"><span class="pre">int()</span></code> oder <code class="docutils literal notranslate"><span class="pre">float()</span></code> anwenden. Für mehr Details bitte das folgende Video gucken:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=I9h1c-121Uk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=6">https://www.youtube.com/watch?v=I9h1c-121Uk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=6</a></p>
-</div></blockquote>
-<p>Damit können wir das obige Beispiel erweitern und das Alter eingeben lassen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Wie alt sind Sie?&#39;</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bananen dürfen Sie immer kaufen, egal wie alt Sie sind...&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="nn">Input In [40],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Wie alt sind Sie?&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/anaconda3/envs/python39/lib/python3.9/site-packages/ipykernel/kernelbase.py:1072,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
-<span class="g g-Whitespace">   </span><span class="mi">1066</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1067</span><span class="sd"> Raises</span>
-<span class="g g-Whitespace">   </span><span class="mi">1068</span><span class="sd"> ------</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1071</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1072</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1073</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1074</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1075</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1076</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1077</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1080</span> <span class="p">)</span>
-
-<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “if” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=b6KzYbM-Hvg&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=10">https://www.youtube.com/watch?v=b6KzYbM-Hvg&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=10</a></p>
-</div></blockquote>
-</div></section>
-<section id="kontrollstrukturen-if-elif-else">
-<h2>Kontrollstrukturen: if - elif - else<a class="headerlink" href="#kontrollstrukturen-if-elif-else" title="Permalink to this headline">#</a></h2>
-<p>Es gibt auch zweiteilige Programmverzweigungen. Die Syntax wird folgendermaßen erweitert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>Falls die Bedingung erfüllt ist, wird der 1. Anweisungsblock ausgeführt, ansonsten der 2. Anweisungsblock. Danach führt der Python-Interpreter alles nach dem <code class="docutils literal notranslate"><span class="pre">if-else</span></code>-Konstrukt aus. Wichtig ist, dass <code class="docutils literal notranslate"><span class="pre">if</span></code> und <code class="docutils literal notranslate"><span class="pre">else</span></code> die gleiche Einrückungstiefe haben genau wie die beiden Anweisungsblöcke.
-Bei einer Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Wie alt sind Sie? &#39;</span><span class="p">))</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie sind noch nicht volljährig und dürfen daher keinen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jetzt haben wir aber genug über den Alkoholkauf geredet...&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie sind noch nicht volljährig und dürfen daher keinen Alkohol kaufen.
-Jetzt haben wir aber genug über den Alkoholkauf geredet...
-</pre></div>
-</div>
-</div>
-</div>
-<p>Häufig müssen mehr als zwei Fälle unterschieden werden. Wenn man beispielsweise unterscheiden will, ob eine Zahl negativ oder positiv oder Null ist, müsste man das folgende Konstrukt programmieren.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a ist negativ.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a ist Null.&#39;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a ist positiv.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a ist positiv.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Übersichtlicher wird die Programmverzweigung mit der <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code>-Syntax. <code class="docutils literal notranslate"><span class="pre">elif</span></code>ist die Abkürzung für <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>. Allgemein sieht das Konstrukt so aus:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">3</span>
-    
-    <span class="o">...</span>
-    
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="n">n</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist Null.&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist negativ.&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist positiv.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a ist positiv.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “if mit elif und else” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=f3YdEdYSNdk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=11">https://www.youtube.com/watch?v=f3YdEdYSNdk&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=11</a></p>
-</div></blockquote>
-</div>
-</section>
-<section id="vergleiche-digitale-logik-und-oder-nicht">
-<h2>Vergleiche - digitale Logik: und, oder, nicht<a class="headerlink" href="#vergleiche-digitale-logik-und-oder-nicht" title="Permalink to this headline">#</a></h2>
-<p>Vorhin haben wir den boolschen Datentyp kennengelernt: wahr oder falsch. Man kann solche Ausdrücke auch kombinieren, z.B. könnte man fordern, dass zwei Bedingungen gleichzeitg erfüllt sein sollen.</p>
-<p>Beispiel beim Busfahren: Kinder unter 6 Jahren können kostenlos Bus fahren. Ab 6 Jahren braucht man eine Fahrkarte. Bis 14 Jahre zahlt man den Kinderpreis, ab 15 Jahren den Erwachsenenpreis:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="k">if</span> <span class="p">(</span><span class="mi">6</span> <span class="o">&lt;=</span> <span class="n">alter</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">alter</span> <span class="o">&lt;=</span> <span class="mi">14</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Du darfst eine Kinderfahrkarte kaufen.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Du darfst eine Kinderfahrkarte kaufen.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Im Folgenden beschäftigen wir uns daher mit der Verknüpfung von booleschen Ausdrücken. Dieses Fachgebiet nennt man auch boolsche Algebra oder digitale Logik. Wikipedia fasst hier die wichtigsten Regeln zur booleschen Algebra zusammen: <a class="reference external" href="https://de.wikipedia.org/wiki/Boolesche_Algebra">https://de.wikipedia.org/wiki/Boolesche_Algebra</a></p>
-<p>Wir werden in dieser Vorlesung uns aber auf die logischen Verknüpfungen oder logischen Operatoren</p>
-<ul class="simple">
-<li><p>UND</p></li>
-<li><p>ODER</p></li>
-<li><p>NICHT</p></li>
-</ul>
-<p>beschränken. Nun wenden wir uns der Umsetzung von logischen Verknüpfungen in Python zu.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
-<th class="head"><p>Bedingung 2</p></th>
-<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">and</span></code></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>True</p></td>
-<td><p>True</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-odd"><td><p>False</p></td>
-<td><p>True</p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-even"><td><p>True</p></td>
-<td><p>False</p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-odd"><td><p>False</p></td>
-<td><p>False</p></td>
-<td><p>False</p></td>
-</tr>
-</tbody>
-</table>
-<p>Beispiel: Zwei Personen wollen einen Kinofilm sehen, der erst ab 18 erlaubt ist. Nur wenn beide volljährig sind, können sie den Film gemeinsam besuchen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter_person1</span> <span class="o">=</span> <span class="mi">19</span>
-<span class="n">alter_person2</span> <span class="o">=</span> <span class="mi">22</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">alter_person1</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">alter_person2</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen beide den Film sehen.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vielleicht darf einer von Ihnen den Film sehen, aber nicht beide.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen beide den Film sehen.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die sogenannte Wahrheitstabelle für die OR-Verknüpfung sieht folgendermaßen aus:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
-<th class="head"><p>Bedingung 2</p></th>
-<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">or</span></code></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>True</p></td>
-<td><p>True</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-odd"><td><p>False</p></td>
-<td><p>True</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-even"><td><p>True</p></td>
-<td><p>False</p></td>
-<td><p>True</p></td>
-</tr>
-<tr class="row-odd"><td><p>False</p></td>
-<td><p>False</p></td>
-<td><p>False</p></td>
-</tr>
-</tbody>
-</table>
-<p>Beispiel: Zwei Personen wollen ein Auto mieten, dazu muss aber mindestens einer von beiden den Führerschein besitzen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person1_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">person2_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="n">person1_hat_fuehrerschein</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">person2_hat_fuehrerschein</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen das Auto mieten.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiner von beiden hat einen Fuehrerschein, geht nicht.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen das Auto mieten.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Übrigens, der Vergleich <code class="docutils literal notranslate"><span class="pre">person1_hat_fuehrerschein</span> <span class="pre">==</span> <span class="pre">True</span></code> ist eigentlich doppelt gemoppelt, da ja die Variable bereits den Datentyp bool hat. Wir könnten also auch kürzer schreiben</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person1_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">person2_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="k">if</span> <span class="n">person1_hat_fuehrerschein</span> <span class="ow">or</span> <span class="n">person2_hat_fuehrerschein</span> <span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen das Auto mieten.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Keiner von beiden hat einen Fuehrerschein, geht nicht.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie duerfen das Auto mieten.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die sogenannte Wahrheitstabelle für die NOT-Verknüpfung sieht folgendermaßen aus:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Bedingung 1</p></th>
-<th class="head"><p>Ergebnis mit <code class="docutils literal notranslate"><span class="pre">not</span></code></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>True</p></td>
-<td><p>False</p></td>
-</tr>
-<tr class="row-odd"><td><p>False</p></td>
-<td><p>True</p></td>
-</tr>
-</tbody>
-</table>
-<p>Beispiel: Wenn eine Person keinen Führerschein hat, muss sie den Bus nehmen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person_hat_fuehrerschein</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="k">if</span> <span class="ow">not</span> <span class="n">person_hat_fuehrerschein</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie muessen Bus fahren.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie duerfen Auto fahren.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie muessen Bus fahren.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “logische Operatoren” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=075l6R42tkQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=12">https://www.youtube.com/watch?v=075l6R42tkQ&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=12</a></p>
-</div></blockquote>
-</div>
-</section>
-<section id="kontrollstrukturen-schleifen-mit-bedingung-while">
-<h2>Kontrollstrukturen: Schleifen mit Bedingung “while”<a class="headerlink" href="#kontrollstrukturen-schleifen-mit-bedingung-while" title="Permalink to this headline">#</a></h2>
-<p>Bei einer Wiederholung mit Bedingung wird eine Anweisung solange wiederholt, bis die Bedingung erfüllt wird. Sie hat folgende Struktur:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">while</span> <span class="n">Bedingung</span><span class="p">:</span> 
-        <span class="n">anweisungsblock</span>
-</pre></div>
-</div>
-<p>Die bedingte Wiederholung wird mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">while</span></code> eingeleitet. Dann folgt die Bedingung, die mit einem <code class="docutils literal notranslate"><span class="pre">:</span></code> abgeschlossen wird. Alle Anweisungen, die wiederholt werden sollen, werden eingerückt. Diesen Teil nennt man das Schleifeninnere, die Zeile <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">Bedingung:</span></code> nennt man den Schleifenkopf.</p>
-<p>Bespiel: Wir möchten ein Programm schreiben, bei dem der Benutzer solange Zahlen eingeben darf, die aufsummiert werden, bis die Null eingegeben wird. Für das Aufsummieren benutzen wir eine Variable als Zwischenspeicher. Dies würde in Python wie folgt umgesetzt:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dieses Programm addiert ganze Zahlen solange, bis Sie 0 eingeben.&#39;</span><span class="p">)</span>
-<span class="n">zahl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Geben Sie die erste Zahl ein: &#39;</span><span class="p">))</span>
-
-<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">zahl</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="n">zahl</span>
-    <span class="n">zahl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Geben Sie eine weitere Zahl ein: &#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die Summe aller bisher eingegeben Zahlen ist: &#39;</span><span class="p">,</span> <span class="n">summe</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Probieren Sie den Code in der nächsten Code-Zelle aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dieses Programm addiert ganze Zahlen solange, bis Sie 0 eingeben.&#39;</span><span class="p">)</span>
-<span class="n">zahl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Geben Sie die erste Zahl ein: &#39;</span><span class="p">))</span>
-
-<span class="n">summe</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">zahl</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">summe</span> <span class="o">+</span> <span class="n">zahl</span>
-    <span class="n">zahl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Geben Sie eine weitere Zahl ein: &#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die Summe aller bisher eingegeben Zahlen ist: &#39;</span><span class="p">,</span> <span class="n">summe</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dieses Programm addiert ganze Zahlen solange, bis Sie 0 eingeben.
-Die Summe aller bisher eingegeben Zahlen ist:  10.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="alert alert-block alert-info">
-<p>Hier finden Sie das YouTube-Video “while-Schleife” aus dem Python-Tutorial Crashkurs:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.youtube.com/watch?v=sXLicTuJzB4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=13">https://www.youtube.com/watch?v=sXLicTuJzB4&amp;list=PL_pqkvxZ6ho3u8PJAsUU-rOAQ74D0TqZB&amp;index=13</a></p>
-</div></blockquote>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ubungsaufgaben">
-<h1>Übungsaufgaben<a class="headerlink" href="#ubungsaufgaben" title="Permalink to this headline">#</a></h1>
-<div class="alert alert-block alert-success">
-<b>Aufgabe 2.1: Kostenkalkulation Urlaubsreise</b> 
-<p>Schreiben Sie ein Programm, das die Kosten für eine Urlaubsreise für eine Reisegruppe mit einem Bus berechnet. Vom Benutzer werden folgende Angaben erfragt:</p>
-<ul class="simple">
-<li><p>Anzahl der Personen,</p></li>
-<li><p>Hotelkosten pro Person,</p></li>
-<li><p>Gesamtkosten für den Reisebus,</p></li>
-<li><p>Gesamtkosten für touristische Events am Zielort,</p></li>
-<li><p>sonstige Kosten pro Person.</p></li>
-</ul>
-<p>Ausgegeben werden die Gesamtkosten der Fahrt und der Betrag, den jeder Teilnehmer zahlen muss. Möglicher Programmlauf:</p>
-<div class="highlight-code notranslate"><div class="highlight"><pre><span></span>Kostenplan für eine Reise 
----------------------------
-Kosten für den Reisebus: 1000
-Hotelkosten pro Person: 300
-Gesamtkosten für touristische Events: 500 
-Anzahl der Teilnehmer: 30
-
-Die Gesamtkosten betragen 10500 EUR. Die Kosten pro Person sind 350 EUR.
-</pre></div>
-</div>
-<p>Hinweise: Machen Sie sich erstmal einen Plan, welche Eingaben abgefragt werden müssen, wie diese verarbeitet werden sollen und was das Programm am Ende ausgeben soll. Danach implementieren Sie Ihren Algorithmus.  Achten Sie auf guten Programmierstil. Verwenden Sie »sprechende« Variablennamen. Setzen Sie die Funktion input() für die Eingabe der Zahlenwerte ein und denken Sie an die Umwandlung in einen Integer oder einen Float, falls Sie Python verwenden.</p>
- </div><div class="alert alert-block alert-success">
-<b>Aufgabe 2.2: Volljährigkeit</b> 
-<p>Schreiben Sie ein Programm, dass den Benutzer nach seinem Geburtsjahr fragt. Danach rechnet das Programm aus, wie alt der Benutzer dieses Jahr wird. Wenn der Benutzer dieses Jahr volljährig wird, soll das Programm ausgeben: “Hurra, Sie werden oder wurden dieses Jahr volljährig!” Wenn der Benutzer schon volljährig ist, soll das Programm ausgeben: “Sie sind bereits volljährig.”</p>
-</div>
-<div class="alert alert-block alert-success">
-<b>Aufgabe 2.3: Ticket-Automat</b> 
-<p>Schreiben Sie das Programm für einen Ticket-Automaten. Der Benutzer wird nach dem Alter gefragt und ob ein Schülerausweis vorliegt. Das Programm gibt dann aus, welches Ticket gekauft werden muss.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Alter</p></th>
-<th class="head"><p>Ticket</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>0 - 5</p></td>
-<td><p>keine</p></td>
-</tr>
-<tr class="row-odd"><td><p>6 - 14</p></td>
-<td><p>Kinder-Ticket</p></td>
-</tr>
-<tr class="row-even"><td><p>15 - 21 und Schülerausweis</p></td>
-<td><p>Kinder-Ticket</p></td>
-</tr>
-<tr class="row-odd"><td><p>15 - 59</p></td>
-<td><p>Erwachsenen-Ticket</p></td>
-</tr>
-<tr class="row-even"><td><p>ab 60</p></td>
-<td><p>Senioren-Ticket</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="alert alert-block alert-success">
-<b>Aufgabe 2.4: Quadratzahlen</b> 
-<p>Schreiben Sie ein Programm, das eine minimale Zahl <span class="math notranslate nohighlight">\(a\)</span> und eine maximale Zahl <span class="math notranslate nohighlight">\(b\)</span> abfragt. Dann berechnet das Programm die Quadratzahlen von <span class="math notranslate nohighlight">\(a^2\)</span> bis <span class="math notranslate nohighlight">\(b^2\)</span> und gibt diese aus.</p>
-<p>Beispiel: Wenn der Benutzer <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">3</span></code> eingibt und <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">8</span></code>, so soll das Programm <code class="docutils literal notranslate"><span class="pre">9,</span> <span class="pre">16,</span> <span class="pre">25,</span> <span class="pre">36,</span> <span class="pre">49,</span> <span class="pre">64</span></code> ausgeben.</p>
-<p>Erweitern Sie dann das Programm so, dass erst überprüft wird, ob die eingegebene Zahl <span class="math notranslate nohighlight">\(b\)</span> auch wirklich größer als <span class="math notranslate nohighlight">\(a\)</span> ist. Wenn dies nicht der Fall ist, soll solange weiter nach einer Zahl <span class="math notranslate nohighlight">\(b\)</span> gefragt werden, bis diese größer als a ist.</p>
-<p>Testen Sie Ihr Programm für die Beispiele <span class="math notranslate nohighlight">\(a=4\)</span> und <span class="math notranslate nohighlight">\(b=10\)</span> und anschließend für <span class="math notranslate nohighlight">\(a=10\)</span> und <span class="math notranslate nohighlight">\(b=4\)</span>.</p>
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1657,17 +1104,17 @@ Die Gesamtkosten betragen 10500 EUR. Die Kosten pro Person sind 350 EUR.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chapter01/sec03.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="sec00.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Grundlegender Ablauf eines ML-Projektes</p>
+            <p class="prev-next-title">Crashkurs Python (Teil 1)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="sec02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Woche 03 - Python Crashkurs (Teil 2)</p>
+        <p class="prev-next-title">Bool, Vergleiche und Programmverzweigung</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
