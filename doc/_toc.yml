@@ -11,6 +11,8 @@ parts:
     - file: chapter01/sec01.md
     - file: chapter01/sec02.md
     - file: chapter01/sec03.md
+  - file: chapter03/sec00.md
+    sections:
     - file: chapter03/sec01.ipynb
     - file: chapter03/sec02.ipynb
     - file: chapter03/sec03.ipynb
