@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pandas anstatt Excel &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Logistische Regression &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Series für eindimensionale Daten" href="sec01.html" />
+    <link rel="next" title="Logistische Regression ersetzt Perzeptron" href="sec01.html" />
     <link rel="prev" title="Training eines Perzeptrons mit Scikit-Learn" href="../chapter08/sec03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter03/sec00.html">
+  <a class="reference internal" href="../chapter02/sec00.html">
    Crashkurs Python (Teil 1)
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -160,21 +160,77 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec01.html">
+     Datentypen, Variablen und Vergleiche
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec02.html">
+     Bool, Vergleiche und Programmverzweigung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec03.html">
+     Digitale Logik und Schleife mit Bedingung
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter03/sec00.html">
+   Crashkurs Python (Teil 2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec01.html">
-     Datentypen und Kontrollstrukturen
+     Liste und Zählschleife
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec02.html">
-     Woche 03 - Python Crashkurs (Teil 2)
+     Funktionen
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec03.html">
-     Woche 04 - Objektorientierte Programmierung und Module
+     Objektorientierung
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Datenexploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter04/sec00.html">
+   Pandas anstatt Excel
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec01.html">
+     Series für eindimensionale Daten
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter05/sec00.html">
+   Daten visualisieren mit Matplotlib
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -183,12 +239,22 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter06/sec00.html">
+   Lineare und polynomiale Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter07/sec00.html">
+   Datenvorverarbeitung und Modellbewertung
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
    Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -212,43 +278,26 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Pandas anstatt Excel
+   Logistische Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="sec01.html">
-     Series für eindimensionale Daten
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter10/sec00.html">
-   Logistische Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec01.html">
      Logistische Regression ersetzt Perzeptron
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec02.html">
+    <a class="reference internal" href="sec02.html">
      Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec03.html">
+    <a class="reference internal" href="sec03.html">
      Logistische Regression mit Scikit-Learn
     </a>
    </li>
@@ -453,7 +502,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pandas anstatt Excel</h1>
+                <h1>Logistische Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -465,17 +514,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pandas-anstatt-excel">
-<h1>Pandas anstatt Excel<a class="headerlink" href="#pandas-anstatt-excel" title="Permalink to this headline">#</a></h1>
-<p>Nachdem wir mit dem Scikit-Learn-Modell Perzeptron kleine, händisch erzeugte
-Beispiele klassifiziert haben, werden wir in den nächsten Abschnitten größere
-Datensätze klassifizieren. Typischerweise liegen größere Datensätze in Form von
-Tabllen vor. Das verwendetet Datenformat variiert dabei. Manchnal liegen die
-Daten im Excel-Format vor, sehr oft jedoch auch im CSV-Format. Davei steht CSV
-als Abkürzung für Comma Separated Values, also Werte die durch ein Komma
-getrennt werden.</p>
-<p>Um Daten in Tabellenform einzulesen und leicht zu verabeiten könnnen. gibt es in
-Python das Pandas-Modul, das wir uns nun näher ansehen werden.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistische-regression">
+<h1>Logistische Regression<a class="headerlink" href="#logistische-regression" title="Permalink to this headline">#</a></h1>
+<p>Das binäre Klassifikationsverfahren des Perzeptrons sortiert Datensätze in zwei
+Klassen. Ob dabei die Entscheidung für eine Klasse sehr knapp getroffen wird
+oder eindeutig erscheint, wird dabei nicht transparent. Im Folgenden
+beschäftigen wir uns mit einem binären Klassifikationsverfahren namens
+logistische Regression, das auf einer Prognose der Klassenwahrscheinlichkeit
+basiert.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -517,7 +563,7 @@ Python das Pandas-Modul, das wir uns nun näher ansehen werden.</p>
     <a class='right-next' id="next-link" href="sec01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Series für eindimensionale Daten</p>
+        <p class="prev-next-title">Logistische Regression ersetzt Perzeptron</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

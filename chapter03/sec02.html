@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bool, Vergleiche und Programmverzweigung &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Funktionen &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Digitale Logik und Schleife mit Bedingung" href="sec03.html" />
-    <link rel="prev" title="Datentypen, Variablen und Vergleiche" href="sec01.html" />
+    <link rel="next" title="Objektorientierung" href="sec03.html" />
+    <link rel="prev" title="Liste und Zählschleife" href="sec01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,29 +151,56 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec00.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter02/sec00.html">
    Crashkurs Python (Teil 1)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec01.html">
+     Datentypen, Variablen und Vergleiche
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec02.html">
+     Bool, Vergleiche und Programmverzweigung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec03.html">
+     Digitale Logik und Schleife mit Bedingung
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec00.html">
+   Crashkurs Python (Teil 2)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="sec01.html">
-     Datentypen, Variablen und Vergleiche
+     Liste und Zählschleife
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Bool, Vergleiche und Programmverzweigung
+     Funktionen
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec03.html">
-     Digitale Logik und Schleife mit Bedingung
+     Objektorientierung
     </a>
    </li>
   </ul>
@@ -187,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter08/sec00.html">
    Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -214,8 +243,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -231,8 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -469,26 +498,48 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datentyp-bool-und-vergleiche">
-   Datentyp Bool und Vergleiche
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#programmverzweigungen-if-elif-else">
-   Programmverzweigungen: if — elif — else
+  <a class="reference internal nav-link" href="#id1">
+   Funktionen
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-anweisung">
-     if-Anweisung
+    <a class="reference internal nav-link" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">
+     Die Benutzung von Funktionen (oder der Aufruf von Funktionen)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mehrteilige-verzweigungen-mit-elif-und-else">
-     Mehrteilige Verzweigungen mit elif und else
+    <a class="reference internal nav-link" href="#definition-von-einfachen-funktionen">
+     Definition von einfachen Funktionen
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionen-mit-parametern">
+   Funktionen mit Parametern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionen-mit-ruckgabewert">
+   Funktionen mit Rückgabewert
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-mit-einem-ruckgabewert">
+     Funktion mit einem Rückgabewert
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktionen-mit-mehreren-ruckgabewerten">
+     Funktionen mit mehreren Rückgabewerten
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vorsicht-bei-der-ausfuhrung-von-funktionen-lokale-und-globale-variablen">
+   Vorsicht bei der Ausführung von Funktionen: lokale und globale Variablen
+  </a>
  </li>
 </ul>
 
@@ -499,7 +550,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bool, Vergleiche und Programmverzweigung</h1>
+                <h1>Funktionen</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -515,26 +566,48 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#datentyp-bool-und-vergleiche">
-   Datentyp Bool und Vergleiche
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#programmverzweigungen-if-elif-else">
-   Programmverzweigungen: if — elif — else
+  <a class="reference internal nav-link" href="#id1">
+   Funktionen
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#if-anweisung">
-     if-Anweisung
+    <a class="reference internal nav-link" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">
+     Die Benutzung von Funktionen (oder der Aufruf von Funktionen)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mehrteilige-verzweigungen-mit-elif-und-else">
-     Mehrteilige Verzweigungen mit elif und else
+    <a class="reference internal nav-link" href="#definition-von-einfachen-funktionen">
+     Definition von einfachen Funktionen
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionen-mit-parametern">
+   Funktionen mit Parametern
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#funktionen-mit-ruckgabewert">
+   Funktionen mit Rückgabewert
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktion-mit-einem-ruckgabewert">
+     Funktion mit einem Rückgabewert
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#funktionen-mit-mehreren-ruckgabewerten">
+     Funktionen mit mehreren Rückgabewerten
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vorsicht-bei-der-ausfuhrung-von-funktionen-lokale-und-globale-variablen">
+   Vorsicht bei der Ausführung von Funktionen: lokale und globale Variablen
+  </a>
  </li>
 </ul>
 
@@ -546,282 +619,497 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bool-vergleiche-und-programmverzweigung">
-<h1>Bool, Vergleiche und Programmverzweigung<a class="headerlink" href="#bool-vergleiche-und-programmverzweigung" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="funktionen">
+<h1>Funktionen<a class="headerlink" href="#funktionen" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie kennen den Datentyp <strong>Bool</strong>.</p></li>
-<li><p>Sie kennen die wichtigsten <strong>Vergleichsoperatoren</strong>.</p></li>
-<li><p>Sie können mit <strong>if — elif — else</strong> Programmverzeigungen programmieren.</p></li>
+<li><p>Definition einer Funktion</p></li>
+<li><p>Funktionen mit Eingabeparametern</p></li>
+<li><p>Funktionen mit Eingabeparametern und einem Rückgabewert</p></li>
+<li><p>Funktionen mit Eingabeparametern und mehreren Rückgabewerten</p></li>
+<li><p>Funktionen: Vorsicht mit lokalen Variablen</p></li>
 </ul>
 </div>
 </section>
-<section id="datentyp-bool-und-vergleiche">
-<h2>Datentyp Bool und Vergleiche<a class="headerlink" href="#datentyp-bool-und-vergleiche" title="Permalink to this headline">#</a></h2>
-<p>Später möchten wir Werte miteinander vergleichen. Ein simples Beispiel für einen
-einfachen Vergleich ist beispielsweise das Alter einer Person mit der Zahl 18.
-Dieser Vergleich ist entweder wahr (True) oder falsch (False). Oder anders
-formuliert, diese Bedingung ist entweder erfüllt oder nicht erfüllt.</p>
-<p>Um den Wahrheitswert eines Vergleichs zu beschrieben, hat Python einen eigenen
-Datentyp namens <code class="docutils literal notranslate"><span class="pre">bool</span></code>. Eine Variable des Datentyps <code class="docutils literal notranslate"><span class="pre">bool</span></code> kann dabei nur zwei
-verschiedene Werte annehmen, nämlich</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: Wahrheitswert ist wahr oder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: Wahrheitswert ist falsch.</p></li>
-</ul>
-<p>Und auch für diesen Datentyp gibt es Operationen, wie man diese einsetzt ist
-eine andere Frage.</p>
+<section id="id1">
+<h2>Funktionen<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
+löst. Dabei arbeitet die Funktion nach dem EVA-Prinzip. Die Funktion übernimmt
+Objekte als Eingabe, verarbeitet diese und liefert Objekte als Ergebnis zurück.
+Wie die Funktion dabei im Inneren genau funktioniert (Verarbeitung), ist
+unwichtig.</p>
+<p>Beispielsweise gibt es im Modul <code class="docutils literal notranslate"><span class="pre">math</span></code> die Funktion <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code>. Wir wissen, dass
+wir der Funktion eine Zahl übergeben müssen (Eingabe), z.B. <code class="docutils literal notranslate"><span class="pre">sqrt(5)</span></code>. Die
+Funktion liefert dann als Ergebnis <span class="math notranslate nohighlight">\(\sqrt{5}\)</span> zurück. Welches Verfahren zur
+Berechnung der Wurzel verwendet wurde, wissen wir nicht.</p>
+<p>Insbesondere muss die Teilaufgabe, die die Funktion löst, nichts mit Mathematik
+zu tun haben. Eine Funktion in der Informatik hat nichts mit einer
+mathematischen Funktion zu tun, auch wenn oft mathematische Funktionen als
+Beispiel verwendet werden. Ein Beispiel für eine nicht-mathematische Funktion
+haben Sie mit <code class="docutils literal notranslate"><span class="pre">print()</span></code> bereits kennengelernt.</p>
+<section id="die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">
+<h3>Die Benutzung von Funktionen (oder der Aufruf von Funktionen)<a class="headerlink" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen" title="Permalink to this headline">#</a></h3>
+<p>Der Aufruf einer Funktion hat folgende Syntax:</p>
+<div class="highlight-code notranslate"><div class="highlight"><pre><span></span>funktion( argument1, argument2, ...)
+</pre></div>
+</div>
+<p>Eine Funktion wird benutzt, indem man den Namen der Funktion hinschreibt und
+dann in runden Klammern ihre Parameter, die sogenannten Argumente der Funktion.
+Welche Argumente für eine Funktion verwendet werden dürfen, hängt von der
+Implementierung der Funktion ab.</p>
+<p>Beispielsweise kann als Argument für die <code class="docutils literal notranslate"><span class="pre">len()</span></code>-Funktion ein String übergeben
+werden oder eine Liste. Stellen Sie eine Vermutung auf: was bewirkt die
+<code class="docutils literal notranslate"><span class="pre">len()</span></code>-Funktion?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">/</span> <span class="kc">True</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Ein Vergleich ist ein Ausdruck mit zwei Operanden und einem Vergleichsoperator
-in der Mitte. Die beiden Operanden können auch unterschiedliche Datentypen
-haben, dann muss der Vergleichsoperator aber sinnvoll für diese Datentypen
-definiert sein. Z.B. darf man einen Integer mit einem Float vergleichen <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">17.2</span></code>, aber <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">'vier'</span></code>ist nicht sinnvoll und undefiniert. Es gibt die
-folgenden Vergleichsoperatoren in Python:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> kleiner</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> kleiner oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> größer</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> größer oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> ungleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">not</span></code> Umkehrung/Verneinung</p></li>
-</ul>
-<p>Im interaktiven Modus können wir leicht den Wahrheitsgehalt von Vergleichen
-überprüfen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">30</span>          
-<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">15</span>          
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">42</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
 </pre></div>
 </div>
 </div>
 </div>
+<p>In der Regel geben Funktionen wieder Ergebnisse zurück. Diese können einer
+Variable zugewiesen werden, um mit dem Ergebnis weiter zu arbeiten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">30</span>    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">30</span>  
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">30</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ucsv_Nhhxmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="programmverzweigungen-if-elif-else">
-<h2>Programmverzweigungen: if — elif — else<a class="headerlink" href="#programmverzweigungen-if-elif-else" title="Permalink to this headline">#</a></h2>
-<p>Bei einer Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.
-Dabei kann es sich um einfache Verzweigung wie die Frage: Gehe ich nach rechts
-oder gehe ich nach links? Oder die Verzweigung kann komplizierter geschachtelt
-sein.</p>
-<section id="if-anweisung">
-<h3>if-Anweisung<a class="headerlink" href="#if-anweisung" title="Permalink to this headline">#</a></h3>
-<p>Im einfachsten Fall liegt ein <code class="docutils literal notranslate"><span class="pre">if</span></code>-Block vor. Die Syntax lautet wie folgt:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span>
-</pre></div>
-</div>
-<p>Ist die Bedingung erfüllt, also <code class="docutils literal notranslate"><span class="pre">True</span></code>, so wird der eingerückte Anweisungsblock
-ausgeführt, ansonsten übersprungen.</p>
-<p>Wichtig ist, dass die Anweisung oder mehrere Anweisungen (d.h. der
-Anweisungsblock) eingerückt ist. Hier kommt eine Python-spezifische Eigenschaft
-zum Tragen. Der Block wird nicht durch Klammern oder ein begin/end
-gekennzeichnet, sondern nur durch die Einrückung. Empfehlenswert sind hier vier
-Leerzeichen. Was immer man wählt, in einer Python-Datei muss stets dieselbe
-Einrückungstiefe verwendet werden. Daher ist es ungünstig, Tabulatore und
-Leerzeichen zu mischen, weil man bei Weitergabe des Codes nicht weiß, wie auf
-dem Zielsystem die Tabulatorbreite definiert ist.</p>
-<p>Wir betrachten nun ein Beispiel:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">19</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie dürfen Alkohol kaufen.
-Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...
-</pre></div>
-</div>
-</div>
-</div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b6KzYbM-Hvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="mehrteilige-verzweigungen-mit-elif-und-else">
-<h3>Mehrteilige Verzweigungen mit elif und else<a class="headerlink" href="#mehrteilige-verzweigungen-mit-elif-und-else" title="Permalink to this headline">#</a></h3>
-<p>Es gibt auch zweiteilige Programmverzweigungen. Die Syntax wird folgendermaßen
-erweitert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">laenge1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>
+<span class="n">laenge2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Erdbeere&#39;</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="n">laenge1</span> <span class="o">&lt;</span> <span class="n">laenge2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Das Wort Hallo enthält weniger Buchstaben als Früchte im Obstsalat.&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>Falls die Bedingung erfüllt ist, wird der 1. Anweisungsblock ausgeführt,
-ansonsten der 2. Anweisungsblock. Danach führt der Python-Interpreter alles nach
-dem <code class="docutils literal notranslate"><span class="pre">if-else</span></code>-Konstrukt aus. Wichtig ist, dass <code class="docutils literal notranslate"><span class="pre">if</span></code> und <code class="docutils literal notranslate"><span class="pre">else</span></code> die gleiche
-Einrückungstiefe haben genau wie die beiden Anweisungsblöcke. Bei einer
-Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">21</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie sind noch nicht volljährig und dürfen daher keinen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jetzt haben wir aber genug über den Alkoholkauf geredet...&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Das Wort Hallo enthält mehr Buchstaben als Einträge in der Liste.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie dürfen Alkohol kaufen.
-Jetzt haben wir aber genug über den Alkoholkauf geredet...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das Wort Hallo enthält mehr Buchstaben als Einträge in der Liste.
 </pre></div>
 </div>
 </div>
 </div>
-<p>Häufig müssen mehr als zwei Fälle unterschieden werden. Wenn man beispielsweise
-unterscheiden will, ob eine Zahl negativ oder positiv oder Null ist, verwendet
-man zusätzlich einen elif-Zweig.</p>
-<p>Übersichtlicher wird die Programmverzweigung mit der <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code>-Syntax. <code class="docutils literal notranslate"><span class="pre">elif</span></code>ist die Abkürzung für <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>. Allgemein sieht das Konstrukt so aus:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">3</span>
-    
+</section>
+<section id="definition-von-einfachen-funktionen">
+<h3>Definition von einfachen Funktionen<a class="headerlink" href="#definition-von-einfachen-funktionen" title="Permalink to this headline">#</a></h3>
+<p>Die allgemeine Syntax zur Definition einer eigenen Funktion sieht wie folgt aus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meine_funktion</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Optionaler Docstring zur Erklärung.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Implementierung der Funktion</span>
+    <span class="n">anweisung01</span>
+    <span class="n">anweisung02</span>
+     <span class="o">...</span>
+
+</pre></div>
+</div>
+<p>Erstes Beispiel:</p>
+<p>Die folgende Funktion hat keine Eingabewerte (Argumente, Input) und keine
+Rückgabe (Ausgabe, Return-Value).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gruesse_ausrichten</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ich grüße Sie!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nachdem die Funktion <code class="docutils literal notranslate"><span class="pre">gruesse_ausrichten()</span></code> so implementiert wurde, können wir
+sie im Folgenden direkt verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gruesse_ausrichten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Sie!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Und natürlich kann man sie in Programmverzweigungen und Schleifen einbauen.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Lassen Sie 10x Grüße ausrichten.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LQCfN5HS9xI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+<section id="funktionen-mit-parametern">
+<h2>Funktionen mit Parametern<a class="headerlink" href="#funktionen-mit-parametern" title="Permalink to this headline">#</a></h2>
+<p>Meistens haben Funktionen Argumente, um Eingaben/Input entgegennehmen und
+verarbeiten zu können. Das Argument wird bei der Implementierung der Funktion
+mit einem Platzhalter/Variable eingeführt.</p>
+<p>Die allgemeine Syntax zur Definition einer eigenen Funktion mit Parametern sieht
+wie folgt aus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meine_funktion</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Optionaler Docstring zur Erklärung.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Implementierung der Funktion</span>
+    <span class="n">anweisung01</span>
+    <span class="n">anweisung02</span>
+     <span class="o">...</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ich grüße&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Aufruf einer Funktion ohne passende Argumente führt zu einer Fehlermeldung.
+Entfernen Sie das Kommentarzeichen <code class="docutils literal notranslate"><span class="pre">#</span></code> und führen Sie die nachfolgende
+Code-Zelle aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#gruesse_ausrichten_mit_parameter()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Daher müssen wir die modifizierte Funktion nun wie folgt aufrufen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Bob
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">gruesse_ausrichten_mit_parameter()</span></code> hat aber keinen Rückgabewert.
+Das können wir wie folgt testen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Alice
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NoneType
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x</span></code> ist vom Typ <code class="docutils literal notranslate"><span class="pre">NoneType</span></code> oder anders ausgedrückt, es hat keinen Datentyp.</p>
+<p>Sind Funktionen ohne Rückgabewert sinnvoll?</p>
+<p>Ja, denn so können Codeblöcke vereinfacht werden. Sollte in einem Programm Code
+mehrmals ausgeführt werden, lohnt es sich, diesen in eine Funktion auszulagern,
+um diese einfach aufrufen zu können.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schreiben Sie eine Funktion mit zwei Parametern, nämlich Vor- und Nachname. Wenn
+die Funktion z.B. mit <code class="docutils literal notranslate"><span class="pre">(Alice,</span> <span class="pre">Miller)</span></code> aufgerufen wird, soll sie Folgendes auf
+dem Bildschirm ausgeben:</p>
+<div class="highlight-code notranslate"><div class="highlight"><pre><span></span>Vorname: Alice
+Nachname: Miller
+</pre></div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/af9ORp1Pty0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+<section id="funktionen-mit-ruckgabewert">
+<h2>Funktionen mit Rückgabewert<a class="headerlink" href="#funktionen-mit-ruckgabewert" title="Permalink to this headline">#</a></h2>
+<p>In der Regel jedoch haben Funktionen einen Rückgabewert.</p>
+<section id="funktion-mit-einem-ruckgabewert">
+<h3>Funktion mit einem Rückgabewert<a class="headerlink" href="#funktion-mit-einem-ruckgabewert" title="Permalink to this headline">#</a></h3>
+<p>Die allgemeine Syntax zur Definition einer eigenen Funktion mit Parametern und
+Rückgabewert sieht wie folgt aus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meine_funktion</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">argn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Optionaler Docstring zur Erklärung.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Implementierung der Funktion</span>
+    <span class="n">anweisung01</span>
+    <span class="n">anweisung02</span>
+     <span class="o">...</span>
+
+    <span class="k">return</span> <span class="n">ergebnis</span>  <span class="c1"># optional, die Funktion kann auch keine Rückgabe haben</span>
+</pre></div>
+</div>
+<p>Schauen wir uns ein Beispiel an:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">berechne_quadrat</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">berechne_quadrat</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">berechne_quadrat</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> 
+    <span class="n">ausgabe</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> * </span><span class="si">{}</span><span class="s1"> = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ausgabe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 * 1 = 1
+2 * 2 = 4
+3 * 3 = 9
+4 * 4 = 16
+5 * 5 = 25
+6 * 6 = 36
+7 * 7 = 49
+8 * 8 = 64
+9 * 9 = 81
+10 * 10 = 100
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hier ein Beispiel mit mehreren Argumenten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">berechne_rechteck_flaeche</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">flaeche</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span>
+    <span class="k">return</span> <span class="n">flaeche</span>
+
+<span class="c1"># main program</span>
+
+<span class="c1"># Eingabe</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Verarbeitung</span>
+<span class="n">flaeche</span> <span class="o">=</span> <span class="n">berechne_rechteck_flaeche</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># Ausgabe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;berechnete Fläche: &#39;</span><span class="p">,</span> <span class="n">flaeche</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>berechnete Fläche:  15
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="funktionen-mit-mehreren-ruckgabewerten">
+<h3>Funktionen mit mehreren Rückgabewerten<a class="headerlink" href="#funktionen-mit-mehreren-ruckgabewerten" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">funktion</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+    <span class="c1"># Verarbeitung</span>
+    <span class="n">anweisung01</span>
+    <span class="n">anweisung02</span>
     <span class="o">...</span>
     
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">ergebnis1</span><span class="p">,</span> <span class="n">ergebnis2</span>
 </pre></div>
+</div>
+<p>Es ist auch möglich, mehrere Ergebnisse gleichzeitig zurückzugeben. Diese werden
+einfach nach dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">return</span></code> mit Kommas getrennt gelistet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">potenzen_bis_vier</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x_hoch_2</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">x_hoch_3</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">x_hoch_4</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span>
+    <span class="k">return</span> <span class="n">x_hoch_2</span><span class="p">,</span> <span class="n">x_hoch_3</span><span class="p">,</span> <span class="n">x_hoch_4</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist Null.&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist negativ.&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist positiv.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">potenzen_bis_vier</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a ist positiv.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 1, 1)
+(4, 8, 16)
+(9, 27, 81)
+(16, 64, 256)
+(25, 125, 625)
+(36, 216, 1296)
+(49, 343, 2401)
+(64, 512, 4096)
+(81, 729, 6561)
+(100, 1000, 10000)
 </pre></div>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/f3YdEdYSNdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">potenz2</span><span class="p">,</span> <span class="n">potenz3</span><span class="p">,</span> <span class="n">potenz4</span> <span class="o">=</span> <span class="n">potenzen_bis_vier</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Die 2. Potenz von </span><span class="si">{}</span><span class="s1"> ist </span><span class="si">{}</span><span class="s1">, die dritte ist </span><span class="si">{}</span><span class="s1"> und die vierte ist </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">potenz2</span><span class="p">,</span> <span class="n">potenz3</span><span class="p">,</span> <span class="n">potenz4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die 2. Potenz von 1 ist 1, die dritte ist 1 und die vierte ist 1.
+Die 2. Potenz von 2 ist 4, die dritte ist 8 und die vierte ist 16.
+Die 2. Potenz von 3 ist 9, die dritte ist 27 und die vierte ist 81.
+Die 2. Potenz von 4 ist 16, die dritte ist 64 und die vierte ist 256.
+</pre></div>
+</div>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ehSP-sYoKCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+<section id="vorsicht-bei-der-ausfuhrung-von-funktionen-lokale-und-globale-variablen">
+<h2>Vorsicht bei der Ausführung von Funktionen: lokale und globale Variablen<a class="headerlink" href="#vorsicht-bei-der-ausfuhrung-von-funktionen-lokale-und-globale-variablen" title="Permalink to this headline">#</a></h2>
+<p>Schauen Sie sich bitte folgende Funktionsimplementierung an. Was macht die
+Funktion?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># jetzt Funktion anwenden</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;jetzt Funktion auf x anwenden...&#39;</span><span class="p">)</span>
+<span class="n">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+jetzt Funktion auf x anwenden...
+17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir schauen in die Funktion “hinein”, um zu sehen, ob vielleicht gar nicht
+erhöht wurde.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in der Funktion vor der Erhöhung:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># Erhöhung</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;in der Funktion nach der Erhöhung:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># jetzt Funktion anwenden</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;jetzt Funktion auf x anwenden...&#39;</span><span class="p">)</span>
+<span class="n">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+jetzt Funktion auf x anwenden...
+in der Funktion vor der Erhöhung:
+17
+in der Funktion nach der Erhöhung:
+18
+17
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was ist passiert? Die Variable <code class="docutils literal notranslate"><span class="pre">x</span></code> in der Funktion ist eine lokale Variable. Es
+ist Zufall, das sie so heißt, wie die Variable außerhalb der Funktion. Ein
+Programmierer einer Funktion kann nicht vorab wissen, wie alle anderen Variablen
+genannt werden. Daher müssen alle Variablen in der Funktion lokal bleiben, um
+nicht unabsichtlich Variablen, die dummerweise oder absichtlich den gleichen
+Namen tragen, zu verändern.</p>
+<p>Möchte man erreichen, dass eine Funktion den Wert einer Variable ändert, kann
+man dies über die Rückgabe und explizite Zuweisung erreichen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vorher&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+ 
+<span class="n">x</span> <span class="o">=</span> <span class="n">erhoehe_um_eins</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nachher&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vorher 17
+nachher 18
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -856,13 +1144,13 @@ man zusätzlich einen elif-Zweig.</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Datentypen, Variablen und Vergleiche</p>
+            <p class="prev-next-title">Liste und Zählschleife</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="sec03.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Digitale Logik und Schleife mit Bedingung</p>
+        <p class="prev-next-title">Objektorientierung</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

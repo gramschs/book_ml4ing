@@ -12,150 +12,426 @@ kernelspec:
   name: python3
 ---
 
-# Digitale Logik und Schleife mit Bedingung
+# Objektorientierung
+
+In diesem Abbschnitt werden wir den Crashkurs in Python mit einem Ausflug in die
+objektorientierte Programmierung abschließen. 
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: hint
-* Sie können Vergleiche kombinieren und dazu digitale Logik verwenden: **and**, **or** und **not**.
-* Sie können eine Schleife mit Bedingung **while** programmieren.
+* Was ist Objektorientierung?
+* Klassen definieren: Attribute und Methoden
 ```
 
-## Vergleiche kombinieren - digitale Logik
 
-Vorhin haben wir den boolschen Datentyp kennengelernt: wahr oder falsch. Man
-kann solche Ausdrücke auch kombinieren, z.B. könnte man fordern, dass zwei
-Bedingungen gleichzeitg erfüllt sein sollen. 
+## Objektorientierte Programmierung — Konzept
 
-Beispiel beim Busfahren: Kinder unter 6 Jahren können kostenlos Bus fahren. Ab 6
-Jahren braucht man eine Fahrkarte. Bis 14 Jahre zahlt man den Kinderpreis, ab 15
-Jahren den Erwachsenenpreis: 
+In den ersten beiden Teilen unseres Crashkurses Python haben wir uns die
+Grundlagen der Programmierung erarbeitet:
+* Datentypen (Integer, Float, String, Bool, List)
+* Kontrollstrukturen 
+    * Programmverzweigungen (if - elif - else)
+    * Schleifen (while oder for)
+* Funktionen.
+
+In einigen Programmiersprachen wie beispielsweise C hätten wir damit auch alle
+Sprachelement kennengelernt. Diese Programmierung nennt man **prozedurale
+Programmierung**. Python gehört jedoch zu den objektorientierten
+Programmiersprachen, so dass wir uns diese Woche dem Thema Objektorientierung
+widmen.
+
+Bei der bisherigen prozeduralen Programmierweise haben wir Funktionen und Daten
+getrennt. Die Daten werden in Variablen gespeichert. Funktionen funktionieren
+nach dem EVA-Prinzip. In der Regel erwartet eine Funktion eine Eingabe von
+Daten, verarbeitet diese Daten und gibt Daten zurück. 
+
+Angenommen, wir wollten ein Programm zur Verwaltung von Lottoscheinen schreiben.
+Zu einem Lottoschein wollen wir Name, Adresse und die angekreuzten Zahlen
+speichern. Dann müssten wir mit unserem bisherigen Wissen folgende Variablen pro
+Lottoschein einführen:
+
+* vorname
+* nachname
+* strasse
+* postleitzahl
+* stadt
+* liste_mit_sechs_zahlen
+
+Wenn jetzt viele Spielerinnen und Spieler Lotto spielen wollen, wie gehen wir
+jetzt mit den Daten um? Legen wir eine Liste für die Vornamen und eine Liste für
+die Nachnamen usw. an? Und wenn jetzt der 17. Eintrag in der Liste mit den sechs
+angekreuzten Lottozahlen sechs Richtige hat, suchen wir dann den 17. Eintrag in
+der Liste mit den Vornamen und den 17. Eintrag in der Liste mit den Nachnamen
+usw.? Umständlich...
+
+Die Idee der objektorientierten Programmierung ist, für solche Szenarien
+**Objekte** einzuführen. Ein Objekt fasst verschiedene Eigenschaften wie hier
+Vorname, Nachname, Straße, usw. zu einem Objekt Lottoschein zusammen. In der
+Informatik wird eine Eigenschaft eines Objekts **Attribut** genannt. 
+
+Damit hätten wir erst einmal nur einen neuen Datentyp. Ein Objekt macht noch
+mehr aus, denn zu dem neuen Datentyp kommen noch Funktionen dazu, die die
+Verwaltung des Objektes erleichtern. Funktionen, die zu einem Objekt gehören,
+nennt man **Methoden**.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/46yolPy-2VQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Klassen und Objekte
+
+Im Folgenden sehen Sie, wie ein Objekt in Python definiert wird. Die
+Implementierung erfolgt als sogenannte **Klasse**. 
 
 ```{code-cell} ipython3
-alter = 12
-if (6 <= alter) and (alter <= 14):
-    print('Du darfst eine Kinderfahrkarte kaufen.')
-```
+class Adresse:
+    def __init__(self, strasse, hausnummer, plz, stadt, b):
+        self.strasse = strasse
+        self.hausnummer = hausnummer
+        self.postleitzahl = plz
+        self.stadt = stadt
+        self.bundesland = b
+        self.nachname = nachname  
+``` 
 
-Im Folgenden beschäftigen wir uns daher mit der Verknüpfung von booleschen
-Ausdrücken. Dieses Fachgebiet nennt man auch boolsche Algebra oder digitale
-Logik. Wikipedia fasst hier die wichtigsten Regeln zur booleschen Algebra
-zusammen: https://de.wikipedia.org/wiki/Boolesche_Algebra 
+Eingeleitet wird eine Klasse mit dem Schlüsselwort `class` und dann dem Namen
+der Klasse. Da Klassen Objekte sind, ist es Standard, den ersten Buchstaben des
+Klassennamens groß zu schreiben. Um Variablen von Objekten leichter zu
+unterscheiden, werden Variablennamen klein geschrieben.
 
-Wir werden in dieser Vorlesung uns aber auf die logischen Verknüpfungen oder
-logischen Operatoren 
+Danach folgt ein Abschnitt namens `def __init__(self):`, in dem die
+Eigenschaften der Klasse aufgelistet werden. `init` steht dabei für
+initialisieren, also den ersten Zustand, den das Objekt später haben wird. 
 
-* UND
-* ODER
-* NICHT
+Wie Sie sehen, können die Eingabe-Parameter der `init()`-Methode die gleichen
+Namen tragen wie die Attribute der Klasse, also `self.strasse = strasse`, müssen
+sie aber nicht. Das Beispiel `self.postleitzahl = plz` zeigt, dass das Attribut
+`self.postleitzahl` einfach den Wert des 4. Parameters bekommt, egal wie der
+heißt.
 
-beschränken. Nun wenden wir uns der Umsetzung von logischen Verknüpfungen in
-Python zu.
-
-Bedingung 1 | Bedingung 2 | Ergebnis mit ```and```
-------------|-------------|--------------------------
-True | True | True
-False | True | False
-True | False | False
-False | False | False
-
-+++
-
-Beispiel: Zwei Personen wollen einen Kinofilm sehen, der erst ab 18 erlaubt ist. Nur wenn beide volljährig sind, können sie den Film gemeinsam besuchen:
+Definieren wir jetzt unsere erste Adresse, der Eingabe-Parameter `self` wird
+dabei weggelassen (warum kommt später).
 
 ```{code-cell} ipython3
-alter_person1 = 19
-alter_person2 = 22
-if (alter_person1 >= 18) and (alter_person2 >= 18):
-    print('Sie duerfen beide den Film sehen.')
-else:
-    print('Vielleicht darf einer von Ihnen den Film sehen, aber nicht beide.')
+adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
 ```
 
-Die sogenannte Wahrheitstabelle für die OR-Verknüpfung sieht folgendermaßen aus:
-
-Bedingung 1 | Bedingung 2 | Ergebnis mit ```or```
-------------|-------------|--------------------------
-True | True | True
-False | True | True
-True | False | True
-False | False | False
-
-Beispiel: Zwei Personen wollen ein Auto mieten, dazu muss aber mindestens einer von beiden den Führerschein besitzen.
+Geben wir als nächstes aus, was in der Variable `adresse_fra_uas` gespeichert
+ist. Probieren wir es mit der `print()`-Funktion:
 
 ```{code-cell} ipython3
-person1_hat_fuehrerschein = True
-person2_hat_fuehrerschein = False
-
-if (person1_hat_fuehrerschein == True) or (person2_hat_fuehrerschein == True):
-    print('Sie duerfen das Auto mieten.')
-else:
-    print('Keiner von beiden hat einen Fuehrerschein, geht nicht.')
+print(adresse_fra_uas)
 ```
 
-Übrigens, der Vergleich `person1_hat_fuehrerschein == True` ist eigentlich
-doppelt gemoppelt, da ja die Variable bereits den Datentyp bool hat. Wir könnten
-also auch kürzer schreiben
+Wie Sie sehen, wird der Name der Klasse und der Speicherort im Speicher
+angegeben, aber nicht der Inhalt. Die Funktion `print()` ist nicht für den
+Datentyp `Adresse` entwickelt worden. Schließlich können die Python-Entwickler
+nicht wissen, welche Klassen Sie entwickeln... 
+
+Aber wir kommen wir jetzt an den Inhalt des Objektes `adresse_fra_uas`? Mit dem
+Punktoperator.
 
 ```{code-cell} ipython3
-person1_hat_fuehrerschein = True
-person2_hat_fuehrerschein = False
-
-if person1_hat_fuehrerschein or person2_hat_fuehrerschein :
-    print('Sie duerfen das Auto mieten.')
-else:
-    print('Keiner von beiden hat einen Fuehrerschein, geht nicht.')
+print(adresse_fra_uas.strasse)
 ```
-
-Die sogenannte Wahrheitstabelle für die NOT-Verknüpfung sieht folgendermaßen aus:
-
-Bedingung 1 | Ergebnis mit ```not```
-------------|--------------------------
-True | False
-False | True 
-
-Beispiel: Wenn eine Person keinen Führerschein hat, muss sie den Bus nehmen.
 
 ```{code-cell} ipython3
-person_hat_fuehrerschein = False
-
-if not person_hat_fuehrerschein:
-    print('Sie muessen Bus fahren.')
-else:
-    print('Sie duerfen Auto fahren.')
+print(adresse_fra_uas.postleitzahl)
 ```
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/075l6R42tkQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-+++
-
-## Schleifen mit Bedingung "while"
-
-Bei einer Wiederholung mit Bedingung wird eine Anweisung solange wiederholt, bis
-die Bedingung erfüllt wird. Sie hat folgende Struktur:
-
-```python
- while Bedingung: 
-        anweisungsblock
-```
-
-Die bedingte Wiederholung wird mit dem Schlüsselwort `while` eingeleitet. Dann
-folgt die Bedingung, die mit einem `:` abgeschlossen wird. Alle Anweisungen, die
-wiederholt werden sollen, werden eingerückt. Diesen Teil nennt man das
-Schleifeninnere, die Zeile `while Bedingung:` nennt man den Schleifenkopf. 
-
-Beispiel: Wir möchten ein Programm schreiben, das von 10 bis 0 herunterzählt.
-Für den Countdown benutzen wir eine Variable als Zwischenspeicher. Dies würde in
-Python wie folgt umgesetzt:
+Damit können wir auch ganz normal rechnen, wenn das Attribut eine Zahl ist:
 
 ```{code-cell} ipython3
-print('Dieses Programm zählt von 10 runter...')
-countdown = 10
-while countdown >= 0:
-    print(countdown)
-    countdown = countdown - 1
-print('Jetzt hebt die Rakete ab!')
+adresse_fra_uas.postleitzahl + 11111
 ```
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sXLicTuJzB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Mit dem Punktoperator können wir Attribute eines Objektes auch verändern.
+Schauen wir uns zunächst an, welchen Inhalt `adress_fra_uas.postleitzahl` hat,
+dann setzen wir eine neue Postleitzahl und schauen erneut, welchen Inhalt
+`adress_fra_uas.postleitzahl` jetzt hat:
+
+```{code-cell} ipython3
+print('davor: ')
+print(adresse_fra_uas.postleitzahl)
+
+adresse_fra_uas.postleitzahl = 77777
+
+print('danach: ')
+print(adresse_fra_uas.postleitzahl)
+```
+
+**Mini-Übung**   
+
+Schreiben Sie eine Klasse, die Studierende mit den Eigenschaften
+* Vorname
+* Nachname
+* Matrikel-Nummer
+verwalten kann.
+
+Testen Sie anschließend Ihre Klasse, indem Sie ein Beispiel ausprobieren.
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+class Studierende:
+    def __init__(self, vorname, nachname, matrikelnummer):
+        self.vorname = vorname
+        self.nachname = nachname
+        self.matrikelnummer = matrikelnummer
+        
+# Test der Klasse
+student1 = Studierende('Alice', 'Wunderland', 123456)
+student2 = Studierende('Bob', 'Baumeister', 234567)
+student3 = Studierende('Charlie', 'Brown', 345678)
+
+print(student1.vorname)
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XxCZrT7Z3G4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Falls Sie sich näher mit dem self-Operator beschäftigen möchten, empfehle ich
+das nachfolgende Video.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CLoK-_qNTnU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+## Methoden
+
+Es ist bedauerlich, dass wir nicht eine `print()`-Funktion für unsere
+Adressen-Klasse zur Verfügung haben. Definieren wir uns einfach eine ...
+
+Da diese Funktion nicht allgemeingültig sein kann, sondern nur für die Objekte
+`Adresse` funktionieren kann, gehört sie auch folgerichtig zur Klasse selbst.
+Sie ist also keine Funktion, sondern eine Methode. 
+
+Eine Methode wird definiert, indem innerhalb des Anweisungsblocks der Klasse
+eine Funktion mit dem Schlüsselwort `def` definiert wird. Der erste Eingabewert
+muss zwingend der `self`-Parameter sein. Hier ein Beispiel für eine
+Print-Methode: 
+
+```{code-cell} ipython3
+class Adresse:
+    def __init__(self, strasse, hausnummer, plz, stadt):
+        self.strasse = strasse
+        self.hausnummer = hausnummer
+        self.postleitzahl = plz
+        self.stadt = stadt
+    
+    def print(self):
+        print('Straße = ', self.strasse)
+        print('Hausnummer = ', self.hausnummer)
+        print('Postleitzahl = ', self.postleitzahl)
+        print('Stadt = ', self.stadt)
+```
+
+```{code-cell} ipython3
+adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
+adresse_fra_uas.print()
+```
+
+Vielleicht möchten wir die Print-Ausgabe unterschiedlich haben, z.B. alles in
+einer Zeile. Wir erweitern unsere Klasse mit einer neuen Methode namens
+`print_einzeilig()`:
+
+```{code-cell} ipython3
+class Adresse:
+    def __init__(self, strasse, hausnummer, plz, stadt):
+        self.strasse = strasse
+        self.hausnummer = hausnummer
+        self.postleitzahl = plz
+        self.stadt = stadt
+    
+    def print(self):
+        print('Straße: ', self.strasse)
+        print('Hausnummer: ', self.hausnummer)
+        print('Postleitzahl: ', self.postleitzahl)
+        print('Stadt: ', self.stadt)
+        
+    def print_einzeilig(self):
+        print('{} {}, {} {}'.format(self.strasse, self.hausnummer, self.postleitzahl, self.stadt ))
+```
+
+```{code-cell} ipython3
+adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
+
+print('zuerst so:')
+adresse_fra_uas.print()
+
+print('\n und \ndann einzeilig:')
+adresse_fra_uas.print_einzeilig()
+```
+
+````{admonition} Mini-Übung
+:class: miniexercise
+Fügen Sie Ihrer Klasse zum Verwalten von Studierenden zwei Print-Funktionen
+hinzu. Die erste Print-Funktion soll in einer Zeile `Vorname Nachname (xxxxxx)`
+ausgeben, wobei das xxxxxx für die Matrikel-Nummer steht, also z.B.
+```
+Alice Wunderland (123456)
+```
+
+ausgeben. Die zweite soll `Nachname, Vorname (Matrikel-Nummer: xxxxxx)`
+ausgeben, also z.B.
+
+```
+Wunderland, Alice (Matrikel-Nummer: 123456)
+```
+````
+
+
+```{code-cell} ipython3
+# Ihr Code:
+
+class Studierende:
+    def __init__(self, vorname, nachname, matrikelnummer):
+        self.vorname = vorname
+        self.nachname = nachname
+        self.matrikelnummer = matrikelnummer
+        
+    def print_vorname_nachname_matrikelnummer(self):
+        print('{} {} ({})'.format(self.vorname, self.nachname, self.matrikelnummer))
+        
+    def print_nachname_vorname_matrikelnummer(self):
+        print('{}, {} (Matrikel-Nummer: {})'.format(self.nachname, self.vorname, self.matrikelnummer))
+        
+# Test der Klasse
+student1 = Studierende('Alice', 'Wunderland', 123456)
+student1.print_vorname_nachname_matrikelnummer()
+student1.print_nachname_vorname_matrikelnummer()
+
+student2 = Studierende('Bob', 'Baumeister', 234567)
+student2.print_vorname_nachname_matrikelnummer()
+student2.print_nachname_vorname_matrikelnummer()
+```
+
+Bisher hatten wir nur Methoden ohne weitere Eingabe-Parameter (natürlich mit dem
+self-Parameter, der gehört zu allen Methoden dazu). Methoden können aber auch
+weitere Parameter haben. Beispielsweise könnte man eine Print-Funktion
+schreiben, bei der durch einen Parameter gesteuert wird, ob die Adresse in vier
+oder in einer Zeile angezeigt wird:
+
+```{code-cell} ipython3
+class Adresse:
+    def __init__(self, strasse, hausnummer, plz, stadt):
+        self.strasse = strasse
+        self.hausnummer = hausnummer
+        self.postleitzahl = plz
+        self.stadt = stadt
+    
+    def print(self, einzeilig):
+        if einzeilig == True:
+            print('{} {}, {} {}'.format(self.strasse, self.hausnummer, self.postleitzahl, self.stadt ))
+        else:    
+            print('Straße: ', self.strasse)
+            print('Hausnummer: ', self.hausnummer)
+            print('Postleitzahl: ', self.postleitzahl)
+            print('Stadt: ', self.stadt)
+    
+```
+
+Probieren wir es aus:
+
+```{code-cell} ipython3
+adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
+
+print('zuerst einzeilig:')
+adresse_fra_uas.print(True)
+
+print('\nund dann vierzeilig:')
+adresse_fra_uas.print(False)
+```
+
+Zuletzt betrachten wir noch Methoden mit Rückgabewert. Wie bei Funktionen auch
+genügt es mit dem Schlüsselwort `return` den Rückgabewert zu definieren. Sehr
+häufig ist dabei der Fall, dass eine Eigenschaft des Objektes zurückgegeben
+wird. Dann wird in der Regel der Methodenname
+
+```
+get_attribut()
+```
+
+gewählt.
+
+Aber prinzipiell kann der Rückgabewert auch eine Berechnung oder ähnliches
+enthalten.
+
+```{code-cell} ipython3
+class Adresse:
+    def __init__(self, strasse, hausnummer, plz, stadt):
+        self.strasse = strasse
+        self.hausnummer = hausnummer
+        self.postleitzahl = plz
+        self.stadt = stadt
+    
+    def print(self, einzeilig):
+        if einzeilig == True:
+            print('{} {}, {} {}'.format(self.strasse, self.hausnummer, self.postleitzahl, self.stadt ))
+        else:    
+            print('Straße: ', self.strasse)
+            print('Hausnummer: ', self.hausnummer)
+            print('Postleitzahl: ', self.postleitzahl)
+            print('Stadt: ', self.stadt)
+ 
+    def get_stadt(self, grossschreibung):
+        if grossschreibung == True:
+            return self.stadt.upper()
+        else:
+            return self.stadt
+```
+
+Und auch diese Methode probieren wir aus. Je nachdem, ob die Methode mit `True`
+oder `False` aufgerufen wird, gibt die Methode den String `self.stadt` zurück,
+entweder normal geschrieben oder in Großbuchstaben. Dabei haben wir die Methode
+`.upper()` verwendet, die alle Buchstaben eines Strings in Großbuchstaben
+verwandelt.
+
+```{code-cell} ipython3
+adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
+
+print('zuerst normal:')
+s = adresse_fra_uas.get_stadt(False)
+print(s)
+
+print('\nund dann groß geschrieben:')
+s = adresse_fra_uas.get_stadt(True)
+print(s)
+```
+
+````{admonition} Mini-Übung
+:class: miniexercise 
+Erweitern Sie die Klasse zum Verwalten von Studierenden (Vorname, Name, Matrikel-Nummer) um ein Attribut vorleistung_bestanden. Anfangs sollte dieses Attribut auf `False` gesetzt werden. Implementieren Sie eine Methode, die es ermöglicht, dieses Attribut auf `True` zu setzen.
+
+Testen Sie anschließend Ihre erweiterte Klasse.
+````
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+class Studierende:
+    def __init__(self, vorname, nachname, matrikelnummer):
+        self.vorname = vorname
+        self.nachname = nachname
+        self.matrikelnummer = matrikelnummer
+        self.vorleistung_bestanden = False
+
+    def print_vorname_nachname_matrikelnummer(self):
+        print('{} {} (Matrikel-Nummer: {})'.format(self.vorname, self.nachname, self.matrikelnummer))
+
+    def print_nachname_vorname_matrikelnummer(self):
+        print('{}, {} (Matrikel-Nummer: {})'.format(self.nachname, self.vorname, self.matrikelnummer))
+        
+    def setze_vorleistung_bestanden(self):
+        self.vorleistung_bestanden = True
+        
+student = Studierende('Bob', 'Baumeister', 234567)
+
+print('Vorleistung bestanden???')
+print(student.vorleistung_bestanden)
+
+student.setze_vorleistung_bestanden()
+print('Vorleistung bestanden???')
+print(student.vorleistung_bestanden)  
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/58IjjwHs_4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

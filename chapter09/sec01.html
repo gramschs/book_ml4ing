@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Series für eindimensionale Daten &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Logistische Regression ersetzt Perzeptron &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logistische Regression" href="../chapter10/sec00.html" />
-    <link rel="prev" title="Pandas anstatt Excel" href="sec00.html" />
+    <link rel="next" title="Logistische Regression lernt mit Maximum-Likelihood" href="sec02.html" />
+    <link rel="prev" title="Logistische Regression" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -150,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter03/sec00.html">
+  <a class="reference internal" href="../chapter02/sec00.html">
    Crashkurs Python (Teil 1)
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -160,21 +162,77 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec01.html">
+     Datentypen, Variablen und Vergleiche
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec02.html">
+     Bool, Vergleiche und Programmverzweigung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec03.html">
+     Digitale Logik und Schleife mit Bedingung
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter03/sec00.html">
+   Crashkurs Python (Teil 2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec01.html">
-     Datentypen und Kontrollstrukturen
+     Liste und Zählschleife
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec02.html">
-     Woche 03 - Python Crashkurs (Teil 2)
+     Funktionen
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter03/sec03.html">
-     Woche 04 - Objektorientierte Programmierung und Module
+     Objektorientierung
     </a>
    </li>
   </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Datenexploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter04/sec00.html">
+   Pandas anstatt Excel
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec01.html">
+     Series für eindimensionale Daten
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter05/sec00.html">
+   Daten visualisieren mit Matplotlib
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -183,12 +241,22 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter06/sec00.html">
+   Lineare und polynomiale Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter07/sec00.html">
+   Datenvorverarbeitung und Modellbewertung
+  </a>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
    Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -212,43 +280,26 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="sec00.html">
-   Pandas anstatt Excel
+   Logistische Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Series für eindimensionale Daten
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter10/sec00.html">
-   Logistische Regression
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec01.html">
      Logistische Regression ersetzt Perzeptron
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec02.html">
+    <a class="reference internal" href="sec02.html">
      Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec03.html">
+    <a class="reference internal" href="sec03.html">
      Logistische Regression mit Scikit-Learn
     </a>
    </li>
@@ -313,7 +364,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter09/sec01.md"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter09/sec01.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -391,23 +442,6 @@ title="Source repository"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/chapter09/sec01.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
 title="Download source file"
 >
   
@@ -415,7 +449,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -469,13 +503,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-von-pandas">
-   Import von pandas
+  <a class="reference internal nav-link" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten">
+   Perzeptron ungeeignet bei nicht trennbaren Daten
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#series-aus-liste-erzeugen">
-   Series aus Liste erzeugen
+  <a class="reference internal nav-link" href="#logistische-funktion-ersetzt-heaviside-funktion">
+   Logistische Funktion ersetzt Heaviside-Funktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
   </a>
  </li>
 </ul>
@@ -487,7 +526,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Series für eindimensionale Daten</h1>
+                <h1>Logistische Regression ersetzt Perzeptron</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -503,13 +542,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-von-pandas">
-   Import von pandas
+  <a class="reference internal nav-link" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten">
+   Perzeptron ungeeignet bei nicht trennbaren Daten
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#series-aus-liste-erzeugen">
-   Series aus Liste erzeugen
+  <a class="reference internal nav-link" href="#logistische-funktion-ersetzt-heaviside-funktion">
+   Logistische Funktion ersetzt Heaviside-Funktion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
   </a>
  </li>
 </ul>
@@ -522,115 +566,249 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="series-fur-eindimensionale-daten">
-<h1>Series für eindimensionale Daten<a class="headerlink" href="#series-fur-eindimensionale-daten" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistische-regression-ersetzt-perzeptron">
+<h1>Logistische Regression ersetzt Perzeptron<a class="headerlink" href="#logistische-regression-ersetzt-perzeptron" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>TODO</p></li>
+<li><p>Sie können die <strong>logistische Funktion</strong> zeichnen.</p></li>
+<li><p>Sie können die <strong>Funktionsgleichung der logistischen Funktion</strong> angeben.</p></li>
+<li><p>Sie können das <strong>logistische Regressionsmodell</strong> schematisch darstellen.</p></li>
 </ul>
 </div>
 </section>
-<section id="import-von-pandas">
-<h2>Import von pandas<a class="headerlink" href="#import-von-pandas" title="Permalink to this headline">#</a></h2>
-<p>Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Tabellen und Zeitreihen. Die beiden grundlegenden Datenstrukturen sind
-<strong>Series</strong> und <strong>DataFrame</strong>. Dabei wird Series für Datenreihen genommen, also
-sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
-Datentyp DataFrame repräsentiert Tabllen, also sozusagen Matrizen bzw.
-verallgemeinerte zweidimensionale Arrays.</p>
-<p>Um das Modul pandas benutzen zu können, müssen wir es zunächst importieren. Es
-ist üblich, dabei dem Modul die Abkürzung <strong>pd</strong> zu geben, damit wir nicht immer
-pandas schreiben müssen, wenn wir eine Funktion aus dem pandas-Modul benutzen.</p>
-<div class="cell docutils container">
+<section id="perzeptron-ungeeignet-bei-nicht-trennbaren-daten">
+<h2>Perzeptron ungeeignet bei nicht trennbaren Daten<a class="headerlink" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten" title="Permalink to this headline">#</a></h2>
+<p>Das Perzeptron ist ein simples ML-Verfahren für die binäre Klassifikation.
+Allerdings ist das Perzeptron nur für trennbare Datensätze geeignet. Dazu
+schauen wir uns zwei Beispiele aus dem Männerfußball an. Ziel der folgenden
+Klassifikationsaufgabe ist es, anhand des Marktwertes eines Vereines zu
+klassifizieren, ob der Verein in der Bundesliga oder in der 2. Bundesliga
+spielt.</p>
+<p>Dazu laden wir als erstes den Datensatz <code class="docutils literal notranslate"><span class="pre">20220801_Marktwert_Bundesliga.csv</span></code>
+(Download
+<a class="reference external" href="https://nextcloud.frankfurt-university.de/s/GESBZzRyXq6dLNC/download">csv</a>;
+Quelle: <a class="reference external" href="https://www.transfermarkt.de">https://www.transfermarkt.de</a>; Stichtag: 01.08.2022).</p>
+<div class="cell tag_output-scroll docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># kürze das Modul pandas als pd ab, um Schreibarbeit zu sparen</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/20220801_Marktwert_Bundesliga.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Die ersten fünf Einträge lauten wie folgt:</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ligazugehörigkeit</th>
+      <th>Wert</th>
+      <th>Kadergröße</th>
+    </tr>
+    <tr>
+      <th>Verein</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>FC Bayern München</th>
+      <td>Bundesliga</td>
+      <td>870.23</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>Borussia Dortmund</th>
+      <td>Bundesliga</td>
+      <td>509.45</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>Bayer 04 Leverkusen</th>
+      <td>Bundesliga</td>
+      <td>455.35</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>RasenBallsport Leipzig</th>
+      <td>Bundesliga</td>
+      <td>486.18</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>VfL Wolfsburg</th>
+      <td>Bundesliga</td>
+      <td>239.65</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Die erste Spalte enthält den Vereinsnamen, die zweite Spalte listet die
+Ligazugehörigkeit (Bundesliga, 2. Bundesliga oder 3. Liga), die dritte Spalte
+beinhaltet den Marktwert des Vereins in Mio. Euro und die vierte Spalte listet
+die Anzahl der Spieler.</p>
+<p>Zuerst erkunden wie die Daten und lassen uns die Ligazugehörigkeit abhängig vom
+Marktwert visualisieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># teile die Datensätze nach Ligazugehörigkeit auf</span>
+<span class="n">data_liga1</span> <span class="o">=</span> <span class="n">data_raw</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bundesliga&#39;</span><span class="p">]</span>
+<span class="n">data_liga2</span> <span class="o">=</span> <span class="n">data_raw</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2. Bundesliga&#39;</span><span class="p">]</span>
+<span class="n">data_liga3</span> <span class="o">=</span> <span class="n">data_raw</span><span class="p">[</span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;3. Liga&#39;</span><span class="p">]</span>
+
+<span class="c1"># visualisiere Marktwert --&gt; Ligazugehörigkeit </span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;TeX Gyre Heros&#39;</span><span class="p">,</span> <span class="s1">&#39;sans-serif&#39;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga1</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga1</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Marktwert in Mio. Euro&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marktwerte deutscher Männerfußball am 01.08.2022&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sec01_5_0.png" src="../_images/sec01_5_0.png" />
+</div>
+</div>
+<p>Die Marktwerte der Bundesliga-Vereine sind vereinzelt so hoch, dass die
+einzelnen Vereine der 3. Liga als solche kaum erkennbar sind. Wir begrenzen
+daher den Marktwert auf 100 Mio. Euro.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga1</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga1</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Marktwert in Mio. Euro&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marktwerte deutscher Männerfußball am 01.08.2022&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sec01_7_0.png" src="../_images/sec01_7_0.png" />
+</div>
+</div>
+<p>Wie erkennen, dass ein Marktwert von 36 Mio. Euro die Erstligisten von den
+Zweitligisten trennt. Daher wäre für eine Klassifikation Bundesliga vs. 2.
+Bundesliga ein Perzeptron trainierbar. Eine solche Trennung funktioniert bei den
+Vereinen der 2. Bundesliga und der 3. Liga nicht. Wir betrachten nun nur noch 2.
+und 3. Liga.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga3</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Wert&#39;</span><span class="p">],</span> <span class="n">data_liga2</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Marktwert in Mio. Euro&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Marktwerte deutscher Männerfußball am 01.08.2022&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/sec01_10_0.png" src="../_images/sec01_10_0.png" />
+</div>
+</div>
+<p>Als erstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
+Bezeichnungen wie “3. Liga” und “2. Bundesliga” kann Python nämlich nicht
+rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
+üblicherweise die Zahlen 0 und 1 verwendet, also</p>
+<ul>
+    <li>3. Liga --> 0</li>
+    <li>2. Bundesliga --> 1</li>
+</ul>
+<p>Das Klassifikationsproblem lautet also: angenommen, ein
+Verein hat den Marktwert x. Gehört der Verein dann zur Klasse 1 (= 2.
+Bundesliga)?</p>
+<p>Als zweites verabschieden wir uns von dem Perzeptron. Anstatt eine Gerade zur
+Trennung einzuziehen, nehmen wir eine S-förmige Funktion. Diese S-förmige
+Funktion interpretieren wir als <strong>Wahrscheinlichkeit</strong> der Ligazugehörigkeit.
+Die Werte liegen dabei zwischen 0 und 1. Bei einer Wahrscheinlichkeit von 1 sind
+wir also 100 % sicher, dass der Verein zur Klasse 1 (= 2. Bundesliga) gehört.
+Bei einem Wert von 0.7 gehen wir mit 70 % Wahrscheinlichkeit davon aus, dass der
+Verein zur Klasse 1 (= 2. Bundesliga) gehört.</p>
+<p>Als drittes verwandeln wir die Wahrscheinlichkeit mit Werten <em>zwischen</em> 0 und 1
+in die Klassen 0 oder 1. Dazu nutzen wir die Heaviside-Funktion. Die komplette
+Vorgehensweise ist in der folgenden Grafik dargestellt.</p>
+<figure class="align-default" id="bundesliga-decision-function-annotated">
+<a class="reference internal image-reference" href="../_images/bundesliga_decision_function_annotated.pdf"><img alt="../_images/bundesliga_decision_function_annotated.pdf" src="../_images/bundesliga_decision_function_annotated.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Die S-förmige schwarz gestrichelte Kurve gibt die Wahrscheinlichkeit an, dass ein Verein zur 2. Bundesliga gehört. Da nicht nach einer Wahrscheinlichkeit gefragt ist, sondern nur nach 2. Bundesliga – ja oder nein – werden alle Vereine mit einer Wahrscheinlichkeitgrößer 50 % (also <span class="math notranslate nohighlight">\(\geq 0.5\)</span>) als Zweitligisten klassifiziert.</span><a class="headerlink" href="#bundesliga-decision-function-annotated" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Jetzt brauchen wir eine Funktion für die S-förmige Kurve, das wir dann mittels
+eines ML-Verfahrens an unsere Trainingsdaten anpassen können.</p>
 </section>
-<section id="series-aus-liste-erzeugen">
-<h2>Series aus Liste erzeugen<a class="headerlink" href="#series-aus-liste-erzeugen" title="Permalink to this headline">#</a></h2>
-<p>Erzeugt werden kann ein Series-Objekt beispielsweise direkt aus einer Liste. Im
-folgenden Beispiel haben wir Altersangaben in einer Liste, also <code class="docutils literal notranslate"><span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> und initialisieren über <code class="docutils literal notranslate"><span class="pre">Series</span></code> die Variable <code class="docutils literal notranslate"><span class="pre">alter</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    25
-1    22
-2    43
-3    37
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Was ist aber jetzt der Vorteil von Pandas? Warum nicht einfach bei der Liste
-bleiben oder aber, wenn Performance wichtig sein sollte, ein eindimensionales
-Numpy-Array nehmen? Der wichtigste Unterschied ist der <strong>Index</strong>.</p>
-<p>Bei einer Liste oder einem Numpy-Array ist der Index implizit definiert. Damit
-ist gemeint, dass bei der Initialisierung automatisch ein Index 0, 1, 2, 3, …
-angelegt wird. Wenn bei einer Liste <code class="docutils literal notranslate"><span class="pre">l</span> <span class="pre">=</span> <span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> auf das zweite
-Element zugegriffen werden soll, dann verwenden wir den Index 1 (zur Erinnerung:
-Python zählt ab 0) und schreiben</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Element der Liste: &quot;</span><span class="p">,</span> <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. Element der Liste:  22
-</pre></div>
-</div>
-</div>
-</div>
-<p>Das gleiche gilt für das Numpy-Array, das ebenfalls die Integer 0, 1, 2, 3
-verwendet, um das folgende Array zu indizieren:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Element des Arrays: &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. Element des Arrays:  22
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Datenstruktur Series ermöglich es aber, einen expliziten Index zu setzen.
-Über den optionalen Parameter <code class="docutils literal notranslate"><span class="pre">index=</span></code> speichern wir als Zusatzinformation noch
-ab, von welcher Person das Alter abgefragt wurde. In dem Fall sind es die vier
-Personen Alice, Bob, Charlie und Dora.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Dora&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
-Bob        22
-Charlie    43
-Dora       30
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
+<section id="logistische-funktion-ersetzt-heaviside-funktion">
+<h2>Logistische Funktion ersetzt Heaviside-Funktion<a class="headerlink" href="#logistische-funktion-ersetzt-heaviside-funktion" title="Permalink to this headline">#</a></h2>
+<p>Beim Perzeptron wird auf die gewichtete Summe von Inputs die Heaviside-Funktion
+angewandt. So simpel die Heaviside-Funktion <span class="math notranslate nohighlight">\(\phi\)</span> auch ist, sie hat einen
+entscheidenen Nachteil. Die Heaviside-Funktion ist unstetig, sie springt von
+Null auf Eins. Diese Sprungstelle hat die <strong>logistische Funktion</strong> nicht.</p>
+<p>Die logistische Funktion ist defininiert als</p>
+<div class="math notranslate nohighlight">
+\[\sigma(z) = \frac{1}{1+e^{-z}}.\]</div>
+<p>Um die logistische Funktion abzukürzen, verwenden wir dabei den griechischen
+Buchstaben Sigma <span class="math notranslate nohighlight">\(\sigma\)</span>, weil die logistische Funktion auch
+<strong>Sigmoid-Funktion</strong> genannt wird. In der folgenden Abbildung ist der
+Funktionsgraph der logistischen Funktion dargestellt.</p>
+<figure class="align-default" id="plot-logit-function">
+<a class="reference internal image-reference" href="../_images/plot_logit_function.pdf"><img alt="../_images/plot_logit_function.pdf" src="../_images/plot_logit_function.pdf" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Funktionsgraph der logistischen Funktion, auch Sigmoid-Funktion genannt</span><a class="headerlink" href="#plot-logit-function" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Damit haben wir die Bausteine des logistischen Regressionmodells komplettiert.
+Genau wie bei der linearen Regression oder beim Perzeptron werden zuerst die
+einzelnen Inputs gewichtet und aufsummiert. Auf die gewichtete Summe wird dann
+die logistische Funktion als Aktivierungsfunktione angewendet. Das Ergebnis ist
+die Wahrscheinlichkeit für die Klasse mit der Bezeichnung 1 (in unserem Beispiel
+die Zugehörigkeit zur 2. Bundesliga). Zuletzt wird noch die Heaviside-Funktion
+als Schwellenwertfunktion angewendet, um aus der Wahrscheinlichkeit eine Klasse
+zu machen.</p>
+<p>Schematisch dargestellt sieht das logistische Regressionsmodell also
+folgendermaßen aus:</p>
+<figure class="align-default" id="topology-logistic-regression">
+<a class="reference internal image-reference" href="../_images/topology_logistic_regression.svg"><img alt="../_images/topology_logistic_regression.svg" src="../_images/topology_logistic_regression.svg" width="600px" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Das logistische Regressionsmodell als neuronales Netz formuliert.</span><a class="headerlink" href="#topology-logistic-regression" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Mathematisch formuliert lautet das logistische Regressionsmodell folgendermaßen:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{P} = \sigma\left(\sum_{i=0}^{N} x_i \omega_i\right) = \frac{1}{1+e^{-\sum x_i \omega_i}} 
+\rightsquigarrow \hat{y} = \begin{cases} 0: &amp; \hat{P} &lt; 0.5 \\ 1: &amp; \hat{P} \geq 0.5 \end{cases} \end{split}\]</div>
+</section>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>In diesem Abschnitt haben wir das logistische Regressionsmodell formuliert. Als
+nächstes betrachten wir ein Lernverfahren, um die Gewichte des logistischen
+Regressionsmodells zu erlernen.</p>
 </section>
 </section>
 
@@ -665,13 +843,13 @@ dtype: int64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pandas anstatt Excel</p>
+            <p class="prev-next-title">Logistische Regression</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter10/sec00.html" title="next page">
+    <a class='right-next' id="next-link" href="sec02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logistische Regression</p>
+        <p class="prev-next-title">Logistische Regression lernt mit Maximum-Likelihood</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

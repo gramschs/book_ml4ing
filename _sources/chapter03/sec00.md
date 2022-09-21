@@ -1,4 +1,8 @@
-# Crashkurs Python (Teil 1)
+# Crashkurs Python (Teil 2)
 
-In dieser Vorlesung werden wir Python für ML nutzen. Daher folgt in diesem
-Kapitel und im nächsten ein zweiteiliger Crashkurs in Python.
+Nachdem wir im ersten Teil unseres Chrashkurses die Python Basics wiederholt
+haben, werden wir uns in diesem Kapitel um
+* Sequentielle Datentypen: list
+* Zählschleifen: for
+* Funktionen 
+* Objektorientierung kümmern.

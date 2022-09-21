@@ -12,15 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# Pandas anstatt Excel
+# Logistische Regression
 
-Nachdem wir mit dem Scikit-Learn-Modell Perzeptron kleine, händisch erzeugte
-Beispiele klassifiziert haben, werden wir in den nächsten Abschnitten größere
-Datensätze klassifizieren. Typischerweise liegen größere Datensätze in Form von
-Tabllen vor. Das verwendetet Datenformat variiert dabei. Manchnal liegen die
-Daten im Excel-Format vor, sehr oft jedoch auch im CSV-Format. Davei steht CSV
-als Abkürzung für Comma Separated Values, also Werte die durch ein Komma
-getrennt werden.
-
-Um Daten in Tabellenform einzulesen und leicht zu verabeiten könnnen. gibt es in
-Python das Pandas-Modul, das wir uns nun näher ansehen werden.
+Das binäre Klassifikationsverfahren des Perzeptrons sortiert Datensätze in zwei
+Klassen. Ob dabei die Entscheidung für eine Klasse sehr knapp getroffen wird
+oder eindeutig erscheint, wird dabei nicht transparent. Im Folgenden
+beschäftigen wir uns mit einem binären Klassifikationsverfahren namens
+logistische Regression, das auf einer Prognose der Klassenwahrscheinlichkeit
+basiert.

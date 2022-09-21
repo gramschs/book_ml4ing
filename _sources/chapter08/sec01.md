@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Das Perzeptron
+# Grundbaustein neuronaler Netze
 
 Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir das Perzeptron vorstellen.
 

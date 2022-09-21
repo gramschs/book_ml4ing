@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Crashkurs Python (Teil 1) &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Crashkurs Python (Teil 2) &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Datentypen, Variablen und Vergleiche" href="sec01.html" />
-    <link rel="prev" title="Grundlegender Ablauf eines ML-Projektes" href="../chapter01/sec03.html" />
+    <link rel="next" title="Liste und Zählschleife" href="sec01.html" />
+    <link rel="prev" title="Digitale Logik und Schleife mit Bedingung" href="../chapter02/sec03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -149,29 +149,56 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter02/sec00.html">
    Crashkurs Python (Teil 1)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec01.html">
+    <a class="reference internal" href="../chapter02/sec01.html">
      Datentypen, Variablen und Vergleiche
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec02.html">
+    <a class="reference internal" href="../chapter02/sec02.html">
      Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec03.html">
+    <a class="reference internal" href="../chapter02/sec03.html">
      Digitale Logik und Schleife mit Bedingung
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Crashkurs Python (Teil 2)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec01.html">
+     Liste und Zählschleife
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     Funktionen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec03.html">
+     Objektorientierung
     </a>
    </li>
   </ul>
@@ -187,8 +214,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter08/sec00.html">
    Neuronale Netze: Grundbaustein Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -214,8 +241,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Pandas anstatt Excel
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -231,8 +258,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -389,7 +416,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Crashkurs Python (Teil 1)</h1>
+                <h1>Crashkurs Python (Teil 2)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -401,10 +428,16 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="crashkurs-python-teil-1">
-<h1>Crashkurs Python (Teil 1)<a class="headerlink" href="#crashkurs-python-teil-1" title="Permalink to this headline">#</a></h1>
-<p>In dieser Vorlesung werden wir Python für ML nutzen. Daher folgt in diesem
-Kapitel und im nächsten ein zweiteiliger Crashkurs in Python.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="crashkurs-python-teil-2">
+<h1>Crashkurs Python (Teil 2)<a class="headerlink" href="#crashkurs-python-teil-2" title="Permalink to this headline">#</a></h1>
+<p>Nachdem wir im ersten Teil unseres Chrashkurses die Python Basics wiederholt
+haben, werden wir uns in diesem Kapitel um</p>
+<ul class="simple">
+<li><p>Sequentielle Datentypen: list</p></li>
+<li><p>Zählschleifen: for</p></li>
+<li><p>Funktionen</p></li>
+<li><p>Objektorientierung kümmern.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -436,17 +469,17 @@ Kapitel und im nächsten ein zweiteiliger Crashkurs in Python.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chapter01/sec03.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../chapter02/sec03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Grundlegender Ablauf eines ML-Projektes</p>
+            <p class="prev-next-title">Digitale Logik und Schleife mit Bedingung</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="sec01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Datentypen, Variablen und Vergleiche</p>
+        <p class="prev-next-title">Liste und Zählschleife</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
