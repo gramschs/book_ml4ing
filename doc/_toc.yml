@@ -11,13 +11,26 @@ parts:
     - file: chapter01/sec01.md
     - file: chapter01/sec02.md
     - file: chapter01/sec03.md
+  - file: chapter02/sec00.md
+    sections:
+    - file: chapter02/sec01.md
+    - file: chapter02/sec02.md
+    - file: chapter02/sec03.md
   - file: chapter03/sec00.md
     sections:
-    - file: chapter03/sec01.ipynb
-    - file: chapter03/sec02.ipynb
-    - file: chapter03/sec03.ipynb
+    - file: chapter03/sec01.md
+    - file: chapter03/sec02.md
+    - file: chapter03/sec03.md
+- caption: Datenexploration
+  chapters:
+  - file: chapter04/sec00.md
+    sections:
+    - file: chapter04/sec01.md
+  - file: chapter05/sec00.md
 - caption: ML-Verfahren
   chapters:
+  - file: chapter06/sec00.md
+  - file: chapter07/sec00.md
   - file: chapter08/sec00.md
     sections:
     - file: chapter08/sec01.md
@@ -25,11 +38,8 @@ parts:
     - file: chapter08/sec03.md
   - file: chapter09/sec00.md
     sections:
-    - file: chapter09/sec01.md
-  - file: chapter10/sec00.md
-    sections:
-    - file: chapter10/sec01.ipynb
-    - file: chapter10/sec02.ipynb
-    - file: chapter10/sec03.ipynb
+    - file: chapter09/sec01.ipynb
+    - file: chapter09/sec02.ipynb
+    - file: chapter09/sec03.ipynb
     
   

@@ -12,336 +12,327 @@ kernelspec:
   name: python3
 ---
 
-# Datentypen, Variablen und Vergleiche
+# Liste und Zählschleife
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: hint
-* Sie kennen die einfachen Datentypen:
-    * **Integer**
-    * **Float**
-    * **String**
-* Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
-* Sie kennen den **print**-Befehl.
+* Datentyp Liste
+* Kontrollstrukturen: Schleifen mit "for"
 ```
+
+
+## Datentyp Liste
+
+Eine Liste ist eine Sequenz von Objekten, Dabei können die Objekte einen
+beliebigen Datentyp aufweisen. Z.B. könnte eine Liste Integer enthalten:
+
+```{code-cell} ipython3
+a = [34, 12, 54]
+print(a)
+```
+
+```{code-cell} ipython3
+a = ['Alice', 'Bob', 'Charlie']
+print(a)
+```
+
+Eine leere Liste wird durch `[]` definiert:
+
+```{code-cell} ipython3
+a = []
+print(a)
+```
+
+Der Datentyp heißt formal `list`:
+
+```{code-cell} ipython3
+type(a)
+```
+
+Genau wie bei Strings gibt die Funktion `len()` die Anzahl der Elemente zurück:
+
+```{code-cell} ipython3
+a = ['Hund', 'Katze', 'Maus', 'Affe','Elefant']
+len(a)
+```
+
+Es können verschiedene Datentypen in einer Liste gemischt werden:
+
+```{code-cell} ipython3
+a = [123, 'Ente', -42, 17.4, 0, 'Elefant']
+print(a)
+```
+
+```{admonition} Mini-Übung
+:class: miniexercise
+Erzeugen Sie eine Einkaufsliste, um einen Obstsalat zuzubereiten und speichern
+Sie diese Liste in der Variablen `einkaufsliste`. Lassen Sie dann den Computer
+bzw. den Python-Interpreter zählen, wie viele Zutaten Ihre Liste enthält und
+geben Sie dann die Anzahl aus.
+```
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+```
+
+Zwei Listen werden verkettet (“concatenate”) durch den `+` Operator:
+
+```{code-cell} ipython3
+a = [37, 3, 5] + [3, 35, 100]
+print(a)
+```
+
+Um an das Ende der Liste ein neues Element einzufügen, verwendet man die Methode
+`append()`. Eine **Methode** ist eine spezielle Funktion, die zu dem Datentyp
+gehört und daher an die Variable angehängt wird, indem man einen Punkt schreibt
+und dann den Methodennamen.
+
+Was Methoden genau sind, werden wir noch lernen.
+
+```{code-cell} ipython3
+a = [34, 56, 23]
+print(a)
+
+a.append(42)
+print(a)
+```
+
+Aus der Liste können Elemente durch die `remove()`-Methode gelöscht werden.
+Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
+übergeben.
+
+```{code-cell} ipython3
+a = [34, 56, 23, 42]
+print(a)
+
+a.remove(56)
+print(a)
+```
+
+```{admonition} Mini-Übung
+:class: miniexercise
+Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt und Zucker hinzu. Leider passen in Ihren Einkaufswagen nur maximal 5 Sachen. Lassen Sie überprüfen, ob Ihre Einkaufsliste nun mehr als 5 Zutaten enthält. Falls ja, lassen Sie eine Warnung ausgeben.
+```
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ihF8bZoauBs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Listen sind (übrigens genau wie Strings) ein **sequentieller Container**.
+
+Sequentielle Container sind Sammlungen von Datenobjekten. Manchmal werden sie
+auch kurz als **Sequenzen** abgekürzt. Sequentielle Container sind mit ganzen
+Zahlen, also Integern, durchnummeriert. Die Nummerierung beginnt bei 0. Die
+Nummer eines Elementes aus der Sequenz nennt man Index. Umgangssprachlich könnte
+man den Index auch als Hausnummer bezeichnen.
+
+In einer Sequenz hat also das erste Element den Index 0. Das zweite Element hat
+den Index 1 usw. Um ein einzelnes Element einer Sequenz herausgreifen zu können,
+schreibt man `s[i]`. Dabei ist s der Name der Sequenz. Um einfach auf das letzte
+Element einer Sequenz zugreifen zu können, hat Python den Index -1 eingeführt.
+
+Probieren wir ein paar Beispiele aus:
+
+```{code-cell} ipython3
+a = [34, 56, 23, 42]
+print('Das erste Element in der Liste ist: ')
+erstes = a[0]
+print(erstes)
+```
+
+Für sequentielle Container und damit auch insbesondere für Listen bietet Python
+Standardfunktionen. Hier die wichtigsten:
+
+* `liste[i]` gibt das i-te Element von `liste` zurück
+* `liste[i:j]` gibt die Elemente i bis j-1 zurück
+* `liste[start:ende:schrittweite]` gibt die Elemente von Index `start` bis
+  `ende-1` mit einer Schrittweite aus 
+* `len(liste)` gibt die Anzahl der Elemente von liste zurück
+* `min(liste)` gibt das kleinste Element von `liste` zurück
+* `max(liste)` gibt das größte Element von `liste` zurück
+* `x in liste` gibt den Wahrheitswert `True` zurück, wenn `x` in der Sequenz
+  `liste` enthalten ist
+* `liste1 + liste2` verknüpft `liste1` und `liste2`
+* `n * liste` generiert `n` Kopien der Sequenz `liste`
+
+
+Probieren wir sie an Beispielen aus. Denken Sie sich eigene Beispiele aus, um
+die Funktionen kennenzulernen:
+
+```{code-cell} ipython3
+liste = [1,2,'drei','VIER',5]
+liste[3]
+```
+
+```{code-cell} ipython3
+liste[2:4]
+```
+
+```{code-cell} ipython3
+#max(liste)
+```
+
+```{code-cell} ipython3
+liste = [1,2,3,4,5]
+max(liste)
+```
+
+```{code-cell} ipython3
+liste = ['a', 'b', 'c', 'd', 'e']
+max(liste)
+```
+
+```{code-cell} ipython3
+liste = ['a', 'b', 'c', 'd', 'e']
+if 'a' in liste:
+    print('Das a ist dabei!')
+else:
+    print('Das a ist leider nicht in der Liste.')
+```
+
+```{admonition} Mini-Übung
+:class: miniexercise  
+Bleiben wir beim Obsalat, bei Ihrem ursprünglichen Rezept. Erzeugen Sie zunächst
+die Liste. Lassen Sie dann den Computer überprüfen, ob schon Zimt und Zucker auf
+der Liste stehen. Wenn noch Platz im Einkaufswagen ist (maximal 5 Zutaten),
+fügen Sie den Zimt dazu. Wenn dann noch Platz im Einkaufswagen ist, fügen Sie
+auch noch den Zucker hinzu. Lassen Sie zuletzt das erste Element der Liste
+ausgeben. 
+```
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_XzWPXvya2w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 +++
 
-## Einfache Datentypen
-
-Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und
-Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
-datengestütztes Prozessmanagement folgendermaßen dar:
-
-```{figure} pics/fig01_prozess.png
----
-width: 600px
-name: fig01_prozess
----
-Schematische Darstellung der Vorgehensweise im datengestützten Prozessmanagement
-```
-
-+++
-
-Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem
-Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0
-und 1 gespeichert. Damit es für uns Programmierinnen und Programmier einfacher
-wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.  
-
-**Datentypen** fassen gleichartige Objekte zusammen und stellen den
-Programmiererinnen und Programmieren passende Operationen zur Verfügung. Es
-hängt von der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie
-diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.
-
-In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen
-* Integer,
-* Float,
-* String und
-* Bool.
-
-+++
-
-### Integer und Float 
-
-In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
-den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
-in der Mathematik als ganze Zahlen bezeichnet. In der Informatik ist der
-englische Begriff am gebräuchlisten: Integer. 
-
-Mit Integern können wir ganz normal rechnen, also Operationen ausführen:
-
-```{code-cell} ipython3
-2+3
-```
-
-```{code-cell} ipython3
-2*3
-```
-
-```{code-cell} ipython3
-6-7
-```
-
-```{code-cell} ipython3
-3*(4+7)
-```
-
-```{code-cell} ipython3
-25/5
-```
-
-```{code-cell} ipython3
-4**2
-```
-
-Mit einer Operation verlassen wir aber bereits den Bereich der ganzen Zahlen,
-den Bereich der Integers. `25/5` ist wieder eine ganze Zahl, nicht jedoch
-`25/3`. Damit sind wir bei den Fließkommazahlen, den sogenannten Floats. Zur
-Verfügung stehen auch hier die üblichen Operationen.
-
-Achtung: Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein
-Komma.
-
-```{code-cell} ipython3
-2.3 + 4.5
-```
-
-```{code-cell} ipython3
-5.6 - 2.1
-```
-
-```{code-cell} ipython3
-2.1 * 3.5
-```
-
-```{code-cell} ipython3
-3.4 / 1.7
-```
-
-```{code-cell} ipython3
-3.4 ** 2
-```
-
-```{code-cell} ipython3
-3.5 * (2.6 - 3.8 / 1.9)
-```
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VtiDkRDPA_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-+++
-
-### String
-
-Daten sind aber sehr oft keine Zahlen. Beispielsweise könnte man sich
-vorstellen, eine Einkaufsliste zu erstellen und diese im Computer oder in einer
-Notiz-App auf dem Handy zu speichern. Eine solche Zeichenkette heißt in der
-Informatik String. Mit Zeichen meint man dabei Zahlen, Buchstaben oder andere
-Zeichen wie beispielsweise !"§$%&/()=?.
-
-Strings werden in Python durch einfache Hochkomma oder Anführungszeichen
-definiert.
-
-```{code-cell} ipython3
-'Dies ist ein String!'
-```
-
-Mit Strings kann man ebenfalls "rechnen", nur ist das Ergebnis vielleicht anders als erwartet.
-
-```{code-cell} ipython3
-2 * 'Dies ist ein String!'
-```
-
-```{code-cell} ipython3
-'String 1 ' + 'String 2' 
-```
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sTEf4_mrLvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
-
-
-## Variablen 
-
-Variablen sind beschriftete Schubladen. Oder anders formuliert sind Variablen
-Objekte, denen man einen Namen gibt. Technisch gesehen sind diese Schubladen ein
-kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen Schubladen
-aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
-Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von Pi oder die
-aktuelle Position des Mauszeigers können in den Schubladen enthalten sein. 
-
-### Zuweisung
-
-Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu
-speichern. Eine Variable wird durch Zuweisung erzeugt. Damit meinen wir, dass
-eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt wird. Das
-erstmalige Füllen der Schublade nennt man in der Informatik auch Initialisieren.
-
-```{code-cell} ipython3
-x = 0.5
-```
-
-Sobald die Variable `x` in diesem Beispiel durch eine Zuweisung von 0.5 erstellt
-wurde, können wir sie verwenden:
-
-```{code-cell} ipython3
-x * 3
-```
-
-```{code-cell} ipython3
-x + 17
-```
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jfOLXKPGXJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-Wichtig ist, dass das `=` in der Informatik eine andere Bedeutung hat als in der
-Mathematik. `=` meint nicht das Gleichheitszeichen, sondern den sogenannten
-**Zuweisungsoperator**. Das ist in der Programmierung ein Kommando, das eine
-Schublade befüllt oder technischer ausgedrückt, ein Objekt einer Variable
-zuweist.
-
-Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
-sie verwendet werden können, sonst tritt ein Fehler auf:
-
-Schreiben Sie in die folgende Code-Zelle `n` und lassen Sie sie ausführen. Was
-passiert?
-
-```{code-cell} ipython3
-# Hier Ihr Code
-```
-
-Sehr häufig findet man Code wie
-
-```{code-cell} ipython3
-x = x + 1
-```
-
-Würden wir dies als Gleichung lesen, wie wir es aus der Mathematik gewohnt sind,
-x = x + 1, könnten wir x auf beiden Seiten subtrahieren und erhalten 0 = 1. Wir
-wissen, dass dies nicht wahr ist, also stimmt hier etwas nicht.
-
-In Python sind "Gleichungen" keine mathematischen Gleichungen, sondern
-Zuweisungen. "=" ist kein Gleichheitszeichen im mathematischen Sinne, sondern
-eine Zuweisung. Die Zuweisung muss immer in der folgenden Weise zweistufig
-gelesen werden:
-
-1. Berechne den Wert auf der rechten Seite (also x+1).
-2. Weise den Wert auf der rechten Seite dem auf der linken Seite stehenden
-   Variablennamen zu (in Python-Sprechweise: binde dem Namen auf der linken
-   Seite an das auf der rechten Seite angezeigte Objekt).
-
-
-```{code-cell} ipython3
-x = 4     
-x = x + 1
-x
-```
-
-### Richtlinien für Variablennamen:
-
-Früher war der Speicherplatz von Computern klein, daher wurden häufig nur kurze
-Variablennamen wie beispielsweise `i` oder `N` verwendet. Heutzutage ist es
-Standard, nur in Ausnahmefällen (z.B. in Schleifen, dazu kommen wir noch) kurze
-Variablennamen zu nehmen. Stattdessen werden Namen benutzt, bei denen man
-erraten kann, was die Variable für einen Einsatzzweck hat. Beispielsweise lässt
-der Code
-
-```{code-cell} ipython3
-m = 0.19
-n = 80
-b = n + m*n
-print(b)
-```
-
-nur schwer vermuten, was damit bezweckt wird. Dagegen erahnt man bei diesem Code
-schon eher, was bezweckt wird:
-
-```{code-cell} ipython3
-mehrwertsteuersatz = 19/100
-nettopreis = 80
-bruttopreis = nettopreis + mehrwertsteuersatz * nettopreis
-print(bruttopreis)
-```
-
-Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü
-oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll,
-lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte
-Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise
-
-`dateiname_alt` oder `dateiname_neu`
-
-wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
-der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter. 
-
-+++
-
-Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz,
-die `print()`-Anweisung. Mehr Details zur `print()`-Anweisung finden Sie hier:
-https://docs.python.org/3/tutorial/inputoutput.html
-
-+++
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-+++
-
-
-### Mischen von Datentypen 
-
-Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in
-einen Float umgewandelt. Mit Hilfe der Funktion `type()` können wir den
-Python-Interpreter bestimmen lassen, welcher Datentyp in einer Variable
-gespeichert ist. 
-
-```{code-cell} ipython3
-x = 25 * 5
-type(x)
-```
-
-```{code-cell} ipython3
-x = 25 / 5
-type(x)
-```
-Nicht immer ist es aber möglich, Datentypen zu mischen. Dann meldet Python einen
-Fehler.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1WqFJ5wsA4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-### Typumwandlungen (Type Casting)
-
-Es ist aber auch möglich, einen Datentyp explizit in einen anderen Datentyp
-umzuwandeln. Informatiker sagen dazu, einen Type Cast vorzunehmen. Soll ein
-Datentyp in einen Integer umgewandelt werden, so verwenden wir die Funktion
-`int()`. Die Umwandlung in einen Float erfolgt per `float()` und in einen String
-wandeln wir mit Hilfe der Funktion `str()` um. Das klappt nicht mit jedem
-Variableninhalt, die Umwandlung muss machbar sein, wie die folgenden Beispiele
-zeigen.     
-
-```{code-cell} ipython3
-x_old = 3
-x_new = str(x_old)
-type(x_new)
-```
-
-```{code-cell} ipython3
-x_old = '3'
-x_new = int(x_old)
-type(x_new)
-```
-
-Der folgende Code ist in Markdown geschrieben, da ansonsten eine Fehlermeldung
-erzeugt würde:
+## Zählschleifen "for"
+
+Bei einer While-Schleife wird ein Anweisungsblock solange wiederholt, bis die
+dazugehörige Bedingung nicht mehr erfüllt ist. Manchmal möchte man jedoch die
+Anweisungen auf alle Elemente einer Menge, d.h. einer Liste, anwenden. Dazu gibt
+es die For-Schleife. Sie hat folgende Syntax:
 
 ```python
-x_old = 'drei'
-x_new = int(x_old)
-type(x_new)
+for element in liste:
+    anweisungsblock
 ```
 
-+++
+Dabei betrachten wir zwei Fälle:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+1. Die Menge wird in Form einer Liste explizit aufgezählt, beispielsweise als
+   `[4,5,7,11,21]`.
+2. Die Menge wird als Zahlenbereich beschrieben, beispielsweise als
+   `range(3,9)`. 
 
-+++
+Schauen wir uns ein erstes Beispiel an. Jedes Element der Liste `[4,5,7,11,21]`
+soll um 2 erhöht werden.
 
+```python
+for zahl in [4,5,7,11,21]:
+    summe = zahl + 2
+    print("Wenn ich zu", zahl, "zwei addiere, erhalte ich", summe)
+print("Ich bin fertig!")
+```
 
+```{code-cell} ipython3
+for zahl in [4,5,7,11,21]:
+    summe = zahl + 2
+    print("Wenn ich zu", zahl, "zwei addiere, erhalte ich", summe)
+print("Ich bin fertig!")
+```
+
+```{admonition} Mini-Übung
+:class: miniexercise  
+Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben. 
+```
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ISo1uqLcVw8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
+Dafür stellt Python 3 die Funktion `range()`zur Verfügung. 
+
+```{code-cell} ipython3
+for zahl in range(17):
+    print(zahl)
+print('Fertig!')
+```
+
+Wird `range(endzahl)` mit nur einem Parameter aufgerufen, dann beginnt der
+Python-Interpreter stets von `0` an zu zählen. Dabei ist die `endzahl` nicht
+inkludiert, d.h. der Python-Interpreter stoppt bei `endzahl - 1`. Es ist auch
+möglich, eine Startzahl vorzugeben, also:
+
+```python
+range(startzahl, endzahl)
+```
+
+```{code-cell} ipython3
+for zahl in range(4,13):
+    print(zahl)
+print('Fertig!')
+```
+
+Zusätzlich kann der Zahlenbereich noch durch die Angabe einer Schrittweite
+spezifiziert werden. Dadurch ist es beispielsweise möglich, nur ungerade Zahlen
+zu generieren:
+
+```{code-cell} ipython3
+for zahl in range(3, 13, 2):
+    print(zahl)
+print('Fertig!')
+```
+
+```{admonition} Mini-Übung
+:class: miniexercise 
+Lassen Sie alle geraden Zahlen zwischen 100 und 120 ausgeben.
+```
+
+```{code-cell} ipython3
+# Hier Ihr Code:
+
+```
+
+Durch Angabe einer negativen Schrittweite kann auch rückwärts gezählt werden:
+
+```{code-cell} ipython3
+for zahl in range(13, 3, -2):
+    print(zahl)
+print('Fertig!')
+```
+
+For-Schleifen können auch ineinander verschachtelt werden. Das ist z.B.
+hilfreich, wenn man alle Paare durch Kombination bilden will.
+
+```{code-cell} ipython3
+for i in ['rot', 'grün', 'blau']:
+    for j in [1, 2, 5, 17]:
+        print('Kombination Farbe mit Zahl: ', i, j)
+```
+
+Natürlich kann eine for- auch mit einer if-else-Konstruktion kombiniert werden.
+Was vermuten Sie, macht folgender Code-Schnipsel?
+
+```{code-cell} ipython3
+for i in ['rot', 'grün', 'blau']:
+    for j in [1,2,3]:
+        if i == 'grün':
+            print('Kombination der Farbe GRÜN mit Zahl: ', j)
+        else:
+            print('Kombination Farbe mit Zahl: ', i, j)
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pQh5Idw2sKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
