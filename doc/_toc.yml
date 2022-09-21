@@ -26,6 +26,8 @@ parts:
   - file: chapter04/sec00.md
     sections:
     - file: chapter04/sec01.md
+    - file: chapter04/sec02.md
+    - file: chapter04/sec03.md
   - file: chapter05/sec00.md
 - caption: ML-Verfahren
   chapters:
