@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Series für eindimensionale Daten" href="sec01.html" />
+    <link rel="next" title="Series für Datenreihen" href="sec01.html" />
     <link rel="prev" title="Objektorientierung" href="../chapter03/sec03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,7 +222,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="sec01.html">
-     Series für eindimensionale Daten
+     Series für Datenreihen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     DataFrames für Tabellen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec03.html">
+     Statistik mit Pandas
     </a>
    </li>
   </ul>
@@ -246,12 +256,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter07/sec00.html">
-   Datenvorverarbeitung und Modellbewertung
+   ML-Workflow
   </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
-   Neuronale Netze: Grundbaustein Perzeptron
+   Perzeptron
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -261,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter08/sec01.html">
-     Das Perzeptron
+     Grundbaustein neuronaler Netze
     </a>
    </li>
    <li class="toctree-l2">
@@ -452,16 +462,15 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-anstatt-excel">
 <h1>Pandas anstatt Excel<a class="headerlink" href="#pandas-anstatt-excel" title="Permalink to this headline">#</a></h1>
-<p>TODO</p>
-<p>Nachdem wir mit dem Scikit-Learn-Modell Perzeptron kleine, händisch erzeugte
-Beispiele klassifiziert haben, werden wir in den nächsten Abschnitten größere
-Datensätze klassifizieren. Typischerweise liegen größere Datensätze in Form von
-Tabllen vor. Das verwendetet Datenformat variiert dabei. Manchnal liegen die
-Daten im Excel-Format vor, sehr oft jedoch auch im CSV-Format. Davei steht CSV
-als Abkürzung für Comma Separated Values, also Werte die durch ein Komma
-getrennt werden.</p>
-<p>Um Daten in Tabellenform einzulesen und leicht zu verabeiten könnnen. gibt es in
-Python das Pandas-Modul, das wir uns nun näher ansehen werden.</p>
+<p>Maschinelles LErnenist dazu gedacht, Muster in größeren Datenmengen zu finden.
+Der einfache Datenyp Liste reicht nicht aus, um größere Datenmengen effizient zu
+verwalten. Typischerweise liegen größere Datensätze in Form von Tabllen vor. Das
+verwendetet Datenformat variiert dabei. Manchnal liegen die Daten im
+Excel-Format vor, sehr oft jedoch auch im CSV-Format. Davei steht CSV als
+Abkürzung für Comma Separated Values, also Werte die durch ein Komma getrennt
+werden.</p>
+<p>Um Daten in Tabellenform einzulesen und leicht zu verarbeiten könnnen, gibt es
+in Python das Pandas-Modul, das wir uns in diesem Kapitel näher ansehen werden.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -503,7 +512,7 @@ Python das Pandas-Modul, das wir uns nun näher ansehen werden.</p>
     <a class='right-next' id="next-link" href="sec01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Series für eindimensionale Daten</p>
+        <p class="prev-next-title">Series für Datenreihen</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

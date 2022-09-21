@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Neuronale Netze: Grundbaustein Perzeptron" href="../chapter08/sec00.html" />
+    <link rel="next" title="Pandas anstatt Excel" href="../chapter04/sec00.html" />
     <link rel="prev" title="Funktionen" href="sec02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -206,13 +206,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  ML-Verfahren
+  Datenexploration
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter08/sec00.html">
-   Neuronale Netze: Grundbaustein Perzeptron
+  <a class="reference internal" href="../chapter04/sec00.html">
+   Pandas anstatt Excel
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -221,8 +221,57 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec01.html">
+     Series für Datenreihen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec02.html">
+     DataFrames für Tabellen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec03.html">
+     Statistik mit Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter05/sec00.html">
+   Daten visualisieren mit Matplotlib
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ML-Verfahren
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter06/sec00.html">
+   Lineare und polynomiale Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter07/sec00.html">
+   ML-Workflow
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter08/sec00.html">
+   Perzeptron
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter08/sec01.html">
-     Das Perzeptron
+     Grundbaustein neuronaler Netze
     </a>
    </li>
    <li class="toctree-l2">
@@ -239,23 +288,6 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter09/sec00.html">
-   Pandas anstatt Excel
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter09/sec01.html">
-     Series für eindimensionale Daten
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter10/sec00.html">
    Logistische Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -265,17 +297,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec01.html">
+    <a class="reference internal" href="../chapter09/sec01.html">
      Logistische Regression ersetzt Perzeptron
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec02.html">
+    <a class="reference internal" href="../chapter09/sec02.html">
      Logistische Regression lernt mit Maximum-Likelihood
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter10/sec03.html">
+    <a class="reference internal" href="../chapter09/sec03.html">
      Logistische Regression mit Scikit-Learn
     </a>
    </li>
@@ -340,7 +372,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter03/sec03.ipynb"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter03/sec03.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -631,13 +663,11 @@ Implementierung erfolgt als sogenannte <strong>Klasse</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bundesland</span> <span class="o">=</span> <span class="n">b</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nachname</span> <span class="o">=</span> <span class="n">nachname</span>  
 </pre></div>
 </div>
 </div>
@@ -662,22 +692,17 @@ dabei weggelassen (warum kommt später).</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: __init__() missing 1 required positional argument: &#39;b&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Geben wir als nächstes aus, was in der Variable <code class="docutils literal notranslate"><span class="pre">adresse_fra_uas</span></code> gespeichert
 ist. Probieren wir es mit der <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Funktion:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;__main__.Adresse object at 0x107b54880&gt;
 </pre></div>
 </div>
 </div>
@@ -694,10 +719,20 @@ Punktoperator.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nibelungenplatz
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60318
 </pre></div>
 </div>
 </div>
@@ -706,6 +741,11 @@ Punktoperator.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">+</span> <span class="mi">11111</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71429
 </pre></div>
 </div>
 </div>
@@ -723,6 +763,14 @@ dann setzen wir eine neue Postleitzahl und schauen erneut, welchen Inhalt
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;danach: &#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>davor: 
+60318
+danach: 
+77777
 </pre></div>
 </div>
 </div>
@@ -752,6 +800,11 @@ verwalten kann.</p></li>
 <span class="n">student3</span> <span class="o">=</span> <span class="n">Studierende</span><span class="p">(</span><span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;Brown&#39;</span><span class="p">,</span> <span class="mi">345678</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">student1</span><span class="o">.</span><span class="n">vorname</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice
 </pre></div>
 </div>
 </div>
@@ -797,6 +850,14 @@ Print-Methode:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Straße =  Nibelungenplatz
+Hausnummer =  1
+Postleitzahl =  60318
+Stadt =  Frankfurt am Main
+</pre></div>
+</div>
+</div>
 </div>
 <p>Vielleicht möchten wir die Print-Ausgabe unterschiedlich haben, z.B. alles in
 einer Zeile. Wir erweitern unsere Klasse mit einer neuen Methode namens
@@ -831,6 +892,19 @@ einer Zeile. Wir erweitern unsere Klasse mit einer neuen Methode namens
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1"> und </span><span class="se">\n</span><span class="s1">dann einzeilig:&#39;</span><span class="p">)</span>
 <span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print_einzeilig</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zuerst so:
+Straße:  Nibelungenplatz
+Hausnummer:  1
+Postleitzahl:  60318
+Stadt:  Frankfurt am Main
+
+ und 
+dann einzeilig:
+Nibelungenplatz 1, 60318 Frankfurt am Main
 </pre></div>
 </div>
 </div>
@@ -876,6 +950,14 @@ ausgeben, also z.B.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice Wunderland (123456)
+Wunderland, Alice (Matrikel-Nummer: 123456)
+Bob Baumeister (234567)
+Baumeister, Bob (Matrikel-Nummer: 234567)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Bisher hatten wir nur Methoden ohne weitere Eingabe-Parameter (natürlich mit dem
 self-Parameter, der gehört zu allen Methoden dazu). Methoden können aber auch
@@ -914,6 +996,18 @@ oder in einer Zeile angezeigt wird:</p>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">und dann vierzeilig:&#39;</span><span class="p">)</span>
 <span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zuerst einzeilig:
+Nibelungenplatz 1, 60318 Frankfurt am Main
+
+und dann vierzeilig:
+Straße:  Nibelungenplatz
+Hausnummer:  1
+Postleitzahl:  60318
+Stadt:  Frankfurt am Main
 </pre></div>
 </div>
 </div>
@@ -974,6 +1068,15 @@ verwandelt.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zuerst normal:
+Frankfurt am Main
+
+und dann groß geschrieben:
+FRANKFURT AM MAIN
+</pre></div>
+</div>
+</div>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
@@ -1008,6 +1111,14 @@ verwandelt.</p>
 <span class="n">student</span><span class="o">.</span><span class="n">setze_vorleistung_bestanden</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vorleistung bestanden???&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">vorleistung_bestanden</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vorleistung bestanden???
+False
+Vorleistung bestanden???
+True
 </pre></div>
 </div>
 </div>
@@ -1049,10 +1160,10 @@ verwandelt.</p>
             <p class="prev-next-title">Funktionen</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter08/sec00.html" title="next page">
+    <a class='right-next' id="next-link" href="../chapter04/sec00.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Neuronale Netze: Grundbaustein Perzeptron</p>
+        <p class="prev-next-title">Pandas anstatt Excel</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

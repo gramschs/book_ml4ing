@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Series für eindimensionale Daten &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Series für Datenreihen &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Daten visualisieren mit Matplotlib" href="../chapter05/sec00.html" />
+    <link rel="next" title="DataFrames für Tabellen" href="sec02.html" />
     <link rel="prev" title="Pandas anstatt Excel" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,7 +222,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Series für eindimensionale Daten
+     Series für Datenreihen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     DataFrames für Tabellen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec03.html">
+     Statistik mit Pandas
     </a>
    </li>
   </ul>
@@ -246,12 +256,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter07/sec00.html">
-   Datenvorverarbeitung und Modellbewertung
+   ML-Workflow
   </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
-   Neuronale Netze: Grundbaustein Perzeptron
+   Perzeptron
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -261,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter08/sec01.html">
-     Das Perzeptron
+     Grundbaustein neuronaler Netze
     </a>
    </li>
    <li class="toctree-l2">
@@ -527,6 +537,11 @@ title="Print to PDF"
    Series aus Liste erzeugen
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zugriff-auf-zellen-mit-loc">
+   Zugriff auf Zellen mit loc
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -536,7 +551,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Series für eindimensionale Daten</h1>
+                <h1>Series für Datenreihen</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -561,6 +576,11 @@ title="Print to PDF"
    Series aus Liste erzeugen
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zugriff-auf-zellen-mit-loc">
+   Zugriff auf Zellen mit loc
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -571,21 +591,31 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="series-fur-eindimensionale-daten">
-<h1>Series für eindimensionale Daten<a class="headerlink" href="#series-fur-eindimensionale-daten" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="series-fur-datenreihen">
+<h1>Series für Datenreihen<a class="headerlink" href="#series-fur-datenreihen" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>TODO</p></li>
+<li><p>Sie können <strong>Pandas</strong> mit der üblichen Abkürzung pd importieren.</p></li>
+<li><p>Sie können aus einer Liste das Datenobjekt <strong>Series</strong> erzeugen.</p></li>
+<li><p>Sie können auf Elemente eines Series-Objektes lesend und schreibend zugreifen:</p>
+<ul>
+<li><p>Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird</p></li>
+<li><p>Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird</p></li>
+<li><p>Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
+übergeben wird</p></li>
+</ul>
+</li>
+<li><p>Sie können ein Series-Objekt nach einer Eigenschaft filtern.</p></li>
 </ul>
 </div>
 </section>
 <section id="import-von-pandas">
 <h2>Import von pandas<a class="headerlink" href="#import-von-pandas" title="Permalink to this headline">#</a></h2>
 <p>Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Tabellen und Zeitreihen. Die beiden grundlegenden Datenstrukturen sind
+Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind
 <strong>Series</strong> und <strong>DataFrame</strong>. Dabei wird Series für Datenreihen genommen, also
 sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
 Datentyp DataFrame repräsentiert Tabllen, also sozusagen Matrizen bzw.
@@ -643,23 +673,7 @@ Python zählt ab 0) und schreiben</p>
 </div>
 </div>
 </div>
-<p>Das gleiche gilt für das Numpy-Array, das ebenfalls die Integer 0, 1, 2, 3
-verwendet, um das folgende Array zu indizieren:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2. Element des Arrays: &quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. Element des Arrays:  22
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Datenstruktur Series ermöglich es aber, einen expliziten Index zu setzen.
+<p>Die Datenstruktur Series ermöglich es aber, einen <em>expliziten Index</em> zu setzen.
 Über den optionalen Parameter <code class="docutils literal notranslate"><span class="pre">index=</span></code> speichern wir als Zusatzinformation noch
 ab, von welcher Person das Alter abgefragt wurde. In dem Fall sind es die vier
 Personen Alice, Bob, Charlie und Dora.</p>
@@ -675,6 +689,227 @@ Personen Alice, Bob, Charlie und Dora.</p>
 Bob        22
 Charlie    43
 Dora       30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt ist auch klar, warum beim ersten Mal, als wir <code class="docutils literal notranslate"><span class="pre">print(alter)</span></code> ausgeführt
+haben, die Zahlen 0, 1, 2, 3 ausgegeben wurden. Zu dem Zeitpunkt hatte das
+Series-Objekt noch einen impliziten Index wie eine Liste. Was noch an
+Informationen ausgegeben wird, ist das Attribut <code class="docutils literal notranslate"><span class="pre">dtype</span></code>. Darin gespeichert ist
+der Datentyp der gespeicherten Werte. Auf dieses Attribut kann auch direkt mit
+dem Punktoperator zugegegriffen werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offensichtlich sind die gespeicherten Werte Integer.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Erzeugen Sie ein Series-Objekt mit den Wochentagen als Index und der Anzahl der
+Vorlesungs/Übungs-Stunden an diesem Wochentag.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zugriff-auf-zellen-mit-loc">
+<h2>Zugriff auf Zellen mit loc<a class="headerlink" href="#zugriff-auf-zellen-mit-loc" title="Permalink to this headline">#</a></h2>
+<p>Im Folgenden betrachten wir verschiedene Möglichkeiten, um auf die Werte in
+einer Zelle zuzugreifen. Wir werden uns vier Möglichkeiten ansehen:</p>
+<ul class="simple">
+<li><p>Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird</p></li>
+<li><p>Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird</p></li>
+<li><p>Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
+übergeben wird</p></li>
+<li><p>Zugriff auf mehrere Zeilen, indem eine Liste mit True/False übergeben wird.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Dora&quot;</span><span class="p">])</span>
+<span class="n">alter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
+Bob        22
+Charlie    43
+Dora       30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zunächst greifen wir eine einzelne Zeile heraus. Dazu benutzen wir das Attribut
+<code class="docutils literal notranslate"><span class="pre">.loc</span></code> und spezifizieren mit eckigen Klammern den Index der Zeile, also
+<code class="docutils literal notranslate"><span class="pre">.loc[index]</span></code>. Anders als bei den folgenden drei Zugriffsmöglichkeiten, wird
+nur der Wert der Daten in der Zeile zurückgeliefert, nicht aber der dazugehörige
+Index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nun erzeugen wir eine Liste von Indizes. Danach können wir aus dem
+Pandas-Series-Objekt per <code class="docutils literal notranslate"><span class="pre">.loc[liste]</span></code> auf mehrere Zeilen zugreifen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frauen</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
+<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">frauen</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
+Dora     30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Erzeugen Sie analog zu dem obigen Beispiel eine Liste der Männer und geben Sie
+das Alter der Männer aus.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als dritte Möglichkeit betrachten wir einen Slice, also das Herausschneiden
+eines zusammenhängenden Stückes aus dem Pandas-Series-Objekt. Dazu spezifizieren
+wir den Start- und den stoppindex mit einem Doppelpunkt dazwischen, also
+<code class="docutils literal notranslate"><span class="pre">.loc[startindex</span> <span class="pre">:</span> <span class="pre">stoppindex]</span></code>. Das Herausschneiden von zusammenhängenden
+Teilobjekten wird auch als <strong>Slicing</strong> bezeichnet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bob        22
+Charlie    43
+Dora       30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als letzte Möglichkeit, um auf Zeilen in dem Pandas-Series-Objekt zuzugreifen,
+betrachten wir die Übergabe eine Liste mit True/False-Werten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
+Dora     30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Letztere Möglichkeit wird vor allem dazu genutzt, Daten nach Eigenschaften zu
+filtern. Ein simpler Vergleich des Pandas-Series-Objektes beispielsweie erzeugt
+solche True/False-Objekte, die dann in einem zweiten Schritt genutzt werden
+können, um das Pandas-Series-Objekt zu filtern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="mi">28</span>
+<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
+Bob      22
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nachdem wir nun gelernt haben, wie auf einzelne Element des
+Pandas-Series-Objektes zugegriffen wird, können wir Daten auch manipulieren.
+Beispielsweise ist Charlie gar nicht 43 Jahre alt, sondern nur 42. Wir weisen
+dem Objekt <code class="docutils literal notranslate"><span class="pre">alter</span></code> für den Index <code class="docutils literal notranslate"><span class="pre">'Charlie'</span></code>einen neuen Wert zu:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Charlie&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">alter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
+Bob        22
+Charlie    42
+Dora       30
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oder wir wählen alle Frauen aus und machen sie drei Jahre jünger ;-)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alter vor der Verjüngung: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alter</span><span class="p">)</span>
+<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alter danach: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alter vor der Verjüngung: 
+ Alice      25
+Bob        22
+Charlie    42
+Dora       30
+dtype: int64
+Alter danach: 
+ Alice      22
+Bob        22
+Charlie    42
+Dora       27
 dtype: int64
 </pre></div>
 </div>
@@ -717,10 +952,10 @@ dtype: int64
             <p class="prev-next-title">Pandas anstatt Excel</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter05/sec00.html" title="next page">
+    <a class='right-next' id="next-link" href="sec02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Daten visualisieren mit Matplotlib</p>
+        <p class="prev-next-title">DataFrames für Tabellen</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

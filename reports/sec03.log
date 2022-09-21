@@ -17,14 +17,21 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
+alter = pd.Series({"Alice" : 25, "Bob" : 22, "Charlie": 19, "Dora" : 30, "Emil": 43})
+stadt = pd.Series({"Alice" : "Mannheim", "Bob" : "Frankfurt", "Charlie" : "Ludwigshafen", "Dora" : "Kaiserslautern", "Emil": "Darmstadt"})
+note  = pd.Series({'Alice': 1.3, 'Bob': 3.7, 'Charlie': 2.0, 'Dora': 1.7, 'Emil': 5.0})
+
+personen = pd.DataFrame({'Alter': alter, 'Wohnort': stadt, 'Note': note})
+personen
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [2][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0m adresse_fra_uas [38;5;241m=[39m [43mAdresse[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mNibelungenplatz[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;241;43m1[39;49m[43m,[49m[43m [49m[38;5;241;43m60318[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mFrankfurt am Main[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m alter [38;5;241m=[39m [43mpd[49m[38;5;241m.[39mSeries({[38;5;124m"[39m[38;5;124mAlice[39m[38;5;124m"[39m : [38;5;241m25[39m, [38;5;124m"[39m[38;5;124mBob[39m[38;5;124m"[39m : [38;5;241m22[39m, [38;5;124m"[39m[38;5;124mCharlie[39m[38;5;124m"[39m: [38;5;241m19[39m, [38;5;124m"[39m[38;5;124mDora[39m[38;5;124m"[39m : [38;5;241m30[39m, [38;5;124m"[39m[38;5;124mEmil[39m[38;5;124m"[39m: [38;5;241m43[39m})
+[1;32m      2[0m stadt [38;5;241m=[39m pd[38;5;241m.[39mSeries({[38;5;124m"[39m[38;5;124mAlice[39m[38;5;124m"[39m : [38;5;124m"[39m[38;5;124mMannheim[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mBob[39m[38;5;124m"[39m : [38;5;124m"[39m[38;5;124mFrankfurt[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mCharlie[39m[38;5;124m"[39m : [38;5;124m"[39m[38;5;124mLudwigshafen[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mDora[39m[38;5;124m"[39m : [38;5;124m"[39m[38;5;124mKaiserslautern[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mEmil[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mDarmstadt[39m[38;5;124m"[39m})
+[1;32m      3[0m note  [38;5;241m=[39m pd[38;5;241m.[39mSeries({[38;5;124m'[39m[38;5;124mAlice[39m[38;5;124m'[39m: [38;5;241m1.3[39m, [38;5;124m'[39m[38;5;124mBob[39m[38;5;124m'[39m: [38;5;241m3.7[39m, [38;5;124m'[39m[38;5;124mCharlie[39m[38;5;124m'[39m: [38;5;241m2.0[39m, [38;5;124m'[39m[38;5;124mDora[39m[38;5;124m'[39m: [38;5;241m1.7[39m, [38;5;124m'[39m[38;5;124mEmil[39m[38;5;124m'[39m: [38;5;241m5.0[39m})
 
-[0;31mTypeError[0m: __init__() missing 1 required positional argument: 'b'
-TypeError: __init__() missing 1 required positional argument: 'b'
+[0;31mNameError[0m: name 'pd' is not defined
+NameError: name 'pd' is not defined
 

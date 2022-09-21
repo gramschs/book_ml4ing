@@ -5,4 +5,5 @@ haben, werden wir uns in diesem Kapitel um
 * Sequentielle Datentypen: list
 * Zählschleifen: for
 * Funktionen 
-* Objektorientierung kümmern.
+* Objektorientierung 
+kümmern.

@@ -7,10 +7,11 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.13.8
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
+
 
 # Objektorientierung
 
@@ -86,13 +87,11 @@ Implementierung erfolgt als sogenannte **Klasse**.
 
 ```{code-cell} ipython3
 class Adresse:
-    def __init__(self, strasse, hausnummer, plz, stadt, b):
+    def __init__(self, strasse, hausnummer, plz, stadt):
         self.strasse = strasse
         self.hausnummer = hausnummer
         self.postleitzahl = plz
         self.stadt = stadt
-        self.bundesland = b
-        self.nachname = nachname  
 ``` 
 
 Eingeleitet wird eine Klasse mit dem Schlüsselwort `class` und dann dem Namen
