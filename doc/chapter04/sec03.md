@@ -23,68 +23,8 @@ kernelspec:
 * TODO
 ```
 
-## Import von Tabellen
-
-Um Tabellen im csv- einzulesen, bietet Pandas eine eigene Funktion namens
-`read_csv` an (siehe
-[Dokumentation/read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)).
-Wird diese Funktion verwendet, um die Daten zu importieren, so wird automatisch
-ein DataFrame-Objekt erzeugt. Beim Aufruf der Funktion wird der Dateiname
-übergeben. 
-
-Wir probieren es mit der Datei `bundesliga_top7_offensive.csv`, die von
-[Kaggle](https://www.kaggle.com/rajatrc1705/bundesliga-top-7-teams-offensive-stats?select=bundesliga_top7_offensive.csv)
-stammt. In dem Datensatz sind die Spielerdaten zu den Top7-Fußballvereinen der
-Bundesligasaison 2020/21 enthalten. 
-
-Laden Sie sich die csv-Datei
-[hier](https://nextcloud.frankfurt-university.de/s/yJjkkMSkWqcSxGL) herunter und
-speichern Sie sie in denselben Ordner, in dem auch dieses JupyterNotebook liegt.
-Führen Sie dann anschlißend die folgende Code-Zelle aus.
-
-```{code-cell} ipython
-import pandas as pd
-data = pd.read_csv('bundesliga_top7_offensive.csv')
-```
-
-Es erscheint keine Fehlermeldung, aber den Inhalt der geladenen Datei sehen wir
-trotzdem nicht. Dazu verwenden wir die Methode `.head()`.
-
-```{code-cell} ipython
-data.head()
-```
-
-Die Methode `.head()` zeigt uns die ersten fünf Zeilen der Tabelle an. Wenn wir beispielsweise die ersten 10 Zeilen anzeigen lassen wollen, so verwenden wir die Methode `.head(10)`mit dem Argument 10.
 
 
-```{code-cell} ipython
-data.head(10)
-```
-
-## Übersicht verschaffen mit info und describe
-
-Das obige Beispiel zeigt uns zwar nun die ersten 10 Zeilen des importierten
-Datensatzes, aber wie viele Daten insgesamt enthalten sind, welche Vereine noch
-kommen usw. können wir mit der `.head()`-Methode nicht erfassen. Dafür stellt
-Pandas die beiden Methoden `.info()` und `.describe()`zur Verfügung. Probieren
-wir es einfach aus.
-
-```{code-cell} ipython
-data.info()
-```
-
-Mit `.info()` erhalten wir eine Übersicht, wie viele Spalten es gibt und auch
-die Spaltenüberschriften werden aufgelistet. Dabei sind Überschriften wie Name
-selbsterklärend, aber was xG bedeutet, erchließt sich nicht von selbst. Dazu
-brauchen wir mehr Informationen von den Autor:innen der Daten.
-
-Weiterhin entnehmen wir der Ausgabe von `.info()`, dass in jeder Spalte 177
-Einträge sind, die 'non-null' sind. Damit ist gemeint, dass diese Zellen beim
-Import nicht leer waren. Zudem wird bei jeder Spalte noch der Datentyp
-angegeben. Für die Namen, die als Strings gespeichert sind, wird der allgemeine
-Datentyp 'object' angegeben. Beim Alter/Age wurden korrektweise Integer erkannt
-und die mittlere erwartete Anzahl von Toren pro Spiel 'xG' (= expected number of
-goals from the player in a match) wird als Float angegeben.
 
 
 ## noch mehr ...
