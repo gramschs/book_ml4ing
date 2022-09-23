@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# Series für Datenreihen
+# Series und DataFrame 
 
 ## Lernziele
 
@@ -21,21 +21,18 @@ kernelspec:
 :class: hint
 * Sie können **Pandas** mit der üblichen Abkürzung pd importieren.
 * Sie können aus einer Liste das Datenobjekt **Series** erzeugen.
-* Sie können auf Elemente eines Series-Objektes lesend und schreibend zugreifen:
-  * Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird
-  * Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird
-  * Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
-    übergeben wird
-* Sie können ein Series-Objekt nach einer Eigenschaft filtern.
+* Sie kennen das **CSV-Dateiformat**.
+* Sie können eine csv-Datei mit **read_csv()** einlesen.
+* Sie konnen mit **.info()** sich einen Überblick über die importierten Daten verschaffen.
 ```
 
 ## Import von pandas
 
 Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind
-**Series** und **DataFrame**. Dabei wird Series für Datenreihen genommen, also
-sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
-Datentyp DataFrame repräsentiert Tabllen, also sozusagen Matrizen bzw.
+Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind Series
+und DataFrame. Dabei wird **Series** für Datenreihen genommen, also sozusagen
+die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der Datentyp
+**DataFrame** repräsentiert Tabellen, also sozusagen Matrizen bzw.
 verallgemeinerte zweidimensionale Arrays. 
 
 Um das Modul pandas benutzen zu können, müssen wir es zunächst importieren. Es
@@ -48,9 +45,12 @@ import pandas as pd # kürze das Modul pandas als pd ab, um Schreibarbeit zu spa
 
 ## Series aus Liste erzeugen
 
-Erzeugt werden kann ein Series-Objekt beispielsweise direkt aus einer Liste. Im
-folgenden Beispiel haben wir Altersangaben in einer Liste, also `[25, 22, 43,
-37]` und initialisieren über `Series` die Variable `alter`:
+Der Datentyp Series speichert Datenreihen. Liegt beispielsweise eine Reihe von
+Daten vor, die in einer Variable vom Datentyp Liste gespeichert ist, so wird
+über die Methode `pd.Series(liste)` eine neues Series-Objekt erzeugt, dass die
+Listenelemente enthält. Im folgenden Beispiel haben wir Altersangaben in einer
+Liste, also `[25, 22, 43, 37]` und initialisieren über `pd.Series()` die
+Variable `alter`:
 
 ```{code-cell} ipython
 alter = pd.Series([25, 22, 43, 37])
@@ -105,102 +105,107 @@ Vorlesungs/Übungs-Stunden an diesem Wochentag.
 
 ```
 
-## Zugriff auf Zellen mit loc
+## DataFrame für Tabellen
 
-Im Folgenden betrachten wir verschiedene Möglichkeiten, um auf die Werte in
-einer Zelle zuzugreifen. Wir werden uns vier Möglichkeiten ansehen:
-* Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird
-* Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird
-* Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
-  übergeben wird
-* Zugriff auf mehrere Zeilen, indem eine Liste mit True/False übergeben wird.
+Bei Auswertung von Messungen ist aber der häufigste Fall der, dass Daten in Form
+einer Tabelle vorliegen. Ein DataFrame-Objekt entspricht einer Tabelle, wie man
+sie beispielsweise von Excel, LibreOffice oder Numbers kennt. Sowohl Zeile als
+auch Spalten sind indiziert. Typischerweise werden die Daten in der Tabelle
+zeilenweise angeordnet. Damit ist gemeint, dass jede Zeile einen Datensatz
+darstellt und die Spalten die Eigenschaften speichern.
 
-```{code-cell} ipython3
-alter = pd.Series([25, 22, 43, 30], index=["Alice", "Bob", "Charlie", "Dora"])
-alter
+Ein DataFrame kann direkt über mehrere Pandas-Series-Objekte oder verschachtelte
+Listen erzeugt werden. Da es in der Praxis nur selten vorkommt und nur für sehr
+kleine Datenmengen praktikabel ist, Daten händisch zu erfassen, fokussieren wir
+gleich auf die Erzeugung von DataFrame-Objekten aus einer Datei. 
+
+## Import von Tabellen mit read_csv()
+
+Tabellen liegen werden oft in dem Dateiformat abgespeichert, das die jeweilige
+Tabellenkalkulationssoftware Excel, Numbers oder OpenOfficeCalc als Standard
+eingestellt hat. Wir betrachten in dieser Vorlesung Tabellen, die in einem
+offenen Standardformat vorliegen und damit unabhängig von der verwendeten
+Software und dem verwendeten Betriebssystem sind.
+
+Das **Dateiformat CSV** speichert Daten zeilenweise ab. Dabei steht CSV für
+"comma separated value". Die Trennung der Spalten erfolgt durch ein
+Trennzeichen, normalerweise durch das Komma. Im deutschsprachigen Raum wird
+gelegentlich ein Semikolon verwendet, weil Dezimalzahlen das Komma zum Abtrennen
+der Nacchkommastellen verwenden.
+
+Um Tabellen im csv-Format einzulesen, bietet Pandas eine eigene Funktion namens
+`read_csv` an (siehe
+[Dokumentation/read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)).
+Wird diese Funktion verwendet, um die Daten zu importieren, so wird automatisch
+ein DataFrame-Objekt erzeugt. Beim Aufruf der Funktion wird der Dateiname
+übergeben, aber beispielweise könnte auch ein anderes Trennzeichen eingestellt werden.
+
+Am besten sehen wir uns die Funktionsweise von `read_csv` an einem Beispiel an.
+Sollten Sie mit einem lokalen JupyterNotebook arbeiten, laden Sie bitte die
+Datei
+[`bundesliga_top7_offensive.csv`](https://nextcloud.frankfurt-university.de/s/yJjkkMSkWqcSxGL)
+herunter und speichern Sie sie in denselben Ordner, in dem auch dieses
+JupyterNotebook liegt. Die csv-Datei stammt von
+[Kaggle](https://www.kaggle.com/rajatrc1705/bundesliga-top-7-teams-offensive-stats?select=bundesliga_top7_offensive.csv).
+Wie der Name schon verrät, sind darin Spielerdaten zu den Top7-Fußballvereinen
+der Bundesligasaison 2020/21 enthalten. 
+
+Führen Sie dann anschließend die folgende Code-Zelle aus.
+
+```{code-cell} ipython
+import pandas as pd
+data = pd.read_csv('bundesliga_top7_offensive.csv')
 ```
 
-Zunächst greifen wir eine einzelne Zeile heraus. Dazu benutzen wir das Attribut
-``.loc`` und spezifizieren mit eckigen Klammern den Index der Zeile, also
-``.loc[index]``. Anders als bei den folgenden drei Zugriffsmöglichkeiten, wird
-nur der Wert der Daten in der Zeile zurückgeliefert, nicht aber der dazugehörige
-Index.
+Es erscheint keine Fehlermeldung, aber den Inhalt der geladenen Datei sehen wir
+trotzdem nicht. Dazu verwenden wir die Methode `.head()`.
 
-```{code-cell} ipython3
-alter.loc['Alice']
+```{code-cell} ipython
+data.head()
 ```
 
-```{code-cell} ipython3
-alter.loc['Dora']
+Die Methode `.head()` zeigt uns die ersten fünf Zeilen der Tabelle an. Wenn wir beispielsweise die ersten 10 Zeilen anzeigen lassen wollen, so verwenden wir die Methode `.head(10)`mit dem Argument 10.
+
+
+```{code-cell} ipython
+data.head(10)
 ```
 
-Nun erzeugen wir eine Liste von Indizes. Danach können wir aus dem
-Pandas-Series-Objekt per ``.loc[liste]`` auf mehrere Zeilen zugreifen. 
+Offensichtlich wurde beim Import der Daten wieder ein impliziter Index 0, 1, 2,
+usw. gesetzt. Das ist nicht weiter verwunderlich, denn Pandas kann nicht wissen,
+welche Spalte wir als Index vorgesehen haben. Und manchmal ist ein automatisch
+erzeugter impliziter Index auch nicht schlecht. In diesem Fall würden wir aber
+gerne als Zeilenindex die Namen der Spieler verwenden. Daher modifizieren wir
+den Befehl mit `index_col=`. Die Namen stehen in der 1. Spalte, was in
+Python-Zählweise einer 0 entspricht.
 
-```{code-cell} ipython3
-frauen  = ['Alice', 'Dora']
-alter.loc[frauen]
-```
-
-```{admonition} Mini-Übung
-:class: miniexercise 
-Erzeugen Sie analog zu dem obigen Beispiel eine Liste der Männer und geben Sie
-das Alter der Männer aus.
-```
-
-```{code-cell} ipython3
-# Hier Ihr Code
-
-```
-
-Als dritte Möglichkeit betrachten wir einen Slice, also das Herausschneiden
-eines zusammenhängenden Stückes aus dem Pandas-Series-Objekt. Dazu spezifizieren
-wir den Start- und den stoppindex mit einem Doppelpunkt dazwischen, also
-``.loc[startindex : stoppindex]``. Das Herausschneiden von zusammenhängenden
-Teilobjekten wird auch als **Slicing** bezeichnet.
-
-```{code-cell} ipython3
-alter.loc['Bob': 'Dora']
-```
-
-Als letzte Möglichkeit, um auf Zeilen in dem Pandas-Series-Objekt zuzugreifen,
-betrachten wir die Übergabe eine Liste mit True/False-Werten.
-
-```{code-cell} ipython3
-filter = [True, False, False, True]
-alter.loc[filter]
-```
-
-Letztere Möglichkeit wird vor allem dazu genutzt, Daten nach Eigenschaften zu
-filtern. Ein simpler Vergleich des Pandas-Series-Objektes beispielsweie erzeugt
-solche True/False-Objekte, die dann in einem zweiten Schritt genutzt werden
-können, um das Pandas-Series-Objekt zu filtern. 
-
-```{code-cell} ipython3
-filter = alter < 28
-alter.loc[filter]
-```
-
-Nachdem wir nun gelernt haben, wie auf einzelne Element des
-Pandas-Series-Objektes zugegriffen wird, können wir Daten auch manipulieren.
-Beispielsweise ist Charlie gar nicht 43 Jahre alt, sondern nur 42. Wir weisen
-dem Objekt ``alter`` für den Index ``'Charlie'``einen neuen Wert zu:
-
-```{code-cell} ipython3
-alter.loc['Charlie'] = 42
-alter
-```
-
-Oder wir wählen alle Frauen aus und machen sie drei Jahre jünger ;-)
-
-```{code-cell} ipython3
-print('Alter vor der Verjüngung: \n', alter)
-alter.loc[ ['Alice', 'Dora']] = alter.loc[ ['Alice', 'Dora']] - 3
-print('Alter danach: \n', alter)
+```{code-cell} ipython
+data = pd.read_csv('bundesliga_top7_offensive.csv', index_col=0)
+data.head(10)
 ```
 
 
+## Übersicht verschaffen mit info 
 
+Das obige Beispiel zeigt uns zwar nun die ersten 10 Zeilen des importierten
+Datensatzes, aber wie viele Daten insgesamt enthalten sind oder welche Vereine
+noch kommen, können wir mit der `.head()`-Methode nicht erfassen. Dafür stellt
+Pandas die Methode `.info()` zur Verfügung. Probieren wir es einfach aus.
 
+```{code-cell} ipython
+data.info()
+```
 
+Mit `.info()` erhalten wir eine Übersicht, wie viele Spalten es gibt und auch
+die Spaltenüberschriften werden aufgelistet. Dabei sind Überschriften wie `Name`
+selbsterklärend, aber was `xG` bedeutet, erschließt sich nicht von selbst. Dazu
+brauchen wir mehr Informationen von den Autor:innen der Daten.
+
+Weiterhin entnehmen wir der Ausgabe von `.info()`, dass in jeder Spalte 177
+Einträge sind, die 'non-null' sind. Damit ist gemeint, dass diese Zellen beim
+Import nicht leer waren. Zudem wird bei jeder Spalte noch der Datentyp
+angegeben. Für die Namen, die als Strings gespeichert sind, wird der allgemeine
+Datentyp 'object' angegeben. Beim Alter/Age wurden korrektweise Integer erkannt
+und die mittlere erwartete Anzahl von Toren pro Spiel 'xG' (= expected number of
+goals from the player in a match) wird als Float angegeben.
 

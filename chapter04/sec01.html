@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Series für Datenreihen &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Series und DataFrame &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DataFrames für Tabellen" href="sec02.html" />
+    <link rel="next" title="Arbeiten mit Tabellendaten" href="sec02.html" />
     <link rel="prev" title="Pandas anstatt Excel" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -222,12 +222,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Series für Datenreihen
+     Series und DataFrame
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec02.html">
-     DataFrames für Tabellen
+     Arbeiten mit Tabellendaten
     </a>
    </li>
    <li class="toctree-l2">
@@ -538,8 +538,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zugriff-auf-zellen-mit-loc">
-   Zugriff auf Zellen mit loc
+  <a class="reference internal nav-link" href="#dataframe-fur-tabellen">
+   DataFrame für Tabellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-von-tabellen-mit-read-csv">
+   Import von Tabellen mit read_csv()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ubersicht-verschaffen-mit-info">
+   Übersicht verschaffen mit info
   </a>
  </li>
 </ul>
@@ -551,7 +561,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Series für Datenreihen</h1>
+                <h1>Series und DataFrame</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -577,8 +587,18 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zugriff-auf-zellen-mit-loc">
-   Zugriff auf Zellen mit loc
+  <a class="reference internal nav-link" href="#dataframe-fur-tabellen">
+   DataFrame für Tabellen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-von-tabellen-mit-read-csv">
+   Import von Tabellen mit read_csv()
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ubersicht-verschaffen-mit-info">
+   Übersicht verschaffen mit info
   </a>
  </li>
 </ul>
@@ -591,8 +611,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="series-fur-datenreihen">
-<h1>Series für Datenreihen<a class="headerlink" href="#series-fur-datenreihen" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="series-und-dataframe">
+<h1>Series und DataFrame<a class="headerlink" href="#series-und-dataframe" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
@@ -600,25 +620,19 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Sie können <strong>Pandas</strong> mit der üblichen Abkürzung pd importieren.</p></li>
 <li><p>Sie können aus einer Liste das Datenobjekt <strong>Series</strong> erzeugen.</p></li>
-<li><p>Sie können auf Elemente eines Series-Objektes lesend und schreibend zugreifen:</p>
-<ul>
-<li><p>Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird</p></li>
-<li><p>Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird</p></li>
-<li><p>Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
-übergeben wird</p></li>
-</ul>
-</li>
-<li><p>Sie können ein Series-Objekt nach einer Eigenschaft filtern.</p></li>
+<li><p>Sie kennen das <strong>CSV-Dateiformat</strong>.</p></li>
+<li><p>Sie können eine csv-Datei mit <strong>read_csv()</strong> einlesen.</p></li>
+<li><p>Sie konnen mit <strong>.info()</strong> sich einen Überblick über die importierten Daten verschaffen.</p></li>
 </ul>
 </div>
 </section>
 <section id="import-von-pandas">
 <h2>Import von pandas<a class="headerlink" href="#import-von-pandas" title="Permalink to this headline">#</a></h2>
 <p>Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind
-<strong>Series</strong> und <strong>DataFrame</strong>. Dabei wird Series für Datenreihen genommen, also
-sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
-Datentyp DataFrame repräsentiert Tabllen, also sozusagen Matrizen bzw.
+Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind Series
+und DataFrame. Dabei wird <strong>Series</strong> für Datenreihen genommen, also sozusagen
+die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der Datentyp
+<strong>DataFrame</strong> repräsentiert Tabellen, also sozusagen Matrizen bzw.
 verallgemeinerte zweidimensionale Arrays.</p>
 <p>Um das Modul pandas benutzen zu können, müssen wir es zunächst importieren. Es
 ist üblich, dabei dem Modul die Abkürzung <strong>pd</strong> zu geben, damit wir nicht immer
@@ -633,8 +647,12 @@ pandas schreiben müssen, wenn wir eine Funktion aus dem pandas-Modul benutzen.<
 </section>
 <section id="series-aus-liste-erzeugen">
 <h2>Series aus Liste erzeugen<a class="headerlink" href="#series-aus-liste-erzeugen" title="Permalink to this headline">#</a></h2>
-<p>Erzeugt werden kann ein Series-Objekt beispielsweise direkt aus einer Liste. Im
-folgenden Beispiel haben wir Altersangaben in einer Liste, also <code class="docutils literal notranslate"><span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> und initialisieren über <code class="docutils literal notranslate"><span class="pre">Series</span></code> die Variable <code class="docutils literal notranslate"><span class="pre">alter</span></code>:</p>
+<p>Der Datentyp Series speichert Datenreihen. Liegt beispielsweise eine Reihe von
+Daten vor, die in einer Variable vom Datentyp Liste gespeichert ist, so wird
+über die Methode <code class="docutils literal notranslate"><span class="pre">pd.Series(liste)</span></code> eine neues Series-Objekt erzeugt, dass die
+Listenelemente enthält. Im folgenden Beispiel haben wir Altersangaben in einer
+Liste, also <code class="docutils literal notranslate"><span class="pre">[25,</span> <span class="pre">22,</span> <span class="pre">43,</span> <span class="pre">37]</span></code> und initialisieren über <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code> die
+Variable <code class="docutils literal notranslate"><span class="pre">alter</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">37</span><span class="p">])</span>
@@ -726,195 +744,743 @@ Vorlesungs/Übungs-Stunden an diesem Wochentag.</p>
 </div>
 </div>
 </section>
-<section id="zugriff-auf-zellen-mit-loc">
-<h2>Zugriff auf Zellen mit loc<a class="headerlink" href="#zugriff-auf-zellen-mit-loc" title="Permalink to this headline">#</a></h2>
-<p>Im Folgenden betrachten wir verschiedene Möglichkeiten, um auf die Werte in
-einer Zelle zuzugreifen. Wir werden uns vier Möglichkeiten ansehen:</p>
-<ul class="simple">
-<li><p>Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird</p></li>
-<li><p>Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird</p></li>
-<li><p>Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
-übergeben wird</p></li>
-<li><p>Zugriff auf mehrere Zeilen, indem eine Liste mit True/False übergeben wird.</p></li>
-</ul>
+<section id="dataframe-fur-tabellen">
+<h2>DataFrame für Tabellen<a class="headerlink" href="#dataframe-fur-tabellen" title="Permalink to this headline">#</a></h2>
+<p>Bei Auswertung von Messungen ist aber der häufigste Fall der, dass Daten in Form
+einer Tabelle vorliegen. Ein DataFrame-Objekt entspricht einer Tabelle, wie man
+sie beispielsweise von Excel, LibreOffice oder Numbers kennt. Sowohl Zeile als
+auch Spalten sind indiziert. Typischerweise werden die Daten in der Tabelle
+zeilenweise angeordnet. Damit ist gemeint, dass jede Zeile einen Datensatz
+darstellt und die Spalten die Eigenschaften speichern.</p>
+<p>Ein DataFrame kann direkt über mehrere Pandas-Series-Objekte oder verschachtelte
+Listen erzeugt werden. Da es in der Praxis nur selten vorkommt und nur für sehr
+kleine Datenmengen praktikabel ist, Daten händisch zu erfassen, fokussieren wir
+gleich auf die Erzeugung von DataFrame-Objekten aus einer Datei.</p>
+</section>
+<section id="import-von-tabellen-mit-read-csv">
+<h2>Import von Tabellen mit read_csv()<a class="headerlink" href="#import-von-tabellen-mit-read-csv" title="Permalink to this headline">#</a></h2>
+<p>Tabellen liegen werden oft in dem Dateiformat abgespeichert, das die jeweilige
+Tabellenkalkulationssoftware Excel, Numbers oder OpenOfficeCalc als Standard
+eingestellt hat. Wir betrachten in dieser Vorlesung Tabellen, die in einem
+offenen Standardformat vorliegen und damit unabhängig von der verwendeten
+Software und dem verwendeten Betriebssystem sind.</p>
+<p>Das <strong>Dateiformat CSV</strong> speichert Daten zeilenweise ab. Dabei steht CSV für
+“comma separated value”. Die Trennung der Spalten erfolgt durch ein
+Trennzeichen, normalerweise durch das Komma. Im deutschsprachigen Raum wird
+gelegentlich ein Semikolon verwendet, weil Dezimalzahlen das Komma zum Abtrennen
+der Nacchkommastellen verwenden.</p>
+<p>Um Tabellen im csv-Format einzulesen, bietet Pandas eine eigene Funktion namens
+<code class="docutils literal notranslate"><span class="pre">read_csv</span></code> an (siehe
+<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html">Dokumentation/read_csv</a>).
+Wird diese Funktion verwendet, um die Daten zu importieren, so wird automatisch
+ein DataFrame-Objekt erzeugt. Beim Aufruf der Funktion wird der Dateiname
+übergeben, aber beispielweise könnte auch ein anderes Trennzeichen eingestellt werden.</p>
+<p>Am besten sehen wir uns die Funktionsweise von <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> an einem Beispiel an.
+Sollten Sie mit einem lokalen JupyterNotebook arbeiten, laden Sie bitte die
+Datei
+<a class="reference external" href="https://nextcloud.frankfurt-university.de/s/yJjkkMSkWqcSxGL"><code class="docutils literal notranslate"><span class="pre">bundesliga_top7_offensive.csv</span></code></a>
+herunter und speichern Sie sie in denselben Ordner, in dem auch dieses
+JupyterNotebook liegt. Die csv-Datei stammt von
+<a class="reference external" href="https://www.kaggle.com/rajatrc1705/bundesliga-top-7-teams-offensive-stats?select=bundesliga_top7_offensive.csv">Kaggle</a>.
+Wie der Name schon verrät, sind darin Spielerdaten zu den Top7-Fußballvereinen
+der Bundesligasaison 2020/21 enthalten.</p>
+<p>Führen Sie dann anschließend die folgende Code-Zelle aus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;Dora&quot;</span><span class="p">])</span>
-<span class="n">alter</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;bundesliga_top7_offensive.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es erscheint keine Fehlermeldung, aber den Inhalt der geladenen Datei sehen wir
+trotzdem nicht. Dazu verwenden wir die Methode <code class="docutils literal notranslate"><span class="pre">.head()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
-Bob        22
-Charlie    43
-Dora       30
-dtype: int64
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Club</th>
+      <th>Nationality</th>
+      <th>Position</th>
+      <th>Age</th>
+      <th>Matches</th>
+      <th>Starts</th>
+      <th>Mins</th>
+      <th>Goals</th>
+      <th>Assists</th>
+      <th>Penalty_Goals</th>
+      <th>Penalty_Attempted</th>
+      <th>xG</th>
+      <th>xA</th>
+      <th>Yellow_Cards</th>
+      <th>Red_Cards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Manuel Neuer</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>GK</td>
+      <td>34</td>
+      <td>33</td>
+      <td>33</td>
+      <td>2970</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Thomas Müller</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>MF</td>
+      <td>30</td>
+      <td>32</td>
+      <td>31</td>
+      <td>2674</td>
+      <td>11</td>
+      <td>19</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.39</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David Alaba</td>
+      <td>Bayern Munich</td>
+      <td>AUT</td>
+      <td>DF,MF</td>
+      <td>28</td>
+      <td>32</td>
+      <td>30</td>
+      <td>2675</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jérôme Boateng</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>DF</td>
+      <td>31</td>
+      <td>29</td>
+      <td>29</td>
+      <td>2368</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Robert Lewandowski</td>
+      <td>Bayern Munich</td>
+      <td>POL</td>
+      <td>FW</td>
+      <td>31</td>
+      <td>29</td>
+      <td>28</td>
+      <td>2458</td>
+      <td>41</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>1.16</td>
+      <td>0.13</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-<p>Zunächst greifen wir eine einzelne Zeile heraus. Dazu benutzen wir das Attribut
-<code class="docutils literal notranslate"><span class="pre">.loc</span></code> und spezifizieren mit eckigen Klammern den Index der Zeile, also
-<code class="docutils literal notranslate"><span class="pre">.loc[index]</span></code>. Anders als bei den folgenden drei Zugriffsmöglichkeiten, wird
-nur der Wert der Daten in der Zeile zurückgeliefert, nicht aber der dazugehörige
-Index.</p>
+<p>Die Methode <code class="docutils literal notranslate"><span class="pre">.head()</span></code> zeigt uns die ersten fünf Zeilen der Tabelle an. Wenn wir beispielsweise die ersten 10 Zeilen anzeigen lassen wollen, so verwenden wir die Methode <code class="docutils literal notranslate"><span class="pre">.head(10)</span></code>mit dem Argument 10.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Club</th>
+      <th>Nationality</th>
+      <th>Position</th>
+      <th>Age</th>
+      <th>Matches</th>
+      <th>Starts</th>
+      <th>Mins</th>
+      <th>Goals</th>
+      <th>Assists</th>
+      <th>Penalty_Goals</th>
+      <th>Penalty_Attempted</th>
+      <th>xG</th>
+      <th>xA</th>
+      <th>Yellow_Cards</th>
+      <th>Red_Cards</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Manuel Neuer</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>GK</td>
+      <td>34</td>
+      <td>33</td>
+      <td>33</td>
+      <td>2970</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Thomas Müller</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>MF</td>
+      <td>30</td>
+      <td>32</td>
+      <td>31</td>
+      <td>2674</td>
+      <td>11</td>
+      <td>19</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.39</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>David Alaba</td>
+      <td>Bayern Munich</td>
+      <td>AUT</td>
+      <td>DF,MF</td>
+      <td>28</td>
+      <td>32</td>
+      <td>30</td>
+      <td>2675</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Jérôme Boateng</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>DF</td>
+      <td>31</td>
+      <td>29</td>
+      <td>29</td>
+      <td>2368</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Robert Lewandowski</td>
+      <td>Bayern Munich</td>
+      <td>POL</td>
+      <td>FW</td>
+      <td>31</td>
+      <td>29</td>
+      <td>28</td>
+      <td>2458</td>
+      <td>41</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>1.16</td>
+      <td>0.13</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Joshua Kimmich</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>MF</td>
+      <td>25</td>
+      <td>27</td>
+      <td>25</td>
+      <td>2194</td>
+      <td>4</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.10</td>
+      <td>0.27</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Kingsley Coman</td>
+      <td>Bayern Munich</td>
+      <td>FRA</td>
+      <td>FW,MF</td>
+      <td>24</td>
+      <td>29</td>
+      <td>23</td>
+      <td>1752</td>
+      <td>5</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>0.34</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Benjamin Pavard</td>
+      <td>Bayern Munich</td>
+      <td>FRA</td>
+      <td>DF</td>
+      <td>24</td>
+      <td>24</td>
+      <td>22</td>
+      <td>1943</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.02</td>
+      <td>0.09</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Alphonso Davies</td>
+      <td>Bayern Munich</td>
+      <td>CAN</td>
+      <td>DF</td>
+      <td>19</td>
+      <td>23</td>
+      <td>22</td>
+      <td>1763</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Serge Gnabry</td>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>FW,MF</td>
+      <td>25</td>
+      <td>27</td>
+      <td>20</td>
+      <td>1644</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.44</td>
+      <td>0.25</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
+<p>Offensichtlich wurde beim Import der Daten wieder ein impliziter Index 0, 1, 2,
+usw. gesetzt. Das ist nicht weiter verwunderlich, denn Pandas kann nicht wissen,
+welche Spalte wir als Index vorgesehen haben. Und manchmal ist ein automatisch
+erzeugter impliziter Index auch nicht schlecht. In diesem Fall würden wir aber
+gerne als Zeilenindex die Namen der Spieler verwenden. Daher modifizieren wir
+den Befehl mit <code class="docutils literal notranslate"><span class="pre">index_col=</span></code>. Die Namen stehen in der 1. Spalte, was in
+Python-Zählweise einer 0 entspricht.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;bundesliga_top7_offensive.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Club</th>
+      <th>Nationality</th>
+      <th>Position</th>
+      <th>Age</th>
+      <th>Matches</th>
+      <th>Starts</th>
+      <th>Mins</th>
+      <th>Goals</th>
+      <th>Assists</th>
+      <th>Penalty_Goals</th>
+      <th>Penalty_Attempted</th>
+      <th>xG</th>
+      <th>xA</th>
+      <th>Yellow_Cards</th>
+      <th>Red_Cards</th>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Manuel Neuer</th>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>GK</td>
+      <td>34</td>
+      <td>33</td>
+      <td>33</td>
+      <td>2970</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Thomas Müller</th>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>MF</td>
+      <td>30</td>
+      <td>32</td>
+      <td>31</td>
+      <td>2674</td>
+      <td>11</td>
+      <td>19</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.24</td>
+      <td>0.39</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>David Alaba</th>
+      <td>Bayern Munich</td>
+      <td>AUT</td>
+      <td>DF,MF</td>
+      <td>28</td>
+      <td>32</td>
+      <td>30</td>
+      <td>2675</td>
+      <td>2</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.04</td>
+      <td>0.08</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Jérôme Boateng</th>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>DF</td>
+      <td>31</td>
+      <td>29</td>
+      <td>29</td>
+      <td>2368</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>6</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Robert Lewandowski</th>
+      <td>Bayern Munich</td>
+      <td>POL</td>
+      <td>FW</td>
+      <td>31</td>
+      <td>29</td>
+      <td>28</td>
+      <td>2458</td>
+      <td>41</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>1.16</td>
+      <td>0.13</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Joshua Kimmich</th>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>MF</td>
+      <td>25</td>
+      <td>27</td>
+      <td>25</td>
+      <td>2194</td>
+      <td>4</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.10</td>
+      <td>0.27</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Kingsley Coman</th>
+      <td>Bayern Munich</td>
+      <td>FRA</td>
+      <td>FW,MF</td>
+      <td>24</td>
+      <td>29</td>
+      <td>23</td>
+      <td>1752</td>
+      <td>5</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.21</td>
+      <td>0.34</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Benjamin Pavard</th>
+      <td>Bayern Munich</td>
+      <td>FRA</td>
+      <td>DF</td>
+      <td>24</td>
+      <td>24</td>
+      <td>22</td>
+      <td>1943</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.02</td>
+      <td>0.09</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Alphonso Davies</th>
+      <td>Bayern Munich</td>
+      <td>CAN</td>
+      <td>DF</td>
+      <td>19</td>
+      <td>23</td>
+      <td>22</td>
+      <td>1763</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Serge Gnabry</th>
+      <td>Bayern Munich</td>
+      <td>GER</td>
+      <td>FW,MF</td>
+      <td>25</td>
+      <td>27</td>
+      <td>20</td>
+      <td>1644</td>
+      <td>10</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.44</td>
+      <td>0.25</td>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
-</div>
-<p>Nun erzeugen wir eine Liste von Indizes. Danach können wir aus dem
-Pandas-Series-Objekt per <code class="docutils literal notranslate"><span class="pre">.loc[liste]</span></code> auf mehrere Zeilen zugreifen.</p>
+</section>
+<section id="ubersicht-verschaffen-mit-info">
+<h2>Übersicht verschaffen mit info<a class="headerlink" href="#ubersicht-verschaffen-mit-info" title="Permalink to this headline">#</a></h2>
+<p>Das obige Beispiel zeigt uns zwar nun die ersten 10 Zeilen des importierten
+Datensatzes, aber wie viele Daten insgesamt enthalten sind oder welche Vereine
+noch kommen, können wir mit der <code class="docutils literal notranslate"><span class="pre">.head()</span></code>-Methode nicht erfassen. Dafür stellt
+Pandas die Methode <code class="docutils literal notranslate"><span class="pre">.info()</span></code> zur Verfügung. Probieren wir es einfach aus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frauen</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
-<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">frauen</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
-Dora     30
-dtype: int64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 177 entries, Manuel Neuer to Joshua Mees
+Data columns (total 15 columns):
+ #   Column             Non-Null Count  Dtype  
+---  ------             --------------  -----  
+ 0   Club               177 non-null    object 
+ 1   Nationality        177 non-null    object 
+ 2   Position           177 non-null    object 
+ 3   Age                177 non-null    int64  
+ 4   Matches            177 non-null    int64  
+ 5   Starts             177 non-null    int64  
+ 6   Mins               177 non-null    int64  
+ 7   Goals              177 non-null    int64  
+ 8   Assists            177 non-null    int64  
+ 9   Penalty_Goals      177 non-null    int64  
+ 10  Penalty_Attempted  177 non-null    int64  
+ 11  xG                 177 non-null    float64
+ 12  xA                 177 non-null    float64
+ 13  Yellow_Cards       177 non-null    int64  
+ 14  Red_Cards          177 non-null    int64  
+dtypes: float64(2), int64(10), object(3)
+memory usage: 22.1+ KB
 </pre></div>
 </div>
 </div>
 </div>
-<div class="miniexercise admonition">
-<p class="admonition-title">Mini-Übung</p>
-<p>Erzeugen Sie analog zu dem obigen Beispiel eine Liste der Männer und geben Sie
-das Alter der Männer aus.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Als dritte Möglichkeit betrachten wir einen Slice, also das Herausschneiden
-eines zusammenhängenden Stückes aus dem Pandas-Series-Objekt. Dazu spezifizieren
-wir den Start- und den stoppindex mit einem Doppelpunkt dazwischen, also
-<code class="docutils literal notranslate"><span class="pre">.loc[startindex</span> <span class="pre">:</span> <span class="pre">stoppindex]</span></code>. Das Herausschneiden von zusammenhängenden
-Teilobjekten wird auch als <strong>Slicing</strong> bezeichnet.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Bob&#39;</span><span class="p">:</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bob        22
-Charlie    43
-Dora       30
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Als letzte Möglichkeit, um auf Zeilen in dem Pandas-Series-Objekt zuzugreifen,
-betrachten wir die Übergabe eine Liste mit True/False-Werten.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
-<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
-Dora     30
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Letztere Möglichkeit wird vor allem dazu genutzt, Daten nach Eigenschaften zu
-filtern. Ein simpler Vergleich des Pandas-Series-Objektes beispielsweie erzeugt
-solche True/False-Objekte, die dann in einem zweiten Schritt genutzt werden
-können, um das Pandas-Series-Objekt zu filtern.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="n">alter</span> <span class="o">&lt;</span> <span class="mi">28</span>
-<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice    25
-Bob      22
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Nachdem wir nun gelernt haben, wie auf einzelne Element des
-Pandas-Series-Objektes zugegriffen wird, können wir Daten auch manipulieren.
-Beispielsweise ist Charlie gar nicht 43 Jahre alt, sondern nur 42. Wir weisen
-dem Objekt <code class="docutils literal notranslate"><span class="pre">alter</span></code> für den Index <code class="docutils literal notranslate"><span class="pre">'Charlie'</span></code>einen neuen Wert zu:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Charlie&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
-<span class="n">alter</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alice      25
-Bob        22
-Charlie    42
-Dora       30
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Oder wir wählen alle Frauen aus und machen sie drei Jahre jünger ;-)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alter vor der Verjüngung: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alter</span><span class="p">)</span>
-<span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">alter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">3</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alter danach: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alter vor der Verjüngung: 
- Alice      25
-Bob        22
-Charlie    42
-Dora       30
-dtype: int64
-Alter danach: 
- Alice      22
-Bob        22
-Charlie    42
-Dora       27
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">.info()</span></code> erhalten wir eine Übersicht, wie viele Spalten es gibt und auch
+die Spaltenüberschriften werden aufgelistet. Dabei sind Überschriften wie <code class="docutils literal notranslate"><span class="pre">Name</span></code>
+selbsterklärend, aber was <code class="docutils literal notranslate"><span class="pre">xG</span></code> bedeutet, erschließt sich nicht von selbst. Dazu
+brauchen wir mehr Informationen von den Autor:innen der Daten.</p>
+<p>Weiterhin entnehmen wir der Ausgabe von <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, dass in jeder Spalte 177
+Einträge sind, die ‘non-null’ sind. Damit ist gemeint, dass diese Zellen beim
+Import nicht leer waren. Zudem wird bei jeder Spalte noch der Datentyp
+angegeben. Für die Namen, die als Strings gespeichert sind, wird der allgemeine
+Datentyp ‘object’ angegeben. Beim Alter/Age wurden korrektweise Integer erkannt
+und die mittlere erwartete Anzahl von Toren pro Spiel ‘xG’ (= expected number of
+goals from the player in a match) wird als Float angegeben.</p>
 </section>
 </section>
 
@@ -955,7 +1521,7 @@ dtype: int64
     <a class='right-next' id="next-link" href="sec02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DataFrames für Tabellen</p>
+        <p class="prev-next-title">Arbeiten mit Tabellendaten</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
