@@ -21,21 +21,18 @@ kernelspec:
 :class: hint
 * Sie können **Pandas** mit der üblichen Abkürzung pd importieren.
 * Sie können aus einer Liste das Datenobjekt **Series** erzeugen.
-* Sie können auf Elemente eines Series-Objektes lesend und schreibend zugreifen:
-  * Zugriff auf eine einzelne Zeile, indem ein Index spezifiziert wird
-  * Zugriff auf mehrere Zeilen, indem eine Liste von Indizes übergeben wird
-  * Zugriff auf mehrere zusammenhängende Zeilen, indem ein Slice von Indizes
-    übergeben wird
-* Sie können ein Series-Objekt nach einer Eigenschaft filtern.
+* Sie kennen das **CSV-Dateiformat**.
+* Sie können eine csv-Datei mit **read_csv()** einlesen.
+* Sie konnen mit **.info()** sich einen Überblick über die importierten Daten verschaffen.
 ```
 
 ## Import von pandas
 
 Pandas ist eine Bibliothek zur Verarbeitung und Analyse von Daten in Form von
-Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind
-**Series** und **DataFrame**. Dabei wird Series für Datenreihen genommen, also
-sozusagen die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der
-Datentyp DataFrame repräsentiert Tabellen, also sozusagen Matrizen bzw.
+Datenreihen und Tabellen. Die beiden grundlegenden Datenstrukturen sind Series
+und DataFrame. Dabei wird **Series** für Datenreihen genommen, also sozusagen
+die Verallgemeinerung von Vektoren bzw. eindimensionalen Arrays. Der Datentyp
+**DataFrame** repräsentiert Tabellen, also sozusagen Matrizen bzw.
 verallgemeinerte zweidimensionale Arrays. 
 
 Um das Modul pandas benutzen zu können, müssen wir es zunächst importieren. Es
@@ -52,8 +49,8 @@ Der Datentyp Series speichert Datenreihen. Liegt beispielsweise eine Reihe von
 Daten vor, die in einer Variable vom Datentyp Liste gespeichert ist, so wird
 über die Methode `pd.Series(liste)` eine neues Series-Objekt erzeugt, dass die
 Listenelemente enthält. Im folgenden Beispiel haben wir Altersangaben in einer
-Liste, also `[25, 22, 43, 37]` und initialisieren über `Series` die Variable
-`alter`:
+Liste, also `[25, 22, 43, 37]` und initialisieren über `pd.Series()` die
+Variable `alter`:
 
 ```{code-cell} ipython
 alter = pd.Series([25, 22, 43, 37])
@@ -113,16 +110,16 @@ Vorlesungs/Übungs-Stunden an diesem Wochentag.
 Bei Auswertung von Messungen ist aber der häufigste Fall der, dass Daten in Form
 einer Tabelle vorliegen. Ein DataFrame-Objekt entspricht einer Tabelle, wie man
 sie beispielsweise von Excel, LibreOffice oder Numbers kennt. Sowohl Zeile als
-auch Spalten sind normalerweise indiziert. Typischerweise werden die Daten in
-der Tabelle zeilenweise angeordnet. Damit ist gemeint, dass jede Zeile einen
-Datensatz darstellt und die Spalten die Eigenschaften speichern.
+auch Spalten sind indiziert. Typischerweise werden die Daten in der Tabelle
+zeilenweise angeordnet. Damit ist gemeint, dass jede Zeile einen Datensatz
+darstellt und die Spalten die Eigenschaften speichern.
 
 Ein DataFrame kann direkt über mehrere Pandas-Series-Objekte oder verschachtelte
 Listen erzeugt werden. Da es in der Praxis nur selten vorkommt und nur für sehr
 kleine Datenmengen praktikabel ist, Daten händisch zu erfassen, fokussieren wir
 gleich auf die Erzeugung von DataFrame-Objekten aus einer Datei. 
 
-## Import von Tabellen
+## Import von Tabellen mit read_csv()
 
 Tabellen liegen werden oft in dem Dateiformat abgespeichert, das die jeweilige
 Tabellenkalkulationssoftware Excel, Numbers oder OpenOfficeCalc als Standard
@@ -130,11 +127,11 @@ eingestellt hat. Wir betrachten in dieser Vorlesung Tabellen, die in einem
 offenen Standardformat vorliegen und damit unabhängig von der verwendeten
 Software und dem verwendeten Betriebssystem sind.
 
-Das Dateiformat CSV speichert Daten zeilenweise ab. DAbei steht CSV für "comma
-separated value". Die Trennung der Spalten erfolgt durch ein Trennzeichen,
-normalerweise durch das Komma. Im deutschsprachigen Raum wird gelegentlich ein
-Semikolon verwendet, weil Dezimalzahlen das Komma zum Abtrennen der
-Nacchkommastellen verwenden.
+Das **Dateiformat CSV** speichert Daten zeilenweise ab. Dabei steht CSV für
+"comma separated value". Die Trennung der Spalten erfolgt durch ein
+Trennzeichen, normalerweise durch das Komma. Im deutschsprachigen Raum wird
+gelegentlich ein Semikolon verwendet, weil Dezimalzahlen das Komma zum Abtrennen
+der Nacchkommastellen verwenden.
 
 Um Tabellen im csv-Format einzulesen, bietet Pandas eine eigene Funktion namens
 `read_csv` an (siehe
@@ -174,21 +171,34 @@ Die Methode `.head()` zeigt uns die ersten fünf Zeilen der Tabelle an. Wenn wir
 data.head(10)
 ```
 
+Offensichtlich wurde beim Import der Daten wieder ein impliziter Index 0, 1, 2,
+usw. gesetzt. Das ist nicht weiter verwunderlich, denn Pandas kann nicht wissen,
+welche Spalte wir als Index vorgesehen haben. Und manchmal ist ein automatisch
+erzeugter impliziter Index auch nicht schlecht. In diesem Fall würden wir aber
+gerne als Zeilenindex die Namen der Spieler verwenden. Daher modifizieren wir
+den Befehl mit `index_col=`. Die Namen stehen in der 1. Spalte, was in
+Python-Zählweise einer 0 entspricht.
+
+```{code-cell} ipython
+data = pd.read_csv('bundesliga_top7_offensive.csv', index_col=0)
+data.head(10)
+```
+
+
 ## Übersicht verschaffen mit info 
 
 Das obige Beispiel zeigt uns zwar nun die ersten 10 Zeilen des importierten
-Datensatzes, aber wie viele Daten insgesamt enthalten sind, welche Vereine noch
-kommen usw. können wir mit der `.head()`-Methode nicht erfassen. Dafür stellt
-Pandas die beiden Methoden `.info()` und `.describe()`zur Verfügung. Probieren
-wir es einfach aus.
+Datensatzes, aber wie viele Daten insgesamt enthalten sind oder welche Vereine
+noch kommen, können wir mit der `.head()`-Methode nicht erfassen. Dafür stellt
+Pandas die Methode `.info()` zur Verfügung. Probieren wir es einfach aus.
 
 ```{code-cell} ipython
 data.info()
 ```
 
 Mit `.info()` erhalten wir eine Übersicht, wie viele Spalten es gibt und auch
-die Spaltenüberschriften werden aufgelistet. Dabei sind Überschriften wie Name
-selbsterklärend, aber was xG bedeutet, erchließt sich nicht von selbst. Dazu
+die Spaltenüberschriften werden aufgelistet. Dabei sind Überschriften wie `Name`
+selbsterklärend, aber was `xG` bedeutet, erschließt sich nicht von selbst. Dazu
 brauchen wir mehr Informationen von den Autor:innen der Daten.
 
 Weiterhin entnehmen wir der Ausgabe von `.info()`, dass in jeder Spalte 177
