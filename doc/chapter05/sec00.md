@@ -18,17 +18,9 @@ kernelspec:
 
 Die Visualisierung der Daten gehört zu den wichtigsten Schritten der
 Datenanalyse. Oft vermittelt die Visualisierung bereits wichtige Erkenntnisse
-über die Daten. Zu dem Modul Pandas gehören bereits Methoden zur grafischen
-Darstellung der Daten, wie z.B. ``.plot(kind='line')`` oder
+über die Daten. Zu dem Modul Pandas gehören bereits einfache Methoden zur
+grafischen Darstellung der Daten, wie z.B. ``.plot(kind='line')`` oder
 ``.plot(kind='bar')``. 
-
-```{code-cell} ipython3
-import numpy as np
-import pandas as pd
-
-df = pd.DataFrame(np.random.rand(7), index=['Mo','Di','Mi','Do','Fr','Sa','So'])
-df.plot(kind='bar')
-```
 
 Diese Methoden basieren auf einem weiteren Python-Modul, nämlich **Matplotlib**.
 Matplotlib werden wir immer dann verwenden, wenn Grafiken komplexer werden (z.B.

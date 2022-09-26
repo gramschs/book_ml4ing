@@ -277,7 +277,7 @@ fig, ax = plt.subplots()
 ax.scatter(x, y1, marker='+', label='Frankfurt')
 ax.scatter(x, y2, marker='.', label='Offenbach')
 ax.legend()
-ax.set_title('Durchschnittstemperatur')
+ax.set_title('Durchschnittstemperatur');
 ```
 
 ```{admonition} Mini-Übung
@@ -291,3 +291,11 @@ Diamanten.
 ```{code-cell} ipython3
 # Hier Ihr Code
 ```
+
+## Zusammenfassung und Ausblick
+
+In diesem Abschnitt haben wir die drei wichtigsten Diagrammtypen wiederholt. Das
+Linien- und das Streudiagramm werden für die Visualisierung von kontinuierlichen
+Daten verwendet, wohingegen das Balkendiagramm dem Plot von diskreten Daten
+(Kategorien) dient. Im folgenden Abschnitt verknüpfen wir Matplotlib mit Pandas
+zur Visualisierung von Tabellendaten in einem DataFrame.
