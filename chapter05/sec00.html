@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lineare und polynomiale Regression" href="../chapter06/sec00.html" />
+    <link rel="next" title="Linien-, Balken- und Streudiagramme" href="sec01.html" />
     <link rel="prev" title="Statistik mit Pandas" href="../chapter04/sec03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -237,10 +237,32 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Daten visualisieren mit Matplotlib
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec01.html">
+     Linien-, Balken- und Streudiagramme
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     Visualisierung von DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec03.html">
+     Histogramme
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -263,8 +285,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter08/sec00.html">
    Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -290,8 +312,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -364,6 +386,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter05/sec00.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -398,6 +467,23 @@ title="Source repository"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../_sources/chapter05/sec00.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../_sources/chapter05/sec00.md"
    class="headerbtn"
@@ -462,6 +548,17 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="daten-visualisieren-mit-matplotlib">
 <h1>Daten visualisieren mit Matplotlib<a class="headerlink" href="#daten-visualisieren-mit-matplotlib" title="Permalink to this headline">#</a></h1>
+<p>Die Visualisierung der Daten gehört zu den wichtigsten Schritten der
+Datenanalyse. Oft vermittelt die Visualisierung bereits wichtige Erkenntnisse
+über die Daten. Zu dem Modul Pandas gehören bereits einfache Methoden zur
+grafischen Darstellung der Daten, wie z.B. <code class="docutils literal notranslate"><span class="pre">.plot(kind='line')</span></code> oder
+<code class="docutils literal notranslate"><span class="pre">.plot(kind='bar')</span></code>.</p>
+<p>Diese Methoden basieren auf einem weiteren Python-Modul, nämlich <strong>Matplotlib</strong>.
+Matplotlib werden wir immer dann verwenden, wenn Grafiken komplexer werden (z.B.
+mehrere Visualisierungen in einer Grafik) oder wir Grafiken ästhetisch
+ansprechend für Publikationen oder Präsentationen aufbereiten wollen.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -498,10 +595,10 @@ title="Print to PDF"
             <p class="prev-next-title">Statistik mit Pandas</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter06/sec00.html" title="next page">
+    <a class='right-next' id="next-link" href="sec01.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lineare und polynomiale Regression</p>
+        <p class="prev-next-title">Linien-, Balken- und Streudiagramme</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
