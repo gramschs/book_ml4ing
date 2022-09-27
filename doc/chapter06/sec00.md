@@ -1,3 +1,5 @@
 # Lineare und polynomiale Regression
 
-TODO
+In diesem Kapitel beschäftigen wir uns mit der linearen Regression. Wie lernen,
+wie mit Scikit-Learn ein Regressionsmodell trainiert wird und betrachten auch
+die polynomiale Regression.

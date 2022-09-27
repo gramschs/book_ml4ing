@@ -36,6 +36,10 @@ parts:
 - caption: ML-Verfahren
   chapters:
   - file: chapter06/sec00.md
+    sections:
+    - file: chapter06/sec01.md
+    - file: chapter06/sec02.md
+    - file: chapter06/sec03.md
   - file: chapter07/sec00.md
   - file: chapter08/sec00.md
     sections:
