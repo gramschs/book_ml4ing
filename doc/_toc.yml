@@ -10,7 +10,6 @@ parts:
     sections:
     - file: chapter01/sec01.md
     - file: chapter01/sec02.md
-    - file: chapter01/sec03.md
   - file: chapter02/sec00.md
     sections:
     - file: chapter02/sec01.md

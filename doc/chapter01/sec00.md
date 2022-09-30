@@ -21,7 +21,3 @@ deutschen Begriff maschinelles Lernen 2.8 Millionen Treffer. Auf Englisch
 werden sowohl für den deutschen Begriff als auch die englischsprachige Variante
 die Trefferzahlen mittlerweile höher sein.
 
-Die Publikationsdatenbank [Scopus](https://www.scopus.com) listet bis 2021
-insgesamt 440582 Publikationen auf, die den Begriff Machine Learning im Titel,
-Abstract oder als Schlüsselwort aufweisen. Interessant ist dabei, wie die Anzahl
-der Publikationen exponentiell ansteigt: 
