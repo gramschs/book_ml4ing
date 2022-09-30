@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Histogramme 
+# Optional: Histogramme 
 
 ## Lernziele
 
