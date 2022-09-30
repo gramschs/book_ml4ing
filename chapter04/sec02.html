@@ -249,17 +249,22 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec01.html">
-     Linien-, Balken- und Streudiagramme
+     Das Modul Numpy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec02.html">
-     Visualisierung von DataFrames
+     Linien-, Balken- und Streudiagramme
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec03.html">
-     Histogramme
+     Visualisierung von DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec04.html">
+     Optional: Histogramme
     </a>
    </li>
   </ul>
@@ -271,10 +276,32 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter06/sec00.html">
    Lineare und polynomiale Regression
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec01.html">
+     Lineare Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec02.html">
+     Training eines linearen Regressionsmodells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec03.html">
+     Polynomiale Regression oder multiple Regression???
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter07/sec00.html">
@@ -285,8 +312,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter08/sec00.html">
    Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -312,8 +339,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -548,8 +575,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unzusammenhangende-zeilen">
-     Unzusammenhängende Zeilen
+    <a class="reference internal nav-link" href="#selektion-unzusammenhangender-zeilen-per-liste">
+     Selektion unzusammenhängender Zeilen per Liste
     </a>
    </li>
   </ul>
@@ -566,12 +593,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#zusammenhangende-spalten-slicing">
-     Zusammenhängende Spalten (Slicing)
+     Zusammenhängende Spalten: Slicing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unzusammenhangende-selektion-von-spalten-per-liste">
-     Unzusammenhängende Selektion von Spalten per Liste
+    <a class="reference internal nav-link" href="#selektion-unzusammenhangender-spalten-per-liste">
+     Selektion unzusammenhängender Spalten per Liste
     </a>
    </li>
   </ul>
@@ -631,8 +658,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unzusammenhangende-zeilen">
-     Unzusammenhängende Zeilen
+    <a class="reference internal nav-link" href="#selektion-unzusammenhangender-zeilen-per-liste">
+     Selektion unzusammenhängender Zeilen per Liste
     </a>
    </li>
   </ul>
@@ -649,12 +676,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#zusammenhangende-spalten-slicing">
-     Zusammenhängende Spalten (Slicing)
+     Zusammenhängende Spalten: Slicing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unzusammenhangende-selektion-von-spalten-per-liste">
-     Unzusammenhängende Selektion von Spalten per Liste
+    <a class="reference internal nav-link" href="#selektion-unzusammenhangender-spalten-per-liste">
+     Selektion unzusammenhängender Spalten per Liste
     </a>
    </li>
   </ul>
@@ -1100,8 +1127,8 @@ Joshua Mees         2.02  0.00             0          0
 </div>
 </div>
 </section>
-<section id="unzusammenhangende-zeilen">
-<h3>Unzusammenhängende Zeilen<a class="headerlink" href="#unzusammenhangende-zeilen" title="Permalink to this headline">#</a></h3>
+<section id="selektion-unzusammenhangender-zeilen-per-liste">
+<h3>Selektion unzusammenhängender Zeilen per Liste<a class="headerlink" href="#selektion-unzusammenhangender-zeilen-per-liste" title="Permalink to this headline">#</a></h3>
 <p>Soll auf mehrere Zeilen zugegriffen werdenn, die nicht zusammenhängen, so können
 wir eine Liste mit den Zeilenindizes übergeben.</p>
 <div class="cell docutils container">
@@ -1179,7 +1206,7 @@ Name: Mins, Length: 177, dtype: int64
 </div>
 </section>
 <section id="zusammenhangende-spalten-slicing">
-<h3>Zusammenhängende Spalten (Slicing)<a class="headerlink" href="#zusammenhangende-spalten-slicing" title="Permalink to this headline">#</a></h3>
+<h3>Zusammenhängende Spalten: Slicing<a class="headerlink" href="#zusammenhangende-spalten-slicing" title="Permalink to this headline">#</a></h3>
 <p>Wenn wir beispielsweise die verwandelten Elfmeter mit den versuchten Elfmetern
 vergleichen wollen, so können wir die beiden aufeinanderfolgenden Spalten
 ‘Penalty_Goals’ und ‘Penalty_Attempted’ als Slice ausschneiden:</p>
@@ -1211,8 +1238,8 @@ Joshua Mees                     0                  0
 </div>
 </div>
 </section>
-<section id="unzusammenhangende-selektion-von-spalten-per-liste">
-<h3>Unzusammenhängende Selektion von Spalten per Liste<a class="headerlink" href="#unzusammenhangende-selektion-von-spalten-per-liste" title="Permalink to this headline">#</a></h3>
+<section id="selektion-unzusammenhangender-spalten-per-liste">
+<h3>Selektion unzusammenhängender Spalten per Liste<a class="headerlink" href="#selektion-unzusammenhangender-spalten-per-liste" title="Permalink to this headline">#</a></h3>
 <p>Die Anzahl der Tore (‘Goals’), die Anzahl der Spiele (‘Matches’) und die
 durchschnittliche Anzahl erwarteter Tore pro Spiel (‘xG’) miteinander zu
 vergleichen, könnte aufschlussreich sein. Da die Spalten nicht nebeneinander
@@ -1301,8 +1328,13 @@ Alphonso Davies         CAN   19
 </section>
 <section id="filtern">
 <h2>Filtern<a class="headerlink" href="#filtern" title="Permalink to this headline">#</a></h2>
-<p>Vielleicht haben Sie sich schon gefragt, warum wir nur Bayern-Spieler analysiert haben. Die Antwort ist simpel, Bayern stand im Datensatz oben in den ersten Zeilen. Tatsächlich sind aber die Spielerdaten von sieben Vereinen im Datensatz enthalten. Wir können uns die verschiedenen Werte einer Spalte mit der Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code>ansehen.</p>
-<p>In einem ersten Schritt lesen wir die Spalte mit den Vereinen aus (Spalte ‘Club’). Dann wenden wir auf das Ergnis die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> an.</p>
+<p>Vielleicht haben Sie sich schon gefragt, warum wir nur Bayern-Spieler analysiert
+haben. Die Antwort ist simpel, Bayern stand im Datensatz oben in den ersten
+Zeilen. Tatsächlich sind aber die Spielerdaten von sieben Vereinen im Datensatz
+enthalten. Wir können uns die verschiedenen Werte einer Spalte mit der Methode
+<code class="docutils literal notranslate"><span class="pre">.unique()</span></code>ansehen.</p>
+<p>In einem ersten Schritt lesen wir die Spalte mit den Vereinen aus (Spalte
+‘Club’). Dann wenden wir auf das Ergnis die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> an.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vereine</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Club&#39;</span><span class="p">]</span>

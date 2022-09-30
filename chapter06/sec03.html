@@ -251,17 +251,22 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec01.html">
-     Linien-, Balken- und Streudiagramme
+     Das Modul Numpy
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec02.html">
-     Visualisierung von DataFrames
+     Linien-, Balken- und Streudiagramme
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter05/sec03.html">
-     Histogramme
+     Visualisierung von DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec04.html">
+     Optional: Histogramme
     </a>
    </li>
   </ul>
@@ -675,10 +680,10 @@ lineare Regression die Messdaten nicht besonders gut annähert.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k0 = [24.54622571]
-k1 = [[-24.58325122]]
-R2-Score der Trainingsdaten: 0.8165
-R2-Score der Testdaten: -0.4128
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>k0 = [13.40343907]
+k1 = [[-20.84588103]]
+R2-Score der Trainingsdaten: 0.7452
+R2-Score der Testdaten: 0.7635
 </pre></div>
 </div>
 <img alt="../_images/sec03_2_1.png" src="../_images/sec03_2_1.png" />
@@ -791,8 +796,8 @@ transformiertes X:
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 3
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9974
+R2-Score der Trainingsdaten: 0.9993
+R2-Score der Testdaten: 0.995
 </pre></div>
 </div>
 <img alt="../_images/sec03_6_1.png" src="../_images/sec03_6_1.png" />
@@ -854,8 +859,8 @@ Scikit-Learn die sogenannte Pipieline:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 3
-R2-Score der Trainingsdaten: 0.9987
-R2-Score der Testdaten: 0.9991
+R2-Score der Trainingsdaten: 0.9992
+R2-Score der Testdaten: 0.9982
 </pre></div>
 </div>
 <img alt="../_images/sec03_10_1.png" src="../_images/sec03_10_1.png" />
@@ -907,63 +912,62 @@ for-Schleife:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 1
-R2-Score der Trainingsdaten: 0.8226
-R2-Score der Testdaten: -0.6408
+R2-Score der Trainingsdaten: 0.8096
+R2-Score der Testdaten: 0.2784
 
 Grad: 2
-R2-Score der Trainingsdaten: 0.8228
-R2-Score der Testdaten: -0.5843
+R2-Score der Trainingsdaten: 0.8237
+R2-Score der Testdaten: 0.284
 
 Grad: 3
-R2-Score der Trainingsdaten: 0.9991
-R2-Score der Testdaten: 0.9971
-
-Grad: 4
-R2-Score der Trainingsdaten: 0.9991
-R2-Score der Testdaten: 0.9979
-
-Grad: 5
 R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9984
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 6
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9987
-
-Grad: 7
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9986
-
-Grad: 8
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9982
-
-Grad: 9
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9984
-
-Grad: 10
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9984
-
-Grad: 11
-R2-Score der Trainingsdaten: 0.9992
-R2-Score der Testdaten: 0.9985
-
-Grad: 12
-R2-Score der Trainingsdaten: 0.9994
-R2-Score der Testdaten: 0.9954
-
-Grad: 13
-R2-Score der Trainingsdaten: 0.9994
 R2-Score der Testdaten: 0.9963
 
-Grad: 14
+Grad: 4
+R2-Score der Trainingsdaten: 0.9992
+R2-Score der Testdaten: 0.9967
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 5
+R2-Score der Trainingsdaten: 0.9993
+R2-Score der Testdaten: 0.9964
+
+Grad: 6
+R2-Score der Trainingsdaten: 0.9993
+R2-Score der Testdaten: 0.9968
+
+Grad: 7
+R2-Score der Trainingsdaten: 0.9993
+R2-Score der Testdaten: 0.9961
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Grad: 8
 R2-Score der Trainingsdaten: 0.9994
-R2-Score der Testdaten: 0.9978
+R2-Score der Testdaten: 0.9951
+
+Grad: 9
+R2-Score der Trainingsdaten: 0.9994
+R2-Score der Testdaten: 0.9949
+
+Grad: 10
+R2-Score der Trainingsdaten: 0.9994
+R2-Score der Testdaten: 0.9939
+
+Grad: 11
+R2-Score der Trainingsdaten: 0.9995
+R2-Score der Testdaten: 0.9916
+
+Grad: 12
+R2-Score der Trainingsdaten: 0.9995
+R2-Score der Testdaten: 0.9939
+
+Grad: 13
+R2-Score der Trainingsdaten: 0.9995
+R2-Score der Testdaten: 0.9932
+
+Grad: 14
+R2-Score der Trainingsdaten: 0.9995
+R2-Score der Testdaten: 0.9799
 </pre></div>
 </div>
 <img alt="../_images/sec03_12_3.png" src="../_images/sec03_12_3.png" />
@@ -1016,8 +1020,8 @@ Underfitting oder Overfitting vorliegt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7538471350761531, 0.7658441073013611, 0.9989414752156462, 0.9989855807781405, 0.999130792218829, 0.9992499214084066, 0.9992650542308489, 0.9993324246846084, 0.9994828279094917, 0.9994968818098301, 0.9995001604440635, 0.9995896087021872, 0.9996105406011979, 0.9996109260788331]
-[0.7434151306436727, 0.7485266251309479, 0.9989867838440387, 0.9991608789303218, 0.9986226818664499, 0.9983618896997595, 0.9981535572602557, 0.9968688690173733, 0.9933913877446005, 0.9931089599515527, 0.9925376164964643, 0.9930849946359637, 0.9933926615136147, 0.99500864811096]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7972509161240322, 0.8237277854930649, 0.9993953135862568, 0.9994846692650301, 0.9997305618462948, 0.9997381937742655, 0.9997455278310311, 0.9997621707744264, 0.9997623945870197, 0.9997755038038897, 0.999904518962109, 0.9999068278548401, 0.9999143648514689, 0.9999260429584113]
+[0.32747201381317137, 0.1919951096693432, 0.9943102716644568, 0.9942666712379927, 0.9919686184236478, 0.9911911924874715, 0.9908178971012993, 0.9903505287488744, 0.9904185561357548, 0.9901168951145852, 0.9864742796629523, 0.9874910837268441, 0.9854006317051394, 0.9900972826231453]
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1036,7 @@ Underfitting oder Overfitting vorliegt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x131555e50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1468a6b50&gt;]
 </pre></div>
 </div>
 <img alt="../_images/sec03_16_1.png" src="../_images/sec03_16_1.png" />

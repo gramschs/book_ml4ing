@@ -12,290 +12,434 @@ kernelspec:
   name: python3
 ---
 
-# Linien-, Balken- und Streudiagramme
+# Das Modul NumPy
+
+Im letzten Kapitel haben wir gelernt, Daten in Form von Tabellen als
+Pandas-Objekte zu verwalten. Dabei arbeiten die Module Pandas, Scikit-Learn und
+auch das Visualisierungsmodul Matplotlib, das wir in diesem Kapitel kennenlernen
+werden, alle mit NumPy-Arrays. NumPy ist ein Akronym für **numerisches Python**.
+
+Die Internetseite von NumPy
+
+> https://NumPy.org
+
+behauptet sogar von ihrem eigenen Paket, dass NumPy das (!!!) fundamentale Modul
+für alle wissenschaftlichen Programme in Python ist — stimmt wahrscheinlich! Die
+Bibliothek ist im Kern in der Programmiersprache C geschrieben und bietet vor
+allem sehr effiziente Datenstrukturen für Vektoren, Matrizen und
+mehrdimensionale Arrays an.  
+ 
+In  diesem Abschnitt werden wir uns die grundlegenden Eigenschaften des
+**NumPy-Array** erarbeiten, um für Matplotlib und Scikit-Learn die Basis zu
+schaffen.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: hint
-* Sie können **Matplotlib** mit der üblichen Abkürzung **plt** importieren.
-* Sie können Funktionen als **Liniendiagramm** visualisieren.
-* Sie können diskrete Daten als **Balkendiagramm** visualisieren.
-* Sie können Messwerte mit **Streudiagrammen** darstellen. 
+* Sie können **NumPy** mit seiner typischen Abkürzung **np** importieren.
+* Sie können mit **np.array()** ein NumPy-Array aus einer Liste erzeugen.
+* Sie können NumPy-Arrays, die nach einem Muster aufgebaut sind, erzeugen:
+    * Array mit Einsen: **np.ones()**
+    * Array mit Nullen: **np.zeros()**
+    * Array mit Konstante: **np.full()**
+    * Array mit vorgegebener Anzahl von Punkten in einem Intervall: **np.linspace()**
+    * Array mit vorgebener Schrittweite in einem Intervall: **np.arange()**
+* Sie können Basis-Attribute von NumPy-Arrays bestimmen wie beispielsweise
+    * Anzahl der Dimensionen: **.ndim**
+    * Größe der jeweiligen Dimension: **.shape**
+    * Gesamtgröße des Arrays: **.size**
+* Sie können NumPy-Funktionen auf NumPy-Arrays anwenden.
 ```
 
-## Liniendiagramme 
+## NumPy ist schneller durch C
 
-Liniendiagramme werden zur Visualisierung benutzt, wenn die Daten kontinuierlich
-sind und zu jedem x-Wert ein y-Wert vorliegt. Am häufigsten ist dies der Fall,
-wenn die Daten von einer mathematischen Funktion stammen. Obwohl die Daten
-theoretisch für jeden x-Wert vorliegen und wir daher Millionen von (x,y)-Punkten
-zeichnen könnten, benutzen wir eine Weretabelle mit weniger (x,y)-Paaren. Die
-Anzahl der (x,y)-Paare bestimmt dann, wie "glatt" die Visualisierung wirkt.
+Alle Daten lassen sich letztendlich als eine Folge von Zahlen schreiben.
+Beispielsweise kann ein Foto durch seine Pixel beschrieben werden
+zusammengesetzt aus den Werten RGB (rot - grün - blau). Python bietet dafür
+schon einen Datentyp, die Liste, in der Zahlen (Integer oder Float) gespeichert
+werden können. Da Python eine interpretierte Programmiersprache ist und da in
+der Liste auch andere Datentypen wie zum Beispiel Strings vorkommen dürfen, sind
+Listen für große Datenmengen nicht geeignet. Stattdessen stellt das Modul NumPy
+einen effizienten Datentyp zur Verfügung, das sogenannte **NumPy-Array**.  
 
-Erzeugen wir uns eine Liste mit x-Werten und dazugehörigen y-Werten.
+Dazu kommen noch Funktionen, die wichtig für Arrays sind wir Vektoroperationen.
+Tatsächlich sind die meisten NumPy-Operationen nicht in Python programmiert,
+sondern in C. Damit sind NumPy-Funktionen sehr effizient und das tolle daran
+ist, dass wir uns keine Gedanken über hardwarenahe Programmierung mit C oder C++
+machen müssen :-)
 
-```{code-cell} ipython3
-x = [-2, -1, 0, 1, 2]
-y = [4, 1, 0, 1, 4]
-```
-
-Danach lassen wir den Interpreter diese Werte zeichnen. Dazu benötigen wir das
-Modul `matplotlib`, genauer gesagt nur einen Teil dieses Moduls namens `pylab`.
-Daher laden wir es zuerst mit der typischen Abkürzung `plt`.
-
-```{code-cell} ipython3
-import matplotlib.pylab as plt
-```
-
-Matplotlib bietet zwei Schnittstellen an, die Funktionen und Methoden des Moduls
-zu benutzen. Die erste Schnittstelle ist **zustandsorientiert**, die zweite
-**objektorientiert**. Die zustandsorientierte Schnittstelle ist älter. Die
-Entwickler:innen des Matplotlib-Moduls orientierten sich zunächst an der
-kommerziellen Software MATLAB und griffen erst in einer späteren Phase auf
-Objektorientierung zurück. 
-
-Bei der zustandsorientierten Schnittstelle werden Funktionen benutzt, die auf
-das aktuelle Objekt wirken. Das hat Nachteile, wenn beispielsweise mehrere Plots
-in einer Grafik gegenübergestellt werden. Dann ist es schwierig zuzuordnen, was
-gerade das aktuelle Objekt ist. Daher hilft die zweite Matplotlib-Schnittstelle,
-die objektorientierte Schnittstelle, mehrere Objekte auseinanderzuhalten. Wir
-werden in dieser Vorlesung die objektorientierte Schnittstelle verwenden.
-
-Zunächst erzeugen wir das Grafik-Objekt bestehend aus einer Figure (=Grafik als
-Ganzes) und Axes (=Achsen) explizit mit der Funktion ``plt.subplots()``und
-speichern diese in entsprechenden Variablen. Dann verwenden wir Methoden, das
-Grafikobjekt zu manipulieren. Beispielsweise fügen wir den Achsen einen
-Linienplot und Beschriftungen hinzu.
-
-```{code-cell} ipython3
-fig, ax = plt.subplots() 
-ax.plot(x,y)
-```
-
-PS: Ohne Strichpunkt/Semikolon gibt Jupyter-Lab noch Objekttyp und Referenz des
-Speicherplatzes aus. In einem normalen Python-Skript würde das nicht passieren.
-Sie können diese Angabe durch den Strichpunkt/Semikolon in der letzten Zeile
-unterdrücken.
-
-Aber zurück zum Plot, sieht ziemlich krakelig aus. Eigentlich sollte dies eine
-Parabel im Intervall $[-2,2]$ werden. Mit nur 5 Punkten und der Tatsache, dass
-diese 5 Punkte mit geraden Linien verbunden werden, sieht es etwas unschön aus.
-Besser wird es mit mehr Punkten, aber die wollen wir jetzt nicht von Hand
-erzeugen. Wir verwenden das Modul `numpy` für numerisches Python, das wir wieder
-einmal zuerst laden müssen:
-
-```python
-import numpy as np
-```
-
-Die Funktion `np.linspace(a,b, Anzahl)` erzeugt Punkte im Intervall $[a,b]$ je
-nach eingestellter Anzahl.
+Schauen wir uns für das Bestimmen des Maximums einer Liste von zufällig
+erzeugten Zahlen zwischen 0 und 1 an. Zunächst erzeugen wir die Liste der 100
+Zahlen. Dazu importieren wir NumPy mit seiner typischen Abkürzung `np`. im
+Untermodul `np.random`gibt es eine Funktion namens `random_sample`, die
+Zufallszahlen erzeugt.
 
 ```{code-cell} ipython3
 import numpy as np
 
-x = np.linspace(-2, 2, 100) 
-y = x**2
+# erzeuge Liste
+M = np.random.random_sample(100)
 
-fig, ax = plt.subplots()
-ax.plot(x,y);
+print(M)
 ```
 
-Nächstes Thema, Beschriftungen. Mit den Methoden `.set_xlabel()` und
-`.set_ylabel()` beschriften Sie die x- und y-Achse. Mit `.set_title()` wird der
-Titel gesetzt.
+Als nächstes berechnen wir das Maximum dieser Zahlen mit der im Python-Kern
+eingebauten Standardfunktion `max`, dann mit `np.max`:
 
 ```{code-cell} ipython3
-# data
-x = np.linspace(-10,10,200)
-y = np.sin(x)
+max_standard = max(M)
+max_numpy = np.max(M)
 
-# plot
-fig, ax = plt.subplots()
-ax.plot(x,y)
-ax.set_xlabel('Zeit in Sekunden')
-ax.set_ylabel('Stromstärke in Ampere')
-ax.set_title('Wechselstrom');
+print('Standard max = ', max_standard)
+print('NumPy max = ', max_numpy)
 ```
 
-Zuletzt soll unser Plot gespeichert werden. Es stehen mehrere Grafikformate zur
-Verfügung. Mehr Details finden Sie auf der Internetseite [Dokumentation
-savefig](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html).
-Ein typisches Ausgabeformat ist eine Rastergrafik wie z.B. png. 
-
-Da die komplette Grafik (= Figure) gespeichert werden soll, wird `.savefig()`
-auf das Objekt `fig` angewendet:
+Aber wie lange haben eigentlich die Berechnungen gedauert? Bei so kleinen Listen
+lohnt es nicht, die Berechnung mit der Stoppuhr zu ermitteln, die typischen
+Rechnenzeiten sind zu kurz. Aber JupyterLab bietet ein eingebautes Kommando,
+nämlich `%timeit`. Der Vorteil dieses Kommandos ist, dass der Python-Interpreter
+bei sehr kurzen Rechenzeiten einfach den Code mehrmals durchläuft und
+Mittelwerte bildet. 
 
 ```{code-cell} ipython3
-fig.savefig('plot_stromstaerke.png', dpi=300);
+%timeit max_standard = max(M)
+%timeit max_numpy = np.max(M)
+```
+
+Sie sehen, die NumPy-Variante ist erheblich schneller als die Standard-Variante.
+
+
+## Erzeugung von NumPy-Arrays
+
+Im Gegensatz zu Python-Listen enthalten NumPy-Arrays nur Elemente des gleichen
+Datentyps. Wenn eine Liste nur aus gleichen Datentypen besteht, können wir
+direkt aus der Liste ein NumPy-Array erzeugen. Dazu verwenden wir `array()` aus
+dem Numpy-Modul.
+
+```{code-cell} ipython3
+liste = [1, 2, 3, 4, 5]
+a = np.array(liste)
+
+print(a)
+print( type(a) )
+```
+
+Sehr häufig kommen aber auch zwei-  oder gar dreidimensionale Arrays vor. In der
+Mathematik würde man ein eindimensionales Array als Vektor bezeichnen, ein
+zweidimensionales Array als Matrix (= Excel-Tabelle) und ein dreidimensionales
+Array als Tensor. Die Position eines Elementes wird dabei durch ganze Zahlen
+gekennzeichnet (entspricht bei 1d-Arrays ja den Listen). Für zweidimensionale
+NumPy-Arrays brauchen wir daher zwei Indizes, für dreidimensionale Arrays drei.
+Die folgende Grafik zeigt das Nummerierungsschema:
+
+```{figure} pics/fig_numpy_array.png
+---
+width: 600px
+name: pics/fig_numpy_array
+---
+Nummerierungsschema bei NumPy-Arrays
+
+([Quelle:](https://predictivehacks.com/tips-about-NumPy-arrays/) "Schematische
+Darstellung einer Nervenzelle" von George Pipis.)
+```
+
+Im Folgenden fokussieren wir uns zunächst auf 1D- und 2D-Arrays und betrachten
+uns verschiedene Erzeugungsmethoden. Die entsprechende (englischsprachige)
+Dokumentation finden Sie hier:
+
+> https://numpy.org/doc/stable/reference/routines.array-creation.html
+ 
+Wir starten mit Arrays, die mit 0 oder 1 oder einer konstanten Zahl gefüllt
+sind. Dazu verwenden wir die NumPy-Funktionen
+* `np.zeros(dimension)`
+* `np.ones(dimension)`
+* `np.full(dimension, zahl)`
+
+```{code-cell} ipython3
+# 1d-Array gefüllt mit Nullen
+x = np.zeros(5)
+print(x)
+```
+
+```{code-cell} ipython3
+# 2d-Array gefüllt mit Nullen
+x = np.zeros( (5,7) )
+print(x)
+```
+
+```{code-cell} ipython3
+# 1d-Array gefüllt mit Einsen
+x = np.ones(7)
+print(x)
+```
+
+```{code-cell} ipython3
+# 2d-Array gefüllt mit Nullen
+x = np.ones( (3,4) )
+print(x)
+```
+
+```{code-cell} ipython3
+# 2d-Array gefüllt mit einem konstanten Wert
+x = np.full( (3,4), -17.7)
+print(x)
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise 
-Bitte plotten Sie folgende Funktionen: 
-    
-* lineare Funktion, z.B. f(x) = 7x + 2
-* Sinus,
-* Kosinus,
-* Exponentialfunktion und
-* Wurzelfunktion.
-
-Verändern Sie auch das Definitionsgebiet der Funktionen, also das Intervall für
-$x$. (Bei welcher Funktion müssen Sie besonders auf das Defiitionsgebiet der
-Funktion achten?)
-```
-```{code-cell} ipython3
-# Hier Ihr Code:
-```
-
-## Balkendiagramme
-
-Mit der Methode `.bar()` kann ein Balkendiagramm erstellt werden. Nehmen wir mal
-an, wir möchten auswerten, wie viele Nutzer/innen in Moodle auf die Jupyter
-Notebooks zum Download zugegriffen haben:
-
-| Woche | Anzahl Nutzer/innen |
-| --- | --- |
-| 2 | 14 |
-| 3 | 12 |
-| 4 | 10 |
-| 5 | 10 |
-| 6 | 9  |
-
-Dann wird das Balkendiagramm mit folgenden Code erzeugt:
-
-```{code-cell} ipython3
-# data
-x = [2,3,4,5,6]
-y = [14,12,10,10,9]
-
-# bar plot
-fig, ax = plt.subplots()
-ax.bar(x,y)
-ax.set_xlabel('Woche')
-ax.set_ylabel('Anzahl Nutzer/innen')
-ax.set_title('Zugriff auf Jupyter Notebooks zum Download WiSe 2021/22');
-```
-
-```{admonition} Mini-Übung
-:class: miniexercise 
-
-Hier ist eine Tabelle mit den Zugriffszahlen auf das MATLAB Live Script in der
-Vorlesung angewandte Informatik im Sommersemester 2021. Bitte stellen Sie die
-Daten als Balkendiagramm inklusive Beschriftungen dar.
-
-|Woche |Anzahl Nutzer/innen|
-| --- | --- |
-| 3 | 9  |
-| 4 | 17 |
-| 5 | 15 |
-| 6 | 10 |
-| 7 | 11 |
+:class: miniexercise
+Erzeugen Sie folgende Arrays:
+* 1d-Array der Dimension 7 gefüllt mit 0
+* 1d-Array der Dimension 7 gefüllt mit -1
+* 2d-Array der Dimension (7,5) gefüllt mit 1
+* 2d-Array der Dimension (2,4) gefüllt mit $\pi$
+* 1d-Array der Dimension 8 gefüllt mit $\sqrt{5}$
 ```
 
 ```{code-cell} ipython3
 # Hier Ihr Code:
 ```
 
-## Streudiagramme
-
-Bei Streudiagrammen werden nicht die Punkte $(x_1,y_2)$ mit $(x_2,y_2)$ mit
-$(x_3,y_3)$ usw. durch Linien verbunden, sondern jeder Punkt selbst wird an der
-Stelle seiner Koordinaten eingezeichnet. Ob dazu ein Punkt, Kreis, Dreieck oder
-Quadrat oder ein anderes Symbol verwendet wird, bleibt dem Anwender überlassen.
-Streudiagramme heißen im Englischen Scatter-Plot, daher lautet die entsprechende
-Matplotlib-Methode auch ``.scatter()``.
-
-```{code-cell} ipython3
-# data
-x = np.linspace(-2*np.pi, 2*np.pi, 50)
-y = np.sin(x)
-
-# scatter plot
-fig, ax = plt.subplots()
-ax.scatter(x,y);
-```
-
-Über die Option ``marker= `` lässt sich das Symbol einstellen, mit dem das
-Streudiagramm erzeugt wird. Wie Sie sehen, ist ein ausgefüllter Kreis
-voreingestellt. Lesen Sie auf der Internetseite 
-
-> https://matplotlib.org/stable/api/markers_api.html#module-matplotlib.markers
-
-nach, welche Marker-Symbole existieren. Probieren Sie einige der Symbole hier
-aus:
-
-
-```{code-cell} ipython3
-# data
-x = np.linspace(-2*np.pi, 2*np.pi, 50)
-y = np.sin(x)
-
-# scatter plot
-fig, ax = plt.subplots()
-ax.scatter(x,y, marker='x');
-```
-
-Für bekannte Funktionen wie Sinus oder Kosinus würde man Liniendiagramme
-verwenden. Streudiagramme eignen sich eher für die Visualisierung einzelner
-Messungen. Wenn Sie beispielsweise an jeden Wochentag die Temperatur an zwei
-Orten messen, bietet es sich an, beide Messreihen in einem Streudiagramm zu
-visualisieren. Dazu sollten Sie unterschiedliche Marker und unterschiedliche
-Farben verwenden.
-
-```{code-cell} ipython3
-# data
-x  = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
-y1 = np.random.uniform(15,23,7)
-y2 = np.random.uniform(15,23,7)
-
-# scatter plots
-fig, ax = plt.subplots()
-ax.scatter(x, y1, marker='+')
-ax.scatter(x, y2, marker='.');
-```
-
-Dann ist es aber auch gut, die Visualisierung zu beschriften. Dazu kennzeichnet
-man jeden einzelnen Plot-Aufruf mit einem sogenannten Label, z.B.
-
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
-ax.scatter(x,y1, label='Messung1')
+x1 = np.zeros(7)
+x2 = np.full(7, -1)
+X3 = np.ones( (7,5) )
+X4 = np.full( (2,4), np.pi)
+x5 = np.full(8, np.sqrt(5))
 ```
-Zuletzt verwendet man die Methode `ax.legend()`, die eine Legende mit allen
-Label-Einträgen erzeugt, bei denen die Farben der Kurven und die Marker korrekt
-zu den Namen (Labels) zugeordnet werden.
+````
+
+Die folgenden 1d-Arrays werden nach einem gleichmäßigen Muster gefüllt. Dazu
+benutzen wir die NumPy-Funktionen
+
+* `np.linspace(start, stopp, anzahl)`
+* `np.arange(start, stopp, schrittweite)`
 
 ```{code-cell} ipython3
-# data
-x  = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
-y1 = np.random.uniform(15,23,7)
-y2 = np.random.uniform(15,23,7)
+# 1d-Array, das gleichmäßig zwischen start und stopp mit num Werten gefüllt wird
+# im Beispiel: start = 1, stopp = 10, num = 25 
+x = np.linspace(1, 10, 25)
+print(x)
+```
 
-# scatter plots
-fig, ax = plt.subplots()
-ax.scatter(x, y1, marker='+', label='Frankfurt')
-ax.scatter(x, y2, marker='.', label='Offenbach')
-ax.legend()
-ax.set_title('Durchschnittstemperatur');
+```{code-cell} ipython3
+# 1d-Array, das bei start beginnt, step dazu addiert und bis kurz vor stopp geht
+# im Beispiel: start = 1, stopp = 20, step = 2
+x = np.arange(1, 20, 2)
+print(x)
+```
+
+Zuletzt betrachten wir noch Erzeugungsfunktionen, die seltener vorkommen, aber
+dennoch nützlich sein können: 
+
+* `np.random.random_sample(dimension)`: gleichmäßig verteilt zwischen 0 und 1
+* `np.random.normal(m, s, dimension)`: normalverteilt mit Mittelwert m und
+  Standardabweichung s
+
+```{code-cell} ipython3
+# 2d-Array mit gleichmäßig zwischen 0 und 1 verteilten Zufallszahlen
+x = np.random.random_sample( (2,3) )
+print(x)
+```
+
+```{code-cell} ipython3
+# 2d-Array mit normalverteilten Zufallszahlen 
+x = np.random.normal(0, 1, (3,4) )
+print(x)
+```
+
+```{code-cell} ipython3
+# 2d-Array als Einheitsmatrix der Größe m x m, hier m = 5
+x = np.eye(5)
+print(x)
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise 
-Stellen Sie die Sinus-Funktion im Intervall $[-4\pi,4\pi]$ als Scatter-Plot dar.
-Dabei sollen negative Funktionswerte blau eingefärbt werden und positive
-Funktionswerte rot. Setzen Sie zusätzlich an Nullstellen einen schwarzen
-Diamanten.     
+:class: miniexercise
+Erzeugen Sie folgende Arrays:
+
+* 2d-Array mit der Dimension (3,4) und Zufallszahlen gleichmäßig zwischen 0 und
+1 verteilt 
+* 1d-Array mit der Dimension 17 und Zufallszahlen standardnormalverteilt (d.h.
+welcher Mittelwert und welche Standardabweichung?) 
+* 2d-Array mit der Dimension (1,5) und normalverteilten Zufallszahlen,
+Mittelwert 37.5, Standardabweichung 0.8 
+* 1d-Array mit allen geraden Zahlen von 100 bis 200 (inklusive) 
+* 1d-Array mit 100 Punkten im Intervall [-1,1] 
+* 1d-Array mit 0, 0.1, 0.2, 0.3, ..., 1.5
 ```
 
 ```{code-cell} ipython3
-# Hier Ihr Code
+# Hier Ihr Code:
 ```
 
-## Zusammenfassung und Ausblick
+````{admonition} Lösung
+:class: minisolution, toggle
+```python
+X1 = np.random.random_sample((3,4))
+x2 = np.random.normal(0, 1, 17)
+X3 = np.random.normal( 37.5, 0.8, (1,5))
+x4 = np.arange(100, 201, 2)
+x5 = np.linspace(-1, 1, 100)
+x6 = np.arange(0, 1.6, 0.1)
+```
+````
 
-In diesem Abschnitt haben wir die drei wichtigsten Diagrammtypen wiederholt. Das
-Linien- und das Streudiagramm werden für die Visualisierung von kontinuierlichen
-Daten verwendet, wohingegen das Balkendiagramm dem Plot von diskreten Daten
-(Kategorien) dient. Im folgenden Abschnitt verknüpfen wir Matplotlib mit Pandas
-zur Visualisierung von Tabellendaten in einem DataFrame.
+
+## Attribute von NumPy-Arrays
+
+Damit wir besser verstehen, welche Attribute die NumPy-Arrays haben können,
+erzeugen wir uns zufällig drei NumPy-Arrays. Damit aber nicht bei jeder neuen
+Ausführung der Code-Zelle neue Zufallszahlen gezogen werden, fixieren wir den
+Seed des Zufallszahlengenerators (vereinfacht gesagt kommen jetzt immer die
+gleichen Zufallszahlen) und benutzen die Erzeugungsmethode
+`np.random.randint(grenze, size=dimension)`:
+
+```{code-cell} ipython3
+import numpy as np
+       
+np.random.seed(0)
+
+x = np.random.randint(10, size=7)
+y = np.random.randint(10, size=(2, 3))
+
+print('x = ')
+print(x)
+
+print('y = ')
+print(y)
+```
+
+Bei den Listen haben wir eine Funktion kennengelernt, mit der die Anzahl der
+Elemente in der Liste bestimmt werden kann: `len()`. Listen sind eindimensional,
+aber NumPy-Arrays können mehrdimensional sein. Daher gibt es hier auch mehr
+Eigenschaften für die Beschreibung:
+
+* Anzahl der Dimensionen: `.ndim`
+* Größe der jeweiligen Dimension: `.shape`
+* Gesamtgröße des Arrays: `.size`
+
+Die Größe `.shape` haben wir ja in der obigen Abbildung schon bereits
+kennengelernt. 
+
+```{code-cell} ipython3
+print('x = ')
+print(x)
+
+print( x.ndim )
+print( x.shape )
+print( x.size )
+```
+
+```{code-cell} ipython3
+print('y = ')
+print(y)
+
+print( y.ndim )
+print( y.shape )
+print( y.size )
+```
+
+## Zugriff einzelner Elemente eines Arrays
+
+Der Zugriff bei eindimensionalen Arrays erfolgt genau wie bei Listen über den
+**Zugriffsoperator** `[]`. Auch hier wird ab 0 beginnend gezählt.
+
+```{code-cell} ipython3
+x = np.random.randint(10, size=7)
+print(x)
+
+drittes_element = x[2]
+print( drittes_element )
+```
+
+Interessant wird es zu sehen, wie auf mehrdimensionale Arrays zugegriffen wird.
+Zur Erinnerung, zweidimensionale Arrays haben zwei Indizes (axis 0 und axis 1),
+dreidimensionale Arrays haben drei Indizes (axis 0, axis 1 und axis 2).
+
+```{code-cell} ipython3
+print('y = ')
+print(y)
+
+element = y[0,2]
+print(element)
+```
+
+So kann man übrigens auch die Werte einzelner Elemente des Arrays ändern:
+
+```{code-cell} ipython3
+print('vorher y = ')
+print(y)
+
+y[1,1] = 777
+print('nachher y = ', y)
+```
+
+## Funktionen auf NumPy-Arrays anwenden
+
+NumPy-Arrays ermöglichen die Verarbeitung mit den typischen mathematischen
+Funktionen und den üblichen Statistik-Größen. Schauen wir uns einfach ein paar
+Beispiele an: 
+
+```{code-cell} ipython3
+# erzeuge 11 x-Werte im Intervall [-2*pi, 2*pi]
+x = np.linspace( -2*np.pi, 2*np.pi, 11)
+print(x)
+
+# Sinus-Funktion
+y1 = np.sin(x)
+print(y1)
+
+# Kosinus-Funktion
+y2 = np.cos(x)
+print(y2)
+
+# Exponentialfunktion
+y3 = np.exp(x)
+print(y3)
+
+# Potenzfunktion, z.B. y = x hoch 5
+y4 = np.power(x, 5)
+print(y4)
+```
+
+```{code-cell} ipython3
+# erzeuge 3x4-Matrix mit Zufallszahlen
+X = np.random.random_sample((3,4))
+print(X)
+
+# Summe über alle Elemente
+s1 = np.sum(X)
+print('s1', s1)
+
+# Summe in Richtung Achse 0
+s2 = np.sum(X, axis=0)
+print('s2', s2)
+
+# Summe in Richtung Achse 1
+s3 = np.sum(X, axis=1)
+print('s3', s3)
+
+# Maximum über alle Elemente
+max1 = np.max(X)
+print('max1', max1)
+
+# Maximum in Richtung Achse 0
+max2 = np.sum(X, axis=0)
+print('max2', max2)
+
+# Maximum in Richtung Achse 1
+max3 = np.sum(X, axis=1)
+print('max3', max3)
+```
+
+## Zusammenfassung 
+
+In diesem Abschnitt haben wir das NumPy-Array kennengelernt, eine sehr
+effiziente Datenstruktur. Die Erzeugungsmethoden nach einem Muster werden wir
+vor allem für die Visualisierung von Funktionen brauchen. Das Bestimmen der
+Basis-Attribute wird wichtig werden, wenn wir NumPy-Arrays aus
+Pandas-DataFrame-Objekten extrahieren, um damit maschinelle Lernalgorithmen zu
+füttern.
