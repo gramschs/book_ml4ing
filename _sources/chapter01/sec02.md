@@ -12,4 +12,4 @@ kernelspec:
   name: python3
 ---
 
-# Technische Voraussetzungen
+# Technische Voraussetzungen: Python, Anaconda und JupyterLab

@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Technische Voraussetzungen" href="sec02.html" />
+    <link rel="next" title="Technische Voraussetzungen: Python, Anaconda und JupyterLab" href="sec02.html" />
     <link rel="prev" title="Zu Beginn …" href="sec00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -139,12 +139,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="sec02.html">
-     Technische Voraussetzungen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sec03.html">
-     Grundlegender Ablauf eines ML-Projektes
+     Technische Voraussetzungen: Python, Anaconda und JupyterLab
     </a>
    </li>
   </ul>
@@ -421,7 +416,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter01/sec01.ipynb"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter01/sec01.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -549,12 +544,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithmen-und-daten-algorithms-and-data">
+   Algorithmen und Daten = Algorithms and Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uberwachtes-lernen-supervised-learning">
+   Überwachtes Lernen = Supervised Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-regression">
+     Regression = Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klassifikation-classification">
+     Klassifikation = Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unuberwachtes-lernen-unsupervised-learning">
+   Unüberwachtes Lernen = Unsupervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verstarkendes-lernen-reinforcement-learning">
+   Verstärkendes Lernen = Reinforcement Learning
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -566,6 +612,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#algorithmen-und-daten-algorithms-and-data">
+   Algorithmen und Daten = Algorithms and Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uberwachtes-lernen-supervised-learning">
+   Überwachtes Lernen = Supervised Learning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#regression-regression">
+     Regression = Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#klassifikation-classification">
+     Klassifikation = Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unuberwachtes-lernen-unsupervised-learning">
+   Unüberwachtes Lernen = Unsupervised Learning
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verstarkendes-lernen-reinforcement-learning">
+   Verstärkendes Lernen = Reinforcement Learning
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -575,6 +661,33 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="was-ist-maschinelles-lernen">
 <h1>Was ist maschinelles Lernen?<a class="headerlink" href="#was-ist-maschinelles-lernen" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>»… ein Forschungsgebiet, das Computer in die Lage versetzen soll, zu lernen,
+ohne explizit darauf programmiert zu sein.« (Arthur L. Samuel, 1959)</p>
+</div></blockquote>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l_HSWmxMRlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<section id="algorithmen-und-daten-algorithms-and-data">
+<h2>Algorithmen und Daten = Algorithms and Data<a class="headerlink" href="#algorithmen-und-daten-algorithms-and-data" title="Permalink to this headline">#</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HmUzceKCI9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+<section id="uberwachtes-lernen-supervised-learning">
+<h2>Überwachtes Lernen = Supervised Learning<a class="headerlink" href="#uberwachtes-lernen-supervised-learning" title="Permalink to this headline">#</a></h2>
+<section id="regression-regression">
+<h3>Regression = Regression<a class="headerlink" href="#regression-regression" title="Permalink to this headline">#</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NCCctUdfA3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+<section id="klassifikation-classification">
+<h3>Klassifikation = Classification<a class="headerlink" href="#klassifikation-classification" title="Permalink to this headline">#</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g6zuVEDlAzo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+<section id="unuberwachtes-lernen-unsupervised-learning">
+<h2>Unüberwachtes Lernen = Unsupervised Learning<a class="headerlink" href="#unuberwachtes-lernen-unsupervised-learning" title="Permalink to this headline">#</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P2Qwc63iCVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+<section id="verstarkendes-lernen-reinforcement-learning">
+<h2>Verstärkendes Lernen = Reinforcement Learning<a class="headerlink" href="#verstarkendes-lernen-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5HhQgFCQGIY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -614,7 +727,7 @@ title="Print to PDF"
     <a class='right-next' id="next-link" href="sec02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Technische Voraussetzungen</p>
+        <p class="prev-next-title">Technische Voraussetzungen: Python, Anaconda und JupyterLab</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
