@@ -43,6 +43,8 @@ parts:
   - file: chapter07/sec00.md
     sections: 
     - file: chapter07/sec01.ipynb
+    - file: chapter07/sec02.ipynb
+    - file: chapter07/sec03.ipynb
   - file: chapter08/sec00.md
     sections:
     - file: chapter08/sec01.md
