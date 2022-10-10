@@ -49,7 +49,7 @@ haben Sie mit `print()` bereits kennengelernt.
 
 Der Aufruf einer Funktion hat folgende Syntax:
 
-```code
+```python
 funktion( argument1, argument2, ...)
 ```
 
@@ -191,7 +191,7 @@ Schreiben Sie eine Funktion mit zwei Parametern, nämlich Vor- und Nachname. Wen
 die Funktion z.B. mit `(Alice, Miller)` aufgerufen wird, soll sie Folgendes auf 
 dem Bildschirm ausgeben:
 
-```code
+```python
 Vorname: Alice
 Nachname: Miller
 ```
