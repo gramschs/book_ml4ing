@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bool, Vergleiche und Programmverzweigung" href="sec02.html" />
-    <link rel="prev" title="Crashkurs Python (Teil 1)" href="sec00.html" />
+    <link rel="next" title="Bool, Vergleiche und Programmverzweigung" href="chapter02_section02.html" />
+    <link rel="prev" title="Crashkurs Python (Teil 1)" href="chapter02_section00.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -139,18 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter01/sec02.html">
-     Technische Voraussetzungen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter01/sec03.html">
-     Grundlegender Ablauf eines ML-Projektes
+     Technische Voraussetzungen: Python, Anaconda und JupyterLab
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec00.html">
+  <a class="reference internal" href="chapter02_section00.html">
    Crashkurs Python (Teil 1)
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -165,12 +160,12 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec02.html">
+    <a class="reference internal" href="chapter02_section02.html">
      Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec03.html">
+    <a class="reference internal" href="chapter02_section03.html">
      Digitale Logik und Schleife mit Bedingung
     </a>
    </li>
@@ -303,17 +298,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter07/sec00.html">
    ML-Workflow
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec01.html">
+     Datenvorverarbeitung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec02.html">
+     Modellvalidierung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec03.html">
+     Das Bias-Varianz-Dilemma
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
    Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -339,8 +356,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -421,7 +438,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/sec01.ipynb"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/chapter02_section01.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -495,7 +512,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chapter02/sec01.ipynb"
+        <a href="../_sources/chapter02/chapter02_section01.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -512,7 +529,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="../_sources/chapter02/sec01.md"
+        <a href="../_sources/chapter02/chapter02_section01.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -620,6 +637,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung">
+   Zusammenfassung
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -688,6 +710,11 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung">
+   Zusammenfassung
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -700,6 +727,9 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="datentypen-variablen-und-vergleiche">
 <h1>Datentypen, Variablen und Vergleiche<a class="headerlink" href="#datentypen-variablen-und-vergleiche" title="Permalink to this headline">#</a></h1>
+<p>Beim maschinellen Lernen geht es um Daten und Algorithmen. Dabei können die
+Daten alles Mögliche umfassen. Daher beschäftigen wir uns zuerst mit Datentypen.
+Dann geht es um Variablen und deren Ausgabe auf dem Bildschirm.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="hint admonition">
@@ -713,14 +743,14 @@ title="Print to PDF"
 </ul>
 </li>
 <li><p>Sie wissen, was eine <strong>Variable</strong> ist und kennen den <strong>Zuweisungsoperator</strong>.</p></li>
-<li><p>Sie kennen den <strong>print</strong>-Befehl.</p></li>
+<li><p>Sie können den <strong>print</strong>-Befehl zur Ausgabe auf dem Bildschirm anwenden.</p></li>
 </ul>
 </div>
 </section>
 <section id="einfache-datentypen">
 <h2>Einfache Datentypen<a class="headerlink" href="#einfache-datentypen" title="Permalink to this headline">#</a></h2>
 <p>Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und
-Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
+Analyse von Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
 datengestütztes Prozessmanagement folgendermaßen dar:</p>
 <figure class="align-default" id="fig01-prozess">
 <a class="reference internal image-reference" href="../_images/fig01_prozess.png"><img alt="../_images/fig01_prozess.png" src="../_images/fig01_prozess.png" style="width: 600px;" /></a>
@@ -739,9 +769,8 @@ diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</
 <p>In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen</p>
 <ul class="simple">
 <li><p>Integer,</p></li>
-<li><p>Float,</p></li>
-<li><p>String und</p></li>
-<li><p>Bool.</p></li>
+<li><p>Float und</p></li>
+<li><p>String.</p></li>
 </ul>
 <section id="integer-und-float">
 <h3>Integer und Float<a class="headerlink" href="#integer-und-float" title="Permalink to this headline">#</a></h3>
@@ -1098,8 +1127,8 @@ Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise</p>
 <p>wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
 der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.</p>
 <p>Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz,
-die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung. Mehr Details zur <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung finden Sie hier:
-<a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">https://docs.python.org/3/tutorial/inputoutput.html</a></p>
+die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung. Mehr Details zur <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung finden Sie in der
+<a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">Python-Dokumentation/inputoutput</a>.</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
 <section id="mischen-von-datentypen">
 <h3>Mischen von Datentypen<a class="headerlink" href="#mischen-von-datentypen" title="Permalink to this headline">#</a></h3>
@@ -1181,7 +1210,15 @@ erzeugt würde:</p>
 <span class="nb">type</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
 </pre></div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+<section id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
+<p>In diesem Abschnitt haben wir gelernt, was ein Datentyp ist und wie eine
+Variable mit einem Wert gefüllt wird. Im nächsten Abschnitt geht es um einen
+weiteren Datentyp namens Bool und darum, wie durch Vergleiche das Programm vom
+Ablauf her verzweigt wird.</p>
 </section>
 </section>
 
@@ -1212,14 +1249,14 @@ erzeugt würde:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sec00.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="chapter02_section00.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Crashkurs Python (Teil 1)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="sec02.html" title="next page">
+    <a class='right-next' id="next-link" href="chapter02_section02.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bool, Vergleiche und Programmverzweigung</p>

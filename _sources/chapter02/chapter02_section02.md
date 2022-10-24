@@ -99,15 +99,9 @@ x > 30
 x >= 30
 ```
 
-
-
-+++
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ucsv_Nhhxmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 +++
-
-
 
 ## Programmverzweigungen: if — elif — else 
 
@@ -165,7 +159,7 @@ Falls die Bedingung erfüllt ist, wird der 1. Anweisungsblock ausgeführt,
 ansonsten der 2. Anweisungsblock. Danach führt der Python-Interpreter alles nach
 dem `if-else`-Konstrukt aus. Wichtig ist, dass `if` und `else` die gleiche
 Einrückungstiefe haben genau wie die beiden Anweisungsblöcke. Bei einer
-Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt. 
+Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.
 
 ```{code-cell} ipython3
 alter = 21
@@ -207,4 +201,3 @@ else:
 ```
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/f3YdEdYSNdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-

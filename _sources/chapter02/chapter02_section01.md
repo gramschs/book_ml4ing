@@ -7,12 +7,16 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.13.8
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
 # Datentypen, Variablen und Vergleiche
+
+Beim maschinellen Lernen geht es um Daten und Algorithmen. Dabei können die
+Daten alles Mögliche umfassen. Daher beschäftigen wir uns zuerst mit Datentypen.
+Dann geht es um Variablen und deren Ausgabe auf dem Bildschirm.
 
 ## Lernziele
 
@@ -23,7 +27,7 @@ kernelspec:
     * **Float**
     * **String**
 * Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
-* Sie kennen den **print**-Befehl.
+* Sie können den **print**-Befehl zur Ausgabe auf dem Bildschirm anwenden.
 ```
 
 +++
@@ -31,7 +35,7 @@ kernelspec:
 ## Einfache Datentypen
 
 Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und
-Analyse, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
+Analyse von Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
 datengestütztes Prozessmanagement folgendermaßen dar:
 
 ```{figure} pics/fig01_prozess.png
@@ -56,9 +60,8 @@ diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.
 
 In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen
 * Integer,
-* Float,
-* String und
-* Bool.
+* Float und
+* String.
 
 +++
 
@@ -230,7 +233,6 @@ gelesen werden:
    Variablennamen zu (in Python-Sprechweise: binde dem Namen auf der linken
    Seite an das auf der rechten Seite angezeigte Objekt).
 
-
 ```{code-cell} ipython3
 x = 4     
 x = x + 1
@@ -271,13 +273,13 @@ Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise
 `dateiname_alt` oder `dateiname_neu`
 
 wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
-der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter. 
+der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.
 
 +++
 
 Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz,
-die `print()`-Anweisung. Mehr Details zur `print()`-Anweisung finden Sie hier:
-https://docs.python.org/3/tutorial/inputoutput.html
+die `print()`-Anweisung. Mehr Details zur `print()`-Anweisung finden Sie in der 
+[Python-Dokumentation/inputoutput](https://docs.python.org/3/tutorial/inputoutput.html).
 
 +++
 
@@ -285,13 +287,12 @@ https://docs.python.org/3/tutorial/inputoutput.html
 
 +++
 
-
 ### Mischen von Datentypen 
 
 Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in
 einen Float umgewandelt. Mit Hilfe der Funktion `type()` können wir den
 Python-Interpreter bestimmen lassen, welcher Datentyp in einer Variable
-gespeichert ist. 
+gespeichert ist.
 
 ```{code-cell} ipython3
 x = 25 * 5
@@ -302,6 +303,7 @@ type(x)
 x = 25 / 5
 type(x)
 ```
+
 Nicht immer ist es aber möglich, Datentypen zu mischen. Dann meldet Python einen
 Fehler.
 
@@ -315,7 +317,7 @@ Datentyp in einen Integer umgewandelt werden, so verwenden wir die Funktion
 `int()`. Die Umwandlung in einen Float erfolgt per `float()` und in einen String
 wandeln wir mit Hilfe der Funktion `str()` um. Das klappt nicht mit jedem
 Variableninhalt, die Umwandlung muss machbar sein, wie die folgenden Beispiele
-zeigen.     
+zeigen.
 
 ```{code-cell} ipython3
 x_old = 3
@@ -342,6 +344,9 @@ type(x_new)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-+++
+## Zusammenfassung
 
-
+In diesem Abschnitt haben wir gelernt, was ein Datentyp ist und wie eine
+Variable mit einem Wert gefüllt wird. Im nächsten Abschnitt geht es um einen
+weiteren Datentyp namens Bool und darum, wie durch Vergleiche das Programm vom
+Ablauf her verzweigt wird.

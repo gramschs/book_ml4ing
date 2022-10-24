@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Crashkurs Python (Teil 1) &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,10 +53,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Datentypen, Variablen und Vergleiche" href="chapter02_section01.html" />
+    <link rel="prev" title="Technische Voraussetzungen: Python, Anaconda und JupyterLab" href="../chapter01/sec02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
   Getting started...
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter01/sec00.html">
    Zu Beginn …
@@ -139,38 +139,33 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter01/sec02.html">
-     Technische Voraussetzungen
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter01/sec03.html">
-     Grundlegender Ablauf eines ML-Projektes
+     Technische Voraussetzungen: Python, Anaconda und JupyterLab
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter02/sec00.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Crashkurs Python (Teil 1)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter02/sec01.html">
+    <a class="reference internal" href="chapter02_section01.html">
      Datentypen, Variablen und Vergleiche
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter02/sec02.html">
+    <a class="reference internal" href="chapter02_section02.html">
      Bool, Vergleiche und Programmverzweigung
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter02/sec03.html">
+    <a class="reference internal" href="chapter02_section03.html">
      Digitale Logik und Schleife mit Bedingung
     </a>
    </li>
@@ -238,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="sec00.html">
+  <a class="reference internal" href="../chapter05/sec00.html">
    Daten visualisieren mit Matplotlib
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -248,22 +243,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec01.html">
+    <a class="reference internal" href="../chapter05/sec01.html">
      Das Modul NumPy
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec02.html">
+    <a class="reference internal" href="../chapter05/sec02.html">
      Linien-, Balken- und Streudiagramme
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec03.html">
+    <a class="reference internal" href="../chapter05/sec03.html">
      Visualisierung von DataFrames
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec04.html">
+    <a class="reference internal" href="../chapter05/sec04.html">
      Optional: Histogramme
     </a>
    </li>
@@ -303,17 +298,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter07/sec00.html">
    ML-Workflow
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec01.html">
+     Datenvorverarbeitung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec02.html">
+     Modellvalidierung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec03.html">
+     Das Bias-Varianz-Dilemma
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter08/sec00.html">
    Perzeptron
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -339,8 +356,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter09/sec00.html">
    Logistische Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -448,7 +465,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chapter05/tmp.md"
+        <a href="../_sources/chapter02/chapter02_section00.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -485,50 +502,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>Crashkurs Python (Teil 1)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -536,38 +526,13 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>Die Scatter-Plots bieten die Möglichkeit, zusätzliche Informationen mit zu
-visualisieren. Bei einem Liniendiagramm wird jedem x-Wert ein y-Wert zugeordnet.
-Problematisch wird es, wenn wir ein Skalarfeld visualisieren wollen.
-Beispielsweise möchten wir in einem Raum an jeder x-Koordinate und jeder
-y-Koordinate die Temperatur messen. Mit einem Scatterplot können wir jetzt zu
-jedem <span class="math notranslate nohighlight">\((x,y)\)</span> die Temperatur über die Farbe des Markers darstellen.</p>
-<p>Dazu gibt es mehrere Möglichkeiten. Zum einen können wir uns ein Array basteln,
-dass die Farben enthält. Auf der Seite</p>
-<blockquote>
-<div><p><a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">https://matplotlib.org/stable/gallery/color/named_colors.html</a></p>
-</div></blockquote>
-<p>finden Sie die Namen der wichtigsten Farben. Mit <code class="docutils literal notranslate"><span class="pre">.scatter(x,y,</span> <span class="pre">c='r')</span></code> färben
-Sie beispielsweise alle Marker rot ein.</p>
-<p>Mit der Option <code class="docutils literal notranslate"><span class="pre">c='aqua'</span></code> wird es grell:</p>
-<p>Die zweite Möglichkeit ist, eine Farbskala zu nehmen. Alle Werte werden dann
-dieser Farbskala zugeordnet. Der minimale Wert bekommt den linken Wert der
-Farbskala, der maximale Wert den rechten.</p>
-<p>Farbskala heißen im Englischen colormaps. Auf der Internetseite</p>
-<blockquote>
-<div><p><a class="reference external" href="https://matplotlib.org/stable/gallery/color/colormap_reference.html">https://matplotlib.org/stable/gallery/color/colormap_reference.html</a></p>
-</div></blockquote>
-<p>finden Sie eine Übersicht über mögliche Farbskalen. Schauen wir uns an, wie sich
-die Farbe der Marker beim Sinus verändert, wenn wir als Farbskala ‘viridis’
-wählen. Dazu setzen wir die Option <code class="docutils literal notranslate"><span class="pre">cmap='viridis'</span></code>:</p>
-<p>Und im Winter sieht es mit der Farbskala <code class="docutils literal notranslate"><span class="pre">cmap='winter'</span></code> so aus:</p>
-<p>Wenn die Größe der Marker modifiziert werden soll, gibt es die Option <code class="docutils literal notranslate"><span class="pre">s</span></code> wie
-size. Entweder wird die Größe konstant auf einen Wert gesetzt, also <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">50</span></code>,
-oder die Größe variiert. Dann muss <code class="docutils literal notranslate"><span class="pre">s</span></code> ein Array zugewiesen werden.</p>
-<p>In diesem Fall wurde die Farbskala aus den Temperaturwerten erzeugt. Wir können
-aber auch händisch eine Farbskala basteln, indem wir ein Array mit den Farben
-zusammenstellen. Beispielsweise wollen wir nun die ersten drei Werte rot, die
-nächsten drei Werte grün und die letzten vier Werte blau färben.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="crashkurs-python-teil-1">
+<h1>Crashkurs Python (Teil 1)<a class="headerlink" href="#crashkurs-python-teil-1" title="Permalink to this headline">#</a></h1>
+<p>In dieser Vorlesung werden wir Python für ML nutzen. Daher folgt in diesem
+Kapitel und im nächsten ein zweiteiliger Crashkurs in Python.</p>
+<div class="toctree-wrapper compound">
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -582,7 +547,7 @@ nächsten drei Werte grün und die letzten vier Werte blau färben.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapter05"
+            path: "./chapter02"
         },
         predefinedOutput: true
     }
@@ -596,6 +561,20 @@ nächsten drei Werte grün und die letzten vier Werte blau färben.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../chapter01/sec02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Technische Voraussetzungen: Python, Anaconda und JupyterLab</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chapter02_section01.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datentypen, Variablen und Vergleiche</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

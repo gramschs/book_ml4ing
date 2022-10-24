@@ -30,7 +30,7 @@ Bedingungen gleichzeitg erfüllt sein sollen.
 
 Beispiel beim Busfahren: Kinder unter 6 Jahren können kostenlos Bus fahren. Ab 6
 Jahren braucht man eine Fahrkarte. Bis 14 Jahre zahlt man den Kinderpreis, ab 15
-Jahren den Erwachsenenpreis: 
+Jahren den Erwachsenenpreis:
 
 ```{code-cell} ipython3
 alter = 12
