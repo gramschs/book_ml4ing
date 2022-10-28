@@ -6,16 +6,16 @@ root: intro
 parts:
 - caption: Getting started...
   chapters:
-  - file: chapter01/sec00.md
+  - file: chapter01/chapter01_sec00.md
     sections:
-    - file: chapter01/sec01.md
-    - file: chapter01/sec02.md
-  - file: chapter02/chapter02_section00.md
+    - file: chapter01/chapter01_sec01.md
+    - file: chapter01/chapter01_sec02.md
+  - file: chapter02/chapter02_sec00.md
     sections:
-    - file: chapter02/chapter02_section01.ipynb
-    - file: chapter02/chapter02_section02.ipynb
-    - file: chapter02/chapter02_section03.ipynb
-  - file: chapter03/sec00.md
+    - file: chapter02/chapter02_sec01.ipynb
+    - file: chapter02/chapter02_sec02.ipynb
+    - file: chapter02/chapter02_sec03.ipynb
+  - file: chapter03/chapter03_sec00.md
     sections:
     - file: chapter03/chapter03_sec01.ipynb
     - file: chapter03/chapter03_sec02.ipynb
