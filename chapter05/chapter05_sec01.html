@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Das Modul NumPy &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,8 +18,12 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -29,10 +31,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,13 +42,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -66,21 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -89,10 +76,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -110,15 +96,14 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../intro.html">
-                    Willkommen zu ML4ING
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Willkommen zu ML4ING
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting started...
  </span>
@@ -401,17 +386,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -419,177 +399,94 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter05/chapter05_sec01.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="initThebeSBT()"
-  class="headerbtn headerbtn-launch-thebe"
-  data-toggle="tooltip"
-data-placement="left"
-title="Launch Thebe"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-play"></i>
-  </span>
-<span class="headerbtn__text-container">Live Code</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-<a href="https://github.com/gramschs/book_ml4ing"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="bottom"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-
-</a>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/chapter05/chapter05_sec01.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapter05/chapter05_sec01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gramschs/book_ml4ing"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter05/chapter05_sec01.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#lernziele">
    Lernziele
@@ -627,11 +524,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Das Modul NumPy</h1>
@@ -685,12 +583,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="das-modul-numpy">
-<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="das-modul-numpy">
+<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this headline">¶</a></h1>
 <p>Im letzten Kapitel haben wir gelernt, Daten in Form von Tabellen als
 Pandas-Objekte zu verwalten. Dabei arbeiten die Module Pandas, Scikit-Learn und
 auch das Visualisierungsmodul Matplotlib, das wir in diesem Kapitel kennenlernen
@@ -707,8 +604,8 @@ mehrdimensionale Arrays an.</p>
 <p>In  diesem Abschnitt werden wir uns die grundlegenden Eigenschaften des
 <strong>NumPy-Array</strong> erarbeiten, um für Matplotlib und Scikit-Learn die Basis zu
 schaffen.</p>
-<section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<div class="section" id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">¶</a></h2>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -733,9 +630,9 @@ schaffen.</p>
 <li><p>Sie können NumPy-Funktionen auf NumPy-Arrays anwenden.</p></li>
 </ul>
 </div>
-</section>
-<section id="numpy-ist-schneller-durch-c">
-<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="numpy-ist-schneller-durch-c">
+<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this headline">¶</a></h2>
 <p>Alle Daten lassen sich letztendlich als eine Folge von Zahlen schreiben.
 Beispielsweise kann ein Foto durch seine Pixel beschrieben werden
 zusammengesetzt aus den Werten RGB (rot - grün - blau). Python bietet dafür
@@ -766,23 +663,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.32350013 0.01502549 0.95378831 0.28592042 0.32991251 0.76401903
- 0.34488835 0.98702422 0.99091687 0.53885786 0.32319804 0.51865647
- 0.99245534 0.68866369 0.02274798 0.38220749 0.17780681 0.09296208
- 0.13735933 0.33887365 0.71202908 0.79526247 0.65801138 0.66546366
- 0.31076033 0.66794376 0.14905959 0.57335463 0.71936572 0.7474685
- 0.9954582  0.2481747  0.93836892 0.50455605 0.64916526 0.19032817
- 0.87335614 0.37056253 0.0804376  0.5910774  0.23363673 0.93733803
- 0.94720261 0.8189445  0.25425582 0.57886235 0.04880682 0.07215455
- 0.15181856 0.13480846 0.93499713 0.72403252 0.87427108 0.8375251
- 0.94349095 0.24489238 0.29808994 0.80321111 0.17057267 0.80381678
- 0.5535181  0.45436889 0.0138641  0.60309042 0.71982307 0.04138802
- 0.51980824 0.56776128 0.56342988 0.94794548 0.66797792 0.41900337
- 0.59142499 0.95239734 0.24470619 0.62964696 0.65448156 0.93272952
- 0.30438491 0.25483647 0.7775756  0.37789713 0.03098763 0.54819514
- 0.07437394 0.69989604 0.63365445 0.20525441 0.02250467 0.13574777
- 0.91771533 0.44340331 0.77269827 0.26987371 0.42857755 0.03726253
- 0.07307688 0.69690107 0.28429258 0.4255407 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.22894671 0.08532885 0.96138455 0.49470012 0.76632106 0.91042948
+ 0.12707204 0.34001627 0.47247578 0.59340255 0.14542277 0.13247161
+ 0.04269276 0.71359429 0.24290731 0.22303288 0.493841   0.80278954
+ 0.66349008 0.34944416 0.01115466 0.77396753 0.31444497 0.37606069
+ 0.86578658 0.9922476  0.88948014 0.06352318 0.6626741  0.58130119
+ 0.47908845 0.16292302 0.74143873 0.52983294 0.05211439 0.96015748
+ 0.950611   0.89406048 0.73125851 0.77096448 0.44967645 0.67538692
+ 0.73231269 0.14131031 0.05734993 0.05138366 0.62502694 0.64697256
+ 0.83434598 0.01508294 0.83184717 0.72559521 0.006207   0.16126893
+ 0.61457955 0.50767386 0.37219516 0.50503665 0.32884613 0.01514955
+ 0.6184357  0.74220218 0.48378846 0.52992006 0.96277097 0.66491375
+ 0.9988184  0.66163743 0.86211978 0.96803511 0.79879121 0.93550641
+ 0.12671437 0.57935791 0.13506905 0.78081237 0.04364175 0.36428143
+ 0.24859718 0.92354048 0.1376893  0.36728073 0.73323012 0.67170671
+ 0.27838536 0.71973987 0.07435378 0.60690221 0.24900312 0.19026841
+ 0.16240419 0.21364095 0.2525373  0.24338885 0.33359598 0.65622709
+ 0.85316877 0.50736653 0.25925946 0.70252843]
 </pre></div>
 </div>
 </div>
@@ -800,8 +697,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9954581956508711
-NumPy max =  0.9954581956508711
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9988184015115545
+NumPy max =  0.9988184015115545
 </pre></div>
 </div>
 </div>
@@ -820,18 +717,18 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.52 µs ± 44.3 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.44 µs ± 68.2 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.61 µs ± 9.47 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.65 µs ± 140 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Sie sehen, die NumPy-Variante ist erheblich schneller als die Standard-Variante.</p>
-</section>
-<section id="erzeugung-von-numpy-arrays">
-<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="erzeugung-von-numpy-arrays">
+<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Im Gegensatz zu Python-Listen enthalten NumPy-Arrays nur Elemente des gleichen
 Datentyps. Wenn eine Liste nur aus gleichen Datentypen besteht, können wir
 direkt aus der Liste ein NumPy-Array erzeugen. Dazu verwenden wir <code class="docutils literal notranslate"><span class="pre">array()</span></code> aus
@@ -860,16 +757,14 @@ Array als Tensor. Die Position eines Elementes wird dabei durch ganze Zahlen
 gekennzeichnet (entspricht bei 1d-Arrays ja den Listen). Für zweidimensionale
 NumPy-Arrays brauchen wir daher zwei Indizes, für dreidimensionale Arrays drei.
 Die folgende Grafik zeigt das Nummerierungsschema:</p>
-<figure class="align-default" id="pics-fig-numpy-array">
+<div class="figure align-default" id="pics-fig-numpy-array">
 <a class="reference internal image-reference" href="../_images/fig_numpy_array.png"><img alt="../_images/fig_numpy_array.png" src="../_images/fig_numpy_array.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://predictivehacks.com/tips-about-NumPy-arrays/">Quelle:</a> “Schematische
 Darstellung einer Nervenzelle” von George Pipis.)</p>
 </div>
-</figcaption>
-</figure>
+</div>
 <p>Im Folgenden fokussieren wir uns zunächst auf 1D- und 2D-Arrays und betrachten
 uns verschiedene Erzeugungsmethoden. Die entsprechende (englischsprachige)
 Dokumentation finden Sie hier:</p>
@@ -1043,8 +938,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9246696  0.34704419 0.74083163]
- [0.54714476 0.61229101 0.63088251]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.20637987 0.29533067 0.23142594]
+ [0.51954194 0.69322104 0.1120998 ]]
 </pre></div>
 </div>
 </div>
@@ -1058,9 +953,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.42221932 -0.23573256 -0.87711304 -0.53024216]
- [-0.21645957  2.18478709  1.53532847 -1.32878993]
- [ 0.08989442 -0.70808066  0.80854725 -0.02057024]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.80645601e-01  8.32890964e-01  1.60054556e+00  4.74125760e-01]
+ [-1.54980160e+00 -1.95718227e+00 -7.60642989e-01  9.77120933e-04]
+ [-6.31108307e-01  8.25773945e-01 -3.84609869e-01 -9.07453109e-01]]
 </pre></div>
 </div>
 </div>
@@ -1116,9 +1011,9 @@ Mittelwert 37.5, Standardabweichung 0.8</p></li>
 </pre></div>
 </div>
 </div>
-</section>
-<section id="attribute-von-numpy-arrays">
-<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="attribute-von-numpy-arrays">
+<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Damit wir besser verstehen, welche Attribute die NumPy-Arrays haben können,
 erzeugen wir uns zufällig drei NumPy-Arrays. Damit aber nicht bei jeder neuen
 Ausführung der Code-Zelle neue Zufallszahlen gezogen werden, fixieren wir den
@@ -1206,9 +1101,9 @@ kennengelernt.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="zugriff-einzelner-elemente-eines-arrays">
-<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="zugriff-einzelner-elemente-eines-arrays">
+<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Der Zugriff bei eindimensionalen Arrays erfolgt genau wie bei Listen über den
 <strong>Zugriffsoperator</strong> <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Auch hier wird ab 0 beginnend gezählt.</p>
 <div class="cell docutils container">
@@ -1271,9 +1166,9 @@ nachher y =  [[  5   2   4]
 </div>
 </div>
 </div>
-</section>
-<section id="funktionen-auf-numpy-arrays-anwenden">
-<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="funktionen-auf-numpy-arrays-anwenden">
+<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this headline">¶</a></h2>
 <p>NumPy-Arrays ermöglichen die Verarbeitung mit den typischen mathematischen
 Funktionen und den üblichen Statistik-Größen. Schauen wir uns einfach ein paar
 Beispiele an:</p>
@@ -1365,17 +1260,17 @@ max3 [1.10398039 3.45940709 2.15944153]
 </div>
 </div>
 </div>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="zusammenfassung">
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">¶</a></h2>
 <p>In diesem Abschnitt haben wir das NumPy-Array kennengelernt, eine sehr
 effiziente Datenstruktur. Die Erzeugungsmethoden nach einem Muster werden wir
 vor allem für die Visualisierung von Funktionen brauchen. Das Bestimmen der
 Basis-Attribute wird wichtig werden, wenn wir NumPy-Arrays aus
 Pandas-DataFrame-Objekten extrahieren, um damit maschinelle Lernalgorithmen zu
 füttern.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1399,11 +1294,9 @@ füttern.</p>
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="chapter05_sec00.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1419,33 +1312,29 @@ füttern.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Simone Gramsch<br/>
-  
-    <div class="extra_footer">
-      <div>
+    <footer class="footer">
+  <p>
+    
+      By Simone Gramsch<br/>
+    
+      <div class="extra_footer">
+        <div>
 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
 </div>
 
-    </div>
-</p>
-        </footer>
-    </div>
-    
-</div>
+      </div>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

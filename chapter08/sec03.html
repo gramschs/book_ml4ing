@@ -1,0 +1,845 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Training eines Perzeptrons mit Scikit-Learn &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistische Regression" href="../chapter09/sec00.html" />
+    <link rel="prev" title="Die Perzeptron-Lernregel" href="sec02.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Maschinelles Lernen für Studierende der Ingenieurwissenschaften</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Willkommen zu ML4ING
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Getting started...
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter01/sec00.html">
+   Zu Beginn …
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter01/sec01.html">
+     Was ist maschinelles Lernen?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter01/sec02.html">
+     Technische Voraussetzungen: Python, Anaconda und JupyterLab
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter02/sec00.html">
+   Crashkurs Python (Teil 1)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec01.html">
+     Datentypen, Variablen und Vergleiche
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec02.html">
+     Bool, Vergleiche und Programmverzweigung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter02/sec03.html">
+     Digitale Logik und Schleife mit Bedingung
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter03/sec00.html">
+   Crashkurs Python (Teil 2)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter03/sec01.html">
+     Liste und Zählschleife
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter03/sec02.html">
+     Funktionen
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter03/sec03.html">
+     Objektorientierung
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Datenexploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter04/sec00.html">
+   Pandas anstatt Excel
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec01.html">
+     Series und DataFrame
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec02.html">
+     Arbeiten mit Tabellendaten
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter04/sec03.html">
+     Statistik mit Pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter05/sec00.html">
+   Daten visualisieren mit Matplotlib
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec01.html">
+     Das Modul NumPy
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec02.html">
+     Linien-, Balken- und Streudiagramme
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec03.html">
+     Visualisierung von DataFrames
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter05/sec04.html">
+     Optional: Histogramme
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ML-Verfahren
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter06/sec00.html">
+   Lineare und polynomiale Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec01.html">
+     Lineare Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec02.html">
+     Training eines linearen Regressionsmodells
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/sec03.html">
+     Multiple lineare Regression
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter07/sec00.html">
+   ML-Workflow
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec01.html">
+     Datenvorverarbeitung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec02.html">
+     Modellvalidierung
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter07/sec03.html">
+     Das Bias-Varianz-Dilemma
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec00.html">
+   Perzeptron
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec01.html">
+     Grundbaustein neuronaler Netze
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec02.html">
+     Die Perzeptron-Lernregel
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Training eines Perzeptrons mit Scikit-Learn
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter09/sec00.html">
+   Logistische Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter09/sec01.html">
+     Logistische Regression ersetzt Perzeptron
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter09/sec02.html">
+     Logistische Regression lernt mit Maximum-Likelihood
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter09/sec03.html">
+     Logistische Regression mit Scikit-Learn
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/chapter08/sec03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapter08/sec03.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/gramschs/book_ml4ing"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter08/sec03.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scikit-learn">
+   Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grundlegender-ml-workflow-mit-scikit-learn">
+   Grundlegender ML-Workflow mit Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#das-logische-oder-klassifikationsproblem-diesmal-mit-scikit-learn">
+   Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Training eines Perzeptrons mit Scikit-Learn</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scikit-learn">
+   Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#grundlegender-ml-workflow-mit-scikit-learn">
+   Grundlegender ML-Workflow mit Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#das-logische-oder-klassifikationsproblem-diesmal-mit-scikit-learn">
+   Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="training-eines-perzeptrons-mit-scikit-learn">
+<h1>Training eines Perzeptrons mit Scikit-Learn<a class="headerlink" href="#training-eines-perzeptrons-mit-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<p>Nachdem wir im letzten Abschnitt ein Perzeptron händisch für die Klassifikationsaufgabe des logischen Oders trainiert haben, lernen wir in diesem Abschnitt eine Bibliothek kennen, die das Training für uns übernimmt.</p>
+<div class="section" id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">¶</a></h2>
+<div class="hint admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>Sie kennen die Bibliothek Scikit-Learn.</p></li>
+<li><p>Sie können den grundlegenden Ablauf eines ML-Projektes mit Scikit-Learn beschreiben.</p></li>
+<li><p>Sie wissen, wie Sie die Trainingsdaten als Matrix bzw. Vektor mit dem Modul Numpy repräsentieren.</p></li>
+<li><p>Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen Trainingsdaten trainieren.</p></li>
+<li><p>Sie wissen, wie Sie auf die Gewichte des gelernten Modells zugreifen.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="scikit-learn">
+<h2>Scikit-Learn<a class="headerlink" href="#scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p>Gute Nachricht vorneweg: Sie müssen die ML-Algorithen nicht selbst
+implementieren, das haben bereits Wissenschaftler:innen aus der Mathematik und
+der Informatik erledigt. Eine der bekanntesten Bibliotheken bzw. eines der
+bekanntesten Module ist Scikit-Learn</p>
+<blockquote>
+<div><p><a class="reference external" href="https://scikit-learn.org/">https://scikit-learn.org/</a></p>
+</div></blockquote>
+<p>das wir auch für diese Vorlesung verwenden werden. Bitte stellen Sie jetzt
+sicher, dass Scikit-Learn bei Ihnen installiert ist.</p>
+<p>Das Modul Scikit-Learn wird mit <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> abgekürzt, alle Funktionen werden
+also z.B. mit</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>in den Namensraum importiert. Da das Modul aber so mächtig ist, werden wir immer
+nur einzelne Funktionen aus Scikit-Learn importieren.</p>
+</div>
+<div class="section" id="grundlegender-ml-workflow-mit-scikit-learn">
+<h2>Grundlegender ML-Workflow mit Scikit-Learn<a class="headerlink" href="#grundlegender-ml-workflow-mit-scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p>Die ML-Algorithmen des Scikit-Learn-Moduls haben dabei immer die gleiche
+Schnittstelle (API). Damit ist gemeint, dass die Methoden- und Funktionsnamen
+für alle ML-Modelle gleich gewählt sind. Auch ist die Art und Weise, wie die
+Trainingsdaten verarbeitet werden, stets gleich. Wir können den grundlegenden
+Ablauf eines typischen ML-Projektes folgendermaßen zusammenfassen:</p>
+<div class="note admonition">
+<p class="admonition-title">Wie funktioniert der grundlegende ML-Workflow mit Scikit-Learn?</p>
+<ol class="simple">
+<li><p>Zuerst packen wir die Inputdaten in eine Matrix X, bei der jede Spalte eine Eigenschaft repräsentiert. Die Zeilen stehen für die verschiedenen Datensätze.</p></li>
+<li><p>Falls wir ein überwachtes Lernverfahren anwenden wollen, packen wir die Outputdaten in einen Vektor y.</p></li>
+<li><p>Nun wählen wir ein Modell aus, das trainiert werden soll.</p></li>
+<li><p>Dazu spezifizieren wir die Hyperparameter des Modells. Hyperparameter sind Parameter des Modells, die wir vorab ohne die genaue Kenntnis der Daten festlegen.</p></li>
+<li><p>Wir trainieren das ML-Modell, indem wir die fit()-Methode des Modells aufrufen.</p></li>
+<li><p>Um das Modell zur Prognose neuer Daten zu verwenden, benutzten wir die predict()-Methode.</p></li>
+<li><p>Zuletzt wird das Modell analysiert, validiert und produktiv eingesetzt.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="das-logische-oder-klassifikationsproblem-diesmal-mit-scikit-learn">
+<h2>Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn<a class="headerlink" href="#das-logische-oder-klassifikationsproblem-diesmal-mit-scikit-learn" title="Permalink to this headline">¶</a></h2>
+<p>Im letzten Abschnitt <a class="reference internal" href="sec02.html#perzeptron-training-logisches-oder"><span class="std std-ref">Perzeptron-Training am Beispiel des logischen ODER</span></a> haben wir
+händisch ein Perzeptron trainiert. Zur Erinnerung, wenn wir die Bias-Einheit
+weglassen, lautet das logische Oder in Tabellenform wie folgt:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>x1</p></th>
+<th class="head"><p>x2</p></th>
+<th class="head"><p>y</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Diese Daten formulieren wir nun als eine Inputmatrix <span class="math notranslate nohighlight">\(X\)</span> mit den Spalten x1 und
+x2. Für die Erzeugung und Weiterverarbeitung der Matrizen laden wir das Modul
+Numpy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den Output formulieren wir als Vektor, ebenfalls mit Hilfe des Numpy-Moduls.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nun wählen wir das Perzeptron als das zu trainierende ML-Modell aus. Direkt beim
+Laden des Modells legen wir die Hyperparameter des Modells fest. Welche
+Hyperparameter ein Modell hat, steht in der
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html?highlight=perceptron#sklearn.linear_model.Perceptron">Perzeptron-Dokumentation</a>.
+In diesem Fall wäre beispielsweise die Lernrate ein Hyperparameter. Laut
+Dokumentation wird die Lernrate beim Scikit-Learn-Perzeptron mit <code class="docutils literal notranslate"><span class="pre">eta0</span></code>
+bezeichnet. Der Python-Code, um das Perzeptron-Modell mit einer Lernrate von 1
+zu laden, lautet also wie folgt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Perceptron</span> 
+<span class="n">modell</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">eta0</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nun können wir das Perzeptron-Modell mit den Input- und Outputdaten trainieren, indem wir die <code class="docutils literal notranslate"><span class="pre">.fit()</span></code>-Methode aufrufen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modell</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Perceptron()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Perceptron</label><div class="sk-toggleable__content"><pre>Perceptron()</pre></div></div></div></div></div></div></div>
+</div>
+<p>Nachdem wir den letzten Python-Befehl ausgeführt haben, passiert scheinbar
+nichts. Nur der Klassenname <code class="docutils literal notranslate"><span class="pre">Perceptron()</span></code> des Objekts <code class="docutils literal notranslate"><span class="pre">modell</span></code> wird ausgegeben
+(wenn Sie den Code interaktiv ausführen). Intern wurde jedoch das
+Perzeptron-Modell trainiert, d.h. die Gewichte des Perzeptrons wurden iterativ
+bestimmt. Die Gewichte sind nun in dem Objekt <code class="docutils literal notranslate"><span class="pre">modell</span></code> gespeichert. Davon können
+wir uns überzeugen, indem wir auf die Attribute des Objekts zugreifen und diese
+anzeigen lassen. Die Gewichte sind in dem Attribut <code class="docutils literal notranslate"><span class="pre">.coef_</span></code> gespeichert, während
+das Gewicht der Bias-Einheit sich im Attribut <code class="docutils literal notranslate"><span class="pre">.intercept_</span></code> befindet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">modell</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">modell</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2. 2.]]
+[-1.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuletzt können wir das trainierte Perzeptron-Modell Prognosen treffen lassen.
+Was prognostiziert das Modell beispielsweise für <span class="math notranslate nohighlight">\(x_1=0\)</span> und <span class="math notranslate nohighlight">\(x_2=1\)</span>? Das
+tatsächliche Ergebnis der logischen Oder-Verknüpfung ist <span class="math notranslate nohighlight">\(y=1\)</span>, was liefert das
+Perzeptron?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prognose</span> <span class="o">=</span> <span class="n">modell</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_prognose</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir können auch gleich für alle Datensätze eine Prognose erstellen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_prognose</span> <span class="o">=</span> <span class="n">modell</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_prognose</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 1 1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tatsächlich funktioniert unser trainiertes Perzeptron zu 100 % korrekt und ist
+damit validiert. Bei nur vier Datensätzen lässt sich relativ leicht überblicken,
+dass alle vier Prognosen korrekt sind. Sobald die Datenanzahl zunimmt, wird es
+schwieriger, den Überblick zu behalten. Daher stellt Scikit-Learn die Methode
+<code class="docutils literal notranslate"><span class="pre">.score()</span></code> zur Verfügung, die bei Klassifikatoren die Anzahl der korrekt
+prognostizierten Outputs im Verhältnis zur Gesamtanzahl berechnet. Das Ergbnis
+ist also eine Bewertung zwischen 0 (keine einzige korrekte Prognose) und 1
+(perfekt Prognose).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">genauigkeit</span> <span class="o">=</span> <span class="n">modell</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">genauigkeit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">¶</a></h2>
+<p>Mit Scikit-Learn steht schon eine Implementierung des Perzeptrons zur Verfügung,
+die auch bei größeren Datenmengen eine binäre Klassifikation erlaubt. Welche
+Daten dabei überhaupt binär klassifiziert können, klären wir in einem der
+folgenden Abschnitte.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "gramschs/book_ml4ing",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapter08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="sec02.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Die Perzeptron-Lernregel</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../chapter09/sec00.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistische Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Simone Gramsch<br/>
+    
+      <div class="extra_footer">
+        <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
+</div>
+
+      </div>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
