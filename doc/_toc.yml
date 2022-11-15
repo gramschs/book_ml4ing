@@ -55,8 +55,9 @@ parts:
     - file: chapter09/chapter09_sec01.ipynb
     - file: chapter09/chapter09_sec02.ipynb
     - file: chapter09/chapter09_sec03.ipynb
-  - file: chapter10/chapter10_section00.md
+  - file: chapter10/chapter10_sec00.md
     sections:
-    - file: chapter10/chapter10_section01.ipynb
+    - file: chapter10/chapter10_sec01.ipynb
+    - file: chapter10/chapter10_sec02.ipynb
     
   
