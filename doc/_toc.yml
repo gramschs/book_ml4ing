@@ -59,5 +59,6 @@ parts:
     sections:
     - file: chapter10/chapter10_sec01.ipynb
     - file: chapter10/chapter10_sec02.ipynb
+    - file: chapter10/chapter10_sec03.ipynb
     
   
