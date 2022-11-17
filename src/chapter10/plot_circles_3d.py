@@ -11,5 +11,5 @@ X3 = np.sqrt( X1**2 + X2**2 )
 
 import plotly.express as px
 
-fig = px.scatter_3d(x=X1, y=X2, z=X3, color=y)
+fig = px.scatter_3d(x=X1, y=X2, z=X3, color=y, color_continuous_scale='rdbu')
 fig.write_html("circles_3d.html")
