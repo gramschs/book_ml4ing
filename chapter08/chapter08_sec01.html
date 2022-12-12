@@ -951,10 +951,10 @@ ohne Programmverzweigung if-else auskommen.</p>
 <span class="n">x2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Ist der Rasensprenger eingeschaltet? (ja = 1 | nein = 0)&#39;</span><span class="p">))</span>
 
 <span class="c1"># Verarbeitung</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">heaviside</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">x2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">heaviside</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">x1</span> <span class="o">+</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">x2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
 <span class="c1"># Ausgabe</span>
-<span class="n">ergebnis_als_text</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Der Rasen wird nass.&#39;</span><span class="p">,</span> <span class="s1">&#39;Der Rasen wird nicht nass.&#39;</span><span class="p">]</span>
+<span class="n">ergebnis_als_text</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Der Rasen wird nicht nass.&#39;</span><span class="p">,</span> <span class="s1">&#39;Der Rasen wird nass.&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ergebnis_als_text</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)])</span>
 </pre></div>
 </div>
