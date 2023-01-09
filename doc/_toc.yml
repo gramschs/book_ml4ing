@@ -63,4 +63,5 @@ parts:
   - file: chapter11/chapter11_sec00.md
     sections:
     - file: chapter11/chapter11_sec01.ipynb    
+    - file: chapter11/chapter11_sec03.ipynb   
   
