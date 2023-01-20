@@ -22,11 +22,6 @@
  * Buttons on top.
  */
 
-.scbs-carousel-control-prev,
-.scbs-carousel-control-next{
-        bottom: 88%;
-}
-
 .scc-top-control {
     align-items: start;
 }
