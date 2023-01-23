@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Training eines linearen Regressionsmodells &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Filter anwenden &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,12 +54,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multiple lineare Regression" href="chapter06_sec03.html" />
-    <link rel="prev" title="Lineare Regression" href="chapter06_sec01.html" />
+    <link rel="prev" title="Grafiken" href="chapter13_sec01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -274,28 +271,28 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chapter06_sec00.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter06/chapter06_sec00.html">
    Lineare Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter06_sec01.html">
+    <a class="reference internal" href="../chapter06/chapter06_sec01.html">
      Lineare Regression
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter06/chapter06_sec02.html">
      Training eines linearen Regressionsmodells
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter06_sec03.html">
+    <a class="reference internal" href="../chapter06/chapter06_sec03.html">
      Multiple lineare Regression
     </a>
    </li>
@@ -453,23 +450,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter13/chapter13_sec00.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chapter13_sec00.html">
    Bildverarbeitung mit Scikit-Image
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter13/chapter13_sec01.html">
+    <a class="reference internal" href="chapter13_sec01.html">
      Grafiken
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter13/chapter13_sec02.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Filter anwenden
     </a>
    </li>
@@ -534,7 +531,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter06/chapter06_sec02.ipynb"
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter13/chapter13_sec02.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -608,7 +605,7 @@ title="Source repository"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chapter06/chapter06_sec02.ipynb"
+        <a href="../_sources/chapter13/chapter13_sec02.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -668,33 +665,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lernziele">
-   Lernziele
+  <a class="reference internal nav-link" href="#kanten-detektieren-mit-canny">
+   Kanten detektieren mit canny
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#was-ist-die-beste-regressionsgerade">
-   Was ist die “beste” Regressionsgerade?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ist-das-beste-modell-gut-genug">
-   Ist das beste Modell gut genug?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interaktive-visualisierung-r2-score">
-   Interaktive Visualisierung R²-Score
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#r2-score-mit-scikit-learn">
-   R²-Score mit Scikit-Learn
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zusammenfassung">
-   Zusammenfassung
+  <a class="reference internal nav-link" href="#hough-transformation">
+   Hough-Transformation
   </a>
  </li>
 </ul>
@@ -706,7 +683,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Training eines linearen Regressionsmodells</h1>
+                <h1>Filter anwenden</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -717,33 +694,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lernziele">
-   Lernziele
+  <a class="reference internal nav-link" href="#kanten-detektieren-mit-canny">
+   Kanten detektieren mit canny
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#was-ist-die-beste-regressionsgerade">
-   Was ist die “beste” Regressionsgerade?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ist-das-beste-modell-gut-genug">
-   Ist das beste Modell gut genug?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interaktive-visualisierung-r2-score">
-   Interaktive Visualisierung R²-Score
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#r2-score-mit-scikit-learn">
-   R²-Score mit Scikit-Learn
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#zusammenfassung">
-   Zusammenfassung
+  <a class="reference internal nav-link" href="#hough-transformation">
+   Hough-Transformation
   </a>
  </li>
 </ul>
@@ -756,170 +713,114 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="training-eines-linearen-regressionsmodells">
-<h1>Training eines linearen Regressionsmodells<a class="headerlink" href="#training-eines-linearen-regressionsmodells" title="Permalink to this headline">#</a></h1>
-<section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="filter-anwenden">
+<h1>Filter anwenden<a class="headerlink" href="#filter-anwenden" title="Permalink to this headline">#</a></h1>
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie können erklären, was die <strong>Fehlerquadratsumme</strong> ist.</p></li>
-<li><p>Sie wissen, dass das Training des lineare Regressionsmodells durch die
-<strong>Minimierung</strong> der Fehlerquadratsumme (Kleinste-Quadrate-Schätzer) erfolgt.</p></li>
-<li><p>Sie können mit dem <strong>Bestimmtheitsmaß</strong> bzw. <strong>R²-Score</strong> beurteilen, ob das
-lineare Regressionsmodell geeignet zur Erklärung der Daten ist.</p></li>
+<li><p>TODO</p></li>
 </ul>
 </div>
-</section>
-<section id="was-ist-die-beste-regressionsgerade">
-<h2>Was ist die “beste” Regressionsgerade?<a class="headerlink" href="#was-ist-die-beste-regressionsgerade" title="Permalink to this headline">#</a></h2>
-<p>Im letzten Abschnitt hat Scikit-Learn als Steigung 186.8 und für den
-y-Achsenabschnitt -8330 geschätzt. Ist das tatsächlich das beste lineare
-Regressionsmodell für die vorgegebenen Daten? Wie werden Regressionsmodelle
-miteinander vergleichen?</p>
-<p>Das Prinzip für das lineare Regressionsmodell und auch die folgenden ML-Modelle
-ist jedesmal gleich. Das Modell ist eine mathematische Funktion, die aber noch
-Parameter (hier beispielsweise die Koeffizienten der Gerade) enthält. Dann wird
-festgelegt, was eine gute Prognose ist, also wie Fehler berechnet und beurteilt
-werden sollen. Das hängt jeweils von dem bettrachteten Problem ab. Sobald das
-sogenannte Fehlermaß feststeht, werden die Parameter der Modellfunktion so
-berechnet, dass das Fehlermaß (z.B. Summe der Fehler oder Mittelwert der Fehler)
-möglichst klein wird. In der Mathematik sagt man dazu <strong>Minimierungsproblem</strong>.</p>
-<p>Für die lineare Regression wird als Fehlermaß die Kleinste-Quadrate-Schätzung
-verwendet (siehe <a class="reference external" href="https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate">Wikipedia  → Methode der kleinsten
-Quadrate</a>). Dazu
-berechnen wir, wie weit weg die Gerade von den Messpunkten ist. Wie das geht,
-veranschaulichen wir uns mit der folgenden Grafik.</p>
-<figure class="align-default" id="kq-regression">
-<a class="reference internal image-reference" href="../_images/kq_regression.png"><img alt="../_images/kq_regression.png" src="../_images/kq_regression.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Messpunkte (blau) und der Abstand (grün) zu einer Modellfunktion (rot)</span><a class="headerlink" href="#kq-regression" title="Permalink to this image">#</a></p>
-<div class="legend">
-<p>(<a class="reference external" href="https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate#/media/Datei:MDKQ1.svg">Quelle:</a> Autor: Christian Schirm, Lizenz: CC0)</p>
-</div>
-</figcaption>
-</figure>
-<p>Unsere rote Modellfunktion trifft die Messpunkte mal mehr und mal weniger gut.
-Wir können jetzt für jeden Messpunkt berechnen, wie weit die rote Kurve von ihm
-weg ist (= grüne Strecke), indem wir die Differenz der y-Koordinaten errechnen:
-<span class="math notranslate nohighlight">\(r = y_{\text{blau}}-y_{\text{rot}}\)</span>. Diese Differenz nennt man <strong>Residuum</strong>.
-Danach summieren wir die Fehler (also die Residuen) auf und erhalten den
-Gesamtfehler. Leider kann es dabei passieren, dass am Ende als Gesamtfehler 0
-herauskommt, weil beispielsweise für den 1. Messpunkt die blaue y-Koordinate
-unter der roten y-Koordinate liegt und damit ein negatives Residuum herauskommt,
-aber für den 5. Messpunkt ein positives Residuum. Daher quadrieren wir die
-Residuen. Scikit-Learn minimiert diese <strong>Fehlerquadratsumme</strong>, um die
-Koeffizienten des Regressionsmodells zu berechnen.</p>
-</section>
-<section id="ist-das-beste-modell-gut-genug">
-<h2>Ist das beste Modell gut genug?<a class="headerlink" href="#ist-das-beste-modell-gut-genug" title="Permalink to this headline">#</a></h2>
-<p>Auch wenn wir mit der Minimierung der Fehlerquadratsumme bzw. der
-Kleinsten-Quadrate-Methode die besten Parameter für unsere Modellfunktion
-gefunden haben, heißt das noch lange nicht, dass unser Modell gut ist. Bereits
-die Modellfunktion kann ja völlig falsch gewählt sein. Beispielsweise könnten
-wir Messungen rund um eine sinus-förmige Wechselspannung vornehmen und dann wäre
-ein lineares Regressionsmodell völlig ungeeignet, auch wenn die
-Fehlerquadratsumme minimal wäre.</p>
-<p>Wir brauchen daher noch ein Kriterium dafür, ob das trainierte Modell auch
-valide ist. Über die Validierung eines ML-Modells werden wir auch in den
-nächsten Vorlesungen noch intensiv sprechen. Für die lineare Regression
-betrachten wir erstmal das <strong>Bestimmtheitsmaß</strong>, das in der ML-Community auch
-<strong>R²-Score</strong> genannt wird.</p>
-<p>Beim R²-Score wird zunächst der Mittelwert der Fehlerquadratsumme mit der
-Modellfunktion <span class="math notranslate nohighlight">\(f\)</span> gebildet:</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{M}\sum_{i=1}^M (y^{(i)} - f(x^{(i)})^2. \]</div>
-<p>Danach wird der Mittelwert der Output-Daten gebildet, nämlich</p>
-<div class="math notranslate nohighlight">
-\[\bar{y} = \frac{1}{M} \sum_{i=1}^{M} y^{(i)}.\]</div>
-<p>Nun wird dieser Mittelwert in die Fehlerquadratsumme eingesetzt, als ob die
-Modellfunktion die konstante Funktion <span class="math notranslate nohighlight">\(f(x)=\bar{y}\)</span> wäre.</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{M}\sum_{i=1}^M (y^{(i)} - \bar{y})^2.\]</div>
-<p>Diese beiden Fehlerquadratsummen werden nun miteinander ins Verhältnis gesetzt.
-Wir vergleichen sozusgen den mittleren Fehler bei Wahl der Modellfunktion mit
-dem mittleren Fehler, wenn wir machen würden, wenn wir einfach nur den
-Mittelwert als Schätzer für unser Modell nehmen würden.</p>
-<p>In der Statistik wurde dieses Verhältnis (Gesamtfehler geteilt durch
-Gesamtfehler Mittelwert) als Qualitätkriterium für ein lineares
-Regressionsproblem festgelegt. Genaugenommen, rechnet man 1 - Gesamtfehler /
-(Gesamtfehler Mittelwert) und nennt diese Zahl Bestimmtheitsmaß oder R²-Score.
-Die Formel zur Berechnung des R²-Scores lautet:</p>
-<div class="math notranslate nohighlight">
-\[R^2 = 1 - \frac{\sum_{i=1}^M (y^{(i)} - f(x^{(i)}))^2}{\sum_{i=1}^M(y^{(i)}-\bar{y})}. \]</div>
-<p>Dabei kürzt sich das <span class="math notranslate nohighlight">\(\frac{1}{M}\)</span> im Zähler und Nenner weg. Nachdem der
-R²-Score ausgerechnet wurde, können wir nun die Qualität der Anpassung
-beurteilen:</p>
-<ul class="simple">
-<li><p>Wenn <span class="math notranslate nohighlight">\(R^2 = 1\)</span>  ist, dann gibt es den perfekten linearen Zusammenhang und die
-Modellfunktion ist eine sehr gute Anpassung an die Messdaten.</p></li>
-<li><p>Wenn <span class="math notranslate nohighlight">\(R^2 = 0\)</span> oder gar negativ ist, dann funktioniert die lineare
-Modellfunktion überhaupt nicht.</p></li>
-</ul>
-</section>
-<section id="interaktive-visualisierung-r2-score">
-<h2>Interaktive Visualisierung R²-Score<a class="headerlink" href="#interaktive-visualisierung-r2-score" title="Permalink to this headline">#</a></h2>
-<p>Auf der Seite <a class="reference external" href="https://mathweb.de">https://mathweb.de</a> finden Sie eine Reihe von
-Aufgaben und interaktiven Demonstrationen rund um die Mathematik. Insbesondere
-gibt es dort auch eine interaktive Demonstration des R²-Scores.</p>
-<p>Drücken Sie auf den zwei kreisförmigen Pfeile rechts oben. Dadurch wird ein
-neuer Datensatz erzeugt. Die Messdaten sind durch grüne Punkte dargestellt, das
-lineare Regressionsmodell durch eine blaue Gerade. Im Titel wird der aktuelle
-und der optimale R²-Wert angezeigt. Ziehen Sie an den weißen Punkten, um die
-Gerade zu verändern. Schaffen Sie es, den optimalen R²-Score zu treffen?
-Beobachten Sie dabei, wie die Fehler (rot) kleiner werden.</p>
-<iframe width="560" height="315" src="https://lti.mint-web.de/examples/index.php?id=01010320"  allowfullscreen></iframe></section>
-<section id="r2-score-mit-scikit-learn">
-<h2>R²-Score mit Scikit-Learn<a class="headerlink" href="#r2-score-mit-scikit-learn" title="Permalink to this headline">#</a></h2>
-<p>Müssen Sie die Formel für das Bestimmtheitsmaßes jetzt auswendig lernen? Nein,
-dafür ist Scikit-Learn da. Verwenden Sie einfach die Methode <code class="docutils literal notranslate"><span class="pre">.score()</span></code>, um sich
-das Bestimmtheitsmaß ausgeben zu lassen.</p>
-<p>Damit lautet das vollständige Training des linearen Regressionsmodells:</p>
+<section id="kanten-detektieren-mit-canny">
+<h2>Kanten detektieren mit canny<a class="headerlink" href="#kanten-detektieren-mit-canny" title="Permalink to this headline">#</a></h2>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">canny()</span></code> ermittelt in einem Graustufenbild die Kanten. Wir laden
+zuerst das Foto neu und wandeln es direkt in ein Graustufenbild um. Dann
+probieren wir den Canny-Filter aus. Dazu importieren wir zunächst die
+<code class="docutils literal notranslate"><span class="pre">canny()</span></code>-Funktion aus dem Untermodul <code class="docutils literal notranslate"><span class="pre">skimage.feature</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">canny</span>
+<span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>       
 
-<span class="c1"># Vorbereitung der DAten</span>
-<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/autoscout24-germany-dataset.csv&#39;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">11753</span><span class="p">,</span> <span class="mi">11754</span><span class="p">,</span> <span class="mi">21675</span><span class="p">])</span>
+<span class="n">foto</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;muenzen_und_mehr_medium.jpg&quot;</span><span class="p">)</span>
+<span class="n">foto_grau</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span>
 
-<span class="c1"># Extraktion der Input- und Output-Daten als NumPy-Arrays</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;hp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-
-<span class="c1"># Modellwahl</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-
-<span class="c1"># Training</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="c1"># Prognose</span>
-<span class="n">y_predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># Validierung</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Der R2-Score ist: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r2</span><span class="p">))</span>
+<span class="n">kanten</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">kanten</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der R2-Score ist: 0.61
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x169940ca0&gt;
+</pre></div>
+</div>
+<img alt="../_images/chapter13_sec02_2_1.png" src="../_images/chapter13_sec02_2_1.png" />
+</div>
+</div>
+</section>
+<section id="hough-transformation">
+<h2>Hough-Transformation<a class="headerlink" href="#hough-transformation" title="Permalink to this headline">#</a></h2>
+<p>Die Hough-Transformation detektiert in einem Graustufenbild Gerade, Kreise oder
+andere geometrische Objekte. Allerdings müssen wir zuvor eine Kantenerkennung
+durchgeführt haben, also den Canny-Filter angewendet haben. Wir suchen in
+unserem Beispielfoto nach Kreisen. Dafür stellt Scikit-Image die Funktion
+<code class="docutils literal notranslate"><span class="pre">hough_circle()</span></code> im Untermodul <code class="docutils literal notranslate"><span class="pre">skimage.transform</span></code> zur Verfügung. Mehr Details
+finden Sie in der <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.transform.html?highlight=hough#skimage.transform.hough_circle">Dokumentation/Scikit-Image →
+hough_circle()</a>.</p>
+<p>Es wäre jetzt schön, einfach das Kantenbild als Argument der
+<code class="docutils literal notranslate"><span class="pre">hough_circle()</span></code>-Funktion verwenden zu können und den Rest der Bildanalyse
+Scikit-Image zu überlassen. Leider benötigen wir ein zweites Argument, nämlich
+den Radius, nach dem gesucht werden soll. Wir probieren es einfach mal mit einem
+Radius von 120 px.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle</span>
+
+<span class="n">kreise</span> <span class="o">=</span> <span class="n">hough_circle</span><span class="p">(</span><span class="n">kanten</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ein R²-Score von 0.61 ist zur Not brauchbar, aber eigentlich würden wir jetzt
-nach einem besseren Modell suchen.</p>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
-<p>In diesem Abschnitt haben Sie gelernt, dass das Training eines linearen
-Regressionsmodells darauf beruht, die Fehlerquadratsumme zu minimieren. Um
-überhaupt beurteilen zu können, ob ein ML-Modell geeignet ist, brauchen wir
-Qualitätskriterien. Für das lineare Regressionsmodell dient das Bestimmtheitsmaß
-bzw. der R²-Score als Qualitätskriterium.</p>
+<p>Um anschließend die detektierten Kreise auch sichtbar machen zu können,
+benötigen wir eine weitere Funktion aus dem Untermodul <code class="docutils literal notranslate"><span class="pre">skimage.transform</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle_peaks</span>
+
+<span class="n">_</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">hough_circle_peaks</span><span class="p">(</span><span class="n">kreise</span><span class="p">,</span> <span class="p">[</span><span class="mi">120</span><span class="p">,])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">)</span>
+<span class="n">kreislinie</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">kreislinie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x1699ee220&gt;
+</pre></div>
+</div>
+<img alt="../_images/chapter13_sec02_6_1.png" src="../_images/chapter13_sec02_6_1.png" />
+</div>
+</div>
+<p>Tatsächlich, es wurde ein Kreis detektiert. Um auch die anderen zu finden,
+erzeugen wir jetzt ein Array von möglichen Radien und lassen in einer
+for-Schleife die möglichen Kreise bestimmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">radius_liste</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">kreise</span> <span class="o">=</span> <span class="n">hough_circle</span><span class="p">(</span><span class="n">kanten</span><span class="p">,</span> <span class="n">radius_liste</span><span class="p">)</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">x_liste</span><span class="p">,</span> <span class="n">y_liste</span><span class="p">,</span> <span class="n">r_liste</span> <span class="o">=</span> <span class="n">hough_circle_peaks</span><span class="p">(</span><span class="n">kreise</span><span class="p">,</span> <span class="n">radius_liste</span><span class="p">,</span> <span class="n">total_num_peaks</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">r</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x_liste</span><span class="p">,</span> <span class="n">y_liste</span><span class="p">,</span> <span class="n">r_liste</span><span class="p">):</span>
+    <span class="n">kreislinie</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">kreislinie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/chapter13_sec02_8_0.png" src="../_images/chapter13_sec02_8_0.png" />
+</div>
+</div>
+<p>Die Mandarine wird nicht erkannt, aber Münzen und Teelicht werden als
+kreisförmige Objekte detektiert.</p>
 </section>
 </section>
 
@@ -936,7 +837,7 @@ bzw. der R²-Score als Qualitätskriterium.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapter06"
+            path: "./chapter13"
         },
         predefinedOutput: true
     }
@@ -950,19 +851,12 @@ bzw. der R²-Score als Qualitätskriterium.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="chapter06_sec01.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="chapter13_sec01.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lineare Regression</p>
+            <p class="prev-next-title">Grafiken</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="chapter06_sec03.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multiple lineare Regression</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

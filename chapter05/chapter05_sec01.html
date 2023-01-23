@@ -453,6 +453,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter13/chapter13_sec00.html">
+   Bildverarbeitung mit Scikit-Image
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter13/chapter13_sec01.html">
+     Grafiken
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter13/chapter13_sec02.html">
+     Filter anwenden
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -821,31 +843,31 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7.41512922e-01 7.41051589e-01 5.72787371e-01 8.12375876e-01
- 1.90219574e-01 3.26664539e-01 2.53346736e-01 6.72816816e-01
- 3.65878223e-01 1.75575149e-01 5.81521079e-01 2.67473749e-01
- 1.36037184e-02 6.27339006e-01 7.52604302e-01 1.87275017e-01
- 8.99517490e-02 9.89982650e-01 5.68513738e-01 9.88686863e-01
- 8.73770648e-01 5.51243671e-01 3.02402233e-01 4.93002400e-01
- 5.67981466e-01 5.43551503e-01 9.10060264e-01 8.00231647e-01
- 2.63277913e-01 1.26940663e-01 9.25420921e-01 1.26892733e-04
- 9.87031126e-01 5.24133243e-01 4.12757215e-01 1.78984169e-01
- 4.12284898e-02 9.04756636e-01 6.49939979e-01 6.49387805e-01
- 2.40123134e-02 9.47144216e-01 3.27351947e-01 1.52175356e-02
- 6.09359387e-02 3.83367976e-01 7.16368949e-01 8.43881735e-01
- 5.78868706e-01 2.88101291e-01 2.21815252e-01 2.40014669e-03
- 7.57422593e-01 8.92004701e-01 7.24431090e-01 2.10410478e-01
- 3.23935631e-01 6.66716478e-01 2.60443803e-01 2.54828775e-02
- 6.37565808e-01 7.12492503e-01 8.73133302e-01 2.32175802e-01
- 9.30652783e-01 2.58888548e-02 8.65840724e-01 3.27608981e-01
- 2.36377210e-01 1.25172226e-01 1.04712109e-01 7.25638542e-01
- 5.03191747e-01 5.84117914e-01 5.10686781e-01 2.19326826e-01
- 6.21617862e-01 9.13164299e-01 9.60666217e-01 6.79415118e-01
- 5.52818672e-02 9.20241540e-01 6.63985682e-01 3.17075235e-01
- 7.03668120e-02 1.43403012e-01 5.58570792e-01 4.95898322e-01
- 2.01946464e-01 7.17229250e-01 8.43229821e-01 3.84194999e-01
- 1.50385787e-01 8.35554563e-01 9.09902876e-01 3.78930815e-03
- 8.78360094e-01 6.90921580e-01 7.24643937e-01 8.30816315e-02]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.58161206e-01 4.06383277e-01 1.21089135e-01 9.21558647e-01
+ 9.40274870e-03 8.43824934e-02 5.07772331e-01 2.04077887e-01
+ 2.28352076e-01 6.60877092e-01 3.68524193e-01 8.45189806e-01
+ 3.77105888e-01 1.98784500e-01 6.50949630e-02 7.57965190e-01
+ 3.01071728e-02 9.58933247e-01 6.31678028e-01 9.95438334e-01
+ 3.53269122e-01 8.87127236e-01 7.23567441e-01 6.92157569e-01
+ 6.70686320e-01 6.91541589e-01 1.05219845e-01 8.05438895e-01
+ 7.66454644e-01 8.38093605e-01 4.39233590e-01 8.49478999e-01
+ 3.46801097e-02 1.35024182e-01 7.67934001e-01 5.20950328e-01
+ 4.28127413e-01 7.02953308e-01 9.85575521e-01 8.96364272e-01
+ 9.30036565e-01 8.14260720e-01 6.66499468e-01 8.99248400e-03
+ 9.08302631e-02 1.71881550e-01 1.94738507e-01 8.24514835e-01
+ 2.13378493e-01 7.15741325e-01 8.17095903e-01 1.47892244e-01
+ 4.15214380e-01 1.55275240e-01 8.90681830e-01 9.27711170e-01
+ 8.18949273e-01 7.55525046e-02 2.71528128e-02 7.86193451e-01
+ 2.72593315e-01 5.99045323e-01 9.04871840e-01 5.34730376e-01
+ 3.26278371e-01 9.53106798e-01 7.51665717e-01 8.61734493e-01
+ 4.25616003e-01 7.45719528e-01 2.83467553e-02 4.67209081e-05
+ 9.44669143e-01 8.32833765e-02 9.57551847e-02 7.21318844e-01
+ 6.86453891e-01 8.56923437e-01 6.24476191e-01 4.47125330e-01
+ 9.28144986e-01 9.03652843e-01 9.97063496e-01 5.22218817e-01
+ 6.40766247e-01 2.33794638e-01 6.31951346e-01 3.05986832e-01
+ 3.31808317e-02 5.67349772e-01 5.86729315e-01 6.38523194e-01
+ 2.22235531e-01 6.43891926e-01 8.63430543e-01 5.36681114e-01
+ 6.90751693e-01 3.87852909e-01 4.98691633e-01 9.85745026e-01]
 </pre></div>
 </div>
 </div>
@@ -863,8 +885,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9899826501886483
-NumPy max =  0.9899826501886483
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9970634962528939
+NumPy max =  0.9970634962528939
 </pre></div>
 </div>
 </div>
@@ -883,10 +905,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.66 µs ± 7.26 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.67 µs ± 1.88 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 µs ± 11.2 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.16 µs ± 5.11 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1105,8 +1127,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.50176977 0.82414334 0.85639527]
- [0.08000318 0.62218409 0.09888846]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.65306601 0.46269001 0.34475349]
+ [0.01431712 0.68949536 0.05026514]]
 </pre></div>
 </div>
 </div>
@@ -1120,9 +1142,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.08440038  0.28231006  0.05042649 -1.08215605]
- [ 0.33169297  0.84802623 -0.50118697  0.45083391]
- [ 0.59840773 -0.54983338  0.69183915  1.10530282]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.79279642  1.25422413  1.84080719  0.7216172 ]
+ [-0.64724743 -1.26701265  0.76032827 -0.94893719]
+ [ 0.02270742  0.83980706 -0.33657754 -0.53738665]]
 </pre></div>
 </div>
 </div>
