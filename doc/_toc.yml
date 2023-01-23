@@ -68,3 +68,7 @@ parts:
     sections:
     - file: chapter12/chapter12_sec01.ipynb  
     - file: chapter12/chapter12_sec02.ipynb   
+  - file: chapter13/chapter13_sec00.md
+    sections:
+    - file: chapter13/chapter13_sec01.ipynb
+    - file: chapter13/chapter13_sec02.ipynb
