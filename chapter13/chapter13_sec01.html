@@ -729,7 +729,9 @@ title="Print to PDF"
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>TODO</p></li>
+<li><p>Sie kennen die Unterschiede zwischen einer <strong>Rastergrafik</strong> und einer <strong>Vektorgrafik</strong>.</p></li>
+<li><p>Sie kennen das <strong>RGB-Modell</strong> und das <strong>Graustufen-Modell</strong>.</p></li>
+<li><p>Sie können mit Scikit-Image Bilder einlesen und in ein Graustufenbild umwandeln.</p></li>
 </ul>
 </div>
 <section id="rastergrafik-vs-vektorgrafik">
@@ -894,6 +896,29 @@ benötigte Speicherplatz reduziert. Darüber hinaus verwenden wir
 Graustufenbilder, da sie eine effektivere Basis für viele
 Bildverarbeitungsalgorithmen darstellen und auch den benötigten Speicherplatz
 reduzieren.</p>
+<p>Scikit-Image stellt dafür die Funktion <code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code> zur Verfügung, die wir aus
+dem Untermodul <code class="docutils literal notranslate"><span class="pre">skimage.color</span></code> laden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+
+<span class="n">foto_grau</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape des Graustufenbildes: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">))</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape des Graustufenbildes: 
+(1800, 2400)
+</pre></div>
+</div>
+<img alt="../_images/chapter13_sec01_16_1.png" src="../_images/chapter13_sec01_16_1.png" />
+</div>
+</div>
 </section>
 </section>
 

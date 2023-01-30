@@ -674,6 +674,11 @@ title="Print to PDF"
    Hough-Transformation
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -703,6 +708,11 @@ title="Print to PDF"
    Hough-Transformation
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">
+   Zusammenfassung und Ausblick
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -718,7 +728,7 @@ title="Print to PDF"
 <div class="hint admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>TODO</p></li>
+<li><p>Sie können Scikit-Image benutzen, um Kanten und Objekte in einem Foto zu detektieren.</p></li>
 </ul>
 </div>
 <section id="kanten-detektieren-mit-canny">
@@ -742,7 +752,7 @@ probieren wir den Canny-Filter aus. Dazu importieren wir zunächst die
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x169940ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x17effe280&gt;
 </pre></div>
 </div>
 <img alt="../_images/chapter13_sec02_2_1.png" src="../_images/chapter13_sec02_2_1.png" />
@@ -790,7 +800,7 @@ benötigen wir eine weitere Funktion aus dem Untermodul <code class="docutils li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x1699ee220&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x17f092d60&gt;
 </pre></div>
 </div>
 <img alt="../_images/chapter13_sec02_6_1.png" src="../_images/chapter13_sec02_6_1.png" />
@@ -821,6 +831,15 @@ for-Schleife die möglichen Kreise bestimmen.</p>
 </div>
 <p>Die Mandarine wird nicht erkannt, aber Münzen und Teelicht werden als
 kreisförmige Objekte detektiert.</p>
+</section>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>Bei der Detektion von Objekten in Bildern ist die Umwandlung in ein
+Graustufenbild der erste Schritt. Danach werden je nach Anwendungsszenario
+verschiedene Filter angewendet. Um beispielsweise kreisförmige Objekte im Bild
+wiederzufinden, verwenden wir erst den Canny-Filter und dann die
+Hough-Transformation für Kreise. Für Linien wäre beispielsweise die
+Hough-Transformation Straight Lines das Mittel der Wahl.</p>
 </section>
 </section>
 
