@@ -15,8 +15,8 @@ y_train = y_test - 0.3 + np.exp(x-1.0)
 
 #%%
 fig, ax = plt.subplots()
-ax.plot(x, y_train, label='Score Trainingsdaten', linewidth=2)
-ax.plot(x, y_test, label='Score Testdaten', linewidth=2)
+ax.plot(x, y_train, label='Score Trainingsdaten', linewidth=2, linestyle='dashed', color='k')
+ax.plot(x, y_test, label='Score Testdaten', linewidth=2, linestyle = 'dotted', color='k')
 
 ax.set_xlim([0.0, 1.0])
 ax.set_ylim([3.5, 4.8])
@@ -31,6 +31,6 @@ ax.set_title('Prinzipielle Validierungskurven')
 ax.grid(False)
 ax.legend(bbox_to_anchor=(0.0, 1), loc='upper left')
 plt.tight_layout()
-plt.savefig('validierungskurven.pdf')
+plt.savefig('validierungskurven_dotted.pdf')
 plt.show()
 # %%
