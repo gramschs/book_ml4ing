@@ -72,3 +72,10 @@ parts:
     sections:
     - file: chapter13/chapter13_sec01.ipynb
     - file: chapter13/chapter13_sec02.ipynb
+- caption: Extras 
+  chapters:
+  - file: chapter14/chapter14_sec00.md
+    sections:
+      - file: chapter14/chapter14_sec01.md
+      - file: chapter14/chapter14_sec02.md
+      - file: chapter14/chapter14_sec03.md
