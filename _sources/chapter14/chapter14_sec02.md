@@ -17,6 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
+:class: hint
 * Sie wissen, was ein **Histogramm** ist und können es mit Plotly erzeugen.
 * Sie wissen, was eine **Scattermatrix** ist und können sie mit Plotly erzeugen.
 ```
