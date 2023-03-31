@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -478,7 +479,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Extra Themen zur Vertiefung
+  Extras
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -494,7 +495,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter14/chapter14_sec01.html">
-     Plotly Express
+     Streudiagramm und Balkendiagramm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter14/chapter14_sec02.html">
+     Histogramme und Scattermatrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter14/chapter14_sec03.html">
+     Plots mit Karten
     </a>
    </li>
   </ul>
@@ -867,23 +878,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.41914518 0.48270626 0.61884437 0.14852444 0.63727246 0.39063975
- 0.82543066 0.488646   0.93620378 0.04299241 0.34041949 0.59620264
- 0.35097538 0.88097986 0.9820328  0.90120341 0.05168942 0.66056494
- 0.78761415 0.27037358 0.83624068 0.16417699 0.62045205 0.25188968
- 0.94707643 0.13204361 0.53782964 0.57321658 0.94493998 0.3864936
- 0.88503893 0.64821366 0.85826064 0.9727804  0.68713626 0.89241686
- 0.84704735 0.37475269 0.77238987 0.14266058 0.65597443 0.42294013
- 0.19817647 0.15577169 0.49475569 0.97413568 0.71064499 0.24194602
- 0.12782779 0.63314883 0.9497676  0.38246519 0.36266242 0.42314565
- 0.60432582 0.37789092 0.43677475 0.86121085 0.89208654 0.36549367
- 0.80088438 0.53712179 0.76422398 0.3844589  0.01932179 0.67618056
- 0.04913961 0.84171253 0.90652999 0.20083948 0.77931275 0.36930815
- 0.09898754 0.97442032 0.50007459 0.33156269 0.22664925 0.98428584
- 0.84894949 0.83799653 0.16238542 0.23909761 0.66490876 0.1062553
- 0.69170847 0.07404323 0.980034   0.24607646 0.82195863 0.91881699
- 0.93644865 0.91517863 0.35724625 0.84143049 0.58876988 0.33006055
- 0.04336783 0.87943157 0.62440461 0.00870656]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.57385407 0.77327755 0.86522008 0.74788936 0.43083188 0.40638555
+ 0.16199497 0.84118694 0.52519822 0.05594903 0.98131881 0.50599262
+ 0.52196708 0.13094937 0.33693566 0.0381559  0.44735308 0.10942586
+ 0.20070421 0.23316768 0.29523783 0.25171397 0.98231745 0.35565035
+ 0.19852635 0.6278265  0.2806538  0.59648663 0.45403735 0.15965563
+ 0.28560358 0.00329466 0.96259998 0.04171424 0.09422519 0.11997727
+ 0.83358698 0.05058443 0.2197254  0.99947387 0.47148796 0.99796868
+ 0.72748361 0.93005802 0.09830863 0.33562445 0.57122602 0.40500202
+ 0.66949825 0.18108451 0.40098489 0.39949428 0.61036683 0.70359692
+ 0.69932711 0.65747549 0.23076444 0.96114269 0.24338786 0.16074729
+ 0.61855589 0.38946928 0.87669366 0.15333141 0.27675218 0.62442442
+ 0.20512802 0.8260457  0.32549845 0.05887005 0.63995498 0.98683926
+ 0.1519175  0.15058497 0.12157599 0.49067976 0.48002945 0.8157186
+ 0.07149684 0.43875492 0.94410188 0.97080067 0.32768362 0.15948903
+ 0.67270761 0.69616396 0.91879086 0.65943878 0.20819341 0.30098787
+ 0.51059713 0.10984624 0.47835735 0.28824132 0.25061117 0.71024093
+ 0.41353019 0.50526524 0.09890574 0.30057408]
 </pre></div>
 </div>
 </div>
@@ -901,8 +912,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9842858363570111
-NumPy max =  0.9842858363570111
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9994738711287714
+NumPy max =  0.9994738711287714
 </pre></div>
 </div>
 </div>
@@ -921,10 +932,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7 µs ± 6.73 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.72 µs ± 26.8 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 µs ± 7.55 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.18 µs ± 4.95 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1143,8 +1154,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.06609493 0.60410299 0.71995218]
- [0.04778508 0.00986915 0.19664097]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.50080821 0.58238257 0.55848062]
+ [0.69656867 0.1414546  0.12153858]]
 </pre></div>
 </div>
 </div>
@@ -1158,9 +1169,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.71504945  1.81728328  1.50036651 -0.58582278]
- [ 1.10677342  0.79683494 -0.63604859 -0.98262748]
- [ 1.58394497 -1.29057187 -0.84608567 -0.36961634]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.16983562 -1.15508662  0.94910874  0.66735689]
+ [-0.07712825 -1.97815778 -1.3522876   1.87672807]
+ [ 0.36903084  1.27412072  0.12484223  1.16497457]]
 </pre></div>
 </div>
 </div>

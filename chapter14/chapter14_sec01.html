@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -918,13 +919,10 @@ Schüler-Lehrer-Verhältnis in den Schulen usw.</p>
 <p>Nun können wir mit Plotly Express einen Scatterplot erstellen, um den
 Zusammenhang zwischen der Kriminalitätsrate und dem Medianwert der Häuser zu
 untersuchen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen des Scatterplots mit Plotly Express</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen des Scatterplots mit Plotly Express</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Mit der Funktion <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> wird das Streudiagramm erzeugt. Als erstes Argument
 wird der komplette Datensatz <code class="docutils literal notranslate"><span class="pre">df</span></code> übergeben. Mit <code class="docutils literal notranslate"><span class="pre">x=</span></code> wird die Spalte aus dem

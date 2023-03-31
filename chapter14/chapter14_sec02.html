@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -57,7 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Plots mit Karten" href="chapter14_sec03.html" />
-    <link rel="prev" title="Plotly Express" href="chapter14_sec01.html" />
+    <link rel="prev" title="Streudiagramm und Balkendiagramm" href="chapter14_sec01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -476,7 +477,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Extra Themen zur Vertiefung
+  Extras
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -492,7 +493,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="chapter14_sec01.html">
-     Plotly Express
+     Streudiagramm und Balkendiagramm
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -558,6 +559,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter14/chapter14_sec02.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -592,6 +640,23 @@ title="Source repository"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../_sources/chapter14/chapter14_sec02.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../_sources/chapter14/chapter14_sec02.md"
    class="headerbtn"
@@ -630,12 +695,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogramme">
+   Histogramme
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scattermatrix">
+   Scattermatrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weiteres-lernmaterial">
+   Weiteres Lernmaterial
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -647,6 +751,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogramme">
+   Histogramme
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scattermatrix">
+   Scattermatrix
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weiteres-lernmaterial">
+   Weiteres Lernmaterial
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -656,7 +788,134 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="histogramme-und-scattermatrix">
 <h1>Histogramme und Scattermatrix<a class="headerlink" href="#histogramme-und-scattermatrix" title="Permalink to this headline">#</a></h1>
-<p>TODO</p>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<div class="admonition-lernziele admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>Sie wissen, was ein <strong>Histogramm</strong> ist und können es mit Plotly erzeugen.</p></li>
+<li><p>Sie wissen, was eine <strong>Scattermatrix</strong> ist und können sie mit Plotly erzeugen.</p></li>
+</ul>
+</div>
+</section>
+<section id="histogramme">
+<h2>Histogramme<a class="headerlink" href="#histogramme" title="Permalink to this headline">#</a></h2>
+<p>Histogramme sind eine der wichtigsten Arten von Diagrammen, wenn es darum geht,
+die Verteilung von Daten zu visualisieren. Ein Histogramm zeigt die Häufigkeit
+der Werte in einem Datensatz in Form von Balken. Die Höhe jedes Balkens gibt an,
+wie oft ein bestimmter Wert im Datensatz vorkommt. Aus der Schule sind die
+Histogramme sehr bekannt, denn üblicherweise wird bei der Rückgabe der
+Klassenarbeit der sogenannte Notenspiegel angegeben. Darin enthalten ist, wie
+oft die Note sehr gut, wie oft die Note gut usw. erreicht wurde.</p>
+<p>In Plotly Express ist das Erstellen eines Histogramms einfach und schnell. Mit
+nur wenigen Zeilen Python-Code können wir ein Histogramm erstellen, das uns
+einen Einblick in die Verteilung der Daten gibt. Hier ist ein Beispiel mit dem
+Boston Housing Datensatz:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="c1"># Laden des Boston Housing Price Datensatzes</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data&quot;</span><span class="p">,</span>
+                 <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="s1">&#39;ZN&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;CHAS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;RAD&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
+
+<span class="c1"># Erstellen des Histogramms</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MEDV&#39;</span><span class="p">:</span> <span class="s1">&#39;Preis ($1000)&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl der Häuser&#39;</span><span class="p">},</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Verteilung der Hauspreise in Boston&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="histogramm" src="../_images/histogramm.png" /></p>
+<p>In diesem Beispiel erstellen wir ein Histogramm, das die Verteilung der
+Hauspreise in Boston darstellt. Wir verwenden das “MEDV”-Feature als x-Achse,
+das den Medianwert des Hauspreises darstellt, und den nbins-Parameter, um die
+Anzahl der Balken im Histogramm festzulegen. Wir haben auch die Beschriftungen
+der x-Achse und y-Achse angepasst und dem Histogramm einen Titel gegeben. Im
+Gegensatz zu der Achsenbeschriftung bei den Streudiagrammen wird hier das
+Argument <code class="docutils literal notranslate"><span class="pre">labels</span></code> verwendet. Bevor das Diagramm visualisiert wird, passiert
+nämlich einiges. Zuerst unterteilt Python die Hauspreise in 30 Kategorien, was
+durch das Argument <code class="docutils literal notranslate"><span class="pre">nbins=</span></code> (number of bins) festgelegt wurde. Danach wird
+gezählt, wie viele Häuser aufgrund ihres Preise in die jeweilige Kategorie
+fallen und diese Anzahl wird intern als <code class="docutils literal notranslate"><span class="pre">count</span></code> abgespeichert. Würden wir die
+Zeile <code class="docutils literal notranslate"><span class="pre">labels</span></code> weglassen, wäre die x-Achsenbschriftung <code class="docutils literal notranslate"><span class="pre">MEDV</span></code> und die y-Achse
+würde mit <code class="docutils literal notranslate"><span class="pre">count</span></code>beschriftet. Daher werden hier noch die automatisch gesetzten
+Achsenbeschriftungen überschrieben. Das passiert durch die Schreibweise mit den
+geschweiften Klammern und dem Doppelpunkte (präziser mit einem Dictionary).</p>
+<p>Histogramme sind nützlich, um zu verstehen, wie die Daten in einem Datensatz
+verteilt sind. Sie zeigen uns, welche Werte im Datensatz am häufigsten vorkommen
+und wie weit die Verteilung auseinanderliegt.</p>
+</section>
+<section id="scattermatrix">
+<h2>Scattermatrix<a class="headerlink" href="#scattermatrix" title="Permalink to this headline">#</a></h2>
+<p>Eine Scattermatrix ist eine nützliche Visualisierungstechnik, die es ermöglicht,
+die Beziehungen zwischen mehreren Variablen in einem Datensatz darzustellen.
+Dabei werden alle Kombinationen von zwei Variablen als Scatterplots auf einer
+einzigen Seite dargestellt. Eine Scattermatrix ist besonders nützlich, um Muster
+und Trends in den Daten zu identifizieren und Zusammenhänge zwischen Variablen
+zu untersuchen.</p>
+<p>In Plotly Express ist das Erstellen einer Scattermatrix einfach und schnell. Mit
+nur wenigen Zeilen Python-Code können wir eine Scattermatrix erstellen, die uns
+einen Einblick in die Beziehungen zwischen den verschiedenen Variablen im
+Datensatz gibt. Hier ist ein Beispiel mit dem Boston Housing Datensatz:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen der Scattermatrix</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scattermatrix des Boston Housing Datensatzes&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scattermatrix" src="../_images/scattermatrix.png" /></p>
+<p>In diesem Beispiel erstellen wir eine Scattermatrix, die alle Kombinationen von
+Variablen im Boston Housing Datensatz darstellt. Wir verwenden das
+‘color’-Argument, um die Farbe der Scatterplots entsprechend des Hauspreises
+(‘MEDV’) zu setzen. Wir haben auch dem Diagramm einen Titel gegeben.</p>
+<p>Die Scattermatrix gibt uns eine Übersicht über die Beziehungen zwischen den
+verschiedenen Variablen im Boston Housing Datensatz. Wir können sehen, dass es
+eine starke positive Korrelation zwischen dem Hauspreis und der Anzahl der
+Zimmer gibt, während es eine negative Korrelation zwischen dem Hauspreis und dem
+Anteil der niedrigen Einkommen in der Nachbarschaft (‘LSTAT’) gibt. Die
+Scattermatrix ist eine nützliche Möglichkeit, um Muster und Trends in den Daten
+zu erkennen und Zusammenhänge zwischen Variablen zu untersuchen.</p>
+<p>Insgesamt ist es bei 14 Merkmalen nicht so einfach, in der Scattermatrix den
+Überblick zu behalten. Es kann daher sinnvoll sein, sich nicht alle Merkmale auf
+einmal anzusehen, sondern nur eine Auswahl wie in dem folgenden Beispiel. Die
+Merkmale, die mit in die Scattermatrix einbezogen werden sollen, werden über
+eine Liste mit dem Argument <code class="docutils literal notranslate"><span class="pre">dimensions</span></code> gesetzt.</p>
+<p>In diesem Beispiel haben wir die Scattermatrix auf vier Variablen beschränkt:
+die Anzahl der Zimmer (‘RM’), den Anteil der niedrigen Einkommen in der
+Nachbarschaft (‘LSTAT’), das Schüler-Lehrer-Verhältnis (‘PTRATIO’) und den
+Hauspreis (‘MEDV’).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dimensions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;MEDV&#39;</span><span class="p">],</span>
+                        <span class="n">color</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scattermatrix des Boston Housing Datensatzes&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scattermatrix_reduced" src="../_images/scattermatrix_reduced.png" /></p>
+<p>Mit der geringeren Auswahl an Merkmalen fällt es uns nun auch leichter, die
+Scattermatrix zu interpretieren. Jeder Punkt in dem Scatterplot repräsentiert
+ein Haus. Die Position des Punktes auf der x-Achse zeigt den Wert der ersten
+Variable (z.B. die Anzahl der Zimmer) für dieses Haus an, während die Position
+auf der y-Achse den Wert der zweiten Variable (z.B. den Hauspreis) darstellt.</p>
+<p>Die Farbe der Punkte auf jedem Scatterplot gibt den Wert der dritten Variable
+(z.B. Hauspreis) für das entsprechende Haus an. Die Farbskala reicht von
+dunkellila (niedriger Wert) bis gelb (hoher Wert).</p>
+<p>Die Scattermatrix zeigt, dass es eine starke positive Beziehung zwischen der
+Anzahl der Zimmer und dem Hauspreis gibt, was zu erwarten ist (Diagramm unten,
+erste Spalte). Ebenfalls zu erwarten ist eine negative Beziehung zwischen dem
+Anteil der niedrigen Einkommen in der Nachbarschaft und dem Hauspreis (Diagramm
+unten, zweite Spalte). Eine geringe negative Beziehung gibt es auch zwischen dem
+Schüler-Lehrer-Verhältnis und dem Hauspreis (Diagramm unten, dritte Spalte).</p>
+<p>Die Diagonale eines Scatterplots zeigt die Beziehung zwischen einer Variablen
+und sich selbst an. Da die Variable natürlich perfekt mit sich selbst korreliert
+ist, zeigt die Diagonale immer eine lineare Korrelation an (Diagramm unten,
+vierte Spalte).</p>
+</section>
+<section id="weiteres-lernmaterial">
+<h2>Weiteres Lernmaterial<a class="headerlink" href="#weiteres-lernmaterial" title="Permalink to this headline">#</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a982sb3bDD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IXOE-IPFuFc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XkE6YRR6voU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a982sb3bDD0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -690,7 +949,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Plotly Express</p>
+            <p class="prev-next-title">Streudiagramm und Balkendiagramm</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="chapter14_sec03.html" title="next page">

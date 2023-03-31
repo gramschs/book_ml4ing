@@ -7,7 +7,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.14.4
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -61,6 +61,7 @@ Um ein Streudiagramm mit Plotly Express zu visualisieren, gehten wir
 folgendermaßen vor. 
 
 Importieren Sie Plotly Express mit der typischen Abkürzung px:
+
 ```{code-cell} ipython3
 import plotly.express as px
 ```
@@ -99,9 +100,10 @@ Nun können wir mit Plotly Express einen Scatterplot erstellen, um den
 Zusammenhang zwischen der Kriminalitätsrate und dem Medianwert der Häuser zu
 untersuchen:
 
-```{code-cell} ipython3
+```python
 # Erstellen des Scatterplots mit Plotly Express
 fig = px.scatter(df, x='CRIM', y='MEDV')
+fig.show()
 ```
 
 Mit der Funktion `scatter()` wird das Streudiagramm erzeugt. Als erstes Argument
@@ -234,6 +236,7 @@ print(anzahl)
 ```
 
 Wir führen beides zusammen in einen gemeinsamen DataFrame:
+
 ```{code-cell} ipython3
 haeuser_pro_stadtteil = pd.DataFrame({'Stadtteil': stadtteile, 'Anzahl der Häuser': anzahl})
 ```

@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -475,7 +476,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Extra Themen zur Vertiefung
+  Extras
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -491,7 +492,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="chapter14_sec01.html">
-     Plotly Express
+     Streudiagramm und Balkendiagramm
     </a>
    </li>
    <li class="toctree-l2">
@@ -557,6 +558,53 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter14/chapter14_sec03.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -591,6 +639,23 @@ title="Source repository"
   </button>
   <div class="menu-dropdown__content">
     <ul>
+      <li>
+        <a href="../_sources/chapter14/chapter14_sec03.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download notebook file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
       <li>
         <a href="../_sources/chapter14/chapter14_sec03.md"
    class="headerbtn"
@@ -629,12 +694,56 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#karte-laden-und-anzeigen-mit-folium">
+   Karte laden und anzeigen mit Folium
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#karten-markieren">
+   Karten markieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choroplethenkarte-und-geojson">
+   Choroplethenkarte und GeoJSON
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geojson-in-folium">
+   GeoJSON in Folium
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -646,6 +755,39 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lernziele">
+   Lernziele
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#karte-laden-und-anzeigen-mit-folium">
+   Karte laden und anzeigen mit Folium
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#karten-markieren">
+   Karten markieren
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choroplethenkarte-und-geojson">
+   Choroplethenkarte und GeoJSON
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geojson-in-folium">
+   GeoJSON in Folium
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -655,7 +797,515 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="plots-mit-karten">
 <h1>Plots mit Karten<a class="headerlink" href="#plots-mit-karten" title="Permalink to this headline">#</a></h1>
-<p>TODO</p>
+<p>Es ist nützlich, Eigenschaften eines Gebietes auf einer Karte zu visualisieren,
+da Karten eine räumliche Darstellung der Daten ermöglichen. Im Gegensatz zu
+Tabellen zeigen Karten, wo bestimmte Eigenschaften auftreten und wo nicht.
+Karten machen es leicht, Muster und Trends auf einen Blick zu erkennen und die
+räumliche Beziehung zwischen verschiedenen Eigenschaften zu verstehen.</p>
+<p>Zum Beispiel kann eine Karte die Verbreitung von Krankheiten oder die Verteilung
+von Ressourcen in einem Gebiet zeigen. Eine Tabelle kann diese Informationen
+ebenfalls darstellen, aber eine Karte gibt einen visuellen Überblick über die
+räumliche Verteilung. Karten können auch verwendet werden, um Entscheidungen zu
+treffen, wie z.B. Standorte für neue Unternehmen oder Infrastrukturprojekte zu
+finden.</p>
+<p>Darüber hinaus können Karten auch dazu beitragen, komplexe Daten und
+Informationen auf eine einfache und verständliche Weise zu kommunizieren, die
+für eine breitere Öffentlichkeit zugänglich ist. Karten sind oft intuitiv und
+erfordern keine speziellen Fähigkeiten oder Kenntnisse, um sie zu verstehen.
+Daher werden wir uns in diesem Abschnitt der Visualisierung von Karten und
+Zusatzinformationen mit dem Python-Modul Folium widmen.</p>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<div class="hint admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>Sie kennen das Modul <strong>Folium</strong> und können es importieren.</p></li>
+<li><p>Sie können eine Basiskarte mit <strong>.Map()</strong> erstellen.</p></li>
+<li><p>Sie können Positionen auf dieser Karte mit <strong>.Marker()</strong> markieren.</p></li>
+<li><p>Sie wissen, was eine <strong>GeoJSON</strong> Datei istund wie diese erstellt werden kann.</p></li>
+<li><p>Sie wissen, was eine <strong>Choroplethenkarte</strong> ist und können diese mit Folium
+visualisieren.</p></li>
+</ul>
+</div>
+</section>
+<section id="karte-laden-und-anzeigen-mit-folium">
+<h2>Karte laden und anzeigen mit Folium<a class="headerlink" href="#karte-laden-und-anzeigen-mit-folium" title="Permalink to this headline">#</a></h2>
+<p>Folium ist ein Python-Modul, das es Benutzern ermöglicht, interaktive Karten zu
+erstellen und zu visualisieren. Mit Folium können Sie Daten auf einer Karte
+darstellen, indem Sie Markierungen, Polygone, Linien oder Heatmaps hinzufügen.
+Es basiert auf dem beliebten JavaScript-Modul Leaflet.js, das eine
+benutzerfreundliche Schnittstelle für die Erstellung interaktiver Karten bietet.</p>
+<p>Als erstes wird das Module Folium importiert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">folium</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes erstellen wir eine Karte mit der Basiskarte von OpenStreetMap als
+Hintergrund. Dazu wird die Funktion <code class="docutils literal notranslate"><span class="pre">Map()</span></code> verwendet. Der <code class="docutils literal notranslate"><span class="pre">location</span></code>-Parameter
+gibt die Koordinaten des Startpunkts an, den wir auf das Zentrum der Frankfurt
+UAS (50.110880, 8.679490) setzen. Der <code class="docutils literal notranslate"><span class="pre">zoom_start</span></code>-Parameter legt den Zoomfaktor
+fest, bei dem die Karte gestartet wird. Damit das Karten-Objekt, das wir in der
+Variable <code class="docutils literal notranslate"><span class="pre">karte</span></code> gespeichert haben, auch angezeigt wird, wird <code class="docutils literal notranslate"><span class="pre">karte</span></code> nochmal
+aufgerufen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Laden der Karte  </span>
+<span class="n">karte</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.110880</span><span class="p">,</span> <span class="mf">8.679490</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># Anzeige der Karte</span>
+<span class="n">karte</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_723a154b2606cb6d31053dd8d03342e6 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_723a154b2606cb6d31053dd8d03342e6&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_723a154b2606cb6d31053dd8d03342e6 = L.map(
+                &quot;map_723a154b2606cb6d31053dd8d03342e6&quot;,
+                {
+                    center: [50.11088, 8.67949],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_ca1f5a86a82136e7fc1f2fbffde0c953 = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_723a154b2606cb6d31053dd8d03342e6);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<p>Folium unterstützt auch verschiedene Kartentypen wie OpenStreetMap, Stamen
+Terrain und Stamen Toner, die Sie als Basiskarte verwenden können. Der Kartentyp
+wird mit ddem Argument <code class="docutils literal notranslate"><span class="pre">tiles=</span></code> gesetzt. Die verfügbaren Kartentypen können
+entweder als String (z.B. ‘OpenStreetMap’, ‘Stamen Terrain’, ‘Stamen Toner’)
+oder als URL zu einer eigenen Karte angegeben werden. Der Parameter ist
+optional, wenn er ausgelassen wird, wird standardmäßig OpenStreetMap als
+Basiskarte verwendet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Laden der Karte  </span>
+<span class="n">karte</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.110880</span><span class="p">,</span> <span class="mf">8.679490</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">tiles</span><span class="o">=</span><span class="s1">&#39;Stamen Terrain&#39;</span><span class="p">)</span>
+
+<span class="c1"># Anzeige der Karte</span>
+<span class="n">karte</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_eacefa4cfcb6f01a5c03dcc974befba5 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_eacefa4cfcb6f01a5c03dcc974befba5&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_eacefa4cfcb6f01a5c03dcc974befba5 = L.map(
+                &quot;map_eacefa4cfcb6f01a5c03dcc974befba5&quot;,
+                {
+                    center: [50.11088, 8.67949],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_893e552d0219331fdf56373aa48d1a03 = L.tileLayer(
+                &quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&quot;,
+                {&quot;attribution&quot;: &quot;Map tiles by \u003ca target=\&quot;_blank\&quot; href=\&quot;http://stamen.com\&quot;\u003eStamen Design\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by/3.0\&quot;\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by-sa/3.0\&quot;\u003eCC BY SA\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_eacefa4cfcb6f01a5c03dcc974befba5);
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</section>
+<section id="karten-markieren">
+<h2>Karten markieren<a class="headerlink" href="#karten-markieren" title="Permalink to this headline">#</a></h2>
+<p>Das Hinzufügen von Markierungen (auch “Pins” genannt) auf einer Karte in Folium
+ist einfach und flexibel. Um eine Markierung hinzuzufügen, verwenden wir die
+<code class="docutils literal notranslate"><span class="pre">folium.Marker()</span></code>-Methode und geben die Koordinaten des Ortes an, an dem wir die
+Markierung hinzufügen möchten.</p>
+<p>Zusätzlich können wir der Markierung auch eine Beschreibung in Form eines Popups
+hinzufügen. Das Popup wird angezeigt, wenn der Benutzer auf die Markierung
+klickt.</p>
+<p>Hier ist ein Beispiel, das zeigt, wie Sie eine Markierung auf einer Karte
+hinzufügen können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen Sie eine Karte mit einem Startpunkt und Zoomfaktor</span>
+<span class="n">karte_markiert</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.13085378545699</span><span class="p">,</span> <span class="mf">8.691700550887166</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Fügen Sie eine Markierung mit einem Popup hinzu</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.13085378545699</span><span class="p">,</span> <span class="mf">8.691700550887166</span><span class="p">],</span> <span class="n">popup</span><span class="o">=</span><span class="s1">&#39;Hier sitzen wir :-)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">karte_markiert</span><span class="p">)</span>
+
+<span class="c1"># Zeigen Sie die Karte an</span>
+<span class="n">karte_markiert</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_a0d23a6f0eb268418470ca6ec02f13b7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_a0d23a6f0eb268418470ca6ec02f13b7&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_a0d23a6f0eb268418470ca6ec02f13b7 = L.map(
+                &quot;map_a0d23a6f0eb268418470ca6ec02f13b7&quot;,
+                {
+                    center: [50.13085378545699, 8.691700550887166],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 15,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_7a3a59cab162f7ca18c2f35e6591ce5a = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_a0d23a6f0eb268418470ca6ec02f13b7);
+
+
+            var marker_ca1d7a96dcde80bc920ae424a452c9be = L.marker(
+                [50.13085378545699, 8.691700550887166],
+                {}
+            ).addTo(map_a0d23a6f0eb268418470ca6ec02f13b7);
+
+
+        var popup_37dec58a12e86802c195401cad7a36fc = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+
+
+
+                var html_4397420de12967905d758af0e7837f74 = $(`&lt;div id=&quot;html_4397420de12967905d758af0e7837f74&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
+                popup_37dec58a12e86802c195401cad7a36fc.setContent(html_4397420de12967905d758af0e7837f74);
+
+
+
+        marker_ca1d7a96dcde80bc920ae424a452c9be.bindPopup(popup_37dec58a12e86802c195401cad7a36fc)
+        ;
+
+
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<p>In diesem Beispiel erstellen wir eine Karte mit dem Startpunkt Frankfurt UAS und
+einem Zoomfaktor von 15. Wir fügen dann eine Markierung an der gleichen Position
+wie unser Startpunkt hinzu, indem wir die <code class="docutils literal notranslate"><span class="pre">folium.Marker()</span></code>-Methode verwenden.
+Der <code class="docutils literal notranslate"><span class="pre">popup</span></code>-Parameter fügt einen Text hinzu, der angezeigt wird, wenn der
+Benutzer auf die Markierung klickt. Zoomen Sie doch einmal weiter in die Karte
+hinein!</p>
+<p>Es ist auch möglich, mehrere Markierungen auf derselben Karte hinzuzufügen,
+indem Sie einfach weitere <code class="docutils literal notranslate"><span class="pre">folium.Marker()</span></code>-Aufrufe machen. Sie können die
+Markierungen auch anpassen, indem Sie verschiedene Symbole, Farben und Größen
+verwenden, um sie leicht unterscheidbar zu machen.</p>
+</section>
+<section id="choroplethenkarte-und-geojson">
+<h2>Choroplethenkarte und GeoJSON<a class="headerlink" href="#choroplethenkarte-und-geojson" title="Permalink to this headline">#</a></h2>
+<p>Eine <strong>Choroplethenkarte</strong> ist eine Art von Karte, bei der bestimmte
+geografische Gebiete (z.B. Staaten, Länder, Regionen) anhand einer Farbskala
+basierend auf einem numerischen Wert oder einer Rate eingefärbt werden. Diese
+Art von Karte wird oft verwendet, um räumliche Muster oder Unterschiede in Daten
+darzustellen, wie z.B. Bevölkerungsdichte, Kriminalitätsrate oder
+Wirtschaftswachstum. Weitere Details finden Sie bei <a class="reference external" href="https://de.wikipedia.org/wiki/Choroplethenkarte">Wikipedia →
+Choroplethenkarte</a>.</p>
+<p>Folium bietet ebenfalls die Möglichkeit, Choroplethenkarten zu erstellen. Um
+eine Choroplethenkarte mit Folium zu erstellen, benötigen wir
+<strong>GeoJSON-Dateien</strong>, die die Geometrien der zu färbenden Gebiete enthalten,
+sowie Daten, die diesen Gebieten zugeordnet sind. Die GeoJSON-Dateien können aus
+verschiedenen Quellen stammen, z.B. von der Regierung, Open Data-Projekten oder
+Geodatenbanken.</p>
+<p>Eine GeoJSON-Datei ist ein Dateiformat, das Geodaten im JSON-Format enthält. Es
+wird häufig verwendet, um geometrische Formen (z.B. Linien, Polygone) und ihre
+zugehörigen Eigenschaften (z.B. Name, ID) zu beschreiben. Es gibt verschiedene
+Möglichkeiten, eine GeoJSON-Datei zu erstellen, abhängig von den vorhandenen
+Daten und Werkzeugen.</p>
+<p>Der folgende Screencast demonstriert, wie eine GeoJSON-Datei mit Hilfe der
+Webseite <a class="reference external" href="http://geojson.io/">http://geojson.io/</a> erstellt wird.</p>
+<p><video controls loop src="../_static/videos/geojson_erzeugen.mp4"></video></p>
+</section>
+<section id="geojson-in-folium">
+<h2>GeoJSON in Folium<a class="headerlink" href="#geojson-in-folium" title="Permalink to this headline">#</a></h2>
+<p>Um GeoJSON in einer mit Folium erstellten Karte zu verwenden, gehen wir folgt
+vor. Zuerst wird die Karte wie üblich mit der <code class="docutils literal notranslate"><span class="pre">.Map()</span></code> Funktion erstellt. Danach
+wird eine Choroplethenkarte mit <code class="docutils literal notranslate"><span class="pre">folium.Choroplth()</span></code> erzeugt und mit <code class="docutils literal notranslate"><span class="pre">.add_to()</span></code>
+zu der ersten Karte hinzugefügt. Bei der Erstellung der Choroplethenkarte muss
+der Pfad und der Dateiname der GeoJSON-Datei bei dem Argument <code class="docutils literal notranslate"><span class="pre">geo_data</span></code>
+angegeben werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen Sie eine Karte Frankfurt UAS als Ausgangspunkt und Zoomfaktor</span>
+<span class="n">karte_geojson</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.13085378545699</span><span class="p">,</span> <span class="mf">8.691700550887166</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="n">geojson_datei</span> <span class="o">=</span> <span class="s2">&quot;data/geojson_frankfurt_uas.json&quot;</span>
+
+<span class="c1"># Erstellen Sie eine Choroplethenkarte und fügen Sie sie zur Karte hinzu</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
+    <span class="n">geo_data</span><span class="o">=</span><span class="s2">&quot;data/geojson_frankfurt_uas.json&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;choropleth&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">karte_geojson</span><span class="p">)</span>
+
+<span class="c1"># Zeigen Sie die Karte an</span>
+<span class="n">karte_geojson</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_c87c1ba6bace34ed63ce8a3e71208b6e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_c87c1ba6bace34ed63ce8a3e71208b6e&quot; &gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;script&gt;
+
+
+            var map_c87c1ba6bace34ed63ce8a3e71208b6e = L.map(
+                &quot;map_c87c1ba6bace34ed63ce8a3e71208b6e&quot;,
+                {
+                    center: [50.13085378545699, 8.691700550887166],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 13,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_89bcde9639c93af20e7c9b8052b55e9c = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_c87c1ba6bace34ed63ce8a3e71208b6e);
+
+
+            var choropleth_81b3c35ab2f5b9960d94ebd8e620379e = L.featureGroup(
+                {}
+            ).addTo(map_c87c1ba6bace34ed63ce8a3e71208b6e);
+
+
+        function geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {&quot;color&quot;: &quot;black&quot;, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.6, &quot;opacity&quot;: 1, &quot;weight&quot;: 1};
+            }
+        }
+
+        function geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29 = L.geoJson(null, {
+                onEachFeature: geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_onEachFeature,
+
+                style: geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_styler,
+        });
+
+        function geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_add (data) {
+            geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29
+                .addData(data)
+                .addTo(choropleth_81b3c35ab2f5b9960d94ebd8e620379e);
+        }
+            geo_json_93a16c577cf575a0a3a0a2a8b3c3dd29_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+
+
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+<p>Natürlich ist es auch möglich, das Styling der Choroplethenkarte zu ändern. Dies
+wird vor allem dazu genutzt, Gebiete einer Karte mit einer Farbe einzufärben,
+die beispielsweise Eigenschaften dieses Gebietes repräsentiert. Für mehr Details
+können Sie gerne die <a class="reference external" href="https://python-visualization.github.io/folium/quickstart.html">Dokumentation von
+Folium</a>
+hinzuziehen.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -29,6 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -478,7 +479,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Extra Themen zur Vertiefung
+  Extras
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -494,7 +495,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter14/chapter14_sec01.html">
-     Plotly Express
+     Streudiagramm und Balkendiagramm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter14/chapter14_sec02.html">
+     Histogramme und Scattermatrix
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter14/chapter14_sec03.html">
+     Plots mit Karten
     </a>
    </li>
   </ul>
@@ -798,8 +809,8 @@ demonstrieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.96
-Score für Testdaten: 0.88
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.64
+Score für Testdaten: 0.72
 </pre></div>
 </div>
 </div>
@@ -855,18 +866,10 @@ Trainings- und Testdaten:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.96
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.94
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python39/lib/python3.9/site-packages/sklearn/neural_network/_multilayer_perceptron.py:549: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
-</pre></div>
-</div>
-<img alt="../_images/chapter12_sec02_7_2.png" src="../_images/chapter12_sec02_7_2.png" />
+<img alt="../_images/chapter12_sec02_7_1.png" src="../_images/chapter12_sec02_7_1.png" />
 </div>
 </div>
 <p>Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate <span class="math notranslate nohighlight">\(\alpha\)</span> und
