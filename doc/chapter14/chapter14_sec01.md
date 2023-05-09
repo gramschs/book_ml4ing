@@ -27,7 +27,7 @@ Interaktionsfunktionen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: tip
+:class: important
 * Sie können das Modul **Plotly Express** als **px** importieren.
 * Sie können ein **Streudiagramm** erstellen. 
 * Sie können ein **Balkendiagramm** erstellen.

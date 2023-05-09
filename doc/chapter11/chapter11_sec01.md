@@ -89,9 +89,9 @@ visualisieren. Wir ordnen der x-, y- und z-Achse jeweils eine Eigenschaft zu und
 visualisieren die Kaufentscheidung durch die Farbe des Markers.
 
 ```{code-cell} ipython3
-#import plotly.express as px
-#fig = px.scatter_3d(data, x='Zustand', y='Marke', z='Preis', color=data['Kaufentscheidung'])
-#fig.show()
+import plotly.express as px
+fig = px.scatter_3d(data, x='Zustand', y='Marke', z='Preis', color=data['Kaufentscheidung'])
+fig.show()
 ```
 
 Natürlich können wir nun versuchen, eines der bisherigen ML-Verfahren
@@ -151,7 +151,7 @@ die Klassenbezeichnungen wie beispielsweise 'neu' oder 'gebraucht' als Zahlen
 kodieren. Danach extrahieren wir die drei Inputs als Matrix $X$ und unseren
 Output als $y$.
 
-```python
+```{code-cell} ipython3
 # wandle Kategorien in Zahlen um
 data.replace('neu', 1, inplace=True)
 data.replace('gebraucht', 0, inplace=True)
@@ -169,7 +169,7 @@ y = data.loc[:, 'Kaufentscheidung']
 
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 data.head(12)
 ```
 
@@ -177,7 +177,7 @@ Nun lassen wir Scikit-Learn einen Entscheidungsbaum erstellen. Dazu importieren
 wir `DecisionTreeClassifier` aus dem Untermodul `sklearn.tree`. Danach
 trainieren wir den Entscheidungsbaum mit `.fit()`.
 
-```{code-cell}
+```{code-cell} ipython3
 from sklearn.tree import DecisionTreeClassifier
 
 model = DecisionTreeClassifier()
@@ -188,7 +188,7 @@ Aber wie sieht denn jetzt der Entscheidungsbaum aus? Das Scikit-Learn-Modul
 `sklearn.tree` stellt auch eine Funktion namens `plot_tree` zur Verfügung, die
 Entscheidungsbäume zeichnen kann. Wir importieren sie direkt und wenden Sie an.
 
-```{code-cell}
+```{code-cell} ipython3
 import matplotlib.pylab as plt
 from sklearn.tree import plot_tree 
 
@@ -210,7 +210,7 @@ Damit sich der Entscheidungsbaum leichter lesen lässt, können wir die Namen de
 Features anstatt `X[0]`, `X[1]`und `X[2]` verwenden. Dazu setzen wir die Option
 `feature_names=['Zustand','Marke','Preis']`.
 
-```{code-cell}
+```{code-cell} ipython3
 plt.figure()
 plot_tree(model,feature_names=['Zustand','Marke','Preis'])
 plt.show()
@@ -241,7 +241,7 @@ füllen können. Sie lautet simpel: `filled=True`.
 
 Je dunkler die Farbe, desto reiner der Knoten!
 
-```{code-cell}
+```{code-cell} ipython3
 plt.figure()
 plot_tree(model,feature_names=['Zustand','Marke','Preis'], filled=True)
 plt.show()
@@ -274,7 +274,7 @@ Scikit-Learn hat nur Prä-Pruning implementiert. Beispielsweise können wir mit
 dem Argument `max_depth=2` die Tiefe unseres Entscheidungsbaumes auf 2
 begrenzen.
 
-```{code-cell}
+```{code-cell} ipython3
 model_begrenzt = DecisionTreeClassifier(max_depth=2)
 model_begrenzt.fit(X,y);
 
