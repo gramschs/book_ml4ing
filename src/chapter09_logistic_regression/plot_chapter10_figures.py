@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pylab as plt; plt.style.use('bmh')
-plt.rcParams['font.family'] = ['TeX Gyre Heros', 'sans-serif']
 import pandas as pd
 
 

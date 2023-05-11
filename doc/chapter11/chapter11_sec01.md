@@ -105,28 +105,12 @@ an die Features gestellt werden.
 
 +++
 
-````{carousel}
-:show_controls:
-:show_shadows:
-
-```{figure} pics/autokauf_tabelle_001.png
+```{code-cell} ipython3
+:tags: [remove-input]
+from IPython.display import HTML
+HTML('../assets/chapter11/EntscheidungsbaumImAutohausSingle.html')
 ```
 
-```{figure} pics/autokauf_tabelle_002.png
-```
-
-```{figure} pics/autokauf_tabelle_003.png
-```
-
-```{figure} pics/autokauf_tabelle_004.png
-```
-
-```{figure} pics/autokauf_tabelle_005.png
-```
-
-```{figure} pics/autokauf_tabelle_006.png
-```
-````
 
 
 ## Wurzel, Knoten, Zweig und Blatt

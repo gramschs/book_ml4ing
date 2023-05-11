@@ -1,7 +1,6 @@
 #%%
 import matplotlib.pylab as plt
 plt.style.use('bmh')
-plt.rcParams['font.family'] = ['TeX Gyre Heros', 'sans-serif']
 
 import numpy as np
 

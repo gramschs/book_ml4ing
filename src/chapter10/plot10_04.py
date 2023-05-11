@@ -2,7 +2,6 @@ from sklearn.datasets import make_blobs
 from sklearn.svm import SVC
 
 import matplotlib.pylab as plt; plt.style.use('bmh')
-plt.rcParams['font.family'] = ['TeX Gyre Heros', 'sans-serif']
 
 import numpy as np
 
