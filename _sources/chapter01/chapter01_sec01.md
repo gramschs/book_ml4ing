@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: hint
+:class: important
 * Sie wissen, wie langes es das Forschungsgebiet **maschinelles Lernen** gibt und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.
 * Sie kennen Basis-Fachbegriffe des maschinellen Lernens wie **Feature**, **Target** und **Label**.
 * Sie können anhand eines Beispiels erklären, was die Fachbegriffe
