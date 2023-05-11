@@ -105,8 +105,6 @@ an die Features gestellt werden.
 
 +++
 
-## Test
-
 ```{code-cell} ipython3
 :tags: [remove-input]
 from IPython.display import HTML
