@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Zu Beginn ...
+# 1. Grundbegriffe des maschinellen Lernens
 
 Maschinelles Lernen (ML) und Künstliche Intelligenz (KI) sind die Trends des
 letzten Jahrzehnts. Stand Juli 2022 liefert die Suchmaschine Google für den
