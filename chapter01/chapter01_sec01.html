@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Was ist maschinelles Lernen? &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>1.1 Was ist maschinelles Lernen? &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter01/chapter01_sec01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Technische Voraussetzungen: Python, Anaconda und JupyterLab" href="chapter01_sec02.html" />
-    <link rel="prev" title="Zu Beginn …" href="chapter01_sec00.html" />
+    <link rel="next" title="1.2 Überwachtes, unüberwachtes und verstärkendes Lernen" href="chapter01_sec02.html" />
+    <link rel="prev" title="1. Grundbegriffe des maschinellen Lernens" href="chapter01_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -163,9 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter01_sec00.html">Zu Beginn …</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Was ist maschinelles Lernen?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter01_sec02.html">Technische Voraussetzungen: Python, Anaconda und JupyterLab</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -470,7 +471,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Was ist maschinelles Lernen?</h1>
+    <h1>1.1 Was ist maschinelles Lernen?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -482,15 +483,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-wenig-geschichte">Ein wenig Geschichte</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maschinelles-lernen-algorithmen-daten">Maschinelles Lernen = Algorithmen + Daten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberwachtes-lernen-supervised-learning">Überwachtes Lernen (Supervised Learning)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassifikation">Klassifikation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unuberwachtes-lernen-unsupervised-learning">Unüberwachtes Lernen (Unsupervised Learning)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verstarkendes-lernen-reinforcement-learning">Verstärkendes Lernen (Reinforcement Learning)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-algorithmen-und-modelle">Was sind Algorithmen und Modelle?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maschinelles-lernen-ist-wie-kuchenbacken">Maschinelles Lernen ist wie Kuchenbacken</a></li>
 </ul>
             </nav>
         </div>
@@ -503,127 +497,223 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="was-ist-maschinelles-lernen">
-<h1>Was ist maschinelles Lernen?<a class="headerlink" href="#was-ist-maschinelles-lernen" title="Permalink to this headline">#</a></h1>
+<h1>1.1 Was ist maschinelles Lernen?<a class="headerlink" href="#was-ist-maschinelles-lernen" title="Permalink to this headline">#</a></h1>
+<p>KI (Künstliche Intelligenz) ist in aller Munde. Etwas seltener wird der Begriff
+<strong>maschinelles Lernen</strong> verwendet. Maschinelles Lernen, oft auch <strong>Machine
+Learning</strong> genannt, ist ein Teilgebiet der Künstlichen Intelligenz.</p>
+<p>Wir kürzen in dieser Vorlesung maschinelles Lernen oft mit <strong>ML</strong> ab. Damit
+umgehen wir die Diskussion, warum Künstliche Intelligenz mit einem
+Großbuchstaben beginnt und maschinelles Lernen mit einem Kleinbuchstaben.
+Gleichzeitig ist das auch die gängige Abkürzung im englischen Sprachgebrauch.
+Dieses Kapitel gibt eine Einführung in das Thema ML.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie wissen, wie langes es das Forschungsgebiet <strong>maschinelles Lernen</strong> gibt und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.</p></li>
-<li><p>Sie kennen Basis-Fachbegriffe des maschinellen Lernens wie <strong>Feature</strong>, <strong>Target</strong> und <strong>Label</strong>.</p></li>
-<li><p>Sie können anhand eines Beispiels erklären, was die Fachbegriffe</p>
-<ul>
-<li><p><strong>überwachtes Lernen</strong>,</p></li>
-<li><p><strong>unüberwachtes Lernen</strong> und</p></li>
-<li><p><strong>verstärkendes Lernen</strong>
-bedeuten.</p></li>
-</ul>
-</li>
-<li><p>Sie können beim überwachten Lernen zwischen <strong>Regression</strong> und <strong>Klassifikation</strong> unterscheiden.</p></li>
+<li><p>Sie wissen, wie langes es das Forschungsgebiet <strong>maschinelles Lernen</strong> gibt
+und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.</p></li>
+<li><p>Sie kennen die Bestandteile eines ML-Systems: <strong>Daten</strong>, <strong>Algorithmus</strong> und
+<strong>Modell</strong>.</p></li>
 </ul>
 </div>
 </section>
 <section id="ein-wenig-geschichte">
 <h2>Ein wenig Geschichte<a class="headerlink" href="#ein-wenig-geschichte" title="Permalink to this headline">#</a></h2>
-<p>Es ist ein weit verbreiteter Irrtum, dass die Forschungsgebiete “Künstliche
-Intelligenz” oder “maschinelles Lernen” neu sind und dem 21. Jahrhundert
-zuzuordnen sind. Tatsächlich hat bereits Arthur L. Samuel maschinelles Lernen
-beschreiben als</p>
-<blockquote>
+<p>Es ist ein weit verbreiteter Irrtum, dass die Forschungsgebiete Künstliche
+Intelligenz oder maschinelles Lernen neu sind und dem 21. Jahrhundert zuzuordnen
+sind. Tatsächlich hat bereits Arthur L. Samuel maschinelles Lernen beschrieben
+als</p>
+<blockquote class="epigraph">
 <div><p>»… ein Forschungsgebiet, das Computer in die Lage versetzen soll, zu lernen,
-ohne explizit darauf programmiert zu sein.« (Arthur L. Samuel, 1959)</p>
+ohne explizit darauf programmiert zu sein.«</p>
+<p>Arthur L. Samuel, 1959</p>
 </div></blockquote>
 <p>Dennoch ist richtig, dass beides sich vor allem in den letzten zwei Jahrzehnten
-revolutionär entwickelt hat. Dafür gibt es drei Gründe, wie im folgenden Video
-erklärt wird:</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/l_HSWmxMRlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>Wir kürzen in dieser Vorlesung maschineller Lernen mit ML ab.</p>
+revolutionär entwickelt hat. Dafür gibt es im Wesentlichen drei Gründe, wie im
+folgenden Video erklärt wird.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schauen Sie sich das folgende Video an. Welche drei Gründe werden dort genannt,
+warum maschinelles Lernen zuletzt so stark nachgefragt wurde?</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l_HSWmxMRlU" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<p>Jannik nennt bei Zeitindex 2:44 min drei Gründe, warum in den letzten zwei Jahrzehnten maschinelles Lernen an Bedeutung gewonnen hat:</p>
+<ol class="arabic simple">
+<li><p>mehr Daten</p></li>
+<li><p>schnellere Computer</p></li>
+<li><p>Forschung</p></li>
+</ol>
+</div>
+<p>Es gibt einige Gründe, warum ML in den letzten zwei Jahrzehnten so stark an
+Bedeutung gewonnen hat. Im Folgenden werden die wichtigsten Gründe für den
+Bedeutungsgewinn erläutert.</p>
+<p><strong>Datenverfügbarkeit</strong>: Die Produktion von Daten hat mit der Digitalisierung
+massiv zugenommen. Mit der Einführung der Smartphones ist auch die Anzahl der
+Bilder und Videos deutlich gewachsen, die täglich aufgenommen werden. Das
+Kaufverhalten von Kunden in Online-Shops wird beobachtet, Fußballspiele werden
+statistisch analysiert oder Maschinen mit Messsensoren bestückt. Das
+Beratungsunternehmen IDC (International Data Corporation) prognostiziert, dass
+sich die Datenmenge von 33 Zettabytes im Jahr 2018 auf 175 Zettebytes im Jahr
+2025 mehr als verfünffachen wird <span id="id1">[<a class="reference internal" href="#id3" title="David Reinsel, John Gantz, and John Rydning. The digitization of the world – from edge to core. IDC White Paper, 2020. URL: https://www.seagate.com/files/www-content/our-story/trends/files/dataage-idc-report-final.pdf.">Reinsel <em>et al.</em>, 2020</a>]</span>.</p>
+<p><strong>Rechenleistung</strong>: Der rasante Fortschritt in der Computertechnologie hat die
+Rechenleistung, die für maschinelles Lernen erforderlich ist, drastisch erhöht.
+Speziell für die Entwicklung sogenannter neuronaler Netze werden sogar häufig
+Grafikkarten (GPUs) anstatt eines Prozessors (CPU) bevorzugt.</p>
+<p><strong>Algorithmen und Modelle</strong>: Natürlich ist auch die Erforschung neuer
+Algorithmen und Modelle nicht stehengeblieben. Ein Durchbruch in der Forschung
+war dabei die Entwicklung von den sogenannten Deep-Learning-Modellen, einer
+Variante der neuronalen Netze.</p>
+<p><strong>Software und Tools</strong>: Es gibt jetzt eine Vielzahl von Softwarebibliotheken und
+Tools (z.B. <a class="reference external" href="https://www.tensorflow.org">TensorFlow</a>,
+<a class="reference external" href="https://pytorch.org">PyTorch</a>,
+<a class="reference external" href="https://scikit-learn.org/stable/index.html">Scikit-learn</a> usw.), die es
+ermöglichen, auch ohne tiefergehende Mathematik- und Programmierkenntnissen
+maschinelles Lernen in der Praxis einzusetzen. Daher werden immer mehr
+Anwendungen mit maschinellem Lernen analysiert und optimiert.</p>
 </section>
-<section id="maschinelles-lernen-algorithmen-daten">
-<h2>Maschinelles Lernen = Algorithmen + Daten<a class="headerlink" href="#maschinelles-lernen-algorithmen-daten" title="Permalink to this headline">#</a></h2>
+<section id="was-sind-algorithmen-und-modelle">
+<h2>Was sind Algorithmen und Modelle?<a class="headerlink" href="#was-sind-algorithmen-und-modelle" title="Permalink to this headline">#</a></h2>
 <p>Ein notwendiger Baustein des maschinellen Lernens sind Daten, am besten ganz,
 ganz viele! Aber selbst ein riesiger Haufen an Daten ist alleine wertlos. Erst
 durch Algorithmen, die in diesen Daten Muster finden, gewinnen wir neues Wissen,
 können Prozesse analysieren und Entscheidungen treffen.</p>
-<p>Was ist ein Algorithmus? In dem folgenden Video wird zuerst erklärt, was ein
-Algorithmus ist. Dann wird aufgezeigt, was so schwierig daran ist, einen
-Algorithmus zu entwickeln, der Katzenbilder von Hundebildern unterscheidet.
-Schauen Sie sich das Video an und beantowrten Sie folgende Fragen:</p>
-<ul class="simple">
-<li><p>Geben Sie drei Beispiele für Algorithmen.</p></li>
-<li><p>In dem Video wird der Fachbegriff “Feature” eingeführt. Was bedeutet der Begriff?</p></li>
-<li><p>Wie lautet der ML-Fachbegriff für Zielgröße?</p></li>
-<li><p>Erklären Sie in eigenen Worten, was der Fachbegriff “Labelling” bedeutet.</p></li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HmUzceKCI9I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>Maschinelles Lernen wird in drei Kategorien eingeteilt:</p>
+<p>Aber was ist nun ein Algorithmus? In dem folgenden Video wird zuerst erklärt,
+was ein Algorithmus ist. Danach werden die ersten grundlegenden Fachbegriffe des
+maschinellen Lernens eingeführt.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schauen Sie sich das folgende Video an und beantworten Sie die folgenden Fragen:</p>
+<ol class="arabic simple">
+<li><p>Welche drei Beispiele für Algorithmen werden aufgezählt?</p></li>
+<li><p>In dem Video werden die Fachbegriff »Feature« und »Label« eingeführt. Was bedeuten die
+Begriffe?</p></li>
+<li><p>Was bedeutet »überwachtes Lernen«?</p></li>
+</ol>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HmUzceKCI9I" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<ol class="arabic simple">
+<li><p>Bei Zeitindex 0:28 min wird erklärt, dass ein Algorithmus eine exakte
+Handlungsvorschrift zum Lösen eines Problems ist. Als erstes Beispiel wird
+die Anweisung, wie ein mathematisches Problem zu lösen ist, genannt. Als
+weitere Beispiele werden ein Kochrezept oder eine Spieleanleitung aufgezählt.
+Ab Zeitindex 0:38 min wird Tic-Tac-Toe als Algorithmus formuliert.</p></li>
+<li><p>Ab Zeitindex 3:19 min werden die Begriffe Feature und Label eingeführt. Die
+Eingangsdaten (z.B. Bilder von Hunden und Katzen), die wir dem Computer zum
+Lernen geben, werden Features genannt. Daraus soll der Computer lernen, Hunde
+von Katzen zu unterscheiden. Dazu müssen zuerst die Bilder, die einen Hund
+zeigen, als »Hundebild« gekennzeichnet werden und die anderen als
+»Katzenbild«. Die Kennzeichnung wird Label genannt. Die Zielgröße bzw. Ziel ist die
+Einordnung Hund/Katze.</p></li>
+<li><p>Überwachtes Lernen ist das Lernen aus Beispielen (Zeitindex 4:03 min). Bevor
+der Computer lernt, auf Bildern Hunde und Katzen zu unterscheiden, müssen die
+Bilder mit den Labels Hund/Katze versehen werden.</p></li>
+</ol>
+</div>
+<p>Ein <strong>Algorithmus</strong> ist also eine Anleitung, wie ein Problem zu lösen ist.
+Typisch für einen Algorithmus ist, das in sehr kleinen Schritten detailliert
+Anweisungen formuliert werden, um das Problem zu lösen. In der Informatik sind
+Algorithmen besonders wichtig, da durch sie festgelegt wird, wie der Computer
+Daten verarbeiten und ein Problem lösen soll. Jeder einzelne Schritt zur
+Problemlösung muss eindeutig und konkret beschrieben werden. Wird der
+Algorithmus in einer Programmiersprache formuliert, verwendet man den Begriff
+<strong>Computerprogramm</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">Was ist … ein Algorithmus?</p>
+<p>Ein Algorithmus ist eine spezifische Anleitung mit einzelnen Anweisungen, wie ein
+bestimmtes Problem gelöst werden soll.</p>
+</div>
+<p>Der Begriff <strong>Modell</strong> hat viele verschiedenen Bedeutungen (siehe <a class="reference external" href="https://de.wikipedia.org/wiki/Modell_(Begriffskl%C3%A4rung)">Wikipedia →
+Modell
+(Begriffsklärung)</a>).
+Zunächst einmal bedeutet Modell, das ein Original vereinfacht beschrieben wird.
+Vereinfacht heißt, dass beispielsweise Details weggelassen werden oder die
+Abmessungen geändert werden. In der Architektur wird beispielsweise ein Haus in
+kleinem Maßstab gebaut, um potentiellen Kunden durch das Modell einen besseren
+Eindruck zu vermitteln, wie das Haus in echt aussehen wird. Im Maschinenbau wird
+das Modell eines Flugzeugs in einen Windkanal gehalten, um die Flugzeuggeometrie
+zu optimieren. In manchen naturwissenschaftlichen Museen gibt es begehbare
+Modelle von Organen wie beispielsweise dem Darm, um den Aufbau des Darms
+begreifbar zu machen. Es gibt auch auch virtuelle Modelle wie  das
+<a class="reference external" href="https://de.wikipedia.org/wiki/Vier-Seiten-Modell">Vier-Ohren-Modell</a> des
+Kommunikationswissenschaftlers Friedemann Schulz von Thun, das das
+Kommunikationsverhalten von Menschen beschreibt.</p>
+<p>In der Welt des maschinellen Lernens bezieht sich der begriff Modell darauf,
+Daten zu interpretieren und basierend auf diesen Daten Vorhersagen oder
+Entscheidungen zu treffen.</p>
+<div class="note admonition">
+<p class="admonition-title">Was ist … ein Modell?</p>
+<p>Ein Modell ist ein vereinfachtes Abbild der Wirklichkeit. Im Kontext das
+maschinellen Lernens ist das ML-Modell eine abstrake Beschreibung eines Systems,
+das unbekannte Daten interpretieren kann oder basierend auf diesen Daten
+Vorhersagen oder Entscheidungen treffen kann.</p>
+</div>
+</section>
+<section id="maschinelles-lernen-ist-wie-kuchenbacken">
+<h2>Maschinelles Lernen ist wie Kuchenbacken<a class="headerlink" href="#maschinelles-lernen-ist-wie-kuchenbacken" title="Permalink to this headline">#</a></h2>
+<p>Damit kommen beim maschinellen Lernen drei Dinge zusammen: Daten, Algorithmus
+und Modell. Um das Verhältnis zwischen den drei Konzepten zu verdeutlichen,
+vergleichen wir die Konzepte mit dem Kuchenbacken. Die Daten sind die Zutaten,
+aus denen ein Kuchen gebacken werden soll. Der Algorithmus ist das Rezept mit
+einer detaillierten Schritt-für-Schritt-Anleitung, wie der Kuchen gebacken
+werden soll. Das Modell hingegen ist der fertige Kuchen, der aus dem Prozess
+herauskommt. Es ist somit das Endprodukt, das erstellt wird, indem man den
+Anweisungen des Rezepts (dem Algorithmus) folgt und die Zutaten zusammenfügt.</p>
+<p>Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
+dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
+wie man einen Kuchen essen würde, nachdem er gebacken ist.</p>
+<p>Allerdings ist es damit nicht getan. Je nachdem, wie viele und welche Gäste
+erwartet werden, benötigen wir einen anderen Kuchen. Bei einer großen
+Geburtstagsparty brauchen wir einen Blechkuchen, damit jeder Gast ein Stückchen
+Kuchen bekommt. Haben wir Diabetiker eingeladen, sollten wir keine
+Schokoladentorte anbieten. Auch beim maschinellen Lernen ist es daher sehr
+wichtig, je nach Einsatzzweck das passende Modell zu wählen.</p>
+<p>Natürlich hängt die Wahl des Kuchens auch von den vorhandenen Zutaten ab. Fehlt
+die Schokolade, so kann ich keinen Schokoladenkuchen backen. Entweder backen wir
+dann einen anderen Kuchen oder wir entscheiden uns, noch schnell zum Supermarkt
+zu gehen und Schokolade einzukaufen. Vielleicht stellen wir auch fest, dass die
+Milch abgelaufen ist und nicht mehr genießbar ist. Dann ist unser Plan nicht
+durchführbar. Und auch hier können wir uns entscheiden, einen anderen Kuchen zu
+backen oder die Zutaten zu erneuern. Diese Analogie passt auch zu maschinellem
+Lernen. Fehlen Daten oder sind die Daten nicht qualititativ hochwertig, können
+wir die Datenlage verbessern, indem wir beispielsweise mehr Experimente
+durchführen oder offensichtlich schiefgelaufene Experimente wiederholen. Sollten
+wir die Daten jedoch nicht verbessern können (oder wollen, weil zu teuer oder
+die Abgabefrist der Bachelorarbeit ansteht), dann müssen wir die Auswahl des
+Modells an die vorhandenen Daten anpassen.</p>
+<p>Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, dder Gast beißt in den
+Kuchen und verzieht das Gesicht … Zucker und Salz verwechselt. Hätten wir den
+Kuchen lieber einmal vor dem Servieren probiert. Auch beim maschinellen Lernen
+ist es mit dem “Backen” des Modells nicht getan. Ist ein Modell erstellt, so
+muss es auch bewertet werden. Der Prozess des maschinellen Lernens wird mit der
+<strong>Validierung</strong> abgeschlossen, bevor das Modell dann produktiv eingesetzt wird.
+Die Erstellung und Verwendung von Modellen im maschinellen Lernen ist ein
+fortlaufender Prozess. Modelle werden oft mehrfach getestet und angepasst, um
+ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
+aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
+Bedingungen zurechtkommen.</p>
+<p>ML-Modelle werden in drei große Kategorien eingeteilt:</p>
 <ul class="simple">
 <li><p>Überwachtes Lernen (Supervised Learning),</p></li>
 <li><p>Unüberwachtes Lernen (Unsupervised Learning) und</p></li>
 <li><p>Verstärkendes Lernen (Reinforcement Learning).</p></li>
 </ul>
-<p>Im Folgenden betrachten wir für jede der drei Kategorien typische Beispiele.</p>
-</section>
-<section id="uberwachtes-lernen-supervised-learning">
-<h2>Überwachtes Lernen (Supervised Learning)<a class="headerlink" href="#uberwachtes-lernen-supervised-learning" title="Permalink to this headline">#</a></h2>
-<p>Das überwachte Lernen wiederum wird in zwei Arten unterteilt:</p>
-<ul class="simple">
-<li><p>Regression und</p></li>
-<li><p>Klassifikation.</p></li>
-</ul>
-<p>Im letzten Video ist ein Klassifikationsproblem vorgestellt worden. Ein
-ML-Algorithmus sollte erkennen, ob das Bild einen Hund oder eine Katze zeigt.
-Sicherlich sind Ihnen aber auch schon Regressionsprobleme begegnet, bei denen
-numerische Werte prognostiziert werden sollen. Auf beide Problemarten gehen
-die beiden nächsten Videos ein:</p>
-<section id="regression">
-<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">#</a></h3>
-<p>Im folgenden Video wird erklärt, was der Fachbegriff <strong>Regression</strong> bedeutet.
-Welches Beispiel aus Ihrem Alltag oder Studium fällt Ihnen ein, das ebenfalls
-ein Regressionsproblem ist?</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NCCctUdfA3E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
-<section id="klassifikation">
-<h3>Klassifikation<a class="headerlink" href="#klassifikation" title="Permalink to this headline">#</a></h3>
-<p>Zurück zu den Hunden und Katzen. Ist die Zielgröße nicht ein kontinuierlicher
-Wert, der durch Zahlen beschrieben werden kann, sondern versuchen wir, Klassen
-zu bilden, so handelt es sich um <strong>Klassifikation</strong>. Da wir zu den Eingangsdaten
-die Klassenbezeichnungen vorgeben, gehören Klassifikationsprobleme ebenso wie
-Regressionsprobleme zu den überwachten ML-Lernverfahren.</p>
-<p>Schauen Sie sich das nächste Video an.</p>
-<ul class="simple">
-<li><p>Welche Klassen werden genannt?</p></li>
-<li><p>Was sind die Features?</p></li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/g6zuVEDlAzo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<p>Springen Sie am Ende noch einmal zum Zeitindex 2:45 min und betrachten Sie sich
-die gelabelten Datenpunkte. Welches Mischungsverhältnis und welche
-Ofentemperatur würden Sie wählen, um ein gutes Produkt herzustellen?</p>
-</section>
-</section>
-<section id="unuberwachtes-lernen-unsupervised-learning">
-<h2>Unüberwachtes Lernen (Unsupervised Learning)<a class="headerlink" href="#unuberwachtes-lernen-unsupervised-learning" title="Permalink to this headline">#</a></h2>
-<p>Unüberwachtes Lernen kommt in der Praxis seltener vor. Eine sehr populäre
-Methode des unüberwachten Lernens ist das <strong>Clustering</strong>. Welches Beispiel wird
-im folgenden Video für Clusterin vorgestellt?</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/P2Qwc63iCVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
-<section id="verstarkendes-lernen-reinforcement-learning">
-<h2>Verstärkendes Lernen (Reinforcement Learning)<a class="headerlink" href="#verstarkendes-lernen-reinforcement-learning" title="Permalink to this headline">#</a></h2>
-<p>Wir schließen unsere Übersicht der maschinellen Lernverfahren mit dem
-verstärkendem Lernen ab. Auch wenn es das Lernverfahren ist, mit dem wir
-Menschen lernen, werden wir in dieser Vorlesung nicht weiter darauf eingehen.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5HhQgFCQGIY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
-<p>In diesem Abschnitt haben Sie die drei wichtigsten Kategorien des maschinellen
-Lernens kennengelernt: überwachtes Lernen, unüberwachtes Lernen und
-verstärkendes Lernen. Für die Ingenieurwissenschaften ist vor allem das
-überwachte Lernen von Bedeutung. Dabei unterscheiden wir zwischen überwachtem
-Lernen für diskrete Zielgrößen (= Klassen, Kategorien), das wir Klassifikation
-nennen, und überwachtem Lernen für kontinuierliche Zielgrößen, das wir
-Regression nennen.</p>
+<p>Im nächsten Kapitel werden wir uns die drei Kategorien näher ansehen.</p>
+<div class="docutils container" id="id2">
+<dl class="citation">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">RGR20</a></span></dt>
+<dd><p>David Reinsel, John Gantz, and John Rydning. The digitization of the world – from edge to core. <em>IDC White Paper</em>, 2020. URL: <a class="reference external" href="https://www.seagate.com/files/www-content/our-story/trends/files/dataage-idc-report-final.pdf">https://www.seagate.com/files/www-content/our-story/trends/files/dataage-idc-report-final.pdf</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -664,7 +754,7 @@ Regression nennen.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Zu Beginn …</p>
+        <p class="prev-next-title">1. Grundbegriffe des maschinellen Lernens</p>
       </div>
     </a>
     <a class="right-next"
@@ -672,7 +762,7 @@ Regression nennen.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Technische Voraussetzungen: Python, Anaconda und JupyterLab</p>
+        <p class="prev-next-title">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -696,15 +786,8 @@ Regression nennen.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ein-wenig-geschichte">Ein wenig Geschichte</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maschinelles-lernen-algorithmen-daten">Maschinelles Lernen = Algorithmen + Daten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uberwachtes-lernen-supervised-learning">Überwachtes Lernen (Supervised Learning)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassifikation">Klassifikation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unuberwachtes-lernen-unsupervised-learning">Unüberwachtes Lernen (Unsupervised Learning)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verstarkendes-lernen-reinforcement-learning">Verstärkendes Lernen (Reinforcement Learning)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-sind-algorithmen-und-modelle">Was sind Algorithmen und Modelle?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maschinelles-lernen-ist-wie-kuchenbacken">Maschinelles Lernen ist wie Kuchenbacken</a></li>
 </ul>
   </nav></div>
 

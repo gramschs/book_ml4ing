@@ -1,163 +1,187 @@
----
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.13.8
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
----
+# 1.2 Überwachtes, unüberwachtes und verstärkendes Lernen
 
-# Technische Voraussetzungen: Python, Anaconda und JupyterLab
+Nachdem im letzten Kapitel erklärt wurde, was machinelles Lernen überhaupt
+ist, betrachten wir in diesem Kapitel die drei großen Kategorien von
+ML-Modellen: überwachtes Lernen (Supervised Learning), unüberwachtes Lernen
+(Unsupervised Learning) und verstärkendes Lernen (Reinforcement Learning).
 
-Für maschinelles Lernen ist Python die Programmiersprache der Wahl. Das liegt
-vor allem auch daran, dass Google eine sehr wichtige ML-Bibliothek für Python
-zur Verfügung stellt, die sogenannte Bibliothek Tensorflow.
 
-Python wird in der Regel mit dem Betriebsystem ausgeliefert. Für maschinelles
-Lernen benötigen wir jedoch weitere Python-Module, die standardmäßig nicht
-installiert werden. Daher benutzen wir in dieser Vorlesung Anaconda und
-installieren dies zusätzlich.
+## Lernziele
 
-[https://www.anaconda.com](https://www.anaconda.com)
-
-Die Vorlesung wird in Form von Jupyter Notebooks zur Verfügung gestellt. Ein
-soches Notizbuch besteht sowohl aus Text, Bildern, eingebetten Videos als auch
-Python-Code, der ausführbar ist. Wenn Anaconda installiert ist, kann man ein
-Jupyter Notebook mit der Anwendung JupyterLab öffnen. 
-
-[https://jupyter.org](https://jupyter.org)
-
-JupyterLab startet im Hintergrund einen sogenannten Jupyter-Kernel, der die
-intreaktiven Python-Code-Zellen ausführt. Der Client ist in der Regel der
-Standard-Browser.
-
-Alternativ können Sie auch Microsoft Visual Studio Code oder PyCharm nutzen, um
-Jupyter Notebooks auszuführen.
-
-## Warum Anaconda?
-
-Anaconda ist eine Python-Distribution, die von der Firma Anaconda, Inc.
-entwickelt wird. Sie ist eine kostenlose Open-Source-Plattform, die es
-Python-Entwickler:innen ermöglicht, Python, R und andere Programmiersprachen
-sowie zahlreiche Bibliotheken und Tools auf einfache Weise zu installieren, zu
-verwalten und zu verwenden.
-
-Die Distribution enthält eine Reihe von nützlichen Paketen und Bibliotheken für
-wissenschaftliche Berechnungen, Datenanalyse, maschinelles Lernen und andere
-Anwendungen. Sie ist sowohl für Einsteiger als auch für fortgeschrittene
-Entwickler geeignet und bietet eine benutzerfreundliche Benutzeroberfläche, um
-Python und seine Bibliotheken zu verwalten und zu verwenden.
-
-## Installation Anaconda und Start JupyterLab für Jupyter Notebooks
-
-Hier ist eine Schritt-für-Schritt-Anleitung zum Installieren von Python mit der
-Distribution Anaconda für Windows und MacOS:
-
-1. Öffnen Sie die offizielle Anaconda-Website unter
-   https://www.anaconda.com/products/individual und laden Sie die neueste
-   Version von Anaconda für Ihr Betriebssystem herunter.
-2. Führen Sie die Installationsdatei aus und folgen Sie den Anweisungen auf dem
-   Bildschirm. Wählen Sie ggf. ein freies Installationsverzeichnis und stellen
-   Sie sicher, dass die Option "Add Anaconda to my PATH environment variable"
-   aktiviert ist.
-3. Öffnen Sie nach der Installation das Anaconda-Navigator-Programm, das im
-   Startmenü oder Launchpad verfügbar sein sollte.
-4. Um ein neues Jupyter Notebook für die Python-Programmierung zu erstellen,
-   klicken Sie auf "Home" im Anaconda-Navigator und wählen "JupyterLab"
-   aus. Alternativ können Sie JupyterLab auch mit dem Befehl "jupyter-lab" aus einem Terminal oder einer Konsole starten (Linux oder MacOS).
-5. Wählen Sie "Python 3 (ipykernel)" aus, um ein neues Notebook zu erstellen.
-6. Sie können jetzt Python-Code in dem Notebook schreiben und ausführen. Wenn
-   Sie zusätzliche Pakete benötigen, können Sie diese über den
-   "Environments"-Tab im Anaconda-Navigator installieren.
-
-```{figure} pics/fig_chap01_sec02_jupyterlab.png
-:name: fig_chap01_sec02_jupyterlab
-
-Startansicht der Software JupyterLab: ein neues Jupyter Notebook wird mit Klick auf den Button Python 3 (ipykernel) erstellt.
+```{admonition} Lernziele
+:class: important
+* Sie können anhand eines Beispiels erklären, was die Fachbegriffe
+  * **überwachtes Lernen (Supervised Learning)**,
+  * **unüberwachtes Lernen (Unsupervised Learning)** und
+  * **verstärkendes Lernen (Reinforcement Learning)** bedeuten.
+* Sie können beim überwachten Lernen zwischen **Regression** und
+  **Klassifikation** unterscheiden.
 ```
 
-## Was sind Jupyter Notebooks?
 
-Jupyter Notebooks führen Text, Python-Code, Bilder und Videos in einem einzigen
-interaktiven digitalen Notizbuch zusammenzuführen. Sie sind eine der
-bekanntesten Anwendungen in der Data Science-Community und werden oft zur
-Datenanalyse, maschinellem Lernen und Visualisierung eingesetzt.
+## Überwachtes Lernen (Supervised Learning)
 
-Ein Jupyter Notebook besteht aus einer Abfolge von Zellen, in denen Text, Code
-und Visualisierungen eingebettet werden. Die Zellen können entweder in der
-Programmiersprache Python oder in einer Reihe anderer Programmiersprachen wie R,
-Julia oder JavaScript geschrieben werden. Erkennbar sind Jupyter Notebooks an
-der Dateiendung `ipynb`.
+Im letzten Kapitel haben wir im Video [»So lernen Maschinen:
+Algorithmen«](https://youtu.be/HmUzceKCI9I) die Aufgabenstellung kennengelernt,
+auf Fotos Hunde von Katzen zu unterscheiden. Diese Art von Problemstellung ist
+typisch für **überwachtes Lernen**. Die Daten werden vorab gekennzeichnet, sie
+erhalten ein **Label**. So lernen auch Kinder. Stellen Sie sich vor, in einem
+Korb liegen Äpfel und Bananen und ein Kind soll den Unterschied erlernen. Jedes
+Stück Obst wird aus dem Korb genommen und dem Kind gezeigt. Dazu sagen wir dann
+entweder »Apfel« oder »Banane«. Das Kind hat also einen Lehrer oder Trainer. Mit
+der Zeit wird das Kind zwischen beiden Obstsorten unterscheiden können.
 
-Die Kombination von Text, Code und Visualisierungen macht Jupyter Notebooks zu
-einem leistungsstarken Werkzeug für die Datenanalyse. Daten können direkt in den
-Notebooks eingegeben werden, und Ergebnisse können sofort dargestellt werden,
-ohne dass externe Anwendungen gestartet werden müssen.
-
-Jupyter Notebooks können auch einfach geteilt werden, indem sie als Datei oder
-über das Internet veröffentlicht werden. Das ermöglicht es Entwicklern und Data
-Scientists, ihre Arbeit schnell und einfach zu teilen und zu präsentieren, was
-für Zusammenarbeit und Teamarbeit in der Datenanalyse und im maschinellen Lernen
-unerlässlich ist.
-
-Insgesamt sind Jupyter Notebooks ein wichtiges Werkzeug für die Datenanalyse und
--visualisierung und haben dazu beigetragen, den Prozess der Analyse und
-Zusammenarbeit für Data Scientists und Entwickler zu vereinfachen.
-
-In dieser Vorlesung liegt der Fokus zwar nicht auf der Datenanalyse, aber die
-Mischung aus Text, Code und Visualisierungen machen Jupyter Notebooks auch zu
-einem sehr geeigneten Werkzeug, um das Programmieren selbst zu erlernen. In
-kurzen Texten können Programmierkonstrukte erläutert werden, um dann in einer
-Code-Zelle ausgeführt zu werden.
-
-```{figure} pics/fig_chap01_sec02_zellen.png
-:name: fig_chap01_sec02_zellen
-
-Screenshot eines Jupyter Notebooks mit Text, Python-Code und Ergebnisse des ausgeführten Python-Codes, das mit der klassischen Software "Jupyter Notebook" geladen wurde
+```{admonition} Was ist ... überwachtes Lernen?
+:class: note
+Überwachtes Lernen ist eine Kategorie des maschinellen Lernens. Beim überwachten
+Lernen liegen die Daten als Eingabe- und Ausgabedaten mit Labels vor. Ein
+maschineller Lernalgorithmus versucht ein Modell zu finden, das bestmöglich den
+Eingabedaten die Ausgabedaten zuordnet.
 ```
 
-Eine Zelle kann entweder eine Text-Zelle (siehe Fig. 3, Schritt 1) oder eine
-Code-Zelle (siehe Fig. 3, Schritt 2) sein. In Text-Zellen wird die sogenannte
-[Markdown-Formatierung](https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html)
-benutzt. Um beispielsweise ein Wort fettgedruckt anzuzeigen, werden zwei
-Sternchen ** vor und hinter das Wort gesetzt, also ich bin `**fett**` gedruckt. 
+Beim überwachten Lernen können die Prognosen des Modells für bekannte Daten mit
+den korrekten Ergebnissen (Labels) verglichen werden. Das Modell wird also
+überwacht.
 
-In Code-Zellen (siehe Fig. 3, Schritt 2 oder 3) können Sie direkt Python-Code
-eingeben. Sie erkennen eine Code-Zelle daran, dass "In" für Input daneben steht.
-Eine Code-Zelle wird ausgeführt, indem Sie auf "Run" klicken (siehe Fig. 3,
-Schritt 4). Danach erscheint die Ausgabe, die der Python-Interpreter ggf.
-produziert (siehe Fig. 3, Schritt 5). Wird ein Ergebnis berechnet oder ein Wert
-zurückgegeben, so ist das an der Bezeichnung "Out" wie Output erkennbar.
+Prinzipiell werden dabei wiederum zwei Arten von Labels unterschieden:
 
-## Was ist JupyterLab und welche Alternativen gibt es?
+* kontinuierliche Labels und
+* diskrete Labels.
 
-[JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html)
-ist eine webbasierte Entwicklungsumgebung, um Jupyter Notebooks zu öffnen, zu
-editieren, den Python-Code auszuführen und alles wieder zu speichern. Neben
-JupyterLab gibt es weitere Möglichkeiten, um Jupyter Notebooks zu bearbeiten. 
+Bei dem Beispiel mit den Hunde- und Katzenfotos sind die Labels diskret. Mit
+**diskreten Labels** ist gemeint, dass nur wenige verschiedene Labels existieren.
+In diesem Fall sind es genau zwei verschiedene Labels, nämlich zum einen das
+Label »Hund« und zum anderen das Label »Katze«. Ein anderes Beispiel für
+diskrete Labels sind die Schulnoten sehr gut, gut, befriedigend, ausreichend,
+mangelhaft und ungenügend. Es gibt nur sechs verschiedene Noten, die eine
+Schülerin oder ein Schüler in einem Test erreichen kann. Dabei müssen die
+diskreten Labels keine Texte sein. Die Schulnoten könnten wir auch mit den Labels
+1, 2, 3, 4, 5 und 6 kennzeichnen.
 
-Die beiden Entwicklungsumgebungen
+Bei den **kontinuierlichen Labels** gibt es sehr viele, normalerweise unendliche
+viele verschiedene Labels. Textbezeichnungen sind dann nicht mehr sinnvoll, so
+dass kontinuierliche Labels durch Zahlen repräsentiert werden. Ein Beispiel für
+kontinuierliche Ausgabedaten ist der Verkaufspreis eines Autos abhängig vom
+Kilometerstand. Normalerweise kosten Neuwagen mit einem Kilometerstand von 0 km
+am meisten und der Preis sinkt, je mehr Kilometer das Auto bereits gefahren
+wurde. Die Verkaufspreise könnte man nun als ganze Zahlen darstellen, wenn man
+sie in ganzen Euros angibt, oder als Fließkommazahl, wenn der Preis auf den Cent
+genau angegeben wird. Es gibt nicht unendlich viele Verkaufspreise, aber sehr
+viele verschiedene mögliche Werte.
 
-* [PyCharm](https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html)
-* [Microsoft Visual Studio
-  Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
+Viele ML-Modelle funktionieren sowohl für diskrete als auch kontinuierliche
+Daten, aber nicht alle. Daher ist es notwendig, bereits zu Beginn zu
+entscheiden, ob das Modell für diskrete oder kontinuierliche Ausgabedaten
+eingesetzt werden soll. 
 
-ermöglichen ebenfalls die direkte Bearbeitung von Jupyter Notebooks. Auch
-zahlreiche Cloudanbieter bieten direkt das Bearbeiten und Ausführen von Jupyter
-Notebooks an, z.B.
+Das überwachte Lernen wird daher wiederum in zwei Arten unterteilt:
 
-* [Google Colab](https://colab.research.google.com/notebook)
-* [Microsoft
-  Azure](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-run-jupyter-notebooks)
-* [Deepnote](https://deepnote.com)
-* [replit](https://replit.com/template/jupyter-notebook)
+* **Regression** für kontinuierliche Ausgabedaten und
+* **Klassifikation**  für diskrete Ausgabedaten.
 
-Wie bei allen Clouddiensten sollte man sich jedoch eingehend mit den
-Datenschutzbestimmungen des Anbieters vertraut machen, bevor man den Dienst in
-Anspruch nimmt. Aufgrund des Datenschutzes empfehle ich stets, Python/Anaconda
-lokal zu installieren.
+Auf beide Problemstellungen gehen die beiden nächsten Videos ein.
+
+### Regression 
+
+```{admonition} Was ist ... Regression?
+:class: note
+Regression ist das Teilgebiet des überwachten maschinellen Lernens, bei dem
+Modelle den Zusammenhang zwischen Eingabedaten und *kontinuierlichen* Ausgabedaten
+prognostizieren sollen.
+```
+
+```{dropdown} Video zu "Überwachtes Lernen – Regression" von Plattform Lernende Systeme
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NCCctUdfA3E" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+### Klassifikation
+
+```{admonition} Was ist ... Klassifikation?
+:class: note
+Klassifikation ist das Teilgebiet des überwachten maschinellen Lernens, bei dem
+Modelle den Zusammenhang zwischen Eingabedaten und *diskreten* Ausgabedaten
+prognostizieren sollen.
+```
+
+```{dropdown} Video zu "Überwachtes Lernen – Klassifikation" von Plattform Lernende Systeme
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g6zuVEDlAzo" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+## Unüberwachtes Lernen (Unsupervised Learning)
+
+Beim überwachten Lernen liegen Eingabedaten und Ausgabedaten mit Labels vor. Die
+Prognosen eines Modells können für bekannte Paare von Eingabe- und Ausgabedaten
+überwacht werden. Das ist beim unüberwachten Lernen nicht der Fall. Beim
+**unüberwachten Lernen (Unsupervised Learning)** gibt es keine Ausgabedaten,
+also keine Labels. Stattdessen soll der maschinelle Lernalgorithmus eigenständig
+Muster erlernen und Strukturen in den Daten finden.
+
+```{admonition} Was ist ... unüberwachtes Lernen (Unsupervised Learning)?
+:class: note
+Unüberwachtes Lernen ist ein Teilgebiet des maschinellen Lernens, bei dem ein
+Algorithmus versucht, Muster und Strukturen in Daten zu finden. Dabei sind die
+Daten nicht vorab in Eingabe- und Ausgabedaten aufgeteilt bzw. mit Labels
+gekennzeichnet.
+```
+
+Ein Kind könnte auch selbstständig einen Obstkorb erkunden. Vielleicht würde das
+Kind mit der Zeit lernen, dass es Obst gibt, das ihm schmeckt, wohingegen
+anderes Obst dem Kind nicht schmeckt. Vielleicht würde das Kind das Obst auch in
+großes Obst und kleines Obst unterteilen oder nach Farbe sortieren. Das Kind
+gruppiert also Obst nach selbst gewählten Eigenschaften. Es bildet Cluster,
+dementsprechend heißt dieser Vorgang **Clustering**.
+
+```{dropdown} Video zu "Unüberwachtes Lernen: Clustering" von Plattform Lernende Systeme
+<iframe width="560" height="315" src="https://www.youtube.com/embed/P2Qwc63iCVQ" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
+
+## Verstärkendes Lernen (Reinforcement Learning)
+
+Wir schließen unsere Übersicht der maschinellen Lernverfahren mit dem
+verstärkendem Lernen ab.
+
+```{admonition} Was ist ... verstärkendes Lernen (Reinforcement Learning)?
+:class: note
+ **Verstärkendes Lernen (Reinforcement Learning)** ist eine Art des maschinellen
+Lernens, bei dem ein ML-Algorithmus durch versuch und Irrtum erlernt, was das
+optimale Verhalten ist, um ein bestimmtes Ziel zu erreichen. Es werden Aktionen
+ausgeführt und entweder bestraft oder belohnt, je nachdem, ob durch diese
+Aktionen das Ziel besser oder schlechter erreicht wird.
+```
+
+Ein Beispiel aus dem Alltag für verstärkendes Lernen ist das Training eines
+Haustieres, eines Hundes beispielsweise. Folgt der Hund dem Befehl »Sitz!«, so
+erhält er ein Leckerli. Mit der Zeit wird der Hund auf das Kommando »Sitz!«
+reagieren und sich setzen, auch wenn es nicht immer eine Belohnung dafür gibt.
+
+Ein bekanntes Beispiel aus dem Bereich Künstliche Intelligenz für verstärkendes
+Lernen sind Schachsysteme. Anfangs kennt das Schachsystem nur die grundlegenden
+Schachregeln, aber keinerlei Strategie. Durch das Spielen vieler Spiele, wobei
+der Computer bei jedem Sieg eine "Belohnung" erhält und bei jeder Niederlage
+eine "Strafe", lernt das Schachsystem allmählich, welche Züge gewinnbringend
+sind und welche eher zu Niederlagen führen. Nach Tausenden oder sogar Millionen
+von Spielen kann das Schachsystem dann auf einem sehr hohen Niveau spielen -
+alles durch verstärkendes Lernen.
+
+```{dropdown} Video zu "Verstärkendes Lernen" von Plattform Lernende Systeme
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5HhQgFCQGIY" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+```
+
+## Zusammenfassung
+
+In diesem Abschnitt haben Sie die drei wichtigsten Kategorien des maschinellen
+Lernens kennengelernt: überwachtes Lernen, unüberwachtes Lernen und
+verstärkendes Lernen. Für die Ingenieurwissenschaften ist vor allem das
+überwachte Lernen von Bedeutung. Dabei unterscheiden wir zwischen überwachtem
+Lernen für diskrete Ausgabedaten (= Klassen, Kategorien), das wir Klassifikation
+nennen, und überwachtem Lernen für kontinuierliche Ausgabedaten, das wir
+Regression nennen.

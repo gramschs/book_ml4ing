@@ -1,0 +1,161 @@
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.13.8
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
+# 1.3 Technische Voraussetzungen
+
+Für maschinelles Lernen ist Python die Programmiersprache der Wahl. Das liegt
+vor allem auch daran, dass Google eine sehr wichtige ML-Bibliothek für Python
+zur Verfügung stellt, die sogenannte Bibliothek Tensorflow. Glücklicherweise
+müssen wir die Algorithmen nicht selbst in Python umsetzen, sondern können schon
+fertige Modelle aus Bibliotheken verwenden, die wir dann noch an die Daten
+anpassen müssen. In diesem Kapitel werden die technischen Voraussetzungen
+beschrieben, um maschinelles Lernen mit Python umzusetzen. 
+
+## Installation von Python (Anaconda)
+
+Python wird in der Regel mit dem Betriebsystem ausgeliefert. Für maschinelles
+Lernen benötigen wir jedoch weitere Python-Bibliotheken, die standardmäßig nicht
+installiert sind. Abhilfe schafft hier die Python-Distribution
+[Anaconda](https://www.anaconda.com). 
+
+Eine Distribution ist eine Zusammenstellung von Software oder Bibliotheken. Die
+Firma Anaconda, Inc. wurde 2012 mit dem Ziel gegründet, Python in Unternehmen
+speziell für die Geschäftsfeldanalyse (Business Analytics) einzuführen, was die
+Open Source Community so nicht leisten konnte. Daher enthält die Distribution
+eine Reihe von nützlichen Paketen und Bibliotheken für wissenschaftliche
+Berechnungen, Datenanalyse, maschinelles Lernen und andere Anwendungen. Sie ist
+sowohl für Einsteiger als auch für fortgeschrittene Entwickler geeignet und
+bietet eine benutzerfreundliche Benutzeroberfläche, um Python und seine
+Bibliotheken zu verwalten und zu verwenden.
+
+Die Software-Distribution Anaconda gibt es in verschiedenen Editionen
+mit entsprechenden Preismodellen. Für diese Vorlesung ist die sogenannte
+»Individual Edition« ausreichend, die von Anaconda kostenlos zur Verfügung
+gestellt wird.
+
+Hier ist eine Schritt-für-Schritt-Anleitung zum Installieren von Python mit der
+Distribution Anaconda für Windows und MacOS:
+
+1. Öffnen Sie die offizielle Anaconda-Website unter
+   https://www.anaconda.com/products/individual und laden Sie die neueste
+   Version von Anaconda für Ihr Betriebssystem herunter.
+2. Führen Sie die Installationsdatei aus und folgen Sie den Anweisungen auf dem
+   Bildschirm. Wählen Sie ggf. ein freies Installationsverzeichnis und stellen
+   Sie sicher, dass die Option "Add Anaconda to my PATH environment variable"
+   aktiviert ist.
+3. Öffnen Sie nach der Installation das Anaconda-Navigator-Programm, das im
+   Startmenü oder Launchpad verfügbar sein sollte.
+
+
+## Was sind Jupyter Notebooks?
+
+Die Vorlesung wird in Form von **Jupyter Notebooks** zur Verfügung gestellt.
+Jupyter Notebooks sind interaktive digitale Notizbücher, die sowohl Texte,
+Bilder oder Videos enthalten können als auch Python-Code, der direkt im
+Notizbuch ausführbar ist. 
+
+Die Kombination von Text, Python-Code und Visualisierungen macht Jupyter
+Notebooks zu einem sehr leistungsstarken Werkzeug für die Datenanalyse. Daten
+können direkt in die Jupyter Notebooks eingegeben oder importiert werden.
+Fehlende Daten oder Ausreißer können direkt korrigiert werden, ohne dass mit
+einer externen Software die Korrektur dokumentiert werden muss. Die Ergebnisse
+der Analysen oder ML-Modelle können sofort im Jupyter Notebook dargestellt
+werden, ohne dass eine externe Anwendung gestartet werden müssen. Daher sind sie
+eine der bekanntesten Anwendungen im Bereich Data Science und werden oft zur
+Datenanalyse, maschinellem Lernen und Visualisierung eingesetzt.
+
+
+## Was ist JupyterLab und welche Alternativen gibt es?
+
+[JupyterLab](https://jupyter.org) ist eine webbasierte Entwicklungsumgebung, um
+Jupyter Notebooks zu öffnen, zu editieren, den Python-Code auszuführen und alles
+wieder zu speichern. Neben JupyterLab gibt es weitere Möglichkeiten, um Jupyter
+Notebooks zu bearbeiten. 
+
+Die beiden Entwicklungsumgebungen
+
+* [PyCharm](https://www.jetbrains.com/help/pycharm/jupyter-notebook-support.html)
+* [Microsoft Visual Studio Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
+
+ermöglichen ebenfalls die direkte Bearbeitung von Jupyter Notebooks. Auch
+zahlreiche Cloudanbieter bieten direkt das Bearbeiten und Ausführen von Jupyter
+Notebooks an, z.B.
+
+* [Google Colab](https://colab.research.google.com/notebook)
+* [Microsoft Azure](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-run-jupyter-notebooks)
+* [Deepnote](https://deepnote.com)
+* [replit](https://replit.com/template/jupyter-notebook)
+
+Wie bei allen Clouddiensten sollte man sich jedoch eingehend mit den
+Datenschutzbestimmungen des Anbieters vertraut machen, bevor man den Dienst in
+Anspruch nimmt. Aufgrund des Datenschutzes empfehle ich stets, Python/Anaconda
+lokal zu installieren.
+
+Anaconda installiert JupyterLab automatisch mit, so dass wir direkt loslegen
+können. Sollte es Probleme geben, finden Sie hier die [Dokumentation von
+JupyterLab](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html).
+
+JupyterLab startet im Hintergrund einen sogenannten Jupyter-Kernel, der die
+interaktiven Python-Code-Zellen ausführt. Der Client ist in der Regel der
+Standard-Browser.
+
+Alternativ können Sie auch Microsoft Visual Studio Code oder PyCharm nutzen, um
+Jupyter Notebooks zu editieren.
+
+Die folgende Schritt-für-Schritt-Anleitung zeigt, wie ein neues Jupyter Notebook
+in JupyterLab gestartet wird.
+
+1. Um ein neues Jupyter Notebook zu erstellen, klicken Sie auf "Home" im
+   Anaconda-Navigator und wählen "JupyterLab" aus. Alternativ können Sie
+   JupyterLab auch mit dem Befehl "jupyter-lab" aus einem Terminal oder einer
+   Konsole starten (Linux oder MacOS).
+2. Wählen Sie "Python 3 (ipykernel)" aus, um ein neues Notebook zu erstellen.
+3. Sie können jetzt Python-Code in dem Notebook schreiben und ausführen. Wenn
+   Sie zusätzliche Pakete benötigen, können Sie diese über den
+   "Environments"-Tab im Anaconda-Navigator installieren.
+
+```{figure} pics/fig_chap01_sec02_jupyterlab.png
+:name: fig_chap01_sec02_jupyterlab
+
+Startansicht der Software JupyterLab: ein neues Jupyter Notebook wird mit Klick auf den Button Python 3 (ipykernel) erstellt.
+```
+
+
+## Jupyter Notebooks bearbeiten 
+
+Ein Jupyter Notebook besteht aus einer Abfolge von Zellen, in denen Text, Code
+und Visualisierungen eingebettet werden. Die Zellen können entweder in der
+Programmiersprache Python oder in einer Reihe anderer Programmiersprachen wie R,
+Julia oder JavaScript geschrieben werden. Erkennbar sind Jupyter Notebooks an
+der Dateiendung `ipynb`.
+
+
+```{figure} pics/fig_chap01_sec02_zellen.png
+:name: fig_chap01_sec02_zellen
+
+Screenshot eines Jupyter Notebooks mit Text, Python-Code und Ergebnisse des ausgeführten Python-Codes, das mit der klassischen Software "Jupyter Notebook" geladen wurde
+```
+
+Eine Zelle kann entweder eine Text-Zelle (siehe Fig. 3, Schritt 1) oder eine
+Code-Zelle (siehe Fig. 3, Schritt 2) sein. In Text-Zellen wird die sogenannte
+[Markdown-Formatierung](https://jupyter-notebook.readthedocs.io/en/stable/examples/Notebook/Working%20With%20Markdown%20Cells.html)
+benutzt. Um beispielsweise ein Wort fettgedruckt anzuzeigen, werden zwei
+Sternchen ** vor und hinter das Wort gesetzt, also ich bin `**fett**` gedruckt. 
+
+In Code-Zellen (siehe Fig. 3, Schritt 2 oder 3) können Sie direkt Python-Code
+eingeben. Sie erkennen eine Code-Zelle daran, dass "In" für Input daneben steht.
+Eine Code-Zelle wird ausgeführt, indem Sie auf "Run" klicken (siehe Fig. 3,
+Schritt 4). Danach erscheint die Ausgabe, die der Python-Interpreter ggf.
+produziert (siehe Fig. 3, Schritt 5). Wird ein Ergebnis berechnet oder ein Wert
+zurückgegeben, so ist das an der Bezeichnung "Out" wie Output erkennbar.

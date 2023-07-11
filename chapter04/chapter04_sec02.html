@@ -163,9 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">Zu Beginn …</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">Was ist maschinelles Lernen?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">Technische Voraussetzungen: Python, Anaconda und JupyterLab</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -819,16 +820,16 @@ und dann den Endindex der letzten Zeile, die “herausgeschnitten” werden soll
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Club Nationality Position  Age  Matches  Starts   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Club Nationality Position  Age  Matches  Starts  \
 Name                                                                        
-Joshua Kimmich   Bayern Munich         GER       MF   25       27      25  \
+Joshua Kimmich   Bayern Munich         GER       MF   25       27      25   
 Kingsley Coman   Bayern Munich         FRA    FW,MF   24       29      23   
 Benjamin Pavard  Bayern Munich         FRA       DF   24       24      22   
 Alphonso Davies  Bayern Munich         CAN       DF   19       23      22   
 
-                 Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted    xG   
+                 Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted    xG  \
 Name                                                                            
-Joshua Kimmich   2194      4       10              0                  0  0.10  \
+Joshua Kimmich   2194      4       10              0                  0  0.10   
 Kingsley Coman   1752      5       10              0                  0  0.21   
 Benjamin Pavard  1943      0        0              0                  0  0.02   
 Alphonso Davies  1763      1        2              0                  0  0.01   
@@ -858,9 +859,9 @@ sind insgesamt 177 Zeilen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts  \
 Name                                                                           
-Robert Lewandowski  Bayern Munich         POL       FW   31       29      28  \
+Robert Lewandowski  Bayern Munich         POL       FW   31       29      28   
 Joshua Kimmich      Bayern Munich         GER       MF   25       27      25   
 Kingsley Coman      Bayern Munich         FRA    FW,MF   24       29      23   
 Benjamin Pavard     Bayern Munich         FRA       DF   24       24      22   
@@ -872,9 +873,9 @@ Leon Dajaku          Union Berlin         GER       FW   19        2       0
 Tim Maciejewski      Union Berlin         GER       MF   19        1       0   
 Joshua Mees          Union Berlin         GER       FW   24        1       0   
 
-                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted   
+                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted  \
 Name                                                                         
-Robert Lewandowski  2458     41        7              8                  9  \
+Robert Lewandowski  2458     41        7              8                  9   
 Joshua Kimmich      2194      4       10              0                  0   
 Kingsley Coman      1752      5       10              0                  0   
 Benjamin Pavard     1943      0        0              0                  0   
@@ -918,15 +919,15 @@ wir eine Liste mit den Zeilenindizes übergeben.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts  \
 Name                                                                           
-Manuel Neuer        Bayern Munich         GER       GK   34       33      33  \
+Manuel Neuer        Bayern Munich         GER       GK   34       33      33   
 Robert Lewandowski  Bayern Munich         POL       FW   31       29      28   
 Alphonso Davies     Bayern Munich         CAN       DF   19       23      22   
 
-                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted   
+                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted  \
 Name                                                                         
-Manuel Neuer        2970      0        0              0                  0  \
+Manuel Neuer        2970      0        0              0                  0   
 Robert Lewandowski  2458     41        7              8                  9   
 Alphonso Davies     1763      1        2              0                  0   
 
@@ -1189,9 +1190,9 @@ wir alle Spielerdaten, die zu Eintracht Frankfurt gehören.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Club Nationality Position  Age  Matches   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Club Nationality Position  Age  Matches  \
 Name                                                                         
-Kevin Trapp         Eintracht Frankfurt         GER       GK   30       33  \
+Kevin Trapp         Eintracht Frankfurt         GER       GK   30       33   
 André Silva         Eintracht Frankfurt         POR       FW   24       32   
 Filip Kostić        Eintracht Frankfurt         SRB       DF   27       30   
 Martin Hinteregger  Eintracht Frankfurt         AUT       DF   27       29   
@@ -1217,9 +1218,9 @@ Danny da Costa      Eintracht Frankfurt         GER       DF   27        6
 Elias Bördner       Eintracht Frankfurt         GER       GK   18        1   
 Ragnar Ache         Eintracht Frankfurt         GER    FW,DF   22        7   
 
-                    Starts  Mins  Goals  Assists  Penalty_Goals   
+                    Starts  Mins  Goals  Assists  Penalty_Goals  \
 Name                                                              
-Kevin Trapp             33  2970      0        0              0  \
+Kevin Trapp             33  2970      0        0              0   
 André Silva             32  2760     28        7              7   
 Filip Kostić            29  2534      4       14              0   
 Martin Hinteregger      29  2527      2        1              0   

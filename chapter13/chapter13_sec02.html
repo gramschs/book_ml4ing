@@ -163,9 +163,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">Zu Beginn …</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">Was ist maschinelles Lernen?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">Technische Voraussetzungen: Python, Anaconda und JupyterLab</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -505,10 +506,14 @@ probieren wir den Canny-Filter aus. Dazu importieren wir zunächst die
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x163b5de80&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.25.0
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
 </pre></div>
 </div>
-<img alt="../_images/dad9e6c603e7cda953bc57a202ab4ccbad3203087f61f175e0427bb4679efaff.png" src="../_images/dad9e6c603e7cda953bc57a202ab4ccbad3203087f61f175e0427bb4679efaff.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x1258ee890&gt;
+</pre></div>
+</div>
+<img alt="../_images/aa96187c49c8b08e22c4a081c6c4a1956420a2feec9dfc1e871c582b3a3bd2bf.png" src="../_images/aa96187c49c8b08e22c4a081c6c4a1956420a2feec9dfc1e871c582b3a3bd2bf.png" />
 </div>
 </div>
 </section>
@@ -553,10 +558,10 @@ benötigen wir eine weitere Funktion aus dem Untermodul <code class="docutils li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x163c07c10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x1258eecb0&gt;
 </pre></div>
 </div>
-<img alt="../_images/b6a75177d5525f12473a91834dcbcbcfcea9cbfbe48d4555257dfe2cbf2a5dad.png" src="../_images/b6a75177d5525f12473a91834dcbcbcfcea9cbfbe48d4555257dfe2cbf2a5dad.png" />
+<img alt="../_images/9309fb84f17cc9739d3c8c34c9993bd91a04a89deff2123b1653ece1e13895c7.png" src="../_images/9309fb84f17cc9739d3c8c34c9993bd91a04a89deff2123b1653ece1e13895c7.png" />
 </div>
 </div>
 <p>Tatsächlich, es wurde ein Kreis detektiert. Um auch die anderen zu finden,
@@ -579,7 +584,7 @@ for-Schleife die möglichen Kreise bestimmen.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7bfb848625a9767102d8c1aeaeb73b48658a07fe1c822b65110ceb403cf66935.png" src="../_images/7bfb848625a9767102d8c1aeaeb73b48658a07fe1c822b65110ceb403cf66935.png" />
+<img alt="../_images/352dfa92732f3a4be84cac079ec060c958a0bb23cc5427d587d7ded3dcc83de6.png" src="../_images/352dfa92732f3a4be84cac079ec060c958a0bb23cc5427d587d7ded3dcc83de6.png" />
 </div>
 </div>
 <p>Die Mandarine wird nicht erkannt, aber Münzen und Teelicht werden als

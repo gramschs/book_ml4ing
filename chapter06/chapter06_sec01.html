@@ -165,9 +165,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">Zu Beginn …</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">Was ist maschinelles Lernen?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">Technische Voraussetzungen: Python, Anaconda und JupyterLab</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -619,7 +620,7 @@ wir im nächsten Kapitel noch näher eingehen werden.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 46071 entries, 0 to 46404
+Int64Index: 46071 entries, 0 to 46404
 Data columns (total 9 columns):
  #   Column     Non-Null Count  Dtype  
 ---  ------     --------------  -----  
@@ -844,6 +845,12 @@ Danach initialiseren wir das Modell und speichern es in der Variable <code class
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.25.0
+  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Mit der Methode <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> werden die Koeffizienten des Modells an die Daten
 angepasst. Dazu müssen die Daten in einem bestimmten Format vorliegen. Bei den
@@ -888,7 +895,7 @@ in dem Attribut <code class="docutils literal notranslate"><span class="pre">.co
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Steigung: 
 [186.80491242]
 y-Achsenabschnitt: 
--8330.026523876371
+-8330.026523879089
 </pre></div>
 </div>
 </div>
@@ -906,7 +913,7 @@ eine PS-Zahl von 80 Ps wird ein Verkaufspreis von</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6614.36646954])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6614.36646953])
 </pre></div>
 </div>
 </div>
@@ -934,7 +941,7 @@ visualisieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/41a24ad0f96349ab216b9a782aa11dc506a46658dc732e8f902428015ed0713f.png" src="../_images/41a24ad0f96349ab216b9a782aa11dc506a46658dc732e8f902428015ed0713f.png" />
+<img alt="../_images/b7fd7cdac7f5a16d13531fbeeb3593e06445ddfeab594c78a7f6444caba5ee8e.png" src="../_images/b7fd7cdac7f5a16d13531fbeeb3593e06445ddfeab594c78a7f6444caba5ee8e.png" />
 </div>
 </div>
 </section>
