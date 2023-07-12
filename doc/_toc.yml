@@ -80,3 +80,6 @@ parts:
       - file: chapter14/chapter14_sec01.md
       - file: chapter14/chapter14_sec02.md
       - file: chapter14/chapter14_sec03.md
+- caption: Anhang
+  chapters:
+  - file: appendix.md
