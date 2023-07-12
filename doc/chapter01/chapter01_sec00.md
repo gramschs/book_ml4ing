@@ -21,3 +21,12 @@ deutschen Begriff maschinelles Lernen 2.8 Millionen Treffer. Auf Englisch
 werden sowohl für den deutschen Begriff als auch die englischsprachige Variante
 die Trefferzahlen mittlerweile höher sein.
 
+In den folgenden Kapiteln werden wir zunächst einmal klären, was maschinelles
+Lernen ist und die grundlegenden Begriffe des maschinellen Lernens kennenlernen.
+Wir schließen diesen Part mit der Installation der notwendigen Software-Tools
+ab.
+
+Kapitelübersicht:
+
+```{tableofcontents}
+```
