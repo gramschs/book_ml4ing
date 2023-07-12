@@ -176,7 +176,7 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-## Zusammenfassung
+## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben Sie die drei wichtigsten Kategorien des maschinellen
 Lernens kennengelernt: überwachtes Lernen, unüberwachtes Lernen und
@@ -185,3 +185,7 @@ verstärkendes Lernen. Für die Ingenieurwissenschaften ist vor allem das
 Lernen für diskrete Ausgabedaten (= Klassen, Kategorien), das wir Klassifikation
 nennen, und überwachtem Lernen für kontinuierliche Ausgabedaten, das wir
 Regression nennen.
+
+Diese Vorlesung richtet sich an Studierende der Ingenieurwissenschaften. Daher
+steht vor allem die praktische Umsetzung im Fokus. Im nächsten Kapitel werden
+wir daher die technischen Voraussetzungen dafür klären.

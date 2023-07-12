@@ -22,7 +22,8 @@ Wir kürzen in dieser Vorlesung maschinelles Lernen oft mit **ML** ab. Damit
 umgehen wir die Diskussion, warum Künstliche Intelligenz mit einem
 Großbuchstaben beginnt und maschinelles Lernen mit einem Kleinbuchstaben.
 Gleichzeitig ist das auch die gängige Abkürzung im englischen Sprachgebrauch.
-Dieses Kapitel gibt eine Einführung in das Thema ML.
+Dieses Kapitel klärt, was maschinelles Lernen ist und führt in die
+grundlegenenden Bestandteile eines ML-Systems ein.
 
 ## Lernziele
 
@@ -238,17 +239,18 @@ ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
 aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
 Bedingungen zurechtkommen.
 
+## Zusammenfassung und Ausblick
 
-ML-Modelle werden in drei große Kategorien eingeteilt: 
+In diesem Kapitel haben wir zwar die drei grundlegenden Bestandteile eines
+ML-Systems (Daten, Algorithmus und Modell) kennengelernt, aber entscheidend ist
+auch die Anwendung, welche Art von Daten vorliegen. Im nächsten Kapitel werden
+wir die drei großen Kategorien betrachten, in die ML-Modelle eingeteilt werden:
 
 * Überwachtes Lernen (Supervised Learning),
 * Unüberwachtes Lernen (Unsupervised Learning) und
 * Verstärkendes Lernen (Reinforcement Learning).
 
-Im nächsten Kapitel werden wir uns die drei Kategorien näher ansehen.
 
-```{bibliography}
-```
 
 
 
