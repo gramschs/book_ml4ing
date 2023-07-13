@@ -112,7 +112,6 @@ HTML('../assets/chapter11/EntscheidungsbaumImAutohausSingle.html')
 ```
 
 
-
 ## Wurzel, Knoten, Zweig und Blatt
 
 Die Abfolge von Fragen an die Features wird in der Regel visualisiert. Die

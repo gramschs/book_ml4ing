@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bool, Vergleiche und Programmverzweigung &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>2.1 Listen und for-Schleifen &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter02/chapter02_sec02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Digitale Logik und Schleife mit Bedingung" href="chapter02_sec03.html" />
-    <link rel="prev" title="Datentypen, Variablen und Vergleiche" href="chapter02_sec01.html" />
+    <link rel="next" title="2.3 Funktionen und Methoden" href="chapter02_sec03.html" />
+    <link rel="prev" title="2.1 Datentypen, Variablen und print()" href="chapter02_sec01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -169,28 +169,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="chapter02_sec01.html">Datentypen, Variablen und Vergleiche</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bool, Vergleiche und Programmverzweigung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">Digitale Logik und Schleife mit Bedingung</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">Crashkurs Python (Teil 2)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">Liste und Zählschleife</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">Funktionen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">Objektorientierung</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">2. Crashkurs Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1 Listen und for-Schleifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">Pandas anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">Pandas anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">Series und DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">Arbeiten mit Tabellendaten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">Statistik mit Pandas</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">Das Modul NumPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">Visualisierung von DataFrames</a></li>
@@ -200,47 +194,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">Lineare Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">Multiple lineare Regression</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec01.html">Datenvorverarbeitung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec02.html">Modellvalidierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec03.html">Das Bias-Varianz-Dilemma</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">Grundbaustein neuronaler Netze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">Die Perzeptron-Lernregel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec01.html">Logistische Regression ersetzt Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec03.html">Logistische Regression mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">Maximiere den Rand, aber soft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">Training SVM mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">Nichtlineare SVM</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/chapter11_sec01.html">Entscheidungsbaum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/chapter11_sec03.html">Random Forests</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec01.html">Mehrschichtiges Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec02.html">Neuronale Netze mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/chapter13_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/chapter13_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/chapter13_sec01.html">Grafiken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/chapter13_sec02.html">Filter anwenden</a></li>
 </ul>
@@ -248,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/chapter14_sec00.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/chapter14_sec00.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec01.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec02.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec03.html">Plots mit Karten</a></li>
@@ -312,7 +306,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/chapter02_sec02.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/chapter02_sec02.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,6 +371,23 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       <li><a href="../_sources/chapter02/chapter02_sec02.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/chapter02/chapter02_sec02.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +397,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -458,7 +469,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bool, Vergleiche und Programmverzweigung</h1>
+    <h1>2.1 Listen und for-Schleifen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -469,12 +480,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datentyp-bool-und-vergleiche">Datentyp Bool und Vergleiche</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmverzweigungen-if-elif-else">Programmverzweigungen: if — elif — else</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-anweisung">if-Anweisung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrteilige-verzweigungen-mit-elif-und-else">Mehrteilige Verzweigungen mit elif und else</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datentyp-liste">Datentyp Liste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-bearbeiten">Listen bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-einzelne-listenelemente">Zugriff auf einzelne Listenelemente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-wiederholen-mit-der-for-schleife">Code wiederholen mit der for-Schleife</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -486,282 +496,546 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bool-vergleiche-und-programmverzweigung">
-<h1>Bool, Vergleiche und Programmverzweigung<a class="headerlink" href="#bool-vergleiche-und-programmverzweigung" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="listen-und-for-schleifen">
+<h1>2.1 Listen und for-Schleifen<a class="headerlink" href="#listen-und-for-schleifen" title="Permalink to this headline">#</a></h1>
+<p>Bisher haben wir drei verschiedene Datentypen kennengelernt:</p>
+<ul class="simple">
+<li><p>Integer (ganze Zahlen),</p></li>
+<li><p>Floats (Fließkommazahlen) und</p></li>
+<li><p>Strings (Zeichenketten).</p></li>
+</ul>
+<p>Damit können wir einzelne Objekte der realen Welt ganz gut abbilden. Mit einem
+String können wir den Namen einer Person erfassen, mit einem Integer das Alter
+der Person und mit einem Float die Körpergröße der Person gemessen in Meter. Was
+uns aber bisher fehlt ist eine Sammlung von Namen oder eine Sammlung von
+Körpergrößen. Daher werden wir uns in diesem Kapitel mit dem Datentyp <strong>Liste</strong>
+beschäftigen.</p>
+<p>Oft kommt es vor, dass für jedes Element der Liste bestimmte Aktionen
+durchgeführt werden sollen. Daher werden wir uns auch mit der Wiederholung von
+Code-Abschnitten mittels der sogenannten <strong>for-Schleife</strong> beschäftigen.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie kennen den Datentyp <strong>Bool</strong>.</p></li>
-<li><p>Sie kennen die wichtigsten <strong>Vergleichsoperatoren</strong>.</p></li>
-<li><p>Sie können mit <strong>if — elif — else</strong> Programmverzeigungen programmieren.</p></li>
+<li><p>Sie kennen den Datentyp <strong>Liste</strong>.</p></li>
+<li><p>Sie können Listen mit eckigen Klammern erzeugen.</p></li>
+<li><p>Sie können Listen mit dem <strong>Plus-Operator</strong> verketten, Elemente mit
+<strong>.append()</strong> anhängen oder Werte mit <strong>.remove()</strong> aus der Liste löschen.</p></li>
+<li><p>Sie können über den <strong>Index</strong> auf einzelne Listenelementer zugreifen.</p></li>
+<li><p>Sie können eine <strong>for-Schleife mit Liste</strong> programmieren.</p></li>
+<li><p>Sie wissen, wie die Fachbegriffe der einzelnen Bestandteil der Schleife
+lauten:</p>
+<ul>
+<li><p><strong>Kopfzeile</strong>, wird mit <strong>Doppelpunkt :</strong> abgeschlossen</p></li>
+<li><p>Schlüsselwörter <strong>for</strong> und <strong>in</strong></p></li>
+<li><p><strong>Schleifenvariable</strong></p></li>
+</ul>
+</li>
+<li><p>Sie wissen, dass der Anweisungsblock des Schleifeninneren eingerückt werden
+muss. Die <strong>Einrückung</strong> muss immer mit der gleichen Anzahl von Zeichen
+(Leerzeichen oder Tab) erfolgen.</p></li>
 </ul>
 </div>
 </section>
-<section id="datentyp-bool-und-vergleiche">
-<h2>Datentyp Bool und Vergleiche<a class="headerlink" href="#datentyp-bool-und-vergleiche" title="Permalink to this headline">#</a></h2>
-<p>Später möchten wir Werte miteinander vergleichen. Ein simples Beispiel für einen
-einfachen Vergleich ist beispielsweise das Alter einer Person mit der Zahl 18.
-Dieser Vergleich ist entweder wahr (True) oder falsch (False). Oder anders
-formuliert, diese Bedingung ist entweder erfüllt oder nicht erfüllt.</p>
-<p>Um den Wahrheitswert eines Vergleichs zu beschrieben, hat Python einen eigenen
-Datentyp namens <code class="docutils literal notranslate"><span class="pre">bool</span></code>. Eine Variable des Datentyps <code class="docutils literal notranslate"><span class="pre">bool</span></code> kann dabei nur zwei
-verschiedene Werte annehmen, nämlich</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code>: Wahrheitswert ist wahr oder</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code>: Wahrheitswert ist falsch.</p></li>
-</ul>
-<p>Und auch für diesen Datentyp gibt es Operationen, wie man diese einsetzt ist
-eine andere Frage.</p>
+<section id="datentyp-liste">
+<h2>Datentyp Liste<a class="headerlink" href="#datentyp-liste" title="Permalink to this headline">#</a></h2>
+<p>Eine Liste ist eine Sammlung von Objekten. Dabei können die Objekte einen
+beliebigen Datentyp aufweisen. Eine Liste wird durch eckige Klammern erzeugt.</p>
+<p>Beispielsweise könnte eine Liste drei Integer enthalten:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">+</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">54</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 12, 54]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das folgende Beispiel zeigt eine Liste mit vier Namen, die durch Strings
+repräsentiert werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">,</span> <span class="s1">&#39;Dora&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Alice&#39;, &#39;Bob&#39;, &#39;Charlie&#39;, &#39;Dora&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine leere Liste wird durch <code class="docutils literal notranslate"><span class="pre">[]</span></code> definiert:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Datentyp heißt formal <code class="docutils literal notranslate"><span class="pre">list</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
+<p>Listen können gekürzt und erweitert werden. Eine sehr nützliche Funktion ist
+daher die <code class="docutils literal notranslate"><span class="pre">len()</span></code>-Funktion. Das <code class="docutils literal notranslate"><span class="pre">len</span></code> steht dabei für <code class="docutils literal notranslate"><span class="pre">length</span></code>. Wird die
+Funktion <code class="docutils literal notranslate"><span class="pre">len()</span></code> mit einer Liste (oder mit einem String) als Argument
+aufgerufen, gibt sie die Anzahl der Listenelemente (oder Anzahl der Zeichen im
+String) zurück.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hund&#39;</span><span class="p">,</span> <span class="s1">&#39;Katze&#39;</span><span class="p">,</span> <span class="s1">&#39;Maus&#39;</span><span class="p">,</span> <span class="s1">&#39;Affe&#39;</span><span class="p">,</span><span class="s1">&#39;Elefant&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Listen müssen nicht nur Elemente eines Datentyps enthalten. In Python ist es
+erlaubt, in eine Liste Objekte mit verschiedenen Datentypen zu sammeln. Das
+folgende Beispiel zeigt eine Mischung aus Elementen der drei Datentypen Integer,
+Float und String.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="s1">&#39;Ente&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">42</span><span class="p">,</span> <span class="mf">17.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Elefant&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[123, &#39;Ente&#39;, -42, 17.4, 0, &#39;Elefant&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Erzeugen Sie eine Einkaufsliste, um einen Obstsalat zuzubereiten und speichern
+Sie diese Liste in der Variablen <code class="docutils literal notranslate"><span class="pre">einkaufsliste</span></code>. Lassen Sie dann den Computer
+bzw. den Python-Interpreter zählen, wie viele Zutaten Ihre Liste enthält und
+geben Sie dann die Anzahl aus.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Trauben&#39;</span><span class="p">,</span> <span class="s1">&#39;Joghurt&#39;</span><span class="p">]</span>
+<span class="n">anzahl_zutaten</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahl_zutaten</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="listen-bearbeiten">
+<h2>Listen bearbeiten<a class="headerlink" href="#listen-bearbeiten" title="Permalink to this headline">#</a></h2>
+<p>Listen sind in Python veränderlich. Besonders häufig kommt es vor, dass zwei
+Listen zu einer neuen Liste kombiniert werden sollen. Da diese Aktion so wichtig
+ist, kann dies in Python direkt mit dem <code class="docutils literal notranslate"><span class="pre">+</span></code>-Operator erledigt werden. Der
+Fachbegriff für das Aneinanderhängen von Listen ist <strong>Verkettung</strong> oder auf
+Englisch <strong>Concatenation</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">37</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[37, 3, 5, 3, 35, 100]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Um an das Ende der Liste ein neues Element einzufügen, verwendet man die Methode
+<code class="docutils literal notranslate"><span class="pre">append()</span></code>. Eine <strong>Methode</strong> ist eine spezielle Funktion, die zu dem Datentyp
+gehört und daher an die Variable angehängt wird, indem man einen Punkt schreibt
+und dann den Methodennamen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 56, 23]
+[34, 56, 23, 42]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aus der Liste können Elemente durch die <code class="docutils literal notranslate"><span class="pre">remove()</span></code>-Methode gelöscht werden.
+Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
+übergeben. Es wird der erste auftretende Wert aus der Liste gelöscht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">56</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 56, 23, 42]
+[34, 23, 42]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt und Zucker hinzu. Leider passen in Ihren Einkaufswagen nur maximal 5 Sachen. Lassen Sie daher die Anzahl der Elemente ausgeben.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste_alt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Trauben&#39;</span><span class="p">,</span> <span class="s1">&#39;Joghurt&#39;</span><span class="p">]</span>
+<span class="n">einkaufsliste_neu</span> <span class="o">=</span> <span class="n">einkaufsliste_alt</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Zimt&#39;</span><span class="p">,</span> <span class="s1">&#39;Zucker&#39;</span><span class="p">]</span>
+<span class="n">anzahl_zutaten</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste_neu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl der Zutaten: </span><span class="si">{</span><span class="n">anzahl_zutaten</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Listen in Python - Einführung” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ihF8bZoauBs" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
+<section id="zugriff-auf-einzelne-listenelemente">
+<h2>Zugriff auf einzelne Listenelemente<a class="headerlink" href="#zugriff-auf-einzelne-listenelemente" title="Permalink to this headline">#</a></h2>
+<p>Listen sind (übrigens genau wie Strings) ein sogenannter <strong>sequentieller
+Container</strong>. Sequentielle Container sind Sammlungen von Datenobjekten. Was heißt
+das? Eine Straße ist eine Sammlung von Häusern. Aber in einer Straße sind die
+Häuser zusätzlich durchnummeriert. Eine Hausnummer ermöglicht es, die Position
+eines Hauses innerhalb der Straße zu bestimmen. Sammlungen von Objekten mit
+einer Positionsnummer werden sequentielle Container genannt. Sie sind mit ganzen
+Zahlen, also Integern, durchnummeriert. In Python beginnt die Nummerierung bei
+0. Die Nummer eines Elementes aus der Sequenz nennt man <strong>Index</strong>.
+Umgangssprachlich könnte man den Index also auch als Hausnummer bezeichnen.</p>
+<p>In einer Liste hat also das erste Element den Index 0. Das zweite Element hat
+den Index 1 usw. Um ein einzelnes Element einer Liste herausgreifen zu können,
+schreibt man <code class="docutils literal notranslate"><span class="pre">liste[i]</span></code>. Dabei ist <code class="docutils literal notranslate"><span class="pre">liste</span></code> der Name der Liste und <code class="docutils literal notranslate"><span class="pre">i</span></code> der Idnex.
+Um einfach auf das letzte Element einer Liste zugreifen zu können, hat Python
+den Index -1 eingeführt.</p>
+<p>Probieren wir ein Beispiel aus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="n">erstes</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Das erste Element in der Liste ist: </span><span class="si">{</span><span class="n">erstes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das erste Element in der Liste ist: 34
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span> <span class="o">/</span> <span class="kc">True</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erzeugung Liste</span>
+<span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;grün&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;gelb&#39;</span><span class="p">,</span> <span class="s1">&#39;weiß&#39;</span><span class="p">,</span> <span class="s1">&#39;schwarz&#39;</span><span class="p">]</span>
+
+<span class="c1"># das fünfte Elment weiß wird durch lila ersetzt</span>
+<span class="n">meine_liste</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lila&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;rot&#39;, &#39;grün&#39;, &#39;blau&#39;, &#39;gelb&#39;, &#39;lila&#39;, &#39;schwarz&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ein Vergleich ist ein Ausdruck mit zwei Operanden und einem Vergleichsoperator
-in der Mitte. Die beiden Operanden können auch unterschiedliche Datentypen
-haben, dann muss der Vergleichsoperator aber sinnvoll für diese Datentypen
-definiert sein. Z.B. darf man einen Integer mit einem Float vergleichen <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">17.2</span></code>, aber <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">&lt;</span> <span class="pre">'vier'</span></code>ist nicht sinnvoll und undefiniert. Es gibt die
-folgenden Vergleichsoperatoren in Python:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code> kleiner</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> kleiner oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code> größer</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> größer oder gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code>gleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> ungleich</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">not</span></code> Umkehrung/Verneinung</p></li>
-</ul>
-<p>Im interaktiven Modus können wir leicht den Wahrheitsgehalt von Vergleichen
-überprüfen.</p>
+<p>Das Bearbeiten von einzelnen Listenelementen wird auch <strong>Zugriff</strong> genannt. Das
+folgende Video zeigt die Zugriffsmöglichkeiten von Listen.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Zugriff aus Listen” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_XzWPXvya2w" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
+<section id="code-wiederholen-mit-der-for-schleife">
+<h2>Code wiederholen mit der for-Schleife<a class="headerlink" href="#code-wiederholen-mit-der-for-schleife" title="Permalink to this headline">#</a></h2>
+<p>Manchmal möchte man für jedes Element einer Liste eine oder mehrere Aktionen
+durchführen. Dazu gibt es die <strong>for-Schleife</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">30</span>          
-<span class="n">x</span> <span class="o">&gt;</span> <span class="mi">15</span>          
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+4
+6
+8
+10
 </pre></div>
 </div>
 </div>
 </div>
+<p>Eine Schleife beginnt mit dem Schlüsselwort <strong>for</strong>. Danach kommt der Name der
+sogenannten <strong>Schleifenvariable</strong>, in diesem Fall also <code class="docutils literal notranslate"><span class="pre">i</span></code>. Als nächstes folgt
+wieder ein Schlüsselwort, nämlich <strong>in</strong> und zuletzt Liste. Diese Zeile nennt
+man <strong>Kopfzeile</strong>.</p>
+<p>Python muss wissen, welche Kommandos für jeden Schleifendurchgang ausgeführt
+werden sollen. Daher wird die Kopfzeile der Schleife mit einem Doppelpunkt <code class="docutils literal notranslate"><span class="pre">:</span></code>
+beendet. Danach werden alle Kommandos aufgelistet, die ausgeführt werden sollen.
+Damit Python weiß, wann es wieder mit dem normalen Programm weitergehen soll,
+müssen wir dem Python-Interpreter das Ende der Schleife signalisieren. In vielen
+Programmiersprachen wird das mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">end</span></code> gemacht oder es werden
+Klammern gesetzt. In Python wird stattdessen mit <strong>Einrückung</strong> gearbeitet. Alle
+Zeilen mit Anweisungen, die eingerückt sind, werden in der Schleife wiederholt.</p>
+<p>Wie sieht das nun bei unserem Beispiel aus? Die Schleifenvariable heißt <code class="docutils literal notranslate"><span class="pre">i</span></code>. Sie
+nimmt beim 1. Schleifendurchgang den Wert <code class="docutils literal notranslate"><span class="pre">2</span></code> an. Dann werden die Anweisungen im
+Schleifeninneren ausgeführt, also die print()-Funktion für <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">2</span></code> angewendet
+und eine 2 ausgegeben. Dann wird die Schleife ein 2. Mal durchlaufen. Diesmal
+nimmt die Schleifenvariable <code class="docutils literal notranslate"><span class="pre">i</span></code> den Wert <code class="docutils literal notranslate"><span class="pre">4</span></code> an und die print()-Funktion gibt 4
+aus. Das geht so weiter bis zum 5. Schleifendurchgang, wo die Schleifenvariable
+den Wert <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">=</span> <span class="pre">10</span></code> annimmt und eine 10 auf dem Bildschirm angezeigt wird. Da die
+<code class="docutils literal notranslate"><span class="pre">10</span></code> das letzte Element der Liste war, macht der Python-Interpreter mit dem
+normalen Programm weiter. Bei unserem kurzen Beispiel ist aber schon das Ende
+des Programmes erreicht. Zusammengefasst, werden nacheinander die Elemente der
+Liste <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8,</span> <span class="pre">10]</span></code> auf dem Bildschirm ausgegeben.</p>
+<p>Schauen wir uns ein erstes Beispiel an. Jedes Element der Liste <code class="docutils literal notranslate"><span class="pre">[4,5,7,11,21]</span></code>
+soll um 2 erhöht werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">42</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">21</span><span class="p">]:</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="n">zahl</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wenn ich </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1"> + 2 rechne, erhalte ich </span><span class="si">{</span><span class="n">summe</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ich bin fertig!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wenn ich 4 + 2 rechne, erhalte ich 6.
+Wenn ich 5 + 2 rechne, erhalte ich 7.
+Wenn ich 7 + 2 rechne, erhalte ich 9.
+Wenn ich 11 + 2 rechne, erhalte ich 13.
+Wenn ich 21 + 2 rechne, erhalte ich 23.
+Ich bin fertig!
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">30</span>    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">42</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">!=</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">30</span>  
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">30</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
 </pre></div>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ucsv_Nhhxmk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="programmverzweigungen-if-elif-else">
-<h2>Programmverzweigungen: if — elif — else<a class="headerlink" href="#programmverzweigungen-if-elif-else" title="Permalink to this headline">#</a></h2>
-<p>Bei einer Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.
-Dabei kann es sich um einfache Verzweigung wie die Frage: Gehe ich nach rechts
-oder gehe ich nach links? Oder die Verzweigung kann komplizierter geschachtelt
-sein.</p>
-<section id="if-anweisung">
-<h3>if-Anweisung<a class="headerlink" href="#if-anweisung" title="Permalink to this headline">#</a></h3>
-<p>Im einfachsten Fall liegt ein <code class="docutils literal notranslate"><span class="pre">if</span></code>-Block vor. Die Syntax lautet wie folgt:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Bananen&#39;</span><span class="p">,</span> <span class="s1">&#39;Trauben&#39;</span><span class="p">,</span> <span class="s1">&#39;Joghurt&#39;</span><span class="p">,</span> <span class="s1">&#39;Honig&#39;</span><span class="p">,</span> <span class="s1">&#39;Zimt&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">zutat</span> <span class="ow">in</span> <span class="n">einkaufsliste</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zutat</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ist die Bedingung erfüllt, also <code class="docutils literal notranslate"><span class="pre">True</span></code>, so wird der eingerückte Anweisungsblock
-ausgeführt, ansonsten übersprungen.</p>
-<p>Wichtig ist, dass die Anweisung oder mehrere Anweisungen (d.h. der
-Anweisungsblock) eingerückt ist. Hier kommt eine Python-spezifische Eigenschaft
-zum Tragen. Der Block wird nicht durch Klammern oder ein begin/end
-gekennzeichnet, sondern nur durch die Einrückung. Empfehlenswert sind hier vier
-Leerzeichen. Was immer man wählt, in einer Python-Datei muss stets dieselbe
-Einrückungstiefe verwendet werden. Daher ist es ungünstig, Tabulatore und
-Leerzeichen zu mischen, weil man bei Weitergabe des Codes nicht weiß, wie auf
-dem Zielsystem die Tabulatorbreite definiert ist.</p>
-<p>Wir betrachten nun ein Beispiel:</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Schleifen in Python: for-Schleife” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ISo1uqLcVw8" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details><p>Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
+Dafür stellt Python3 die Funktion <code class="docutils literal notranslate"><span class="pre">range()</span></code>zur Verfügung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">19</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie dürfen Alkohol kaufen.
-Bananen dürfen Sie immer kaufen, egal wie alt Sie sind ...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+Fertig!
 </pre></div>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b6KzYbM-Hvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="mehrteilige-verzweigungen-mit-elif-und-else">
-<h3>Mehrteilige Verzweigungen mit elif und else<a class="headerlink" href="#mehrteilige-verzweigungen-mit-elif-und-else" title="Permalink to this headline">#</a></h3>
-<p>Es gibt auch zweiteilige Programmverzweigungen. Die Syntax wird folgendermaßen
-erweitert:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>Falls die Bedingung erfüllt ist, wird der 1. Anweisungsblock ausgeführt,
-ansonsten der 2. Anweisungsblock. Danach führt der Python-Interpreter alles nach
-dem <code class="docutils literal notranslate"><span class="pre">if-else</span></code>-Konstrukt aus. Wichtig ist, dass <code class="docutils literal notranslate"><span class="pre">if</span></code> und <code class="docutils literal notranslate"><span class="pre">else</span></code> die gleiche
-Einrückungstiefe haben genau wie die beiden Anweisungsblöcke. Bei einer
-Programmverzweigung wird Code abhängig von einer Bedingung ausgeführt.</p>
+<p>Wird <code class="docutils literal notranslate"><span class="pre">range(endzahl)</span></code> mit nur einem Parameter aufgerufen, dann beginnt der
+Python-Interpreter stets von <code class="docutils literal notranslate"><span class="pre">0</span></code> an zu zählen. Dabei ist die <code class="docutils literal notranslate"><span class="pre">endzahl</span></code> nicht
+inkludiert, d.h. der Python-Interpreter stoppt bei <code class="docutils literal notranslate"><span class="pre">endzahl</span> <span class="pre">-</span> <span class="pre">1</span></code>. Es ist auch
+möglich, eine Startzahl vorzugeben, also:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="mi">21</span>
-<span class="k">if</span> <span class="n">alter</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie dürfen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sie sind noch nicht volljährig und dürfen daher keinen Alkohol kaufen.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jetzt haben wir aber genug über den Alkoholkauf geredet...&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sie dürfen Alkohol kaufen.
-Jetzt haben wir aber genug über den Alkoholkauf geredet...
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+Fertig!
 </pre></div>
 </div>
 </div>
 </div>
-<p>Häufig müssen mehr als zwei Fälle unterschieden werden. Wenn man beispielsweise
-unterscheiden will, ob eine Zahl negativ oder positiv oder Null ist, verwendet
-man zusätzlich einen elif-Zweig.</p>
-<p>Übersichtlicher wird die Programmverzweigung mit der <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code>-Syntax. <code class="docutils literal notranslate"><span class="pre">elif</span></code>ist die Abkürzung für <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>. Allgemein sieht das Konstrukt so aus:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bedingung</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">1</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">2</span>
-<span class="k">elif</span> <span class="n">bedingung</span> <span class="mi">3</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="mi">3</span>
-    
-    <span class="o">...</span>
-    
-<span class="k">else</span><span class="p">:</span>
-    <span class="n">anweisungsblock</span> <span class="n">n</span>
+<p>Zusätzlich kann der Zahlenbereich noch durch die Angabe einer Schrittweite
+spezifiziert werden. Dadurch ist es beispielsweise möglich, nur ungerade Zahlen
+zu generieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+5
+7
+9
+11
+Fertig!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Lassen Sie alle geraden Zahlen zwischen 100 und 120 ausgeben.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">17</span>
-<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist Null.&quot;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist negativ.&quot;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a ist positiv.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Durch Angabe einer negativen Schrittweite kann auch rückwärts gezählt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a ist positiv.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
+11
+9
+7
+5
+Fertig!
 </pre></div>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/f3YdEdYSNdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<p>Zum Abschluss folgt hier noch ein weiteres Video zu for-Schleifen.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “for-Schleife in Python: Zählerschleife”<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pQh5Idw2sKM" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>In diesem Abschnitt haben wir uns mit dem Datentyp Liste befasst, der zur
+Sammlung verschiedener Datenobjekte dient. Für die sequentielle Bearbeitung von
+Listenelementen ist die for-Schleife besonders geeignet. Es existieren
+zusätzliche Datentypen wie Dictionary, Tupel und Set, die sich ebenfalls zum
+Speichern von Datenobjekten eignen. Neben der for-Schleife gibt es eine
+alternative Schleifenstruktur, die while-Schleife, die Code wiederholt, solange
+eine bestimmte Bedingung erfüllt ist. Anstatt uns weiterhin auf solche Aspekte
+der Python-Programmierung zu konzentrieren, werden wir im nächsten Kapitel den
+Fokus auf die Implementierung eigener Funktionen legen und einen kurzen Ausflug
+in die objektorientierte Programmierung unternehmen.</p>
 </section>
 </section>
 
@@ -802,7 +1076,7 @@ man zusätzlich einen elif-Zweig.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Datentypen, Variablen und Vergleiche</p>
+        <p class="prev-next-title">2.1 Datentypen, Variablen und print()</p>
       </div>
     </a>
     <a class="right-next"
@@ -810,7 +1084,7 @@ man zusätzlich einen elif-Zweig.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Digitale Logik und Schleife mit Bedingung</p>
+        <p class="prev-next-title">2.3 Funktionen und Methoden</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -833,12 +1107,11 @@ man zusätzlich einen elif-Zweig.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datentyp-bool-und-vergleiche">Datentyp Bool und Vergleiche</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programmverzweigungen-if-elif-else">Programmverzweigungen: if — elif — else</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-anweisung">if-Anweisung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrteilige-verzweigungen-mit-elif-und-else">Mehrteilige Verzweigungen mit elif und else</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datentyp-liste">Datentyp Liste</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listen-bearbeiten">Listen bearbeiten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-einzelne-listenelemente">Zugriff auf einzelne Listenelemente</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-wiederholen-mit-der-for-schleife">Code wiederholen mit der for-Schleife</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 

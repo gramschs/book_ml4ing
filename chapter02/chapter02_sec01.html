@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Datentypen, Variablen und Vergleiche &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>2.1 Datentypen, Variablen und print() &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -66,11 +66,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter02/chapter02_sec01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bool, Vergleiche und Programmverzweigung" href="chapter02_sec02.html" />
-    <link rel="prev" title="Crashkurs Python (Teil 1)" href="chapter02_sec00.html" />
+    <link rel="next" title="2.1 Listen und for-Schleifen" href="chapter02_sec02.html" />
+    <link rel="prev" title="2. Crashkurs Python" href="chapter02_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -169,28 +171,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">Crashkurs Python (Teil 1)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Datentypen, Variablen und Vergleiche</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter02_sec02.html">Bool, Vergleiche und Programmverzweigung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">Digitale Logik und Schleife mit Bedingung</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">Crashkurs Python (Teil 2)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">Liste und Zählschleife</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">Funktionen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">Objektorientierung</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">2. Crashkurs Python</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1 Datentypen, Variablen und print()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_sec02.html">2.1 Listen und for-Schleifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">Pandas anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">Pandas anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">Series und DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">Arbeiten mit Tabellendaten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">Statistik mit Pandas</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">Das Modul NumPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">Visualisierung von DataFrames</a></li>
@@ -200,47 +196,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">Lineare Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">Multiple lineare Regression</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec01.html">Datenvorverarbeitung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec02.html">Modellvalidierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec03.html">Das Bias-Varianz-Dilemma</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">Grundbaustein neuronaler Netze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">Die Perzeptron-Lernregel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec01.html">Logistische Regression ersetzt Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec03.html">Logistische Regression mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">Maximiere den Rand, aber soft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">Training SVM mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">Nichtlineare SVM</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/chapter11_sec01.html">Entscheidungsbaum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/chapter11_sec03.html">Random Forests</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec01.html">Mehrschichtiges Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec02.html">Neuronale Netze mit Scikit-Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/chapter13_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/chapter13_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/chapter13_sec01.html">Grafiken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/chapter13_sec02.html">Filter anwenden</a></li>
 </ul>
@@ -248,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/chapter14_sec00.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/chapter14_sec00.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec01.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec02.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec03.html">Plots mit Karten</a></li>
@@ -312,7 +308,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/chapter02_sec01.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter02/chapter02_sec01.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,6 +373,23 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       <li><a href="../_sources/chapter02/chapter02_sec01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/chapter02/chapter02_sec01.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -458,7 +471,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Datentypen, Variablen und Vergleiche</h1>
+    <h1>2.1 Datentypen, Variablen und print()</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -474,14 +487,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string">String</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variablen">Variablen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuweisung">Zuweisung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">Richtlinien für Variablennamen:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mischen-von-datentypen">Mischen von Datentypen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typumwandlungen-type-casting">Typumwandlungen (Type Casting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variablen-und-zuweisung">Variablen und Zuweisung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuweisungen-sind-keine-gleichungen">Zuweisungen sind keine Gleichungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">Richtlinien für Variablennamen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datentypen-ermitteln-mit-type">Datentypen ermitteln mit type()</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausgaben-mit-print">Ausgaben mit print()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -493,11 +506,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="datentypen-variablen-und-vergleiche">
-<h1>Datentypen, Variablen und Vergleiche<a class="headerlink" href="#datentypen-variablen-und-vergleiche" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="datentypen-variablen-und-print">
+<h1>2.1 Datentypen, Variablen und print()<a class="headerlink" href="#datentypen-variablen-und-print" title="Permalink to this headline">#</a></h1>
 <p>Beim maschinellen Lernen geht es um Daten und Algorithmen. Dabei können die
-Daten alles Mögliche umfassen. Daher beschäftigen wir uns zuerst mit Datentypen.
-Dann geht es um Variablen und deren Ausgabe auf dem Bildschirm.</p>
+Daten alles Mögliche umfassen, beispielsweise Zahlen oder Texte. Daher
+beschäftigen wir uns zuerst mit Datentypen. Dann geht es um Variablen und deren
+Ausgabe auf dem Bildschirm.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
@@ -511,29 +525,31 @@ Dann geht es um Variablen und deren Ausgabe auf dem Bildschirm.</p>
 </ul>
 </li>
 <li><p>Sie wissen, was eine <strong>Variable</strong> ist und kennen den <strong>Zuweisungsoperator</strong>.</p></li>
-<li><p>Sie können den <strong>print</strong>-Befehl zur Ausgabe auf dem Bildschirm anwenden.</p></li>
+<li><p>Sie können die <strong>print()</strong>-Funktion zur Ausgabe auf dem Bildschirm anwenden.</p></li>
 </ul>
 </div>
 </section>
 <section id="einfache-datentypen">
 <h2>Einfache Datentypen<a class="headerlink" href="#einfache-datentypen" title="Permalink to this headline">#</a></h2>
-<p>Im datengestützten Prozessmanagement geht es um die Sammlung, Erkundung und
-Analyse von Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
-datengestütztes Prozessmanagement folgendermaßen dar:</p>
+<p>Beim maschinellen Lernen geht es um die Sammlung, Erkundung und Analyse von
+Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
+maschinelles Lernen folgendermaßen dar:</p>
 <figure class="align-default" id="fig01-prozess">
 <a class="reference internal image-reference" href="../_images/fig01_prozess.png"><img alt="../_images/fig01_prozess.png" src="../_images/fig01_prozess.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung der Vorgehensweise im datengestützten Prozessmanagement</span><a class="headerlink" href="#fig01-prozess" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Schematische Darstellung der Vorgehensweise im maschinellen Lernen</span><a class="headerlink" href="#fig01-prozess" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem
 Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0
-und 1 gespeichert. Damit es für uns Programmierinnen und Programmier einfacher
+und 1 gespeichert. Damit es für uns Programmierinnen und Programmierer einfacher
 wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.</p>
 <p><strong>Datentypen</strong> fassen gleichartige Objekte zusammen und stellen den
-Programmiererinnen und Programmieren passende Operationen zur Verfügung. Es
-hängt von der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie
-diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</p>
+Programmierer:innen passende Operationen zur Verfügung. Mit Operationen sind die
+Aktionen gemeint, die mit diesen Datenobjekten durchgeführt werden dürfen.
+Zahlen dürfen beispielsweise addiert werden, Buchstaben aber nicht. Es hängt von
+der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie diese im
+Hintergrund gespeichert werden und welche Operationen möglich sind.</p>
 <p>In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen</p>
 <ul class="simple">
 <li><p>Integer,</p></li>
@@ -544,9 +560,10 @@ diese im Hintergrund gespeichtert werden und welche Operationen möglich sind.</
 <h3>Integer und Float<a class="headerlink" href="#integer-und-float" title="Permalink to this headline">#</a></h3>
 <p>In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
 den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
-in der Mathematik als ganze Zahlen bezeichnet. In der Informatik ist der
-englische Begriff am gebräuchlisten: Integer.</p>
-<p>Mit Integern können wir ganz normal rechnen, also Operationen ausführen:</p>
+in der Mathematik als <strong>ganze Zahlen</strong> bezeichnet. In der Informatik wird jedoch
+der englische Begriff dafür verwendet: <strong>Integer</strong>.</p>
+<p>Mit Integern können wir ganz normal rechnen, also arithmetische Operationen
+ausführen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">3</span>
@@ -621,10 +638,8 @@ englische Begriff am gebräuchlisten: Integer.</p>
 </div>
 <p>Mit einer Operation verlassen wir aber bereits den Bereich der ganzen Zahlen,
 den Bereich der Integers. <code class="docutils literal notranslate"><span class="pre">25/5</span></code> ist wieder eine ganze Zahl, nicht jedoch
-<code class="docutils literal notranslate"><span class="pre">25/3</span></code>. Damit sind wir bei den Fließkommazahlen, den sogenannten Floats. Zur
-Verfügung stehen auch hier die üblichen Operationen.</p>
-<p>Achtung: Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein
-Komma.</p>
+<code class="docutils literal notranslate"><span class="pre">25/3</span></code>. Damit sind wir bei den Fließkommazahlen. Auch hier wird üblicherweise
+der englische Begriff <strong>Float</strong> für <strong>Fließkommazahl</strong> verwendet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">2.3</span> <span class="o">+</span> <span class="mf">4.5</span>
@@ -697,14 +712,32 @@ Komma.</p>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VtiDkRDPA_c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
+<div class="warning admonition">
+<p class="admonition-title">Hinweis</p>
+<p>Verwenden Sie stets einen Punkt als Dezimaltrennzeichen, nicht ein
+Komma!</p>
+</div>
+<p>Das folgende Video gibt eine Einführung in das Thema »Zahlen mit Python«.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Zahlen in Python” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VtiDkRDPA_c" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
 <section id="string">
 <h3>String<a class="headerlink" href="#string" title="Permalink to this headline">#</a></h3>
 <p>Daten sind aber sehr oft keine Zahlen. Beispielsweise könnte man sich
 vorstellen, eine Einkaufsliste zu erstellen und diese im Computer oder in einer
-Notiz-App auf dem Handy zu speichern. Eine solche Zeichenkette heißt in der
-Informatik String. Mit Zeichen meint man dabei Zahlen, Buchstaben oder andere
-Zeichen wie beispielsweise !”§$%&amp;/()=?.</p>
+Notiz-App auf dem Handy zu speichern. Eine solche <strong>Zeichenkette</strong> heißt in der
+Informatik <strong>String</strong>. Mit Zeichen meint man dabei Zahlen, Buchstaben oder
+andere Zeichen wie beispielsweise !”§$%&amp;/()=?.</p>
 <p>Strings werden in Python durch einfache Hochkomma oder Anführungszeichen
 definiert.</p>
 <div class="cell docutils container">
@@ -719,7 +752,8 @@ definiert.</p>
 </div>
 </div>
 </div>
-<p>Mit Strings kann man ebenfalls “rechnen”, nur ist das Ergebnis vielleicht anders als erwartet.</p>
+<p>Mit Strings kann man ebenfalls “rechnen”, nur ist das Ergebnis vielleicht anders
+als erwartet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="s1">&#39;Dies ist ein String!&#39;</span>
@@ -744,23 +778,36 @@ definiert.</p>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sTEf4_mrLvw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Das folgende Video gibt eine Einführung zum Thema »Strings in Python«.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Strings in Python” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sTEf4_mrLvw" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
 </section>
-</section>
-<section id="variablen">
-<h2>Variablen<a class="headerlink" href="#variablen" title="Permalink to this headline">#</a></h2>
-<p>Variablen sind beschriftete Schubladen. Oder anders formuliert sind Variablen
-Objekte, denen man einen Namen gibt. Technisch gesehen sind diese Schubladen ein
-kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen Schubladen
-aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
-Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von Pi oder die
-aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
-<section id="zuweisung">
-<h3>Zuweisung<a class="headerlink" href="#zuweisung" title="Permalink to this headline">#</a></h3>
+<section id="variablen-und-zuweisung">
+<h2>Variablen und Zuweisung<a class="headerlink" href="#variablen-und-zuweisung" title="Permalink to this headline">#</a></h2>
+<p><strong>Variablen</strong> sind beschriftete Schubladen. Oder anders formuliert sind
+Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese
+Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen
+Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
+Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von <span class="math notranslate nohighlight">\(\pi\)</span> oder
+die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
+<section id="zuweisungen-sind-keine-gleichungen">
+<h3>Zuweisungen sind keine Gleichungen<a class="headerlink" href="#zuweisungen-sind-keine-gleichungen" title="Permalink to this headline">#</a></h3>
 <p>Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu
-speichern. Eine Variable wird durch Zuweisung erzeugt. Damit meinen wir, dass
-eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt wird. Das
-erstmalige Füllen der Schublade nennt man in der Informatik auch Initialisieren.</p>
+speichern. Eine Variable wird durch eine <strong>Zuweisung</strong> erzeugt. Damit meinen
+wir, dass eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt
+wird. Das erstmalige Füllen der Schublade nennt man in der Informatik auch
+Initialisieren. Für die Zuweisung wird in Python das <code class="docutils literal notranslate"><span class="pre">=</span></code>-Zeichen verwendet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span>
@@ -794,22 +841,20 @@ wurde, können wir sie verwenden:</p>
 </div>
 </div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jfOLXKPGXJ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <p>Wichtig ist, dass das <code class="docutils literal notranslate"><span class="pre">=</span></code> in der Informatik eine andere Bedeutung hat als in der
 Mathematik. <code class="docutils literal notranslate"><span class="pre">=</span></code> meint nicht das Gleichheitszeichen, sondern den sogenannten
 <strong>Zuweisungsoperator</strong>. Das ist in der Programmierung ein Kommando, das eine
 Schublade befüllt oder technischer ausgedrückt, ein Objekt einer Variable
 zuweist.</p>
 <p>Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
-sie verwendet werden können, sonst tritt ein Fehler auf:</p>
-<p>Schreiben Sie in die folgende Code-Zelle <code class="docutils literal notranslate"><span class="pre">n</span></code> und lassen Sie sie ausführen. Was
-passiert?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code</span>
-</pre></div>
+sie verwendet werden können, sonst tritt ein Fehler auf.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur <code class="docutils literal notranslate"><span class="pre">n</span></code>. Lassen Sie die Code-Zelle ausführen. Was passiert?</p>
 </div>
-</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<p>Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor sie das erste Mal benutzt wird.</p>
 </div>
 <p>Sehr häufig findet man Code wie</p>
 <div class="cell docutils container">
@@ -822,7 +867,7 @@ passiert?</p>
 <p>Würden wir dies als Gleichung lesen, wie wir es aus der Mathematik gewohnt sind,
 x = x + 1, könnten wir x auf beiden Seiten subtrahieren und erhalten 0 = 1. Wir
 wissen, dass dies nicht wahr ist, also stimmt hier etwas nicht.</p>
-<p>In Python sind “Gleichungen” keine mathematischen Gleichungen, sondern
+<p>In Python sind Gleichungen keine mathematischen Gleichungen, sondern
 Zuweisungen. “=” ist kein Gleichheitszeichen im mathematischen Sinne, sondern
 eine Zuweisung. Die Zuweisung muss immer in der folgenden Weise zweistufig
 gelesen werden:</p>
@@ -848,7 +893,7 @@ Seite an das auf der rechten Seite angezeigte Objekt).</p></li>
 </div>
 </section>
 <section id="richtlinien-fur-variablennamen">
-<h3>Richtlinien für Variablennamen:<a class="headerlink" href="#richtlinien-fur-variablennamen" title="Permalink to this headline">#</a></h3>
+<h3>Richtlinien für Variablennamen<a class="headerlink" href="#richtlinien-fur-variablennamen" title="Permalink to this headline">#</a></h3>
 <p>Früher war der Speicherplatz von Computern klein, daher wurden häufig nur kurze
 Variablennamen wie beispielsweise <code class="docutils literal notranslate"><span class="pre">i</span></code> oder <code class="docutils literal notranslate"><span class="pre">N</span></code> verwendet. Heutzutage ist es
 Standard, nur in Ausnahmefällen (z.B. in Schleifen, dazu kommen wir noch) kurze
@@ -860,12 +905,12 @@ der Code</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mf">0.19</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="n">m</span><span class="o">*</span><span class="n">n</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="n">b</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.2
 </pre></div>
 </div>
 </div>
@@ -877,16 +922,22 @@ schon eher, was bezweckt wird:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mehrwertsteuersatz</span> <span class="o">=</span> <span class="mi">19</span><span class="o">/</span><span class="mi">100</span>
 <span class="n">nettopreis</span> <span class="o">=</span> <span class="mi">80</span>
 <span class="n">bruttopreis</span> <span class="o">=</span> <span class="n">nettopreis</span> <span class="o">+</span> <span class="n">mehrwertsteuersatz</span> <span class="o">*</span> <span class="n">nettopreis</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bruttopreis</span><span class="p">)</span>
+<span class="n">bruttopreis</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.2
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>95.2
 </pre></div>
 </div>
 </div>
 </div>
+<p>Code-Zellen zeigen arithmetische Operationen direkt nach Ausführen der
+Code-Zelle an. Wenn allerdings in der Code-Zelle mehrere Python-Anweisungen
+sind, müssen wir in die letzte Zeile nochmal die Variable selbst hinschreiben,
+deren Wert angezeigt werden soll. Das ist etwas umständlich und funktioniert
+auch nur mit Jupyter Notebooks. Normalerweise gibt es dazu eine Python-Funktion
+<code class="docutils literal notranslate"><span class="pre">print()</span></code>, auf die wir später noch zurückkommen.</p>
 <p>Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü
 oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll,
 lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte
@@ -894,16 +945,45 @@ Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise</p>
 <p><code class="docutils literal notranslate"><span class="pre">dateiname_alt</span></code> oder <code class="docutils literal notranslate"><span class="pre">dateiname_neu</span></code></p>
 <p>wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
 der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.</p>
-<p>Bemerkung: Hier kam erstmalig auch eine eingebaute Python-Funktion zum Einsatz,
-die <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung. Mehr Details zur <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisung finden Sie in der
-<a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">Python-Dokumentation/inputoutput</a>.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></section>
-<section id="mischen-von-datentypen">
-<h3>Mischen von Datentypen<a class="headerlink" href="#mischen-von-datentypen" title="Permalink to this headline">#</a></h3>
-<p>Werden zwei Integer geteilt, so wird das Ergebnis vom Datentyp automatisch in
-einen Float umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den
-Python-Interpreter bestimmen lassen, welcher Datentyp in einer Variable
-gespeichert ist.</p>
+<p>Die folgenden beiden Videos fassen die beiden Themen Variablen und Zuweisungen
+nochmals zusammen.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Variablen in Python” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jfOLXKPGXJ0" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Zuweisungen in Python” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XKFQ2_et5k8" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
+<section id="datentypen-ermitteln-mit-type">
+<h3>Datentypen ermitteln mit type()<a class="headerlink" href="#datentypen-ermitteln-mit-type" title="Permalink to this headline">#</a></h3>
+<p>Werden zwei Integer geteilt, so wird das Ergebnis automatisch in einen Float
+umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den Python-Interpreter
+bestimmen lassen, welcher Datentyp in einer Variable gespeichert ist. Mit
+Funktion ist an dieser Stelle keine mathematische Funktion gemeint. Eine
+<strong>Funktion</strong> sind viele Anweisungen nacheinander, um eine bestimmte Teilaufgabe
+zu lösen. Damit klar ist, dass es sich um eine Funktion und nicht um eine
+Variable handelt, werden runde Klammern an den Namen der Funktion gehängt.</p>
+<p>In diesem Fall soll der Datentyp eines Objektes ermittelt werden. Damit der
+Python-Interpreter weiß, von welcher Variable der Datentyp ermittelt werden
+soll, schreiben wir die Variable in runde Klammern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">*</span> <span class="mi">5</span>
@@ -932,61 +1012,185 @@ gespeichert ist.</p>
 </div>
 <p>Nicht immer ist es aber möglich, Datentypen zu mischen. Dann meldet Python einen
 Fehler.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1WqFJ5wsA4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Das folgende Video fasst die Datentypen Integer, Float und String nochmal zusammen.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “Datentypen in Python” von Programmieren lernen<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1WqFJ5wsA4o" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>
+</details></section>
 </section>
-<section id="typumwandlungen-type-casting">
-<h3>Typumwandlungen (Type Casting)<a class="headerlink" href="#typumwandlungen-type-casting" title="Permalink to this headline">#</a></h3>
-<p>Es ist aber auch möglich, einen Datentyp explizit in einen anderen Datentyp
-umzuwandeln. Informatiker sagen dazu, einen Type Cast vorzunehmen. Soll ein
-Datentyp in einen Integer umgewandelt werden, so verwenden wir die Funktion
-<code class="docutils literal notranslate"><span class="pre">int()</span></code>. Die Umwandlung in einen Float erfolgt per <code class="docutils literal notranslate"><span class="pre">float()</span></code> und in einen String
-wandeln wir mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">str()</span></code> um. Das klappt nicht mit jedem
-Variableninhalt, die Umwandlung muss machbar sein, wie die folgenden Beispiele
-zeigen.</p>
+<section id="ausgaben-mit-print">
+<h2>Ausgaben mit print()<a class="headerlink" href="#ausgaben-mit-print" title="Permalink to this headline">#</a></h2>
+<p>Jetzt lernen Sie eine weitere Python-Funktion kennen. Bei den obigen
+Rechenaufgaben wurde automatisch das Ergebnis der Rechnung angezeigt, sobald die
+Code-Zelle ausgeführt wurde. Dies ist eine Besonderheit der Jupyter Notebooks,
+würde aber in einem normalen Python-Programm nicht funktionieren. Auch möchte
+man vielleicht ein Zwischenergebnis anzeigen lassen. Die interaktive Ausgabe der
+Jupyter Notebooks zeigt jedoch immer nur den Inhalt der letzten Zeile an.</p>
+<p>Für die Anzeige von Rechenergebnissen oder Texten gibt es in Python die
+<strong>print()</strong>-Funktion. Die print()-Funktion in Python gibt den Wert am Bildschirm
+aus, der ihr als sogenanntes <strong>Argument</strong> in den runden Klammern übergeben wird.
+Das kann zum Beispiel eine Zahl oder eine Rechenaufgabe sein, wie in dem
+folgenden Beispiel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_old</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">x_new</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x_old</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+6
 </pre></div>
 </div>
 </div>
 </div>
+<p>In der ersten Zeile ist das Argument für die print()-Funktion die Zahl 2. Das
+Argument wird in runde Klammern hinter den Funktionsnamen <code class="docutils literal notranslate"><span class="pre">print</span></code> geschrieben.
+Ein Argument ist sozusagen der Input, der an die print()-Funktion übergeben
+wird, damit der Python-Interpreter weiß, welcher Wert auf dem Bildschirm
+angezeigt werden soll.</p>
+<p>Das zweite Beispiel in der zweiten Zeile funktioniert genauso. Nur wird diesmal
+eine komplette Rechnung als Argument an die print()-Funktion übergeben. In dem
+Fall rechnet der Python-Interpreter erst den Wert der Rechnung, also <code class="docutils literal notranslate"><span class="pre">3+3=6</span></code> aus
+und übergibt dann die <code class="docutils literal notranslate"><span class="pre">6</span></code> an die print()-Funktion. Die print()-Funktion wiederum
+zeigt dann die <code class="docutils literal notranslate"><span class="pre">6</span></code> am Bildschirm an.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Lassen Sie Python den Term <span class="math notranslate nohighlight">\(3:4\)</span> berechnen und geben Sie das Ergebnis mit der print()-Funktion aus.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_old</span> <span class="o">=</span> <span class="s1">&#39;3&#39;</span>
-<span class="n">x_new</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_old</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geben Sie nach diesem Kommentar Ihren Code ein:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Python kann mit der print()-Funktion jedoch nicht nur Zahlen ausgeben, sondern
+auch Texte, also Strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hallo
 </pre></div>
 </div>
 </div>
 </div>
-<p>Der folgende Code ist in Markdown geschrieben, da ansonsten eine Fehlermeldung
-erzeugt würde:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_old</span> <span class="o">=</span> <span class="s1">&#39;drei&#39;</span>
-<span class="n">x_new</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x_old</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Probieren Sie aus was passiert, wenn Sie die einfachen Anführungszeichen <code class="docutils literal notranslate"><span class="pre">'</span></code>
+durch doppelte Anführungszeichen <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> ersetzen. Lassen Sie den Text Hallo Welt
+ausgeben :-)</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Geben Sie nach diesem Kommentar Ihren Code ein:</span>
 </pre></div>
 </div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u_ECGvn1Z2c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo Welt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Zum Schluss behandeln wir noch formatierte Strings, die sogenannten f-Strings.
+Seit Python 3.6 erleichtert dieser Typ von String die Programmierung. Falls Sie
+Python-Code sehen, in dem Prozentzeichen vorkommen (ganz, ganz alt) oder die
+<code class="docutils literal notranslate"><span class="pre">.format()</span></code>-Methode benutzt wird, wundern Sie sich nicht. In dieser Vorlesung
+verwenden wir jedoch f-Strings.</p>
+<p><strong>f-Strings</strong> sind die Abkürzung für “formatted string literals”. Sie
+ermöglichen es, den Wert einer Variable oder einen Ausdruck direkt in den String
+einzubetten. Dazu werden geschweifte Klammern verwendet, also <code class="docutils literal notranslate"><span class="pre">{</span></code> und <code class="docutils literal notranslate"><span class="pre">}</span></code> und zu
+Beginn des Strings wird ein <code class="docutils literal notranslate"><span class="pre">f</span></code> eingefügt, um aus dem String einen f-String zu
+machen. Der Python-Interpreter fügt dann zur Laufzeit des Programms den
+entsprechenden Wert der Variable in den String ein.</p>
+<p>Hier ein Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span>
+<span class="n">alter</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mein Name ist </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> und ich bin </span><span class="si">{</span><span class="n">alter</span><span class="si">}</span><span class="s1"> Jahre alt.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mein Name ist Alice und ich bin 20 Jahre alt.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Insbesondere bei Ausgabe von Zahlen sind f-Strings besonders nützlich. Wenn nach
+dem Variablennamen ein Doppelpunkt eingefügt wird, kann danach die Anzahl der
+gewünschten Stellen vor dem Komma (hier natürlich ein Punkt) und der
+Nachkommastellen festgelegt werden. Zusätzlich setzen wir ein <code class="docutils literal notranslate"><span class="pre">f</span></code> in die
+geschweiften Klammern, um einen Float anzeigen zu lassen. Im folgenden Beispiel
+geben wir <span class="math notranslate nohighlight">\(\pi\)</span> auf zwei Nachkommastellen an.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.141592653589793238462643383279</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pi = </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s1">1.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pi = 3.14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist schwierig, sich alle Formatierungsoptionen zu merken. Auf der
+Internetseite
+<a class="reference external" href="https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/">https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/</a>
+finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Ddokument
+herunterladen.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Mini-Übung</p>
+<p>Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beide Seitenlängen werden jeweils in den Variablen <code class="docutils literal notranslate"><span class="pre">laenge</span></code> und <code class="docutils literal notranslate"><span class="pre">breite</span></code> gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: “Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.”, wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eingabe</span>
+<span class="n">laenge</span> <span class="o">=</span> <span class="mf">5.5</span>
+<span class="n">breite</span> <span class="o">=</span> <span class="mf">6.3</span>
+
+<span class="c1"># Verarbeitung</span>
+<span class="n">flaeche</span> <span class="o">=</span> <span class="n">laenge</span> <span class="o">*</span> <span class="n">breite</span>
+
+<span class="c1"># Ausgabe </span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der Flächeninhalt eines Rechtecks mit den Seiten </span><span class="si">{</span><span class="n">laenge</span><span class="si">}</span><span class="s1"> und </span><span class="si">{</span><span class="n">breite</span><span class="si">}</span><span class="s1"> ist </span><span class="si">{</span><span class="n">flaeche</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </section>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
-<p>In diesem Abschnitt haben wir gelernt, was ein Datentyp ist und wie eine
-Variable mit einem Wert gefüllt wird. Im nächsten Abschnitt geht es um einen
-weiteren Datentyp namens Bool und darum, wie durch Vergleiche das Programm vom
-Ablauf her verzweigt wird.</p>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>In diesem Kapitel haben wir gelernt, was ein Datentyp ist, wie eine Variable mit
+einem Wert gefüllt wird und mit der print()-Funktion am Bildschirm ausgegeben
+wird. Die einfachsten Datentypen Integer, Float und String reichen allerdings
+nicht aus, um z.B. die eine Adresse mit Straße (String), Hausnummer (Integer)
+und Postleitzahl (Integer) in einer Variablen gemeinsam zu speichern. Dazu
+lernen wir im nächsten Abschnitt den Datentyp Liste kennen.</p>
 </section>
 </section>
 
@@ -1027,7 +1231,7 @@ Ablauf her verzweigt wird.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Crashkurs Python (Teil 1)</p>
+        <p class="prev-next-title">2. Crashkurs Python</p>
       </div>
     </a>
     <a class="right-next"
@@ -1035,7 +1239,7 @@ Ablauf her verzweigt wird.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bool, Vergleiche und Programmverzweigung</p>
+        <p class="prev-next-title">2.1 Listen und for-Schleifen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1063,14 +1267,14 @@ Ablauf her verzweigt wird.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string">String</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variablen">Variablen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuweisung">Zuweisung</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">Richtlinien für Variablennamen:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mischen-von-datentypen">Mischen von Datentypen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#typumwandlungen-type-casting">Typumwandlungen (Type Casting)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variablen-und-zuweisung">Variablen und Zuweisung</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zuweisungen-sind-keine-gleichungen">Zuweisungen sind keine Gleichungen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#richtlinien-fur-variablennamen">Richtlinien für Variablennamen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datentypen-ermitteln-mit-type">Datentypen ermitteln mit type()</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ausgaben-mit-print">Ausgaben mit print()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 
