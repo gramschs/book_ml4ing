@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 2.1 Listen und for-Schleifen
+# 2.2 Listen und for-Schleifen
 
 Bisher haben wir drei verschiedene Datentypen kennengelernt:
 
