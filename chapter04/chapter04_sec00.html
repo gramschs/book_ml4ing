@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Pandas anstatt Excel &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>4. Tabellarische Daten erkunden &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter04/chapter04_sec00';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Series und DataFrame" href="chapter04_sec01.html" />
+    <link rel="next" title="4.1 Datenstruktur DataFrame" href="chapter04_sec01.html" />
     <link rel="prev" title="3.3 Boxplots mit Plotly" href="../chapter03/chapter03_sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -184,10 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Pandas anstatt Excel</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapter04_sec01.html">Series und DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter04_sec02.html">Arbeiten mit Tabellendaten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter04_sec03.html">Statistik mit Pandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">4. Tabellarische Daten erkunden</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -301,6 +301,55 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="article-header-buttons">
 
 
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter04/chapter04_sec00.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 <a href="https://github.com/gramschs/book_ml4ing" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
@@ -324,6 +373,23 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter04/chapter04_sec00.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
       
       
       
@@ -407,7 +473,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Pandas anstatt Excel</h1>
+    <h1>4. Tabellarische Daten erkunden</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,18 +487,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pandas-anstatt-excel">
-<h1>Pandas anstatt Excel<a class="headerlink" href="#pandas-anstatt-excel" title="Permalink to this headline">#</a></h1>
-<p>Maschinelles LErnenist dazu gedacht, Muster in größeren Datenmengen zu finden.
-Der einfache Datenyp Liste reicht nicht aus, um größere Datenmengen effizient zu
-verwalten. Typischerweise liegen größere Datensätze in Form von Tabllen vor. Das
-verwendetet Datenformat variiert dabei. Manchnal liegen die Daten im
-Excel-Format vor, sehr oft jedoch auch im CSV-Format. Davei steht CSV als
-Abkürzung für Comma Separated Values, also Werte die durch ein Komma getrennt
-werden.</p>
-<p>Um Daten in Tabellenform einzulesen und leicht zu verarbeiten könnnen, gibt es
-in Python das Pandas-Modul, das wir uns in diesem Kapitel näher ansehen werden.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tabellarische-daten-erkunden">
+<h1>4. Tabellarische Daten erkunden<a class="headerlink" href="#tabellarische-daten-erkunden" title="Permalink to this headline">#</a></h1>
+<p>TODO</p>
+<p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
+</ul>
 </div>
 </section>
 
@@ -481,7 +545,7 @@ in Python das Pandas-Modul, das wir uns in diesem Kapitel näher ansehen werden.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Series und DataFrame</p>
+        <p class="prev-next-title">4.1 Datenstruktur DataFrame</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

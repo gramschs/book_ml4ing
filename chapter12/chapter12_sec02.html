@@ -186,10 +186,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">Pandas anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">Series und DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">Arbeiten mit Tabellendaten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">Statistik mit Pandas</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Scatterplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scattermatrix</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -554,16 +554,8 @@ demonstrieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.96
-Score für Testdaten: 0.80
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:549: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.95
+Score für Testdaten: 0.84
 </pre></div>
 </div>
 </div>
@@ -585,7 +577,7 @@ ein, um zu sehen, wo das neuronale Netzt die Trennlinien zieht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6a847068a72359ddc6d8da77e83481f38cfb0f27326d64ee61dc3d28e2e1fdf0.png" src="../_images/6a847068a72359ddc6d8da77e83481f38cfb0f27326d64ee61dc3d28e2e1fdf0.png" />
+<img alt="../_images/fed9fb33208ddb9d2c3dad602c019d1cdeb563bcd88fb560fe473fdc7dd899ca.png" src="../_images/fed9fb33208ddb9d2c3dad602c019d1cdeb563bcd88fb560fe473fdc7dd899ca.png" />
 </div>
 </div>
 <p>Im Folgenden wollen wir uns ansehen, welche Bedeutung die optionalen Parameter
@@ -619,6 +611,9 @@ Trainings- und Testdaten:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.94
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:549: ConvergenceWarning: lbfgs failed to converge (status=1):
 STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
 
@@ -627,10 +622,7 @@ Increase the number of iterations (max_iter) or scale the data as shown in:
   self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.96
-</pre></div>
-</div>
-<img alt="../_images/d4d74f27e43fee900206cba5c89deaa69ba9c7b9320eecdedefa3b4349334b44.png" src="../_images/d4d74f27e43fee900206cba5c89deaa69ba9c7b9320eecdedefa3b4349334b44.png" />
+<img alt="../_images/daea50259b33e07f863ccdb279f8a2419fa29788560f93562f21183c9ce46105.png" src="../_images/daea50259b33e07f863ccdb279f8a2419fa29788560f93562f21183c9ce46105.png" />
 </div>
 </div>
 <p>Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate <span class="math notranslate nohighlight">\(\alpha\)</span> und

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Arbeiten mit Tabellendaten &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>4.2 Arbeiten mit Tabellendaten &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter04/chapter04_sec02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Statistik mit Pandas" href="chapter04_sec03.html" />
-    <link rel="prev" title="Series und DataFrame" href="chapter04_sec01.html" />
+    <link rel="next" title="4.3 Scatterplots und Scattermatrix" href="chapter04_sec03.html" />
+    <link rel="prev" title="4.1 Datenstruktur DataFrame" href="chapter04_sec01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -184,10 +184,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter04_sec00.html">Pandas anstatt Excel</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="chapter04_sec01.html">Series und DataFrame</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Arbeiten mit Tabellendaten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter04_sec03.html">Statistik mit Pandas</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -312,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter04/chapter04_sec02.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter04/chapter04_sec02.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,6 +377,23 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       <li><a href="../_sources/chapter04/chapter04_sec02.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/chapter04/chapter04_sec02.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +403,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -458,7 +475,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Arbeiten mit Tabellendaten</h1>
+    <h1>4.2 Arbeiten mit Tabellendaten</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -469,21 +486,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zeilen">Zugriff auf Zeilen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einzelne-zeile">Einzelne Zeile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenhangende-zeilen-slicing">Zusammenhängende Zeilen: Slicing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selektion-unzusammenhangender-zeilen-per-liste">Selektion unzusammenhängender Zeilen per Liste</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-spalten">Zugriff auf Spalten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einzelne-spalte">Einzelne Spalte</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenhangende-spalten-slicing">Zusammenhängende Spalten: Slicing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selektion-unzusammenhangender-spalten-per-liste">Selektion unzusammenhängender Spalten per Liste</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-spalten">Zugriff auf Spalten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zeilen">Zugriff auf Zeilen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zellen">Zugriff auf Zellen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtern">Filtern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-zeilen-oder-spalten">Mehrere Zeilen oder Spalten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neue-spalte-oder-zeile-einfugen">Neue Spalte oder Zeile einfügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -496,36 +504,212 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="arbeiten-mit-tabellendaten">
-<h1>Arbeiten mit Tabellendaten<a class="headerlink" href="#arbeiten-mit-tabellendaten" title="Permalink to this headline">#</a></h1>
+<h1>4.2 Arbeiten mit Tabellendaten<a class="headerlink" href="#arbeiten-mit-tabellendaten" title="Permalink to this headline">#</a></h1>
+<p>In Tabellenkalkulationssoftware ist es möglich, einzelne Zeilen oder Spalten zu
+bearbeiten. Pandas mit seiner Dantestruktur DataFrame bietet diese Möglichkeit
+ebenfalls. Wie auf einzelne Spalten und Zeilen zugegriffen wird und wie die
+Daten bearbeitet werden können, zeigt dieses Kapitel.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie können auf ganze Zeilen und Spalten zugreifen:</p>
-<ul>
-<li><p>Zugriff auf eine einzelne Zeile oder Spalte, indem ein Index spezifiziert wird</p></li>
-<li><p>Zugriff auf mehrere zusammenhängende Zeilen oder Spalten (Slice)</p></li>
-<li><p>Zugriff auf mehrere unzusammenhängende Zeilen oder Spalten (Selektion)</p></li>
-</ul>
-</li>
-<li><p>Sie können auf einzelne oder mehrere Zellen der Tabelle zugreifen.</p></li>
-<li><p>Sie können ein DataFrame-Objekt nach einer Eigenschaft filtern.</p></li>
+<li><p>Sie können mit eckigen Klammern <strong>[]</strong> und dem Spaltenindex auf eine ganze
+Spalte zugreifen.</p></li>
+<li><p>Sie können mit <strong>.loc[]</strong> und dem Zeilenindex auf eine ganze Zeile zugreifen.</p></li>
+<li><p>Sie können mit <strong>.loc[zeileindex, spaltenindex]</strong> auf eine einzelne Zelle der
+Tabelle zugreifen.</p></li>
+<li><p>Sie können mehrere unzusammenhängende Zeilen/Spalten mittels Liste auswählen.</p></li>
+<li><p>Sie können zusammenhängende Bereich mittels <strong>Slicing</strong> auswählen.</p></li>
+<li><p>Sie können eine Tabelle um eine Zeile oder Spalte erweitern.</p></li>
 </ul>
 </div>
 </section>
-<section id="zugriff-auf-zeilen">
-<h2>Zugriff auf Zeilen<a class="headerlink" href="#zugriff-auf-zeilen" title="Permalink to this headline">#</a></h2>
-<p>Als erstes möchten wir ganze Zeilen der Tabelle lesen. Dazu verwenden wir das
-Attribut <code class="docutils literal notranslate"><span class="pre">.loc</span></code> mit passenden Indizes.</p>
-<p>Für die folgenden Demonstrationen wollen wir wiederum die Spielerdaten der
-Top7-Fußballvereine der Bundesligasaison 2020/21 verwenden. Importieren Sie
-bitte vorab die Daten und verwenden Sie die 1. Spalte (= Namen) als Zeilenindex.</p>
+<section id="zugriff-auf-spalten">
+<h2>Zugriff auf Spalten<a class="headerlink" href="#zugriff-auf-spalten" title="Permalink to this headline">#</a></h2>
+<p>Bei einer Liste oder der Pandas-Datenstruktur Series haben wir auf ein einzelnes
+Element zugegriffen, indem wir eckige Klammern benutzt haben. Bei Tabellen und
+damit auch DataFrames ist es üblich, dass die Eigenschaften in den Spalten
+stehen und in den Zeilen die einzelnen Datensätze. Mit den eckigen Klammern und
+dem Indexnamen greifen wir diesmal also nicht nur ein Element heraus, sondern
+gleich eine ganze Spalte.</p>
+<p>Falls Sie aus dem vorherigen Kapitel den Datensatz <code class="docutils literal notranslate"><span class="pre">autoscout24_xxs.csv</span></code> noch
+geladen haben, können Sie sich mit <code class="docutils literal notranslate"><span class="pre">.info()</span></code> die Spaltenüberschriften, also den
+Index, direkt anzeigen lassen. Ansonsten importieren Sie zuerst Pandas mit
+seiner üblichen Abkürzung pd und laden den Datensatz <a class="reference external" href="https://nextcloud.frankfurt-university.de/s/xDoGYwbmcrD9sDc"><code class="docutils literal notranslate"><span class="pre">→</span> <span class="pre">Download</span></code></a>. Spalte
+heißt auf Englisch columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;bundesliga_top7_offensive.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">tabelle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_xxs.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 10 entries, Audi Nr. 1 to Citroen Nr. 5
+Data columns (total 14 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Marke                 10 non-null     object 
+ 1   Modell                10 non-null     object 
+ 2   Farbe                 10 non-null     object 
+ 3   Erstzulassung         10 non-null     object 
+ 4   Jahr                  10 non-null     int64  
+ 5   Preis (Euro)          10 non-null     int64  
+ 6   Leistung (kW)         10 non-null     int64  
+ 7   Leistung (PS)         10 non-null     int64  
+ 8   Getriebe              10 non-null     object 
+ 9   Kraftstoff            10 non-null     object 
+ 10  Verbrauch (l/100 km)  10 non-null     float64
+ 11  Verbrauch (g/km)      10 non-null     int64  
+ 12  Kilometerstand (km)   10 non-null     int64  
+ 13  Bemerkungen           10 non-null     object 
+dtypes: float64(1), int64(6), object(7)
+memory usage: 1.2+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Farbe der 10 Autos können wir folgendermaßen aus der Tabelle auswählen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">farbe</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Farbe&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Was steckt jetzt in der Variable <code class="docutils literal notranslate"><span class="pre">farbe</span></code>? Ermitteln wir zunächst, welchen
+Datentyp das Objekt hat, das in <code class="docutils literal notranslate"><span class="pre">farbe</span></code> gespeichert ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">farbe</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es ist ein Series-Objekt mit dem Namen Farbe, also dem Spaltenindex. Das neu
+erzeugte Series-Objekt kann also beispielsweise mit <code class="docutils literal notranslate"><span class="pre">.head()</span></code> angezeigt werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">farbe</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ID
+Audi Nr. 1    silber
+Audi Nr. 2      weiß
+Audi Nr. 3      blau
+BMW Nr. 1       blau
+BMW Nr. 2       gold
+Name: Farbe, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein DataFrame besteht aus Series-Objekten.</p>
+</section>
+<section id="zugriff-auf-zeilen">
+<h2>Zugriff auf Zeilen<a class="headerlink" href="#zugriff-auf-zeilen" title="Permalink to this headline">#</a></h2>
+<p>Natürlich kann es auch Gründe geben, sich einen einzelnen Datensatz mit allen
+Eigenschaften herauszugreifen. Oder anders ausgedrückt, möchte man in der
+Tabelle eine einzelne Zeile auswählen. Dazu gibt es das Attribut <code class="docutils literal notranslate"><span class="pre">.loc</span></code>. Danach
+werden wirder eckige Klammern benutzt, wobei deismal der Zeilenindex verwendet
+wird.</p>
+<p>Der folgende Code-Schnippsel speichert die Zeile des 4. Autos (= BMW Nr. 1) in
+der Variable <code class="docutils literal notranslate"><span class="pre">viertes_auto</span></code> ab. Wir ermitteln gleich den Datentyp dazu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viertes_auto</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;BMW Nr. 1&#39;</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">viertes_auto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>Auch eine einzelne Zeile ist eine Series-Datenstruktur, die wir mit den
+Series-Methoden weiter bearbeiten können. Der Name des Series-Objektes ist
+diesmal der alte Zeilenindex. Wir lassen den Datensatz mit <code class="docutils literal notranslate"><span class="pre">.head()</span></code> anzeigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viertes_auto</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Marke                BMW
+Modell            BMW X3
+Farbe               blau
+Erstzulassung    04/2018
+Jahr                2018
+Name: BMW Nr. 1, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zugriff-auf-zellen">
+<h2>Zugriff auf Zellen<a class="headerlink" href="#zugriff-auf-zellen" title="Permalink to this headline">#</a></h2>
+<p>Es kann auch vorkommen, dass man gezielt auf eine einzelne Zelle zugreifen
+möchte. Auch dazu benutzen wir das Attribut <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>. Für eine einzelne Zelle
+müssen wir angeben, in welcher Zeile und in welcher Spalte sich diese Zelle
+befindet. Das Attribut <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> ermöglicht auch zwei Angaben, also Zeile und
+Spalte, indem beide Werte durch ein Komma getrennt werden.</p>
+<p>Wollen wir beispielsweise wissen, wann der Audi Nr. 3 zum zugelassen wurde, so
+gehen wir folgendermaßen vor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">erstzulassung_audi3</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Audi Nr. 3&#39;</span><span class="p">,</span> <span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">erstzulassung_audi3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt erhalten wir keine Series-Datenstruktur zurück, sondern den Datentyp des
+Elements in dieser Zelle. In unserem Beispiel ist die Erstzulassung als String
+gespeichert, den wir mit der print()-Funktion ausgeben lassen können:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">erstzulassung_audi3</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11/2018
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir Menschen können diesen String natürlich interpretieren und sehen, dass der
+Audi Nr. 3 im November 2018 zum ersten Mal zugelassen wurde. Für Python ist es
+an dieser Stelle aber nicht möglich, eine korrekte Interpretation des Strings zu
+bieten.</p>
+</section>
+<section id="mehrere-zeilen-oder-spalten">
+<h2>Mehrere Zeilen oder Spalten<a class="headerlink" href="#mehrere-zeilen-oder-spalten" title="Permalink to this headline">#</a></h2>
+<p>Sollen mehrere Zeilen oder Spalten gleichzeitig ausgewählt werden, so werden die
+entspchenden Indizes als eine Liste in die eckigen Klammern gesetzt.</p>
+<p>Der folgende Code wählt sowohl die Erstzulassung als auch den Preis aus.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mehrere_spalten</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">,</span> <span class="s1">&#39;Preis (Euro)&#39;</span><span class="p">]</span> <span class="p">]</span>
+<span class="n">mehrere_spalten</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -548,24 +732,267 @@ bitte vorab die Daten und verwenden Sie die 1. Spalte (= Namen) als Zeilenindex.
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Club</th>
-      <th>Nationality</th>
-      <th>Position</th>
-      <th>Age</th>
-      <th>Matches</th>
-      <th>Starts</th>
-      <th>Mins</th>
-      <th>Goals</th>
-      <th>Assists</th>
-      <th>Penalty_Goals</th>
-      <th>Penalty_Attempted</th>
-      <th>xG</th>
-      <th>xA</th>
-      <th>Yellow_Cards</th>
-      <th>Red_Cards</th>
+      <th>Erstzulassung</th>
+      <th>Preis (Euro)</th>
     </tr>
     <tr>
-      <th>Name</th>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Audi Nr. 1</th>
+      <td>08/1997</td>
+      <td>1999</td>
+    </tr>
+    <tr>
+      <th>Audi Nr. 2</th>
+      <td>05/2023</td>
+      <td>35990</td>
+    </tr>
+    <tr>
+      <th>Audi Nr. 3</th>
+      <td>11/2018</td>
+      <td>17850</td>
+    </tr>
+    <tr>
+      <th>BMW Nr. 1</th>
+      <td>04/2018</td>
+      <td>46830</td>
+    </tr>
+    <tr>
+      <th>BMW Nr. 2</th>
+      <td>07/2020</td>
+      <td>27443</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Wenn die Spalten oder Zeilen nacheinander kommen, also zusammenhängend sind,
+brauchen wir nicht alle Indizes in die Liste schreiben. Dann genügt es, den
+ersten Index und den letzten Index zu nehmen und dazwischen einen Doppelpunkt zu
+setzen. Diese Art, Zeilen oder Spalten auszuwählen, wird in der Informatik als
+<strong>Slicing</strong> bezeichnet. Alle Autos der Marke Citroën werden also folgendermaßen
+extrahiert:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">citroens</span> <span class="o">=</span> <span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="s1">&#39;Citroen Nr. 1&#39;</span> <span class="p">:</span> <span class="s1">&#39;Citroen Nr. 5&#39;</span><span class="p">]</span> 
+<span class="n">citroens</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Marke</th>
+      <th>Modell</th>
+      <th>Farbe</th>
+      <th>Erstzulassung</th>
+      <th>Jahr</th>
+      <th>Preis (Euro)</th>
+      <th>Leistung (kW)</th>
+      <th>Leistung (PS)</th>
+      <th>Getriebe</th>
+      <th>Kraftstoff</th>
+      <th>Verbrauch (l/100 km)</th>
+      <th>Verbrauch (g/km)</th>
+      <th>Kilometerstand (km)</th>
+      <th>Bemerkungen</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Citroen Nr. 1</th>
+      <td>Citroen</td>
+      <td>C3</td>
+      <td>beige</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>14240</td>
+      <td>60</td>
+      <td>82</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>4.2</td>
+      <td>97</td>
+      <td>57070</td>
+      <td>Feel PureTech 83 + LED + PDC + DAB + BLUETOOTH</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 2</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>07/2020</td>
+      <td>2020</td>
+      <td>19950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>107</td>
+      <td>81700</td>
+      <td>HDI 100 Live M Navi Klima PDC</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 3</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>12/2019</td>
+      <td>2019</td>
+      <td>15950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>108</td>
+      <td>98832</td>
+      <td>Live M/1 Hand/Klima/Tempomat/PDC</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 4</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>schwarz</td>
+      <td>01/2021</td>
+      <td>2021</td>
+      <td>21990</td>
+      <td>96</td>
+      <td>131</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.4</td>
+      <td>116</td>
+      <td>8500</td>
+      <td>Club XL Kasten Blue-HDI 130 *Mwst.,Navi,DAB,Temp.</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 5</th>
+      <td>Citroen</td>
+      <td>Citroen C1</td>
+      <td>silber</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>12450</td>
+      <td>53</td>
+      <td>72</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>3.7</td>
+      <td>85</td>
+      <td>15200</td>
+      <td>VTi 72 Shine+KAMERA+SHZ+APP+DAB+KLIMA+BT</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Jetzt kann beispielsweise der mittlere Verkaufspreis aller Citroëns
+folgendermaßen ermittelt werden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert</span> <span class="o">=</span> <span class="n">citroens</span><span class="p">[</span><span class="s1">&#39;Preis (Euro)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der mittlere Verkaufspreis der Citroens ist </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der mittlere Verkaufspreis der Citroens ist 16916.00 EUR.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beim Slicing können wir den Angangsindex oder den Endindex oder sogar beides
+weglassen. Wenn wir den Anfangsindex weglassen, fängt Pandas bei der ersten
+Zeile/Spalte an. Lassen wir den Endindex weg, geht der Slice automatisch bis zum
+Ende.</p>
+</section>
+<section id="neue-spalte-oder-zeile-einfugen">
+<h2>Neue Spalte oder Zeile einfügen<a class="headerlink" href="#neue-spalte-oder-zeile-einfugen" title="Permalink to this headline">#</a></h2>
+<p>Eine neue Spalte einzufügen, funktioniert recht einfach. Dazu wird ein neuer Spaltenindex erzeugt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Verbrauch pro Leistung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span>
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Marke</th>
+      <th>Modell</th>
+      <th>Farbe</th>
+      <th>Erstzulassung</th>
+      <th>Jahr</th>
+      <th>Preis (Euro)</th>
+      <th>Leistung (kW)</th>
+      <th>Leistung (PS)</th>
+      <th>Getriebe</th>
+      <th>Kraftstoff</th>
+      <th>Verbrauch (l/100 km)</th>
+      <th>Verbrauch (g/km)</th>
+      <th>Kilometerstand (km)</th>
+      <th>Bemerkungen</th>
+      <th>Verbrauch pro Leistung</th>
+    </tr>
+    <tr>
+      <th>ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -585,747 +1012,470 @@ bitte vorab die Daten und verwenden Sie die 1. Spalte (= Namen) als Zeilenindex.
   </thead>
   <tbody>
     <tr>
-      <th>Manuel Neuer</th>
-      <td>Bayern Munich</td>
-      <td>GER</td>
-      <td>GK</td>
-      <td>34</td>
-      <td>33</td>
-      <td>33</td>
-      <td>2970</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.00</td>
-      <td>0.01</td>
-      <td>1</td>
-      <td>0</td>
+      <th>Audi Nr. 1</th>
+      <td>Audi</td>
+      <td>Audi A4</td>
+      <td>silber</td>
+      <td>08/1997</td>
+      <td>1997</td>
+      <td>1999</td>
+      <td>66</td>
+      <td>90</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>5.4</td>
+      <td>146</td>
+      <td>231000</td>
+      <td>1.9 TDI / AHK / Tüv neu</td>
+      <td>0.060000</td>
     </tr>
     <tr>
-      <th>Thomas Müller</th>
-      <td>Bayern Munich</td>
-      <td>GER</td>
-      <td>MF</td>
-      <td>30</td>
-      <td>32</td>
-      <td>31</td>
-      <td>2674</td>
-      <td>11</td>
-      <td>19</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0.24</td>
-      <td>0.39</td>
-      <td>0</td>
-      <td>0</td>
+      <th>Audi Nr. 2</th>
+      <td>Audi</td>
+      <td>Audi A1</td>
+      <td>weiß</td>
+      <td>05/2023</td>
+      <td>2023</td>
+      <td>35990</td>
+      <td>81</td>
+      <td>110</td>
+      <td>Automatik</td>
+      <td>Benzin</td>
+      <td>6.1</td>
+      <td>138</td>
+      <td>2500</td>
+      <td>S line 30 TFSI 81(110) kW(PS) S tr</td>
+      <td>0.055455</td>
     </tr>
     <tr>
-      <th>David Alaba</th>
-      <td>Bayern Munich</td>
-      <td>AUT</td>
-      <td>DF,MF</td>
-      <td>28</td>
-      <td>32</td>
-      <td>30</td>
-      <td>2675</td>
-      <td>2</td>
-      <td>4</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.04</td>
-      <td>0.08</td>
-      <td>4</td>
-      <td>0</td>
+      <th>Audi Nr. 3</th>
+      <td>Audi</td>
+      <td>Audi A3</td>
+      <td>blau</td>
+      <td>11/2018</td>
+      <td>2018</td>
+      <td>17850</td>
+      <td>85</td>
+      <td>116</td>
+      <td>Automatik</td>
+      <td>Benzin</td>
+      <td>6.6</td>
+      <td>150</td>
+      <td>127800</td>
+      <td>Sportback sport 30 TFSI PDC SHZ XENON</td>
+      <td>0.056897</td>
     </tr>
     <tr>
-      <th>Jérôme Boateng</th>
-      <td>Bayern Munich</td>
-      <td>GER</td>
-      <td>DF</td>
-      <td>31</td>
-      <td>29</td>
-      <td>29</td>
-      <td>2368</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.01</td>
-      <td>0.02</td>
-      <td>6</td>
-      <td>0</td>
+      <th>BMW Nr. 1</th>
+      <td>BMW</td>
+      <td>BMW X3</td>
+      <td>blau</td>
+      <td>04/2018</td>
+      <td>2018</td>
+      <td>46830</td>
+      <td>294</td>
+      <td>400</td>
+      <td>Automatik</td>
+      <td>Diesel</td>
+      <td>5.9</td>
+      <td>154</td>
+      <td>117433</td>
+      <td>M550 d xDrive AHK+HUD+360+SOFT+SITZKLIMA+NAV-PRO</td>
+      <td>0.014750</td>
     </tr>
     <tr>
-      <th>Robert Lewandowski</th>
-      <td>Bayern Munich</td>
-      <td>POL</td>
-      <td>FW</td>
-      <td>31</td>
-      <td>29</td>
-      <td>28</td>
-      <td>2458</td>
-      <td>41</td>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-      <td>1.16</td>
-      <td>0.13</td>
-      <td>4</td>
-      <td>0</td>
+      <th>BMW Nr. 2</th>
+      <td>BMW</td>
+      <td>BMW X2</td>
+      <td>gold</td>
+      <td>07/2020</td>
+      <td>2020</td>
+      <td>27443</td>
+      <td>103</td>
+      <td>140</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>5.5</td>
+      <td>125</td>
+      <td>19895</td>
+      <td>sDrive18i Advantage LED.Navi.RüKamera.ParkAss</td>
+      <td>0.039286</td>
     </tr>
     <tr>
-      <th>Joshua Kimmich</th>
-      <td>Bayern Munich</td>
-      <td>GER</td>
-      <td>MF</td>
-      <td>25</td>
-      <td>27</td>
-      <td>25</td>
-      <td>2194</td>
-      <td>4</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.10</td>
-      <td>0.27</td>
-      <td>4</td>
-      <td>0</td>
+      <th>Citroen Nr. 1</th>
+      <td>Citroen</td>
+      <td>C3</td>
+      <td>beige</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>14240</td>
+      <td>60</td>
+      <td>82</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>4.2</td>
+      <td>97</td>
+      <td>57070</td>
+      <td>Feel PureTech 83 + LED + PDC + DAB + BLUETOOTH</td>
+      <td>0.051220</td>
     </tr>
     <tr>
-      <th>Kingsley Coman</th>
-      <td>Bayern Munich</td>
-      <td>FRA</td>
-      <td>FW,MF</td>
-      <td>24</td>
-      <td>29</td>
-      <td>23</td>
-      <td>1752</td>
-      <td>5</td>
-      <td>10</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.21</td>
-      <td>0.34</td>
-      <td>1</td>
-      <td>0</td>
+      <th>Citroen Nr. 2</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>07/2020</td>
+      <td>2020</td>
+      <td>19950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>107</td>
+      <td>81700</td>
+      <td>HDI 100 Live M Navi Klima PDC</td>
+      <td>0.040196</td>
     </tr>
     <tr>
-      <th>Benjamin Pavard</th>
-      <td>Bayern Munich</td>
-      <td>FRA</td>
-      <td>DF</td>
-      <td>24</td>
-      <td>24</td>
-      <td>22</td>
-      <td>1943</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.02</td>
-      <td>0.09</td>
-      <td>3</td>
-      <td>0</td>
+      <th>Citroen Nr. 3</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>12/2019</td>
+      <td>2019</td>
+      <td>15950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>108</td>
+      <td>98832</td>
+      <td>Live M/1 Hand/Klima/Tempomat/PDC</td>
+      <td>0.040196</td>
     </tr>
     <tr>
-      <th>Alphonso Davies</th>
-      <td>Bayern Munich</td>
-      <td>CAN</td>
-      <td>DF</td>
-      <td>19</td>
-      <td>23</td>
-      <td>22</td>
-      <td>1763</td>
-      <td>1</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.01</td>
-      <td>0.04</td>
-      <td>2</td>
-      <td>1</td>
+      <th>Citroen Nr. 4</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>schwarz</td>
+      <td>01/2021</td>
+      <td>2021</td>
+      <td>21990</td>
+      <td>96</td>
+      <td>131</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.4</td>
+      <td>116</td>
+      <td>8500</td>
+      <td>Club XL Kasten Blue-HDI 130 *Mwst.,Navi,DAB,Temp.</td>
+      <td>0.033588</td>
     </tr>
     <tr>
-      <th>Serge Gnabry</th>
-      <td>Bayern Munich</td>
-      <td>GER</td>
-      <td>FW,MF</td>
-      <td>25</td>
-      <td>27</td>
-      <td>20</td>
-      <td>1644</td>
-      <td>10</td>
-      <td>2</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.44</td>
-      <td>0.25</td>
-      <td>4</td>
-      <td>0</td>
+      <th>Citroen Nr. 5</th>
+      <td>Citroen</td>
+      <td>Citroen C1</td>
+      <td>silber</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>12450</td>
+      <td>53</td>
+      <td>72</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>3.7</td>
+      <td>85</td>
+      <td>15200</td>
+      <td>VTi 72 Shine+KAMERA+SHZ+APP+DAB+KLIMA+BT</td>
+      <td>0.051389</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<section id="einzelne-zeile">
-<h3>Einzelne Zeile<a class="headerlink" href="#einzelne-zeile" title="Permalink to this headline">#</a></h3>
-<p>Uns interessieren die Spielerdaten von Joshua Kimmich näher. Um eine ganze Zeile
-aus der Tabelle herauszugreifen, verwenden wir das Attribut <code class="docutils literal notranslate"><span class="pre">.loc[zeilenindex]</span></code>
-und geben in eckigen Klammern den Index der Zeile an, die wir betrachten wollen.
-Da wir beim Import die Namen als Zeileindex gesetzt haben, lautet der Zugriff
-also wie folgt:</p>
+<p>Nach demselben Prinzip können wir einen neuen Datensatz aufnehmen und eine neue
+Zeile einfügen. Da wir uns auf die Zeilen beziehen, verwenden wir wieder
+<code class="docutils literal notranslate"><span class="pre">loc[]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeile</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Joshua Kimmich&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabelle</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Dacia Nr. 1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dacia&#39;</span><span class="p">,</span> <span class="s1">&#39;Dacia Duster&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;03/2023&#39;</span><span class="p">,</span> <span class="mi">2023</span><span class="p">,</span> <span class="mi">25749</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="s1">&#39;Schaltgetriebe&#39;</span><span class="p">,</span> <span class="s1">&#39;Diesel&#39;</span><span class="p">,</span> <span class="mf">5.3</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="s1">&#39;Journey Blue dCi 115 4x4&#39;</span><span class="p">,</span> <span class="mf">5.3</span><span class="o">/</span><span class="mi">114</span><span class="p">]</span> 
+<span class="n">tabelle</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Club                 Bayern Munich
-Nationality                    GER
-Position                        MF
-Age                             25
-Matches                         27
-Starts                          25
-Mins                          2194
-Goals                            4
-Assists                         10
-Penalty_Goals                    0
-Penalty_Attempted                0
-xG                             0.1
-xA                            0.27
-Yellow_Cards                     4
-Red_Cards                        0
-Name: Joshua Kimmich, dtype: object
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Marke</th>
+      <th>Modell</th>
+      <th>Farbe</th>
+      <th>Erstzulassung</th>
+      <th>Jahr</th>
+      <th>Preis (Euro)</th>
+      <th>Leistung (kW)</th>
+      <th>Leistung (PS)</th>
+      <th>Getriebe</th>
+      <th>Kraftstoff</th>
+      <th>Verbrauch (l/100 km)</th>
+      <th>Verbrauch (g/km)</th>
+      <th>Kilometerstand (km)</th>
+      <th>Bemerkungen</th>
+      <th>Verbrauch pro Leistung</th>
+    </tr>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Audi Nr. 1</th>
+      <td>Audi</td>
+      <td>Audi A4</td>
+      <td>silber</td>
+      <td>08/1997</td>
+      <td>1997</td>
+      <td>1999</td>
+      <td>66</td>
+      <td>90</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>5.4</td>
+      <td>146</td>
+      <td>231000.0</td>
+      <td>1.9 TDI / AHK / Tüv neu</td>
+      <td>0.060000</td>
+    </tr>
+    <tr>
+      <th>Audi Nr. 2</th>
+      <td>Audi</td>
+      <td>Audi A1</td>
+      <td>weiß</td>
+      <td>05/2023</td>
+      <td>2023</td>
+      <td>35990</td>
+      <td>81</td>
+      <td>110</td>
+      <td>Automatik</td>
+      <td>Benzin</td>
+      <td>6.1</td>
+      <td>138</td>
+      <td>2500.0</td>
+      <td>S line 30 TFSI 81(110) kW(PS) S tr</td>
+      <td>0.055455</td>
+    </tr>
+    <tr>
+      <th>Audi Nr. 3</th>
+      <td>Audi</td>
+      <td>Audi A3</td>
+      <td>blau</td>
+      <td>11/2018</td>
+      <td>2018</td>
+      <td>17850</td>
+      <td>85</td>
+      <td>116</td>
+      <td>Automatik</td>
+      <td>Benzin</td>
+      <td>6.6</td>
+      <td>150</td>
+      <td>127800.0</td>
+      <td>Sportback sport 30 TFSI PDC SHZ XENON</td>
+      <td>0.056897</td>
+    </tr>
+    <tr>
+      <th>BMW Nr. 1</th>
+      <td>BMW</td>
+      <td>BMW X3</td>
+      <td>blau</td>
+      <td>04/2018</td>
+      <td>2018</td>
+      <td>46830</td>
+      <td>294</td>
+      <td>400</td>
+      <td>Automatik</td>
+      <td>Diesel</td>
+      <td>5.9</td>
+      <td>154</td>
+      <td>117433.0</td>
+      <td>M550 d xDrive AHK+HUD+360+SOFT+SITZKLIMA+NAV-PRO</td>
+      <td>0.014750</td>
+    </tr>
+    <tr>
+      <th>BMW Nr. 2</th>
+      <td>BMW</td>
+      <td>BMW X2</td>
+      <td>gold</td>
+      <td>07/2020</td>
+      <td>2020</td>
+      <td>27443</td>
+      <td>103</td>
+      <td>140</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>5.5</td>
+      <td>125</td>
+      <td>19895.0</td>
+      <td>sDrive18i Advantage LED.Navi.RüKamera.ParkAss</td>
+      <td>0.039286</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 1</th>
+      <td>Citroen</td>
+      <td>C3</td>
+      <td>beige</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>14240</td>
+      <td>60</td>
+      <td>82</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>4.2</td>
+      <td>97</td>
+      <td>57070.0</td>
+      <td>Feel PureTech 83 + LED + PDC + DAB + BLUETOOTH</td>
+      <td>0.051220</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 2</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>07/2020</td>
+      <td>2020</td>
+      <td>19950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>107</td>
+      <td>81700.0</td>
+      <td>HDI 100 Live M Navi Klima PDC</td>
+      <td>0.040196</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 3</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>blau</td>
+      <td>12/2019</td>
+      <td>2019</td>
+      <td>15950</td>
+      <td>75</td>
+      <td>102</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.1</td>
+      <td>108</td>
+      <td>98832.0</td>
+      <td>Live M/1 Hand/Klima/Tempomat/PDC</td>
+      <td>0.040196</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 4</th>
+      <td>Citroen</td>
+      <td>Citroen Berlingo</td>
+      <td>schwarz</td>
+      <td>01/2021</td>
+      <td>2021</td>
+      <td>21990</td>
+      <td>96</td>
+      <td>131</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>4.4</td>
+      <td>116</td>
+      <td>8500.0</td>
+      <td>Club XL Kasten Blue-HDI 130 *Mwst.,Navi,DAB,Temp.</td>
+      <td>0.033588</td>
+    </tr>
+    <tr>
+      <th>Citroen Nr. 5</th>
+      <td>Citroen</td>
+      <td>Citroen C1</td>
+      <td>silber</td>
+      <td>03/2021</td>
+      <td>2021</td>
+      <td>12450</td>
+      <td>53</td>
+      <td>72</td>
+      <td>Schaltgetriebe</td>
+      <td>Benzin</td>
+      <td>3.7</td>
+      <td>85</td>
+      <td>15200.0</td>
+      <td>VTi 72 Shine+KAMERA+SHZ+APP+DAB+KLIMA+BT</td>
+      <td>0.051389</td>
+    </tr>
+    <tr>
+      <th>Dacia Nr. 1</th>
+      <td>dacia</td>
+      <td>Dacia Duster</td>
+      <td>orange</td>
+      <td>03/2023</td>
+      <td>2023</td>
+      <td>25749</td>
+      <td>84</td>
+      <td>114</td>
+      <td>Schaltgetriebe</td>
+      <td>Diesel</td>
+      <td>5.3</td>
+      <td>140</td>
+      <td>5.0</td>
+      <td>Journey Blue dCi 115 4x4</td>
+      <td>0.046491</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
-</div>
+<div class="warning admonition">
+<p class="admonition-title">Warnung</p>
+<p>Das oben beschriebene Prinzip, eine neue Spalte oder eine neue Zeile einzufügen,
+indem ein neuer Spalten- oder Zeilenindex hinzugefügt wird, funktioniert nur,
+wenn die neuen Daten das richtige Format haben. Im Zweifelsfall sollte die
+Erweiterung eines DataFrames mit
+<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html?highlight=concat#pandas.concat">concat</a>
+durchgeführt werden.</p>
 </div>
 </section>
-<section id="zusammenhangende-zeilen-slicing">
-<h3>Zusammenhängende Zeilen: Slicing<a class="headerlink" href="#zusammenhangende-zeilen-slicing" title="Permalink to this headline">#</a></h3>
-<p>Wenn wir auf mehrere Zeilen gleichzeitig zugreifen wollen, gibt es zwei
-Möglichkeiten:</p>
-<ol class="arabic simple">
-<li><p>Die Zeilen folgen direkt aufeinander, sind also zusammenhängend.</p></li>
-<li><p>Zwischen den einzelnen Zeilen sind Lücken.</p></li>
-</ol>
-<p>Als erstes betrachten wir zusammenhängende Zeilen. Der Zugriff auf
-zusammenhängende Bereiche wird in der Informatik <strong>Slicing</strong> genannt. Bei der
-Angabe des Bereiches gibt man den Anfangsindex gefolgt von einem Doppelpunkt an
-und dann den Endindex der letzten Zeile, die “herausgeschnitten” werden soll.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeilen_slice</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Joshua Kimmich&#39;</span> <span class="p">:</span> <span class="s1">&#39;Alphonso Davies&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">zeilen_slice</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                          Club Nationality Position  Age  Matches  Starts  \
-Name                                                                        
-Joshua Kimmich   Bayern Munich         GER       MF   25       27      25   
-Kingsley Coman   Bayern Munich         FRA    FW,MF   24       29      23   
-Benjamin Pavard  Bayern Munich         FRA       DF   24       24      22   
-Alphonso Davies  Bayern Munich         CAN       DF   19       23      22   
-
-                 Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted    xG  \
-Name                                                                            
-Joshua Kimmich   2194      4       10              0                  0  0.10   
-Kingsley Coman   1752      5       10              0                  0  0.21   
-Benjamin Pavard  1943      0        0              0                  0  0.02   
-Alphonso Davies  1763      1        2              0                  0  0.01   
-
-                   xA  Yellow_Cards  Red_Cards  
-Name                                            
-Joshua Kimmich   0.27             4          0  
-Kingsley Coman   0.34             1          0  
-Benjamin Pavard  0.09             3          0  
-Alphonso Davies  0.04             2          1  
-</pre></div>
-</div>
-</div>
-</div>
-<p>Beim Slicing können wir den Angangsindex oder den Endindex oder sogar beides
-weglassen. Wenn wir den Anfangsindex weglassen, fängt Pandas bei der ersten
-Zeile an. Lassen wir den Endindex weg, geht der Slice automatisch bis zum Ende.</p>
-<p>Im folgenden Beispiel startet der Slice bei ‘Robert Lewandowski’und geht bis zur
-letzten Zeile. Obwohl nicht alle Zeilendargestellt werden, erkennen wir das an
-der Anzahl der Zeilen: 173 rows (und 15 Spalten columns). Zur Erinnerung, es
-sind insgesamt 177 Zeilen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_slice_from_lewandowski</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Robert Lewandowski&#39;</span><span class="p">:</span> <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_slice_from_lewandowski</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts  \
-Name                                                                           
-Robert Lewandowski  Bayern Munich         POL       FW   31       29      28   
-Joshua Kimmich      Bayern Munich         GER       MF   25       27      25   
-Kingsley Coman      Bayern Munich         FRA    FW,MF   24       29      23   
-Benjamin Pavard     Bayern Munich         FRA       DF   24       24      22   
-Alphonso Davies     Bayern Munich         CAN       DF   19       23      22   
-...                           ...         ...      ...  ...      ...     ...   
-Loris Karius         Union Berlin         GER       GK   27        4       3   
-Akaki Gogia          Union Berlin         GER       FW   28        7       0   
-Leon Dajaku          Union Berlin         GER       FW   19        2       0   
-Tim Maciejewski      Union Berlin         GER       MF   19        1       0   
-Joshua Mees          Union Berlin         GER       FW   24        1       0   
-
-                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted  \
-Name                                                                         
-Robert Lewandowski  2458     41        7              8                  9   
-Joshua Kimmich      2194      4       10              0                  0   
-Kingsley Coman      1752      5       10              0                  0   
-Benjamin Pavard     1943      0        0              0                  0   
-Alphonso Davies     1763      1        2              0                  0   
-...                  ...    ...      ...            ...                ...   
-Loris Karius         292      0        0              0                  0   
-Akaki Gogia          140      0        1              0                  0   
-Leon Dajaku           37      0        0              0                  0   
-Tim Maciejewski        8      0        0              0                  0   
-Joshua Mees            5      0        0              0                  0   
-
-                      xG    xA  Yellow_Cards  Red_Cards  
-Name                                                     
-Robert Lewandowski  1.16  0.13             4          0  
-Joshua Kimmich      0.10  0.27             4          0  
-Kingsley Coman      0.21  0.34             1          0  
-Benjamin Pavard     0.02  0.09             3          0  
-Alphonso Davies     0.01  0.04             2          1  
-...                  ...   ...           ...        ...  
-Loris Karius        0.00  0.00             0          0  
-Akaki Gogia         0.09  0.28             1          0  
-Leon Dajaku         0.00  0.00             0          0  
-Tim Maciejewski     0.00  0.00             0          0  
-Joshua Mees         2.02  0.00             0          0  
-
-[173 rows x 15 columns]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="selektion-unzusammenhangender-zeilen-per-liste">
-<h3>Selektion unzusammenhängender Zeilen per Liste<a class="headerlink" href="#selektion-unzusammenhangender-zeilen-per-liste" title="Permalink to this headline">#</a></h3>
-<p>Soll auf mehrere Zeilen zugegriffen werdenn, die nicht zusammenhängen, so können
-wir eine Liste mit den Zeilenindizes übergeben.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeilen_multiple</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Manuel Neuer&#39;</span><span class="p">,</span> <span class="s1">&#39;Robert Lewandowski&#39;</span><span class="p">,</span> <span class="s1">&#39;Alphonso Davies&#39;</span><span class="p">]</span> <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">zeilen_multiple</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                             Club Nationality Position  Age  Matches  Starts  \
-Name                                                                           
-Manuel Neuer        Bayern Munich         GER       GK   34       33      33   
-Robert Lewandowski  Bayern Munich         POL       FW   31       29      28   
-Alphonso Davies     Bayern Munich         CAN       DF   19       23      22   
-
-                    Mins  Goals  Assists  Penalty_Goals  Penalty_Attempted  \
-Name                                                                         
-Manuel Neuer        2970      0        0              0                  0   
-Robert Lewandowski  2458     41        7              8                  9   
-Alphonso Davies     1763      1        2              0                  0   
-
-                      xG    xA  Yellow_Cards  Red_Cards  
-Name                                                     
-Manuel Neuer        0.00  0.01             1          0  
-Robert Lewandowski  1.16  0.13             4          0  
-Alphonso Davies     0.01  0.04             2          1  
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="zugriff-auf-spalten">
-<h2>Zugriff auf Spalten<a class="headerlink" href="#zugriff-auf-spalten" title="Permalink to this headline">#</a></h2>
-<p>Auf Spalten können wir zugreifen, indem wir <code class="docutils literal notranslate"><span class="pre">.loc</span></code> mit zwei Argumenten benutzen.
-Dann steht das 1. Argument für den Zeilenindex und das 2. Argument für den
-Spaltenindex. Wenn wir die komplette Spalte betrachten wollen, setzen wir für
-den Zeilenindex einfach einen Doppelpunkt <code class="docutils literal notranslate"><span class="pre">:</span></code>. Damit werden automatisch als
-Anfangsindex die erste Zeile und als Endindex die letzte Zeile gewählt.
-Ansonsten erfolgen die Zugriffe auf Spalten analog zu den Zugriffen auf Zeilen
-über die drei Möglichkeiten</p>
-<ul class="simple">
-<li><p>einzelne Spalte,</p></li>
-<li><p>zusammenhängende Spalten (Slicing) und</p></li>
-<li><p>unzusammenhängende Spalten als Liste.</p></li>
-</ul>
-<section id="einzelne-spalte">
-<h3>Einzelne Spalte<a class="headerlink" href="#einzelne-spalte" title="Permalink to this headline">#</a></h3>
-<p>Alle Minuten, die die Spieler auf dem Platz standen, erhalten wir somit als</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_minuten</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Mins&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_minuten</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name
-Manuel Neuer          2970
-Thomas Müller         2674
-David Alaba           2675
-Jérôme Boateng        2368
-Robert Lewandowski    2458
-                      ... 
-Loris Karius           292
-Akaki Gogia            140
-Leon Dajaku             37
-Tim Maciejewski          8
-Joshua Mees              5
-Name: Mins, Length: 177, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="zusammenhangende-spalten-slicing">
-<h3>Zusammenhängende Spalten: Slicing<a class="headerlink" href="#zusammenhangende-spalten-slicing" title="Permalink to this headline">#</a></h3>
-<p>Wenn wir beispielsweise die verwandelten Elfmeter mit den versuchten Elfmetern
-vergleichen wollen, so können wir die beiden aufeinanderfolgenden Spalten
-‘Penalty_Goals’ und ‘Penalty_Attempted’ als Slice ausschneiden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_elfmeter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Penalty_Goals&#39;</span> <span class="p">:</span> <span class="s1">&#39;Penalty_Attempted&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_elfmeter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    Penalty_Goals  Penalty_Attempted
-Name                                                
-Manuel Neuer                    0                  0
-Thomas Müller                   1                  1
-David Alaba                     0                  0
-Jérôme Boateng                  0                  0
-Robert Lewandowski              8                  9
-...                           ...                ...
-Loris Karius                    0                  0
-Akaki Gogia                     0                  0
-Leon Dajaku                     0                  0
-Tim Maciejewski                 0                  0
-Joshua Mees                     0                  0
-
-[177 rows x 2 columns]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="selektion-unzusammenhangender-spalten-per-liste">
-<h3>Selektion unzusammenhängender Spalten per Liste<a class="headerlink" href="#selektion-unzusammenhangender-spalten-per-liste" title="Permalink to this headline">#</a></h3>
-<p>Die Anzahl der Tore (‘Goals’), die Anzahl der Spiele (‘Matches’) und die
-durchschnittliche Anzahl erwarteter Tore pro Spiel (‘xG’) miteinander zu
-vergleichen, könnte aufschlussreich sein. Da die Spalten nicht nebeneinander
-liegen, müssen wir eine Liste benutzen, um sie zu selektieren.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_tore</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Goals&#39;</span><span class="p">,</span> <span class="s1">&#39;Matches&#39;</span><span class="p">,</span> <span class="s1">&#39;xG&#39;</span><span class="p">]</span> <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_tore</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                    Goals  Matches    xG
-Name                                    
-Manuel Neuer            0       33  0.00
-Thomas Müller          11       32  0.24
-David Alaba             2       32  0.04
-Jérôme Boateng          1       29  0.01
-Robert Lewandowski     41       29  1.16
-...                   ...      ...   ...
-Loris Karius            0        4  0.00
-Akaki Gogia             0        7  0.09
-Leon Dajaku             0        2  0.00
-Tim Maciejewski         0        1  0.00
-Joshua Mees             0        1  2.02
-
-[177 rows x 3 columns]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="zugriff-auf-zellen">
-<h2>Zugriff auf Zellen<a class="headerlink" href="#zugriff-auf-zellen" title="Permalink to this headline">#</a></h2>
-<p>Es kann auch vorkommen, dass man gezielt auf eine einzelne Zelle oder einen
-Bereich von Zellen zugreifen möchte. Auch dazu benutzen wir das Attribut
-<code class="docutils literal notranslate"><span class="pre">.loc[]</span></code>.</p>
-<p>Der Trick ist nun, die drei Möglichkeiten (einzeln, Slice und Selektion per
-Liste) für die Zeilen mit den gleichen drei Möglichkeiten des Zugriffes für
-Spalten zu kombinieren.</p>
-<p>Wollen wir Beispielsweise das Alter der Fußballprofis von ‘David Alaba’bis
-‘Serge Gnabry’ wissen, so gehen wir folgendermaßen vor:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;David Alaba&#39;</span> <span class="p">:</span> <span class="s1">&#39;Serge Gnabry&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">alter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name
-David Alaba           28
-Jérôme Boateng        31
-Robert Lewandowski    31
-Joshua Kimmich        25
-Kingsley Coman        24
-Benjamin Pavard       24
-Alphonso Davies       19
-Serge Gnabry          25
-Name: Age, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Und möchten wir von den Herrn Thomas Müller, Kingsley Coman und Alphonso Davies
-sowhl die Nationalität als auch das Alter selektieren, so gehen wir wie folgt
-vor:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_special</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="p">[</span><span class="s1">&#39;Thomas Müller&#39;</span><span class="p">,</span> <span class="s1">&#39;Kingsley Coman&#39;</span><span class="p">,</span> <span class="s1">&#39;Alphonso Davies&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Nationality&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_special</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                Nationality  Age
-Name                            
-Thomas Müller           GER   30
-Kingsley Coman          FRA   24
-Alphonso Davies         CAN   19
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="filtern">
-<h2>Filtern<a class="headerlink" href="#filtern" title="Permalink to this headline">#</a></h2>
-<p>Vielleicht haben Sie sich schon gefragt, warum wir nur Bayern-Spieler analysiert
-haben. Die Antwort ist simpel, Bayern stand im Datensatz oben in den ersten
-Zeilen. Tatsächlich sind aber die Spielerdaten von sieben Vereinen im Datensatz
-enthalten. Wir können uns die verschiedenen Werte einer Spalte mit der Methode
-<code class="docutils literal notranslate"><span class="pre">.unique()</span></code>ansehen.</p>
-<p>In einem ersten Schritt lesen wir die Spalte mit den Vereinen aus (Spalte
-‘Club’). Dann wenden wir auf das Ergnis die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> an.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vereine</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Club&#39;</span><span class="p">]</span>
-<span class="n">vereinsnamen</span> <span class="o">=</span> <span class="n">vereine</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vereinsnamen</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bayern Munich&#39; &#39;Borussia Dortmund&#39; &#39;RB Leipzig&#39; &#39;Wolfsburg&#39;
- &#39;Eintracht Frankfurt&#39; &#39;Bayer Leverkusen&#39; &#39;Union Berlin&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wenn man möchte, kann man auch beide Schritte in einem Schritt ausführen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vereinsnamen</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Club&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">vereinsnamen</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Bayern Munich&#39; &#39;Borussia Dortmund&#39; &#39;RB Leipzig&#39; &#39;Wolfsburg&#39;
- &#39;Eintracht Frankfurt&#39; &#39;Bayer Leverkusen&#39; &#39;Union Berlin&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Jetzt wo wir wissen, dass auch Eintracht Frankfurt dabei ist, würden wir den
-Datensatz gerne nach Eintracht Frankfurt filter. Dazu benutzen wir einen
-Vergleich und speichern das Ergebnis des Vergleichs in einer Variablen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Club&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Eintracht Frankfurt&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">filter</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name
-Manuel Neuer          False
-Thomas Müller         False
-David Alaba           False
-Jérôme Boateng        False
-Robert Lewandowski    False
-                      ...  
-Loris Karius          False
-Akaki Gogia           False
-Leon Dajaku           False
-Tim Maciejewski       False
-Joshua Mees           False
-Name: Club, Length: 177, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<p>Das Ergebnis des Vergleichs, der in der Variablen <code class="docutils literal notranslate"><span class="pre">filter</span></code> gespeichert ist, ist
-ein Pandas-Series-Objekt, das für jede Zeile gespeichert hat, ob der Vergleich
-wahr (True) oder falsch (False) ist. Ist in einer Zeile der Club gleich
-‘Eintracht Frankfurt’, so ist in dem booleschen Objekt an dieser Stelle True
-eingetragen und ansonsten False. Der Datenyp dtype wird mit <code class="docutils literal notranslate"><span class="pre">bool</span></code> angegeben.</p>
-<p>Wir können nun anstatt einer Liste diesen booleschen Index nutzen, um Zeilen zu
-selektieren. Steht in einer Zeile des booleschen Series-Objektes <code class="docutils literal notranslate"><span class="pre">True</span></code>, so wird
-diese Zeile ausgewählt. Ansonsten wird die Zeile übersprungen. Damit erhalten
-wir alle Spielerdaten, die zu Eintracht Frankfurt gehören.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eintracht_frankfurt</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="nb">filter</span><span class="p">,</span> <span class="p">:]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">eintracht_frankfurt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                   Club Nationality Position  Age  Matches  \
-Name                                                                         
-Kevin Trapp         Eintracht Frankfurt         GER       GK   30       33   
-André Silva         Eintracht Frankfurt         POR       FW   24       32   
-Filip Kostić        Eintracht Frankfurt         SRB       DF   27       30   
-Martin Hinteregger  Eintracht Frankfurt         AUT       DF   27       29   
-Daichi Kamada       Eintracht Frankfurt         JPN    MF,FW   23       32   
-Makoto Hasebe       Eintracht Frankfurt         JPN    DF,MF   36       29   
-Djibril Sow         Eintracht Frankfurt         SUI       MF   23       28   
-Obite N&#39;Dicka       Eintracht Frankfurt         FRA       DF   20       23   
-Sebastian Rode      Eintracht Frankfurt         GER       MF   29       27   
-Erik Durm           Eintracht Frankfurt         GER       DF   28       21   
-Stefan Ilsanker     Eintracht Frankfurt         AUT    MF,DF   31       27   
-Tuta                Eintracht Frankfurt         BRA       DF   21       19   
-Amin Younes         Eintracht Frankfurt         GER    MF,FW   26       26   
-David Abraham       Eintracht Frankfurt         ARG       DF   34       14   
-Aymen Barkok        Eintracht Frankfurt         MAR    FW,MF   22       26   
-Bas Dost            Eintracht Frankfurt         NED       FW   31       12   
-Luka Jović          Eintracht Frankfurt         SRB    FW,MF   22       18   
-Almamy Touré        Eintracht Frankfurt         MLI       DF   24       17   
-Steven Zuber        Eintracht Frankfurt         SUI    DF,MF   28       20   
-Timothy Chandler    Eintracht Frankfurt         USA       DF   30       15   
-Dominik Kohr        Eintracht Frankfurt         GER    MF,FW   26        7   
-Ajdin Hrustic       Eintracht Frankfurt         AUS    MF,FW   24       11   
-Danny da Costa      Eintracht Frankfurt         GER       DF   27        6   
-Elias Bördner       Eintracht Frankfurt         GER       GK   18        1   
-Ragnar Ache         Eintracht Frankfurt         GER    FW,DF   22        7   
-
-                    Starts  Mins  Goals  Assists  Penalty_Goals  \
-Name                                                              
-Kevin Trapp             33  2970      0        0              0   
-André Silva             32  2760     28        7              7   
-Filip Kostić            29  2534      4       14              0   
-Martin Hinteregger      29  2527      2        1              0   
-Daichi Kamada           28  2356      5       12              0   
-Makoto Hasebe           26  2288      0        0              0   
-Djibril Sow             25  2175      0        2              0   
-Obite N&#39;Dicka           23  2044      3        1              0   
-Sebastian Rode          19  1625      1        0              0   
-Erik Durm               19  1480      1        2              0   
-Stefan Ilsanker         17  1578      1        0              0   
-Tuta                    16  1459      0        0              0   
-Amin Younes             16  1391      3        3              0   
-David Abraham           14  1222      1        0              0   
-Aymen Barkok             9   977      2        3              0   
-Bas Dost                 9   817      4        2              1   
-Luka Jović               8   894      4        1              0   
-Almamy Touré             8   704      1        1              0   
-Steven Zuber             6   585      0        3              0   
-Timothy Chandler         3   432      1        0              0   
-Dominik Kohr             2   260      0        0              0   
-Ajdin Hrustic            1   272      1        0              0   
-Danny da Costa           1   110      0        0              0   
-Elias Bördner            1    90      0        0              0   
-Ragnar Ache              0   100      1        0              0   
-
-                    Penalty_Attempted    xG    xA  Yellow_Cards  Red_Cards  
-Name                                                                        
-Kevin Trapp                         0  0.00  0.00             0          0  
-André Silva                         7  0.79  0.18             1          0  
-Filip Kostić                        0  0.14  0.41             4          0  
-Martin Hinteregger                  0  0.07  0.03             4          0  
-Daichi Kamada                       0  0.21  0.28             3          0  
-Makoto Hasebe                       0  0.01  0.01             5          0  
-Djibril Sow                         0  0.02  0.06             6          0  
-Obite N&#39;Dicka                       0  0.05  0.01            10          0  
-Sebastian Rode                      0  0.01  0.07            10          0  
-Erik Durm                           0  0.10  0.13             1          0  
-Stefan Ilsanker                     0  0.07  0.01             4          0  
-Tuta                                0  0.01  0.02             5          0  
-Amin Younes                         0  0.22  0.11             5          0  
-David Abraham                       0  0.05  0.03             5          1  
-Aymen Barkok                        0  0.15  0.27             5          0  
-Bas Dost                            1  0.47  0.25             3          0  
-Luka Jović                          0  0.28  0.06             2          0  
-Almamy Touré                        0  0.15  0.16             2          0  
-Steven Zuber                        0  0.12  0.29             1          0  
-Timothy Chandler                    0  0.18  0.07             2          0  
-Dominik Kohr                        0  0.19  0.01             1          0  
-Ajdin Hrustic                       0  0.10  0.14             2          0  
-Danny da Costa                      0  0.14  0.00             0          0  
-Elias Bördner                       0  0.00  0.00             0          0  
-Ragnar Ache                         0  0.24  0.00             1          0  
-</pre></div>
-</div>
-</div>
-</div>
-<p>Da der print()-Befehl nicht alle Einträge anzeigt, gehen wir jetzt Zeile für
-Zeile durch. Den Zeilenindex erhalten wir über das Attribut <code class="docutils literal notranslate"><span class="pre">.index</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zeilenindex</span> <span class="ow">in</span> <span class="n">eintracht_frankfurt</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zeilenindex</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kevin Trapp
-André Silva
-Filip Kostić
-Martin Hinteregger
-Daichi Kamada
-Makoto Hasebe
-Djibril Sow
-Obite N&#39;Dicka
-Sebastian Rode
-Erik Durm
-Stefan Ilsanker
-Tuta
-Amin Younes
-David Abraham
-Aymen Barkok
-Bas Dost
-Luka Jović
-Almamy Touré
-Steven Zuber
-Timothy Chandler
-Dominik Kohr
-Ajdin Hrustic
-Danny da Costa
-Elias Bördner
-Ragnar Ache
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
-<p>In diesem Abschnitt konnten wir nur die Basis-Funktionalitäten streifen.
-Natürlich ist auch möglich, Bereiche zu sortieren oder gruppieren. Im nächsten
-Abschnitt erarbeiten wir uns erste statistische Analysen mit Pandas.</p>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>In diesem Kapitel haben wir uns damit beschäftigt, wie tabellarische Daten
+verwaltet werden. Im nächsten Kapitel geht es darum, diese zu visualisieren.</p>
 </section>
 </section>
 
@@ -1366,7 +1516,7 @@ Abschnitt erarbeiten wir uns erste statistische Analysen mit Pandas.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Series und DataFrame</p>
+        <p class="prev-next-title">4.1 Datenstruktur DataFrame</p>
       </div>
     </a>
     <a class="right-next"
@@ -1374,7 +1524,7 @@ Abschnitt erarbeiten wir uns erste statistische Analysen mit Pandas.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Statistik mit Pandas</p>
+        <p class="prev-next-title">4.3 Scatterplots und Scattermatrix</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1397,21 +1547,12 @@ Abschnitt erarbeiten wir uns erste statistische Analysen mit Pandas.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zeilen">Zugriff auf Zeilen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einzelne-zeile">Einzelne Zeile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenhangende-zeilen-slicing">Zusammenhängende Zeilen: Slicing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selektion-unzusammenhangender-zeilen-per-liste">Selektion unzusammenhängender Zeilen per Liste</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-spalten">Zugriff auf Spalten</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#einzelne-spalte">Einzelne Spalte</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenhangende-spalten-slicing">Zusammenhängende Spalten: Slicing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selektion-unzusammenhangender-spalten-per-liste">Selektion unzusammenhängender Spalten per Liste</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-spalten">Zugriff auf Spalten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zeilen">Zugriff auf Zeilen</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-auf-zellen">Zugriff auf Zellen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtern">Filtern</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mehrere-zeilen-oder-spalten">Mehrere Zeilen oder Spalten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neue-spalte-oder-zeile-einfugen">Neue Spalte oder Zeile einfügen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 

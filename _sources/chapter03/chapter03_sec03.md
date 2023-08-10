@@ -22,7 +22,7 @@ Kennzahlen von verschiedenen Datensätzen nebeneinander zu visualisieren, um so
 leicht einen Vergleich der Datensätze zu ermöglichen.
 
 
-## Was ist ein Boxplot?
+## Lernziele
 
 ```{admonition} Lernziele
 :class: important
