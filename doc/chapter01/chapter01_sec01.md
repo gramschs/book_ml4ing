@@ -38,10 +38,9 @@ grundlegenenden Bestandteile eines ML-Systems ein.
 
 ## Ein wenig Geschichte
 
-Es ist ein weit verbreiteter Irrtum, dass die Forschungsgebiete Künstliche
-Intelligenz oder maschinelles Lernen neu sind und dem 21. Jahrhundert zuzuordnen
-sind. Tatsächlich hat bereits Arthur L. Samuel maschinelles Lernen beschrieben
-als
+Viele glauben, dass die Forschungsgebiete Künstliche Intelligenz und
+maschinelles Lernen Neuentwicklungen des 21. Jahrhunderts sind. Doch tatsächlich
+hat Arthur L. Samuel bereits 1959 maschinelles Lernen wie folgt definiert:
 
 ```{epigraph}
 »... ein Forschungsgebiet, das Computer in die Lage versetzen soll, zu lernen,
@@ -50,9 +49,40 @@ ohne explizit darauf programmiert zu sein.«
 Arthur L. Samuel, 1959
 ```
 
-Dennoch ist richtig, dass beides sich vor allem in den letzten zwei Jahrzehnten
-revolutionär entwickelt hat. Dafür gibt es im Wesentlichen drei Gründe, wie im
-folgenden Video erklärt wird.
+[Wikipedia → Maschinelles Lernen](https://de.wikipedia.org/wiki/Maschinelles_Lernen) 
+bietet eine weitere Definition:
+
+```{epigraph}
+»Maschinelles Lernen (ML) ist ein Oberbegriff für die „künstliche“ Generierung
+von Wissen aus Erfahrung: Ein künstliches System lernt aus Beispielen und kann
+diese nach Beendigung der Lernphase verallgemeinern.«
+```
+
+Auch hier wird der Aspekt betont, dass das künstliche System selbst lernt. Aber
+was ist mit selbst Lernen gemeint? Ein Kind lernt beispielsweise selbst das
+Laufen. Auch wenn Eltern präzise beschreiben könnten, welcher Muskel zu welchem
+Zeitpunkt kontrahiert werden muss und mit welcher Geschwindigkeit in welche
+Richtung das Bein bewegt werden soll, würde das Kind die Anweisungen nicht
+verstehen können. Ein Kind lernt selbst durch Versuch und Irrtum. In der
+Anfangszeit der Robotik versuchten Forscherinnen und Forscher, Roboter durch
+explizite Befehle zu steuern. Doch bei unvorhergesehenen Hindernissen stießen
+solche Roboter an ihre Grenzen. Aus der Notwendigkeit, dass Roboter ähnlich wie
+Menschen lernen, entwickelte sich das Teilgebiet maschinelles Lernen innerhalb
+der Künstlichen Intelligenz.
+
+Doch nicht nur in der Robotik spielt maschinelles Lernen eine wichtige Rolle.
+Auch bei der Datenanalyse kann es hilfreich sein, wenn ein Computersystem
+eigenständig Muster in den Daten erkennt. Ein Klassiker dafür ist die
+Spam-Erkennung. Natürlich ist es möglich, den Spam-Filter mit expliziten Regeln
+zu programmieren. Schon nach kurzer Zeit ändern jedoch Spammer die E-Mail-Texte
+und schon greifen die expliziten Regeln nicht mehr. Hier helfen maschinell
+gelernte Regeln. Durch die Markierung von E-Mails als Spam lernt das
+E-Mail-Programm nach und nach selbst Regeln, um Spam-E-Mails zu identifizieren.
+
+Die exponentiell wachsende Datenmenge der letzten beiden Jahrzehnte hat das
+Interesse an maschinellen Lernverfahren stark erhöht. Es gibt aber auch noch
+andere Gründe, die zum aktuellen Boom des maschinellen Lernens beigetragen
+haben.
 
 ````{admonition} Mini-Übung
 :class: miniexercise

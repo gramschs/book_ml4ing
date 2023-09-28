@@ -33,7 +33,6 @@ parts:
     - file: chapter05/chapter05_sec01.ipynb
     - file: chapter05/chapter05_sec02.ipynb
     - file: chapter05/chapter05_sec03.ipynb
-    - file: chapter05/chapter05_sec04.ipynb
 - caption: ML-Verfahren
   chapters:
   - file: chapter06/chapter06_sec00.md
@@ -80,6 +79,12 @@ parts:
       - file: chapter14/chapter14_sec01.md
       - file: chapter14/chapter14_sec02.md
       - file: chapter14/chapter14_sec03.md
+  - file: extras_matplotlib/extras_sec00.md
+    sections:
+    - file: extras_matplotlib/extras_sec01.md
+    - file: extras_matplotlib/extras_sec02.md
+    - file: extras_matplotlib/extras_sec03.md
+    - file: extras_matplotlib/extras_sec04.md
 - caption: Anhang
   chapters:
   - file: appendix.md
