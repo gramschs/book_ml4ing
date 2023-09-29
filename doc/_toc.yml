@@ -25,53 +25,53 @@ parts:
     - file: chapter03/chapter03_sec03.md
   - file: chapter04/chapter04_sec00.md
     sections:
-    - file: chapter04/chapter04_sec01.ipynb
-    - file: chapter04/chapter04_sec02.ipynb
-    - file: chapter04/chapter04_sec03.ipynb
+    - file: chapter04/chapter04_sec01.md
+    - file: chapter04/chapter04_sec02.md
+    - file: chapter04/chapter04_sec03.md
   - file: chapter05/chapter05_sec00.md
     sections:
-    - file: chapter05/chapter05_sec01.ipynb
-    - file: chapter05/chapter05_sec02.ipynb
-    - file: chapter05/chapter05_sec03.ipynb
+    - file: chapter05/chapter05_sec01.md
+    - file: chapter05/chapter05_sec02.md
+    - file: chapter05/chapter05_sec03.md
 - caption: ML-Verfahren
   chapters:
   - file: chapter06/chapter06_sec00.md
     sections:
-    - file: chapter06/chapter06_sec01.ipynb
-    - file: chapter06/chapter06_sec02.ipynb
-    - file: chapter06/chapter06_sec03.ipynb
+    - file: chapter06/chapter06_sec01.md
+    - file: chapter06/chapter06_sec02.md
+    - file: chapter06/chapter06_sec03.md
   - file: chapter07/chapter07_sec00.md
     sections: 
-    - file: chapter07/chapter07_sec01.ipynb
-    - file: chapter07/chapter07_sec02.ipynb
-    - file: chapter07/chapter07_sec03.ipynb
+    - file: chapter07/chapter07_sec01.md
+    - file: chapter07/chapter07_sec02.md
+    - file: chapter07/chapter07_sec03.md
   - file: chapter08/chapter08_sec00.md
     sections:
-    - file: chapter08/chapter08_sec01.ipynb
-    - file: chapter08/chapter08_sec02.ipynb
-    - file: chapter08/chapter08_sec03.ipynb
+    - file: chapter08/chapter08_sec01.md
+    - file: chapter08/chapter08_sec02.md
+    - file: chapter08/chapter08_sec03.md
   - file: chapter09/chapter09_sec00.md
     sections:
-    - file: chapter09/chapter09_sec01.ipynb
-    - file: chapter09/chapter09_sec02.ipynb
-    - file: chapter09/chapter09_sec03.ipynb
+    - file: chapter09/chapter09_sec01.md
+    - file: chapter09/chapter09_sec02.md
+    - file: chapter09/chapter09_sec03.md
   - file: chapter10/chapter10_sec00.md
     sections:
-    - file: chapter10/chapter10_sec01.ipynb
-    - file: chapter10/chapter10_sec02.ipynb
-    - file: chapter10/chapter10_sec03.ipynb
+    - file: chapter10/chapter10_sec01.md
+    - file: chapter10/chapter10_sec02.md
+    - file: chapter10/chapter10_sec03.md
   - file: chapter11/chapter11_sec00.md
     sections:
     - file: chapter11/chapter11_sec01.md   
-    - file: chapter11/chapter11_sec03.ipynb  
+    - file: chapter11/chapter11_sec03.md 
   - file: chapter12/chapter12_sec00.md
     sections:
-    - file: chapter12/chapter12_sec01.ipynb  
-    - file: chapter12/chapter12_sec02.ipynb   
+    - file: chapter12/chapter12_sec01.md  
+    - file: chapter12/chapter12_sec02.md   
   - file: chapter13/chapter13_sec00.md
     sections:
-    - file: chapter13/chapter13_sec01.ipynb
-    - file: chapter13/chapter13_sec02.ipynb
+    - file: chapter13/chapter13_sec01.md
+    - file: chapter13/chapter13_sec02.md
 - caption: Extras 
   chapters:
   - file: chapter14/chapter14_sec00.md
