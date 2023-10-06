@@ -14,15 +14,11 @@ kernelspec:
   name: python3
 ---
 
-# Daten visualisieren mit Matplotlib
+# 5. Kategoriale Daten erkunden
 
-Die Visualisierung der Daten gehört zu den wichtigsten Schritten der
-Datenanalyse. Oft vermittelt die Visualisierung bereits wichtige Erkenntnisse
-über die Daten. Zu dem Modul Pandas gehören bereits einfache Methoden zur
-grafischen Darstellung der Daten, wie z.B. ``.plot(kind='line')`` oder
-``.plot(kind='bar')``. 
+TODO
 
-Diese Methoden basieren auf einem weiteren Python-Modul, nämlich **Matplotlib**.
-Matplotlib werden wir immer dann verwenden, wenn Grafiken komplexer werden (z.B.
-mehrere Visualisierungen in einer Grafik) oder wir Grafiken ästhetisch
-ansprechend für Publikationen oder Präsentationen aufbereiten wollen.
+Kapitelübersicht:
+
+```{tableofcontents}
+```

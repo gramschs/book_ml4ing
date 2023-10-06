@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Das Modul NumPy &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>5.1 Was sind kategoriale Daten? &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -66,13 +66,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter05/chapter05_sec01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linien-, Balken- und Streudiagramme" href="chapter05_sec02.html" />
-    <link rel="prev" title="Daten visualisieren mit Matplotlib" href="chapter05_sec00.html" />
+    <link rel="next" title="5.2 Barplots und Histogramme" href="chapter05_sec02.html" />
+    <link rel="prev" title="5. Kategoriale Daten erkunden" href="chapter05_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -188,15 +186,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Scatterplots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter05_sec00.html">Daten visualisieren mit Matplotlib</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Das Modul NumPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec03.html">Visualisierung von DataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec04.html">Optional: Histogramme</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
 </ul>
 </li>
 </ul>
@@ -254,6 +250,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec01.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec02.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec03.html">Plots mit Karten</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec01.html">Das Modul NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec03.html">Visualisierung von DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec04.html">Optional: Histogramme</a></li>
 </ul>
 </li>
 </ul>
@@ -314,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter05/chapter05_sec01.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter05/chapter05_sec01.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -379,6 +382,23 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       <li><a href="../_sources/chapter05/chapter05_sec01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/chapter05/chapter05_sec01.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,7 +408,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -460,7 +480,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Das Modul NumPy</h1>
+    <h1>5.1 Was sind kategoriale Daten?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -471,12 +491,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-ist-schneller-durch-c">NumPy ist schneller durch C</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erzeugung-von-numpy-arrays">Erzeugung von NumPy-Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-von-numpy-arrays">Attribute von NumPy-Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-einzelner-elemente-eines-arrays">Zugriff einzelner Elemente eines Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-auf-numpy-arrays-anwenden">Funktionen auf NumPy-Arrays anwenden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-metrische-daten">Was wir bisher hatten: metrische Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten">Das Gegenteil von metrischen Daten: kategoriale Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -488,690 +506,451 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="das-modul-numpy">
-<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this headline">#</a></h1>
-<p>Im letzten Kapitel haben wir gelernt, Daten in Form von Tabellen als
-Pandas-Objekte zu verwalten. Dabei arbeiten die Module Pandas, Scikit-Learn und
-auch das Visualisierungsmodul Matplotlib, das wir in diesem Kapitel kennenlernen
-werden, alle mit NumPy-Arrays. NumPy ist ein Akronym für <strong>numerisches Python</strong>.</p>
-<p>Die Internetseite von NumPy</p>
-<blockquote>
-<div><p><a class="reference external" href="https://NumPy.org">https://NumPy.org</a></p>
-</div></blockquote>
-<p>behauptet sogar von ihrem eigenen Paket, dass NumPy das (!!!) fundamentale Modul
-für alle wissenschaftlichen Programme in Python ist — stimmt wahrscheinlich! Die
-Bibliothek ist im Kern in der Programmiersprache C geschrieben und bietet vor
-allem sehr effiziente Datenstrukturen für Vektoren, Matrizen und
-mehrdimensionale Arrays an.</p>
-<p>In  diesem Abschnitt werden wir uns die grundlegenden Eigenschaften des
-<strong>NumPy-Array</strong> erarbeiten, um für Matplotlib und Scikit-Learn die Basis zu
-schaffen.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="was-sind-kategoriale-daten">
+<h1>5.1 Was sind kategoriale Daten?<a class="headerlink" href="#was-sind-kategoriale-daten" title="Permalink to this headline">#</a></h1>
+<p>In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
+Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt.
+Unsere statistische Analysen und Visualisierungen konzentrierten sich
+hauptsächlich auf numerische Werte wie den Kilometerstand. Dies liegt daran,
+dass es für Daten wie Farben oder Automarken keine Rechenoperationen gibt. In
+diesem Kapitel werden wir uns intensiver mit diesen nicht-numerischen Daten
+auseinandersetzen.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie können <strong>NumPy</strong> mit seiner typischen Abkürzung <strong>np</strong> importieren.</p></li>
-<li><p>Sie können mit <strong>np.array()</strong> ein NumPy-Array aus einer Liste erzeugen.</p></li>
-<li><p>Sie können NumPy-Arrays, die nach einem Muster aufgebaut sind, erzeugen:</p>
-<ul>
-<li><p>Array mit Einsen: <strong>np.ones()</strong></p></li>
-<li><p>Array mit Nullen: <strong>np.zeros()</strong></p></li>
-<li><p>Array mit Konstante: <strong>np.full()</strong></p></li>
-<li><p>Array mit vorgegebener Anzahl von Punkten in einem Intervall: <strong>np.linspace()</strong></p></li>
-<li><p>Array mit vorgebener Schrittweite in einem Intervall: <strong>np.arange()</strong></p></li>
-</ul>
-</li>
-<li><p>Sie können Basis-Attribute von NumPy-Arrays bestimmen wie beispielsweise</p>
-<ul>
-<li><p>Anzahl der Dimensionen: <strong>.ndim</strong></p></li>
-<li><p>Größe der jeweiligen Dimension: <strong>.shape</strong></p></li>
-<li><p>Gesamtgröße des Arrays: <strong>.size</strong></p></li>
-</ul>
-</li>
-<li><p>Sie können NumPy-Funktionen auf NumPy-Arrays anwenden.</p></li>
+<li><p>Sie wissen, was <strong>metrische (quantitative) Daten</strong> sind.</p></li>
+<li><p>Sie wissen, was <strong>kategoriale (qualitative) Daten</strong> sind.</p></li>
+<li><p>Sie können die Methode <strong>.unique()</strong> benutzen, um die eindeutigen Werte eines
+Pandas-Series-Objektes aufzulisten.</p></li>
+<li><p>Sie kennen den Unterschied zwischen <strong>ungeordneten</strong> und <strong>geordneten</strong>
+kategorialen Daten.</p></li>
+<li><p>Sie können mit der Methode <strong>.value_counts()</strong> die Anzahl der eindeutigen
+Werte eines Pandas-Series-Objektes bestimmen lassen.</p></li>
+<li><p>Sie wissen, was der <strong>Modalwert</strong> oder <strong>Modus</strong> eines Datensatzes ist und
+können diesen mit der Methode <strong>.mode()</strong> bestimmen lassen.</p></li>
 </ul>
 </div>
 </section>
-<section id="numpy-ist-schneller-durch-c">
-<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this headline">#</a></h2>
-<p>Alle Daten lassen sich letztendlich als eine Folge von Zahlen schreiben.
-Beispielsweise kann ein Foto durch seine Pixel beschrieben werden
-zusammengesetzt aus den Werten RGB (rot - grün - blau). Python bietet dafür
-schon einen Datentyp, die Liste, in der Zahlen (Integer oder Float) gespeichert
-werden können. Da Python eine interpretierte Programmiersprache ist und da in
-der Liste auch andere Datentypen wie zum Beispiel Strings vorkommen dürfen, sind
-Listen für große Datenmengen nicht geeignet. Stattdessen stellt das Modul NumPy
-einen effizienten Datentyp zur Verfügung, das sogenannte <strong>NumPy-Array</strong>.</p>
-<p>Dazu kommen noch Funktionen, die wichtig für Arrays sind wir Vektoroperationen.
-Tatsächlich sind die meisten NumPy-Operationen nicht in Python programmiert,
-sondern in C. Damit sind NumPy-Funktionen sehr effizient und das tolle daran
-ist, dass wir uns keine Gedanken über hardwarenahe Programmierung mit C oder C++
-machen müssen :-)</p>
-<p>Schauen wir uns für das Bestimmen des Maximums einer Liste von zufällig
-erzeugten Zahlen zwischen 0 und 1 an. Zunächst erzeugen wir die Liste der 100
-Zahlen. Dazu importieren wir NumPy mit seiner typischen Abkürzung <code class="docutils literal notranslate"><span class="pre">np</span></code>. im
-Untermodul <code class="docutils literal notranslate"><span class="pre">np.random</span></code>gibt es eine Funktion namens <code class="docutils literal notranslate"><span class="pre">random_sample</span></code>, die
-Zufallszahlen erzeugt.</p>
+<section id="was-wir-bisher-hatten-metrische-daten">
+<h2>Was wir bisher hatten: metrische Daten<a class="headerlink" href="#was-wir-bisher-hatten-metrische-daten" title="Permalink to this headline">#</a></h2>
+<p>In den bisherigen Kapiteln lag unser Fokus auf den Verkaufspreisen von Autos.
+Die Methode <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> in Pandas bietet eine schnelle Möglichkeit, einen
+Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
+Interessanterweise berücksichtigt diese Methode nur numerische Werte (also
+Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch die
+nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Wer würde schon
+ein Auto in Pink bevorzugen?</p>
+<p>Bevor wir uns den nicht-numerischen Daten widmen, vertiefen wir unser
+Verständnis für numerische Daten. Diese werden oft auch als <strong>metrische oder
+quantitative Daten</strong> bezeichnet.</p>
+<div class="note admonition">
+<p class="admonition-title">Was sind … metrische/quantitative Daten?</p>
+<p>Metrische Daten sind Informationen, die gemessen werden können. Daher können sie
+durch Zahlen (ganze Zahlen, rationale oder reelle Zahlen) auf einer Skala
+dargestellt werden. Ein anderer Name für metrische Daten ist der Begriff
+quantitative Daten.</p>
+</div>
+<p>Betrachten wir erneut den Datensatz der Autoverkaufspreise von <a class="reference external" href="http://Autoscout24.de">Autoscout24.de</a>,
+diesmal jedoch mit allen Autos, die im Jahr 2020 zugelassen wurden. Ein kurzer
+Überblick über den Datensatz hilft uns, die Art der Daten besser zu verstehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># erzeuge Liste</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_DE_2020.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.76531915 0.45234103 0.9462227  0.9109589  0.11616203 0.10506473
- 0.68636654 0.31188916 0.26503048 0.62950575 0.35970745 0.30340848
- 0.43246958 0.22827746 0.3293834  0.36209314 0.23574145 0.71907035
- 0.630601   0.28669277 0.23177777 0.04176331 0.3832991  0.18227354
- 0.36200553 0.11234693 0.51233725 0.80558049 0.11567033 0.74758262
- 0.95091599 0.0161763  0.2381627  0.07305828 0.88591636 0.63446006
- 0.954325   0.22738699 0.58985865 0.04501163 0.10636791 0.60401376
- 0.01715704 0.99039906 0.70301477 0.19576724 0.70418303 0.36244894
- 0.18832159 0.24756432 0.20610245 0.86567721 0.10557207 0.03796127
- 0.5297022  0.35335473 0.20126093 0.52990537 0.39818985 0.51381713
- 0.72930196 0.33119135 0.1053367  0.01109898 0.60076749 0.19627053
- 0.67685442 0.89375227 0.12203988 0.00926884 0.03918517 0.16671803
- 0.51444869 0.68920853 0.24265122 0.70825932 0.80108862 0.17674882
- 0.48181275 0.04416576 0.09519975 0.90452805 0.9480802  0.04725092
- 0.4858693  0.39621522 0.34407294 0.44262614 0.65115118 0.83734259
- 0.19651335 0.6373537  0.34778522 0.22638325 0.70662336 0.42922182
- 0.97337652 0.02147182 0.60026439 0.78132244]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 18566 entries, 0 to 18565
+Data columns (total 14 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Marke                 18566 non-null  object 
+ 1   Modell                18566 non-null  object 
+ 2   Farbe                 18546 non-null  object 
+ 3   Erstzulassung         18566 non-null  object 
+ 4   Jahr                  18566 non-null  int64  
+ 5   Preis (Euro)          18566 non-null  int64  
+ 6   Leistung (kW)         18552 non-null  float64
+ 7   Leistung (PS)         18552 non-null  float64
+ 8   Getriebe              18566 non-null  object 
+ 9   Kraftstoff            18566 non-null  object 
+ 10  Verbrauch (l/100 km)  15501 non-null  object 
+ 11  Verbrauch (g/km)      18566 non-null  object 
+ 12  Kilometerstand (km)   18566 non-null  float64
+ 13  Bemerkungen           18566 non-null  object 
+dtypes: float64(3), int64(2), object(9)
+memory usage: 2.0+ MB
 </pre></div>
 </div>
 </div>
 </div>
-<p>Als nächstes berechnen wir das Maximum dieser Zahlen mit der im Python-Kern
-eingebauten Standardfunktion <code class="docutils literal notranslate"><span class="pre">max</span></code>, dann mit <code class="docutils literal notranslate"><span class="pre">np.max</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_standard</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-<span class="n">max_numpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Standard max = &#39;</span><span class="p">,</span> <span class="n">max_standard</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NumPy max = &#39;</span><span class="p">,</span> <span class="n">max_numpy</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9903990623932698
-NumPy max =  0.9903990623932698
-</pre></div>
-</div>
-</div>
-</div>
-<p>Aber wie lange haben eigentlich die Berechnungen gedauert? Bei so kleinen Listen
-lohnt es nicht, die Berechnung mit der Stoppuhr zu ermitteln, die typischen
-Rechnenzeiten sind zu kurz. Aber JupyterLab bietet ein eingebautes Kommando,
-nämlich <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>. Der Vorteil dieses Kommandos ist, dass der Python-Interpreter
-bei sehr kurzen Rechenzeiten einfach den Code mehrmals durchläuft und
-Mittelwerte bildet.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> max_standard = max(M)
-<span class="o">%</span><span class="k">timeit</span> max_numpy = np.max(M)
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.07 µs ± 33.7 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.27 µs ± 9.29 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Sie sehen, die NumPy-Variante ist erheblich schneller als die Standard-Variante.</p>
-</section>
-<section id="erzeugung-von-numpy-arrays">
-<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
-<p>Im Gegensatz zu Python-Listen enthalten NumPy-Arrays nur Elemente des gleichen
-Datentyps. Wenn eine Liste nur aus gleichen Datentypen besteht, können wir
-direkt aus der Liste ein NumPy-Array erzeugen. Dazu verwenden wir <code class="docutils literal notranslate"><span class="pre">array()</span></code> aus
-dem Numpy-Modul.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4 5]
-&lt;class &#39;numpy.ndarray&#39;&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>Sehr häufig kommen aber auch zwei-  oder gar dreidimensionale Arrays vor. In der
-Mathematik würde man ein eindimensionales Array als Vektor bezeichnen, ein
-zweidimensionales Array als Matrix (= Excel-Tabelle) und ein dreidimensionales
-Array als Tensor. Die Position eines Elementes wird dabei durch ganze Zahlen
-gekennzeichnet (entspricht bei 1d-Arrays ja den Listen). Für zweidimensionale
-NumPy-Arrays brauchen wir daher zwei Indizes, für dreidimensionale Arrays drei.
-Die folgende Grafik zeigt das Nummerierungsschema:</p>
-<figure class="align-default" id="pics-fig-numpy-array">
-<a class="reference internal image-reference" href="../_images/fig_numpy_array.png"><img alt="../_images/fig_numpy_array.png" src="../_images/fig_numpy_array.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
-<div class="legend">
-<p>(<a class="reference external" href="https://predictivehacks.com/tips-about-NumPy-arrays/">Quelle:</a>)</p>
-</div>
-</figcaption>
-</figure>
-<p>Im Folgenden fokussieren wir uns zunächst auf 1D- und 2D-Arrays und betrachten
-uns verschiedene Erzeugungsmethoden. Die entsprechende (englischsprachige)
-Dokumentation finden Sie hier:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://numpy.org/doc/stable/reference/routines.array-creation.html">https://numpy.org/doc/stable/reference/routines.array-creation.html</a></p>
-</div></blockquote>
-<p>Wir starten mit Arrays, die mit 0 oder 1 oder einer konstanten Zahl gefüllt
-sind. Dazu verwenden wir die NumPy-Funktionen</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">np.zeros(dimension)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">np.ones(dimension)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">np.full(dimension,</span> <span class="pre">zahl)</span></code></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1d-Array gefüllt mit Nullen</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 0. 0. 0. 0.]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array gefüllt mit Nullen</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]
- [0. 0. 0. 0. 0. 0. 0.]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1d-Array gefüllt mit Einsen</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1. 1. 1. 1. 1. 1. 1.]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array gefüllt mit Nullen</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 1. 1. 1.]
- [1. 1. 1. 1.]
- [1. 1. 1. 1.]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array gefüllt mit einem konstanten Wert</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="o">-</span><span class="mf">17.7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-17.7 -17.7 -17.7 -17.7]
- [-17.7 -17.7 -17.7 -17.7]
- [-17.7 -17.7 -17.7 -17.7]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise admonition">
+<div class="tip admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Erzeugen Sie folgende Arrays:</p>
-<ul class="simple">
-<li><p>1d-Array der Dimension 7 gefüllt mit 0</p></li>
-<li><p>1d-Array der Dimension 7 gefüllt mit -1</p></li>
-<li><p>2d-Array der Dimension (7,5) gefüllt mit 1</p></li>
-<li><p>2d-Array der Dimension (2,4) gefüllt mit <span class="math notranslate nohighlight">\(\pi\)</span></p></li>
-<li><p>1d-Array der Dimension 8 gefüllt mit <span class="math notranslate nohighlight">\(\sqrt{5}\)</span></p></li>
-</ul>
+<p>Welche Eigenschaften der Autos sind metrisch (quantitativ)? Würden Sie bei anderen
+Eigenschaften ebenfalls einen metrischen Datentyp erwarten?</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="minisolution toggle admonition">
+<div class="tip toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">X3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">X4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-<span class="n">x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-</pre></div>
+<p>Das Jahr und der Preis (Euro) sind ganze Zahlen (Integers). Die Leistung der
+Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
+oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
+repräsentiert. Das hätte man auch für den Verbrauch in Spalte 10 oder 11
+erwarten können. Die Angabe der Einheit l/100 km oder g/km in den Zellen hat
+verhindert, dass Pandas diese Informationen als Zahl interpretiert hat.</p>
 </div>
-</div>
-<p>Die folgenden 1d-Arrays werden nach einem gleichmäßigen Muster gefüllt. Dazu
-benutzen wir die NumPy-Funktionen</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stopp,</span> <span class="pre">anzahl)</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stopp,</span> <span class="pre">schrittweite)</span></code></p></li>
-</ul>
+<p>Mit metrischen bzw. quantitativen Daten können wir umfangreiche Datenanalysen
+durchführen. Wir können vergleichen, ob zwei Messwerte gleich oder ungleich
+sind. Wir können beurteilen, ob ein Messwert kleiner oder größer als ein anderer
+ist oder sogar das Minimum und das Maximum aller Messwerte bestimmen. Und vor
+allem können wir mit metrischen Daten rechnen. Erst dadurch ist es möglich,
+einen Mittelwert zu bilden oder Streuungsmaße wie Spannweite, Standardabweichung
+und Interquartilsabstand zu berechnen. Solche detaillierten Berechnungen sind
+nur bei metrischen (quantitativen) Daten möglich.</p>
+</section>
+<section id="das-gegenteil-von-metrischen-daten-kategoriale-daten">
+<h2>Das Gegenteil von metrischen Daten: kategoriale Daten<a class="headerlink" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten" title="Permalink to this headline">#</a></h2>
+<p>Während metrische Daten messbare Informationen darstellen, sind <strong>kategoriale
+Daten</strong> durch ihre Zugehörigkeit zu bestimmten Kategorien oder Gruppen
+definiert. Ein weiterer Begriff für kategoriale Daten ist <strong>qualitative Daten</strong>.
+Ein gutes Beispiel für kategoriale Daten ist die Farbe eines Autos. Oft gibt der
+Datentyp einer bestimmten Eigenschaft in einem Datensatz bereits Hinweise
+darauf, ob es sich um kategoriale oder metrische Daten handelt.</p>
+<p>Der obige Ausführung der Anweisung <code class="docutils literal notranslate"><span class="pre">data.info()</span></code> hat gezeigt, dass einige Daten
+als <code class="docutils literal notranslate"><span class="pre">objects</span></code> gespeichert sind, was oft auf kategoriale Daten hinweist. Ein
+Blick in die Spalte »Marke« gibt uns weitere Einblicke.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1d-Array, das gleichmäßig zwischen start und stopp mit num Werten gefüllt wird</span>
-<span class="c1"># im Beispiel: start = 1, stopp = 10, num = 25 </span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.     1.375  1.75   2.125  2.5    2.875  3.25   3.625  4.     4.375
-  4.75   5.125  5.5    5.875  6.25   6.625  7.     7.375  7.75   8.125
-  8.5    8.875  9.25   9.625 10.   ]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    alfa-romeo
+1    alfa-romeo
+2    alfa-romeo
+3    alfa-romeo
+4    alfa-romeo
+5    alfa-romeo
+6    alfa-romeo
+7    alfa-romeo
+8    alfa-romeo
+9    alfa-romeo
+Name: Marke, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
+<p>Die ersten 10 Autos sind offensichtlich Alfa Romeos. Sind vielleicht nur Alfa
+Romeos in der Tabelle enthalten? Wir schauen uns die letzten 10 Einträge an.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1d-Array, das bei start beginnt, step dazu addiert und bis kurz vor stopp geht</span>
-<span class="c1"># im Beispiel: start = 1, stopp = 20, step = 2</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  3  5  7  9 11 13 15 17 19]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18556    volvo
+18557    volvo
+18558    volvo
+18559    volvo
+18560    volvo
+18561    volvo
+18562    volvo
+18563    volvo
+18564    volvo
+18565    volvo
+Name: Marke, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>Zuletzt betrachten wir noch Erzeugungsfunktionen, die seltener vorkommen, aber
-dennoch nützlich sein können:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">np.random.random_sample(dimension)</span></code>: gleichmäßig verteilt zwischen 0 und 1</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">np.random.normal(m,</span> <span class="pre">s,</span> <span class="pre">dimension)</span></code>: normalverteilt mit Mittelwert m und
-Standardabweichung s</p></li>
-</ul>
+<p>Die letzten Einträge sind Volvos. Vielleicht sind die Autos nach Marken
+alphabetisch geordnet? Es wäre schön zu wissen, welche verschiedenen Marken im
+Datensatz enthalten sind. Dazu gibt es die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code>. Sie gehört zu
+der Datenstruktur Pandas-Series. Wenn wir eine einzelne Spalte eines
+Pandas-DataFrames herausgreifen, liegt automatisch ein Pandas-Series-Objekt vor,
+so dass wir diese Methode hier benutzen können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array mit gleichmäßig zwischen 0 und 1 verteilten Zufallszahlen</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.82933859 0.21562388 0.89274535]
- [0.98530942 0.92312258 0.83125779]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;alfa-romeo&#39;, &#39;aston-martin&#39;, &#39;audi&#39;, &#39;bentley&#39;, &#39;bmw&#39;, &#39;cadillac&#39;,
+       &#39;chevrolet&#39;, &#39;citroen&#39;, &#39;dacia&#39;, &#39;dodge&#39;, &#39;ferrari&#39;, &#39;fiat&#39;,
+       &#39;ford&#39;, &#39;honda&#39;, &#39;hyundai&#39;, &#39;infiniti&#39;, &#39;isuzu&#39;, &#39;jaguar&#39;, &#39;jeep&#39;,
+       &#39;kia&#39;, &#39;lada&#39;, &#39;lamborghini&#39;, &#39;land-rover&#39;, &#39;maserati&#39;, &#39;mazda&#39;,
+       &#39;mercedes-benz&#39;, &#39;mini&#39;, &#39;mitsubishi&#39;, &#39;nissan&#39;, &#39;opel&#39;, &#39;peugeot&#39;,
+       &#39;porsche&#39;, &#39;renault&#39;, &#39;rover&#39;, &#39;seat&#39;, &#39;skoda&#39;, &#39;smart&#39;,
+       &#39;ssangyong&#39;, &#39;toyota&#39;, &#39;volkswagen&#39;, &#39;volvo&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array mit normalverteilten Zufallszahlen </span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
+<p>Obwohl der Datensatz insgesamt 18566 Autos umfasst, gibt es nur 41 verschiedene
+Marken. Allgemein gesagt, gibt es für die Eigenschaft »Marke« 41 Kategorien.
+Eine nicht-metrische Eigenschaft, die nur eine begrenzte Anzahl von Werten
+annehmen kann, wird als kategoriale Variable bezeichnet. Ihre konkreten Werte
+werden als kategoriale Daten oder qualitative Daten bezeichnet.</p>
+<div class="note admonition">
+<p class="admonition-title">Was sind … kategoriale/qualitative Daten?</p>
+<p>Kategoriale Daten sind Informationen, die nicht gemessen werden können.
+Stattdessen werden sie durch die Zugehörigkeit zu einer Kategorie dargestellt.
+Sie bekommen ein Etikett. Kategoriale Daten nehmen nur eine begrenzte Anzahl
+von verschiedenen Werten an. Oft bezeichnet man kategoriale Daten auch als
+qualitative Daten.</p>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.12008663  0.10481555  0.34652452  0.20888899]
- [ 2.17430737 -0.99198621  0.62604669  0.59216677]
- [ 0.90214323  0.29162544 -0.43750452 -0.18160628]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2d-Array als Einheitsmatrix der Größe m x m, hier m = 5</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1. 0. 0. 0. 0.]
- [0. 1. 0. 0. 0.]
- [0. 0. 1. 0. 0.]
- [0. 0. 0. 1. 0.]
- [0. 0. 0. 0. 1.]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise admonition">
+<p>Diese Definition ist nicht präzise. Der Begriff “begrenzte Anzahl” von Werten
+ist etwas schwammig. Sind damit 10 Kategorien gemeint oder 100 oder 1000? Welche
+Eigenschaften des Auto-Datensatzes sind kategorial?</p>
+<div class="tip admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Erzeugen Sie folgende Arrays:</p>
-<ul class="simple">
-<li><p>2d-Array mit der Dimension (3,4) und Zufallszahlen gleichmäßig zwischen 0 und
-1 verteilt</p></li>
-<li><p>1d-Array mit der Dimension 17 und Zufallszahlen standardnormalverteilt (d.h.
-welcher Mittelwert und welche Standardabweichung?)</p></li>
-<li><p>2d-Array mit der Dimension (1,5) und normalverteilten Zufallszahlen,
-Mittelwert 37.5, Standardabweichung 0.8</p></li>
-<li><p>1d-Array mit allen geraden Zahlen von 100 bis 200 (inklusive)</p></li>
-<li><p>1d-Array mit 100 Punkten im Intervall [-1,1]</p></li>
-<li><p>1d-Array mit 0, 0.1, 0.2, 0.3, …, 1.5</p></li>
-</ul>
+<p>Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen sie
+die Anzahl der einzigartigen Einträge dieser Eigenschaft.</p>
+<p>Tipp: Die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> liefert ein sogenanntes NumPy-Array zurück, das
+hier wie eine Liste benutzt werden kann. Die Python-Funktion <code class="docutils literal notranslate"><span class="pre">len()</span></code> kann die
+Länge einer Liste, also die Anzahl der Elemente der Liste, bestimmen.</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="minisolution toggle admonition">
+<div class="tip toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
-<span class="n">X3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span> <span class="mf">37.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">x4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">x5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">x6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_einzigartige_werte</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Modell&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Spalte/Eigenschaft Modell hat </span><span class="si">{</span><span class="n">anzahl_einzigartige_werte</span><span class="si">}</span><span class="s1"> einzigartige Werte.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Offensichtlich gibt es 561 einzigartige Werte für die Spalte/Eigenschaft Modell.</p>
+<p>Mit einer for-Schleife können wir auch alle Eigenschaften durchgehen, indem wir das Attribut <code class="docutils literal notranslate"><span class="pre">.columns</span></code> nutzen, in dem alle Spaltenüberschriften gespeichert sind. Damit betrachten wir natürlich auch die metrischen/quantitativen Eigenschaften.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">anzahl_einzigartige_werte</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Spalte/Eigenschaft </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1"> hat </span><span class="si">{</span><span class="n">anzahl_einzigartige_werte</span><span class="si">}</span><span class="s1"> einzigartige Werte.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Damit erhalten wir folgende Ausgabe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Marke</span> <span class="n">hat</span> <span class="mi">41</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Modell</span> <span class="n">hat</span> <span class="mi">561</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Farbe</span> <span class="n">hat</span> <span class="mi">15</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Erstzulassung</span> <span class="n">hat</span> <span class="mi">12</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Jahr</span> <span class="n">hat</span> <span class="mi">1</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Preis</span> <span class="p">(</span><span class="n">Euro</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">4926</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Leistung</span> <span class="p">(</span><span class="n">kW</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">260</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Leistung</span> <span class="p">(</span><span class="n">PS</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">260</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Getriebe</span> <span class="n">hat</span> <span class="mi">4</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Kraftstoff</span> <span class="n">hat</span> <span class="mi">10</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Verbrauch</span> <span class="p">(</span><span class="n">l</span><span class="o">/</span><span class="mi">100</span> <span class="n">km</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">238</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Verbrauch</span> <span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="n">km</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">616</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Kilometerstand</span> <span class="p">(</span><span class="n">km</span><span class="p">)</span> <span class="n">hat</span> <span class="mi">10730</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
+<span class="n">Die</span> <span class="n">Spalte</span><span class="o">/</span><span class="n">Eigenschaft</span> <span class="n">Bemerkungen</span> <span class="n">hat</span> <span class="mi">16547</span> <span class="n">einzigartige</span> <span class="n">Werte</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
+<p>Bei unserem Beispiel sind die Eigenschaften Marke, Modell, Farbe, Getriebe,
+Kraftstoff und Bemerkungen nicht-metrische Eigenschaften. Allerdings hat die
+Eigenschaft Bemerkungen 16547 verschiedene Werte. Ein Merkmal von kategorialen
+bzw. qualitativen Daten ist aber, dass nur eine begrenzte Anzahl von
+verschiedenen Werten angenommen wird. Das ist hier nicht mehr der Fall, so dass
+wir die Eigenschaft Bemerkung nicht als kategoriale/qualitative Eigenschaft
+einstufen. Die kategorialen Eigenschaften in dem Beispiel sind also Marke,
+Modell, Farbe, Getriebe und Kraftstoff.</p>
 </section>
-<section id="attribute-von-numpy-arrays">
-<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
-<p>Damit wir besser verstehen, welche Attribute die NumPy-Arrays haben können,
-erzeugen wir uns zufällig drei NumPy-Arrays. Damit aber nicht bei jeder neuen
-Ausführung der Code-Zelle neue Zufallszahlen gezogen werden, fixieren wir den
-Seed des Zufallszahlengenerators (vereinfacht gesagt kommen jetzt immer die
-gleichen Zufallszahlen) und benutzen die Erzeugungsmethode
-<code class="docutils literal notranslate"><span class="pre">np.random.randint(grenze,</span> <span class="pre">size=dimension)</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-       
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 
-[5 0 3 3 7 9 3]
-y = 
-[[5 2 4]
- [7 6 8]]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Bei den Listen haben wir eine Funktion kennengelernt, mit der die Anzahl der
-Elemente in der Liste bestimmt werden kann: <code class="docutils literal notranslate"><span class="pre">len()</span></code>. Listen sind eindimensional,
-aber NumPy-Arrays können mehrdimensional sein. Daher gibt es hier auch mehr
-Eigenschaften für die Beschreibung:</p>
+<section id="kategoriale-daten-ungeordnet-oder-geordnet">
+<h2>Kategoriale Daten: ungeordnet oder geordnet?<a class="headerlink" href="#kategoriale-daten-ungeordnet-oder-geordnet" title="Permalink to this headline">#</a></h2>
+<p>Innerhalb der kategorialen bzw. qualitativen Daten gibt es wiederum zwei Arten
+von Datentypen:</p>
 <ul class="simple">
-<li><p>Anzahl der Dimensionen: <code class="docutils literal notranslate"><span class="pre">.ndim</span></code></p></li>
-<li><p>Größe der jeweiligen Dimension: <code class="docutils literal notranslate"><span class="pre">.shape</span></code></p></li>
-<li><p>Gesamtgröße des Arrays: <code class="docutils literal notranslate"><span class="pre">.size</span></code></p></li>
+<li><p>ungeordnete kategoriale Daten und</p></li>
+<li><p>geordnete kategoriale Daten.</p></li>
 </ul>
-<p>Die Größe <code class="docutils literal notranslate"><span class="pre">.shape</span></code> haben wir ja in der obigen Abbildung schon bereits
-kennengelernt.</p>
+<p>Ein typisches Beispiel für ungeordnete kategoriale Daten sind die Farben der
+Autos. Es gibt keine natürliche Reihenfolge für Farben. Wir könnten die Farbe
+alphabetisch anordnen, doch sobald wir eine andere Sprache benutzen, wäre auch
+die Reihenfolge anders. Farben sind ungeordnete Kategorien. Für statistische
+Analysen heißt das, dass nur bestimmt werden kann, ob die Farbe eines Autos in
+eine bestimmte Kategorie fällt oder nicht. Entweder das Auto ist gelb oder es
+ist nicht gelb. Mathematisch gesehen können wir also nur auf Gleichheit oder
+Ungleichheit prüfen. Es gibt keine Vergleiche bzgl. der Reihenfolge und auch
+keine Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
+können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
+wird der <strong>Modus</strong> oder <strong>Modalwert</strong> bestimmt.</p>
+<div class="notes admonition">
+<p class="admonition-title">Was ist … der Modus (Modalwert)?</p>
+<p>Der Modus, auch Modalwert genannt, ist der häufigste auftretende Werte in dem
+Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
+für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.</p>
+</div>
+<p>Pandas bietet eine Methode zur Bestimmung des Modus namens <code class="docutils literal notranslate"><span class="pre">.mode()</span></code>. Diese
+Methode funktioniert wieder nur für ein Pandas-Series-Objekt, so dass zuerst
+eine einzelne Spalte aus der Tabelle herausgeschnitten wird. Auf diese Spalte
+wird dann die Methode angewendet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modus_farben</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Farbe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die häufigste Farbe ist </span><span class="si">{</span><span class="n">modus_farben</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = 
-[5 0 3 3 7 9 3]
-1
-(7,)
-7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die häufigste Farbe ist 0    schwarz
+Name: Farbe, dtype: object.
 </pre></div>
 </div>
 </div>
 </div>
+<p>Und wie häufig kommen die anderen Farben vor? Die Methode <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>
+zählt die Anzahl an Autos mit einer bestimmten Farbe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">y</span><span class="o">.</span><span class="n">size</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Farbe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = 
-[[5 2 4]
- [7 6 8]]
-2
-(2, 3)
-6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>schwarz    3612
+grau       3561
+weiß       3397
+blau       2442
+silber     2155
+rot        2044
+orange      418
+grün        290
+braun       238
+gelb        148
+beige       129
+bronze       47
+gold         36
+violett      29
+Name: Farbe, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
+<p>Bleiben noch die geordneten kategorialen Daten. Dazu inspizieren wir die
+einzigartigen Werte der Erstzulassung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;09/2020&#39;, &#39;06/2020&#39;, &#39;04/2020&#39;, &#39;12/2020&#39;, &#39;05/2020&#39;, &#39;10/2020&#39;,
+       &#39;02/2020&#39;, &#39;11/2020&#39;, &#39;08/2020&#39;, &#39;07/2020&#39;, &#39;03/2020&#39;, &#39;01/2020&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Offensichtlich verbergen sich hinter der Erstzulassung die Monate Januar bis
+Dezember des Jahres 2020. Diese haben eine natürliche Ordnung, Januar ist der
+erste Monat des Jahres und Dezember ist der letzte Monat des Jahres. Bei
+geordneten kategorialen Daten lässt sich ebenfalls der Modus (Modalwert)
+bestimmen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    02/2020
+Name: Erstzulassung, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die meisten Autos wurden im Februar zugelassen. Wir können auch mit
+<code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> für jeden Monat die Anzahl der Zulassungen auszählen lassen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>02/2020    1954
+01/2020    1934
+03/2020    1892
+12/2020    1748
+11/2020    1522
+10/2020    1435
+07/2020    1432
+09/2020    1424
+05/2020    1383
+04/2020    1350
+06/2020    1299
+08/2020    1193
+Name: Erstzulassung, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Insgesamt scheinen im ersten Quartal besonders viele Autos zugelassen zu werden.
+Dadurch, dass aber die Monate geordnet werden können, ist auch möglich den
+Median oder allgemein Quantile zu bestimmen. Allerdings kennt Pandas nicht die
+natürliche Reihenfolge der Monatsangaben 01/2020, 02/2020, 03/2020, usw. Wir
+ersetzen daher die Strings durch Integer, also “01/2020” –&gt; 1, “02/2020” –&gt; 2,
+usw. Diesen Vorgang nennt man in der Informatik <strong>Kodierung</strong>. Das Thema, wie
+kategoriale (qualitative Daten) am geschicktesten kodiert werden, wird uns noch
+intensiver beschäftigen. Jetzt gehen wir händisch vor und benutzen die
+<code class="docutils literal notranslate"><span class="pre">.replace()</span></code>-Methode von Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># alte Datenwerte (Monatsangaben als Strings)</span>
+<span class="n">kodierung_string</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;01/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;02/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;03/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;04/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;05/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;06/2020&quot;</span><span class="p">,</span>
+<span class="s2">&quot;07/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;08/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;09/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;10/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;11/2020&quot;</span><span class="p">,</span> <span class="s2">&quot;12/2020&quot;</span><span class="p">]</span>
+
+<span class="c1"># neue Datenwerte (nur der Monat als Integer)</span>
+<span class="n">kodierung_integer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+
+<span class="c1"># Ersetzung der alten Datenwerte durch die neue Kodierung</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">kodierung_string</span><span class="p">,</span> <span class="n">kodierung_integer</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Anzeige, ob alles funktioniert hat</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9,  6,  4, 12,  5, 10,  2, 11,  8,  7,  3,  1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt können wir von Pandas den Median berechnen lassen, den die ganzen Zahlen
+von 1 bis 12 haben eine natürliche Reihenfolge. Der Median ist</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Hälfte aller Autos wurde von Januar bis irgendwann im Juni zugelassen. Den
+genauen Stichtag im Juni können wir aufgrund fehlender Informationen über den
+Tag der Zulassung nicht ermitteln.</p>
 </section>
-<section id="zugriff-einzelner-elemente-eines-arrays">
-<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this headline">#</a></h2>
-<p>Der Zugriff bei eindimensionalen Arrays erfolgt genau wie bei Listen über den
-<strong>Zugriffsoperator</strong> <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Auch hier wird ab 0 beginnend gezählt.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">drittes_element</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">drittes_element</span> <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8 1 6 7 7 8 1]
-6
-</pre></div>
-</div>
-</div>
-</div>
-<p>Interessant wird es zu sehen, wie auf mehrdimensionale Arrays zugegriffen wird.
-Zur Erinnerung, zweidimensionale Arrays haben zwei Indizes (axis 0 und axis 1),
-dreidimensionale Arrays haben drei Indizes (axis 0, axis 1 und axis 2).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-<span class="n">element</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y = 
-[[5 2 4]
- [7 6 8]]
-4
-</pre></div>
-</div>
-</div>
-</div>
-<p>So kann man übrigens auch die Werte einzelner Elemente des Arrays ändern:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;vorher y = &#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-<span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">777</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;nachher y = &#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vorher y = 
-[[5 2 4]
- [7 6 8]]
-nachher y =  [[  5   2   4]
- [  7 777   8]]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="funktionen-auf-numpy-arrays-anwenden">
-<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this headline">#</a></h2>
-<p>NumPy-Arrays ermöglichen die Verarbeitung mit den typischen mathematischen
-Funktionen und den üblichen Statistik-Größen. Schauen wir uns einfach ein paar
-Beispiele an:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># erzeuge 11 x-Werte im Intervall [-2*pi, 2*pi]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="c1"># Sinus-Funktion</span>
-<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
-
-<span class="c1"># Kosinus-Funktion</span>
-<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
-
-<span class="c1"># Exponentialfunktion</span>
-<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y3</span><span class="p">)</span>
-
-<span class="c1"># Potenzfunktion, z.B. y = x hoch 5</span>
-<span class="n">y4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-6.28318531 -5.02654825 -3.76991118 -2.51327412 -1.25663706  0.
-  1.25663706  2.51327412  3.76991118  5.02654825  6.28318531]
-[ 2.44929360e-16  9.51056516e-01  5.87785252e-01 -5.87785252e-01
- -9.51056516e-01  0.00000000e+00  9.51056516e-01  5.87785252e-01
- -5.87785252e-01 -9.51056516e-01 -2.44929360e-16]
-[ 1.          0.30901699 -0.80901699 -0.80901699  0.30901699  1.
-  0.30901699 -0.80901699 -0.80901699  0.30901699  1.        ]
-[1.86744273e-03 6.56141994e-03 2.30541108e-02 8.10025922e-02
- 2.84609543e-01 1.00000000e+00 3.51358562e+00 1.23452839e+01
- 4.33762122e+01 1.52406036e+02 5.35491656e+02]
-[-9.79262991e+03 -3.20884897e+03 -7.61474902e+02 -1.00276530e+02
- -3.13364157e+00  0.00000000e+00  3.13364157e+00  1.00276530e+02
-  7.61474902e+02  3.20884897e+03  9.79262991e+03]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># erzeuge 3x4-Matrix mit Zufallszahlen</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-<span class="c1"># Summe über alle Elemente</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s1&#39;</span><span class="p">,</span> <span class="n">s1</span><span class="p">)</span>
-
-<span class="c1"># Summe in Richtung Achse 0</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s2&#39;</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
-
-<span class="c1"># Summe in Richtung Achse 1</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> <span class="n">s3</span><span class="p">)</span>
-
-<span class="c1"># Maximum über alle Elemente</span>
-<span class="n">max1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max1&#39;</span><span class="p">,</span> <span class="n">max1</span><span class="p">)</span>
-
-<span class="c1"># Maximum in Richtung Achse 0</span>
-<span class="n">max2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max2&#39;</span><span class="p">,</span> <span class="n">max2</span><span class="p">)</span>
-
-<span class="c1"># Maximum in Richtung Achse 1</span>
-<span class="n">max3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;max3&#39;</span><span class="p">,</span> <span class="n">max3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.92559664 0.07103606 0.0871293  0.0202184 ]
- [0.83261985 0.77815675 0.87001215 0.97861834]
- [0.79915856 0.46147936 0.78052918 0.11827443]]
-s1 6.72282900923483
-s2 [2.55737505 1.31067217 1.73767062 1.11711117]
-s3 [1.10398039 3.45940709 2.15944153]
-max1 0.978618342232764
-max2 [2.55737505 1.31067217 1.73767062 1.11711117]
-max3 [1.10398039 3.45940709 2.15944153]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
-<p>In diesem Abschnitt haben wir das NumPy-Array kennengelernt, eine sehr
-effiziente Datenstruktur. Die Erzeugungsmethoden nach einem Muster werden wir
-vor allem für die Visualisierung von Funktionen brauchen. Das Bestimmen der
-Basis-Attribute wird wichtig werden, wenn wir NumPy-Arrays aus
-Pandas-DataFrame-Objekten extrahieren, um damit maschinelle Lernalgorithmen zu
-füttern.</p>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<p>In diesem Kapitel haben wir uns mit dem Unterschied zwischen qualitativen
+(metrischen) und quantitativen (kategorialen) Daten beschäftigt. Dabei wird bei
+quantitativen Daten noch zwischen ungeordneten und geordneten Kategorien
+unterschieden. Abhängig von der Art der Daten können unterschiedliche
+statistische Kennzahlen erhoben werden. Bei ungeordneten kategorialen Daten kann
+nur der Modus (Modalwert) berechnet werden. Bei geordneten kategorialen Daten
+können zusätzlich noch Quantile (insbeondere der Median) berechnet werden. Nur
+bei metrischen (qualitativen) Daten ist es möglich, den Mittelwert und
+zusätzlich die Streuungsmaße (Spannbreite, Standardabweichung und
+Interquartilsabstand) zu bestimmen. Im nächsten Kapitel werden uns mit der
+Visualisierung der kategorialen Daten beschäftigen.</p>
 </section>
 </section>
 
@@ -1212,7 +991,7 @@ füttern.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Daten visualisieren mit Matplotlib</p>
+        <p class="prev-next-title">5. Kategoriale Daten erkunden</p>
       </div>
     </a>
     <a class="right-next"
@@ -1220,7 +999,7 @@ füttern.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linien-, Balken- und Streudiagramme</p>
+        <p class="prev-next-title">5.2 Barplots und Histogramme</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1243,12 +1022,10 @@ füttern.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-ist-schneller-durch-c">NumPy ist schneller durch C</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#erzeugung-von-numpy-arrays">Erzeugung von NumPy-Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#attribute-von-numpy-arrays">Attribute von NumPy-Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zugriff-einzelner-elemente-eines-arrays">Zugriff einzelner Elemente eines Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-auf-numpy-arrays-anwenden">Funktionen auf NumPy-Arrays anwenden</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-metrische-daten">Was wir bisher hatten: metrische Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten">Das Gegenteil von metrischen Daten: kategoriale Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Daten visualisieren mit Matplotlib &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>5. Kategoriale Daten erkunden &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,8 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter05/chapter05_sec00';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Das Modul NumPy" href="chapter05_sec01.html" />
-    <link rel="prev" title="4.3 Scattermatrix" href="../chapter04/chapter04_sec03.html" />
+    <link rel="next" title="5.1 Was sind kategoriale Daten?" href="chapter05_sec01.html" />
+    <link rel="prev" title="4.3 Scatterplots und Scattermatrix" href="../chapter04/chapter04_sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -186,15 +186,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Scatterplots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Daten visualisieren mit Matplotlib</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec01.html">Das Modul NumPy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec03.html">Visualisierung von DataFrames</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter05_sec04.html">Optional: Histogramme</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">5. Kategoriale Daten erkunden</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
 </ul>
 </li>
 </ul>
@@ -252,6 +250,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec01.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec02.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter14/chapter14_sec03.html">Plots mit Karten</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec01.html">Das Modul NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec03.html">Visualisierung von DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec04.html">Optional: Histogramme</a></li>
 </ul>
 </li>
 </ul>
@@ -473,7 +478,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Daten visualisieren mit Matplotlib</h1>
+    <h1>5. Kategoriale Daten erkunden</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -487,18 +492,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="daten-visualisieren-mit-matplotlib">
-<h1>Daten visualisieren mit Matplotlib<a class="headerlink" href="#daten-visualisieren-mit-matplotlib" title="Permalink to this headline">#</a></h1>
-<p>Die Visualisierung der Daten gehört zu den wichtigsten Schritten der
-Datenanalyse. Oft vermittelt die Visualisierung bereits wichtige Erkenntnisse
-über die Daten. Zu dem Modul Pandas gehören bereits einfache Methoden zur
-grafischen Darstellung der Daten, wie z.B. <code class="docutils literal notranslate"><span class="pre">.plot(kind='line')</span></code> oder
-<code class="docutils literal notranslate"><span class="pre">.plot(kind='bar')</span></code>.</p>
-<p>Diese Methoden basieren auf einem weiteren Python-Modul, nämlich <strong>Matplotlib</strong>.
-Matplotlib werden wir immer dann verwenden, wenn Grafiken komplexer werden (z.B.
-mehrere Visualisierungen in einer Grafik) oder wir Grafiken ästhetisch
-ansprechend für Publikationen oder Präsentationen aufbereiten wollen.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="kategoriale-daten-erkunden">
+<h1>5. Kategoriale Daten erkunden<a class="headerlink" href="#kategoriale-daten-erkunden" title="Permalink to this headline">#</a></h1>
+<p>TODO</p>
+<p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
+</ul>
 </div>
 </section>
 
@@ -539,7 +541,7 @@ ansprechend für Publikationen oder Präsentationen aufbereiten wollen.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">4.3 Scattermatrix</p>
+        <p class="prev-next-title">4.3 Scatterplots und Scattermatrix</p>
       </div>
     </a>
     <a class="right-next"
@@ -547,7 +549,7 @@ ansprechend für Publikationen oder Präsentationen aufbereiten wollen.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Das Modul NumPy</p>
+        <p class="prev-next-title">5.1 Was sind kategoriale Daten?</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
