@@ -31,6 +31,12 @@ auseinandersetzen.
 * Sie wissen, was **kategoriale (qualitative) Daten** sind.
 * Sie können die Methode **.unique()** benutzen, um die eindeutigen Werte eines
   Pandas-Series-Objektes aufzulisten.
+* Sie kennen den Unterschied zwischen **ungeordneten** und **geordneten**
+  kategorialen Daten.
+* Sie können mit der Methode **.value_counts()** die Anzahl der eindeutigen
+  Werte eines Pandas-Series-Objektes bestimmen lassen.
+* Sie wissen, was der **Modalwert** oder **Modus** eines Datensatzes ist und
+  können diesen mit der Methode **.mode()** bestimmen lassen.
 ```
 
 
@@ -87,8 +93,8 @@ sind. Wir können beurteilen, ob ein Messwert kleiner oder größer als ein ande
 ist oder sogar das Minimum und das Maximum aller Messwerte bestimmen. Und vor
 allem können wir mit metrischen Daten rechnen. Erst dadurch ist es möglich,
 einen Mittelwert zu bilden oder Streuungsmaße wie Spannweite, Standardabweichung
-und Interquartilsabstand berechnen. Solche detaillierten Berechnungen sind nur
-bei metrischen (quantitativen) Daten möglich.
+und Interquartilsabstand zu berechnen. Solche detaillierten Berechnungen sind
+nur bei metrischen (quantitativen) Daten möglich.
 
 
 ## Das Gegenteil von metrischen Daten: kategoriale Daten
