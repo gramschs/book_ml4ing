@@ -61,8 +61,9 @@ wird durch die Höhe oder Länge eines Rechtecks repräsentiert, das den
 zugehörigen Wert darstellt.
 ```
 
-Probieren wir Barplots am Beispiel der Autoscout24-Verkaufspreise des Jahres
-2020 aus. Zuerst laden wir die Daten und verschaffen uns einen Überblick.
+Probieren wir Barplots am Beispiel der Autoscout24-Verkaufspreise für Autos aus,
+die 2020 zugelassen wurden. Zuerst laden wir die Daten und verschaffen uns einen
+Überblick.
 
 ```{code-cell} ipython3
 import pandas as pd
@@ -110,7 +111,7 @@ modifizieren die Beschriftung der x- und y-Achse. Mit `legend_title=` wird der
 Titel der Legende neu beschriftet.
 
 ```{code-cell} ipython3
-fig = px.bar(anzahl_pro_marke, title='Autoscout24 (Jahr 2020)')
+fig = px.bar(anzahl_pro_marke, title='Autoscout24 (Zulassungsjahr 2020)')
 fig.update_layout(
     xaxis_title='Marke',
     yaxis_title='Anzahl Autos',
