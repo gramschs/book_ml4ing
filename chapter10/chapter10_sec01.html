@@ -202,10 +202,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">Lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">Multiple lineare Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">6. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -648,7 +648,7 @@ Welche würden Sie nehmen und warum?</p>
 <figure class="align-default" id="fig10-01-annotated">
 <a class="reference internal image-reference" href="../_images/fig10_01_annotated.pdf"><img alt="../_images/fig10_01_annotated.pdf" src="../_images/fig10_01_annotated.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Drei Geraden trennen die roten von den blauen Punkten, aber welche ist die bessere Wahl?</span><a class="headerlink" href="#fig10-01-annotated" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Drei Geraden trennen die roten von den blauen Punkten, aber welche ist die bessere Wahl?</span><a class="headerlink" href="#fig10-01-annotated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Alle drei Geraden trennen die blauen von den roten Punkten. Jedoch könnte Gerade
@@ -662,7 +662,7 @@ visualisieren.</p>
 <figure class="align-default" id="fig10-02-annotated">
 <a class="reference internal image-reference" href="../_images/fig10_02_annotated.pdf"><img alt="../_images/fig10_02_annotated.pdf" src="../_images/fig10_02_annotated.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Ein Sicherheitsstreifen bzw. breiter Rand, im Englischen <strong>Margin</strong> genannt, trennt die beiden Klassen.</span><a class="headerlink" href="#fig10-02-annotated" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Ein Sicherheitsstreifen bzw. breiter Rand, im Englischen <strong>Margin</strong> genannt, trennt die beiden Klassen.</span><a class="headerlink" href="#fig10-02-annotated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Der Support-Vector-Algorithmus sucht nun die Gerade, die die Datenpunkte mit dem
@@ -677,7 +677,7 @@ auf der Grenze des Sicherheitsbereichs liegen.</p>
 <figure class="align-default" id="fig10-03">
 <a class="reference internal image-reference" href="../_images/fig10_03.pdf"><img alt="../_images/fig10_03.pdf" src="../_images/fig10_03.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Einige wenige Punkte (gelb markiert) bestimmen den Verlauf des Randabstandes. Die Vektoren,
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Einige wenige Punkte (gelb markiert) bestimmen den Verlauf des Randabstandes. Die Vektoren,
 die vom Ursprung des Koordinatensystems zu diesen Punkten zeigen, werden Stützvektoren (= Support Vectors) genannt.</span><a class="headerlink" href="#fig10-03" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

@@ -199,10 +199,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">Lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">Multiple lineare Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">6. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -521,7 +521,7 @@ kennengelernt. Schematisch können wir es folgendermaßen darstellen:</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/perceptron.svg"><img alt="../_images/perceptron.svg" src="../_images/perceptron.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Jedes Eingangssignal wird mit einem Gewicht multipliziert. Anschließend werden
@@ -538,7 +538,7 @@ folgenden Abbildung zu sehen.</p>
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/neuron.svg"><img alt="../_images/neuron.svg" src="../_images/neuron.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Vereinfachte schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Vereinfachte schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Tatsächlich sind sogar häufig Darstellungen verbreit, bei denen nur noch durch
@@ -546,7 +546,7 @@ die Kreise das Perzeptron oder das künstliche Neuron symbolisiert wird.</p>
 <figure class="align-default" id="id3">
 <a class="reference internal image-reference" href="../_images/neuron_symbolisch.svg"><img alt="../_images/neuron_symbolisch.svg" src="../_images/neuron_symbolisch.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Symbolbild eines Perzeptrons bzw. eines künstlichen Neurons</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Symbolbild eines Perzeptrons bzw. eines künstlichen Neurons</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Die Idee des mehrschichtigen Perzeptrons ist es, eine oder mehrere
@@ -555,7 +555,7 @@ Zwischenschichtmit zwei Neuronen eingeführt:</p>
 <figure class="align-default" id="id4">
 <a class="reference internal image-reference" href="../_images/MLP_1layer_2neurons.svg"><img alt="../_images/MLP_1layer_2neurons.svg" src="../_images/MLP_1layer_2neurons.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Ein mehrschichtiges Perzeptron (Mulitilayer Perceptron)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Ein mehrschichtiges Perzeptron (Mulitilayer Perceptron)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Es können beliebig viele Zwischenschichten eingeführt werden. Jede neue

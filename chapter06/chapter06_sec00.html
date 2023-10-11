@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Lineare Regression &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>6. Lineare Regression &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter06/chapter06_sec00';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lineare Regression" href="chapter06_sec01.html" />
+    <link rel="next" title="6.1 Lineare Regression mit Scikit-Learn" href="chapter06_sec01.html" />
     <link rel="prev" title="5.3 Daten filtern und gruppieren" href="../chapter05/chapter05_sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -199,10 +199,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Lineare Regression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapter06_sec01.html">Lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter06_sec03.html">Multiple lineare Regression</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">6. Lineare Regression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -307,6 +307,55 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="article-header-buttons">
 
 
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter06/chapter06_sec00.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 <a href="https://github.com/gramschs/book_ml4ing" target="_blank"
    class="btn btn-sm btn-source-repository-button"
    title="Source repository"
@@ -330,6 +379,23 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter06/chapter06_sec00.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
       
       
       
@@ -413,7 +479,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lineare Regression</h1>
+    <h1>6. Lineare Regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -428,11 +494,17 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lineare-regression">
-<h1>Lineare Regression<a class="headerlink" href="#lineare-regression" title="Permalink to this headline">#</a></h1>
+<h1>6. Lineare Regression<a class="headerlink" href="#lineare-regression" title="Permalink to this headline">#</a></h1>
 <p>In diesem Kapitel beschäftigen wir uns mit der linearen Regression. Wie lernen,
 wie mit Scikit-Learn ein Regressionsmodell trainiert wird und betrachten auch
 die multiple Regression.</p>
+<p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
+</ul>
 </div>
 </section>
 
@@ -481,7 +553,7 @@ die multiple Regression.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lineare Regression</p>
+        <p class="prev-next-title">6.1 Lineare Regression mit Scikit-Learn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

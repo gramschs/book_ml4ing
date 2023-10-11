@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Training eines linearen Regressionsmodells &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>6.2 Bewertung eines linearen Regressionsmodells &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -71,8 +71,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter06/chapter06_sec02';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multiple lineare Regression" href="chapter06_sec03.html" />
-    <link rel="prev" title="Lineare Regression" href="chapter06_sec01.html" />
+    <link rel="next" title="6.3 Multiple lineare Regression" href="chapter06_sec03.html" />
+    <link rel="prev" title="6.1 Lineare Regression mit Scikit-Learn" href="chapter06_sec01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -201,10 +201,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter06_sec00.html">Lineare Regression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="chapter06_sec01.html">Lineare Regression</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Training eines linearen Regressionsmodells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter06_sec03.html">Multiple lineare Regression</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter06_sec00.html">6. Lineare Regression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -483,7 +483,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Training eines linearen Regressionsmodells</h1>
+    <h1>6.2 Bewertung eines linearen Regressionsmodells</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -510,8 +510,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="training-eines-linearen-regressionsmodells">
-<h1>Training eines linearen Regressionsmodells<a class="headerlink" href="#training-eines-linearen-regressionsmodells" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="bewertung-eines-linearen-regressionsmodells">
+<h1>6.2 Bewertung eines linearen Regressionsmodells<a class="headerlink" href="#bewertung-eines-linearen-regressionsmodells" title="Permalink to this headline">#</a></h1>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
 <div class="important admonition">
@@ -547,7 +547,7 @@ veranschaulichen wir uns mit der folgenden Grafik.</p>
 <figure class="align-default" id="kq-regression">
 <a class="reference internal image-reference" href="../_images/kq_regression.png"><img alt="../_images/kq_regression.png" src="../_images/kq_regression.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Messpunkte (blau) und der Abstand (grün) zu einer Modellfunktion (rot)</span><a class="headerlink" href="#kq-regression" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Messpunkte (blau) und der Abstand (grün) zu einer Modellfunktion (rot)</span><a class="headerlink" href="#kq-regression" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate#/media/Datei:MDKQ1.svg">Quelle:</a> Autor: Christian Schirm, Lizenz: CC0)</p>
 </div>
@@ -718,7 +718,7 @@ bzw. der R²-Score als Qualitätskriterium.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lineare Regression</p>
+        <p class="prev-next-title">6.1 Lineare Regression mit Scikit-Learn</p>
       </div>
     </a>
     <a class="right-next"
@@ -726,7 +726,7 @@ bzw. der R²-Score als Qualitätskriterium.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multiple lineare Regression</p>
+        <p class="prev-next-title">6.3 Multiple lineare Regression</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

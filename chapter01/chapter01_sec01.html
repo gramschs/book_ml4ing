@@ -199,10 +199,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">Lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">Training eines linearen Regressionsmodells</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">Multiple lineare Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">6. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -613,7 +613,19 @@ Tools (z.B. <a class="reference external" href="https://www.tensorflow.org">Tens
 ermöglichen, auch ohne tiefergehende Mathematik- und Programmierkenntnissen
 maschinelles Lernen in der Praxis einzusetzen. Daher werden immer mehr
 Anwendungen mit maschinellem Lernen analysiert und optimiert.</p>
-</section>
+<p>Bisher haben wir nicht besprochen, was es mit Künstlicher Intelligenz und Deep
+Learning auf sich hat. Beide Begriffe werden oft in einem Atemzug mit ML
+genannt. Das folgende Video gibt eine Einführung dazu.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “ML Tutorial - #1 Einführung in ML” von CodingWithMagga<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tCApwsdijDk?si=Qf6x6MhoAuEBZv7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</details></section>
 <section id="was-sind-algorithmen-und-modelle">
 <h2>Was sind Algorithmen und Modelle?<a class="headerlink" href="#was-sind-algorithmen-und-modelle" title="Permalink to this headline">#</a></h2>
 <p>Ein notwendiger Baustein des maschinellen Lernens sind Daten, am besten ganz,
@@ -708,6 +720,12 @@ Anweisungen des Rezepts (dem Algorithmus) folgt und die Zutaten zusammenfügt.</
 <p>Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
 dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
 wie man einen Kuchen essen würde, nachdem er gebacken ist.</p>
+<figure class="align-default" id="fig-ml-as-baking">
+<img alt="../_images/ml_as_baking.png" src="../_images/ml_as_baking.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Analogie zwischen dem ML-Workflow und dem Kuchenbacken</span><a class="headerlink" href="#fig-ml-as-baking" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Allerdings ist es damit nicht getan. Je nachdem, wie viele und welche Gäste
 erwartet werden, benötigen wir einen anderen Kuchen. Bei einer großen
 Geburtstagsparty brauchen wir einen Blechkuchen, damit jeder Gast ein Stückchen
@@ -738,7 +756,20 @@ fortlaufender Prozess. Modelle werden oft mehrfach getestet und angepasst, um
 ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
 aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
 Bedingungen zurechtkommen.</p>
-</section>
+<p>Das folgende Video erklärt den ML-Workflow etwas detaillierter, als wir es mit
+der Kuchenbacken-Analogie getan haben. Als Ausblick auf die weitere Vorlesung
+bietet dieses Video dennoch eine sehr gute Übersicht über die Vorgehenweise in
+einem ML-Projekt und ist daher sehr empfehlenswert.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Video zu “ML Tutorial - #2 ML-Workflow” von CodingWithMagga<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f9QT2dqeW04?si=ScwgvnYzsCvbicb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</details></section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
 <p>In diesem Kapitel haben wir zwar die drei grundlegenden Bestandteile eines
