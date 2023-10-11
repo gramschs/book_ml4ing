@@ -79,7 +79,13 @@ Das überwachte Lernen wird daher wiederum in zwei Arten unterteilt:
 * **Regression** für kontinuierliche Ausgabedaten und
 * **Klassifikation**  für diskrete Ausgabedaten.
 
-Auf beide Problemstellungen gehen die beiden nächsten Videos ein.
+Auf beide Problemstellungen gehen die nächsten Videos ein.
+
+```{dropdown} Video zu "ML Tutorial - #3 Supervised Learning" von CodingWithMagga
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gaYYJAEt0zI?si=AvndIfnXrjUNiBbf" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
 
 ### Regression 
 
@@ -141,6 +147,12 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
+```{dropdown} Video zu "ML Tutorial - #4 Unsupervised Learning" von CodingWithMagga
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yKcGVt3xfiE?si=t0UP-8h12bFBjhyr" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
+
 ## Verstärkendes Lernen (Reinforcement Learning)
 
 Wir schließen unsere Übersicht der maschinellen Lernverfahren mit dem
@@ -175,6 +187,13 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 ```
+
+```{dropdown} Vide zu "ML Tutorial - #5 Reinforcement Learning" von CodingWithMagga
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EAX12jlMlUw?si=yeV8S4zOT2pMlnBi" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
+
 
 ## Zusammenfassung und Ausblick
 

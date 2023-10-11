@@ -133,6 +133,14 @@ ermöglichen, auch ohne tiefergehende Mathematik- und Programmierkenntnissen
 maschinelles Lernen in der Praxis einzusetzen. Daher werden immer mehr
 Anwendungen mit maschinellem Lernen analysiert und optimiert.
 
+Bisher haben wir nicht besprochen, was es mit Künstlicher Intelligenz und Deep
+Learning auf sich hat. Beide Begriffe werden oft in einem Atemzug mit ML
+genannt. Das folgende Video gibt eine Einführung dazu.
+
+```{dropdown} Video zu "ML Tutorial - #1 Einführung in ML" von CodingWithMagga
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tCApwsdijDk?si=Qf6x6MhoAuEBZv7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
+
 
 ## Was sind Algorithmen und Modelle?
 
@@ -236,6 +244,12 @@ Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
 dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
 wie man einen Kuchen essen würde, nachdem er gebacken ist.
 
+```{figure} pics/ml_as_baking.png
+:name: fig_ml_as_baking
+
+Analogie zwischen dem ML-Workflow und dem Kuchenbacken
+```
+
 Allerdings ist es damit nicht getan. Je nachdem, wie viele und welche Gäste
 erwartet werden, benötigen wir einen anderen Kuchen. Bei einer großen
 Geburtstagsparty brauchen wir einen Blechkuchen, damit jeder Gast ein Stückchen
@@ -268,6 +282,15 @@ fortlaufender Prozess. Modelle werden oft mehrfach getestet und angepasst, um
 ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
 aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
 Bedingungen zurechtkommen.
+
+Das folgende Video erklärt den ML-Workflow etwas detaillierter, als wir es mit
+der Kuchenbacken-Analogie getan haben. Als Ausblick auf die weitere Vorlesung
+bietet dieses Video dennoch eine sehr gute Übersicht über die Vorgehenweise in
+einem ML-Projekt und ist daher sehr empfehlenswert.
+
+```{dropdown} Video zu "ML Tutorial - #2 ML-Workflow" von CodingWithMagga
+<iframe width="560" height="315" src="https://www.youtube.com/embed/f9QT2dqeW04?si=ScwgvnYzsCvbicb8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+```
 
 ## Zusammenfassung und Ausblick
 

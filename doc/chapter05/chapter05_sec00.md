@@ -16,8 +16,6 @@ kernelspec:
 
 # 5. Kategoriale Daten erkunden
 
-TODO
-
 Kapitelübersicht:
 
 ```{tableofcontents}

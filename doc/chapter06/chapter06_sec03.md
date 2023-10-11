@@ -1,18 +1,20 @@
 ---
 jupytext:
+  cell_metadata_filter: -all
   formats: ipynb,md:myst
+  main_language: python
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.14.5
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-# Multiple lineare Regression
+# 6.3 Multiple lineare Regression
 
 Bisher haben wir nur eine einzelne Eigenschaft aus den gesammelten Daten
 herausgegriffen und untersucht, ob es zwischen dieser Eigenschaft und der
