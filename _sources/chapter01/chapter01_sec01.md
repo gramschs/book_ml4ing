@@ -297,12 +297,13 @@ eines ML-Projektes von der wissenschaftlichen Fragestellung (Q -- Question) bis
 zu deren Beantwortung (K -- Knowledge Transfer). Dazu gehört das Sammeln und
 Erkunden der Daten (U -- Understanding the data), mit Hilfe derer die Frage
 beantwortet werden soll. Die Phase der ML-Modellbildung wird mehrfach
-durchlaufen und besteht aus der Auswahl und Anpassung der Daten (A -- Adaption
-of the data), der Auswahl und dem Training des Algorithmus bzw. des Modells (A
--- Algorithm selection and training) und der Anpassung der Hyperparamter (A --
-Adjustement of the hyperparameter). Die Modelle, die durch diese Schleife
-erstellt werden, werden letztendlich miteinander verglichen und bewertet (C --
-Comparison and Conclusion), bevor sie produktiv eingesetzt werden.
+durchlaufen und besteht aus der Auswahl und dem Training des Algorithmus bzw.
+des Modells (A -- Algorithm selection and training), dazu passend der Auswahl
+und Anpassung der Daten (A -- Adaption of the data) sowie der Anpassung der
+Hyperparamter (A -- Adjustement of the hyperparameter). Die Modelle, die durch
+diese Schleife erstellt werden, werden letztendlich miteinander verglichen und
+bewertet (C -- Comparison and Conclusion), bevor sie produktiv eingesetzt
+werden.
 
 ```{figure} pics/qua3ck_process.png
 :name: fig_qua3ck_process
