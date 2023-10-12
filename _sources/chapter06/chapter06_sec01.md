@@ -147,19 +147,14 @@ Als nächstes erkunden wir, wie der Preis abhängig von den Inputs
 ist, indem wir die Daten plotten. Wir fangen mit dem Kilometerstand der Autos an.
 
 ```{code-cell} ipython3
-# extract data
-x_km = data.loc[:, 'mileage'].values
-y = data.loc[:, 'price'].values
+import plotly.express as px
 
-# plot
-import matplotlib.pylab as plt
-plt.style.use('bmh')
-
-fig, ax = plt.subplots()
-ax.scatter(x_km, y)
-ax.set_xlabel('Kilometerstand')
-ax.set_ylabel('Preis')
-ax.set_title('Gebrauchtwagenmarkt 2011-2021 (Autoscout24)');
+fig = px.scatter(data, x = 'mileage', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
+fig.update_layout(
+    xaxis_title = 'Kilometerstand [km]',
+    yaxis_title = 'Preis (Euro)'
+)
+fig.show()
 ```
 
 Zunächst einmal stören die Ausreißer etwas. Wir suchen zuerst mal nach
@@ -180,48 +175,36 @@ data = data.drop([11753, 11754, 21675])
 ```
 
 ```{code-cell} ipython3
-# data
-x_km = data.loc[:, 'mileage'].values
-y = data.loc[:, 'price'].values
-
-# plot
-fig, ax = plt.subplots()
-ax.scatter(x_km, y)
-ax.set_xlabel('Kilometerstand')
-ax.set_ylabel('Preis')
-ax.set_title('Gebrauchtwagenmarkt2011-2021 (Autoscout24)');
+fig = px.scatter(data, x = 'mileage', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
+fig.update_layout(
+    xaxis_title = 'Kilometerstand [km]',
+    yaxis_title = 'Preis (Euro)'
+)
+fig.show()
 ```
 
 Sieht nicht besonders linear aus, eher wie eine Hyperbel. Als nächstes
 betrachten wir den Preis in Abhängigkeit des Baujahrs. 
 
 ```{code-cell} ipython3
-# data
-x_bj = data.loc[:, 'year'].values
-y = data.loc[:, 'price'].values
-
-# plot
-fig, ax = plt.subplots()
-ax.scatter(x_bj, y)
-ax.set_xlabel('Baujahr')
-ax.set_ylabel('Preis')
-ax.set_title('Gebrauchtwagenmarkt 2011-2021 (Autoscout24)');
+fig = px.scatter(data, x = 'year', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
+fig.update_layout(
+    xaxis_title = 'Baujahr',
+    yaxis_title = 'Preis (Euro)'
+)
+fig.show()
 ```
 
 Je jünger, desto teurer, könnte linear sein. Und zuletzt visualisieren wir den
 Preis abhängig von der PS-Zahl.
 
 ```{code-cell} ipython3
-# data
-x_ps = data.loc[:, 'hp'].values
-y = data.loc[:, 'price'].values
-
-# plot
-fig, ax = plt.subplots()
-ax.scatter(x_ps, y)
-ax.set_xlabel('PS')
-ax.set_ylabel('Preis')
-ax.set_title('Gebrauchtwagenmarkt 2011-2021 (Autoscout24)');
+fig = px.scatter(data, x = 'hp', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
+fig.update_layout(
+    xaxis_title = 'Leistung (PS)',
+    yaxis_title = 'Preis (Euro)'
+)
+fig.show()
 ```
 
 Bei dem Input PS scheint es eine lineare Abhängigkeit zu geben. Je mehr PS desto
@@ -254,19 +237,18 @@ Inputs wird davon ausgegangen, dass mehrere Eigenschaften in das Modell eingehen
 sollen. Die Eigenschaften stehen normalerweise in den Spalten des Datensatzes.
 Beim Output erwarten wir zunächst nur eine Eigenschaft, die durch das Modell
 erklärt werden soll. Daher geht Scikit-Learn davon aus, dass der Input eine
-Matrix $X$ ist, die M Zeilen und N Spalten hat. M ist die Anzahl an Daten, hier
-also die Anzahl der Autos, und N ist die Anzahl der Eigenschaften, die
-betrachtet werden sollen. Da wir momentan nur die Abhängigkeit des Preises von
-der PS-Zahl analysieren wollen, ist $N=1$. Beim Output geht Scikit-Learn davon
-aus, dass ein eindimensionaler Spaltenvektor vorliegt, der natürlich ebenfalls M
-Zeilen hat. Wir müssen daher unsere PS-Zahlen noch in das Matrix-Format bringen.
-Dazu verwenden wir aus dem Numpy-Modul die `.reshape()` Methode, siehe
-[Numpy-Dokumentation →
-reshape](https://numpy.org/doc/stable/reference/generated/numpy.reshape.html).
+Tabelle(Matrix) $X$ ist, die M Zeilen und N Spalten hat. M ist die Anzahl an
+Daten, hier also die Anzahl der Autos, und N ist die Anzahl der Eigenschaften,
+die betrachtet werden sollen. Da wir momentan nur die Abhängigkeit des Preises
+von der PS-Zahl analysieren wollen, ist $N=1$. Beim Output geht Scikit-Learn
+davon aus, dass eine Datenreihe (eindimensionaler Spaltenvektor) vorliegt, die
+natürlich ebenfalls M Zeilen hat. Wir müssen daher unsere PS-Zahlen noch in das
+Matrix-Format bringen. Dazu verwenden wir den Trick, dass mit `[ [list] ]` eine
+Tabelle extrahiert wird. 
 
 ```{code-cell} ipython3
-# Konvertiere in Matrix-Format
-X = x_ps.reshape(-1, 1)
+X = data[['hp']]
+y = data['price']
 
 #  Training des linearen Regressionsmodells
 model.fit(X, y);
@@ -300,21 +282,37 @@ muss.
 
 Damit können wir auch eine Wertetabelle für PS-Zahlen von 0 bis 800 PS
 aufstellen und das Ergebnis zusammen mit den tatsächlichen Verkaufspreisen
-visualisieren.
+visualisieren. Zuerst erzeugen wir die X-Werte, für die das trainierte Modell
+eine Prognose aufstellen soll. Wir hätten gerne 100 X-Werte von 0 bis 800 PS.
+Dazu nutzen wir aus dem NumPy-Modul den Befehl `linspace(start, stopp,
+anzahl_punkte)`.
 
 ```{code-cell} ipython3
 import numpy as np
 
-X_predict = np.linspace(0, 800).reshape(-1,1)
+print(np.linspace(0, 800, 100))
+```
+
+Das trainierte Modell erwartet Daten in demselben Format, mit dem es trainiert
+wurde. Daher erstellen wir nun mit dem NumPy-Array einen Pandas-DataFrame und
+lassen dann das trainierte Modell die Preise prognostizieren.
+
+```{code-cell} ipython3
+X_predict = pd.DataFrame(np.linspace(0, 800, 100), columns=['hp'])
 y_predict = model.predict(X_predict)
 
-# plot
-fig, ax = plt.subplots()
-ax.scatter(x_ps, y)
-ax.plot(X_predict, y_predict, color='red')
-ax.set_xlabel('PS')
-ax.set_ylabel('Preis')
-ax.set_title('Gebrauchtwagenpreise 2011-2021 (Autoscout24)');
+import plotly.graph_objects as go
+
+fig = go.Figure()
+
+fig.add_trace(go.Scatter(x = data['hp'], y = data['price'], mode='markers', name='Daten'))
+fig.add_trace(go.Scatter(x = X_predict['hp'], y = y_predict, mode='lines', name='Prognose'))
+fig.update_layout(
+  title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)',
+  xaxis_title = 'Leistung (PS)',
+  yaxis_title = 'Preis (Euro)'
+)
+fig.show()
 ```
 
 ## Zusammenfassung
