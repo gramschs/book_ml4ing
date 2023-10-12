@@ -247,7 +247,7 @@ wie man einen Kuchen essen würde, nachdem er gebacken ist.
 ```{figure} pics/ml_as_baking.png
 :name: fig_ml_as_baking
 
-Analogie zwischen dem ML-Workflow und dem Kuchenbacken
+Analogie zwischen dem ML-Workflow und dem Kuchenbacken (Quelle: eigene Darstellung)
 ```
 
 Allerdings ist es damit nicht getan. Je nachdem, wie viele und welche Gäste
@@ -255,7 +255,8 @@ erwartet werden, benötigen wir einen anderen Kuchen. Bei einer großen
 Geburtstagsparty brauchen wir einen Blechkuchen, damit jeder Gast ein Stückchen
 Kuchen bekommt. Haben wir Diabetiker eingeladen, sollten wir keine
 Schokoladentorte anbieten. Auch beim maschinellen Lernen ist es daher sehr
-wichtig, je nach Einsatzzweck das passende Modell zu wählen.
+wichtig, je nach Einsatzzweck das passende Modell bzw. den passenden Algorithmus
+zu wählen.
 
 Natürlich hängt die Wahl des Kuchens auch von den vorhandenen Zutaten ab. Fehlt
 die Schokolade, so kann ich keinen Schokoladenkuchen backen. Entweder backen wir
@@ -266,12 +267,14 @@ durchführbar. Und auch hier können wir uns entscheiden, einen anderen Kuchen z
 backen oder die Zutaten zu erneuern. Diese Analogie passt auch zu maschinellem
 Lernen. Fehlen Daten oder sind die Daten nicht qualititativ hochwertig, können
 wir die Datenlage verbessern, indem wir beispielsweise mehr Experimente
-durchführen oder offensichtlich schiefgelaufene Experimente wiederholen. Sollten
-wir die Daten jedoch nicht verbessern können (oder wollen, weil zu teuer oder
-die Abgabefrist der Bachelorarbeit ansteht), dann müssen wir die Auswahl des
-Modells an die vorhandenen Daten anpassen. 
+durchführen oder offensichtlich schiefgelaufene Experimente wiederholen. Diese
+Phase des maschinellen Lernen wird auch **Datenerkundung** oder
+**Datenexploration** genannt. Sollten wir die Daten jedoch nicht verbessern
+können (oder wollen, weil zu teuer oder die Abgabefrist der Bachelorarbeit
+ansteht), dann müssen wir die Auswahl des Modells an die vorhandenen Daten
+anpassen.   
 
-Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, dder Gast beißt in den
+Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, der Gast beißt in den
 Kuchen und verzieht das Gesicht ... Zucker und Salz verwechselt. Hätten wir den
 Kuchen lieber einmal vor dem Servieren probiert. Auch beim maschinellen Lernen
 ist es mit dem "Backen" des Modells nicht getan. Ist ein Modell erstellt, so
@@ -279,9 +282,35 @@ muss es auch bewertet werden. Der Prozess des maschinellen Lernens wird mit der
 **Validierung** abgeschlossen, bevor das Modell dann produktiv eingesetzt wird.
 Die Erstellung und Verwendung von Modellen im maschinellen Lernen ist ein
 fortlaufender Prozess. Modelle werden oft mehrfach getestet und angepasst, um
-ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
-aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
-Bedingungen zurechtkommen.
+ihre Leistung zu verbessern. Beim Kuchenbacken könnte der Bäcker auf die Idee
+kommen, den Kuchen nicht bei 160 °C, sondern bei 162 °C zu backen, weil dann der
+Kuchen noch besser schmeckt. Solche Parameter zum Finetunen eines Modells werden
+**Hyperparameter** genannt. Hyperparameter haben nichts mit den vorhanden Daten
+zu tun, sondern gehören zum ML-Modell. Aber auch wenn sich Daten verändern und
+neue Daten hinzukommen, muss das Modell aktualisiert werden, um mit den sich
+ändernden Bedingungen zurechtzukommen. 
+
+Die folgende Skizze zeigt den schematischen Ablauf eines typischen ML-Projektes.
+Dabei benutzen wir das sogenannte QUA<sup>3</sup>CK-Modell nach einem Vorschlag
+von {cite}`stock2020`. Das QUA<sup>3</sup>CK-Modell zeigt den typischen Ablauf
+eines ML-Projektes von der wissenschaftlichen Fragestellung (Q -- Question) bis
+zu deren Beantwortung (K -- Knowledge Transfer). Dazu gehört das Sammeln und
+Erkunden der Daten (U -- Understanding the data), mit Hilfe derer die Frage
+beantwortet werden soll. Die Phase der ML-Modellbildung wird mehrfach
+durchlaufen und besteht aus der Auswahl und Anpassung der Daten (A -- Adaption
+of the data), der Auswahl und dem Training des Algorithmus bzw. des Modells (A
+-- Algorithm selection and training) und der Anpassung der Hyperparamter (A --
+Adjustement of the hyperparameter). Die Modelle, die durch diese Schleife
+erstellt werden, werden letztendlich miteinander verglichen und bewertet (C --
+Comparison and Conclusion), bevor sie produktiv eingesetzt werden.
+
+```{figure} pics/qua3ck_process.png
+:name: fig_qua3ck_process
+:width: 60%
+
+Typischer Ablauf eines ML-Projektes als QUA<sup>3</sup>CK-Prozess dargestellt
+(Quelle: in Anlehnung an {cite}`stock2020`)
+```
 
 Das folgende Video erklärt den ML-Workflow etwas detaillierter, als wir es mit
 der Kuchenbacken-Analogie getan haben. Als Ausblick auf die weitere Vorlesung

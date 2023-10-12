@@ -723,7 +723,7 @@ wie man einen Kuchen essen würde, nachdem er gebacken ist.</p>
 <figure class="align-default" id="fig-ml-as-baking">
 <img alt="../_images/ml_as_baking.png" src="../_images/ml_as_baking.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Analogie zwischen dem ML-Workflow und dem Kuchenbacken</span><a class="headerlink" href="#fig-ml-as-baking" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Analogie zwischen dem ML-Workflow und dem Kuchenbacken (Quelle: eigene Darstellung)</span><a class="headerlink" href="#fig-ml-as-baking" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Allerdings ist es damit nicht getan. Je nachdem, wie viele und welche Gäste
@@ -731,7 +731,8 @@ erwartet werden, benötigen wir einen anderen Kuchen. Bei einer großen
 Geburtstagsparty brauchen wir einen Blechkuchen, damit jeder Gast ein Stückchen
 Kuchen bekommt. Haben wir Diabetiker eingeladen, sollten wir keine
 Schokoladentorte anbieten. Auch beim maschinellen Lernen ist es daher sehr
-wichtig, je nach Einsatzzweck das passende Modell zu wählen.</p>
+wichtig, je nach Einsatzzweck das passende Modell bzw. den passenden Algorithmus
+zu wählen.</p>
 <p>Natürlich hängt die Wahl des Kuchens auch von den vorhandenen Zutaten ab. Fehlt
 die Schokolade, so kann ich keinen Schokoladenkuchen backen. Entweder backen wir
 dann einen anderen Kuchen oder wir entscheiden uns, noch schnell zum Supermarkt
@@ -741,11 +742,13 @@ durchführbar. Und auch hier können wir uns entscheiden, einen anderen Kuchen z
 backen oder die Zutaten zu erneuern. Diese Analogie passt auch zu maschinellem
 Lernen. Fehlen Daten oder sind die Daten nicht qualititativ hochwertig, können
 wir die Datenlage verbessern, indem wir beispielsweise mehr Experimente
-durchführen oder offensichtlich schiefgelaufene Experimente wiederholen. Sollten
-wir die Daten jedoch nicht verbessern können (oder wollen, weil zu teuer oder
-die Abgabefrist der Bachelorarbeit ansteht), dann müssen wir die Auswahl des
-Modells an die vorhandenen Daten anpassen.</p>
-<p>Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, dder Gast beißt in den
+durchführen oder offensichtlich schiefgelaufene Experimente wiederholen. Diese
+Phase des maschinellen Lernen wird auch <strong>Datenerkundung</strong> oder
+<strong>Datenexploration</strong> genannt. Sollten wir die Daten jedoch nicht verbessern
+können (oder wollen, weil zu teuer oder die Abgabefrist der Bachelorarbeit
+ansteht), dann müssen wir die Auswahl des Modells an die vorhandenen Daten
+anpassen.</p>
+<p>Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, der Gast beißt in den
 Kuchen und verzieht das Gesicht … Zucker und Salz verwechselt. Hätten wir den
 Kuchen lieber einmal vor dem Servieren probiert. Auch beim maschinellen Lernen
 ist es mit dem “Backen” des Modells nicht getan. Ist ein Modell erstellt, so
@@ -753,9 +756,33 @@ muss es auch bewertet werden. Der Prozess des maschinellen Lernens wird mit der
 <strong>Validierung</strong> abgeschlossen, bevor das Modell dann produktiv eingesetzt wird.
 Die Erstellung und Verwendung von Modellen im maschinellen Lernen ist ein
 fortlaufender Prozess. Modelle werden oft mehrfach getestet und angepasst, um
-ihre Leistung zu verbessern. Es ist auch wichtig, sie regelmäßig zu
-aktualisieren, um sicherzustellen, dass sie mit neuen Daten oder sich ändernden
-Bedingungen zurechtkommen.</p>
+ihre Leistung zu verbessern. Beim Kuchenbacken könnte der Bäcker auf die Idee
+kommen, den Kuchen nicht bei 160 °C, sondern bei 162 °C zu backen, weil dann der
+Kuchen noch besser schmeckt. Solche Parameter zum Finetunen eines Modells werden
+<strong>Hyperparameter</strong> genannt. Hyperparameter haben nichts mit den vorhanden Daten
+zu tun, sondern gehören zum ML-Modell. Aber auch wenn sich Daten verändern und
+neue Daten hinzukommen, muss das Modell aktualisiert werden, um mit den sich
+ändernden Bedingungen zurechtzukommen.</p>
+<p>Die folgende Skizze zeigt den schematischen Ablauf eines typischen ML-Projektes.
+Dabei benutzen wir das sogenannte QUA<sup>3</sup>CK-Modell nach einem Vorschlag
+von <span id="id2">[<a class="reference internal" href="../appendix.html#id3" title="Simon Claus Stock, Jürgen Becker, Daniel Grimm, Tim Hotfilter, Gabriela Molinar, Marco Stang, and Wilhelm Stork. Qua³ck - a machine learning development process. In Proceedings of Artificial Intelligence for Science, Industry and Society — PoS(AISIS2019), volume 372 of Proceedings of Science, 026. Scuola Internazionale Superiore di Studi Avanzati (SISSA), 2020. doi:10.22323/1.372.0026.">Stock <em>et al.</em>, 2020</a>]</span>. Das QUA<sup>3</sup>CK-Modell zeigt den typischen Ablauf
+eines ML-Projektes von der wissenschaftlichen Fragestellung (Q – Question) bis
+zu deren Beantwortung (K – Knowledge Transfer). Dazu gehört das Sammeln und
+Erkunden der Daten (U – Understanding the data), mit Hilfe derer die Frage
+beantwortet werden soll. Die Phase der ML-Modellbildung wird mehrfach
+durchlaufen und besteht aus der Auswahl und Anpassung der Daten (A – Adaption
+of the data), der Auswahl und dem Training des Algorithmus bzw. des Modells (A
+– Algorithm selection and training) und der Anpassung der Hyperparamter (A –
+Adjustement of the hyperparameter). Die Modelle, die durch diese Schleife
+erstellt werden, werden letztendlich miteinander verglichen und bewertet (C –
+Comparison and Conclusion), bevor sie produktiv eingesetzt werden.</p>
+<figure class="align-default" id="fig-qua3ck-process">
+<a class="reference internal image-reference" href="../_images/qua3ck_process.png"><img alt="../_images/qua3ck_process.png" src="../_images/qua3ck_process.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Typischer Ablauf eines ML-Projektes als QUA<sup>3</sup>CK-Prozess dargestellt
+(Quelle: in Anlehnung an <span id="id3">[<a class="reference internal" href="../appendix.html#id3" title="Simon Claus Stock, Jürgen Becker, Daniel Grimm, Tim Hotfilter, Gabriela Molinar, Marco Stang, and Wilhelm Stork. Qua³ck - a machine learning development process. In Proceedings of Artificial Intelligence for Science, Industry and Society — PoS(AISIS2019), volume 372 of Proceedings of Science, 026. Scuola Internazionale Superiore di Studi Avanzati (SISSA), 2020. doi:10.22323/1.372.0026.">Stock <em>et al.</em>, 2020</a>]</span>)</span><a class="headerlink" href="#fig-qua3ck-process" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Das folgende Video erklärt den ML-Workflow etwas detaillierter, als wir es mit
 der Kuchenbacken-Analogie getan haben. Als Ausblick auf die weitere Vorlesung
 bietet dieses Video dennoch eine sehr gute Übersicht über die Vorgehenweise in
