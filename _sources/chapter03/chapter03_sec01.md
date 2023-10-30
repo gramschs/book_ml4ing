@@ -68,7 +68,7 @@ Modul zur Verarbeitung und Analyse von Daten. Es ist üblich, das Modul `pandas`
 mit der Abkürzung `pd` zu importieren, damit wir nicht immer `pandas` schreiben
 müssen, wenn wir Code aus dem Pandas-Modul benutzen.
 
-```{code-cell} ipython
+```{code-cell} ipython3
 import pandas as pd
 ```
 
@@ -77,7 +77,7 @@ installiert. Installieren Sie zunächst Pandas beispielsweise mit `!conda instal
 pandas` oder `!pip install pandas`. Mit der Funktion `dir()` werden alle
 Funktionalitäten des Moduls aufgelistet.
 
-```{code-cell} ipython
+```{code-cell} ipython3
 dir(pd)
 ```
 
@@ -101,7 +101,7 @@ zunächst in eine Liste (erkennbar an den eckigen Klammern), aus der dann ein
 Series-Objekt erzeugt wird.
 
 ```{code-cell} ipython3
-preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
+preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 50000]
 preise = pd.Series(preisliste)
 print(preise)
 ```
@@ -125,7 +125,7 @@ Die Datenstruktur Series ermöglich es aber, einen *expliziten Index* zu setzen.
 ab, von welchem Auto der Verkaufspreis erfasst wurde. Wir werden diesen
 Datensatz in den folgenden Kapiteln noch weiter vertiefen. An dieser Stelle
 halten wir fest, dass die ersten drei Autos von der Marke Audi sind, die
-nächsten sind BMWs und die letzten fünf sind von der Marke Citroen. 
+nächsten sind BMWs und die letzten fünf sind von der Marke Citroen.
 
 ```{code-cell} ipython3
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
@@ -202,7 +202,7 @@ Preise aufsteigend oder absteigend zu sortieren. Dazu nutzen wir die Methode
 `.sort_values()`. Der Name lässt vermuten, dass die Methode die Elemente nach
 ihrem Wert sortiert.
 
-```{code-cell} ipython
+```{code-cell} ipython3
 preise_aufsteigend = preise.sort_values()
 print(preise_aufsteigend)
 ```
@@ -217,7 +217,7 @@ True` gewünscht wird, also dass `aufsteigend = wahr` sein soll. Wollen wir
 absteigend sortieren, müssen wir `aufsteigend = falsch` setzen, also `ascending
  = False`.
 
-```{code-cell} ipython
+```{code-cell} ipython3
 preise_absteigend = preise.sort_values(ascending = False)
 print(preise_absteigend)
 ```
@@ -237,7 +237,7 @@ Alice, Bob, Charlie und Dora sind 22, 20, 24 und 22 Jahre alt. Speichern Sie
 diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.
 ```
 
-```{code-cell} ipython
+```{code-cell} ipython3
 # Hier Ihr Code
 ```
 

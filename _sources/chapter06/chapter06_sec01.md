@@ -14,25 +14,25 @@ kernelspec:
   name: python3
 ---
 
-# 6.1 Lineare Regression mit Scikit-Learn
+# 6.1 Theorie der linearen Regression 
+
+Die lineare Regression gehört zu den überwachten maschinellen Lernverfahren
+(Supervised Learning). Meist ist sie das erste ML-Modell, das eingesetzt wird,
+um Regressionsprobleme zu lösen. In diesem Kapitel stellen wir die theoretischen
+Grundlagen der linearen Regression vor.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: important
 * Sie kennen das **lineare Regressionsmodell**.
-* Sie können erste grundlegende Schritte der Datenvorverarbeitung anwenden:
-    * Sie können unvollständige Daten mit **dropna** aus dem Datensatz
-      entfernen. 
-    * Sie können Ausreißer mit **drop** entfernen.
-    * Sie können eine Eigenschaft als Input auswählen und mit **reshape** in
-      Matrixform bringen.
-* Sie können ein lineares Regressionsmodell aus Scikit-Learn laden und mit
-  **fit** trainieren.
-* Sie können mit dem trainierten Modell und **predict** eine Prognose abgeben.
+* Sie können erklären, was die **Fehlerquadratsumme** ist.
+* Sie wissen, dass das Training des lineare Regressionsmodells durch die
+  **Minimierung** der Fehlerquadratsumme (Kleinste-Quadrate-Schätzer) erfolgt.
+* Sie können mit dem **Bestimmtheitsmaß** bzw. **R²-Score** beurteilen, ob das
+  lineare Regressionsmodell geeignet zur Erklärung der Daten ist.
 ```
 
-+++
 
 ## Regression kommt aus der Statistik
 
@@ -46,21 +46,25 @@ und sprechen daher von **linearer Regression**. Mehr Details finden Sie auch bei
 [Wikipedia → Regressionsanalyse](https://de.wikipedia.org/wiki/Regressionsanalyse).
 
 Etwas präziser formuliert ist lineare Regression ein Verfahren, bei dem es eine
-Einflussgröße $x$ und eine Zielgröße $y$ mit $M$ Paaren von dazugehörigen
-Messwerten $(x^{(1)},y^{(1)})$, $(x^{(2)},y^{(2)})$, $\ldots$,
-$(x^{(M)},y^{(M)})$ gibt. Dann sollen zwei Koeffizienten $\omega_0$ und
-$\omega_1$ geschätzt werden, so dass möglichst für alle Datenpunkte $(x^{(i)},
-y^{(i)})$ die lineare Gleichung $y^{(i)} = \omega_0 + \omega_1 x^{(i)}$ gilt.
-Geometrisch ausgedrückt: durch die Daten soll eine Gerade gelegt werden. Da bei
-den Messungen auch Messfehler auftreten, werden wir die Gerade nicht perfekt
-treffen, sondern kleine Fehler machen, die wir hier mit $\varepsilon^{(i)}$
-bezeichnen. Wir suchen also die beiden Parameter $\omega_0$ und $\omega_1$, so
-dass  
+Einflussgröße $x$ und eine Zielgröße $y$ gibt. In der ML-Sprechweise wird die
+Einflussgröße $x$ typischerweise als Merkmal (oder englisch Feature) bezeichnet.
+Die Zielgröße (manchmal auch Output oder Target genannt), soll stetig sein
+(manchmal auch kontinuierlich, metrisch oder quantitativ genannt). Zu dem
+Merkmal oder den Merkmalen liegen $M$ Datenpunkte mit den dazugehörigen Werte
+der Zielgröße vor. Diese werden üblicherweise als Paare (wenn nur ein Merkmal
+vorliegt) zusammengefasst:
 
-$$y^{(i)} = \omega_0 + \omega_1 x^{(i)} + \varepsilon^{(i)}.$$
+$$(x^{(1)},y^{(1)}), \, (x^{(2)},y^{(2)}), \, \ldots, \, (x^{(M)},y^{(M)}).$$ 
 
-Die folgende Grafik veranschaulicht das lineare Regressionsmodell. Die Paare von
-Daten sind in blau gezeichnet, das lineare Regressionsmodell in rot.
+Ziel der linearen Regression ist es, zwei Parameter $w_0$ und $w_1$ so zu
+bestimmen, dass möglichst für alle Datenpunkte $(x^{(i)}, y^{(i)})$ die lineare
+Gleichung 
+
+$$y^{(i)} \approx w_0 + w_1 x^{(i)}$$
+
+gilt. Geometrisch ausgedrückt: durch die Daten soll eine Gerade gelegt werden,
+wie die folgende Abbildung zeigt. Die Datenpunkte sind blau, die
+Regressionsgerade ist in rot visualisiert.
 
 ```{figure} pics/Linear_regression.svg
 ---
@@ -68,257 +72,129 @@ name: fig_linear_regression
 ---
 Lineare Regression: die erklärende Variable (= Input oder unabhängige Variable oder Ursache) ist auf der x-Achse, die
 abhängige Variable (= Output oder Wirkung) ist auf der y-Achse aufgetragen, Paare von Messungen sind in blau
-gekennzeichnet, das Modell in rot.
-
+gekennzeichnet, das Modell in rot. 
 ([Quelle:](https://en.wikipedia.org/wiki/Linear_regression#/media/File:Linear_regression.svg) "Example of simple linear regression, which has one independent variable" von Sewaqu. Lizenz: Public domain))
 ```
 
-+++
+In der Praxis werden die Daten nicht perfekt auf der Geraden liegen. Die Fehler
+zwischen dem echten $y^{(i)}$ und dem Funktionswert der Gerade $f(x^{(i)}) = w_0 +
+w_1 x^{(i)}$ werden unterschiedlich groß sein, je nachdem, welche Parameter
+$w_0$ und $w_1$ gewählt werden. Wie finden wir jetzt die beste Kombination $w_0$
+und $w_1$, so dass diese Fehler möglichst klein sind?
 
-Zu einer Regressionsanalyse gehört mehr als nur die Regressionskoeffizienten zu
-bestimmen. Daten müssen vorverarbeitet werden, unter mehreren unabhängigen
-Variablen (Inputs) müssen diejenigen ausgewählt werden, die tatsächlich die
-Wirkung erklären. Das lineare Regressionsmodell muss trainiert werden und es
-muss getestet werden. Bei den meisten ML-Modellen gibt es noch Modellparameter,
-die feinjustiert werden können und die Prognosefähigkeit verbessern.
 
-Im Folgenden erkunden wir einen realistischen Datensatz und bereiten die Daten
-für das Training eines linearen Regressionsmodells mit Scikit-Learn vor.
+## Wie groß ist der Fehler?
 
-+++
+Das Prinzip für das lineare Regressionsmodell und auch die folgenden ML-Modelle
+ist jedesmal gleich. Das Modell ist eine mathematische Funktion, die aber noch
+Parameter (hier beispielsweise die Koeffizienten der Gerade) enthält. Dann wird
+festgelegt, was eine gute Prognose ist, also wie Fehler berechnet und beurteilt
+werden sollen. Das hängt jeweils von dem bettrachteten Problem ab. Sobald das
+sogenannte Fehlermaß feststeht, werden die Parameter der Modellfunktion so
+berechnet, dass das Fehlermaß (z.B. Summe der Fehler oder Mittelwert der Fehler)
+möglichst klein wird. In der Mathematik sagt man dazu **Minimierungsproblem**. 
 
-## Deutscher Gebrauchtwagenmarkt (Autoscout24)
+Für die lineare Regression wird als Fehlermaß die Kleinste-Quadrate-Schätzung
+verwendet (siehe [Wikipedia  → Methode der kleinsten
+Quadrate](https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate)). Dazu
+berechnen wir, wie weit weg die Gerade von den Messpunkten ist. Wie das geht,
+veranschaulichen wir uns mit der folgenden Grafik.
 
-Um realistische Beispiele zu haben, mit denen wir die lineare Regression
-erkunden können, laden wir einen Datensatz mit Daten über den deutschen
-Gebrauchtwagenmarkt von 2011 bis 2021 (Autoscout24). Der Datensatz stammt von
-[Kaggle](https://www.kaggle.com/datasets/ander289386/cars-germany). Enthalten
-sind Daten zu
+```{figure} pics/kq_regression.png
+---
+width: 600px
+name: kq_regression
+---
+Messpunkte (blau) und der Abstand (grün) zu einer Modellfunktion (rot)
 
-* mileage: kilometres traveled by the vehicle (= Kilometerstand)
-* make: make of the car (= Marke)
-* model: model of the car (= Modell)
-* fuel: fuel type (= Treibstoffart)
-* gear: manual or automatic (= Getriebe)
-* offerType: type of offer (new, used, ...) (= Angebotsart)
-* price: sale price of the vehicle (= Gebrauchtpreis)
-* hp: horse power (= PS)
-* year: the vehicle registration year (= Baujahr)
-
-Wie immer laden wir die Daten und verschaffen uns zunächst einen Überblick.
-
-```{code-cell} ipython3
-import pandas as pd
-
-data_raw = pd.read_csv('data/autoscout24-germany-dataset.csv')
-data_raw.info()
+([Quelle:](https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate#/media/Datei:MDKQ1.svg) Autor: Christian Schirm, Lizenz: CC0) 
 ```
 
-Offensichtlich sind in den Spalten 'model', 'gear' und 'hp' einige Datensätze
-nicht vollständig. Das erkennen wir daran, dass insgesmt 46.405 Einträge
-vorliegen, aber in diesen drei Spalten weniger erfasst sind. 
+Unsere rote Modellfunktion trifft die Messpunkte mal mehr und mal weniger gut.
+Wir können jetzt für jeden Messpunkt berechnen, wie weit die rote Kurve von ihm
+weg ist (= grüne Strecke), indem wir die Differenz der y-Koordinaten errechnen:
+$r = y_{\text{blau}}-y_{\text{rot}}$. Diese Differenz nennt man **Residuum**.
+Danach summieren wir die Fehler (also die Residuen) auf und erhalten den
+Gesamtfehler. Leider kann es dabei passieren, dass am Ende als Gesamtfehler 0
+herauskommt, weil beispielsweise für den 1. Messpunkt die blaue y-Koordinate
+unter der roten y-Koordinate liegt und damit ein negatives Residuum herauskommt,
+aber für den 5. Messpunkt ein positives Residuum. Daher quadrieren wir die
+Residuen. Dann wird diese **Fehlerquadratsumme** minimiert, um die Koeffizienten
+des Regressionsmodells zu berechnen.
 
-Wir machen es uns jetzt einfach und entfernen die nicht vollständigen Daten aus
-unserem Datensatz mit der Methode `.dropna()`, siehe [Scikit-Learn
-(Dokumentation
-dropna)](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html).
-Bei einem echten Industrieprojekt müssten wir dem Problem nachgehen und die
-fehlenden Daten beschaffen. Sollte das nicht gehen, so müssten wir als nächstes
-analysieren, warum die Daten fehlen, ob beispielsweise eine Systematik
-dahintersteckt, und uns dann einen geeigneten Plan machen, wie mit den fehlenden
-Daten umzugehen ist. Das ist ein eigenständiges Thema innerhalb des ML, auf das
-wir im nächsten Kapitel noch näher eingehen werden.
 
-```{code-cell} ipython3
-data = data_raw.dropna().copy()
-data.info()
-```
+## Ist das beste Modell gut genug?
 
-In dem Datensatz gibt es nur vier Eigenschaften, die numerisch sind, also in
-Form von Zahlen repräsentiert werden. Wir wählen die Eigenschaft Preis als
-Zielgröße (=abhängige Variable oder Wirkung oder Output).
+Auch wenn wir mit der Minimierung der Fehlerquadratsumme bzw. der
+Kleinsten-Quadrate-Methode die besten Parameter für unsere Modellfunktion
+gefunden haben, heißt das noch lange nicht, dass unser Modell gut ist. Bereits
+die Modellfunktion kann ja völlig falsch gewählt sein. Beispielsweise könnten
+wir Messungen rund um eine sinus-förmige Wechselspannung vornehmen und dann wäre
+ein lineares Regressionsmodell völlig ungeeignet, auch wenn die
+Fehlerquadratsumme minimal wäre.
 
-Als nächstes erkunden wir, wie der Preis abhängig von den Inputs
+Wir brauchen daher noch ein Kriterium dafür, ob das trainierte Modell auch
+valide ist. Über die Validierung eines ML-Modells werden wir auch in den
+nächsten Vorlesungen noch intensiv sprechen. Für die lineare Regression
+betrachten wir erstmal das **Bestimmtheitsmaß**, das in der ML-Community auch
+**R²-Score** genannt wird.
 
-* Kilometerstand,
-* Baujahr und
-* PS
+Beim R²-Score wird zunächst der Mittelwert der Fehlerquadratsumme mit der
+Modellfunktion $f$ gebildet:
 
-ist, indem wir die Daten plotten. Wir fangen mit dem Kilometerstand der Autos an.
+$$\frac{1}{M}\sum_{i=1}^M (y^{(i)} - f(x^{(i)})^2. $$
 
-```{code-cell} ipython3
-import plotly.express as px
+Danach wird der Mittelwert der Output-Daten gebildet, nämlich
 
-fig = px.scatter(data, x = 'mileage', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Kilometerstand [km]',
-    yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
+$$\bar{y} = \frac{1}{M} \sum_{i=1}^{M} y^{(i)}.$$
 
-Zunächst einmal stören die Ausreißer etwas. Wir suchen zuerst mal nach
-den Einträgen mit Preisen über eine halbe Mio. Euro. 
+Nun wird dieser Mittelwert in die Fehlerquadratsumme eingesetzt, als ob die
+Modellfunktion die konstante Funktion $f(x)=\bar{y}$ wäre.
 
-```{code-cell} ipython3
-filter = data.loc[:, 'price'] > 500000
-data.loc[filter, :].head()
-```
+$$\frac{1}{M}\sum_{i=1}^M (y^{(i)} - \bar{y})^2.$$
 
-Wahrscheinlich handelt es sich bei Eintrag 11753 und 11754 ohnehin um das
-gleiche Fahrzeug. Wir entfernen die drei Einträge mit der `drop()`-Methode,
-siehe [Pandas Dokumentation
-(drop)](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html).
+Diese beiden Fehlerquadratsummen werden nun miteinander ins Verhältnis gesetzt.
+Wir vergleichen sozusgen den mittleren Fehler bei Wahl der Modellfunktion mit
+dem mittleren Fehler, wenn wir machen würden, wenn wir einfach nur den
+Mittelwert als Schätzer für unser Modell nehmen würden. 
 
-```{code-cell} ipython3
-data = data.drop([11753, 11754, 21675])
-```
+In der Statistik wurde dieses Verhältnis (Gesamtfehler geteilt durch
+Gesamtfehler Mittelwert) als Qualitätkriterium für ein lineares
+Regressionsproblem festgelegt. Genaugenommen, rechnet man 1 - Gesamtfehler /
+(Gesamtfehler Mittelwert) und nennt diese Zahl Bestimmtheitsmaß oder R²-Score.
+Die Formel zur Berechnung des R²-Scores lautet:
 
-```{code-cell} ipython3
-fig = px.scatter(data, x = 'mileage', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Kilometerstand [km]',
-    yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
+$$R^2 = 1 - \frac{\sum_{i=1}^M (y^{(i)} - f(x^{(i)}))^2}{\sum_{i=1}^M(y^{(i)}-\bar{y})}. $$
 
-Sieht nicht besonders linear aus, eher wie eine Hyperbel. Als nächstes
-betrachten wir den Preis in Abhängigkeit des Baujahrs. 
+Dabei kürzt sich das $\frac{1}{M}$ im Zähler und Nenner weg. Nachdem der
+R²-Score ausgerechnet wurde, können wir nun die Qualität der Anpassung
+beurteilen:
 
-```{code-cell} ipython3
-fig = px.scatter(data, x = 'year', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Baujahr',
-    yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
+* Wenn $R^2 = 1$  ist, dann gibt es den perfekten linearen Zusammenhang und die
+  Modellfunktion ist eine sehr gute Anpassung an die Messdaten.
+* Wenn $R^2 = 0$ oder gar negativ ist, dann funktioniert die lineare
+  Modellfunktion überhaupt nicht.
 
-Je jünger, desto teurer, könnte linear sein. Und zuletzt visualisieren wir den
-Preis abhängig von der PS-Zahl.
 
-```{code-cell} ipython3
-fig = px.scatter(data, x = 'hp', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Leistung (PS)',
-    yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
+## Interaktive Visualisierung R²-Score
 
-Bei dem Input PS scheint es eine lineare Abhängigkeit zu geben. Je mehr PS desto
-teurer. 
+Auf der Seite [https://mathweb.de](https://mathweb.de) finden Sie eine Reihe von
+Aufgaben und interaktiven Demonstrationen rund um die Mathematik. Insbesondere
+gibt es dort auch eine interaktive Demonstration des R²-Scores.
 
-+++
+Drücken Sie auf den zwei kreisförmigen Pfeile rechts oben. Dadurch wird ein
+neuer Datensatz erzeugt. Die Messdaten sind durch grüne Punkte dargestellt, das
+lineare Regressionsmodell durch eine blaue Gerade. Im Titel wird der aktuelle
+und der optimale R²-Wert angezeigt. Ziehen Sie an den weißen Punkten, um die
+Gerade zu verändern. Schaffen Sie es, den optimalen R²-Score zu treffen?
+Beobachten Sie dabei, wie die Fehler (rot) kleiner werden.
 
-## Scikit-Learn: LinearRegression
+<iframe width="560" height="315" src="https://lti.mint-web.de/examples/index.php?id=01010320"  allowfullscreen>
+</iframe>
 
-Die Bestimmung der Koeffizienten $\omega_0$ und $\omega_1$ der Geraden $y^{(i)}
-= \omega_0 + \omega x^{(i)}$ funktioniert nicht mehr händisch. Natürlich wäre es
-möglich, solange Steigungen $\omega_1$ und y-Achsenabschnitte $\omega_0$ zu
-raten, bis eine Gerade herauskommt, die annähernd passt. Scikit-Learn liefert
-uns sogar die beste Gerade, wobei wir noch diskutieren müssen, was "die beste"
-genau heißt.  
 
-Um Scikit-Learn arbeiten zu lassen, importieren wir die linearen
-Regressionsmodelle `LinearRegression` aus dem Modul `sklearn.linear_model`.
-Danach initialiseren wir das Modell und speichern es in der Variable `model`.
-
-```{code-cell} ipython3
-from sklearn.linear_model import LinearRegression
-
-model = LinearRegression()
-```
-
-Mit der Methode `.fit()` werden die Koeffizienten des Modells an die Daten
-angepasst. Dazu müssen die Daten in einem bestimmten Format vorliegen. Bei den
-Inputs wird davon ausgegangen, dass mehrere Eigenschaften in das Modell eingehen
-sollen. Die Eigenschaften stehen normalerweise in den Spalten des Datensatzes.
-Beim Output erwarten wir zunächst nur eine Eigenschaft, die durch das Modell
-erklärt werden soll. Daher geht Scikit-Learn davon aus, dass der Input eine
-Tabelle(Matrix) $X$ ist, die M Zeilen und N Spalten hat. M ist die Anzahl an
-Daten, hier also die Anzahl der Autos, und N ist die Anzahl der Eigenschaften,
-die betrachtet werden sollen. Da wir momentan nur die Abhängigkeit des Preises
-von der PS-Zahl analysieren wollen, ist $N=1$. Beim Output geht Scikit-Learn
-davon aus, dass eine Datenreihe (eindimensionaler Spaltenvektor) vorliegt, die
-natürlich ebenfalls M Zeilen hat. Wir müssen daher unsere PS-Zahlen noch in das
-Matrix-Format bringen. Dazu verwenden wir den Trick, dass mit `[ [list] ]` eine
-Tabelle extrahiert wird. 
-
-```{code-cell} ipython3
-X = data[['hp']]
-y = data['price']
-
-#  Training des linearen Regressionsmodells
-model.fit(X, y);
-```
-
-Nachdem das lineare Regressionsmodell trainiert wurde, können wir die Steigung
-in dem Attribut `.coef_`ablesen und den y-Achsenabschnitt in dem Attribut
-`.intercept_`.
-
-```{code-cell} ipython3
-print('Steigung: ')
-print(model.coef_)
-
-print('y-Achsenabschnitt: ')
-print(model.intercept_)
-```
-
-Damit könnten wir eine Geradengleichung aufstellen und eine Funktion
-implementieren, um für eine PS-Zahl eine Prognose abzugeben, welchen
-Verkauspreis das Auto erzielen könnte. Aber tatsächlich hat das Scikit-Learn für
-uns schon erledigt. Die Methode `.predict()` berechnet mit den intern
-gespeicherten Koeffizienten des linearen Regressionsmodells eine Prognose. Für
-eine PS-Zahl von 80 Ps wird ein Verkaufspreis von 
-
-```{code-cell} ipython3
-model.predict([[80]])
-```
-
-6.614 EUR erzielt. Denken Sie daran, dass eine Matrix als Input übergeben werden
-muss.
-
-Damit können wir auch eine Wertetabelle für PS-Zahlen von 0 bis 800 PS
-aufstellen und das Ergebnis zusammen mit den tatsächlichen Verkaufspreisen
-visualisieren. Zuerst erzeugen wir die X-Werte, für die das trainierte Modell
-eine Prognose aufstellen soll. Wir hätten gerne 100 X-Werte von 0 bis 800 PS.
-Dazu nutzen wir aus dem NumPy-Modul den Befehl `linspace(start, stopp,
-anzahl_punkte)`.
-
-```{code-cell} ipython3
-import numpy as np
-
-print(np.linspace(0, 800, 100))
-```
-
-Das trainierte Modell erwartet Daten in demselben Format, mit dem es trainiert
-wurde. Daher erstellen wir nun mit dem NumPy-Array einen Pandas-DataFrame und
-lassen dann das trainierte Modell die Preise prognostizieren.
-
-```{code-cell} ipython3
-X_predict = pd.DataFrame(np.linspace(0, 800, 100), columns=['hp'])
-y_predict = model.predict(X_predict)
-
-import plotly.graph_objects as go
-
-fig = go.Figure()
-
-fig.add_trace(go.Scatter(x = data['hp'], y = data['price'], mode='markers', name='Daten'))
-fig.add_trace(go.Scatter(x = X_predict['hp'], y = y_predict, mode='lines', name='Prognose'))
-fig.update_layout(
-  title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)',
-  xaxis_title = 'Leistung (PS)',
-  yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
-
-## Zusammenfassung
+## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben Sie das theoretische Modell der linearen Regression
-kennengelernt. Um mit einem realistischen Datensatz zu arbeiten, haben wir einen
-Datensatz von Kaggle importiert und die Daten vorverarbeitet. Danach haben wir
-mit Scikit-Learn ein lineare Regressionsmodell trainiert und damit eine Prognose
-erstellt.
+kennengelernt. Im nächsten Kapitel trainieren wir ein lineares Regressionsmodell
+mit Scikit-Learn.

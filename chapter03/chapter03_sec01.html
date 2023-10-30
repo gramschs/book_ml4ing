@@ -200,8 +200,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">6. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Bewertung eines linearen Regressionsmodells</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Theorie der linearen Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Lineare Regression mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
@@ -742,7 +742,7 @@ zunächst in eine Liste (erkennbar an den eckigen Klammern), aus der dann ein
 Series-Objekt erzeugt wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preisliste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1999</span><span class="p">,</span> <span class="mi">35990</span><span class="p">,</span> <span class="mi">17850</span><span class="p">,</span> <span class="mi">46830</span><span class="p">,</span> <span class="mi">27443</span><span class="p">,</span> <span class="mi">14240</span><span class="p">,</span> <span class="mi">19950</span><span class="p">,</span> <span class="mi">15950</span><span class="p">,</span> <span class="mi">21990</span><span class="p">,</span> <span class="mi">12450</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preisliste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1999</span><span class="p">,</span> <span class="mi">35990</span><span class="p">,</span> <span class="mi">17850</span><span class="p">,</span> <span class="mi">46830</span><span class="p">,</span> <span class="mi">27443</span><span class="p">,</span> <span class="mi">14240</span><span class="p">,</span> <span class="mi">19950</span><span class="p">,</span> <span class="mi">15950</span><span class="p">,</span> <span class="mi">21990</span><span class="p">,</span> <span class="mi">50000</span><span class="p">]</span>
 <span class="n">preise</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">preisliste</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">preise</span><span class="p">)</span>
 </pre></div>
@@ -758,7 +758,7 @@ Series-Objekt erzeugt wird.</p>
 6    19950
 7    15950
 8    21990
-9    12450
+9    50000
 dtype: int64
 </pre></div>
 </div>
@@ -808,7 +808,7 @@ Citroen Nr. 1    14240
 Citroen Nr. 2    19950
 Citroen Nr. 3    15950
 Citroen Nr. 4    21990
-Citroen Nr. 5    12450
+Citroen Nr. 5    50000
 dtype: int64
 </pre></div>
 </div>
@@ -894,7 +894,7 @@ Citroen Nr. 1    14.240
 Citroen Nr. 2    19.950
 Citroen Nr. 3    15.950
 Citroen Nr. 4    21.990
-Citroen Nr. 5    12.450
+Citroen Nr. 5    50.000
 dtype: float64
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ Citroen Nr. 1    12241
 Citroen Nr. 2    17951
 Citroen Nr. 3    13951
 Citroen Nr. 4    19991
-Citroen Nr. 5    10451
+Citroen Nr. 5    48001
 dtype: int64
 </pre></div>
 </div>
@@ -940,7 +940,6 @@ ihrem Wert sortiert.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Audi Nr. 1        1999
-Citroen Nr. 5    12450
 Citroen Nr. 1    14240
 Citroen Nr. 3    15950
 Audi Nr. 3       17850
@@ -949,6 +948,7 @@ Citroen Nr. 4    21990
 BMW Nr. 2        27443
 Audi Nr. 2       35990
 BMW Nr. 1        46830
+Citroen Nr. 5    50000
 dtype: int64
 </pre></div>
 </div>
@@ -969,7 +969,8 @@ absteigend sortieren, müssen wir <code class="docutils literal notranslate"><sp
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BMW Nr. 1        46830
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Citroen Nr. 5    50000
+BMW Nr. 1        46830
 Audi Nr. 2       35990
 BMW Nr. 2        27443
 Citroen Nr. 4    21990
@@ -977,7 +978,6 @@ Citroen Nr. 2    19950
 Audi Nr. 3       17850
 Citroen Nr. 3    15950
 Citroen Nr. 1    14240
-Citroen Nr. 5    12450
 Audi Nr. 1        1999
 dtype: int64
 </pre></div>
