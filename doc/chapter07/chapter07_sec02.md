@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Modellvalidierung
+# 7.2 Modellvalidierung
 
 Mit dem Bestimmtheitsmaß R²-Score haben wir eine Möglichkeit kennengelernt,
 einzuschätzen, wie gut unser Modell ist. Je näher der R²-Score an der 1 ist,
@@ -35,25 +35,20 @@ Daten in Test- und Trainingsdaten.
 
 Um die Probleme bei der Modellauswahl zu verdeutlichen, betrachten wir einen
 künstlich generierten Datensatz. Angenommen, wir hätten die folgenden sieben
-Messwerte gemessen. 
+Messwerte gemessen.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt
-import numpy as np
+import pandas as pd 
+import plotly.express as px
 
-# styling of plots
-plt.style.use('bmh')
+# Generierung Daten
+df = pd.DataFrame()
+df['x'] = [-1, 0, 1, 2, 3, 4, 5]
+df['y'] = [5.4384, 14.3252, 19.2451, 23.3703, 18.2885, 13.8978, 3.7586]
 
-# artificial data: f(x) = −2𝑥^2 + 8𝑥 + 15 + error
-X = np.array([-1, 0, 1, 2,  4, 4, 5], np.newaxis)
-y = np.array([5.4384, 14.3252, 19.2451, 23.3703, 18.2885, 13.8978, 3.7586])
-
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X,y)
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten');
+# Visualisierung
+fig = px.scatter(df, x = 'x', y = 'y', title= 'Künstlich generierte Messdaten')
+fig.show()
 ```
 
 Und nun würden wir das folgende Modell implementieren, der Name sagt alles! Um
@@ -76,6 +71,10 @@ class AuswendigLerner:
     def predict(self, X):
         return self.y
 
+# prepare training data
+X = df[['x']]
+y = df['y']
+
 # choose model and train
 model = AuswendigLerner()
 model.fit(X, y)
@@ -86,13 +85,11 @@ y_predict = model.predict(X)
 # check quality
 r2 = r2_score(y,y_predict)
 print('Der R2-Score ist: {:.2f}'.format(r2))
-
-
 ```
 
 Ein R²-Score von 1, unser Modell scheint perfekt zu funktionieren! Aber wie
 prognostiziert es etwas Neues? Das Modell funktioniert zwar perfekt für die
-vorgegebenen Trainingsdaten, aber ist **nicht verallgemeinerbar**. 
+vorgegebenen Trainingsdaten, aber ist **nicht verallgemeinerbar**.
 
 +++
 
@@ -127,15 +124,20 @@ lauten. Wir wenden jetzt train_test_split() auf unsere künstlichen Messdaten an
 ```{code-cell} ipython3
 from sklearn.model_selection import train_test_split
 
-X_train, X_test, y_train, y_test = train_test_split(X,y)
+df_train, df_test = train_test_split(df)
 
-fig, ax = plt.subplots()
-ax.scatter(X_train, y_train, label='Trainingsdaten')
-ax.scatter(X_test, y_test, label='Testdaten')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
-ax.legend(bbox_to_anchor=(1.35, 0.5));
+# visualization
+fig1 = px.scatter(df_train, x = 'x', y = 'y', color_discrete_sequence=['red'])
+fig2 = px.scatter(df_test,  x = 'x', y = 'y', color_discrete_sequence=['blue'])
+
+import plotly.graph_objects as go 
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+    title='Künstlich generierte Daten'
+)
+
+fig.show()
 ```
 
 Voreingestellt ist, dass die Funktion `test_train_split()` 25 % der Daten als
@@ -161,15 +163,20 @@ steuern.
   allem für Präsentationen oder Lehrmaterialien interessant.
 
 ```{code-cell} ipython3
-X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=2, random_state=0)
+df_train, df_test = train_test_split(df, test_size=2, random_state=0)
 
-fig, ax = plt.subplots()
-ax.scatter(X_train, y_train, label='Trainingsdaten')
-ax.scatter(X_test, y_test, label='Testdaten')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
-ax.legend(bbox_to_anchor=(1.35, 0.5));
+# visualization
+fig1 = px.scatter(df_train, x = 'x', y = 'y', color_discrete_sequence=['red'])
+fig2 = px.scatter(df_test,  x = 'x', y = 'y', color_discrete_sequence=['blue'])
+
+import plotly.graph_objects as go 
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+    title='Künstlich generierte Daten'
+)
+
+fig.show()
 ```
 
 ## Idee der Kreuzvalidierung

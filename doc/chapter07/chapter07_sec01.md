@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Datenvorverarbeitung
+# 7.1 Datenvorverarbeitung
 
 Realistische Datensätze sind oft unvollständig. In einer Umfrage hat eine Person
 mit einer Frage nichts anfangen können und daher nichts angekreuzt. Ein
@@ -72,6 +72,7 @@ mit den unvollständigen Angaben? Wir wenden uns aber zunächst dem Löschen der
 Daten zu.
 
 ## Löschen mit drop()
+
 Im letzten Kapitel haben wir einfach alle Datensätze gelöscht, in denen Daten
 gefehlt haben — sozusagen die Brute-Force-Methode. Wenn wir uns mehr Zeit für
 die Datenvorverarbeitung nehmen, können wir aber auch filigraner vorgehen.
