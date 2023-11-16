@@ -184,18 +184,21 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec04.html">Übungen</a></li>
 </ul>
 </li>
 </ul>
@@ -207,10 +210,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Multiple lineare Regression</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec01.html">Datenvorverarbeitung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec02.html">Modellvalidierung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec03.html">Das Bias-Varianz-Dilemma</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">7. Polynomiale Regression und ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec01.html">7.1 Datenvorverarbeitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec02.html">7.2 Modellvalidierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec03.html">7.3 Das Bias-Varianz-Dilemma</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -588,23 +591,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.22365084 0.24456681 0.84583922 0.71386288 0.76471044 0.76717913
- 0.31448589 0.59634125 0.71267278 0.57311448 0.70359127 0.45975116
- 0.91928463 0.98087587 0.69244763 0.88715747 0.5826382  0.35183949
- 0.26544487 0.48732654 0.7335732  0.28808143 0.12497505 0.73706875
- 0.8293259  0.07069305 0.52253205 0.91498044 0.13895218 0.63050752
- 0.23440412 0.23364797 0.34764552 0.3352363  0.07002945 0.00124629
- 0.92181929 0.42060564 0.50159599 0.44073119 0.1677283  0.66621927
- 0.42469624 0.80950219 0.48169091 0.9372764  0.16744112 0.51069458
- 0.91373316 0.4607754  0.49420361 0.03814949 0.24865746 0.88347997
- 0.93524649 0.80212204 0.49854357 0.37668179 0.28227148 0.6265924
- 0.69459791 0.15623664 0.77148733 0.35620789 0.66982062 0.70555789
- 0.04381854 0.46772729 0.21209227 0.43983986 0.12008261 0.0207471
- 0.83337288 0.14262059 0.29806677 0.18671781 0.22233065 0.0335509
- 0.05477097 0.04770403 0.81360234 0.58371802 0.01557088 0.24073706
- 0.48263659 0.16510896 0.82122945 0.81575458 0.53652559 0.19771785
- 0.42109461 0.33443138 0.5512408  0.70185084 0.26509009 0.46448891
- 0.24147991 0.62742835 0.5274161  0.61998281]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.52413298 0.38201324 0.5346276  0.98884661 0.96238727 0.39036892
+ 0.14207362 0.64198375 0.22302362 0.88887011 0.30493482 0.1549868
+ 0.48699421 0.88976336 0.44545337 0.46192931 0.99952926 0.26103283
+ 0.88090297 0.86790368 0.25620932 0.81594657 0.0162316  0.34467653
+ 0.97059709 0.29249792 0.45798143 0.19703369 0.59311637 0.16742371
+ 0.61680959 0.38400979 0.26618879 0.03218287 0.93409332 0.84563335
+ 0.23550921 0.02416534 0.41894667 0.66692239 0.58848276 0.22440527
+ 0.5829788  0.80730377 0.63819358 0.02393358 0.27488559 0.45182777
+ 0.94278872 0.8377167  0.10703798 0.49158484 0.2244889  0.28335166
+ 0.0374017  0.68169308 0.46098703 0.93679414 0.89062868 0.52523714
+ 0.90320573 0.47046705 0.72035505 0.05608958 0.29024919 0.2803164
+ 0.36541372 0.76808886 0.83875644 0.37827547 0.10224439 0.69080423
+ 0.02345521 0.99127352 0.41346081 0.3101349  0.05780805 0.11665246
+ 0.58960553 0.73916234 0.47802182 0.91237506 0.12745006 0.73787343
+ 0.73379317 0.34518732 0.41433057 0.20508643 0.8767667  0.30034754
+ 0.13182322 0.90274628 0.00865298 0.96547489 0.70710907 0.38501232
+ 0.10079721 0.96618605 0.4309327  0.20591878]
 </pre></div>
 </div>
 </div>
@@ -622,8 +625,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.980875865107122
-NumPy max =  0.980875865107122
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9995292569731565
+NumPy max =  0.9995292569731565
 </pre></div>
 </div>
 </div>
@@ -642,10 +645,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.07 µs ± 34.1 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1 µs ± 10.7 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.26 µs ± 11.7 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.27 µs ± 6.2 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -864,8 +867,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.22617293 0.54321722 0.97413706]
- [0.25215684 0.27645895 0.74693062]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.17649719 0.78847313 0.5897109 ]
+ [0.33598419 0.18926642 0.88004157]]
 </pre></div>
 </div>
 </div>
@@ -879,9 +882,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.63556689 -0.49607415 -0.20352605  0.778261  ]
- [-0.85775815 -0.99196075  1.02891021 -0.63067997]
- [ 0.57529107 -1.01044357 -1.24750617  0.88060332]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.5296191   0.15804588 -0.19984296  1.07920524]
+ [-0.47483195 -0.8507832  -0.4728258  -0.28249169]
+ [ 0.75075412  0.21526637  0.94534491 -1.06134199]]
 </pre></div>
 </div>
 </div>

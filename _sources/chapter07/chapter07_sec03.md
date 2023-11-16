@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Das Bias-Varianz-Dilemma
+# 7.3 Das Bias-Varianz-Dilemma
 
 Mit der Aufteilung der Daten in Test- und Trainingsdaten können wir untersuchen,
 ob ein Modell prinzipiell die Trainingsdaten gut erklärt. Wie gut es neue Daten
