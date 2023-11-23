@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# 7.3 Das Bias-Varianz-Dilemma
+# 7.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression
 
 Mit der Aufteilung der Daten in Test- und Trainingsdaten können wir untersuchen,
 ob ein Modell prinzipiell die Trainingsdaten gut erklärt. Wie gut es neue Daten
@@ -27,58 +27,65 @@ Die Wahl des Modells ist eine schwierige Kunst und hängt vor allem von der
 Qualität der vorliegenden Daten ab. Im Folgenden beschäftigen wir uns mit dem
 sogenannten **Bias-Varianz-Dilemma**, das bei der Modellauswahl auftritt.
 
-+++
 
 ## Lernziele 
 
 ```{admonition} Lernziele
 :class: important
+* Sie können eine **polynomiale Regression** durchführen.
 * Sie wissen, was ein **Hyperparameter** ist.
 * Sie können das **Bias-Varianz-Dilemma** erklären.
 * Sie wissen, was **Overfitting** und **Underfitting** bedeutet.
 * Sie können erklären, wie mit Hilfe von **Validierungskurven** ein geeignetes Modell ausgewählt wird. 
 ```
 
-+++
 
-## Was ist das Bias-Varianz-Dilemma?
+## Polynomiale Regression
 
 Im letzten Abschnitt hatten wir künstlich generierte Messdaten. Auswendiglernen
 ist kein sinnvolles ML-Modell, probieren wir es mit linearer Regression.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt
 import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
 from sklearn.linear_model import LinearRegression
 
-# styling of plots
-plt.style.use('bmh')
+# Generierung Daten
+df = pd.DataFrame()
+df['x'] = [-1, 0, 1, 2, 3, 4, 5]
+df['y'] = [5.4384, 14.3252, 19.2451, 23.3703, 18.2885, 13.8978, 3.7586]
 
-# artificial data: f(x) = −2𝑥^2 + 8𝑥 + 15 + error
-X = np.array([-1, 0, 1, 2, 3, 4, 5]).reshape(-1,1)
-y = np.array([5.4384, 14.3252, 19.2451, 23.3703, 18.2885, 13.8978, 3.7586])
+# Aufbereitung der Trainingsdaten für das Modell
+X = df[['x']]
+y = df['y']
 
-# preprocessing and training linear regression
+# Training lineares Regressionsmodell
 model = LinearRegression()
 model.fit(X, y)
-print('R2-score Trainingsdaten: {:.2f}'.format(model.score(X, y)))
+r2_score = model.score(X, y)
+print(f'R2-score Trainingsdaten: {r2_score:.2f}')
 
-# prediction
-X_prediction = np.linspace(-1, 5).reshape(-1,1)
-y_prediction = model.predict(X_prediction)
+# Prognose
+df_prognose =  pd.DataFrame(np.linspace(-1, 5), columns=['x'])
+df_prognose['y'] = model.predict(df_prognose[['x']]) 
 
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X, y, color='k', label='Trainingsdaten')
-ax.plot(X_prediction, y_prediction, label='Modell')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+# Visualisierung
+fig1 = px.scatter(df, x = 'x', y = 'y')
+fig2 = px.line(df_prognose, x = 'x', y = 'y')
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+  title='Künstlich generierte Messdaten',
+  xaxis_title = 'Ursache',
+  yaxis_title = 'Wirkung'
+)
+fig.show()
 ```
 
 Schon die Visualisierung zeigt, dass lineare Regression bei diesen Daten keine
-gute Idee ist. Der R²-Score ist auch bei 0.
+gute Idee ist. Der R²-Score ist auch fast 0.
 
 Außer der linearen Modellfunktion gibt es ja noch Polynome höheren Grades, also
 quadratische Funktion oder kubische Funktionen. Wenn Sie in der Dokumentation
@@ -94,7 +101,8 @@ $$y^{(i)} = \omega_0 + \omega_1 \cdot x^{(i)}$$
 mit nur einem Input $x$.
 
 Wenn wir eine quadratische Funktion als Modellfunktion wählen möchten, erzeugen
-wir einfach eine zweite Eigenschaft. Wir nennen die bisherigen x-Werte $x^{(i)}$ jetzt $x_1^{(i)}$ und fügen als zweiten Input die neue Eigenschaft
+wir einfach eine zweite Eigenschaft. Wir nennen die bisherigen x-Werte $x^{(i)}$
+jetzt $x_1^{(i)}$ und fügen als zweiten Input die neue Eigenschaft
 
 $$x_2^{(i)} = \left( x_1^{(i)} \right)^2$$
 
@@ -130,10 +138,12 @@ X_transformiert =  polynom_transformator.fit_transform(X)
 print('transformiertes X:\n', X_transformiert)
 ```
 
-Aus dem Spaltenvektor macht Scikit-Learn eine Matrix, bei der in der 1. Spalte nur Einsen stehen, die 2. Spalte enthält die ursprünglichen x-Werte und die 3. Spalte nun die Quadrate der ursprünglichen x-Werte.
+Aus dem Spaltenvektor macht Scikit-Learn eine Matrix, bei der in der 1. Spalte
+nur Einsen stehen, die 2. Spalte enthält die ursprünglichen x-Werte und die 3.
+Spalte nun die Quadrate der ursprünglichen x-Werte.
 
-Damit können wir nun ein multiples lineares Regressionsmodell trainieren, also die
-Koeffizienten suchen, so dass 
+Damit können wir nun ein multiples lineares Regressionsmodell trainieren, also
+die Koeffizienten suchen, so dass 
 
 $$y^{(i)} = \omega_0 + \omega_1 \cdot x_1^{(i)} + \omega_2 \cdot x_2^{(i)}$$ 
 
@@ -146,27 +156,33 @@ X2 = PolynomialFeatures(degree = 2).fit_transform(X)
 # preprocessing and training linear regression
 model = LinearRegression()
 model.fit(X2, y)
-print('R2-score Trainingsdaten: {:.2f}'.format(model.score(X2, y)))
+r2_score = model.score(X2, y)
+print(f'R2-score Trainingsdaten: {r2_score:.2f}')
 
-# prediction
-X_prediction = PolynomialFeatures(degree = 2).fit_transform(np.linspace(-1, 5).reshape(-1,1))
-y_prediction = model.predict(X_prediction)
+# Prognose
+X_prognose =  PolynomialFeatures(degree = 2).fit_transform(np.linspace(-1, 5).reshape(-1,1))
+y_prognose = model.predict(X_prognose)
 
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X2[:,1], y, color='k', label='Trainingsdaten')
-ax.plot(X_prediction[:,1], y_prediction, label='Modell')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+# Visualisierung
+fig1 = px.scatter(df, x = 'x', y = 'y')
+fig2 = px.line(x = X_prognose[:,1], y = y_prognose)
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+  title='Künstlich generierte Messdaten (polynomiale Regression Grad 2)',
+  xaxis_title = 'Ursache',
+  yaxis_title = 'Wirkung'
+)
+fig.show()
 ```
 
-Wäre eine kubische Modellfunktion noch besser? Wir fügen noch eine dritte Eigenschaft hinzu, nämlich
+Wäre eine kubische Modellfunktion noch besser? Wir fügen noch eine dritte
+Eigenschaft hinzu, nämlich
 
 $$x_3^{(i)} = \left( x_1^{(i)} \right)^{3}.$$
 
-Natürlich lassen wir auch hier Scikit-Learn für uns arbeiten und sezten die Option `degree` diesmal auf den Wert 3.
+Natürlich lassen wir auch hier Scikit-Learn für uns arbeiten und sezten die
+Option `degree` diesmal auf den Wert 3.
 
 ```{code-cell} ipython3
 # project data
@@ -175,37 +191,44 @@ X3 = PolynomialFeatures(degree = 3).fit_transform(X)
 # preprocessing and training linear regression
 model = LinearRegression()
 model.fit(X3, y)
-print('R2-score Trainingsdaten: {:.2f}'.format(model.score(X3, y)))
+r2_score = model.score(X3, y)
+print(f'R2-score Trainingsdaten: {r2_score:.2f}')
 
-# prediction
-X_prediction = PolynomialFeatures(degree = 3).fit_transform(np.linspace(-1, 5).reshape(-1,1))
-y_prediction = model.predict(X_prediction)
+# Prognose
+X_prognose =  PolynomialFeatures(degree = 3).fit_transform(np.linspace(-1, 5).reshape(-1,1))
+y_prognose = model.predict(X_prognose)
 
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X3[:,1], y, color='k', label='Trainingsdaten')
-ax.plot(X_prediction[:,1], y_prediction, label='Modell')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+# Visualisierung
+fig1 = px.scatter(df, x = 'x', y = 'y')
+fig2 = px.line(x = X_prognose[:,1], y = y_prognose)
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+  title='Künstlich generierte Messdaten (polynomiale Regression Grad 3)',
+  xaxis_title = 'Ursache',
+  yaxis_title = 'Wirkung'
+)
+fig.show()
 ```
 
 Könnte tatsächlich besser sein. Und ist vielleicht ein Polynom 4. Grades noch
-besser? Wir betrachten den Polynomgrad als Hyperparameter des Modells
-"Regressionspolynom" und gehen einfach mal alle Regressionspolynome bis Grad 7
-durch.
+besser? Wir betrachten den Polynomgrad als sogenannten **Hyperparameter** des Modells
+"Regression". 
+
+```{admonition} Was ist ... ein Hyperparameter?
+:class: notes
+Ein Hyperparameter ist ein Parameter, der vor dem Training eines Modells
+festgelegt wird und nicht aus den Daten während des Trainings gelernt wird. Die
+Hyperparameter steuern den gesamten Lernprozess und haben einen wesentlichen
+Einfluss auf die Leistung des Modells.
+```
+
+Was passiert, wenn wir einfach mal alle Regressionspolynome bis Grad 7
+durchgehen?
 
 ```{code-cell} ipython3
-
+fig1 = px.scatter(df, x = 'x', y = 'y')
 model = LinearRegression()
-
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X, y, color='k', label='Trainingsdaten')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
 
 for d in range(4,8):
     X_transformiert = PolynomialFeatures(degree = d).fit_transform(X)
@@ -213,13 +236,21 @@ for d in range(4,8):
     print('R2-score für Grad {0}: {1:.12f}'.format(d, model.score(X_transformiert, y)))
 
     # prediction
-    X_prediction = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
-    y_prediction = model.predict(X_prediction)
+    X_prognose = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
+    y_prognose = model.predict(X_prognose)
 
-    label_string = 'Polynomgrad {}'.format(d)
-    ax.plot(X_prediction[:,1], y_prediction, label=label_string)
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+    title =  str(f' (polynomiale Regression Grad {d})')
 
+    # Visualisierung
+    fig2 = px.line(x = X_prognose[:,1], y = y_prognose)
+
+    fig = go.Figure(fig1.data + fig2.data)
+    fig.update_layout(
+      title='Künstlich generierte Messdaten' + title,
+      xaxis_title = 'Ursache',
+      yaxis_title = 'Wirkung'
+    )
+    fig.show()
 ```
 
 Ab Grad 6 kann keine Verbesserung des R²-Scores mehr erzielt werden (warum?).
@@ -228,62 +259,76 @@ $[4,5]$ etwas schwankend. Vielleicht müssen wir doch noch höher gehen. Schauen
 wir uns Grad 8 an:
 
 ```{code-cell} ipython3
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X, y, color='k', label='Trainingsdaten')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
+fig1 = px.scatter(df, x = 'x', y = 'y')
+model = LinearRegression()
 
 d = 8
 X_transformiert = PolynomialFeatures(degree = d).fit_transform(X)
 model.fit(X_transformiert, y)
-print('R2-score für Grad {0}: {1:.6f}'.format(d, model.score(X_transformiert, y)))
+print('R2-score für Grad {0}: {1:.12f}'.format(d, model.score(X_transformiert, y)))
 
 # prediction
-X_prediction = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
-y_prediction = model.predict(X_prediction)
+X_prognose = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
+y_prognose = model.predict(X_prognose)
 
-label_string = 'Polynomgrad {}'.format(d)
-ax.plot(X_prediction[:,1], y_prediction, label=label_string)
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+title =  str(f' (polynomiale Regression Grad {d})')
+
+# Visualisierung
+fig2 = px.line(x = X_prognose[:,1], y = y_prognose)
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+  title='Künstlich generierte Messdaten' + title,
+  xaxis_title = 'Ursache',
+  yaxis_title = 'Wirkung'
+)
+fig.show()
 ```
 
 Tatsächlich werden dadurch die Schwankungen im Intervall $[4,5]$ noch verstärkt.
 Für Grad 9 wird es noch schlimmer, doch diesmal geht es in die andere Richtung.
 
 ```{code-cell} ipython3
-# visualization
-fig, ax = plt.subplots()
-ax.scatter(X, y, color='k', label='Trainingsdaten')
-ax.set_xlabel('Ursache')
-ax.set_ylabel('Wirkung')
-ax.set_title('Künstlich generierte Messdaten')
+fig1 = px.scatter(df, x = 'x', y = 'y')
+model = LinearRegression()
 
 d = 9
 X_transformiert = PolynomialFeatures(degree = d).fit_transform(X)
 model.fit(X_transformiert, y)
-print('R2-score für Grad {0}: {1:.6f}'.format(d, model.score(X_transformiert, y)))
+print('R2-score für Grad {0}: {1:.12f}'.format(d, model.score(X_transformiert, y)))
 
 # prediction
-X_prediction = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
-y_prediction = model.predict(X_prediction)
+X_prognose = PolynomialFeatures(degree = d).fit_transform(np.linspace(-1, 5, 200).reshape(-1,1))
+y_prognose = model.predict(X_prognose)
 
-label_string = 'Polynomgrad {}'.format(d)
-ax.plot(X_prediction[:,1], y_prediction, label=label_string)
-ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left');
+title =  str(f' (polynomiale Regression Grad {d})')
+
+# Visualisierung
+fig2 = px.line(x = X_prognose[:,1], y = y_prognose)
+
+fig = go.Figure(fig1.data + fig2.data)
+fig.update_layout(
+  title='Künstlich generierte Messdaten' + title,
+  xaxis_title = 'Ursache',
+  yaxis_title = 'Wirkung'
+)
+fig.show()
 ```
+
+
+## Bias-Varianz-Dilemma
 
 Die Regression mit Polynomen unerschiedlichen Grades verdeutlicht das sogenannte
 **Bias-Varianz-Dilemma**. Das lineare Regressionsmodell hat zwei Parameter,
-Steigung und y-Achsenabschnitt. Scheinbar sind das zuwenige Modellparameter, um
-die Messdaten gut zu erklären und zu prognostizieren. Wir sind sozusagen mit dem
-Vorurteil in unsere Modellierung gestartet, dass diese zwei Modellparameter
-ausreichen werden, um die Daten gut zu erklären. In der ML-Community sagt man,
-dass ein großer **Bias** vorliegt. Das Modell ist zu wenig an die Daten
-angepasst oder anders ausgedrückt, es liegt eine Unteranpassung an die Daten
-vor. Dafür ist auch in der deutschsprachigen Literatur das englische Wort
-**Underfitting** sehr gebräuchlich.
+Steigung und y-Achsenabschnitt. Scheinbar sind das zu wenige Modellparameter, um
+die Messdaten gut zu erklären und zu prognostizieren. 
+
+Wir sind sozusagen mit dem Vorurteil in unsere Modellierung gestartet, dass
+diese zwei Modellparameter ausreichen werden, um die Daten gut zu erklären. In
+der ML-Community sagt man, dass ein großer **Bias** vorliegt. Das Modell ist zu
+wenig an die Daten angepasst oder anders ausgedrückt, es liegt eine
+Unteranpassung an die Daten vor. Dafür ist auch in der deutschsprachigen
+Literatur das englische Wort **Underfitting** sehr gebräuchlich.
 
 Bei dem Polynom mit Grad 9 haben wir 10 Modellparameter. Offensichtlich sind
 das zuviele Parameter (es liegen ja nur sieben Messwerte vor). Die **Varianz**
@@ -296,7 +341,6 @@ nennen wir Überanpassung oder **Overfitting**.
 Bei der Modellwahl stehen wir stets vor dem Dilemma, ein Modell mit zu wenigen
 Parametern oder eines mit zu vielen Parametern zu wählen. 
 
-+++
 
 ## Mit Validierungskurven Modell wählen
 
@@ -337,10 +381,10 @@ Trainings- und Testdaten folgendermaßen aus:
 width: 600px
 name: fig_validierungskurven
 ---
-Schematische Darstellung von typischen Validierungskurven der Test- und Trainingsdaten zur Wahl der geeigneten Modellkomplexität
+Schematische Darstellung von typischen Validierungskurven der Test- und
+Trainingsdaten zur Wahl der geeigneten Modellkomplexität
 ```
 
-+++
 
 ## Zusammenfassung 
 
