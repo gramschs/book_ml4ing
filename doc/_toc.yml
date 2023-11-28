@@ -49,6 +49,7 @@ parts:
     - file: chapter07/chapter07_sec01.md
     - file: chapter07/chapter07_sec02.md
     - file: chapter07/chapter07_sec03.md
+    - file: chapter07/chapter07_sec04.md
   - file: chapter08/chapter08_sec00.md
     sections:
     - file: chapter08/chapter08_sec01.md
