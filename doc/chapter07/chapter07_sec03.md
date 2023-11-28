@@ -376,7 +376,7 @@ Trainings- und Testdaten folgendermaßen aus:
 
 +++
 
-```{figure} pics/validierungskurven_annotated.pdf
+```{figure} pics/validierungskurven_annotated.png
 ---
 width: 600px
 name: fig_validierungskurven
