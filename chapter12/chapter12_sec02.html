@@ -218,10 +218,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec04.html">Übungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">Grundbaustein neuronaler Netze</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">Die Perzeptron-Lernregel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">8. Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">8.1 Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">8.2 Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">8.3 Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -582,7 +583,7 @@ demonstrieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.93
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.96
 Score für Testdaten: 0.92
 </pre></div>
 </div>
@@ -605,7 +606,7 @@ ein, um zu sehen, wo das neuronale Netzt die Trennlinien zieht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f85002f2dc12323704b6c51474d4704aed8ca88e8fc2260cdb86850b9248fb51.png" src="../_images/f85002f2dc12323704b6c51474d4704aed8ca88e8fc2260cdb86850b9248fb51.png" />
+<img alt="../_images/80b138940bf0517fb40268b8a0ccf5b401b0e9cefa0821cbcd15e24a2421ea25.png" src="../_images/80b138940bf0517fb40268b8a0ccf5b401b0e9cefa0821cbcd15e24a2421ea25.png" />
 </div>
 </div>
 <p>Im Folgenden wollen wir uns ansehen, welche Bedeutung die optionalen Parameter
@@ -639,10 +640,18 @@ Trainings- und Testdaten:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.93
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.97
 </pre></div>
 </div>
-<img alt="../_images/8638a4e37435ed3fdd8ca6decd2922dc9d83b29b6a0cfbb256c032f27231f8ab.png" src="../_images/8638a4e37435ed3fdd8ca6decd2922dc9d83b29b6a0cfbb256c032f27231f8ab.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:549: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
+</pre></div>
+</div>
+<img alt="../_images/6117bca6f5674e6ce89f17a4e6343df4ded5475067edd0934c6f1942bad89d47.png" src="../_images/6117bca6f5674e6ce89f17a4e6343df4ded5475067edd0934c6f1942bad89d47.png" />
 </div>
 </div>
 <p>Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate <span class="math notranslate nohighlight">\(\alpha\)</span> und

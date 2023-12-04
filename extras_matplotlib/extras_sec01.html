@@ -218,10 +218,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec04.html">Übungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">Grundbaustein neuronaler Netze</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">Die Perzeptron-Lernregel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/chapter08_sec00.html">8. Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec01.html">8.1 Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec02.html">8.2 Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec03.html">8.3 Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -593,23 +594,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.65604213 0.2386613  0.68038496 0.71420496 0.62383836 0.87654436
- 0.03426918 0.47242882 0.49559002 0.53262258 0.22773437 0.01563971
- 0.48043866 0.90573183 0.16408862 0.2668859  0.25563307 0.82779871
- 0.95698786 0.63883176 0.33380177 0.98234208 0.13107998 0.7204823
- 0.07314101 0.87071036 0.65250371 0.21732919 0.44580796 0.18685975
- 0.0676031  0.22615552 0.71134434 0.40248532 0.48791511 0.14452265
- 0.92000952 0.94373681 0.98037948 0.71464771 0.12988315 0.049554
- 0.75228313 0.33661126 0.57046405 0.63600567 0.33677514 0.01345772
- 0.9419699  0.26009263 0.91700053 0.757164   0.04326637 0.94523233
- 0.87783703 0.06524579 0.47786026 0.96238282 0.3523627  0.679155
- 0.77385199 0.84345251 0.48400939 0.11081283 0.36478519 0.99337427
- 0.37643201 0.33753609 0.61895676 0.01184956 0.44163445 0.20225852
- 0.30225616 0.47260721 0.1026571  0.40296895 0.92497137 0.33342656
- 0.13746468 0.40587466 0.78811176 0.44897263 0.61067043 0.40077197
- 0.77039868 0.04796012 0.7689392  0.89763888 0.37927293 0.51918946
- 0.10985805 0.96132724 0.00376527 0.21916036 0.8997538  0.03203582
- 0.24447379 0.12264294 0.68598825 0.76481762]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.43011054 0.63108905 0.20725734 0.10468435 0.7147954  0.53620389
+ 0.96235828 0.18914168 0.64726839 0.48428959 0.82982555 0.54443572
+ 0.91769124 0.4536709  0.88252812 0.49835232 0.43056194 0.55549263
+ 0.74508275 0.09699312 0.33223428 0.31522223 0.71842195 0.53892353
+ 0.9745668  0.3326533  0.61234641 0.5569899  0.79351541 0.73312022
+ 0.79646668 0.77640518 0.27490303 0.44770088 0.51692256 0.1556632
+ 0.94047524 0.17719445 0.35203405 0.78054263 0.39149992 0.88523256
+ 0.51910248 0.00812569 0.62815713 0.04079197 0.68559506 0.62106943
+ 0.25011183 0.86013217 0.04834184 0.67287821 0.8747791  0.17116094
+ 0.86422807 0.02870465 0.02845303 0.14765011 0.21082047 0.45732877
+ 0.15355664 0.27777254 0.12857523 0.45385542 0.56910586 0.24131889
+ 0.10473109 0.11686887 0.43811791 0.78804633 0.84766073 0.92623216
+ 0.98388957 0.23554097 0.37665414 0.53772073 0.67615591 0.61773071
+ 0.35326432 0.30138281 0.407933   0.65191424 0.56126286 0.74644536
+ 0.88012438 0.24182462 0.73478607 0.03414941 0.11511071 0.32859275
+ 0.44839058 0.77945991 0.65408262 0.27765626 0.436207   0.6211051
+ 0.79889891 0.30487066 0.97580535 0.07481288]
 </pre></div>
 </div>
 </div>
@@ -627,8 +628,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9933742731213875
-NumPy max =  0.9933742731213875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9838895674850295
+NumPy max =  0.9838895674850295
 </pre></div>
 </div>
 </div>
@@ -647,10 +648,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.09 µs ± 29.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.09 µs ± 25.8 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.26 µs ± 11.3 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.24 µs ± 12 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -869,8 +870,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.96172459 0.67041402 0.97573772]
- [0.47186106 0.72255612 0.21002747]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.49194931 0.96437742 0.47805632]
+ [0.30113968 0.04398887 0.47118886]]
 </pre></div>
 </div>
 </div>
@@ -884,9 +885,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.90982161  0.30010007 -0.21893459 -0.48732042]
- [ 2.08507976  2.64434088 -1.41446372  1.71215468]
- [-0.18813857 -1.0207796  -1.05146524 -0.30317435]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.70612802 -0.75353608  0.52403894  0.4369712 ]
+ [-0.61152991  0.75917964 -1.21718115 -1.15189717]
+ [-1.79313145 -0.63698471  0.70229696  0.36707821]]
 </pre></div>
 </div>
 </div>

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Grundbaustein neuronaler Netze
+# 8.1 Grundbaustein neuronaler Netze
 
 Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir das Perzeptron vorstellen.
 
@@ -238,18 +238,24 @@ Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101 Pun
 ````{admonition} Lösung
 :class: minisolution, toggle
 ```python
-import matplotlib.pylab as plt
+import pandas as pd
+import plotly.express as px
 import numpy as np
 
-x = np.linspace(-3,3, 101)
-y0 = np.heaviside(x, 0)     # an der Stelle x=0 ist y=0
-y1 = np.heaviside(x, 2)     # an der Stelle x=0 ist y=2
+x = np.linspace(-3, 3, 101)
+y0 = np.heaviside(x, 0)  # an der Stelle x=0 ist y=0
+y1 = np.heaviside(x, 2)  # an der Stelle x=0 ist y=2
 
-fig, ax = plt.subplots()
-ax.plot(x,y0)
-ax.plot(x,y1)
-ax.grid()
-ax.set_title('Heaviside-Funktion');
+# Daten für Plotly Express vorbereiten
+df = pd.DataFrame({'x': x, 'y0': y0, 'y1': y1})
+
+# Visualisierung
+fig = px.scatter(df, x='x', y=['y0', 'y1'], title='Heaviside-Funktion')
+fig.update_layout(
+    xaxis_title='x',
+    yaxis_title='y'
+)
+fig.show()
 ```
 ````
 

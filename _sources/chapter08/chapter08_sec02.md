@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Die Perzeptron-Lernregel
+# 8.2 Die Perzeptron-Lernregel
 
 In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann. 
 
@@ -163,52 +163,12 @@ $$\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(x_0
 
 Blättern Sie Seite für Seite durch. Jede Seite entspricht einem Durchgang. Ein Durchgang wird im ML (wie auch in der Mathematik) als eine **Iteration** bezeichnet.
 
-````{carousel}
-:show_controls:
-:show_shadows:
 
-
-
-```{figure} pics/part08_training_perceptron_0001.pdf
-
+```{code-cell} ipython3
+:tags: [remove-input]
+from IPython.display import HTML
+HTML('../assets/chapter08/Perzeptron-Lernregel.html')
 ```
-
-```{figure} pics/part08_training_perceptron_0002.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0003.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0004.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0005.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0006.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0007.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0008.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0009.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0010.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0011.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0012.pdf
-```
-
-```{figure} pics/part08_training_perceptron_0013.pdf
-```
-````
 
 ### Schritt 3: Terminierung
 
