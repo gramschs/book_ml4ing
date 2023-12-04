@@ -12,66 +12,20 @@ kernelspec:
   name: python3
 ---
 
-# Training eines Perzeptrons mit Scikit-Learn
+# 8.3 Training eines Perzeptrons mit Scikit-Learn
 
-Nachdem wir im letzten Abschnitt ein Perzeptron händisch für die Klassifikationsaufgabe des logischen Oders trainiert haben, lernen wir in diesem Abschnitt eine Bibliothek kennen, die das Training für uns übernimmt.
+Nachdem wir im letzten Abschnitt ein Perzeptron händisch für die
+Klassifikationsaufgabe des logischen Oders trainiert haben, benutzen wir nun
+Scikit-Learn.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: important
-* Sie kennen die Bibliothek Scikit-Learn.
-* Sie können den grundlegenden Ablauf eines ML-Projektes mit Scikit-Learn beschreiben.
-* Sie wissen, wie Sie die Trainingsdaten als Matrix bzw. Vektor mit dem Modul Numpy repräsentieren.
 * Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen Trainingsdaten trainieren.
 * Sie wissen, wie Sie auf die Gewichte des gelernten Modells zugreifen.
 ```
 
-## Scikit-Learn
-
-Gute Nachricht vorneweg: Sie müssen die ML-Algorithen nicht selbst
-implementieren, das haben bereits Wissenschaftler:innen aus der Mathematik und
-der Informatik erledigt. Eine der bekanntesten Bibliotheken bzw. eines der
-bekanntesten Module ist Scikit-Learn
-
-> https://scikit-learn.org/
-
-das wir auch für diese Vorlesung verwenden werden. Bitte stellen Sie jetzt
-sicher, dass Scikit-Learn bei Ihnen installiert ist. 
-
-Das Modul Scikit-Learn wird mit ``sklearn`` abgekürzt, alle Funktionen werden
-also z.B. mit
-
-```{code-cell}
----
-vscode:
-  languageId: python
----
-import sklearn
-```
-
-in den Namensraum importiert. Da das Modul aber so mächtig ist, werden wir immer
-nur einzelne Funktionen aus Scikit-Learn importieren. 
-
-## Grundlegender ML-Workflow mit Scikit-Learn 
-
-Die ML-Algorithmen des Scikit-Learn-Moduls haben dabei immer die gleiche
-Schnittstelle (API). Damit ist gemeint, dass die Methoden- und Funktionsnamen
-für alle ML-Modelle gleich gewählt sind. Auch ist die Art und Weise, wie die
-Trainingsdaten verarbeitet werden, stets gleich. Wir können den grundlegenden
-Ablauf eines typischen ML-Projektes folgendermaßen zusammenfassen:
-
-```{admonition} Wie funktioniert der grundlegende ML-Workflow mit Scikit-Learn?
-:class: note
-
-1. Zuerst packen wir die Inputdaten in eine Matrix X, bei der jede Spalte eine Eigenschaft repräsentiert. Die Zeilen stehen für die verschiedenen Datensätze.
-2. Falls wir ein überwachtes Lernverfahren anwenden wollen, packen wir die Outputdaten in einen Vektor y.
-3. Nun wählen wir ein Modell aus, das trainiert werden soll. 
-4. Dazu spezifizieren wir die Hyperparameter des Modells. Hyperparameter sind Parameter des Modells, die wir vorab ohne die genaue Kenntnis der Daten festlegen.
-5. Wir trainieren das ML-Modell, indem wir die fit()-Methode des Modells aufrufen.
-6. Um das Modell zur Prognose neuer Daten zu verwenden, benutzten wir die predict()-Methode.
-7. Zuletzt wird das Modell analysiert, validiert und produktiv eingesetzt.
-```
 
 ## Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn 
 
@@ -86,33 +40,13 @@ x1 | x2 | y
  1 | 0  | 1
  1 | 1  | 1
 
-Diese Daten formulieren wir nun als eine Inputmatrix $X$ mit den Spalten x1 und
-x2. Für die Erzeugung und Weiterverarbeitung der Matrizen laden wir das Modul
-Numpy.
+Diese Daten packen wir in ein DataFrame.
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-import numpy as np
+```{code-cell} ipython3
+import pandas as pd
 
-X = np.array([
-    [0, 0],
-    [0, 1],
-    [1, 0],
-    [1, 1]
-    ])
-```
-
-Den Output formulieren wir als Vektor, ebenfalls mit Hilfe des Numpy-Moduls.
-
-```{code-cell}
----
-vscode:
-  languageId: python
----
-y = np.array([0, 1, 1, 1])
+data =  pd.DataFrame({'x1' : [0, 0, 1, 1], 'x2'  : [0, 1, 0, 1], 'y' : [0, 1, 1, 1]})
+data.head()
 ```
 
 Nun wählen wir das Perzeptron als das zu trainierende ML-Modell aus. Direkt beim
@@ -124,41 +58,34 @@ Dokumentation wird die Lernrate beim Scikit-Learn-Perzeptron mit `eta0`
 bezeichnet. Der Python-Code, um das Perzeptron-Modell mit einer Lernrate von 1
 zu laden, lautet also wie folgt:
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
+```{code-cell} ipython3
 from sklearn.linear_model import Perceptron 
-modell = Perceptron(eta0 = 1.0)
+model = Perceptron(eta0 = 1.0)
 ```
 
-Nun können wir das Perzeptron-Modell mit den Input- und Outputdaten trainieren, indem wir die `.fit()`-Methode aufrufen.
+Nun können wir das Perzeptron-Modell mit den Input- und Outputdaten trainieren,
+indem wir die `.fit()`-Methode aufrufen. Zuvor bereiten wir die Daten noch
+passend für das Perzeptron auf.
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-modell.fit(X,y)
+```{code-cell} ipython3
+X = data[['x1', 'x2']]
+y = data['y']
+
+model.fit(X,y)
 ```
 
 Nachdem wir den letzten Python-Befehl ausgeführt haben, passiert scheinbar
-nichts. Nur der Klassenname `Perceptron()` des Objekts `modell` wird ausgegeben
+nichts. Nur der Klassenname `Perceptron()` des Objekts `model` wird ausgegeben
 (wenn Sie den Code interaktiv ausführen). Intern wurde jedoch das
 Perzeptron-Modell trainiert, d.h. die Gewichte des Perzeptrons wurden iterativ
-bestimmt. Die Gewichte sind nun in dem Objekt `modell` gespeichert. Davon können
+bestimmt. Die Gewichte sind nun in dem Objekt `model` gespeichert. Davon können
 wir uns überzeugen, indem wir auf die Attribute des Objekts zugreifen und diese
 anzeigen lassen. Die Gewichte sind in dem Attribut `.coef_` gespeichert, während
 das Gewicht der Bias-Einheit sich im Attribut `.intercept_` befindet.
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-print(modell.coef_)
-print(modell.intercept_)
+```{code-cell} ipython3
+print(model.coef_)
+print(model.intercept_)
 ```
 
 Zuletzt können wir das trainierte Perzeptron-Modell Prognosen treffen lassen.
@@ -166,23 +93,15 @@ Was prognostiziert das Modell beispielsweise für $x_1=0$ und $x_2=1$? Das
 tatsächliche Ergebnis der logischen Oder-Verknüpfung ist $y=1$, was liefert das
 Perzeptron?
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-y_prognose = modell.predict(np.array([[0, 1]]))
+```{code-cell} ipython3
+y_prognose = model.predict([[0, 1]])
 print(y_prognose)
 ```
 
 Wir können auch gleich für alle Datensätze eine Prognose erstellen.
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-y_prognose = modell.predict(X)
+```{code-cell} ipython3
+y_prognose = model.predict(X)
 print(y_prognose)
 ```
 
@@ -195,14 +114,82 @@ prognostizierten Outputs im Verhältnis zur Gesamtanzahl berechnet. Das Ergbnis
 ist also eine Bewertung zwischen 0 (keine einzige korrekte Prognose) und 1
 (perfekt Prognose).
 
-```{code-cell}
----
-vscode:
-  languageId: python
----
-genauigkeit = modell.score(X, y)
+```{code-cell} ipython3
+genauigkeit = model.score(X, y)
 print(genauigkeit)
 ```
+
+## Erkennung von Brustkrebs 
+
+Als nächstes betrachten wir einen sehr bekannten ML-Datensatz, nämlich Daten zur
+Erkennung von Brustkrebs, siehe
+https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-dataset.
+
+```{code-cell} ipython3
+# Importieren des Breast Cancer Datensatzes aus Scikit-Learn
+import numpy as np
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
+
+cancer = load_breast_cancer()
+data = pd.DataFrame(np.c_[cancer['data'], cancer['target']],
+                  columns= np.append(cancer['feature_names'], ['target']))
+data.info()
+```
+
+Wie immer berschaffen wir uns einen Überblick über die statistischen Kennzahlen.
+
+```{code-cell} ipython3
+data.describe()
+```
+
+Für das Training des Perzeptrons teilen wir die Daten in Trainings- und Testdaten auf.
+
+```{code-cell} ipython3
+from sklearn.model_selection import train_test_split 
+data_train, data_test = train_test_split(data, test_size=0.2, random_state=42)
+
+X_train = data_train.loc[:, 'mean radius' : 'worst fractal dimension']
+X_test  = data_test.loc[:, 'mean radius' : 'worst fractal dimension']
+
+y_train = data_train['target']
+y_test = data_test['target']
+```
+
+Nun laden wir das Perzeptron-Modell und trainieren es mit den Trainingsdaten.
+
+```{code-cell} ipython3
+# Create a Perceptron model 
+model = Perceptron(eta0=0.1)
+
+# Train the model 
+model.fit(X_train, y_train)
+```
+
+Wie üblich können wir es nun zu Prognosen nutzen.
+
+```{code-cell} ipython3
+# Make predictions 
+y_test_prognose = model.predict(X_test) 
+print(y_test_prognose)
+```
+
+Vor allem aber die systematische Bestimmung der Scores für Trainingsdaten und
+Testdaten ist interessant:
+
+```{code-cell} ipython3
+score_train = model.score(X_train, y_train)
+score_test = model.score(X_test, y_test)
+
+print(f'Score Trainingsdaten: {score_train}')
+print(f'Score Testdaten: {score_test}')
+```
+
+Wir könnten vermuten, dass wir bereits im Bereich des Overfittings sind.
+Allerdings ist auch die Initialisierung der Zufallszahlen fixiert. Ohne
+`random_state=42` kommen andere Scores für Trainings- und Testdaten heraus, so
+dass wir das Perzeptron-Modell zunächst für eine erste Schätzung nehmen dürfen.
+
 
 ## Zusammenfassung und Ausblick
 

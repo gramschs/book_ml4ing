@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Perzeptron
+# 8. Perzeptron
 
 Durch neuronale Netze, die tief verschachtelt sind (= tiefe neuronale Netze =
 deep neural network), gab es im Bereich des maschinellen Lernens einen

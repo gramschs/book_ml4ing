@@ -55,6 +55,7 @@ parts:
     - file: chapter08/chapter08_sec01.md
     - file: chapter08/chapter08_sec02.md
     - file: chapter08/chapter08_sec03.md
+    - file: chapter08/chapter08_sec04.md
   - file: chapter09/chapter09_sec00.md
     sections:
     - file: chapter09/chapter09_sec01.md
