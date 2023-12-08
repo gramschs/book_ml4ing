@@ -501,7 +501,179 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ubungen">
 <h1>Übungen<a class="headerlink" href="#ubungen" title="Permalink to this headline">#</a></h1>
-<p>TODO</p>
+<div class="tip admonition">
+<p class="admonition-title">Aufgabe 8.1</p>
+<p>Der Datensatz ‘diabetes.csv’ ist eine Sammlung von medizinischen Daten, die vom National Institute of Diabetes and Digestive and Kidney Diseases, erhoben wurden, siehe <a class="reference external" href="https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download">https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download</a> . Bei Frauen des Pima-Stammes wurden folgende medizinische Daten erhoben:</p>
+<ul class="simple">
+<li><p>Pregnancies: Anzahl der Schwangerschaften</p></li>
+<li><p>Glucose: Glukose-Level im Blut</p></li>
+<li><p>BloodPressure: Messung des Blutdrucks</p></li>
+<li><p>SkinThickness: Dicke der Haut</p></li>
+<li><p>Insulin: Messung des Insulinspiegels im Blut</p></li>
+<li><p>BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat)</p></li>
+<li><p>DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie</p></li>
+<li><p>Age: Alter</p></li>
+</ul>
+<p>Enthalten ist auch, ob bei der Person Diabetes festgestellt wurde oder nicht.</p>
+<ul class="simple">
+<li><p>Outcome: Diabetes = 1, kein Diabetes = 0</p></li>
+</ul>
+<p>Fragen:</p>
+<ul class="simple">
+<li><p>Laden Sie den Datensatz und überprüfen Sie die Daten auf Vollständigkeit. Sind
+die angegeben Werte plausibel? Bereinigen Sie den Datensatz.</p></li>
+<li><p>Führen Sie eine explorative Datenanalyse durch.</p></li>
+<li><p>Erstellen Sie eine Scatter-Matrix mit Insulin, BMI und Outcome. Welche der
+beiden Eigeschaften Insulin oder BMI könnte ehr geeignet sein, Diabetes
+ja/nein zu prognostizieren?</p></li>
+<li><p>Visualisieren Sie Diabetes ja/nein in Abhängigkeit der gewählten Eigenschaft.
+Vermuten Sie einen Zusammenhang?</p></li>
+<li><p>Trainieren Sie ein Perzeptron mit der gewählten Eigenschaft.</p></li>
+<li><p>Trainieren Sie ein Perzeptron, um zu prognostizieren, ob eine Person bei den
+gegebenen medizinischen Kennzahlen Diabetes haben könnte oder nicht.</p></li>
+<li><p>Vergleichen Sie beide Modelle.</p></li>
+</ul>
+</div>
+<div class="tip toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;diabetes.csv&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Datensatz enthält 768 Einträge. Alle Einträge sind vorhanden und numerisch.
+Die beiden Eigenschaften BMI und DiabetesPedigreeFunction enthalten Floats, die
+anderen Eigenschaften werden durch Integers repräsentiert.</p>
+<p>Als nächstes ermitteln wir die statistischen Kennzahlen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Mittelwerte wirken plausibel. Im Schnitt hatten die PIMA-Frauen 3,8
+Schwangerschaften, einen Glukose-Wert von 120, einen sehr niedrigen Blutdruck
+von 69, eine Hautdicke von 21, eien Insulin-Wert von 80, einen BMI von 32, einen
+Diabetes-Pedigree-Wert von 0.5 und ein mittleres Alter von 33.</p>
+<p>Verwunderlich sind jedoch die Minima, bei denen einige Eigenschaften einen
+minimalen Wert von 0 aufweisen. 0 Schwangerschaften sind plausibel. Aber wenn
+der Glukose-Wert oder der Blutdruck oder die Haut-Dicke oder der BMI 0 sind, ist
+das nicht möglich. Es ist daher anzunehmen, dass die Einträge 0 tatsächlich für
+NA stehen.</p>
+<p>Um das zu überprüfen, visualisieren wir die Anzahl der auftretenden Werte.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Glucose&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Glucose&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span> <span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;BloodPressure&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;BloodPressure&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span> <span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;SkinThickness&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;SkinThickness&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span> <span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Insulin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Insulin&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span> <span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;BMI&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span> <span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span> <span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Nullen scheinen tatsächlich als NA-Ersatz missbraucht worden zu sein. Wir
+löaschen nacheinander diese Datensätze.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eigenschaften_mit_na</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Glucose&#39;</span><span class="p">,</span> <span class="s1">&#39;BloodPressure&#39;</span><span class="p">,</span> <span class="s1">&#39;SkinThickness&#39;</span><span class="p">,</span> <span class="s1">&#39;Insulin&#39;</span><span class="p">,</span> <span class="s1">&#39;BMI&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">eigenschaft</span> <span class="ow">in</span> <span class="n">eigenschaften_mit_na</span><span class="p">:</span> 
+    <span class="n">zeilen_zum_loeschen</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span> <span class="n">data</span><span class="p">[</span><span class="n">eigenschaft</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">zeilen_zum_loeschen</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der deutlich kleinere Datensatz mit nur noch 392 enthält nun (hoffentlich)
+gültige Messungen. Wir visualisieren die statistischen Kennzahlen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Statistische Kennzahlen der PIMA-Frauen&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Wert&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Eigenschaft&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Bei den Schwangerschaften gibt es Ausreißer nach oben (bis zu 17
+Schwangerschaften), beim Blutdruck wenige Ausreißer nach oben und unten, der
+einzelne Ausreißer bei der Haut-Dicke ist vernachlässigbar, aber bei den
+Insulin-Werten gibt es sehr viele Ausreißer, die deutlich vom Mittelwert
+entfernt sind. Beim BMI gibt es wiederum nur wenige Ausreißer nach oben, genau
+wie beim Alter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Insulin&#39;</span><span class="p">,</span> <span class="s1">&#39;BMI&#39;</span><span class="p">,</span> <span class="s1">&#39;Outcome&#39;</span><span class="p">]])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Eigenschaft BMI ist (bei der Wahl des Perzeptrons als ML-Modell) besser
+geeignet als Erklärung für Diabetes, da eine Grenze bei ca. 22.9 gezogen werden
+kann, unterhalb derer Diabetes nicht vorkommt.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;BMI&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span><span class="s1">&#39;Outcome&#39;</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Abhängigkeit Diabetes von BMI bei den Pima-Frauen&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ein BMI, der kleiner als ungefähr 22 ist, scheint vor Diabetes zu schützen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auswahl des ML-Modells</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">Perceptron</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">()</span>
+
+<span class="c1"># Adaption der Daten</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span> 
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[[</span><span class="s1">&#39;BMI&#39;</span><span class="p">]]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>
+
+<span class="c1"># Training</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validierung</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score für Trainingsdaten: </span><span class="si">{</span><span class="n">score_train</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score für Testdaten: </span><span class="si">{</span><span class="n">score_test</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Kein besonders gutes Modell.</p>
+<p>Nun nehmen wir alle verfügbaren Daten.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Pregnancies&#39;</span> <span class="p">:</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Pregnancies&#39;</span> <span class="p">:</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Outcome&#39;</span><span class="p">]</span>
+
+<span class="c1"># Training</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validierung</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score für Trainingsdaten: </span><span class="si">{</span><span class="n">score_train</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score für Testdaten: </span><span class="si">{</span><span class="n">score_test</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Die Hinzunahme der weiteren Eigenschaften verbessert die Prognosequalität, aber
+wirklich gut ist das ML-Modell nicht. Im nächsten Kapitel werden wir uns ein
+besseres Modell zur Klassifikation ansehen.</p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
