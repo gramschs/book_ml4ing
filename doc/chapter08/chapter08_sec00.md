@@ -38,3 +38,8 @@ Auf der Seite
 > https://www.deepl.com/en/blog/how-does-deepl-work
 
 finden Sie einen kurzen Übersichtsartikel dazu, wie DeepL funktioniert.
+
+Kapitelübersicht:
+
+```{tableofcontents}
+```
