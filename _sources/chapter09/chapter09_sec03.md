@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression mit Scikit-Learn
+# 9.3 Logistische Regression mit Scikit-Learn
 
 ## Lernziele
 
@@ -41,8 +41,7 @@ import pandas as pd
 data_raw = pd.read_csv('data/20220801_Marktwert_Bundesliga.csv', skiprows=5, header=0, index_col=0)
 
 # filter wrt 2. Bundesliga and 3. Liga
-filter = data_raw['Ligazugehörigkeit'].isin(['2. Bundesliga', '3. Liga']) 
-data = data_raw[filter].copy(())
+data = data_raw[ data_raw['Ligazugehörigkeit'] != 'Bundesliga' ]
 
 # print all data samples
 data.head(38)
@@ -72,10 +71,10 @@ Die Daten werden jetzt in Matrizen gepackt und in Trainings- und Testdaten unter
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-X = data['Wert'].values
-y = data['Ligazugehörigkeit'].values
+X = data[['Wert']]
+y = data['Ligazugehörigkeit']
 
-X_train, X_test, y_train, y_test = train_test_split(X[:, np.newaxis], y, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 ```
 
 Danach können wir das logistische Regressionsmodell trainieren:
@@ -101,6 +100,7 @@ Wahrscheinlichkeitsfunktion visualisieren.
 ```{code-cell} ipython3
 # extrahiere die Gewichte des logistischen Regressionsmodells
 gewichte = np.concatenate((logistic_regression.intercept_, logistic_regression.coef_[:,0]))
+print(f'Gewichte: {gewichte}')
 
 # definiere Wahrschinelichkeitsfunktion
 def wahrscheinlichkeitsfunktion(x, w):
@@ -117,16 +117,18 @@ data_dritte_liga = data[data['Ligazugehörigkeit'] == 0]
 ```
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt; plt.style.use('bmh')
+import plotly.express as px
+import plotly.graph_objects as go
 
-fig, ax = plt.subplots()
-ax.scatter(data_dritte_liga['Wert'], data_dritte_liga['Ligazugehörigkeit'])
-ax.scatter(data_zweite_liga['Wert'], data_zweite_liga['Ligazugehörigkeit'])
-ax.plot(x, sigma_z, color='black')
-ax.hlines(0.5, 0, 35, 'red', 'dashed')
-ax.set_xlabel('Marktwert')
-ax.set_ylabel('Ligazugehörigkeit')
-ax.set_title('Klassifikation 2. Bundesliga / 3. Liga');
+fig3 = px.scatter(data_dritte_liga, x = 'Wert', y = 'Ligazugehörigkeit')
+fig2 = px.scatter(data_zweite_liga, x = 'Wert', y = 'Ligazugehörigkeit')
+fig_model = px.line(x = x, y = sigma_z)
+
+fig = go.Figure(fig_model.data + fig2.data + fig3.data)
+fig.update_layout(title='Klassifikation 2. Bundesliga / 3. Liga',
+                  xaxis_title='Marktwert',
+                  yaxis_title='Ligazugehörigkeit')
+fig.show()
 ```
 
 Aus der Visualisierung der Wahrscheinlichkeitsfunktion können wir grob

@@ -17,41 +17,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+fig3 = px.scatter(data_dritte_liga, x = 'Wert', y = 'Ligazugehörigkeit')
+fig2 = px.scatter(data_zweite_liga, x = 'Wert', y = 'Ligazugehörigkeit')
+fig_model = px.line(x = x, y = sigma_z)
+
 import plotly.express as px
-import numpy as np
+import plotly.graph_objects as go
 
-x = np.linspace(-3, 3, 101)
-y0 = np.heaviside(x, 0)  # an der Stelle x=0 ist y=0
-y1 = np.heaviside(x, 2)  # an der Stelle x=0 ist y=2
-
-# Daten für Plotly Express vorbereiten
-df = np.stack((x, y0, y1)).T
-df = pd.DataFrame(df, columns=['x', 'y0', 'y1'])
-
-# Erstellen eines Line-Plots
-fig = px.line(df, x='x', y=['y0', 'y1'], title='Heaviside-Funktion')
-
-# Layout anpassen
-fig.update_layout(
-    plot_bgcolor='white',
-    xaxis_title='x',
-    yaxis_title='y'
-)
-
-# Plot anzeigen
+fig = go.Figure(fig_model.data + fig2.data + fig3.data)
+fig.update_layout(title='Klassifikation 2. Bundesliga / 3. Liga',
+                  xaxis_title='Marktwert',
+                  yaxis_title='Ligazugehörigkeit')
 fig.show()
-
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[1], line 10[0m
-[1;32m      8[0m [38;5;66;03m# Daten für Plotly Express vorbereiten[39;00m
-[1;32m      9[0m df [38;5;241m=[39m np[38;5;241m.[39mstack((x, y0, y1))[38;5;241m.[39mT
-[0;32m---> 10[0m df [38;5;241m=[39m [43mpd[49m[38;5;241m.[39mDataFrame(df, columns[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124my0[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124my1[39m[38;5;124m'[39m])
-[1;32m     12[0m [38;5;66;03m# Erstellen eines Line-Plots[39;00m
-[1;32m     13[0m fig [38;5;241m=[39m px[38;5;241m.[39mline(df, x[38;5;241m=[39m[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m, y[38;5;241m=[39m[[38;5;124m'[39m[38;5;124my0[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124my1[39m[38;5;124m'[39m], title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mHeaviside-Funktion[39m[38;5;124m'[39m)
+Cell [0;32mIn[8], line 1[0m
+[0;32m----> 1[0m fig3 [38;5;241m=[39m [43mpx[49m[38;5;241m.[39mscatter(data_dritte_liga, x [38;5;241m=[39m [38;5;124m'[39m[38;5;124mWert[39m[38;5;124m'[39m, y [38;5;241m=[39m [38;5;124m'[39m[38;5;124mLigazugehörigkeit[39m[38;5;124m'[39m)
+[1;32m      2[0m fig2 [38;5;241m=[39m px[38;5;241m.[39mscatter(data_zweite_liga, x [38;5;241m=[39m [38;5;124m'[39m[38;5;124mWert[39m[38;5;124m'[39m, y [38;5;241m=[39m [38;5;124m'[39m[38;5;124mLigazugehörigkeit[39m[38;5;124m'[39m)
+[1;32m      3[0m fig_model [38;5;241m=[39m px[38;5;241m.[39mline(x [38;5;241m=[39m x, y [38;5;241m=[39m sigma_z)
 
-[0;31mNameError[0m: name 'pd' is not defined
-NameError: name 'pd' is not defined
+[0;31mNameError[0m: name 'px' is not defined
+NameError: name 'px' is not defined
 

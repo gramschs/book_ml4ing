@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression ersetzt Perzeptron
+# 9.1 Logistische Regression ersetzt Perzeptron
 
 
 ## Lernziele
@@ -43,13 +43,12 @@ Quelle: https://www.transfermarkt.de; Stichtag: 01.08.2022).
 
 import pandas as pd
 data_raw = pd.read_csv('data/20220801_Marktwert_Bundesliga.csv', skiprows=5, header=0, index_col=0)
+data_raw.info()
 ```
 
 Die ersten fünf Einträge lauten wie folgt:
 
 ```{code-cell} ipython3
-:tags: [remove-input]
-
 data_raw.head()
 ```
 
@@ -58,59 +57,45 @@ Ligazugehörigkeit (Bundesliga, 2. Bundesliga oder 3. Liga), die dritte Spalte
 beinhaltet den Marktwert des Vereins in Mio. Euro und die vierte Spalte listet
 die Anzahl der Spieler.
 
-Zuerst erkunden wie die Daten und lassen uns die Ligazugehörigkeit abhängig vom
-Marktwert visualisieren.
+Welche Ligen sind denn im Datensatz vertreten?
 
 ```{code-cell} ipython3
-# teile die Datensätze nach Ligazugehörigkeit auf
-data_liga1 = data_raw[data_raw['Ligazugehörigkeit'] == 'Bundesliga']
-data_liga2 = data_raw[data_raw['Ligazugehörigkeit'] == '2. Bundesliga']
-data_liga3 = data_raw[data_raw['Ligazugehörigkeit'] == '3. Liga']
-
-# visualisiere Marktwert --> Ligazugehörigkeit 
-import matplotlib.pylab as plt; plt.style.use('bmh')
-
-fig, ax = plt.subplots()
-ax.scatter(data_liga3['Wert'], data_liga3['Ligazugehörigkeit'])
-ax.scatter(data_liga2['Wert'], data_liga2['Ligazugehörigkeit'])
-ax.scatter(data_liga1['Wert'], data_liga1['Ligazugehörigkeit'])
-ax.set_xlabel('Marktwert in Mio. Euro')
-ax.set_title('Marktwerte deutscher Männerfußball am 01.08.2022');
+data_raw['Ligazugehörigkeit'].unique()
 ```
 
-Die Marktwerte der Bundesliga-Vereine sind vereinzelt so hoch, dass die
-einzelnen Vereine der 3. Liga als solche kaum erkennbar sind. Wir begrenzen
-daher den Marktwert auf 100 Mio. Euro. 
+Zuerst erkunden wie die Daten und lassen uns den MArktwert abhängig von der
+Ligazugehörigkeit visualisieren.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots()
-ax.scatter(data_liga3['Wert'], data_liga3['Ligazugehörigkeit'])
-ax.scatter(data_liga2['Wert'], data_liga2['Ligazugehörigkeit'])
-ax.scatter(data_liga1['Wert'], data_liga1['Ligazugehörigkeit'])
-ax.set_xlabel('Marktwert in Mio. Euro')
-ax.set_title('Marktwerte deutscher Männerfußball am 01.08.2022')
-ax.set_xlim([0, 100]);
+import plotly.express as px
+
+fig = px.box(data_raw, x = 'Ligazugehörigkeit', y = 'Wert',
+             title='Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)')
+fig.show()
 ```
 
-Wie erkennen, dass ein Marktwert von 36 Mio. Euro die Erstligisten von den
-Zweitligisten trennt. Daher wäre für eine Klassifikation Bundesliga vs. 2.
-Bundesliga ein Perzeptron trainierbar. Eine solche Trennung funktioniert bei den
-Vereinen der 2. Bundesliga und der 3. Liga nicht. Wir betrachten nun nur noch 2.
-und 3. Liga.
+In der Bundesliga gibt es bezogen auf den Kaderwert drei Ausreißer, in der 3.
+Liga gibt es einen Ausreißer. Zoom man in die Visualisierung hinein, so sehen
+wir, dass ein Marktwert von 36 Mio. Euro die Erstligisten von den Zweitligisten
+trennt. Daher wäre für eine Klassifikation Bundesliga vs. 2. Bundesliga ein
+Perzeptron trainierbar. Eine solche Trennung funktioniert bei den Vereinen der
+1. Bundesliga und der 3. Liga nicht. Der minimale Marktwert der 2. Bundesliga
+(8.83 Mio. EUR) ist niedriger als der maximale Marktwert der 3. Liga (13.05 Mio.
+EUR). Wir betrachten nun nur noch 2. und 3. Liga und stellen die folgende Frage:
 
-+++
-
-
+Kann aufgrund des Marktwertes die Zugehörigkeit zur 2. Bundesliga oder 3. Liga
+prognostiziert werden? Wir visualisieren die einzelnen Datenpunkte mit der
+Ursache 'Wert' auf der x-Achse und 'Ligazugehörigkeit' auf der y-Achse.
 
 ```{code-cell} ipython3
-fig, ax = plt.subplots()
-ax.scatter(data_liga3['Wert'], data_liga3['Ligazugehörigkeit'])
-ax.scatter(data_liga2['Wert'], data_liga2['Ligazugehörigkeit'])
-ax.set_xlabel('Marktwert in Mio. Euro')
-ax.set_title('Marktwerte deutscher Männerfußball am 01.08.2022');
+data = data_raw[ data_raw['Ligazugehörigkeit'] != 'Bundesliga' ]
+
+fig = px.scatter(data, x = 'Wert', y = 'Ligazugehörigkeit',
+             title='Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)')
+fig.show()
 ```
 
-Als erstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
+Als nächstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
 Bezeichnungen wie "3. Liga" und "2. Bundesliga" kann Python nämlich nicht
 rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
 üblicherweise die Zahlen 0 und 1 verwendet, also

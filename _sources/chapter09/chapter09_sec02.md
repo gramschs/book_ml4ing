@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression lernt mit Maximum-Likelihood
+# 9.2 Logistische Regression lernt mit Maximum-Likelihood
 
 
 ## Lernziele
@@ -80,17 +80,16 @@ zwischen 0 und 1 liegt, brauchen wir die Kostenfunktion $c_1$ auch nur auf dem
 Intervall $[0, 1]$ plotten.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt; plt.style.use('bmh')
 import numpy as np
+import plotly.express as px
 
 sigma_z = np.linspace(0, 1)[1:]
 cost_1 = - np.log(sigma_z)
 
-fig, ax = plt.subplots()
-ax.plot(sigma_z,cost_1)
-ax.set_xlabel(r'$\sigma(z)$')
-ax.set_ylabel(r'Kosten $c_1$')
-ax.set_title('Kostenfunktion, falls Klasse 1 korrekt (y=1)');
+fig = px.line(x = sigma_z, y = cost_1,
+              title='Kostenfunktion, falls Klasse 1 korrekt (y=1)',
+              labels={'x': 'sigma(z)', 'y': 'Kosten c_1'})
+fig.show()
 ```
 
 ### Kostenfunktion, wenn Klasse 1 nicht richtig wäre
@@ -110,11 +109,10 @@ $$c_{0}(z) = - \log\left(1-\sigma(z)\right), \quad \text{ falls } y=0.$$
 sigma_z = np.linspace(0, 1)[:-1]
 cost_0 = - np.log(1 - sigma_z)
 
-fig, ax = plt.subplots()
-ax.plot(sigma_z,cost_0)
-ax.set_xlabel(r'$\sigma(z)$')
-ax.set_ylabel(r'Kosten $c_0$')
-ax.set_title('Kostenfunktion, falls Klasse 1 nicht korrekt (y=0)');
+fig = px.line(x = sigma_z, y = cost_0,
+              title='Kostenfunktion, falls Klasse 1 nicht korrekt (y=0)',
+              labels={'x': 'sigma(z)', 'y': 'Kosten c_0'})
+fig.show()
 ```
 
 ### Beide Kostenfunktionen kombiniert

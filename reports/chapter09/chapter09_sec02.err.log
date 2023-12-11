@@ -17,22 +17,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-data_train, data_test = train_test_split(data, test_size=0.2, random_state=42)
+import numpy as np
 
-X_train = data_train.loc[:, 'mean radius' : 'worst fractal dimension']
-X_test  = data_test.loc[:, 'mean radius' : 'worst fractal dimension']
+sigma_z = np.linspace(0, 1)[1:]
+cost_1 = - np.log(sigma_z)
 
-y_train = data_train['target']
-y_test = data_test['target']
+fig = px.line(x = sigma_z, y = cost_1,
+              title='Kostenfunktion, falls Klasse 1 korrekt (y=1)',
+              labels={'x': 'sigma(z)', 'y': 'Kosten c_1'})
+fig.show()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[10], line 1[0m
-[0;32m----> 1[0m data_train, data_test [38;5;241m=[39m [43mtrain_test_split[49m(data, test_size[38;5;241m=[39m[38;5;241m0.2[39m, random_state[38;5;241m=[39m[38;5;241m42[39m)
-[1;32m      3[0m X_train [38;5;241m=[39m data_train[38;5;241m.[39mloc[:, [38;5;124m'[39m[38;5;124mmean radius[39m[38;5;124m'[39m : [38;5;124m'[39m[38;5;124mworst fractal dimension[39m[38;5;124m'[39m]
-[1;32m      4[0m X_test  [38;5;241m=[39m data_test[38;5;241m.[39mloc[:, [38;5;124m'[39m[38;5;124mmean radius[39m[38;5;124m'[39m : [38;5;124m'[39m[38;5;124mworst fractal dimension[39m[38;5;124m'[39m]
+Cell [0;32mIn[1], line 6[0m
+[1;32m      3[0m sigma_z [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0[39m, [38;5;241m1[39m)[[38;5;241m1[39m:]
+[1;32m      4[0m cost_1 [38;5;241m=[39m [38;5;241m-[39m np[38;5;241m.[39mlog(sigma_z)
+[0;32m----> 6[0m fig [38;5;241m=[39m [43mpx[49m[38;5;241m.[39mline(x [38;5;241m=[39m sigma_z, y [38;5;241m=[39m cost_1,
+[1;32m      7[0m               title[38;5;241m=[39m[38;5;124m'[39m[38;5;124mKostenfunktion, falls Klasse 1 korrekt (y=1)[39m[38;5;124m'[39m,
+[1;32m      8[0m               labels[38;5;241m=[39m{[38;5;124m'[39m[38;5;124mx[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124msigma(z)[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m: [38;5;124m'[39m[38;5;124mKosten c_1[39m[38;5;124m'[39m})
+[1;32m      9[0m fig[38;5;241m.[39mshow()
 
-[0;31mNameError[0m: name 'train_test_split' is not defined
-NameError: name 'train_test_split' is not defined
+[0;31mNameError[0m: name 'px' is not defined
+NameError: name 'px' is not defined
 
