@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression
+# 9. Logistische Regression
 
 Das binäre Klassifikationsverfahren des Perzeptrons sortiert Datensätze in zwei
 Klassen. Ob dabei die Entscheidung für eine Klasse sehr knapp getroffen wird
@@ -20,3 +20,8 @@ oder eindeutig erscheint, wird dabei nicht transparent. Im Folgenden
 beschäftigen wir uns mit einem binären Klassifikationsverfahren namens
 logistische Regression, das auf einer Prognose der Klassenwahrscheinlichkeit
 basiert.
+
+Kapitelübersicht:
+
+```{tableofcontents}
+```
