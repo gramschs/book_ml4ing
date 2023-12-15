@@ -229,6 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec01.html">9.1 Logistische Regression ersetzt Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec02.html">9.2 Logistische Regression lernt mit Maximum-Likelihood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec03.html">9.3 Logistische Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -594,23 +595,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.64897149 0.08434542 0.95041403 0.35700285 0.94605419 0.7056597
- 0.40582091 0.17256099 0.84650863 0.06075361 0.13889076 0.25151821
- 0.58229847 0.39143861 0.09090237 0.21350988 0.41689262 0.37249654
- 0.19868796 0.09521603 0.65600021 0.36523287 0.11235658 0.20742687
- 0.35089956 0.94949693 0.2418487  0.70444137 0.37932358 0.79217655
- 0.33185691 0.18850123 0.87882009 0.88472299 0.22573479 0.11484556
- 0.78024591 0.22548405 0.58498014 0.3567353  0.49923083 0.84160342
- 0.63953143 0.22698981 0.9423369  0.20772665 0.90676678 0.32725061
- 0.25027238 0.09473485 0.63097885 0.39613081 0.49150546 0.09920505
- 0.73055935 0.58628822 0.47034685 0.94466649 0.35583465 0.09099657
- 0.15647325 0.51559382 0.54095731 0.71906841 0.21013034 0.43887784
- 0.49306516 0.06077242 0.59697167 0.27515072 0.35628913 0.75107441
- 0.29156149 0.3845791  0.5437676  0.10178083 0.98347515 0.60750838
- 0.84457776 0.68783238 0.13189403 0.32808243 0.17109549 0.16032548
- 0.92951764 0.77936897 0.25048562 0.09724495 0.3835534  0.04348584
- 0.26568241 0.98617338 0.54403256 0.714828   0.71137178 0.05639761
- 0.50200781 0.50851625 0.22542726 0.32402246]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.82279701 0.40376271 0.98244626 0.88574285 0.92825194 0.10347507
+ 0.94119985 0.51676116 0.62102189 0.12880452 0.38840317 0.18504349
+ 0.17397558 0.0501394  0.91080819 0.34098041 0.36590411 0.62930609
+ 0.45197108 0.30688788 0.23575247 0.81513949 0.06987528 0.67554196
+ 0.02006679 0.6518499  0.23007192 0.75996645 0.27843269 0.3406478
+ 0.57937605 0.63362732 0.9448732  0.03644934 0.02839447 0.9860505
+ 0.81605008 0.05312444 0.39932424 0.33796602 0.04109517 0.4704303
+ 0.35964318 0.32203286 0.09616663 0.35350464 0.98357674 0.6712455
+ 0.36676223 0.18733624 0.75307706 0.93899513 0.42840368 0.6952023
+ 0.03378499 0.31719809 0.12552598 0.8894786  0.79849485 0.42257819
+ 0.4455146  0.17992691 0.68616708 0.28392785 0.64818835 0.41573285
+ 0.30797263 0.20414014 0.20256577 0.37186267 0.07279091 0.29684206
+ 0.69517917 0.7511549  0.40590061 0.35554469 0.23524843 0.25779123
+ 0.02553498 0.98789679 0.2129898  0.95759623 0.42867669 0.16252418
+ 0.30055413 0.01527365 0.08154988 0.2241316  0.19898825 0.25530401
+ 0.78751387 0.36038515 0.47191868 0.60995591 0.51324178 0.7964813
+ 0.35557442 0.66162003 0.75185936 0.17861341]
 </pre></div>
 </div>
 </div>
@@ -628,8 +629,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9861733802022696
-NumPy max =  0.9861733802022696
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9878967854779243
+NumPy max =  0.9878967854779243
 </pre></div>
 </div>
 </div>
@@ -648,10 +649,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1 µs ± 21 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.19 µs ± 16.2 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.25 µs ± 6.66 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.31 µs ± 9.88 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -870,8 +871,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.57113484 0.77229738 0.70776916]
- [0.88562032 0.31795964 0.07440599]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.71018728 0.11203746 0.35514231]
+ [0.85574332 0.02233546 0.55961518]]
 </pre></div>
 </div>
 </div>
@@ -885,9 +886,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.42954449 -1.13129913  1.09892755  0.73819566]
- [ 0.33379668  1.01413113 -0.6252163  -0.8687946 ]
- [ 0.31424922  2.10000457  0.64372864  0.71738891]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.33577535  1.12544491  1.30029625 -0.79135424]
+ [ 0.9326913   0.9539083  -0.07784902  0.61144939]
+ [ 0.03400315 -0.37342584 -0.11363685  0.01219344]]
 </pre></div>
 </div>
 </div>
