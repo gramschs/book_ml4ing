@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Training SVM mit Scikit-Learn
+# 10.2 Training SVM mit Scikit-Learn
 
 ```{admonition} Lernziele
 :class: important
@@ -63,11 +63,12 @@ import matplotlib.pylab as plt; plt.style.use('bmh')
 X, y = make_blobs(n_samples=60, centers=2, random_state=0, cluster_std=0.50)
 
 # plot artificial data
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Daten');
+import plotly.express as px
+
+fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
+                 title='Künstliche Daten',
+                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+fig.show()
 ```
 
 Als nächstes teilen wir die Messdaten in Trainings- und Testdaten auf.
@@ -152,11 +153,12 @@ X, y = make_blobs(n_samples=60, centers=2, random_state=0, cluster_std=0.80)
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
 
 # plot artificial data
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Daten');
+import plotly.express as px
+
+fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
+                 title='Künstliche Daten',
+                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+fig.show()
 ```
 
 ```{code-cell} ipython3

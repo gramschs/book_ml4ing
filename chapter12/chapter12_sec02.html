@@ -232,10 +232,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec04.html">Übungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">Support Vector Machine</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">Maximiere den Rand, aber soft</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">Training SVM mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">Nichtlineare SVM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">10.3 Nichtlineare SVM</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -548,14 +548,10 @@ demonstrieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/scipy/__init__.py:146: UserWarning: A NumPy version &gt;=1.16.5 and &lt;1.23.0 is required for this version of SciPy (detected version 1.25.0
-  warnings.warn(f&quot;A NumPy version &gt;={np_minversion} and &lt;{np_maxversion}&quot;
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Künstliche Messdaten&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5788d0256637e99ed0922b5b9ddbb41e4232c8babee38c26617890ced034dde5.png" src="../_images/5788d0256637e99ed0922b5b9ddbb41e4232c8babee38c26617890ced034dde5.png" />
+<img alt="../_images/9f5cc38b10b3c4e22f9c7ec8892ef4829513c7e615e527723687f200af70ffaf.png" src="../_images/9f5cc38b10b3c4e22f9c7ec8892ef4829513c7e615e527723687f200af70ffaf.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -584,7 +580,7 @@ demonstrieren.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 1.00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score für Trainingsdaten: 0.97
 Score für Testdaten: 0.92
 </pre></div>
 </div>
@@ -615,7 +611,7 @@ ein, um zu sehen, wo das neuronale Netzt die Trennlinien zieht.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7364b267bdccff5c6083b372503907c75055165f8cbff9b0f447cc6f720fbeca.png" src="../_images/7364b267bdccff5c6083b372503907c75055165f8cbff9b0f447cc6f720fbeca.png" />
+<img alt="../_images/d165be4568b5d01895562ee3bcddc8bd883a34e4b25381b61b90cdf632d49df0.png" src="../_images/d165be4568b5d01895562ee3bcddc8bd883a34e4b25381b61b90cdf632d49df0.png" />
 </div>
 </div>
 <p>Im Folgenden wollen wir uns ansehen, welche Bedeutung die optionalen Parameter
@@ -649,18 +645,10 @@ Trainings- und Testdaten:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.94
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 0.93
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniconda/base/envs/python310/lib/python3.10/site-packages/sklearn/neural_network/_multilayer_perceptron.py:549: ConvergenceWarning: lbfgs failed to converge (status=1):
-STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
-
-Increase the number of iterations (max_iter) or scale the data as shown in:
-    https://scikit-learn.org/stable/modules/preprocessing.html
-  self.n_iter_ = _check_optimize_result(&quot;lbfgs&quot;, opt_res, self.max_iter)
-</pre></div>
-</div>
-<img alt="../_images/14fcbdea21b6be96e3a86fcedf4359227ac441efbd884b80653cc89a4ff9fda8.png" src="../_images/14fcbdea21b6be96e3a86fcedf4359227ac441efbd884b80653cc89a4ff9fda8.png" />
+<img alt="../_images/0efb98476569de4cfff3586418fabbf26b959051c510d38293b0326d16bdd054.png" src="../_images/0efb98476569de4cfff3586418fabbf26b959051c510d38293b0326d16bdd054.png" />
 </div>
 </div>
 <p>Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate <span class="math notranslate nohighlight">\(\alpha\)</span> und

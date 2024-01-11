@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Nichtlineare SVM
+# 10.3 Nichtlineare SVM
 
 ```{admonition} Lernziele
 :class: important
@@ -30,19 +30,18 @@ offensichtlich nicht geht. Dazu nutzen wir die in Scikit-Learn integrierte
 Funktion `make_circles()`.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt
-import matplotlib.pylab as plt; plt.style.use('bmh')
 from sklearn.datasets import make_circles
 
 # künstliche Messdaten generieren
 X,y = make_circles(100, random_state=0, factor=0.3, noise=0.1)
 
 # künstliche Messdaten visualisieren
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Messdaten');
+import plotly.express as px
+
+fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
+                 title='Künstliche Daten',
+                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+fig.show()
 ```
 
 Das menschliche Auge erkennt sofort das Muster in den Daten. Ganz offensichtlich
@@ -62,6 +61,7 @@ Quadrat des Abstandes eines Punktes zum Ursprung.
 
 ```{code-cell} ipython3
 import numpy as np
+import plotly.express as px
 
 # Extraktion der Daten, damit leichter darauf zugegriffen werden kann
 X1 = X[:,0]
@@ -70,43 +70,13 @@ X2 = X[:,1]
 # neues Feature als Quadrat des Abstandes zum Ursprung
 X3 = np.sqrt( X1**2 + X2**2 )
 
-# Visualisierung der künstlichen Messdaten mit neuem Feature
-fig = plt.figure()
-ax = fig.add_subplot(projection='3d')
-ax.scatter(X1, X2, X3, c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_zlabel('neues Feature')
-ax.set_title('Künstliche Messdaten');
-```
-
-Die obige statische Grafik vermittelt nur ansatzweise den Vorteil, den die neue
-Dimension bietet. Daher betrachten wir eine dynamische Ansicht der Daten, die
-mittels der Python-Bibliothek [Plotly](https://plotly.com/python/) erzeugt
-wurde.
-
-Der Code zur Erzeugung lautet:
-```python
-import plotly.express as px
-
 fig = px.scatter_3d(x=X1, y=X2, z=X3, color=y, color_continuous_scale=['#3b4cc0', '#b40426'])
 fig.show()
 ```
 
-Da aber Jupyter Book momentan mit der Integration von Plotly Probleme hat, wurde
-die interaktive Grafik als HTML exportiert (`fig.write_html('circles_3d.html')`)
-und wird hier wiederum importiert.
-
 Bitte drehen Sie die Ansicht solange, bis die z-Achse nach oben zeigt. Die
 Punkte bilden eine Art Paraboloiden. In dieser neuen Ansicht können wir eine
 Ebene finden, die die roten von den blauen Punkten trennt.
-
-```{code-cell} ipython3
-:tags: [remove-input]
-
-from IPython.display import HTML
-HTML('circles_3d.html')
-```
 
 In der folgenden Grafik ist eine Trennebene eingezeichnet. Wenn wir nun den
 Schnitt der Trennebene mit dem Paraboloiden bilden, entsteht eine Kreislinie.
@@ -187,6 +157,8 @@ aus den bisherigen zu berechnen.
 # Quelle: VanderPlas "Data Science mit Python", S. 482
 # modified by Simone Gramsch
 import numpy as np
+import matplotlib.pylab as plt
+import matplotlib.pylab as plt; plt.style.use('bmh')
 
 def plot_svc_grenze(model):
     # aktuelles Grafik-Fenster auswerten
