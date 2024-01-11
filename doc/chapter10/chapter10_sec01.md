@@ -11,15 +11,14 @@ kernelspec:
   name: python3
 ---
 
-# Maximiere den Rand, aber soft
+# 10.1 Maximiere den Rand, aber soft
 
 ```{admonition} Lernziele
 :class: important
 * Sie kennen die Abkürzung **SVM** für **Support Vector Machines**.
 * Sie kennen die Idee, bei Support Vector Machines den **Margin** (=
   Randabstand) zu maximieren.
-* Sie können in eine Visualisierung der Daten die Stützvektoren einzeichnen und
-  wissen, dass diese auf Englisch **Support Vectors** genannt werden.
+* Sie wissen, was Stützvektoren bzw. **Support Vectors** sind.
 * Sie wissen, dass ein harter Randabstand nur bei linear trennbaren Datensätzen
   möglich ist.
 * Sie wissen, dass eigentlich nicht trennbare Datensätzen mit der Technik **Soft
@@ -62,13 +61,12 @@ die Labels entweder durch 0 oder 1 gekennzeichnet sind. Durch die Option
 Wenn wir die Daten visualisieren, erhalten wir folgenden Plot.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt; plt.style.use('bmh')
+import plotly.express as px
 
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Daten');
+fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
+                 title='Künstliche Daten',
+                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+fig.show()
 ```
 
 Wir können uns jetzt verschiedene Geraden vorstellen, die die blauen Punkte von
@@ -141,26 +139,11 @@ blauen von den roten Punkte nicht mehr ganz so stark getrennt sind. Schauen Sie
 sich die fünf verschiedenen Margins an, die entstehen, wenn der Parameter `C`
 variiert wird. 
 
-````{carousel}
-:show_controls:
-:show_shadows:
-
-```{figure} pics/fig10_04a.pdf
-
+```{code-cell} ipython3
+:tags: [remove-input]
+from IPython.display import HTML
+HTML('../assets/chapter10/fig04.html')
 ```
-```{figure} pics/fig10_04b.pdf
-
-```
-```{figure} pics/fig10_04c.pdf
-
-```
-```{figure} pics/fig10_04d.pdf
-
-```
-```{figure} pics/fig10_04e.pdf
-
-```
-````
 
 +++
 
