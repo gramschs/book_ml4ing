@@ -234,6 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">10.3 Nichtlineare SVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec04.html">Übung</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/chapter11_sec00.html">Entscheidungsbäume und Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -607,7 +608,7 @@ aufgerufen.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_8d49830bb00856460944c909958392cf {
+                #map_054d920454dabca2a179adbccee502a1 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -621,14 +622,14 @@ aufgerufen.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_8d49830bb00856460944c909958392cf&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_054d920454dabca2a179adbccee502a1&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_8d49830bb00856460944c909958392cf = L.map(
-                &quot;map_8d49830bb00856460944c909958392cf&quot;,
+            var map_054d920454dabca2a179adbccee502a1 = L.map(
+                &quot;map_054d920454dabca2a179adbccee502a1&quot;,
                 {
                     center: [50.11088, 8.67949],
                     crs: L.CRS.EPSG3857,
@@ -642,10 +643,10 @@ aufgerufen.</p>
 
         
     
-            var tile_layer_3a6b4c9f23526981253382ae74c84cbb = L.tileLayer(
+            var tile_layer_684065482918b07f5263a8e2d349c775 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_8d49830bb00856460944c909958392cf);
+            ).addTo(map_054d920454dabca2a179adbccee502a1);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -695,7 +696,7 @@ Basiskarte verwendet.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_cf29beadb38342df96a11d1b92d0d2e6 {
+                #map_e0a4ee8738d1472f1b9d545d5bf07f3c {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -709,14 +710,14 @@ Basiskarte verwendet.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_cf29beadb38342df96a11d1b92d0d2e6&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_e0a4ee8738d1472f1b9d545d5bf07f3c&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_cf29beadb38342df96a11d1b92d0d2e6 = L.map(
-                &quot;map_cf29beadb38342df96a11d1b92d0d2e6&quot;,
+            var map_e0a4ee8738d1472f1b9d545d5bf07f3c = L.map(
+                &quot;map_e0a4ee8738d1472f1b9d545d5bf07f3c&quot;,
                 {
                     center: [50.11088, 8.67949],
                     crs: L.CRS.EPSG3857,
@@ -730,10 +731,10 @@ Basiskarte verwendet.</p>
 
         
     
-            var tile_layer_0658073dfaa7802f6c0d149cb8bec4fd = L.tileLayer(
+            var tile_layer_4f10ff3501a3c5e3cec3c547046b95c7 = L.tileLayer(
                 &quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&quot;,
                 {&quot;attribution&quot;: &quot;Map tiles by \u003ca target=\&quot;_blank\&quot; href=\&quot;http://stamen.com\&quot;\u003eStamen Design\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by/3.0\&quot;\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by-sa/3.0\&quot;\u003eCC BY SA\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_cf29beadb38342df96a11d1b92d0d2e6);
+            ).addTo(map_e0a4ee8738d1472f1b9d545d5bf07f3c);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -791,7 +792,7 @@ hinzufügen können:</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_f4c4f260b685eb3c46da3a117593daac {
+                #map_3e3c6e6d9f35fb46d46a6314ad1b2afa {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -805,14 +806,14 @@ hinzufügen können:</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_f4c4f260b685eb3c46da3a117593daac&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_3e3c6e6d9f35fb46d46a6314ad1b2afa&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_f4c4f260b685eb3c46da3a117593daac = L.map(
-                &quot;map_f4c4f260b685eb3c46da3a117593daac&quot;,
+            var map_3e3c6e6d9f35fb46d46a6314ad1b2afa = L.map(
+                &quot;map_3e3c6e6d9f35fb46d46a6314ad1b2afa&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -826,28 +827,28 @@ hinzufügen können:</p>
 
         
     
-            var tile_layer_5e0ab93027a37d5593bf1dd352410b0f = L.tileLayer(
+            var tile_layer_9f332be21c226292c1b4ea38904a47e0 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_f4c4f260b685eb3c46da3a117593daac);
+            ).addTo(map_3e3c6e6d9f35fb46d46a6314ad1b2afa);
         
     
-            var marker_63d32adb4630e32c57bf08c1627e6fcc = L.marker(
+            var marker_1bea532349acf4773847929994b4b9c4 = L.marker(
                 [50.13085378545699, 8.691700550887166],
                 {}
-            ).addTo(map_f4c4f260b685eb3c46da3a117593daac);
+            ).addTo(map_3e3c6e6d9f35fb46d46a6314ad1b2afa);
         
     
-        var popup_05f58c343fc1c40b4f03c2ec66513644 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_67e3537c381a73a873f963d9a79cc690 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_a9923d9868efdb6f3f7d7ebe6763ff01 = $(`&lt;div id=&quot;html_a9923d9868efdb6f3f7d7ebe6763ff01&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
-                popup_05f58c343fc1c40b4f03c2ec66513644.setContent(html_a9923d9868efdb6f3f7d7ebe6763ff01);
+                var html_258ea0562badbbfecfd425f95f7aa8cd = $(`&lt;div id=&quot;html_258ea0562badbbfecfd425f95f7aa8cd&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
+                popup_67e3537c381a73a873f963d9a79cc690.setContent(html_258ea0562badbbfecfd425f95f7aa8cd);
             
         
 
-        marker_63d32adb4630e32c57bf08c1627e6fcc.bindPopup(popup_05f58c343fc1c40b4f03c2ec66513644)
+        marker_1bea532349acf4773847929994b4b9c4.bindPopup(popup_67e3537c381a73a873f963d9a79cc690)
         ;
 
         
@@ -944,7 +945,7 @@ angegeben werden.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_b58b20bfa40fba78c89a5404571907e5 {
+                #map_88361762ca3ce03f813618e4d3438fe8 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -958,14 +959,14 @@ angegeben werden.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_b58b20bfa40fba78c89a5404571907e5&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_88361762ca3ce03f813618e4d3438fe8&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_b58b20bfa40fba78c89a5404571907e5 = L.map(
-                &quot;map_b58b20bfa40fba78c89a5404571907e5&quot;,
+            var map_88361762ca3ce03f813618e4d3438fe8 = L.map(
+                &quot;map_88361762ca3ce03f813618e4d3438fe8&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -979,40 +980,40 @@ angegeben werden.</p>
 
         
     
-            var tile_layer_b7dc2825bde57e4d8dc99694ad972245 = L.tileLayer(
+            var tile_layer_d73dc2f73d1621f76a1ce9e54b3710e0 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_b58b20bfa40fba78c89a5404571907e5);
+            ).addTo(map_88361762ca3ce03f813618e4d3438fe8);
         
     
-            var choropleth_aa5f3682547bad29f32754aa1210863f = L.featureGroup(
+            var choropleth_f7f045509acf4b6508799e5aa14da50d = L.featureGroup(
                 {}
-            ).addTo(map_b58b20bfa40fba78c89a5404571907e5);
+            ).addTo(map_88361762ca3ce03f813618e4d3438fe8);
         
     
-        function geo_json_2002a21a5531ad14000eb172e9ffceee_styler(feature) {
+        function geo_json_65d39e32812c7d554d88b11266567ead_styler(feature) {
             switch(feature.properties.name) {
                 default:
                     return {&quot;color&quot;: &quot;black&quot;, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.6, &quot;opacity&quot;: 1, &quot;weight&quot;: 1};
             }
         }
 
-        function geo_json_2002a21a5531ad14000eb172e9ffceee_onEachFeature(feature, layer) {
+        function geo_json_65d39e32812c7d554d88b11266567ead_onEachFeature(feature, layer) {
             layer.on({
             });
         };
-        var geo_json_2002a21a5531ad14000eb172e9ffceee = L.geoJson(null, {
-                onEachFeature: geo_json_2002a21a5531ad14000eb172e9ffceee_onEachFeature,
+        var geo_json_65d39e32812c7d554d88b11266567ead = L.geoJson(null, {
+                onEachFeature: geo_json_65d39e32812c7d554d88b11266567ead_onEachFeature,
             
-                style: geo_json_2002a21a5531ad14000eb172e9ffceee_styler,
+                style: geo_json_65d39e32812c7d554d88b11266567ead_styler,
         });
 
-        function geo_json_2002a21a5531ad14000eb172e9ffceee_add (data) {
-            geo_json_2002a21a5531ad14000eb172e9ffceee
+        function geo_json_65d39e32812c7d554d88b11266567ead_add (data) {
+            geo_json_65d39e32812c7d554d88b11266567ead
                 .addData(data)
-                .addTo(choropleth_aa5f3682547bad29f32754aa1210863f);
+                .addTo(choropleth_f7f045509acf4b6508799e5aa14da50d);
         }
-            geo_json_2002a21a5531ad14000eb172e9ffceee_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_65d39e32812c7d554d88b11266567ead_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
 &lt;/script&gt;
