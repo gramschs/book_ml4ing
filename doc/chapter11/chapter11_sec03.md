@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Random Forests
+# 11.2 Random Forests
 
 ```{admonition} Lernziele
 :class: important
@@ -40,26 +40,26 @@ Trainigsdaten für jeden Entscheidungsbaum zufällig ausgewählt.
 Es gibt verschiedene Methoden, mit denen die Trainingsdaten beim Training eines
 Random Forests zufällig ausgewählt werden können:
 
-1. Bootstrapping: Dies ist die gängigste Methode zur Auswahl der Trainingsdaten
-für jeden Entscheidungsbaum in einem Random Forest. Dabei werden einzelne
-Datenpunkte aus der Menge der Trainignsdaten zufällig ausgewählt, jedoch sofort
-wieder zurückgelegt. Dadurch können Datenpunkte auch mehrfach auftauchen,
-während andere Datenpunkte vielleicht gar nicht zum Training des
+1. **Bootstrapping**: Dies ist die gängigste Methode zur Auswahl der
+Trainingsdaten für jeden Entscheidungsbaum in einem Random Forest. Dabei werden
+einzelne Datenpunkte aus der Menge der Trainignsdaten zufällig ausgewählt,
+jedoch sofort wieder zurückgelegt. Dadurch können Datenpunkte auch mehrfach
+auftauchen, während andere Datenpunkte vielleicht gar nicht zum Training des
 Entscheidungsbaumes genutzt werden.
 
-2. Stratifiziertes Sampling: Bei dieser Methode werden die Trainingsdaten anhand
-eines Kriteriums in verschiedene "Schichten" eingeteilt, aus denen dann zufällig
-eine Teilmenge von Beispielen ausgewählt wird. Dies kann nützlich sein, wenn die
-Trainingsdaten unausgewogen sind, d. h. es gibt deutlich mehr Beispiele für eine
-Klasse als für die andere. Das Stratified Sampling kann dazu beitragen, dass
-jeder Baum im Random Forest auf einer repräsentativen Stichprobe der Daten
+2. **Stratifiziertes Sampling**: Bei dieser Methode werden die Trainingsdaten
+anhand eines Kriteriums in verschiedene "Schichten" eingeteilt, aus denen dann
+zufällig eine Teilmenge von Beispielen ausgewählt wird. Dies kann nützlich sein,
+wenn die Trainingsdaten unausgewogen sind, d. h. es gibt deutlich mehr Beispiele
+für eine Klasse als für die andere. Das Stratified Sampling kann dazu beitragen,
+dass jeder Baum im Random Forest auf einer repräsentativen Stichprobe der Daten
 trainiert wird.
 
-3. Cluster-Stichproben: Bei dieser Methode werden die Trainingsdaten in separate
-Cluster unterteilt und dann eine Teilmenge der Cluster zufällig ausgewählt, die
-für das Training verwendet wird. Dies kann nützlich sein, wenn die
-Trainingsdaten auf natürliche Weise in verschiedene Cluster unterteilt sind und
-Sie sicherstellen möchten, dass jeder Baum im Random Forest auf einer
+3. **Cluster-Stichproben**: Bei dieser Methode werden die Trainingsdaten in
+separate Cluster unterteilt und dann eine Teilmenge der Cluster zufällig
+ausgewählt, die für das Training verwendet wird. Dies kann nützlich sein, wenn
+die Trainingsdaten auf natürliche Weise in verschiedene Cluster unterteilt sind
+und Sie sicherstellen möchten, dass jeder Baum im Random Forest auf einer
 repräsentativen Stichprobe der Daten trainiert wird.
 
 Es gibt auch andere Methoden, die zur zufälligen Auswahl der Trainingsdaten
@@ -70,29 +70,23 @@ ausgewählt werden. Die Wahl der Methode hängt von den Besonderheiten der Daten
 und den Zielen des Modells ab.
 
 
-
-```{code-cell} ipython3
-
-```
-
-## Bootstraping in Scikit-Learn
+## Bootstrapping in Scikit-Learn
 
 Für die nachfolgenden Erläuterungen generieren wir uns wieder einmal künstliche
 Messdaten. Diesmal verwenden wir die Funktion `make_moons` von Scikit-Learn.
 
 ```{code-cell} ipython3
+import plotly.express as px
 from sklearn.datasets import make_moons
-import matplotlib.pylab as plt; plt.style.use('bmh')
 
 # generate artificial data
 X, y = make_moons(n_samples=120, random_state=0, noise=0.3)
 
 # plot artificial data
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Daten');
+fig = px.scatter(x = X[:,0], y = X[:, 1], color=y,
+        title='Künstliche Daten',
+        labels = {'x': 'Feature 1', 'y': 'Feature 2'})
+fig.show()
 ```
 
 ```{code-cell} ipython3
@@ -101,12 +95,9 @@ from sklearn.tree import DecisionTreeClassifier
 model = DecisionTreeClassifier()
 model.fit(X,y);
 
-import matplotlib.pylab as plt
-from sklearn.tree import plot_tree 
 
-plt.figure()
-plot_tree(model, filled=True)
-plt.show()
+from sklearn.tree import plot_tree 
+plot_tree(model, filled=True);
 ```
 
 Das Ergebnis ist ein Entscheidungsbaum mit vielen Entscheidungen. Wir erzeugen jetzt ein Gitter
@@ -121,12 +112,17 @@ import numpy as np
 gitter_x1, gitter_x2 = np.meshgrid(np.linspace(x0_min, x0_max), np.linspace(x1_min, x1_max))
 gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
 
-fig, ax = plt.subplots()
-ax.scatter(gitter_x1, gitter_x2, c=gitter_y, s=10, cmap='coolwarm', alpha=0.3)
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Messdaten');
+import plotly.graph_objects as go
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                         marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+fig.update_layout(
+  title='Künstliche Messdaten',
+  xaxis_title = 'Feature 1',
+  yaxis_title = 'Feature 2'
+)
 ```
 
 Jetzt lassen wir einen Random Forest erzeugen. Weitere Details finden Sie unter
@@ -154,12 +150,16 @@ Die vier erzeugten Entscheidungsbäume sind in der Variable `model` gespeichert.
 for (nummer, baum) in zip(range(4), model.estimators_):
     gitter_y = baum.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
 
-    fig, ax = plt.subplots()
-    ax.scatter(gitter_x1, gitter_x2, c=gitter_y, s=10, cmap='coolwarm', alpha=0.3)
-    ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-    ax.set_xlabel('Feature 1')
-    ax.set_ylabel('Feature 2')
-    ax.set_title('Entscheidungsbaum {}'.format(nummer+1));
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                            marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+    fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+    fig.update_layout(
+      title=f'Entscheidungsbaum {nummer+1}',
+      xaxis_title = 'Feature 1',
+      yaxis_title = 'Feature 2'
+    )
+    fig.show()
 ```
 
 Insgesamt erhalten wir:
@@ -167,12 +167,16 @@ Insgesamt erhalten wir:
 ```{code-cell} ipython3
 gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
 
-fig, ax = plt.subplots()
-ax.scatter(gitter_x1, gitter_x2, c=gitter_y, s=10, cmap='coolwarm', alpha=0.3)
-ax.scatter(X[:,0], X[:,1], c=y, cmap='coolwarm')
-ax.set_xlabel('Feature 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Random Forest');
+fig = go.Figure()
+fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                        marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+fig.update_layout(
+  title='Random Forest',
+  xaxis_title = 'Feature 1',
+  yaxis_title = 'Feature 2'
+  )
+fig.show()
 ```
 
 ## Zusammenfassung
