@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Entscheidungsbaum
+# 11.1 Decision Tree (Entscheidungsbaum)
 
 Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregel sind
 simpel. Eine Person wählt eine berühmte Person oder eine Figur aus einem Film
@@ -148,7 +148,7 @@ data.replace('nein', 0, inplace=True)
 
 # extrahiere X und y
 X = data.loc[:, 'Zustand':'Preis']
-y = data.loc[:, 'Kaufentscheidung']
+y = data['Kaufentscheidung']
 
 ```
 
@@ -172,12 +172,9 @@ Aber wie sieht denn jetzt der Entscheidungsbaum aus? Das Scikit-Learn-Modul
 Entscheidungsbäume zeichnen kann. Wir importieren sie direkt und wenden Sie an.
 
 ```{code-cell} ipython3
-import matplotlib.pylab as plt
 from sklearn.tree import plot_tree 
 
-plt.figure()
-plot_tree(model)
-plt.show()
+plot_tree(model);
 ```
 
 In den Kästchen, die den Wurzelknoten und die inneren Knoten darstellen, steht
@@ -194,9 +191,7 @@ Features anstatt `X[0]`, `X[1]`und `X[2]` verwenden. Dazu setzen wir die Option
 `feature_names=['Zustand','Marke','Preis']`.
 
 ```{code-cell} ipython3
-plt.figure()
-plot_tree(model,feature_names=['Zustand','Marke','Preis'])
-plt.show()
+plot_tree(model,feature_names=['Zustand','Marke','Preis']);
 ```
 
 Der Eintrag `samples` in den Knoten verrät, wie viele Datensätze in den linken
@@ -225,9 +220,7 @@ füllen können. Sie lautet simpel: `filled=True`.
 Je dunkler die Farbe, desto reiner der Knoten!
 
 ```{code-cell} ipython3
-plt.figure()
-plot_tree(model,feature_names=['Zustand','Marke','Preis'], filled=True)
-plt.show()
+plot_tree(model,feature_names=['Zustand','Marke','Preis'], filled=True);
 ```
 
 Wenn wir uns die vier Endknoten, also die Blätter betrachten, so haben wir von
@@ -261,9 +254,7 @@ begrenzen.
 model_begrenzt = DecisionTreeClassifier(max_depth=2)
 model_begrenzt.fit(X,y);
 
-plt.figure()
-plot_tree(model_begrenzt,feature_names=['Zustand','Marke','Preis'], filled=True)
-plt.show()
+plot_tree(model_begrenzt,feature_names=['Zustand','Marke','Preis'], filled=True);
 ```
 
 Dadurch sind die Blätter/Endknoten aber nicht mehr rein. 
