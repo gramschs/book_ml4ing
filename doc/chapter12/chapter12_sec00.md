@@ -1,4 +1,4 @@
-# Neuronale Netze
+# 12. Neuronale Netze
 
 Durch neuronale Netze, die tief verschachtelt sind (= tiefe neuronale Netze =
 deep neural network), gab es im Bereich des maschinellen Lernens einen
@@ -24,3 +24,9 @@ Mittlerweile beherrscht DeepL 23 Sprachen, siehe auch den Wikipedia-Artikel zu
 DeepL:
 
 > https://de.wikipedia.org/wiki/DeepL
+
+
+Kapitelübersicht:
+
+```{tableofcontents}
+```

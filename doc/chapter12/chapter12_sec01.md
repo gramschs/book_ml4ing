@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Mehrschichtiges Perzeptron
+# 12.1 Mehrschichtiges Perzeptron
 
 ```{admonition} Lernziele
 :class: important
@@ -43,6 +43,28 @@ Mathematisch gesehen, wurde nach dem Bilden der gewichteten Summe die
 Heaviside-Funktion angewendet. Im Kapitel über die logistische Regression haben
 wir bereits gelernt, dass auch andere Funktionen zum Einsatz kommen können. Bei
 der logistischen Regression wird beispielsweise die Sigmoid-Funktion verwendet.
+Bei neuronalen Netzen sind insbesondere die
+[ReLU-Funktion](https://de.wikipedia.org/wiki/Rectifier_(neuronale_Netzwerke))
+(rectified linear unit) 
+
+```{figure} pics/plot_relu_function.svg
+---
+width: 600px
+---
+ReLU-Funktion
+```
+
+und der [Tangens hyperbolicus](https://de.wikipedia.org/wiki/Tangens_hyperbolicus_und_Kotangens_hyperbolicus)
+
+```{figure} pics/plot_tanh_function.svg
+---
+width: 600px
+---
+Tangens hyperbolicus
+```
+
+häufig eingesetzte Aktivierungsfunktionen.
+
 Oft werden diese beiden Schritte -- Bilden der gewichteten Summe und Anwenden
 der Aktivierungsfunktion -- in einem Symbol gemeinsam dargestellt, wie in der
 folgenden Abbildung zu sehen.
@@ -54,7 +76,7 @@ width: 600px
 Vereinfachte schematische Darstellung eines Perzeptrons
 ```
 
-Tatsächlich sind sogar häufig Darstellungen verbreit, bei denen nur noch durch
+Tatsächlich sind sogar häufig Darstellungen verbreitet, bei denen nur noch durch
 die Kreise das Perzeptron oder das künstliche Neuron symbolisiert wird.
 
 ```{figure} pics/neuron_symbolisch.svg
