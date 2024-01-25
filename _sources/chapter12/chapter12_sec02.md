@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Neuronale Netze mit Scikit-Learn
+# 12.2 Neuronale Netze mit Scikit-Learn
 
 ```{admonition} Lernziele
 :class: important
@@ -33,17 +33,25 @@ Wir benutzen künstliche Daten, um die Anwendung des MLPClassifiers zu
 demonstrieren.
 
 ```{code-cell} ipython3
+import pandas as pd
+import plotly.express as px
 from sklearn.datasets import make_circles
-import matplotlib.pylab as plt
 
-# erzeuge künstliche Daten
-X,y = make_circles(noise=0.2, factor=0.5, random_state=1)
 
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], s=20, c=y, cmap='coolwarm');
-ax.set_xlabel('Feaure 1')
-ax.set_ylabel('Feature 2')
-ax.set_title('Künstliche Messdaten')
+# Generiere künstliche Daten
+X, y = make_circles(noise=0.2, factor=0.5, random_state=1)
+
+# Konvertierung in ein DataFrame-Objekt für Plotly Express
+df = pd.DataFrame({
+    'Feature 1': X[:, 0],
+    'Feature 2': X[:, 1],
+    'Category': pd.Series(y, dtype='category')
+})
+
+# Visualisierung
+fig = px.scatter(df, x='Feature 1', y='Feature 2', color='Category',
+                 title='Künstliche Daten')
+fig.show()
 ```
 
 ```{code-cell} ipython3
@@ -65,28 +73,52 @@ model.fit(X_train, y_train)
 # Validierung 
 score_train = model.score(X_train, y_train)
 score_test = model.score(X_test, y_test)
-print('Score für Trainingsdaten: {:.2f}'.format(score_train))
-print('Score für Testdaten: {:.2f}'.format(score_test))
+print(f'Score für Trainingsdaten: {score_train:.2f}')
+print(f'Score für Testdaten: {score_test:.2f}')
 ```
 
-Funktioniert gar nicht mal schlecht :-) Wir zeichen die Entscheidungsgrenzen
-ein, um zu sehen, wo das neuronale Netzt die Trennlinien zieht.
+Funktioniert gar nicht mal schlecht :-) Um die Warnung kümmern wir uns später.
+Wir zeichen die Entscheidungsgrenzen ein, um zu sehen, wo das neuronale Netz
+die Trennlinien zieht.
 
 ```{code-cell} ipython3
+import plotly.graph_objects as go
 import numpy as np
+import pandas as pd
+from sklearn.datasets import make_circles
 
-gridX, gridY = np.meshgrid(np.linspace(-1.5, 1.5), np.linspace(-1.5, 1.5))
+# Generate synthetic data
+X, y = make_circles(noise=0.2, factor=0.5, random_state=1)
+
+# Create grid for contour plot
+gridX, gridY = np.meshgrid(np.linspace(-1.5, 1.5, 50), np.linspace(-1.5, 1.5, 50))
 gridZ = model.predict_proba(np.column_stack([gridX.ravel(), gridY.ravel()]))[:, 1]
 Z = gridZ.reshape(gridX.shape)
 
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], s=20, c=y, cmap='coolwarm');
-ax.contourf(gridX, gridY, Z, cmap='coolwarm', alpha=0.1);
+# Create scatter plot
+scatter = go.Scatter(x=df['Feature 1'], y=df['Feature 2'], mode='markers',
+                     marker=dict(color=df['Category'], colorscale='BlueRed_r'))
+
+# Create contour plot
+contour = go.Contour(x=np.linspace(-1.5, 1.5, 50), y=np.linspace(-1.5, 1.5, 50), z=Z, 
+                     opacity=0.2, colorscale='BlueRed_r')
+
+# Create figure and add plots
+fig = go.Figure()
+fig.add_trace(contour)
+fig.add_trace(scatter)
+fig.update_layout(title='Künstliche Messdaten und Konturen des Modells',
+                  xaxis_title='Feature 1',
+                  yaxis_title='Feature 2')
+fig.show()
 ```
 
 Im Folgenden wollen wir uns ansehen, welche Bedeutung die optionalen Parameter
 haben. Dazu zunächst noch einmal der komplette Code, aber ohne einen Split in
-Trainings- und Testdaten:
+Trainings- und Testdaten. Probieren Sie nun unterschiedliche Werte für die
+Lernrate 'alpha' und die Architektur der verdeckten Schicht 'hidden_layer_sizes'
+aus.
+
 
 ```{code-cell} ipython3
 # setze verschiedene Werte für alpha und Architektur der verdeckten Schicht
@@ -104,13 +136,27 @@ model.fit(X, y)
 print('Score: {:.2f}'.format(model.score(X, y)))
 
 # Visualisierung
-gridX, gridY = np.meshgrid(np.linspace(-1.5, 1.5), np.linspace(-1.5, 1.5))
+# Create grid for contour plot
+gridX, gridY = np.meshgrid(np.linspace(-1.5, 1.5, 50), np.linspace(-1.5, 1.5, 50))
 gridZ = model.predict_proba(np.column_stack([gridX.ravel(), gridY.ravel()]))[:, 1]
 Z = gridZ.reshape(gridX.shape)
 
-fig, ax = plt.subplots()
-ax.scatter(X[:,0], X[:,1], s=20, c=y, cmap='coolwarm');
-ax.contourf(gridX, gridY, Z, cmap='coolwarm', alpha=0.1);
+# Create scatter plot
+scatter = go.Scatter(x=df['Feature 1'], y=df['Feature 2'], mode='markers',
+                     marker=dict(color=df['Category'], colorscale='BlueRed_r'))
+
+# Create contour plot
+contour = go.Contour(x=np.linspace(-1.5, 1.5, 50), y=np.linspace(-1.5, 1.5, 50), z=Z, 
+                     opacity=0.2, colorscale='BlueRed_r')
+
+# Create figure and add plots
+fig = go.Figure()
+fig.add_trace(contour)
+fig.add_trace(scatter)
+fig.update_layout(title='Künstliche Messdaten und Konturen des Modells',
+                  xaxis_title='Feature 1',
+                  yaxis_title='Feature 2')
+fig.show()
 ```
 
 Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate $\alpha$ und

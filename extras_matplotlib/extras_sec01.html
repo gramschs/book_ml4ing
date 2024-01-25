@@ -245,9 +245,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/chapter11_sec04.html">Übung</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec01.html">Mehrschichtiges Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec02.html">Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/chapter12_sec00.html">12. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec03.html">12.3 Skalierung von Daten</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/chapter12_sec04.html">Übungen</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/chapter13_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -597,23 +600,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.13017913 0.67924093 0.053311   0.80464322 0.55499547 0.13834095
- 0.95134708 0.59244029 0.89471284 0.57189706 0.18409692 0.21090298
- 0.29531673 0.46700829 0.05671614 0.50288027 0.25201896 0.16328522
- 0.09995872 0.59457694 0.75144801 0.9342002  0.54492687 0.88946013
- 0.36920373 0.57157752 0.20721975 0.46518022 0.71571313 0.80030243
- 0.61829429 0.31866783 0.65686014 0.02165655 0.61586299 0.37947224
- 0.62761729 0.05038425 0.37799554 0.88810793 0.703791   0.33871624
- 0.77395435 0.01954105 0.60779235 0.17794132 0.51996443 0.42634889
- 0.48027605 0.57206055 0.96943077 0.23909816 0.64059632 0.81212168
- 0.74014162 0.39917436 0.01521225 0.68305146 0.13503596 0.1836935
- 0.85881528 0.88421515 0.38045541 0.33699187 0.63606756 0.52433956
- 0.76494046 0.91248993 0.37911898 0.84427385 0.5186203  0.70961773
- 0.23227273 0.54497858 0.02195673 0.23272482 0.92326557 0.03345696
- 0.56070021 0.25792895 0.95451496 0.6462818  0.43157136 0.56771301
- 0.81169584 0.50839154 0.91773515 0.29458762 0.11456711 0.11170177
- 0.95058078 0.77542329 0.52659287 0.61095232 0.7681785  0.54980256
- 0.52717851 0.02806115 0.26860546 0.44388178]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.08540533 0.30544815 0.79283178 0.17484148 0.4903711  0.56322455
+ 0.88774021 0.38114739 0.88101399 0.33786039 0.20974819 0.70205071
+ 0.04731422 0.47333844 0.9359705  0.72812238 0.81350757 0.91023916
+ 0.11546698 0.08045195 0.93215251 0.47443449 0.47485765 0.75041376
+ 0.09700157 0.98178649 0.73371607 0.88827999 0.0900184  0.2028394
+ 0.42847836 0.3143829  0.31003643 0.06741202 0.05703272 0.36606388
+ 0.66733792 0.67471722 0.66663269 0.26458955 0.66437695 0.64150311
+ 0.35418972 0.55076839 0.75116163 0.72768591 0.82487862 0.47156813
+ 0.8087052  0.72625738 0.41140137 0.97686724 0.1879207  0.30830329
+ 0.38811429 0.26522514 0.44718217 0.83426717 0.89096015 0.52807045
+ 0.3728264  0.50129343 0.07589931 0.115686   0.07386643 0.02743872
+ 0.7802555  0.78965048 0.3169548  0.56798109 0.98948916 0.12103721
+ 0.30849409 0.89380543 0.27165348 0.29558902 0.24471949 0.57842734
+ 0.10610676 0.68248174 0.707046   0.85945399 0.90239601 0.84280224
+ 0.12191818 0.05500018 0.46591027 0.9443693  0.55492021 0.88369161
+ 0.1796284  0.56343092 0.95231825 0.71295908 0.14105655 0.86969809
+ 0.22649618 0.70088877 0.33447383 0.24953687]
 </pre></div>
 </div>
 </div>
@@ -631,8 +634,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9694307691970758
-NumPy max =  0.9694307691970758
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.989489159838562
+NumPy max =  0.989489159838562
 </pre></div>
 </div>
 </div>
@@ -651,10 +654,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.17 µs ± 9.42 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.09 µs ± 7.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.29 µs ± 5.16 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.24 µs ± 8.55 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -694,7 +697,7 @@ Die folgende Grafik zeigt das Nummerierungsschema:</p>
 <figure class="align-default" id="pics-fig-numpy-array">
 <a class="reference internal image-reference" href="../_images/fig_numpy_array.png"><img alt="../_images/fig_numpy_array.png" src="../_images/fig_numpy_array.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://predictivehacks.com/tips-about-NumPy-arrays/">Quelle:</a>)</p>
 </div>
@@ -873,8 +876,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.52766323 0.11915304 0.11572562]
- [0.80015799 0.32445255 0.48012751]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.54089995 0.02236344 0.59760594]
+ [0.7499976  0.68560815 0.51568696]]
 </pre></div>
 </div>
 </div>
@@ -888,9 +891,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.85770898  0.54385271 -1.63914616  1.04169885]
- [-1.94419101 -0.39373031  0.68765521  0.04265994]
- [-0.99467627 -1.15982894 -0.97096743  1.32989555]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.80697622 -0.59030496  0.88330345 -0.70835688]
+ [ 0.04223194 -0.13532392 -1.10308586  1.20571179]
+ [-1.80531853  0.24381915 -0.07624923  1.92754533]]
 </pre></div>
 </div>
 </div>
