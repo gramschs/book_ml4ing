@@ -108,9 +108,8 @@ from sklearn.model_selection import train_test_split
 
 # Auswahl des Models
 # solver = 'lbfgs' für kleine Datenmengen, solver = 'adam' für große Datenmengen, eher ab 10000
-# alpha = Lernrate
 # hidden_layer: Anzahl der Neuronen pro verdeckte Schicht und Anzahl der verdeckten Schichten
-model = MLPClassifier(solver='lbfgs', alpha=0.1, hidden_layer_sizes=[5, 5])
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=[5, 5], random_state=42)
 
 # Training
 model.fit(X_train, y_train)
@@ -141,7 +140,7 @@ gibt an, dass der Parameter 'max_iter' heißt und normalerweise auf 200 gesetzt
 ist. Wir setzen ihn auf 10000:
 
 ```{code-cell} ipython3
-model = MLPClassifier(solver='lbfgs', alpha=0.1, hidden_layer_sizes=[5, 5], max_iter=10000)
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=[5, 5], max_iter=10000, random_state=42)
 
 # Training
 model.fit(X_train, y_train)
@@ -204,9 +203,8 @@ Jetzt trainieren wir das neuronale Netz erneut.
 ```{code-cell} ipython3
 # Auswahl des Models
 # solver = 'lbfgs' für kleine Datenmengen, solver = 'adam' für große Datenmengen, eher ab 10000
-# alpha = Lernrate
 # hidden_layer: Anzahl der Neuronen pro verdeckte Schicht und Anzahl der verdeckten Schichten
-model = MLPClassifier(solver='lbfgs', alpha=0.1, hidden_layer_sizes=[5, 5], max_iter=10000)
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=[5, 5], max_iter=10000, random_state=42)
 
 # Training
 model.fit(X_train_normiert, y_train)
@@ -218,7 +216,7 @@ print(f'Score für Trainingsdaten: {score_train:.2f}')
 print(f'Score für Testdaten: {score_test:.2f}')
 ```
 
-Am Score hat sich nichts geändert.
+Der Score der Traingsdaten ist leicht besser geworden. 
 
 ### Standardisierung
 
@@ -247,9 +245,8 @@ print(X_train_skaliert)
 ```{code-cell} ipython3
 # Auswahl des Models
 # solver = 'lbfgs' für kleine Datenmengen, solver = 'adam' für große Datenmengen, eher ab 10000
-# alpha = Lernrate
 # hidden_layer: Anzahl der Neuronen pro verdeckte Schicht und Anzahl der verdeckten Schichten
-model = MLPClassifier(solver='lbfgs', alpha=0.1, hidden_layer_sizes=[5, 5], max_iter=10000)
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=[5, 5], max_iter=10000, random_state=42)
 
 # Training
 model.fit(X_train_skaliert, y_train)
