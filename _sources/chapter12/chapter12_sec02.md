@@ -60,9 +60,8 @@ from sklearn.model_selection import train_test_split
 
 # Auswahl des Models
 # solver = 'lbfgs' für kleine Datenmengen, solver = 'adam' für große Datenmengen, eher ab 10000
-# alpha = Lernrate
 # hidden_layer: Anzahl der Neuronen pro verdeckte Schicht und Anzahl der verdeckten Schichten
-model = MLPClassifier(solver='lbfgs', alpha=0.1, hidden_layer_sizes=[5, 5])
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=[5, 5])
 
 # Split Trainings- / Testdaten
 X_train, X_test, y_train, y_test = train_test_split(X,y, random_state=0)
@@ -77,9 +76,8 @@ print(f'Score für Trainingsdaten: {score_train:.2f}')
 print(f'Score für Testdaten: {score_test:.2f}')
 ```
 
-Funktioniert gar nicht mal schlecht :-) Um die Warnung kümmern wir uns später.
-Wir zeichen die Entscheidungsgrenzen ein, um zu sehen, wo das neuronale Netz
-die Trennlinien zieht.
+Funktioniert gar nicht mal schlecht :-) Wir zeichen die Entscheidungsgrenzen
+ein, um zu sehen, wo das neuronale Netz die Trennlinien zieht.
 
 ```{code-cell} ipython3
 import plotly.graph_objects as go
@@ -116,20 +114,18 @@ fig.show()
 Im Folgenden wollen wir uns ansehen, welche Bedeutung die optionalen Parameter
 haben. Dazu zunächst noch einmal der komplette Code, aber ohne einen Split in
 Trainings- und Testdaten. Probieren Sie nun unterschiedliche Werte für die
-Lernrate 'alpha' und die Architektur der verdeckten Schicht 'hidden_layer_sizes'
-aus.
+Architektur der verdeckten Schicht 'hidden_layer_sizes' aus.
 
 
 ```{code-cell} ipython3
-# setze verschiedene Werte für alpha und Architektur der verdeckten Schicht
-my_alpha = 0.1
+# setze verschiedene Werte für die Architektur der verdeckten Schicht
 my_hidden_layers = [10,10]
 
 # erzeuge künstliche Daten
 X,y = make_circles(noise=0.2, factor=0.5, random_state=1)
 
 # Auswahl des Model
-model = MLPClassifier(solver='lbfgs', alpha=my_alpha, hidden_layer_sizes=my_hidden_layers)
+model = MLPClassifier(solver='lbfgs', hidden_layer_sizes=my_hidden_layers)
 
 # Training und Validierung
 model.fit(X, y)
@@ -159,10 +155,10 @@ fig.update_layout(title='Künstliche Messdaten und Konturen des Modells',
 fig.show()
 ```
 
-Wie Sie sehen, ist es schwierig, ein gutes Verhältnis von Lernrate $\alpha$ und
-der Architektur des neuronalen Netzes (= Anzahl der Neuronen pro verdeckter
-Schicht und Anzahl verdeckter Schichten) zu finden. Auch fällt das Ergebnis
-jedesmal ein wenig anders aus, weil stochastische Verfahren im Hintergrund für
-das Trainieren der Gewichte benutzt werden. Aus diesem Grund sollten neuronale
-Netze nur eingesetzt werden, wenn sehr große Datenmengen vorliegen und dann noch
-ist das Finden der besten Architektur eine große Herausforderung.
+Wie Sie sehen, ist es schwierig, eine gute Architektur des neuronalen Netzes (=
+Anzahl der Neuronen pro verdeckter Schicht und Anzahl verdeckter Schichten) zu
+finden. Auch fällt das Ergebnis jedesmal ein wenig anders aus, weil
+stochastische Verfahren im Hintergrund für das Trainieren der Gewichte benutzt
+werden. Aus diesem Grund sollten neuronale Netze nur eingesetzt werden, wenn
+sehr große Datenmengen vorliegen und dann noch ist das Finden der besten
+Architektur eine große Herausforderung.
