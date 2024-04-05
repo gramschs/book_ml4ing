@@ -17,7 +17,7 @@ kernelspec:
 Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir das Perzeptron vorstellen.
 
 ```{admonition} Lernziele
-:class: important
+:class: admonition-goals
 * Sie können das Perzeptron als mathematische Funktion formulieren und in dem Zusammenhang die folgenden Begriffe erklären:
     * gewichtete Summe (Weighted Sum),
     * Bias oder Bias-Einheit (Bias),
@@ -76,7 +76,7 @@ Schreiben Sie ein kurzes Python-Programm, das abfragt, ob es regnet und ob der R
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 # Eingabe
 x1 = input('Regnet es (j/n)?')
@@ -121,7 +121,7 @@ Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Verwenden Sie Inte
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 # Eingabe
 x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
@@ -169,7 +169,7 @@ Schreiben Sie Ihren Programm-Code der letzten Mini-Übung um. Ersetzen Sie das l
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 # Eingabe
 x1 = int(input('Regnet es (ja = 1 | nein = 0)?'))
@@ -236,7 +236,7 @@ Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101 Pun
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 import pandas as pd
 import plotly.express as px
@@ -303,10 +303,9 @@ $$\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.$$
 Auch die Gewichte können wir in einem Spaltenvektor zusammenfassen, also
 
 $$\boldsymbol{\omega} = \begin{pmatrix} \omega_1 \\ \omega_2 \\ \vdots \\
-\omega_n\end{pmatrix}$$
+\omega_n\end{pmatrix}.$$
 
-schreiben. Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt
-abkürzen:
+Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt abkürzen:
 
 $$\mathbf{x}^{T}\boldsymbol{\omega} = x_1 \omega_1 +  x_2 \omega_2 + \ldots +
 x_n \omega_n \geq \theta.\strut$$
@@ -332,24 +331,22 @@ wird anstatt der Heaviside-Funktion auch die Signum-Funktion verwendet. Im
 Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird,
 **Aktivierungsfunktion**.
 
-````{admonition} Was ist ... ein Perzeptron?
+```{admonition} Was ist ... ein Perzeptron?
 :class: note
-Das Perzeptron ist ein künstliches Neuron mit Gewichten $\boldsymbol{\omega}$ und einem Schwellenwert $\theta$. Das Perzeptron berechnet eine gewichtete Summe der Inputs $\mathbf{x}\in\mathbb{R}^n$ und wendet dann die Heaviside-Funktion als Aktivierungsfunktion $\Phi$ an, um den Output $y$ zu berechnen:
-
-$$y = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(-\theta + x_1 \omega_1 + \ldots + x_n \omega_n).$$
-````
-
-+++
+Das Perzeptron ist ein Modell, das Eingaben verarbeitet, indem es erst eine
+gewichtete Summe der Eingaben bildet und dann darauf eine Aktivierungsfunktion
+anwendet.
+```
 
 Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
-{ref}`fig_perzeptron` gezeigt. Die Inputs und der Bias werden durch Kreise
-symbolisiert. Die Multiplikation der Inputs $x_i$ wird durch Kanten dargestellt,
-die mit den Gewichten $\omega_i$ beschriftet sind. Die einzelnen Summanden
-$x_i \omega_i$ treffen sich sozusagen im mittleren Kreis, wo auf die gewichtete
-Summe dann eine Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output
-$y$ wird dann berechnet und wiederum als Kreis gezeichnet. 
+{ref}`fig_perzeptron` gezeigt. Die Eingaben werden durch Kreise symbolisiert.
+Die Multiplikation der Inputs $x_i$ mit den Gewichten $\omega_i$ wird durch
+ Kanten dargestellt. Die einzelnen Summanden $x_i \omega_i$ treffen sich
+sozusagen im mittleren Kreis, wo auf die gewichtete Summe dann eine
+Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output $\wedge{y}$ wird
+dann berechnet und wiederum als Kreis gezeichnet. 
 
-```{figure} pics/perzeptron.png
+```{figure} pics/topology_perceptron.svg
 ---
 width: 600px
 name: fig_perzeptron
