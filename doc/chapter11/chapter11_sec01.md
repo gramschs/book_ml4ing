@@ -239,7 +239,7 @@ Trainingsdaten. Wie so oft bedeutet dies aber nicht, dass der so trainierte
 Entscheidungsbaum gut verallgemeinerbar ist.
 
 Um das Overfitting zu vermeiden, werden vor allem zwei Methoden verwendet:
-**Prä-Tuning** und **Post-Tuning**.
+**Prä-Pruning** und **Post-Pruning**.
 
 1. Prä-Pruning: die maximale Tiefe des Baumes wird begrenzt oder es wird eine
    bestimmte Mindestanzahl von Datenpunkten pro Knoten gefordert
