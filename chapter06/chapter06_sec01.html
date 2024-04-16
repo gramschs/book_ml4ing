@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>6.1 Theorie der linearen Regression &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="6.2 Lineare Regression mit Scikit-Learn" href="chapter06_sec02.html" />
     <link rel="prev" title="6. Lineare Regression" href="chapter06_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -82,7 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -117,11 +125,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +147,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -148,8 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -465,20 +478,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -520,16 +535,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="theorie-der-linearen-regression">
-<h1>6.1 Theorie der linearen Regression<a class="headerlink" href="#theorie-der-linearen-regression" title="Permalink to this headline">#</a></h1>
+<h1>6.1 Theorie der linearen Regression<a class="headerlink" href="#theorie-der-linearen-regression" title="Permalink to this heading">#</a></h1>
 <p>Die lineare Regression gehört zu den überwachten maschinellen Lernverfahren
 (Supervised Learning). Meist ist sie das erste ML-Modell, das eingesetzt wird,
 um Regressionsprobleme zu lösen. In diesem Kapitel stellen wir die theoretischen
 Grundlagen der linearen Regression vor.</p>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -543,7 +558,7 @@ lineare Regressionsmodell geeignet zur Erklärung der Daten ist.</p></li>
 </div>
 </section>
 <section id="regression-kommt-aus-der-statistik">
-<h2>Regression kommt aus der Statistik<a class="headerlink" href="#regression-kommt-aus-der-statistik" title="Permalink to this headline">#</a></h2>
+<h2>Regression kommt aus der Statistik<a class="headerlink" href="#regression-kommt-aus-der-statistik" title="Permalink to this heading">#</a></h2>
 <p>In der Statistik beschäftigen sich Mathematikerinnen und Mathematiker bereits
 seit Jahrhunderten damit, Analyseverfahren zu entwickeln, mit denen
 experimentelle Daten gut erklärt werden können. Falls wir eine “erklärende”
@@ -585,7 +600,7 @@ w_1 x^{(i)}\)</span> werden unterschiedlich groß sein, je nachdem, welche Param
 und <span class="math notranslate nohighlight">\(w_1\)</span>, so dass diese Fehler möglichst klein sind?</p>
 </section>
 <section id="wie-grosz-ist-der-fehler">
-<h2>Wie groß ist der Fehler?<a class="headerlink" href="#wie-grosz-ist-der-fehler" title="Permalink to this headline">#</a></h2>
+<h2>Wie groß ist der Fehler?<a class="headerlink" href="#wie-grosz-ist-der-fehler" title="Permalink to this heading">#</a></h2>
 <p>Das Prinzip für das lineare Regressionsmodell und auch die folgenden ML-Modelle
 ist jedesmal gleich. Das Modell ist eine mathematische Funktion, die aber noch
 Parameter (hier beispielsweise die Koeffizienten der Gerade) enthält. Dann wird
@@ -621,7 +636,7 @@ Residuen. Dann wird diese <strong>Fehlerquadratsumme</strong> minimiert, um die 
 des Regressionsmodells zu berechnen.</p>
 </section>
 <section id="ist-das-beste-modell-gut-genug">
-<h2>Ist das beste Modell gut genug?<a class="headerlink" href="#ist-das-beste-modell-gut-genug" title="Permalink to this headline">#</a></h2>
+<h2>Ist das beste Modell gut genug?<a class="headerlink" href="#ist-das-beste-modell-gut-genug" title="Permalink to this heading">#</a></h2>
 <p>Auch wenn wir mit der Minimierung der Fehlerquadratsumme bzw. der
 Kleinsten-Quadrate-Methode die besten Parameter für unsere Modellfunktion
 gefunden haben, heißt das noch lange nicht, dass unser Modell gut ist. Bereits
@@ -667,7 +682,7 @@ Modellfunktion überhaupt nicht.</p></li>
 </ul>
 </section>
 <section id="interaktive-visualisierung-r2-score">
-<h2>Interaktive Visualisierung R²-Score<a class="headerlink" href="#interaktive-visualisierung-r2-score" title="Permalink to this headline">#</a></h2>
+<h2>Interaktive Visualisierung R²-Score<a class="headerlink" href="#interaktive-visualisierung-r2-score" title="Permalink to this heading">#</a></h2>
 <p>Auf der Seite <a class="reference external" href="https://mathweb.de">https://mathweb.de</a> finden Sie eine Reihe von
 Aufgaben und interaktiven Demonstrationen rund um die Mathematik. Insbesondere
 gibt es dort auch eine interaktive Demonstration des R²-Scores.</p>
@@ -681,7 +696,7 @@ Beobachten Sie dabei, wie die Fehler (rot) kleiner werden.</p>
 </iframe>
 </section>
 <section id="zusammenfassung-und-ausblick">
-<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
 <p>In diesem Abschnitt haben Sie das theoretische Modell der linearen Regression
 kennengelernt. Im nächsten Kapitel trainieren wir ein lineares Regressionsmodell
 mit Scikit-Learn.</p>
@@ -713,11 +728,10 @@ mit Scikit-Learn.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="chapter06_sec00.html"
@@ -737,10 +751,7 @@ mit Scikit-Learn.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -748,6 +759,7 @@ mit Scikit-Learn.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -782,6 +794,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -807,8 +820,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

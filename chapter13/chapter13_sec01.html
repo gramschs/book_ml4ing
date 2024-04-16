@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Grafiken &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Filter anwenden" href="chapter13_sec02.html" />
     <link rel="prev" title="Bildverarbeitung mit Scikit-Image" href="chapter13_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -80,7 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -115,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -134,9 +145,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -146,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -463,20 +476,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -515,10 +530,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="grafiken">
-<h1>Grafiken<a class="headerlink" href="#grafiken" title="Permalink to this headline">#</a></h1>
+<h1>Grafiken<a class="headerlink" href="#grafiken" title="Permalink to this heading">#</a></h1>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -526,7 +541,7 @@ document.write(`
 </ul>
 </div>
 <section id="rastergrafik-vs-vektorgrafik">
-<h2>Rastergrafik vs. Vektorgrafik<a class="headerlink" href="#rastergrafik-vs-vektorgrafik" title="Permalink to this headline">#</a></h2>
+<h2>Rastergrafik vs. Vektorgrafik<a class="headerlink" href="#rastergrafik-vs-vektorgrafik" title="Permalink to this heading">#</a></h2>
 <p>Prinzipiell gibt es zwei Arten, Bilder zu digitalisieren, nämlich ihre
 Darstellung als Rastergrafik oder die Beschreibung durch eine Vektorgrafik.</p>
 <p>Bei der Rastergrafik besteht ein Bild aus vielen Bildpunkten, die in einem
@@ -549,7 +564,7 @@ Am häufgsten werden Vektorgrafiken im SVG-Format gespeichert, das für Scalable
 Vector Graphics steht.</p>
 </section>
 <section id="bilder-einlesen-mit-scikit-image">
-<h2>Bilder einlesen mit Scikit-Image<a class="headerlink" href="#bilder-einlesen-mit-scikit-image" title="Permalink to this headline">#</a></h2>
+<h2>Bilder einlesen mit Scikit-Image<a class="headerlink" href="#bilder-einlesen-mit-scikit-image" title="Permalink to this heading">#</a></h2>
 <p>Scikit-Image ist eine Bibliothek für die Bildverarbeitung in Python. Sie
 ermöglicht es, Bilder einzulesen und darszutellen. Sie bietet auch weitere
 Funktionen wie die Anwendung von Filtern oder die Analyse von Bildeigenschaften.
@@ -582,7 +597,16 @@ einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">ims
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7c750ce36533337b5e6d935a421c57a7116a85073f14b4abf5350384659dad5b.png" src="../_images/7c750ce36533337b5e6d935a421c57a7116a85073f14b4abf5350384659dad5b.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>                                             
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">foto</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;muenzen_und_mehr_medium.jpg&quot;</span><span class="p">)</span>   
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">imshow</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;skimage&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <p>Das Foto zeigt einige Münzen, ein Teelicht und eine Mandarine. Die x- und y-Achse werden in Pixeln angegeben. Aber was ist eigentlich genau in der Variable <code class="docutils literal notranslate"><span class="pre">foto</span></code> gespeichert?</p>
@@ -590,11 +614,6 @@ einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">ims
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foto</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -609,11 +628,6 @@ Funktion <code class="docutils literal notranslate"><span class="pre">shape()</s
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1800, 2400, 3)
-</pre></div>
-</div>
-</div>
 </div>
 <p>Die Variable speichert also drei Matrizen mit 1800 Zeilen und 2400 Spalten. Wir ermitteln schnell noch die minimalen und maximalen Einträge in jeder der drei Matrizen.</p>
 <div class="cell docutils container">
@@ -625,16 +639,6 @@ Funktion <code class="docutils literal notranslate"><span class="pre">shape()</s
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kanal: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kanal</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;minimaler Wert: </span><span class="si">{}</span><span class="s1"> und maximaler Wert: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minimal_wert</span><span class="p">,</span> <span class="n">maximal_wert</span><span class="p">))</span>
    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kanal: 0
-minimaler Wert: 0 und maximaler Wert: 255
-Kanal: 1
-minimaler Wert: 0 und maximaler Wert: 255
-Kanal: 2
-minimaler Wert: 0 und maximaler Wert: 245
 </pre></div>
 </div>
 </div>
@@ -665,15 +669,12 @@ Manchmal werden anstatt der Integer-Zahlen von 0 bis 255 auch Floats von 0.0 bis
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/4640809bcfd1f72ed0f4217c41701e1350f31db214f3593369cb3335fb21b6f8.png" src="../_images/4640809bcfd1f72ed0f4217c41701e1350f31db214f3593369cb3335fb21b6f8.png" />
-</div>
 </div>
 <p>Wir erkennen beispielsweise, dass die orangefarbene Mandarine keinen Blauanteil
 hat.</p>
 </section>
 <section id="graustufenbild">
-<h2>Graustufenbild<a class="headerlink" href="#graustufenbild" title="Permalink to this headline">#</a></h2>
+<h2>Graustufenbild<a class="headerlink" href="#graustufenbild" title="Permalink to this heading">#</a></h2>
 <p>Für die weitere Bildverarbeitung verwandeln wir das RGB-Bild in ein sogenanntes
 Graustufenbild. Dabei werden die Farbinformationen durch eine Beschreibung der
 Helligkeitswerte der Pixel ersetzt. Der Grauwert kann gemäß <a class="reference external" href="https://de.wikipedia.org/wiki/Grauwert">Wikipedia →
@@ -701,13 +702,6 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
 <span class="n">imshow</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape des Graustufenbildes: 
-(1800, 2400)
-</pre></div>
-</div>
-<img alt="../_images/863efd222424b49c77a7bfc8165a7899f0830cf5a1f2faf7fdbffda8140ecc0f.png" src="../_images/863efd222424b49c77a7bfc8165a7899f0830cf5a1f2faf7fdbffda8140ecc0f.png" />
 </div>
 </div>
 </section>
@@ -738,11 +732,10 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="chapter13_sec00.html"
@@ -762,10 +755,7 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -773,6 +763,7 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -804,6 +795,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -829,8 +821,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

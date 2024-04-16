@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Das Modul NumPy &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Linien-, Balken- und Streudiagramme" href="extras_sec02.html" />
     <link rel="prev" title="Daten visualisieren mit Matplotlib" href="extras_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -82,7 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -117,11 +125,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +147,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -148,8 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -465,20 +478,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -521,10 +536,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="das-modul-numpy">
-<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this headline">#</a></h1>
+<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this heading">#</a></h1>
 <p>Im letzten Kapitel haben wir gelernt, Daten in Form von Tabellen als
 Pandas-Objekte zu verwalten. Dabei arbeiten die Module Pandas, Scikit-Learn und
 auch das Visualisierungsmodul Matplotlib, das wir in diesem Kapitel kennenlernen
@@ -542,7 +557,7 @@ mehrdimensionale Arrays an.</p>
 <strong>NumPy-Array</strong> erarbeiten, um für Matplotlib und Scikit-Learn die Basis zu
 schaffen.</p>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -569,7 +584,7 @@ schaffen.</p>
 </div>
 </section>
 <section id="numpy-ist-schneller-durch-c">
-<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this headline">#</a></h2>
+<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this heading">#</a></h2>
 <p>Alle Daten lassen sich letztendlich als eine Folge von Zahlen schreiben.
 Beispielsweise kann ein Foto durch seine Pixel beschrieben werden
 zusammengesetzt aus den Werten RGB (rot - grün - blau). Python bietet dafür
@@ -600,23 +615,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.53986505 0.89452875 0.67156335 0.26607941 0.69196107 0.21934232
- 0.64538501 0.04084288 0.27282128 0.10082457 0.4901691  0.30735969
- 0.1575058  0.53533937 0.34135416 0.97450615 0.88744927 0.00548968
- 0.34099108 0.49725118 0.65109295 0.61805715 0.12601302 0.23919347
- 0.1768658  0.77101387 0.7219911  0.46710286 0.46735499 0.39194245
- 0.18613002 0.53895491 0.66104442 0.32675867 0.71821823 0.14113231
- 0.34806418 0.72355853 0.82239122 0.57888851 0.00553961 0.27259251
- 0.23523057 0.65136211 0.02887263 0.48151684 0.70597047 0.63757973
- 0.30349881 0.37778204 0.76741615 0.47303382 0.49353951 0.7963958
- 0.54885588 0.9565615  0.50011184 0.83272057 0.34593571 0.62762284
- 0.75618418 0.38693315 0.85206223 0.88367662 0.23491368 0.47830677
- 0.00664057 0.54696025 0.74687503 0.18570845 0.19644482 0.78418594
- 0.85509441 0.35512902 0.52685001 0.62103949 0.87294735 0.85260831
- 0.96728727 0.50208896 0.76850287 0.53773231 0.81984952 0.82039449
- 0.41434959 0.73627276 0.08555603 0.59624124 0.52979262 0.12640388
- 0.77483365 0.05573415 0.22205556 0.3813726  0.65434652 0.95819902
- 0.27188395 0.40815947 0.00237887 0.4531932 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.46399952 0.16752498 0.91131595 0.1262354  0.4510198  0.32607821
+ 0.29499575 0.2900089  0.25441558 0.08802947 0.77714649 0.70826961
+ 0.16517164 0.35347742 0.39622534 0.01471214 0.50986798 0.03873212
+ 0.13750942 0.22624718 0.28440632 0.85549088 0.22742429 0.18751497
+ 0.69570481 0.24109072 0.70766357 0.13119167 0.82501602 0.58016545
+ 0.70859332 0.41970911 0.04250868 0.66184157 0.09335275 0.43826292
+ 0.12411053 0.5304416  0.71966738 0.78806183 0.62393087 0.81465692
+ 0.70144835 0.19737641 0.32137597 0.99977621 0.1665276  0.40626899
+ 0.24397342 0.28741719 0.45495472 0.75466754 0.6197762  0.5648313
+ 0.52818615 0.61514769 0.96207143 0.62510546 0.31093497 0.74516836
+ 0.79654765 0.64172938 0.3086107  0.50463253 0.8396689  0.50679602
+ 0.77916834 0.3500885  0.87764734 0.46415974 0.19222823 0.74104354
+ 0.69025404 0.26177482 0.24846397 0.96104438 0.55864623 0.19181929
+ 0.58820842 0.85301081 0.80558965 0.05554775 0.62490554 0.71056289
+ 0.14419812 0.04880857 0.82253648 0.31024545 0.93479405 0.40932068
+ 0.96850961 0.77692143 0.28543788 0.36641324 0.82487461 0.86228082
+ 0.48032673 0.62712246 0.47262955 0.27750239]
 </pre></div>
 </div>
 </div>
@@ -634,8 +649,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9745061530200803
-NumPy max =  0.9745061530200803
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9997762070438264
+NumPy max =  0.9997762070438264
 </pre></div>
 </div>
 </div>
@@ -654,10 +669,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.02 µs ± 9.33 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.98 µs ± 14.1 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.28 µs ± 32.4 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3 µs ± 6.8 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -665,7 +680,7 @@ Mittelwerte bildet.</p>
 <p>Sie sehen, die NumPy-Variante ist erheblich schneller als die Standard-Variante.</p>
 </section>
 <section id="erzeugung-von-numpy-arrays">
-<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this heading">#</a></h2>
 <p>Im Gegensatz zu Python-Listen enthalten NumPy-Arrays nur Elemente des gleichen
 Datentyps. Wenn eine Liste nur aus gleichen Datentypen besteht, können wir
 direkt aus der Liste ein NumPy-Array erzeugen. Dazu verwenden wir <code class="docutils literal notranslate"><span class="pre">array()</span></code> aus
@@ -876,8 +891,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.68145564 0.35355406 0.25546185]
- [0.03442045 0.13599354 0.10449542]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.23070965 0.72695254 0.13397018]
+ [0.17188185 0.3015893  0.36797054]]
 </pre></div>
 </div>
 </div>
@@ -891,9 +906,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3.64613733e-01 -1.39556761e+00  1.36564776e+00  1.51382216e-01]
- [ 1.33357087e+00 -2.79097278e+00 -6.47443401e-01  3.01807368e-01]
- [ 2.01677168e-03 -1.58051945e+00 -4.39064035e-01  1.97505562e-01]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1.04825148 -0.08729218 -0.50669386  0.31389068]
+ [-0.95908935  0.16347638  0.96391051  0.04562874]
+ [-0.32477799  0.79110253 -0.90204424  0.55951383]]
 </pre></div>
 </div>
 </div>
@@ -951,7 +966,7 @@ Mittelwert 37.5, Standardabweichung 0.8</p></li>
 </div>
 </section>
 <section id="attribute-von-numpy-arrays">
-<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this heading">#</a></h2>
 <p>Damit wir besser verstehen, welche Attribute die NumPy-Arrays haben können,
 erzeugen wir uns zufällig drei NumPy-Arrays. Damit aber nicht bei jeder neuen
 Ausführung der Code-Zelle neue Zufallszahlen gezogen werden, fixieren wir den
@@ -1041,7 +1056,7 @@ kennengelernt.</p>
 </div>
 </section>
 <section id="zugriff-einzelner-elemente-eines-arrays">
-<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this headline">#</a></h2>
+<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this heading">#</a></h2>
 <p>Der Zugriff bei eindimensionalen Arrays erfolgt genau wie bei Listen über den
 <strong>Zugriffsoperator</strong> <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Auch hier wird ab 0 beginnend gezählt.</p>
 <div class="cell docutils container">
@@ -1106,7 +1121,7 @@ nachher y =  [[  5   2   4]
 </div>
 </section>
 <section id="funktionen-auf-numpy-arrays-anwenden">
-<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this headline">#</a></h2>
+<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this heading">#</a></h2>
 <p>NumPy-Arrays ermöglichen die Verarbeitung mit den typischen mathematischen
 Funktionen und den üblichen Statistik-Größen. Schauen wir uns einfach ein paar
 Beispiele an:</p>
@@ -1200,7 +1215,7 @@ max3 [1.10398039 3.45940709 2.15944153]
 </div>
 </section>
 <section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this headline">#</a></h2>
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
 <p>In diesem Abschnitt haben wir das NumPy-Array kennengelernt, eine sehr
 effiziente Datenstruktur. Die Erzeugungsmethoden nach einem Muster werden wir
 vor allem für die Visualisierung von Funktionen brauchen. Das Bestimmen der
@@ -1235,11 +1250,10 @@ füttern.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="extras_sec00.html"
@@ -1259,10 +1273,7 @@ füttern.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1270,6 +1281,7 @@ füttern.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1305,6 +1317,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -1330,8 +1343,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>3.1 Pandas Series &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="3.2 Statistik mit Pandas" href="chapter03_sec02.html" />
     <link rel="prev" title="3. Pandas und Plotly anstatt Excel" href="chapter03_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -80,7 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -115,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -134,9 +145,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -146,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -463,20 +476,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -517,16 +532,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-series">
-<h1>3.1 Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h1>
+<h1>3.1 Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this heading">#</a></h1>
 <p>Eine <strong>Series</strong> ist eine von zwei grundlegenden Datenstrukturen des
 Pandas-Moduls. Die Series dient vor allem dazu, Daten zu verwalten und
 statistisch zu erkunden. Bevor wir die neue Datenstruktur näher beleuchten,
 machen wir uns aber zuerst mit dem <strong>Modul Pandas</strong> vertraut.</p>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -544,7 +559,7 @@ aufsteigend und absteigend sortieren lassen.</p></li>
 </div>
 </section>
 <section id="das-modul-pandas">
-<h2>Das Modul Pandas<a class="headerlink" href="#das-modul-pandas" title="Permalink to this headline">#</a></h2>
+<h2>Das Modul Pandas<a class="headerlink" href="#das-modul-pandas" title="Permalink to this heading">#</a></h2>
 <p>Stellen Sie sich vor, Sie möchten Spaghetti mit Tomatensauce kochen. Am
 einfachsten ist es, die Spaghetti-Nudeln und die Tomatensauce im Supermarkt zu
 kaufen. Sie können aber auch nur die Nudeln kaufen und die Tomatensauce selbst
@@ -601,7 +616,6 @@ Funktionalitäten des Moduls aufgelistet.</p>
  &#39;Flags&#39;,
  &#39;Float32Dtype&#39;,
  &#39;Float64Dtype&#39;,
- &#39;Float64Index&#39;,
  &#39;Grouper&#39;,
  &#39;HDFStore&#39;,
  &#39;Index&#39;,
@@ -609,7 +623,6 @@ Funktionalitäten des Moduls aufgelistet.</p>
  &#39;Int16Dtype&#39;,
  &#39;Int32Dtype&#39;,
  &#39;Int64Dtype&#39;,
- &#39;Int64Index&#39;,
  &#39;Int8Dtype&#39;,
  &#39;Interval&#39;,
  &#39;IntervalDtype&#39;,
@@ -631,17 +644,13 @@ Funktionalitäten des Moduls aufgelistet.</p>
  &#39;UInt16Dtype&#39;,
  &#39;UInt32Dtype&#39;,
  &#39;UInt64Dtype&#39;,
- &#39;UInt64Index&#39;,
  &#39;UInt8Dtype&#39;,
  &#39;__all__&#39;,
  &#39;__builtins__&#39;,
  &#39;__cached__&#39;,
- &#39;__deprecated_num_index_names&#39;,
- &#39;__dir__&#39;,
  &#39;__doc__&#39;,
  &#39;__docformat__&#39;,
  &#39;__file__&#39;,
- &#39;__getattr__&#39;,
  &#39;__git_version__&#39;,
  &#39;__loader__&#39;,
  &#39;__name__&#39;,
@@ -649,12 +658,15 @@ Funktionalitäten des Moduls aufgelistet.</p>
  &#39;__path__&#39;,
  &#39;__spec__&#39;,
  &#39;__version__&#39;,
+ &#39;_built_with_meson&#39;,
  &#39;_config&#39;,
  &#39;_is_numpy_dev&#39;,
  &#39;_libs&#39;,
+ &#39;_pandas_datetime_CAPI&#39;,
+ &#39;_pandas_parser_CAPI&#39;,
  &#39;_testing&#39;,
  &#39;_typing&#39;,
- &#39;_version&#39;,
+ &#39;_version_meson&#39;,
  &#39;annotations&#39;,
  &#39;api&#39;,
  &#39;array&#39;,
@@ -738,7 +750,7 @@ Funktionalitäten des Moduls aufgelistet.</p>
 <p>Eine sehr lange Liste.</p>
 </section>
 <section id="die-datenstruktur-series">
-<h2>Die Datenstruktur Series<a class="headerlink" href="#die-datenstruktur-series" title="Permalink to this headline">#</a></h2>
+<h2>Die Datenstruktur Series<a class="headerlink" href="#die-datenstruktur-series" title="Permalink to this heading">#</a></h2>
 <p>Einfache Listen reichen nicht aus, um größere Datenmengen oder Tabellen
 effizient zu speichern. Dazu benutzen Data Scientists die Datenstrukturen
 <code class="docutils literal notranslate"><span class="pre">Series</span></code> oder <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> aus dem Pandas-Modul. Dabei wird <strong>Series</strong> für
@@ -884,7 +896,7 @@ Vorlesungsstunden (SWS) an diesem Wochentag.</p>
 </div>
 </section>
 <section id="arbeiten-mit-series-objekten">
-<h2>Arbeiten mit Series-Objekten<a class="headerlink" href="#arbeiten-mit-series-objekten" title="Permalink to this headline">#</a></h2>
+<h2>Arbeiten mit Series-Objekten<a class="headerlink" href="#arbeiten-mit-series-objekten" title="Permalink to this heading">#</a></h2>
 <p>Falls der Datentyp der einzelnen Elemente eines Series-Objektes ein numerischer
 Typ ist (Integer oder Float), können wir mit den Einträgen auch rechnen. So
 lassen sich beispielweise die Preise nicht in Euro, sondern als Preis pro
@@ -1031,7 +1043,7 @@ diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.<
 </div>
 </section>
 <section id="zusammenfassung-und-ausblick">
-<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
 <p>In diesem Kapitel haben wir Pandas und die sehr wichtige Datenstruktur Series
 kennengelernt. Im nächsten Kapitel geht es darum, die wichtigsten statistischen
 Kennzahlen der Daten zu ermitteln, die in dem Series-Objekt gespeichert sind.</p>
@@ -1063,11 +1075,10 @@ Kennzahlen der Daten zu ermitteln, die in dem Series-Objekt gespeichert sind.</p
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="chapter03_sec00.html"
@@ -1087,10 +1098,7 @@ Kennzahlen der Daten zu ermitteln, die in dem Series-Objekt gespeichert sind.</p
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1098,6 +1106,7 @@ Kennzahlen der Daten zu ermitteln, die in dem Series-Objekt gespeichert sind.</p
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1131,6 +1140,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -1156,8 +1166,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

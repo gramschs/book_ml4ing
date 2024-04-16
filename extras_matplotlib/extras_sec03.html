@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Visualisierung von DataFrames &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -72,7 +72,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Optional: Histogramme" href="extras_sec04.html" />
     <link rel="prev" title="Linien-, Balken- und Streudiagramme" href="extras_sec02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -80,7 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -115,11 +123,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -134,9 +145,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -146,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -463,20 +476,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -517,12 +532,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="visualisierung-von-dataframes">
-<h1>Visualisierung von DataFrames<a class="headerlink" href="#visualisierung-von-dataframes" title="Permalink to this headline">#</a></h1>
+<h1>Visualisierung von DataFrames<a class="headerlink" href="#visualisierung-von-dataframes" title="Permalink to this heading">#</a></h1>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -535,7 +550,7 @@ Linie hinzufügen.</p></li>
 </div>
 </section>
 <section id="array-aus-tabelle-extrahieren">
-<h2>Array aus Tabelle extrahieren<a class="headerlink" href="#array-aus-tabelle-extrahieren" title="Permalink to this headline">#</a></h2>
+<h2>Array aus Tabelle extrahieren<a class="headerlink" href="#array-aus-tabelle-extrahieren" title="Permalink to this heading">#</a></h2>
 <p>Aber wie kombinieren wir jetzt die Funktionalitäten des Pandas-Moduls mit denen
 des Matplotlib-Moduls? Der grundlegende Datentyp für Matplotlib ist das
 NumPy-Array und auch in den Pandas-Datenobjekten stecken im Kern NumPy-Arrays.
@@ -620,7 +635,7 @@ verwenden wir ein Balkendiagramm.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d4b774b7aa82146663bb91f38fed40a07959097e4d008e177daef3efb44ed63e.png" src="../_images/d4b774b7aa82146663bb91f38fed40a07959097e4d008e177daef3efb44ed63e.png" />
+<img alt="../_images/dc0d6d5b709afd60afaf603b4f74b523e679dda736162696ef49efebbe2ba253.png" src="../_images/dc0d6d5b709afd60afaf603b4f74b523e679dda736162696ef49efebbe2ba253.png" />
 </div>
 </div>
 <p>Leider kann man die Spielernamen nicht mehr lesen. Wir können händisch in das
@@ -640,12 +655,12 @@ drehen. Dann sieht der Code folgendermaßen aus:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4c160a2d03fd28dde8d731750db1c2ae9d4d5f49db59b7a07e8d3d57803760f2.png" src="../_images/4c160a2d03fd28dde8d731750db1c2ae9d4d5f49db59b7a07e8d3d57803760f2.png" />
+<img alt="../_images/c7c3fb41724c2721a10ab72970160f5e0ffd1a079f262b7a79ed73c6fe626603.png" src="../_images/c7c3fb41724c2721a10ab72970160f5e0ffd1a079f262b7a79ed73c6fe626603.png" />
 </div>
 </div>
 </section>
 <section id="plot-vom-mittelwert-als-horizontale-linie">
-<h2>Plot vom Mittelwert als horizontale Linie<a class="headerlink" href="#plot-vom-mittelwert-als-horizontale-linie" title="Permalink to this headline">#</a></h2>
+<h2>Plot vom Mittelwert als horizontale Linie<a class="headerlink" href="#plot-vom-mittelwert-als-horizontale-linie" title="Permalink to this heading">#</a></h2>
 <p>Als nächstes möchten wir in den Plot Zusatzinformationen mit einblenden. So
 würden wir gerne sichtbar machen, wo das Durchschnittsalter der Fußballspieler
 liegt. Dadurch können wir schnell ablesen, welcher Spieler über dem Durchschnitt
@@ -683,12 +698,12 @@ verwenden wir die Methode <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/936317d8448cc0b99305e3d9d6e02e63050c4f4667c2f6043b11cc346e5be225.png" src="../_images/936317d8448cc0b99305e3d9d6e02e63050c4f4667c2f6043b11cc346e5be225.png" />
+<img alt="../_images/0343970657429ca4e7c764d8437543a9b6c73cc12a8de01696fe22bb65c379ae.png" src="../_images/0343970657429ca4e7c764d8437543a9b6c73cc12a8de01696fe22bb65c379ae.png" />
 </div>
 </div>
 </section>
 <section id="plot-der-standardabweichung-als-fehlerbalken">
-<h2>Plot der Standardabweichung als Fehlerbalken<a class="headerlink" href="#plot-der-standardabweichung-als-fehlerbalken" title="Permalink to this headline">#</a></h2>
+<h2>Plot der Standardabweichung als Fehlerbalken<a class="headerlink" href="#plot-der-standardabweichung-als-fehlerbalken" title="Permalink to this heading">#</a></h2>
 <p>Bei allen Messungen treten Messfehler auf. Manchmal weiß man von Anfang an,
 welchen Messfehler das Messgerät hat. Ein anderes Mal hat man beispielsweise
 eine Messung zehnmal wiederholt und möchte nun den Mittelwert als Datenpunkt und
@@ -718,7 +733,7 @@ Hilfeseite</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9c027eff695ab45bf347587ef4b4bfc42fa9b176cb3ec5c01e387648818b9829.png" src="../_images/9c027eff695ab45bf347587ef4b4bfc42fa9b176cb3ec5c01e387648818b9829.png" />
+<img alt="../_images/1825d6f31e3b448d19f0a8b21783e131e55122e377de639c7e836b560866dd00.png" src="../_images/1825d6f31e3b448d19f0a8b21783e131e55122e377de639c7e836b560866dd00.png" />
 </div>
 </div>
 <p>Die Grafik sieht irritierend aus, da die Altersangben der Spieler verbunden
@@ -741,12 +756,12 @@ die folgenden Optionen in seinem Buch “Data Science mit Python”:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3878084095cfb277643875cb2654ee409baee158275c30a4d611735446808da4.png" src="../_images/3878084095cfb277643875cb2654ee409baee158275c30a4d611735446808da4.png" />
+<img alt="../_images/3a6759ad455fd0b66bfcc9b2d4dd1471f09b13a358e8dbfded934efac5744938.png" src="../_images/3a6759ad455fd0b66bfcc9b2d4dd1471f09b13a358e8dbfded934efac5744938.png" />
 </div>
 </div>
 </section>
 <section id="zusammenfassung-und-ausblick">
-<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
 <p>Nachdem wir uns erarbeitet haben, wie Daten aus einem DataFrame für eine
 Visualisierung mit Matplotlib aufbereitet werden, lernen wir im nächsten
 Abschnitt noch einen weiteren Diagrammtyp kennen, das Histogramm.</p>
@@ -778,11 +793,10 @@ Abschnitt noch einen weiteren Diagrammtyp kennen, das Histogramm.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="extras_sec02.html"
@@ -802,10 +816,7 @@ Abschnitt noch einen weiteren Diagrammtyp kennen, das Histogramm.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -813,6 +824,7 @@ Abschnitt noch einen weiteren Diagrammtyp kennen, das Histogramm.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -846,6 +858,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -871,8 +884,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

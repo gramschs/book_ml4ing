@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Linien-, Balken- und Streudiagramme &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -35,20 +35,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystyling.css" />
     <link rel="stylesheet" type="text/css" href="../_static/carousel-custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/my_styles.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Visualisierung von DataFrames" href="extras_sec03.html" />
     <link rel="prev" title="Das Modul NumPy" href="extras_sec01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -82,7 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -117,11 +125,14 @@ const thebe_selector_output = ".output, .cell_output"
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -136,9 +147,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -148,8 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
   
   
 </a></div>
@@ -465,20 +478,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -519,12 +534,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linien-balken-und-streudiagramme">
-<h1>Linien-, Balken- und Streudiagramme<a class="headerlink" href="#linien-balken-und-streudiagramme" title="Permalink to this headline">#</a></h1>
+<h1>Linien-, Balken- und Streudiagramme<a class="headerlink" href="#linien-balken-und-streudiagramme" title="Permalink to this heading">#</a></h1>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this headline">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="important admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -536,7 +551,7 @@ document.write(`
 </div>
 </section>
 <section id="liniendiagramme">
-<h2>Liniendiagramme<a class="headerlink" href="#liniendiagramme" title="Permalink to this headline">#</a></h2>
+<h2>Liniendiagramme<a class="headerlink" href="#liniendiagramme" title="Permalink to this heading">#</a></h2>
 <p>Liniendiagramme werden zur Visualisierung benutzt, wenn die Daten kontinuierlich
 sind und zu jedem x-Wert ein y-Wert vorliegt. Am häufigsten ist dies der Fall,
 wenn die Daten von einer mathematischen Funktion stammen. Obwohl die Daten
@@ -587,10 +602,10 @@ Linienplot und Beschriftungen hinzu.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10e526c20&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10f7736d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/381aa681daef084a88f4b6b0126b1779bc18b3aebe01b78ed42bd54e88821c93.png" src="../_images/381aa681daef084a88f4b6b0126b1779bc18b3aebe01b78ed42bd54e88821c93.png" />
+<img alt="../_images/51b0f7f7383d55c188fe2efd958b17e22b235dac38e32d1891efa508817ec278.png" src="../_images/51b0f7f7383d55c188fe2efd958b17e22b235dac38e32d1891efa508817ec278.png" />
 </div>
 </div>
 <p>PS: Ohne Strichpunkt/Semikolon gibt Jupyter-Lab noch Objekttyp und Referenz des
@@ -621,7 +636,7 @@ nach eingestellter Anzahl.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1cb7a9ab6543ee3883a66f19b250ca6f0ac9066ac675d90a801d21cf30ca3933.png" src="../_images/1cb7a9ab6543ee3883a66f19b250ca6f0ac9066ac675d90a801d21cf30ca3933.png" />
+<img alt="../_images/007345bd173f6aaf9802c21048247780412ef85417d6cdb0536a1d4ca6497b00.png" src="../_images/007345bd173f6aaf9802c21048247780412ef85417d6cdb0536a1d4ca6497b00.png" />
 </div>
 </div>
 <p>Nächstes Thema, Beschriftungen. Mit den Methoden <code class="docutils literal notranslate"><span class="pre">.set_xlabel()</span></code> und
@@ -643,7 +658,7 @@ Titel gesetzt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dd0b96fecc466e86afeab72e1df155fc909d2d8e7fd4693935f983979edd2401.png" src="../_images/dd0b96fecc466e86afeab72e1df155fc909d2d8e7fd4693935f983979edd2401.png" />
+<img alt="../_images/1ba038619b07eb2ed71a0fda52188a97e63237633b98143749239f9022cb70da.png" src="../_images/1ba038619b07eb2ed71a0fda52188a97e63237633b98143749239f9022cb70da.png" />
 </div>
 </div>
 <p>Zuletzt soll unser Plot gespeichert werden. Es stehen mehrere Grafikformate zur
@@ -708,11 +723,11 @@ Funktion achten?)</p>
 </div>
 </section>
 <section id="balkendiagramme">
-<h2>Balkendiagramme<a class="headerlink" href="#balkendiagramme" title="Permalink to this headline">#</a></h2>
+<h2>Balkendiagramme<a class="headerlink" href="#balkendiagramme" title="Permalink to this heading">#</a></h2>
 <p>Mit der Methode <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> kann ein Balkendiagramm erstellt werden. Nehmen wir mal
 an, wir möchten auswerten, wie viele Nutzer/innen in Moodle auf die Jupyter
 Notebooks zum Download zugegriffen haben:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Woche</p></th>
 <th class="head"><p>Anzahl Nutzer/innen</p></th>
@@ -753,7 +768,7 @@ Notebooks zum Download zugegriffen haben:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9f8ab5f8f093c81d0a49627ed4c20b3bd09921b12e215dd057ea0263229eee65.png" src="../_images/9f8ab5f8f093c81d0a49627ed4c20b3bd09921b12e215dd057ea0263229eee65.png" />
+<img alt="../_images/7a6993bd6b76a79176ac98f22537c978af1c9a44a0b5d1ad586d3060d447048e.png" src="../_images/7a6993bd6b76a79176ac98f22537c978af1c9a44a0b5d1ad586d3060d447048e.png" />
 </div>
 </div>
 <div class="miniexercise admonition">
@@ -761,7 +776,7 @@ Notebooks zum Download zugegriffen haben:</p>
 <p>Hier ist eine Tabelle mit den Zugriffszahlen auf das MATLAB Live Script in der
 Vorlesung angewandte Informatik im Sommersemester 2021. Bitte stellen Sie die
 Daten als Balkendiagramm inklusive Beschriftungen dar.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Woche</p></th>
 <th class="head"><p>Anzahl Nutzer/innen</p></th>
@@ -811,7 +826,7 @@ Daten als Balkendiagramm inklusive Beschriftungen dar.</p>
 </div>
 </section>
 <section id="streudiagramme">
-<h2>Streudiagramme<a class="headerlink" href="#streudiagramme" title="Permalink to this headline">#</a></h2>
+<h2>Streudiagramme<a class="headerlink" href="#streudiagramme" title="Permalink to this heading">#</a></h2>
 <p>Bei Streudiagrammen werden nicht die Punkte <span class="math notranslate nohighlight">\((x_1,y_2)\)</span> mit <span class="math notranslate nohighlight">\((x_2,y_2)\)</span> mit
 <span class="math notranslate nohighlight">\((x_3,y_3)\)</span> usw. durch Linien verbunden, sondern jeder Punkt selbst wird an der
 Stelle seiner Koordinaten eingezeichnet. Ob dazu ein Punkt, Kreis, Dreieck oder
@@ -831,7 +846,7 @@ Matplotlib-Methode auch <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/497c22cb1639acc18a2391953661b2bc8680ab13a1519fdc186b1f123064ebbb.png" src="../_images/497c22cb1639acc18a2391953661b2bc8680ab13a1519fdc186b1f123064ebbb.png" />
+<img alt="../_images/b858359e98839115f5796c70090c49489d1fdebc98b9bedc9034536ef322c295.png" src="../_images/b858359e98839115f5796c70090c49489d1fdebc98b9bedc9034536ef322c295.png" />
 </div>
 </div>
 <p>Über die Option <code class="docutils literal notranslate"><span class="pre">marker=</span> </code> lässt sich das Symbol einstellen, mit dem das
@@ -855,7 +870,7 @@ aus:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/870c81ad28bf16fc260eba557e119fd21c38c8c8f031b813d74a4550910eb082.png" src="../_images/870c81ad28bf16fc260eba557e119fd21c38c8c8f031b813d74a4550910eb082.png" />
+<img alt="../_images/ceef613ad72382bee3bc5e599058bae8bb69f262b6276ffc2703e313281c8fb5.png" src="../_images/ceef613ad72382bee3bc5e599058bae8bb69f262b6276ffc2703e313281c8fb5.png" />
 </div>
 </div>
 <p>Für bekannte Funktionen wie Sinus oder Kosinus würde man Liniendiagramme
@@ -879,7 +894,7 @@ Farben verwenden.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/254d067f066da285c4737b30e264a12e295981cd6e6618a457ce23439076b540.png" src="../_images/254d067f066da285c4737b30e264a12e295981cd6e6618a457ce23439076b540.png" />
+<img alt="../_images/51d3c002d98cba59e88aeaaa0a23a84c2b311f7baad7f374253656406adb6904.png" src="../_images/51d3c002d98cba59e88aeaaa0a23a84c2b311f7baad7f374253656406adb6904.png" />
 </div>
 </div>
 <p>Dann ist es aber auch gut, die Visualisierung zu beschriften. Dazu kennzeichnet
@@ -907,7 +922,7 @@ zu den Namen (Labels) zugeordnet werden.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d0d9799a8001699dd8161db3f6d3f71263a46587a5ecd0d39b6dada967181d02.png" src="../_images/d0d9799a8001699dd8161db3f6d3f71263a46587a5ecd0d39b6dada967181d02.png" />
+<img alt="../_images/3b7d5fc403bb68200afd54086ded0c95e1ed5d43b9ba5f73a857070605b099cc.png" src="../_images/3b7d5fc403bb68200afd54086ded0c95e1ed5d43b9ba5f73a857070605b099cc.png" />
 </div>
 </div>
 <div class="miniexercise admonition">
@@ -950,7 +965,7 @@ Diamanten.</p>
 </div>
 </section>
 <section id="zusammenfassung-und-ausblick">
-<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this headline">#</a></h2>
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
 <p>In diesem Abschnitt haben wir die drei wichtigsten Diagrammtypen wiederholt. Das
 Linien- und das Streudiagramm werden für die Visualisierung von kontinuierlichen
 Daten verwendet, wohingegen das Balkendiagramm dem Plot von diskreten Daten
@@ -984,11 +999,10 @@ zur Visualisierung von Tabellendaten in einem DataFrame.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="extras_sec01.html"
@@ -1008,10 +1022,7 @@ zur Visualisierung von Tabellendaten in einem DataFrame.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1019,6 +1030,7 @@ zur Visualisierung von Tabellendaten in einem DataFrame.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1052,6 +1064,7 @@ By Simone Gramsch
   
   <div class="footer-item">
     
+
   </div>
   
   <div class="footer-item">
@@ -1077,8 +1090,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>
