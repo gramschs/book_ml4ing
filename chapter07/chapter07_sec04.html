@@ -622,6 +622,12 @@ eliminieren wir die beiden Ausreißer aus dem Datensatz.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Länge [mm]&#39;</span><span class="p">,</span> <span class="s1">&#39;Durchmesser [mm]&#39;</span><span class="p">,</span> <span class="s1">&#39;Höhe [mm]&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Länge [mm]&#39;</span><span class="p">,</span> <span class="s1">&#39;Durchmesser [mm]&#39;</span><span class="p">,</span> <span class="s1">&#39;Höhe [mm]&#39;</span><span class="p">]],</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Größe der Abalonen&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Größenangabe in mm&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
 <p>Als nächstes betrachten wir die Gewichtsangaben.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Gesamtgewicht [g]&#39;</span><span class="p">,</span> <span class="s1">&#39;Gewicht geschält [g]&#39;</span><span class="p">,</span> <span class="s1">&#39;Gewicht der Eingeweide [g]&#39;</span><span class="p">,</span> <span class="s1">&#39;Gewicht der Schale [g]&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -835,6 +841,18 @@ Overfitting. Wir wählen daher als Modell Grad 3.</p>
 
 <span class="c1"># Vergleich der Modelle</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Grad 3: R2-Score Trainingsdaten: </span><span class="si">{</span><span class="n">r2_score_train</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> </span><span class="se">\t</span><span class="s1"> R2-Score Testdaten: </span><span class="si">{</span><span class="n">r2_score_test</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+
+<span class="c1"># Prognose für die Jahre 1990 bis 2030</span>
+<span class="n">prognose</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">prognose</span><span class="p">[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2031</span><span class="p">)</span>
+
+<span class="n">X_prognose</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">prognose</span><span class="p">[[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]])</span>
+<span class="n">prognose</span><span class="p">[</span><span class="s1">&#39;Arbeitslosenzahl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_prognose</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>

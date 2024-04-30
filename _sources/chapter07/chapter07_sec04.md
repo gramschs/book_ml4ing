@@ -131,7 +131,7 @@ data.info()
 data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']].describe()
 ```
 
-```{code-cell} ipython3
+```python
 fig = px.box(data[['Länge [mm]', 'Durchmesser [mm]', 'Höhe [mm]']],
              title='Größe der Abalonen',
              labels={'variable': '', 'value': 'Größenangabe in mm'})
@@ -388,7 +388,7 @@ r2_score_test  = model.score(X_test_transformiert, y_test)
 print(f'Grad 3: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
 ```
 
-```{code-cell} ipython3
+```python
 import numpy as np
 import plotly.graph_objects as go
 
