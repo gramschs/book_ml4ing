@@ -76,21 +76,6 @@ karte = folium.Map(location=[50.110880, 8.679490], zoom_start=13)
 karte
 ```
 
-Folium unterstützt auch verschiedene Kartentypen wie OpenStreetMap, Stamen
-Terrain und Stamen Toner, die Sie als Basiskarte verwenden können. Der Kartentyp
-wird mit ddem Argument `tiles=` gesetzt. Die verfügbaren Kartentypen können
-entweder als String (z.B. 'OpenStreetMap', 'Stamen Terrain', 'Stamen Toner')
-oder als URL zu einer eigenen Karte angegeben werden. Der Parameter ist
-optional, wenn er ausgelassen wird, wird standardmäßig OpenStreetMap als
-Basiskarte verwendet.
-
-```{code-cell} ipython3
-# Laden der Karte  
-karte = folium.Map(location=[50.110880, 8.679490], zoom_start=13, tiles='Stamen Terrain')
-
-# Anzeige der Karte
-karte
-```
 
 ## Karten markieren
 
