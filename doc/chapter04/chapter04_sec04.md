@@ -35,7 +35,7 @@ erstellen Sie eine Übersicht der statistischen Kennzahlen.
 Tipp: Importieren Sie pandas mit dem üblichen Alias pd und führen Sie dann die
 folgende Code-Zeile in einer Code-Zelle aus:
 
-```python
+```none
 pd.read_csv?
 ```
 
@@ -45,7 +45,7 @@ Welches Argument könnte für das Überspringen der Fußzeilen stehen?
 ````{admonition} Lösung
 :class: tip, toggle
 
-```python
+```none
 import pandas as pd
 
 pd.read_csv?
