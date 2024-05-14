@@ -329,6 +329,12 @@ Was jetzt die bessere Wahl ist -- Begrenzung der Baumtiefe oder Festlegung einer
 Mindestanzahl von Datenpunkten Knoten/Blatt -- und vor allem welche Wert der
 Hyperparameter haben soll, muss gesondert untersucht werden. 
 
+```{dropdown} Video "How to Implement Decision Trees in Python / Scikit-Learn" von Misra Turp
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wxS5P7yDHRA?si=rawkRWRmUi0ZZAub" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
 
 ## Zusammenfassung und Ausblick
 

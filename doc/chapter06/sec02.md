@@ -159,7 +159,27 @@ für mehrere Splits, dann wird zufällig ein Split ausgewählt.
 Neben dem Gini-Impurity-Kriterium gibt es noch weitere Bewertungsmaße, um einen
 Entscheidungsbaum zu trainieren. In Scikit-Learn sind die beiden Alternativen
 `log_less` und `entropy` für den **Shannonschen Informationsgewinn** verfügbar.
-Wir schauen uns im Folgenden an, wie diese ausgewählt werden können.
+Wir schauen uns im Folgenden an, wie diese ausgewählt werden können. Wer zuvor
+sich noch ein wenig mehr mit den Details von Entscheidungsbäumen beschäftigen
+möchte, kann sich die folgenden Videos ansehen.
+
+```{dropdown} Optionales Video "Entscheidungsbäume #2 - Der ID3-Algorithmus" von The Morpheus Tutorials
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SYyyuHG9qBs?si=MgACjs1hSdFTPu5s" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+```{dropdown} Optionales Video "Entscheidungsbäume #3 - Entropie und Informationsgewinn" von The Morpheus Tutorials
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lg1pb0YaAjI?si=K66tahVdLcI_sEex" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+```{dropdown} Optionales Video "ID3 Entscheidungsbaum" von 42 Entwickler
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FAeVafU7qd8?si=JrDW6mu3v9SVOPAz" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
 
 
 ## Entscheidungsbäume trainieren

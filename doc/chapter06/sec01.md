@@ -221,7 +221,25 @@ Entscheidungsfrage) und Zweige/Kanten (= Ergebnis der Entscheidung) in Blätter
 (= Endzustand des Entscheidungsprozesses) sortiert.
 ```
 
- 
+```{dropdown} Video "Decision Tree Classification Clearly Explained!" von Normalized Nerd
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ZVR2Way4nwQ?si=7_of_wa6nrzWIU8g" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+```{dropdown} Video "Maschinelles Lernen - Beispiel Entscheidungsbaum
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F9ArN1JIhCY?si=bG0rauYn2XdukIzI" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+```{dropdown} Video zu "Entscheidungsbäume #1" von The Morpheus Tutorials
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-YW5s_an4z8?si=PYX24rwrWlYhF9EL" 
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
+gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+
 ## Entscheidungsbäume mit Scikit-Learn trainieren
 
 In der Praxis verwenden wir die ML-Bibliothek Scikit-Learn, um einen
