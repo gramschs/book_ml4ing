@@ -1,10 +1,11 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -44,7 +45,7 @@ Entscheidungsbaum. Um diese Funktion auszuprobieren, wird zunächst der Datensat
 mit den Autodaten erneut geladen, das Modell Entscheidungsbaum gewählt und
 anschließend trainiert.
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd 
 from sklearn.tree import DecisionTreeClassifier
 
@@ -71,7 +72,7 @@ modell.fit(X,y)
 Nun können wir die Funktion `plot_tree` importieren und das trainierte Modell
 visualisieren lassen.
 
-```{code-cell}
+```{code-cell} ipython3
 from sklearn.tree import plot_tree
 
 plot_tree(modell)
@@ -87,7 +88,7 @@ ergänzen wir zunächst weitere Angaben. Mit der Option `feature_names=` wird ei
 Liste mit den Eigenschaften ergänzt, die Option `class_names=` ergänzt die
 Klassenbezeichnugnen. So erhalten wir folgendes Diagramm:
 
-```{code-cell}
+```{code-cell} ipython3
 plot_tree(modell, 
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
@@ -129,7 +130,7 @@ Autohaus-Beispiel).
 Die folgende Abbildung zeigt die konkreten Werte des Gini-Impurity-Kriteriums
 für den prozentualen Anteil an verkauften Autos.
 
-```{code-cell}
+```{code-cell} ipython3
 from numpy import linspace
 
 p = linspace(0,1)
@@ -182,7 +183,7 @@ Probieren Sie andere Werte für den Start des Zufallszahlengenerators aus und
 testen Sie, was sich verändert, wenn Sie andere Kriterien für das Splitting
 verwenden.
 
-```{code-cell}
+```{code-cell} ipython3
 modell = DecisionTreeClassifier(criterion='entropy', random_state=3)
 modell.fit(X,y)
 
@@ -191,9 +192,8 @@ plot_tree(modell,
     class_names=['nicht verkauft', 'verkauft']);
 ```
 
-
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir das Training von Entscheidungsbäumen mit Hilfe der
 Bibliothek Scikit-Learn vertieft. Im nächsten Kapitel widmen wir uns den Vor-,
-aber auch den Nachteilen von Entscheidungsbäumen. 
+aber auch den Nachteilen von Entscheidungsbäumen.
