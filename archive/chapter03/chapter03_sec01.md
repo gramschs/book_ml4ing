@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Datentyp Liste
 * Kontrollstrukturen: Schleifen mit "for"
 ```

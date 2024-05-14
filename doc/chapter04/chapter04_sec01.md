@@ -23,7 +23,7 @@ also sozusagen zweidimensionalen Arrays.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen die Datenstruktur **DataFrame**.
 * Sie kennen das **csv-Dateiformat**.
 * Sie können eine csv-Datei mit **read_csv()** einlesen.

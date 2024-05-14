@@ -23,7 +23,7 @@ machen wir uns aber zuerst mit dem **Modul Pandas** vertraut.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können erklären, was ein **Modul** in Python ist.
 * Sie kennen das Modul **Pandas** und können es mit seiner üblichen Abkürzung
   **pd** importieren.

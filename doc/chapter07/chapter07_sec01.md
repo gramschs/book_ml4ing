@@ -25,7 +25,7 @@ Methoden kennen, damit umzugehen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können in einer großen Datensammlung mit **isnull()** fehlende Daten aufspüren.
 * Sie können Daten gezielt mit **drop()** löschen.
 * Sie können fehlende Daten mit **fillna()** ersetzen.

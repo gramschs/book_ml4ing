@@ -22,7 +22,7 @@ Daten in Test- und Trainingsdaten.
 ## Lernziele 
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, warum man Daten in **Trainingsdaten** und **Testdaten** aufteilt.
 * Sie können mit der Funktion **train_test_split()** NumPy-Arrays und
   Pandas-DataFrames in Trainings- und Testdaten aufteilen.

@@ -18,7 +18,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können die **logistische Funktion** zeichnen.
 * Sie können die **Funktionsgleichung der logistischen Funktion** angeben.
 * Sie können das **logistische Regressionsmodell** schematisch darstellen. 

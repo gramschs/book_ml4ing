@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was ein **Histogramm** ist.
 * Sie können mit der Methode **.hist()** ein Histogramm erzeugen.
 * Sie wissen, dass die Einteilung des Intervalls in die Behälter **Bin**

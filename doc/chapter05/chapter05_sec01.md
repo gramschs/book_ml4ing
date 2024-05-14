@@ -26,7 +26,7 @@ auseinandersetzen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was **metrische (quantitative) Daten** sind.
 * Sie wissen, was **kategoriale (qualitative) Daten** sind.
 * Sie können die Methode **.unique()** benutzen, um die eindeutigen Werte eines

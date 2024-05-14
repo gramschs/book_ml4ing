@@ -14,7 +14,7 @@ kernelspec:
 # 12.1 Mehrschichtiges Perzeptron
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was ein **Multilayer-Perzeptron** (MLP), also ein mehrschichtiges Perzeptron, ist.
 * Sie können den Begriff **Deep Learning** erklären.
 * Sie können mit Scikit-Learn ein neuronales Netz trainieren.

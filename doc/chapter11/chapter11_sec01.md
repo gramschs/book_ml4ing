@@ -43,7 +43,7 @@ Dieser Partyklassiker lässt sich auch auf die Entscheidungsfindung bei Probleme
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was ein **Entscheidungsbaum** ist und kennen die zugehörigen
   Fachbegriffe **Node**, **Branch** und **Leaf**.
 * Sie können selbst bei einem kleinen Datensatz einen Entscheidungsbaum

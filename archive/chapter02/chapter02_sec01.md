@@ -22,7 +22,7 @@ Dann geht es um Variablen und deren Ausgabe auf dem Bildschirm.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen die einfachen Datentypen:
     * **Integer**
     * **Float**

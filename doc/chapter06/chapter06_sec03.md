@@ -25,7 +25,7 @@ nicht, oft wirken mehrere Einflussfaktoren gleichzeitig. Daher steht die
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was eine **multiple lineare Regression** ist und können sie mit Scikit-Learn durchführen.
 ```
 

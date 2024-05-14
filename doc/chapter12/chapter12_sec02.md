@@ -14,7 +14,7 @@ kernelspec:
 # 12.2 Neuronale Netze mit Scikit-Learn
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können mit Scikit-Learn ein neuronales Netz zur Klassifikation trainieren.
 ```
 

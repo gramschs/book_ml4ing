@@ -17,7 +17,7 @@ kernelspec:
 In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann. 
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen die drei Phasen, in denen ein Perzeptron trainiert wird:
   * Initialisierung der Gewichte und Festlegung der Lernrate;
   * Berechnung des prognostizierten Outputs und Aktualisierung der Gewichte sowie

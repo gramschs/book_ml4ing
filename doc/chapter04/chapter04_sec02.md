@@ -23,7 +23,7 @@ Daten bearbeitet werden können, zeigt dieses Kapitel.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können mit eckigen Klammern **[]** und dem Spaltenindex auf eine ganze
   Spalte zugreifen.
 * Sie können mit **.loc[]** und dem Zeilenindex auf eine ganze Zeile zugreifen.

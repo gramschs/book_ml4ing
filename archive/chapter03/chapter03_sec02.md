@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Definition einer Funktion
 * Funktionen mit Eingabeparametern
 * Funktionen mit Eingabeparametern und einem Rückgabewert

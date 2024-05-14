@@ -29,7 +29,7 @@ sogenannten **Jupyter Notebooks** umzusetzen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie haben eine lauffähige **Python-Distribution** installiert.
 * Sie können **JupyterLab** starten und ein **Jupyter Notebook** erzeugen.
 * Sie kennen den prinzipiellen Aufbau eines Jupyter Notebooks mit

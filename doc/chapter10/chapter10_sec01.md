@@ -14,7 +14,7 @@ kernelspec:
 # 10.1 Maximiere den Rand, aber soft
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen die Abkürzung **SVM** für **Support Vector Machines**.
 * Sie kennen die Idee, bei Support Vector Machines den **Margin** (=
   Randabstand) zu maximieren.

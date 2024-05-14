@@ -31,7 +31,7 @@ sogenannten **Bias-Varianz-Dilemma**, das bei der Modellauswahl auftritt.
 ## Lernziele 
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können eine **polynomiale Regression** durchführen.
 * Sie wissen, was ein **Hyperparameter** ist.
 * Sie können das **Bias-Varianz-Dilemma** erklären.

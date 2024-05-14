@@ -24,7 +24,7 @@ interpretieren.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können sich mit **.describe()** eine Übersicht über statistische Kennzahlen
   verschaffen.
 * Sie wissen, wie Sie die Anzahl der gültigen Einträge mit **.count()** ermitteln.

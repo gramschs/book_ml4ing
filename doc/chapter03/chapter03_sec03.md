@@ -25,7 +25,7 @@ leicht einen Vergleich der Datensätze zu ermöglichen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können **Plotly Express** mit der typischen Abkürzung **px** importieren.
 * Sie können mit **px.box()** einen Boxplot eines Pandas-Series-Objektes
   visualisieren.

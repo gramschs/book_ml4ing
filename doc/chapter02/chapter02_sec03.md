@@ -25,7 +25,7 @@ Methoden ein.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können selbst eine **Funktion** mit Parametern und Rückgabewert
   implementieren.
 * Sie kennen das Konzept der **objektorientierten Programmierung**.

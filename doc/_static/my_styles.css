@@ -10,13 +10,13 @@ html[data-theme="dark"] {
     --my-color-goals-bg: #584306;
 }
 
-div.admonition.admonition-goals {
+div.admonition.goals {
     border-color: var(--my-color-goals); 
   }
-  div.admonition.admonition-goals > .admonition-title {
+  div.admonition.goals > .admonition-title {
     background-color: var(--my-color-goals-bg); 
   }
-  div.admonition.admonition-goals > .admonition-title:after {
+  div.admonition.admonition > .admonition-title:after {
     color: var(--my-color-goals);
     content: "\f046"; /* fa-solid fa-tv */
   }

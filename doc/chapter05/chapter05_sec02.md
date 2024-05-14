@@ -23,7 +23,7 @@ unterscheidet, mit dem er oft verwechselt wird.
 ## Lernziele 
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was ein **Barplot** ist.
 * Sie können ein **Säulendiagramm** von einem **Balkendiagramm** unterscheiden.
 * Sie können mit der Funktion **bar()** des Plotly-Express-Moduls einen Barplot

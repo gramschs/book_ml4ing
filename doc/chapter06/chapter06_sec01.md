@@ -24,7 +24,7 @@ Grundlagen der linearen Regression vor.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen das **lineare Regressionsmodell**.
 * Sie können erklären, was die **Fehlerquadratsumme** ist.
 * Sie wissen, dass das Training des lineare Regressionsmodells durch die

@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen den Datentyp **Bool**.
 * Sie kennen die wichtigsten **Vergleichsoperatoren**.
 * Sie können mit **if — elif — else** Programmverzeigungen programmieren.

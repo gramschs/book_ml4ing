@@ -21,7 +21,7 @@ Scikit-Learn.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen Trainingsdaten trainieren.
 * Sie wissen, wie Sie auf die Gewichte des gelernten Modells zugreifen.
 ```

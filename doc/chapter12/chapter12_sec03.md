@@ -14,7 +14,7 @@ kernelspec:
 # 12.3 Skalierung von Daten
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, dass Daten skaliert werden sollten. Ausnahme: Decision Tree oder Randon Forest.
 * Sie können Daten **normieren**.
 * Sie können Daten **standardisieren**.

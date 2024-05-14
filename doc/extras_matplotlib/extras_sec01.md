@@ -36,7 +36,7 @@ schaffen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können **NumPy** mit seiner typischen Abkürzung **np** importieren.
 * Sie können mit **np.array()** ein NumPy-Array aus einer Liste erzeugen.
 * Sie können NumPy-Arrays, die nach einem Muster aufgebaut sind, erzeugen:

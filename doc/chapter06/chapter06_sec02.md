@@ -25,7 +25,7 @@ ausprobieren.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können erste grundlegende Schritte der Datenvorverarbeitung anwenden:
     * Sie können unvollständige Daten mit **dropna** aus dem Datensatz
       entfernen. 

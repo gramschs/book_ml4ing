@@ -20,7 +20,7 @@ objektorientierte Programmierung abschließen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Was ist Objektorientierung?
 * Klassen definieren: Attribute und Methoden
 ```

@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können Vergleiche kombinieren und dazu digitale Logik verwenden: **and**, **or** und **not**.
 * Sie können eine Schleife mit Bedingung **while** programmieren.
 ```

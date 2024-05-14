@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können den Zeilenindex **.index**, den Spaltenindex **.columns** und die
   Werte der Zellen **.values** aus dem DataFrame extrahieren.
 * Sie können mit der Methode **.axhline().** zu einem Plot eine horizontale

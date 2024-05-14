@@ -14,7 +14,7 @@ kernelspec:
 # Grafiken
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * TODO
 ```
 

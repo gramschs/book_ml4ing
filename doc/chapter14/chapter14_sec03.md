@@ -37,7 +37,7 @@ Zusatzinformationen mit dem Python-Modul Folium widmen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen das Modul **Folium** und können es importieren.
 * Sie können eine Basiskarte mit **.Map()** erstellen.
 * Sie können Positionen auf dieser Karte mit **.Marker()** markieren.

@@ -35,7 +35,7 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen den Datentyp **Liste**.
 * Sie können Listen mit eckigen Klammern erzeugen. 
 * Sie können Listen mit dem **Plus-Operator** verketten, Elemente mit

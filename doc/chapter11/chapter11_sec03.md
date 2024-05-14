@@ -14,7 +14,7 @@ kernelspec:
 # 11.2 Random Forests
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, was ein **Random Forest** ist.
 ```
 
