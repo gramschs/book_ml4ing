@@ -1,0 +1,13 @@
+Zustand,Marke,Preis,Kaufentscheidung
+neu,Citroën,10000,ja
+gebraucht,Citroën,13000,nein
+gebraucht,BMW,16000,nein
+gebraucht,Audi,11000,ja
+neu,BMW,17000,nein
+neu,BMW,13000,ja
+gebraucht,Audi,15000,ja
+gebraucht,Citroën,13000,nein
+neu,BMW,11000,ja
+neu,Audi,14000,ja
+gebraucht,Citroën,11000,nein
+gebraucht,BMW,14000,nein

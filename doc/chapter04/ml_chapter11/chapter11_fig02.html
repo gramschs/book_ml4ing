@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css">
+    <script src=" https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script>
+  </head>
+  <body>
+    <div id="fig11A">
+        <img src="pics/combined_decisiontree00.svg" alt="" />
+        <img src="pics/combined_decisiontree02.svg" alt="" />
+    </div>
+      <script type="text/javascript">
+        const element = document.getElementById("fig11A");
+        const options = {
+
+        // UI Theme Defaults
+
+        controlColor: "#FFFFFF",
+        controlShadow: true,
+        addCircle: false,
+        addCircleBlur: true,
+
+        // Label Defaults
+
+        showLabels: false,
+        labelOptions: {
+        before: 'Before',
+        after: 'After',
+        onHover: false
+    },
+
+        // Smoothing
+
+        smoothing: true,
+        smoothingAmount: 100,
+
+        // Other options
+
+        hoverStart: false,
+        verticalMode: false,
+        startingPoint: 50,
+        fluidMode: false
+    };
+    const viewer = new ImageCompare(element).mount();
+    </script>
+  </body>
+</html>
