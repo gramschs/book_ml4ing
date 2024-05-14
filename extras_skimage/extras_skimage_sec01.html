@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Grafiken &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extras_skimage/extras_skimage_sec01';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Filter anwenden" href="extras_skimage_sec02.html" />
+    <link rel="prev" title="Bildverarbeitung mit Scikit-Image" href="extras_skimage_sec00.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Willkommen zu ML4ING
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec04.html">Übungen</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec04.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Theorie der linearen Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec01.html">8.1 Datenvorverarbeitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec02.html">8.2 Modellvalidierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron und logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec04.html">Übungen Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec05.html">Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec06.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec07.html">Logistische Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec08.html">Übungen logistische Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">12.3 Skalierung von Daten</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec04.html">Übungen</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Grafiken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extras_skimage_sec02.html">Filter anwenden</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec06.html">Streudiagramm und Balkendiagramm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec07.html">Histogramme und Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec08.html">Plots mit Karten</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec01.html">Das Modul NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec03.html">Visualisierung von DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec04.html">Optional: Histogramme</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anhang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Referenzen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/extras_skimage/extras_skimage_sec01.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/gramschs/book_ml4ing" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/extras_skimage/extras_skimage_sec01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/extras_skimage/extras_skimage_sec01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Grafiken</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rastergrafik-vs-vektorgrafik">Rastergrafik vs. Vektorgrafik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilder-einlesen-mit-scikit-image">Bilder einlesen mit Scikit-Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graustufenbild">Graustufenbild</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="grafiken">
+<h1>Grafiken<a class="headerlink" href="#grafiken" title="Permalink to this heading">#</a></h1>
+<div class="goals admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>TODO</p></li>
+</ul>
+</div>
+<section id="rastergrafik-vs-vektorgrafik">
+<h2>Rastergrafik vs. Vektorgrafik<a class="headerlink" href="#rastergrafik-vs-vektorgrafik" title="Permalink to this heading">#</a></h2>
+<p>Prinzipiell gibt es zwei Arten, Bilder zu digitalisieren, nämlich ihre
+Darstellung als Rastergrafik oder die Beschreibung durch eine Vektorgrafik.</p>
+<p>Bei der Rastergrafik besteht ein Bild aus vielen Bildpunkten, die in einem
+Raster angeordnet sind. Ein Bildpunkt wird auch als Pixel bezeichnet. Jeder
+Pixel hat seine Position und beschreibt die Farbe des dortigen Bildausschnitts.
+Je mehr Pixel ein Bild hat, desto größer ist seine Auflösung und desto höher
+normalerweise die Bildqualität. Da jedoch die Anzahl der Pixel begrenzt ist,
+können wir nicht beliebig einen Bildausschnitt vergrößern. Ab einem bestimmten
+Vergrößerungsfaltor wird es zu sogeannten Pixelartefakten kommen. Trotz dieser
+Nachteile sind Rastergrafiken sehr verbreitet – vor allem in der Fotografie
+werden hauptsächlich verwendet. Um dennoch nicht übermäßig Speicherplatz zu
+belegen, gibt es Algorithmen, die Dateigröße geschickt durch Kompression der
+Daten zu reduzieren. Typische Speicherformate für Rastergrafiken sind jpg, png
+oder gif.</p>
+<p>Bei einer Vektorgrafik werden die Bildelemente durch geometrische Konstruktionen
+wie biespielsweise Linien, Kurven oder Polygonen beschrieben. Daher eignen sich
+Vektorgrafiken besonders für Logos oder Illustrationen. Ihr großer Vorteil liegt
+darin, dass sie durch die geometrische Beschreibung beliebig vergrößerbar sind.
+Am häufgsten werden Vektorgrafiken im SVG-Format gespeichert, das für Scalable
+Vector Graphics steht.</p>
+</section>
+<section id="bilder-einlesen-mit-scikit-image">
+<h2>Bilder einlesen mit Scikit-Image<a class="headerlink" href="#bilder-einlesen-mit-scikit-image" title="Permalink to this heading">#</a></h2>
+<p>Scikit-Image ist eine Bibliothek für die Bildverarbeitung in Python. Sie
+ermöglicht es, Bilder einzulesen und darszutellen. Sie bietet auch weitere
+Funktionen wie die Anwendung von Filtern oder die Analyse von Bildeigenschaften.
+Die Bibliothek wird von Freiwilligen entwickelt und ist Open Source. Mehr
+Details finden Sie auf der Homepage von
+<a class="reference external" href="https://scikit-image.org">Scikit-Image</a>.</p>
+<p>Es gibt auch Alternativen zu Scikit-Image. Am bekanntesten ist die Bibliothek
+<a class="reference external" href="https://opencv.org">OpenCV</a>. Für größere Projekte ist OpenCV empfehlenswert,
+denn OpenCV unterstützt nicht nur Python, sondern auch C++ und ermöglicht somit
+besser als Scikit-Image die Verarbeitung von großen Datenmengen. Von den
+Funktionalitäten bietet es einen größeren Umfang als Scikit-Image. Im Gegensatz
+dazu ist die Bedienung von Scikit-Image leichter zu erlernen und Scikit-Image
+ist stärker auf statistische Methoden ausgerichtet, so dass wir in diesem
+Kapitel Scikit-Image benutzen. Standardmäßig ist Scikit-Image nicht installiert.
+Installationshinweise finden Sie auf der Homepage <a class="reference external" href="https://scikit-image.org/docs/dev/install.html">Scikit-Image → Installing
+scikit-image</a>.</p>
+<p>Die Bibliothek Scikit-Image heißt <code class="docutils literal notranslate"><span class="pre">skimage</span></code>. Die Funktionen zum Lesen und
+Schreiben von Bildern befinden sich im Untermodul <code class="docutils literal notranslate"><span class="pre">io</span></code>. Eine Liste der
+implemntierten Funktionen finden Sie unter <a class="reference external" href="https://scikit-image.org/docs/stable/api/skimage.io.html">Dokumentation/Scikit-Image →
+io</a>. Wir verwenden
+zunächst die Funktion <code class="docutils literal notranslate"><span class="pre">imread()</span></code>, um die Datei ‘muenzen_und_mehr_medium.jpg’
+einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> lassen wir das Foto anzeigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>                                             
+
+<span class="n">foto</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;muenzen_und_mehr_medium.jpg&quot;</span><span class="p">)</span>   
+<span class="n">imshow</span><span class="p">(</span><span class="n">foto</span><span class="p">);</span>                                
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f7fe05facc3e8bf30f3ec619e8fc7e3f03a897d645107e60c22350115436fe71.png" src="../_images/f7fe05facc3e8bf30f3ec619e8fc7e3f03a897d645107e60c22350115436fe71.png" />
+</div>
+</div>
+<p>Das Foto zeigt einige Münzen, ein Teelicht und eine Mandarine. Die x- und y-Achse werden in Pixeln angegeben. Aber was ist eigentlich genau in der Variable <code class="docutils literal notranslate"><span class="pre">foto</span></code> gespeichert?</p>
+<p>Mit der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> ermitteln wir den Datentyp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foto</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also ein NumPy-Array. Als nächstes bestimmen wir die Größe des Arrays mit der
+Funktion <code class="docutils literal notranslate"><span class="pre">shape()</span></code> aus dem NumPy-Modul.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1800, 2400, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Variable speichert also drei Matrizen mit 1800 Zeilen und 2400 Spalten. Wir ermitteln schnell noch die minimalen und maximalen Einträge in jeder der drei Matrizen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">kanal</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">minimal_wert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span> <span class="n">foto</span><span class="p">[:,:,</span><span class="n">kanal</span><span class="p">])</span>
+    <span class="n">maximal_wert</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span> <span class="n">foto</span><span class="p">[:,:,</span><span class="n">kanal</span><span class="p">])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kanal: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kanal</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;minimaler Wert: </span><span class="si">{}</span><span class="s1"> und maximaler Wert: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minimal_wert</span><span class="p">,</span> <span class="n">maximal_wert</span><span class="p">))</span>
+   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kanal: 0
+minimaler Wert: 0 und maximaler Wert: 255
+Kanal: 1
+minimaler Wert: 0 und maximaler Wert: 255
+Kanal: 2
+minimaler Wert: 0 und maximaler Wert: 245
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Werte liegen zwischen 0 und 255.</p>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">imread()</span></code> hat das Bild als sogenanntes RGB-Bild importiert. Die
+drei Buchstaben stehen dabei für die Farben Rot, Grün und Blau. Jeder Eintrag
+der drei Matrizen beschreibt den Intensitätswert, den der Bildpunkt an dieser
+Stelle hat. Die erste Matrix enthält dabei die Information, welche Bildpunkte
+keine Farbe haben (Wert 0) oder welche maximal rot sind (Wert 255). Analog dazu
+beschreibt die zweite Matrix die Grüntöne und die dritte Matrix die Blautöne.
+Manchmal werden anstatt der Integer-Zahlen von 0 bis 255 auch Floats von 0.0 bis
+1.0 verwendet, um die Intensität zu kodieren.</p>
+<p>Wir betrachten uns die drei Farbkanäle einzeln:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">kanal_rot</span>   <span class="o">=</span> <span class="n">foto</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">kanal_gruen</span> <span class="o">=</span> <span class="n">foto</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">kanal_blau</span>  <span class="o">=</span> <span class="n">foto</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kanal_rot</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kanal_gruen</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kanal_blau</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d5636e8a7c6755bc93c80c115af72fc16b9e92f0e95e818b72dcaff9686f0671.png" src="../_images/d5636e8a7c6755bc93c80c115af72fc16b9e92f0e95e818b72dcaff9686f0671.png" />
+</div>
+</div>
+<p>Wir erkennen beispielsweise, dass die orangefarbene Mandarine keinen Blauanteil
+hat.</p>
+</section>
+<section id="graustufenbild">
+<h2>Graustufenbild<a class="headerlink" href="#graustufenbild" title="Permalink to this heading">#</a></h2>
+<p>Für die weitere Bildverarbeitung verwandeln wir das RGB-Bild in ein sogenanntes
+Graustufenbild. Dabei werden die Farbinformationen durch eine Beschreibung der
+Helligkeitswerte der Pixel ersetzt. Der Grauwert kann gemäß <a class="reference external" href="https://de.wikipedia.org/wiki/Grauwert">Wikipedia →
+Grauwert</a> aus den Farben Rot, Grün und
+Blau mit der Formel</p>
+<p>Grauwert = 0.299 x Rotanteil + 0.587 x Grünanteil + 0.114 x Blauanteil</p>
+<p>berechnet werden.</p>
+<p>Transformieren wir das RGB-Bild in ein Graustufenbild, brauchen wir uns nur noch
+mit einer Matrix anstatt von drei Matrizen beschäftigen. Somit wird auch der
+benötigte Speicherplatz reduziert. Darüber hinaus verwenden wir
+Graustufenbilder, da sie eine effektivere Basis für viele
+Bildverarbeitungsalgorithmen darstellen und auch den benötigten Speicherplatz
+reduzieren.</p>
+<p>Scikit-Image stellt dafür die Funktion <code class="docutils literal notranslate"><span class="pre">rgb2gray()</span></code> zur Verfügung, die wir aus
+dem Untermodul <code class="docutils literal notranslate"><span class="pre">skimage.color</span></code> laden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+
+<span class="n">foto_grau</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">foto</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape des Graustufenbildes: &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">))</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape des Graustufenbildes: 
+(1800, 2400)
+</pre></div>
+</div>
+<img alt="../_images/71e69067a782ce32e6265a31edde8617de8344bf6847fc9d94d8bf7e15691b05.png" src="../_images/71e69067a782ce32e6265a31edde8617de8344bf6847fc9d94d8bf7e15691b05.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "gramschs/book_ml4ing",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./extras_skimage"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extras_skimage_sec00.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bildverarbeitung mit Scikit-Image</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="extras_skimage_sec02.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Filter anwenden</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rastergrafik-vs-vektorgrafik">Rastergrafik vs. Vektorgrafik</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bilder-einlesen-mit-scikit-image">Bilder einlesen mit Scikit-Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graustufenbild">Graustufenbild</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Simone Gramsch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

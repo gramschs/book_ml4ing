@@ -1,0 +1,939 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Streudiagramm und Balkendiagramm &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'extras_plotly/extras_sec06';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Histogramme und Scattermatrix" href="extras_sec07.html" />
+    <link rel="prev" title="Plotly" href="extras_sec05.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Willkommen zu ML4ING
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec04.html">Übungen</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec04.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Theorie der linearen Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec01.html">8.1 Datenvorverarbeitung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec02.html">8.2 Modellvalidierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron und logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec04.html">Übungen Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec05.html">Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec06.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec07.html">Logistische Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec08.html">Übungen logistische Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">12.3 Skalierung von Daten</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec04.html">Übungen</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec01.html">Grafiken</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec02.html">Filter anwenden</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_sec05.html">Plotly</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Streudiagramm und Balkendiagramm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extras_sec07.html">Histogramme und Scattermatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extras_sec08.html">Plots mit Karten</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec01.html">Das Modul NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec03.html">Visualisierung von DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec04.html">Optional: Histogramme</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anhang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Referenzen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/extras_plotly/extras_sec06.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/gramschs/book_ml4ing" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/extras_plotly/extras_sec06.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/extras_plotly/extras_sec06.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Streudiagramm und Balkendiagramm</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrammtypen">Diagrammtypen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streudiagramme">Streudiagramme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-von-streudiagrammen">Styling von Streudiagrammen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balkendiagramme">Balkendiagramme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weiteres-lernmaterial">Weiteres Lernmaterial</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="streudiagramm-und-balkendiagramm">
+<h1>Streudiagramm und Balkendiagramm<a class="headerlink" href="#streudiagramm-und-balkendiagramm" title="Permalink to this heading">#</a></h1>
+<p>Plotly Express unterstützt eine Vielzahl von Diagrammtypen, darunter
+Liniendiagramme, Balkendiagramme, Flächendiagramme, Streudiagramme und viele
+andere. Darüber hinaus bietet es auch eine Reihe von Anpassungsmöglichkeiten,
+mit denen Sie Ihre Grafiken auf Ihre spezifischen Bedürfnisse anpassen können.
+Das alles bietet auch die sehr bekannte Bibliothek <strong>Matplotlib</strong>. Im Gegensatz zu
+Matplotlib ist Plotly Express jedoch interaktiv. Die erstellten Grafiken können
+mithilfe von Mausklicks oder Berührungen auf mobilen Geräten erkundet werden.
+Sie können auch Zoomen, Scrollen, Anzeigen von Details durch Hovern und weitere
+Interaktionsfunktionen.</p>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
+<div class="goals admonition">
+<p class="admonition-title">Lernziele</p>
+<ul class="simple">
+<li><p>Sie können das Modul <strong>Plotly Express</strong> als <strong>px</strong> importieren.</p></li>
+<li><p>Sie können ein <strong>Streudiagramm</strong> erstellen.</p></li>
+<li><p>Sie können ein <strong>Balkendiagramm</strong> erstellen.</p></li>
+<li><p>Sie können ein Diagramm stylen, also z.B. die Achsenbeschriftung und einen
+Titel setzen sowie die Farbe und Größe der Kreise in einem Streudiagramm
+anpassen.</p></li>
+</ul>
+</div>
+</section>
+<section id="diagrammtypen">
+<h2>Diagrammtypen<a class="headerlink" href="#diagrammtypen" title="Permalink to this heading">#</a></h2>
+<p>Bei der Datenvisualisierung geht es darum, Daten durch eine Grafik so
+aufzubereiten, dass Muster oder Unregelmäßigkeiten in den Daten entdeckt werden
+können. Dabei kann die visuelle Darstellung der Daten helfen, Muster in den
+Daten zu entdecken, aber sie kann auch irreführend sein. Abhängig davon, wie die
+Art der Daten beschaffen ist, die wir visualisieren wollen, gibt es verschiedene
+Darstellungsformen, die sogenannten <strong>Diagrammtypen</strong>. Im Folgenden betrachten wir
+die Diagrammtypen</p>
+<ul class="simple">
+<li><p>Streudiagramm und</p></li>
+<li><p>Balkendiagramm (Säulendiagramm).</p></li>
+</ul>
+<p>Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.</p>
+</section>
+<section id="streudiagramme">
+<h2>Streudiagramme<a class="headerlink" href="#streudiagramme" title="Permalink to this heading">#</a></h2>
+<p>Streudiagramme (englisch: Scatterplot) werden eingesetzt, wenn dder Zusammenhang
+zwischen zwei numerischen Größen untersucht werden soll. Das ist vor allem bei
+Exoerimenten häufig der Fall.</p>
+<p>Um ein Streudiagramm mit Plotly Express zu visualisieren, gehten wir
+folgendermaßen vor.</p>
+<p>Importieren Sie Plotly Express mit der typischen Abkürzung px:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Laden Sie dann Ihre Daten in einen Pandas-DataFrame. Um Plotly zu demonstrieren,
+benutzen wir einen sehr bekannten Datensatz, den Boston Housing Datensatz.</p>
+<p>Der <strong>Boston Housing Datensatz</strong> ist ein bekannter Datensatz in der
+Machine-Learning-Community. Es ist ein klassisches Regressionsproblem, bei dem
+das Ziel darin besteht, den Medianwert der Besitzer-geprägten Häuser in einem
+bestimmten Bostoner Vorort in Tausend-Dollar-Einheiten vorherzusagen, basierend
+auf verschiedenen Eigenschaften der Häuser und der Nachbarschaften.</p>
+<p>Mehr Details zum Datensatz finden Sie hier:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html</a></p>
+</div></blockquote>
+<p>Zuerst laden wir den Datensatz und verschaffen uns einen groben Überblick.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Laden des Boston Housing Price Datensatzes</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data&quot;</span><span class="p">,</span>
+                 <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                 <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="s1">&#39;ZN&#39;</span><span class="p">,</span> <span class="s1">&#39;INDUS&#39;</span><span class="p">,</span> <span class="s1">&#39;CHAS&#39;</span><span class="p">,</span> <span class="s1">&#39;NOX&#39;</span><span class="p">,</span> <span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;DIS&#39;</span><span class="p">,</span> <span class="s1">&#39;RAD&#39;</span><span class="p">,</span> <span class="s1">&#39;TAX&#39;</span><span class="p">,</span> <span class="s1">&#39;PTRATIO&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;LSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;MEDV&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 506 entries, 0 to 505
+Data columns (total 14 columns):
+ #   Column   Non-Null Count  Dtype  
+---  ------   --------------  -----  
+ 0   CRIM     506 non-null    float64
+ 1   ZN       506 non-null    float64
+ 2   INDUS    506 non-null    float64
+ 3   CHAS     506 non-null    int64  
+ 4   NOX      506 non-null    float64
+ 5   RM       506 non-null    float64
+ 6   AGE      506 non-null    float64
+ 7   DIS      506 non-null    float64
+ 8   RAD      506 non-null    int64  
+ 9   TAX      506 non-null    float64
+ 10  PTRATIO  506 non-null    float64
+ 11  B        506 non-null    float64
+ 12  LSTAT    506 non-null    float64
+ 13  MEDV     506 non-null    float64
+dtypes: float64(12), int64(2)
+memory usage: 55.5 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Datensatz enthält 506 Zeilen und 14 Spalten, darunter die Zielvariable
+“MEDV”, sowie verschiedene prädiktive Variablen wie beispielsweise die
+Kriminalitätsrate, den Anteil der Wohngrundstücke, die sich am Flussufer
+befinden, die durchschnittliche Anzahl der Zimmer pro Wohnung, das
+Schüler-Lehrer-Verhältnis in den Schulen usw.</p>
+<p>Nun können wir mit Plotly Express einen Scatterplot erstellen, um den
+Zusammenhang zwischen der Kriminalitätsrate und dem Medianwert der Häuser zu
+untersuchen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen des Scatterplots mit Plotly Express</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Mit der Funktion <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> wird das Streudiagramm erzeugt. Als erstes Argument
+wird der komplette Datensatz <code class="docutils literal notranslate"><span class="pre">df</span></code> übergeben. Mit <code class="docutils literal notranslate"><span class="pre">x=</span></code> wird die Spalte aus dem
+DataFrame angegeben, die auf der x-Achse aufgetragen werden sollen. Mit <code class="docutils literal notranslate"><span class="pre">y=</span></code>
+werden die Daten für die y-Achse spezifisiert. Das komplette Diagramm wird der
+Variablen <code class="docutils literal notranslate"><span class="pre">fig</span></code> zugewiesen.</p>
+<p>Noch gibt es allerdings noch nichts zu sehen. Daher führen wir noch die folgende
+Code-Zelle aus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anzeige des Diagramms</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scatterplot" src="../_images/scatterplot.png" /></p>
+<p>In diesem Beispiel wird also ein Scatterplot erzeugt, bei dem die
+Kriminalitätsrate auf der x-Achse und der Medianwert der Hauspreise auf der
+y-Achse dargestellt wird. Übrigens, wir können sehen, dass es eine starke
+negative Korrelation zwischen der Kriminalitätsrate und dem Medianwert gibt - je
+höher die Kriminalitätsrate, desto niedriger der Hauspreis.</p>
+</section>
+<section id="styling-von-streudiagrammen">
+<h2>Styling von Streudiagrammen<a class="headerlink" href="#styling-von-streudiagrammen" title="Permalink to this heading">#</a></h2>
+<p>Die Voreinstellungen von Plotly sind bereits sehr gut gewählt, so dass ohne
+weitere Optionen bereits ansprechende Diagramme erstellt werden. Hier sind
+einige Tipps, wie Sie das Styling Ihres Scatterplots mit Plotly verbessern
+können.</p>
+<p>Visualisieren Sie Zusaztinformationen durch die Farbe der Punkte. Wählen Sie
+dabei eine geeignete Farbpalette: Die Farben, die Sie für Ihre Punkte verwenden,
+können Ihre Visualisierung entweder verbessern oder ablenken. Sie sollten eine
+Farbpalette wählen, die Ihren Daten am besten entspricht. Bei unserem Beispiel
+können wir beispielsweise zusätzlich die durchschnittliche Anzahl an Räumen pro
+Wohnung/Haus visualisieren. Dazu wird die Scatter-Funktion um das Argument
+<code class="docutils literal notranslate"><span class="pre">color=</span></code> ergänzt. Die durchschnittliche Anzahl an Räumen befindet sich in der
+Spalte <code class="docutils literal notranslate"><span class="pre">RM</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;RM&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scatterplot" src="../_images/scatterplot_colored.png" /></p>
+<p>Passen Sie die Größe und Form der Punkte an: Die Größe und Form der Punkte in
+Ihrem Scatterplot können verwendet werden, um zusätzliche Informationen
+hervorzuheben. Sie können die Größe und Form Ihrer Punkte anpassen, um
+verschiedene Kategorien oder Gruppen innerhalb Ihrer Daten zu zeigen. Im
+nächsten Beispiel wird zusätzlich noch das Alter der Häuser durch die Größe der
+Kreise repräsentiert.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;CRIM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;RM&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scatterplot" src="../_images/scatterplot_colored_with_size.png" /></p>
+<p>Fügen Sie einen Trendlinie hinzu: Eine Trendlinie kann helfen, Muster und Trends
+in Ihren Daten zu erkennen. Sie können eine Trendlinie zu Ihrem Scatterplot
+hinzufügen, um eine schnelle und einfache Zusammenfassung der Beziehung zwischen
+Ihren Variablen zu erhalten. Dazu wird das Argument <code class="docutils literal notranslate"><span class="pre">trendline='ols'</span></code> ergänzt.</p>
+<p>Bei der Untersuchung der Beziehung Alter –&gt; Preis liefert die Trendlinie einen passenden Trend:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">trendline</span><span class="o">=</span><span class="s1">&#39;ols&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="trendline1" src="../_images/trendline_age.png" /></p>
+<p>Bei der Trendlinie Kriminalität –&gt; Preis verlassen wir aber den plausiblen Bereich:</p>
+<p><img alt="trendline2" src="../_images/trendline_crime.png" /></p>
+<p>Negative Hauspreise gibt es nicht, wäre schön, wenn man dafür bezahlt werden
+würde, ein Haus zu kaufen! Eine Gerade als Trendlinie passt also nicht. Welche
+Modellfunktionen besser passen würden, ist Teil der Regressionanalyse.</p>
+<p>Legen Sie Achsenbeschriftungen und Titel fest: Eine klare und präzise
+Achsenbeschriftung und Titel sind unerlässlich, um Ihre Daten effektiv zu
+präsentieren. Sie sollten die Achsenbeschriftungen und Titel so festlegen, dass
+sie die Bedeutung Ihrer Daten deutlich machen. Die entsprechenden Argument
+heißen <code class="docutils literal notranslate"><span class="pre">xaxis_title=</span></code> und <code class="docutils literal notranslate"><span class="pre">yaxis_title=</span></code>sowie <code class="docutils literal notranslate"><span class="pre">title=</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;RM&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;MEDV&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Anzahl der Zimmer&#39;</span><span class="p">,</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Preis in Tausend US-Dollar&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Beziehung zwischen Zimmeranzahl und Preis&#39;</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="scatterplot_title" src="../_images/scatterplot_title.png" /></p>
+</section>
+<section id="balkendiagramme">
+<h2>Balkendiagramme<a class="headerlink" href="#balkendiagramme" title="Permalink to this heading">#</a></h2>
+<p>Balkendiagramme oder Säulendiagramme sind eine gute Wahl, wenn wir Daten
+darstellen möchten, die in verschiedenen Kategorien oder Gruppen vorliegen, z.B.
+wenn wir die Anzahl der verkauften Produkte nach Produktkategorie oder den
+Umsatz nach Quartal darstellen möchten. Balkendiagramme sind auch nützlich, wenn
+wir die Größe von etwas darstellen möchten, wie z.B. die Anzahl der Stimmen für
+verschiedene Kandidaten in einer Wahl oder den durchschnittlichen Hauspreis in
+verschiedenen Stadtteilen.</p>
+<p>Um zu demonstrieren, wie ein Balkendiagramm mit Plotly Express visualisiert
+wird, müssen wir zuerst geeignete Daten aus dem Boston Housing Datensatz
+extrahieren. Das Merkmal <code class="docutils literal notranslate"><span class="pre">RAD</span></code> beschreibt offziell den Zugang zum Highway, ist
+damit gleichzeitig aber auch eine Beschreibung der verschiedenen Stadtteile von
+Boston. Zuerst schauen wir mit der Pandas-Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> in den Datensatz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stadtteile</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RAD&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stadtteile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  2  3  5  4  8  6  7 24]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es gibt neun verschiedene Stadtteile. Mit der Pandas-Methode <code class="docutils literal notranslate"><span class="pre">.count_values()</span></code>
+lassen wir die Anzahl der Häuser pro Stadtteil ermitteln:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;RAD&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">anzahl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RAD
+24    132
+5     115
+4     110
+3      38
+6      26
+2      24
+8      24
+1      20
+7      17
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir führen beides zusammen in einen gemeinsamen DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">haeuser_pro_stadtteil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Stadtteil&#39;</span><span class="p">:</span> <span class="n">stadtteile</span><span class="p">,</span> <span class="s1">&#39;Anzahl der Häuser&#39;</span><span class="p">:</span> <span class="n">anzahl</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da die Stadtteile Kategorien sind, wählen wir das Balkendiagramm zur
+Visualisierung. Die Funktion zur Erzeugung des Balkendiagramms lautet: <code class="docutils literal notranslate"><span class="pre">bar()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">haeuser_pro_stadtteil</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Stadtteil&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Anzahl der Häuser&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="balkendiagramm" src="../_images/balkendiagramm.png" /></p>
+<p>Natürlich können wir auch Balkendiagramme stylen, z.B. einen Titel setzen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">haeuser_pro_stadtteil</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Stadtteil&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Anzahl der Häuser&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Anzahl der Häuser pro Stadtteil in Boston&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><img alt="balkendiagramm_title" src="../_images/balkendiagramm_title.png" /></p>
+</section>
+<section id="weiteres-lernmaterial">
+<h2>Weiteres Lernmaterial<a class="headerlink" href="#weiteres-lernmaterial" title="Permalink to this heading">#</a></h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/JnOM7s1BSN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6sVXa1gfIbA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "gramschs/book_ml4ing",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./extras_plotly"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="extras_sec05.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Plotly</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="extras_sec07.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Histogramme und Scattermatrix</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrammtypen">Diagrammtypen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#streudiagramme">Streudiagramme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#styling-von-streudiagrammen">Styling von Streudiagrammen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#balkendiagramme">Balkendiagramme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weiteres-lernmaterial">Weiteres Lernmaterial</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Simone Gramsch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

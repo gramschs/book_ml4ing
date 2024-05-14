@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -24,7 +24,7 @@ interpretieren.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können sich mit **.describe()** eine Übersicht über statistische Kennzahlen
   verschaffen.
 * Sie wissen, wie Sie die Anzahl der gültigen Einträge mit **.count()** ermitteln.

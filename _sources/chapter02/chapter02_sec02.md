@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.12 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -35,7 +35,7 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen den Datentyp **Liste**.
 * Sie können Listen mit eckigen Klammern erzeugen. 
 * Sie können Listen mit dem **Plus-Operator** verketten, Elemente mit

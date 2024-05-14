@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -36,7 +36,7 @@ schaffen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können **NumPy** mit seiner typischen Abkürzung **np** importieren.
 * Sie können mit **np.array()** ein NumPy-Array aus einer Liste erzeugen.
 * Sie können NumPy-Arrays, die nach einem Muster aufgebaut sind, erzeugen:

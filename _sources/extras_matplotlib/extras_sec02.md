@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.12 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können **Matplotlib** mit der üblichen Abkürzung **plt** importieren.
 * Sie können Funktionen als **Liniendiagramm** visualisieren.
 * Sie können diskrete Daten als **Balkendiagramm** visualisieren.

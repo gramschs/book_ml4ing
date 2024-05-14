@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -23,7 +23,7 @@ machen wir uns aber zuerst mit dem **Modul Pandas** vertraut.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können erklären, was ein **Modul** in Python ist.
 * Sie kennen das Modul **Pandas** und können es mit seiner üblichen Abkürzung
   **pd** importieren.

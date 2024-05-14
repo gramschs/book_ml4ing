@@ -1,12 +1,13 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: python310
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -34,7 +35,7 @@ erstellen Sie eine Übersicht der statistischen Kennzahlen.
 Tipp: Importieren Sie pandas mit dem üblichen Alias pd und führen Sie dann die
 folgende Code-Zeile in einer Code-Zelle aus:
 
-```python
+```none
 pd.read_csv?
 ```
 
@@ -44,7 +45,7 @@ Welches Argument könnte für das Überspringen der Fußzeilen stehen?
 ````{admonition} Lösung
 :class: tip, toggle
 
-```python
+```none
 import pandas as pd
 
 pd.read_csv?

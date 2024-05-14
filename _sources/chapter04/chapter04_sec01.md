@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -23,7 +23,7 @@ also sozusagen zweidimensionalen Arrays.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie kennen die Datenstruktur **DataFrame**.
 * Sie kennen das **csv-Dateiformat**.
 * Sie können eine csv-Datei mit **read_csv()** einlesen.

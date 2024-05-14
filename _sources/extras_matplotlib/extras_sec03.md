@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können den Zeilenindex **.index**, den Spaltenindex **.columns** und die
   Werte der Zellen **.values** aus dem DataFrame extrahieren.
 * Sie können mit der Methode **.axhline().** zu einem Plot eine horizontale

@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -31,7 +31,7 @@ Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können mit der Funktion **scatter()** einen **Scatterplot** erzeugen, der
   numerische Daten als Ursache-Wirkungs-Diagramm visualisiert.
 * Sie kennen die folgenden Styling-Optionen 

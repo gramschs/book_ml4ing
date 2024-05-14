@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.13.8
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -29,7 +29,7 @@ sogenannten **Jupyter Notebooks** umzusetzen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie haben eine lauffähige **Python-Distribution** installiert.
 * Sie können **JupyterLab** starten und ein **Jupyter Notebook** erzeugen.
 * Sie kennen den prinzipiellen Aufbau eines Jupyter Notebooks mit

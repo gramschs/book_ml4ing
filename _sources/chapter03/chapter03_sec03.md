@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -25,7 +25,7 @@ leicht einen Vergleich der Datensätze zu ermöglichen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können **Plotly Express** mit der typischen Abkürzung **px** importieren.
 * Sie können mit **px.box()** einen Boxplot eines Pandas-Series-Objektes
   visualisieren.

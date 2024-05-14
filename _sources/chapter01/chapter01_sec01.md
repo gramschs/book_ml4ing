@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.13.8
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -28,7 +28,7 @@ grundlegenenden Bestandteile eines ML-Systems ein.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, wie langes es das Forschungsgebiet **maschinelles Lernen** gibt
   und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.
 * Sie kennen die Bestandteile eines ML-Systems: **Daten**, **Algorithmus** und

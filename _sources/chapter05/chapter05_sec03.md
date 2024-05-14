@@ -23,7 +23,7 @@ gruppierten Daten zugreifen und zusätzliche Analysen durchführen können.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie wissen, dass die Wahrheitswerte `True` (wahr)  oder `False` (falsch) in
   dem Datentyp **bool** gespeichert werden.
 * Sie kennen die wichtigstens Vergleichsoperatoren (`<`, `<=`, `>`, `>=`, `==`,

@@ -5,9 +5,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: Python 3.9.13 ('python39')
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -25,7 +25,7 @@ Methoden ein.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: important
+:class: goals
 * Sie können selbst eine **Funktion** mit Parametern und Rückgabewert
   implementieren.
 * Sie kennen das Konzept der **objektorientierten Programmierung**.
