@@ -118,7 +118,7 @@ alt="Entscheidungsbaum - Start"
 class="image169"
 width=100%>
 
-<img src="pics/decisiontree_scatterplot00.svg" 
+<img src="pics/scatterplot00.svg" 
 alt="Entscheidungsbaum - Start" 
 class="image43"
 width=100%>
@@ -145,7 +145,7 @@ alt="Entscheidungsbaum - 1. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/decisiontree_scatterplot01.svg" 
+<img src="pics/scatterplot01.svg" 
 alt="Entscheidungsbaum - 1. Entscheidung" 
 class="image43"
 width=100%>
@@ -177,7 +177,7 @@ alt="Entscheidungsbaum - 2. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/decisiontree_scatterplot02.svg" 
+<img src="pics/scatterplot02.svg" 
 alt="Entscheidungsbaum - 2. Entscheidung" 
 class="image43"
 width=100%>
@@ -198,7 +198,7 @@ alt="Entscheidungsbaum - 3. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/decisiontree_scatterplot03.svg" 
+<img src="pics/scatterplot03.svg" 
 alt="Entscheidungsbaum - 3. Entscheidung" 
 class="image43"
 width=100%>
@@ -334,7 +334,7 @@ alt="Entscheidungsbaum - Prognose"
 class="image169"
 width=100%>
 
-<img src="pics/decisiontree_scatterplot_prediction.svg" 
+<img src="pics/scatterplot_prediction.svg" 
 alt="Entscheidungsbaum - Prognose" 
 class="image43"
 width=100%>

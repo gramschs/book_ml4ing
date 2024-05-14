@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# 6.2 Entscheidungsbäume viualisieren und trainieren
+# 6.2 Entscheidungsbäume visualisieren und trainieren
 
 Im letzten Kapitel haben wir gelernt, wie mit Scikit-Learn ein Entscheidungsbaum
 für binäre Klassifikationsaufgaben trainiert wird. In diesem Kapitel werden wir
