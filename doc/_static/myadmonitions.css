@@ -16,7 +16,7 @@ div.admonition.goals {
   div.admonition.goals > .admonition-title {
     background-color: var(--my-color-goals-bg); 
   }
-  div.admonition.admonition > .admonition-title:after {
+  div.admonition.goals > .admonition-title:after {
     color: var(--my-color-goals);
     content: "\f046"; /* fa-solid fa-tv */
   }
@@ -56,4 +56,3 @@ div.admonition.goals {
         display: none; /* Hide tablet/laptop image */
     }
 }
-
