@@ -12,185 +12,145 @@ kernelspec:
   name: python3
 ---
 
-# Übung
+# 9.2 Random Forests
 
-```{admonition} Aufgabe 
-:class: tip
-
-Auf der Internetseite
-https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks
-finden Sie einen Datensatz mit Sonarsignalen. Die Muster der Signals sind durch
-60 Zahlenwerte codiert (es handelt sich um die Energie zu bestimmten
-Frequenzen). Darüber hinaus wird angegeben, ob das Sonarsignal Gestein (= Stein)
-oder Metall detektiert hat.
-
-Laden Sie nun die Datei 'metall_oder_stein.csv'. Führen Sie eine explorative
-Datenanalyse durch. Lassen Sie dann alle Ihnen bekannten Klassifikations-Modelle
-trainieren und validieren, um die Materialeigenschaft Stein/Metall auf Basis der
-numerischen Werte zu prognostizieren.
+```{admonition} Warnung
+:class: warning
+Dieser Abschnitt wird gerade überarbeitet.
 ```
 
-````{admonition} Lösung 
-:class: tip, toggle
-
-Import der Daten (es gibt keine Spaltenüberschriften, daher wird das optionale Argument 'header=None' gesetzt):
-
-```python
-import pandas as pd
-
-data = pd.read_csv('metall_oder_stein.csv', header=None, skiprows=2)
-data.info()
+```{admonition} Lernziele
+:class: goals
+* Sie können das ML-Modell **Random Forest** in der Praxis anwenden.
 ```
 
-Blick in die Daten:
 
-```python
-data.head()
-```
+## Random Forests mit Scikit-Learn
 
-Der Datensatz enthält 208 Einträge und 61 Eigenschaften. Die ersten 60
-Eigenschaften werden durch Floats repräsentiert, die Eigenschaft '60' wird durch
-Objekte repräsentiert. 
+Entscheidungsbäume sind aufgrund ihrer Einfachheit und vor allem aufgrund ihrer
+Interpretierbarkeit sehr beliebt. Allerdings ist ihre Tendenz zum Overfitting
+problematisch. Die Idee des ML-Verfahrens Random Forests ist es, viele
+Entscheidungsbäume zu erstellen und sie beispielsweise durch Mittelwertbildung
+zusammenzufassen oder die Mehrheit entscheiden zu lassen. Wenn sich ein
+einzelner Entscheidungsbaum zu sehr an die Trainingsdaten angepasst haben
+sollte, wird das sozusagen durch die Mittelwertbildung oder Mehrheisbildung mit
+einem anderen Entscheidungsbaum, der mit anderen Trainingsdaten trainiert wurde,
+wieder ausgeglichen. Dabei wird werden die Trainigsdaten für jeden
+Entscheidungsbaum zufällig ausgewählt.
 
-Allerdings ist die Ausgabe beschränkt, so dass wir nicht mehr ablesen können, ob
-alle Einträge gefüllt sind. Wir nutzen daher die Methode '.isnull()', um
-NA-Werte aufzuspüren. Die Methode liefert Booleans zurück. Wir summieren über
-das Ergebnis spaltenweise (False = 0, True = 1).
+Für die nachfolgenden Erläuterungen generieren wir uns wieder einmal künstliche
+Messdaten. Diesmal verwenden wir die Funktion `make_moons` von Scikit-Learn.
 
-```python
-anzahl_ungueltige_eintraege = data.isnull().sum()
-anzahl_ungueltige_eintraege.describe()
-```
-
-Offensichtlich sind alle Spalten in der Summe 0, bestehen also nur aus False.
-Daher sind alle Einträge gültig.
-
-Als nächstes untersuchen wir, welche Einträge in der 61. Spalte, also
-Eigenschaft 60 enthalten sind.
-
-```python
-data[60].unique()
-```
-
-Die letzte Spalte enthält nur zwei verschiedene String-Werte: Stein oder Metall.
-
-```python
-data.describe()
-```
-
-Die statistischen Kennzahlen lassen sich so kaum interpretieren. Daher hilft hier ein Boxplot.
-
-```python
+```{code-cell} ipython3
 import plotly.express as px
+from sklearn.datasets import make_moons
 
-fig = px.box(data.loc[:, 0:59], 
-             title='Stein oder Metall',
-             labels={'variable': 'Eigenschaft', 'value':'Wert'})
+# generate artificial data
+X, y = make_moons(n_samples=120, random_state=0, noise=0.3)
+
+# plot artificial data
+fig = px.scatter(x = X[:,0], y = X[:, 1], color=y,
+        title='Künstliche Daten',
+        labels = {'x': 'Feature 1', 'y': 'Feature 2'})
 fig.show()
 ```
 
-Die Median-Werte scheinen einem Muster zu folgen. Beginnend bei Eigenschaft 0 steigen sie bis zu Eigenschaft 25, wo der Median den Wert 0.7545 erreicht, um dann wieder abzufallen. Ab Eigenschaft 49 liegt der Median unter 0.0179. Bei Eigenschaften mit einem größeren Median ist auch der Interquartilsabstand größer, dafür gibt es keine Ausreißer. Das Maximum scheint bei 1 zu liegen, wobei man das noch genauer untersuchen müsste. 
-
-Als nächstes schauen wir uns, wie die Zielgröße verteilt ist.
-
-```python
-fig = px.bar(data[60].value_counts(),
-             title='Stein oder Metall',
-             labels={'index': 'Material', 'value': 'Anzahl', 'variable': 'Eigenschaft'})
-
-fig.show()
-```
-
-Die beiden Materialen sind ungefähr gleich verteilt, 53 % der untersuchten
-Proben sind Metall, 47 % sind Stein.
-
-```python
-from sklearn.model_selection import train_test_split
-
-X = data.loc[:,0 : 59]
-y = data.loc[:, 60]
-y.replace('Stein', 0, inplace=True)
-y.replace('Metall', 1, inplace=True)
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
-```
-
-```python
-from sklearn.linear_model import Perceptron, LogisticRegression
-
-model_perceptron = Perceptron()
-model_perceptron.fit(X_train, y_train)
-score_perceptron_train = model_perceptron.score(X_train, y_train)
-score_perceptron_test = model_perceptron.score(X_test, y_test)
-
-print(f'Score Trainingsdaten Perzeptron: {score_perceptron_train :.2f}')
-print(f'Score Testdaten Perzeptron: {score_perceptron_test :.2f}')
-
-model_log_reg = LogisticRegression()
-model_log_reg.fit(X_train, y_train)
-score_log_reg_train = model_log_reg.score(X_train, y_train)
-score_log_reg_test = model_log_reg.score(X_test, y_test)
-
-print(f'Score Trainingsdaten logistische Regression: {score_log_reg_train :.2f}')
-print(f'Score Testdaten logistische Regression: {score_log_reg_test :.2f}')
-```
-
-```python
-from sklearn.svm  import SVC
-
-model_svm_linear = SVC(kernel='linear')
-model_svm_linear.fit(X_train, y_train)
-score_svm_linear_train = model_svm_linear.score(X_train, y_train)
-score_svm_linear_test = model_svm_linear.score(X_test, y_test)
-
-print(f'Score Trainingsdaten lineare SVM: {score_svm_linear_train :.2f}')
-print(f'Score Testdaten lineare SVM: {score_svm_linear_test :.2f}')
-
-model_svm_rbf = SVC(kernel='rbf')
-model_svm_rbf.fit(X_train, y_train)
-score_svm_rbf_train = model_svm_rbf.score(X_train, y_train)
-score_svm_rbf_test = model_svm_rbf.score(X_test, y_test)
-
-print(f'Score Trainingsdaten RBF SVM: {score_svm_rbf_train :.2f}')
-print(f'Score Testdaten RBF SVM: {score_svm_rbf_test :.2f}')
-```
-
-```python
+```{code-cell} ipython3
 from sklearn.tree import DecisionTreeClassifier
 
-model_decision_tree = DecisionTreeClassifier()
-model_decision_tree.fit(X_train,y_train)
+model = DecisionTreeClassifier()
+model.fit(X,y);
 
-score_decision_tree_train = model_decision_tree.score(X_train, y_train)
-score_decision_tree_test = model_decision_tree.score(X_test, y_test)
 
-print(f'Score Trainingsdaten Entscheidungsbaum: {score_decision_tree_train :.2f}')
-print(f'Score Testdaten Entscheidungsbaum: {score_decision_tree_test :.2f}')
+from sklearn.tree import plot_tree 
+plot_tree(model, filled=True);
 ```
 
-```python
+Das Ergebnis ist ein Entscheidungsbaum mit vielen Entscheidungen. Wir erzeugen jetzt ein Gitter
+
+```{code-cell} ipython3
+x0_min = X[:,0].min()
+x0_max = X[:,0].max()
+x1_min = X[:,1].min()
+x1_max = X[:,1].max()
+
+import numpy as np
+gitter_x1, gitter_x2 = np.meshgrid(np.linspace(x0_min, x0_max), np.linspace(x1_min, x1_max))
+gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
+
+import plotly.graph_objects as go
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                         marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+fig.update_layout(
+  title='Künstliche Messdaten',
+  xaxis_title = 'Feature 1',
+  yaxis_title = 'Feature 2'
+)
+```
+
+Jetzt lassen wir einen Random Forest erzeugen. Weitere Details finden Sie unter
+[Scikit-Learn Dokumentation →
+RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
+Zunächst erfolgt der übliche Import. Bei der Instanziierung müssen wir jedoch
+diesmal angeben, aus wie vielen Entscheidungsbäumen der Random Forest bestehen
+zoll. Dazu nutzen wir das Argument `n_estimators=`. 
+
+Wir wählen 4 Entscheidungsbäume. Die Auswahl der Daten für jeden
+Entscheidungsbaum erfolgt zufällig. Damit aus didaktischen Gründen die
+Ergebnisse produzierbar sind, fixieren wir den Seed für den
+Zufallszahlengenerator.
+
+```{code-cell} ipython3
 from sklearn.ensemble import RandomForestClassifier
 
-list_score_train = []
-list_score_test = []
-for n in range(1,101):
-    model_random_forest = RandomForestClassifier(n_estimators=n, random_state=0)
-    model_random_forest.fit(X_train, y_train)
+model = RandomForestClassifier(n_estimators=4, random_state=0)
+model.fit(X,y)
+```
 
-    score_random_forest_train = model_random_forest.score(X_train, y_train)
-    score_random_forest_test = model_random_forest.score(X_test, y_test)
+Die vier erzeugten Entscheidungsbäume sind in der Variable `model` gespeichert.
 
-    print(f'Anzahl Entscheidungsbäume: {n} \t Score Training: {score_random_forest_train :.2f} | Score Test: {score_random_forest_test :.2f}')
+```{code-cell} ipython3
+for (nummer, baum) in zip(range(4), model.estimators_):
+    gitter_y = baum.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
 
-    list_score_train.append(score_random_forest_train)
-    list_score_test.append(score_random_forest_test)
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                            marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+    fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+    fig.update_layout(
+      title=f'Entscheidungsbaum {nummer+1}',
+      xaxis_title = 'Feature 1',
+      yaxis_title = 'Feature 2'
+    )
+    fig.show()
+```
 
-score_random_forest = pd.DataFrame({'Trainingsscore': list_score_train, 'Testscore': list_score_test})
-fig = px.scatter(score_random_forest)
+Insgesamt erhalten wir:
+
+```{code-cell} ipython3
+gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
+                        marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
+fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
+fig.update_layout(
+  title='Random Forest',
+  xaxis_title = 'Feature 1',
+  yaxis_title = 'Feature 2'
+  )
 fig.show()
 ```
 
-Ab Index 51 scheint sich Trainingsscore und Testscore zu stabilisieren, wir
-wählen daher 'n_estimators' = 51. Damit hat der Random Forest den höchsten 
-Trainings- und Testscore.
-````
+## Zusammenfassung und Ausblick
+
+Random Forests sind einfachen Entscheidungsbäumen vorzuziehen, da sie das
+Overfitting reduzieren. Die Erzeugung der einzelnen Entscheidungsbäume kann
+parallelisiert werden, so dass das Training eines Random Forests sehr schnell
+durchgeführt werden kann. Auch für große Datenmengen mit sehr unterschiedlichen
+Eigenschaften arbeitet der Random Forest sehr effizient. Er ermöglicht auch eine
+Interpreation, welche Eigenschaften ggf. einen größeren Einfluss haben als
+andere Eigenschaften.

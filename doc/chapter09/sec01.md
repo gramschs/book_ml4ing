@@ -12,31 +12,106 @@ kernelspec:
   name: python3
 ---
 
-# 9.1 Random Forests
+# 9.1 Stacking, Bagging und Boosting
+
+```{admonition} Warnung
+:class: warning
+Dieser Abschnitt wird gerade überarbeitet.
+```
 
 ```{admonition} Lernziele
 :class: goals
-* Sie wissen, was ein **Random Forest** ist.
+* Sie können in eigenen Worten erklären, was **Ensemble-Methoden** sind.
+* Sie können die drei Ensemble-Methoden
+  * **Stacking**,
+  * **Bagging** und 
+  * **Boosting**
+
+  mit Hilfe einer Skizze erklären.
 ```
 
-+++
+## Ensemble-Methoden
 
-## Viele Bäume sind ein Wald
+Der Begriff »Ensemble« wird im Allgemeinen eher mit Musik und Kunst in
+Verbindung gebracht als mit Informatik. In der Musik bezeichnet ein Ensemble
+eine kleine Gruppe von Musikern, die entweder das gleiche Instrument spielen
+oder verschiedene Instrumente kombinieren. Im Theater bezeichnet man eine Gruppe
+von Schauspielern ebenfalls als Ensemble, und in der Architektur beschreibt der
+Begriff eine Gruppe von Gebäuden, die in einem besonderen Zusammenhang
+zueinander stehen.   
 
-Entscheidungsbäume sind aufgrund ihrer Einfachheit und vor allem aufgrund ihrer
-Interpretierbarkeit sehr beliebt. Allerdings ist ihre Tendenz zum Overfitting
-problematisch. Die Idee des ML-Verfahrens Random Forests ist es, viele
-Entscheidungsbäume zu erstellen und sie beispielsweise durch Mittelwertbildung
-zusammenzufassen. Wenn sich ein einzelner Entscheidungsbaum zu sehr an die
-Trainingsdaten angepasst haben sollte, wird das sozusagen durch die
-Mittelwertbildung mit einem anderen Entscheidungsbaum, der mit anderen
-Trainingsdaten trainiert wurde, wieder ausgeglichen. Dabei wird werden die
-Trainigsdaten für jeden Entscheidungsbaum zufällig ausgewählt.
+Auch im Bereich des maschinellen Lernens hat sich der Begriff Ensemble
+etabliert. Mit **Ensemble-Methoden** (Ensemble Learning) wird eine Gruppe von
+maschinellen Modellen bezeichnet, die zusammen eine Prognose treffen sollen.
+Ähnlich wie bei Musik-Ensembles können beim **Ensemble Learning** entweder
+identische Modelle oder verschiedene Modelle kombiniert werden. Diese Modelle
+können entweder gleichzeitig eine Prognose treffen, die dann kombiniert wird,
+oder nacheinander verwendet werden, wobei ein Modell auf den Ergebnissen eines
+anderen aufbaut. Je nach Vorgehensweise unterscheidet man im maschinellen Lernen
+zwischen **Stacking**, **Bagging** und **Boosting**.
+
+In dieser Vorlesung konzentrieren wir uns auf Bagging und Boosting mit ihren
+bekanntesten Vertretern, den Random Forests und XGBoost. Das Konzept des
+Stackings wird hier nur kurz ohne weitere Details vorgestellt. Eine allgemeine
+Einführung in Ensemble-Methoden mit Scikit-Learn findet sich in der
+[Dokumentation Scikit-Learn →
+Ensemble](https://scikit-learn.org/stable/modules/ensemble.html).
 
 
-+++
+## Stacking
 
-## Wie werden die Trainingsdaten zufällig ausgewählt?
+```{figure} pics/concept_stacking.svg
+---
+width: 100%
+---
+Konzept Stacking: die Prognosen von mehreren *unterschiedlichen* ML-Modellen
+werden zu einer finalen Prognose kombiniert. Die Kombination kann beispielsweise
+durch Mehrheitsentscheidung (Voting) oder Mittelwertbildung erfolgen oder durch
+ein weiteres ML-Modell.  
+```
+
+Stacking bedeutet auf Deutsch »Stapeln«, es werden sozusagen verschiedene
+ML-Modelle gestapelt. In einem ersten Schritt werden mehrere ML-Modelle
+unabhängig voneinander auf den Trainingsdaten trainiert. Jedes dieser Modelle
+liefert eine Prognose, die dann auf verschiedene Arten miteinander kombiniert
+werden können. Bei Klassifikationsaufgaben ist **Voting**, also die Wahl durch
+**Mehrheitsentscheidung**, eine beliebte Methode, um die Prognosen zu
+kombinieren. Wurden beispielsweie für das Stacking drei ML-Modellen gewählt, die
+jeweils ja oder nein prognostizieren, dann wird für die finale Prognose das
+Ergebnis genommen, das die Mehrheit der einzelnen Modelle vorausgesagt hat.
+Scikit-Learn bietet dafür einen Voting Classifier an, siehe [Dokumentation
+Scikit-Learn → Voting
+Classifier](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier). 
+
+Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt.
+Dabei kann entweder der übliche arithmetische Mittelwert verwendet werde oder ein
+**gewichteter Mittelwert**, was als  **Weighted Averaging** bezeichnet
+wird. Nichtsdestotrotz wird die Mittelwertbildung bei Regressionsaufgaben von
+Scikit-Learn ebenfalls als Voting bezeichnet, siehe [Dokumentation Scikit-Learn
+→ Voting
+Regressor](https://scikit-learn.org/stable/modules/ensemble.html#voting-regressor). 
+
+Eine alternative Kombinationsmethode ist die Verwendung eines weiteren
+ML-Modells. In diesem Fall werden die Modelle, die die einzelnen Prognosen
+liefern, als Basismodelle bezeichnet. In der ML-Community ist auch der
+Fachbegriff **Weak Learner**, also schwache Lerner, für diese Basismodelle
+gebräuchlich. Die Prognosen der Basismodelle dienen dann als Trainingsdaten für
+ein weiteres ML-Modell, das als **Meta-Modell** bezeichnet wird.  Weitere
+Informationen liefert die [Scikit-Learn Dokumentation → Stacked
+Generalization](https://scikit-learn.org/stable/modules/ensemble.html#stacked-generalization).
+
+Stacking bietet viele Vorteile. Der wichtigste Vorteil ist, dass die
+Prognosefähigkeit des Gesamtmodells in der Regel deutlich besser ist als die der
+einzelnen Basismodelle. Die Stärken der Basismodelle werden kombiniert und die
+Schwächen ausgeglichen. Allerdings erfordert Stacking sehr viel Feinarbeit. Auch
+steigt die Trainingszeit für das Gesamtmodell, selbst wenn die Basismodelle bei
+genügend Rechenleistung parallel trainiert werden können. Aus diesem Grund
+werden wir in dieser Vorlesung kein Stacking verwenden.
+
+
+## Bagging
+
+TODO
 
 Es gibt verschiedene Methoden, mit denen die Trainingsdaten beim Training eines
 Random Forests zufällig ausgewählt werden können:
@@ -71,121 +146,11 @@ ausgewählt werden. Die Wahl der Methode hängt von den Besonderheiten der Daten
 und den Zielen des Modells ab.
 
 
-## Bootstrapping in Scikit-Learn
+## Boosting
 
-Für die nachfolgenden Erläuterungen generieren wir uns wieder einmal künstliche
-Messdaten. Diesmal verwenden wir die Funktion `make_moons` von Scikit-Learn.
-
-```{code-cell} ipython3
-import plotly.express as px
-from sklearn.datasets import make_moons
-
-# generate artificial data
-X, y = make_moons(n_samples=120, random_state=0, noise=0.3)
-
-# plot artificial data
-fig = px.scatter(x = X[:,0], y = X[:, 1], color=y,
-        title='Künstliche Daten',
-        labels = {'x': 'Feature 1', 'y': 'Feature 2'})
-fig.show()
-```
-
-```{code-cell} ipython3
-from sklearn.tree import DecisionTreeClassifier
-
-model = DecisionTreeClassifier()
-model.fit(X,y);
+TODO
 
 
-from sklearn.tree import plot_tree 
-plot_tree(model, filled=True);
-```
+## Zusammenfassung und Ausblick
 
-Das Ergebnis ist ein Entscheidungsbaum mit vielen Entscheidungen. Wir erzeugen jetzt ein Gitter
-
-```{code-cell} ipython3
-x0_min = X[:,0].min()
-x0_max = X[:,0].max()
-x1_min = X[:,1].min()
-x1_max = X[:,1].max()
-
-import numpy as np
-gitter_x1, gitter_x2 = np.meshgrid(np.linspace(x0_min, x0_max), np.linspace(x1_min, x1_max))
-gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
-
-import plotly.graph_objects as go
-
-fig = go.Figure()
-fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
-                         marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
-fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
-fig.update_layout(
-  title='Künstliche Messdaten',
-  xaxis_title = 'Feature 1',
-  yaxis_title = 'Feature 2'
-)
-```
-
-Jetzt lassen wir einen Random Forest erzeugen. Weitere Details finden Sie unter
-[Scikit-Learn Dokumentation →
-RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
-Zunächst erfolgt der übliche Import. Bei der Instanziierung müssen wir jedoch
-diesmal angeben, aus wie vielen Entscheidungsbäumen der Random Forest bestehen
-zoll. Dazu nutzen wir das Argument `n_estimators=`. 
-
-Wir wählen 4 Entscheidungsbäume. Die Auswahl der Daten für jeden
-Entscheidungsbaum erfolgt zufällig. Damit aus didaktischen Gründen die
-Ergebnisse produzierbar sind, fixieren wir den Seed für den
-Zufallszahlengenerator.
-
-```{code-cell} ipython3
-from sklearn.ensemble import RandomForestClassifier
-
-model = RandomForestClassifier(n_estimators=4, random_state=0)
-model.fit(X,y)
-```
-
-Die vier erzeugten Entscheidungsbäume sind in der Variable `model` gespeichert.
-
-```{code-cell} ipython3
-for (nummer, baum) in zip(range(4), model.estimators_):
-    gitter_y = baum.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
-
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
-                            marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
-    fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
-    fig.update_layout(
-      title=f'Entscheidungsbaum {nummer+1}',
-      xaxis_title = 'Feature 1',
-      yaxis_title = 'Feature 2'
-    )
-    fig.show()
-```
-
-Insgesamt erhalten wir:
-
-```{code-cell} ipython3
-gitter_y = model.predict(np.stack([gitter_x1.ravel(),gitter_x2.ravel()]).T)
-
-fig = go.Figure()
-fig.add_trace(go.Scatter(x = gitter_x1.ravel(), y = gitter_x2.ravel(), 
-                        marker_color=gitter_y.ravel(), mode='markers', opacity=0.1, name='Gitter'))
-fig.add_trace(go.Scatter(x = X[:,0], y = X[:,1], mode='markers', marker_color=y, name='Daten'))
-fig.update_layout(
-  title='Random Forest',
-  xaxis_title = 'Feature 1',
-  yaxis_title = 'Feature 2'
-  )
-fig.show()
-```
-
-## Zusammenfassung
-
-Random Forests sind einfachen Entscheidungsbäumen vorzuziehen, da sie das
-Overfitting reduzieren. Die Erzeugung der einzelnen Entscheidungsbäume kann
-parallelisiert werden, so dass das Training eines Random Forests sehr schnell
-durchgeführt werden kann. Auch für große Datenmengen mit sehr unterschiedlichen
-Eigenschaften arbeitet der Random Forest sehr effizient. Er ermöglicht auch eine
-Interpreation, welche Eigenschaften ggf. einen größeren Einfluss haben als
-andere Eigenschaften.
+TODO
