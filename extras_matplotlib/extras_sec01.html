@@ -236,9 +236,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Random Forests</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Random Forests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">Übung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">9.2 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">Übung</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -616,23 +617,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.1268068  0.21013914 0.64219937 0.68571829 0.08395237 0.69196413
- 0.88918439 0.52396635 0.88534924 0.78832068 0.90827747 0.724368
- 0.65738337 0.25199303 0.37514138 0.05302867 0.95658297 0.62355757
- 0.59496642 0.80443844 0.96146327 0.83359411 0.16574512 0.06253745
- 0.85316994 0.62734487 0.84979028 0.91983821 0.91966661 0.8136305
- 0.93659814 0.66524318 0.45904545 0.69900613 0.24931248 0.89330234
- 0.22058732 0.81216336 0.06857193 0.54980424 0.45586081 0.86151541
- 0.52754045 0.2570209  0.72914027 0.52837756 0.30290138 0.9374325
- 0.83392565 0.27708174 0.07337811 0.64486775 0.83014816 0.34937864
- 0.78753739 0.76380309 0.70121502 0.03434643 0.89363837 0.44282202
- 0.2995534  0.13003554 0.58708773 0.16127    0.82897759 0.94201976
- 0.76923773 0.34601704 0.02297282 0.46635534 0.54343705 0.50386415
- 0.73058763 0.51742095 0.0279719  0.87288815 0.31580074 0.06852218
- 0.66079404 0.73566731 0.79950833 0.35761408 0.17500129 0.3733219
- 0.09844635 0.70909877 0.33803018 0.72693038 0.80666767 0.73054767
- 0.47611115 0.76583285 0.82521398 0.77031374 0.99656951 0.07358076
- 0.41473713 0.97410789 0.29026889 0.02221995]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.19128126 0.91281156 0.23421322 0.17972251 0.40719586 0.53478995
+ 0.00372577 0.86277199 0.23676236 0.59822123 0.34096809 0.56650158
+ 0.1631794  0.92320167 0.66242704 0.15378995 0.55856944 0.78575727
+ 0.95859302 0.97745422 0.47094203 0.0777934  0.26070139 0.59179272
+ 0.3549997  0.99862428 0.86182668 0.61928476 0.16385653 0.4993403
+ 0.58399137 0.95519616 0.61951799 0.70848318 0.84149395 0.36832893
+ 0.52907832 0.16365074 0.9838084  0.10415741 0.40524535 0.29000293
+ 0.85985301 0.0015591  0.01451009 0.98320973 0.21834991 0.79376333
+ 0.46536777 0.65755037 0.61220227 0.63529356 0.80338857 0.75888016
+ 0.0019162  0.07511769 0.40297097 0.6892566  0.05416606 0.84210358
+ 0.66643901 0.66440867 0.94533429 0.97028706 0.7135906  0.02017838
+ 0.09361133 0.87693096 0.68183313 0.02770834 0.85719373 0.86843755
+ 0.64987633 0.59431795 0.01666996 0.08267797 0.97032667 0.1486938
+ 0.29501627 0.113589   0.26989572 0.82340012 0.63116139 0.5102917
+ 0.38411823 0.38189605 0.87164857 0.93424314 0.35204595 0.23777518
+ 0.22901914 0.81054465 0.79735725 0.8294524  0.72801306 0.03379062
+ 0.83717751 0.5312705  0.09812339 0.71125276]
 </pre></div>
 </div>
 </div>
@@ -650,8 +651,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9965695098398832
-NumPy max =  0.9965695098398832
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9986242778760986
+NumPy max =  0.9986242778760986
 </pre></div>
 </div>
 </div>
@@ -670,10 +671,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.02 µs ± 7.07 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.99 µs ± 32.9 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.29 µs ± 8.57 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.32 µs ± 18.6 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -713,7 +714,7 @@ Die folgende Grafik zeigt das Nummerierungsschema:</p>
 <figure class="align-default" id="pics-fig-numpy-array">
 <a class="reference internal image-reference" href="../_images/fig_numpy_array.png"><img alt="../_images/fig_numpy_array.png" src="../_images/fig_numpy_array.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://predictivehacks.com/tips-about-NumPy-arrays/">Quelle:</a>)</p>
 </div>
@@ -892,8 +893,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.14621365 0.82834791 0.1429509 ]
- [0.69095474 0.31536816 0.57580346]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.86564619 0.84064238 0.39978769]
+ [0.13240242 0.02966417 0.4114023 ]]
 </pre></div>
 </div>
 </div>
@@ -907,9 +908,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.01334448 -0.49193132 -0.19951226  0.13492439]
- [ 0.5359581  -0.15391423 -0.58039586  1.37396188]
- [-0.19329345  0.45504846 -1.49392865  1.30361025]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.23187967  1.19128416  1.10956155  0.13342827]
+ [ 0.2435906  -0.12092537 -0.97905357  2.20281509]
+ [ 0.77372431  2.34675428 -1.60748399  0.66198255]]
 </pre></div>
 </div>
 </div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>9. Random Forests &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>9. Ensemble-Methoden (Random Forests und XGBoost) &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter09/sec00';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9.1 Random Forests" href="sec01.html" />
+    <link rel="next" title="9.1 Stacking, Bagging und Boosting" href="sec01.html" />
     <link rel="prev" title="Übungen" href="../chapter08/sec04.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -234,9 +234,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">9. Random Forests</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec01.html">9.1 Random Forests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec02.html">Übung</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">9. Ensemble-Methoden (Random Forests und XGBoost)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec02.html">9.2 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec03.html">Übung</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -507,7 +508,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>9. Random Forests</h1>
+    <h1>9. Ensemble-Methoden (Random Forests und XGBoost)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -521,13 +522,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="random-forests">
-<h1>9. Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ensemble-methoden-random-forests-und-xgboost">
+<h1>9. Ensemble-Methoden (Random Forests und XGBoost)<a class="headerlink" href="#ensemble-methoden-random-forests-und-xgboost" title="Permalink to this heading">#</a></h1>
 <p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="sec01.html">9.1 Random Forests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec02.html">Übung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec02.html">9.2 Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec03.html">Übung</a></li>
 </ul>
 </div>
 </section>
@@ -576,7 +578,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">9.1 Random Forests</p>
+        <p class="prev-next-title">9.1 Stacking, Bagging und Boosting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

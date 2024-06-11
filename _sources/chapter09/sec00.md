@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 9. Random Forests
+# 9. Ensemble-Methoden (Random Forests und XGBoost)
 
 
 Kapitelübersicht:
