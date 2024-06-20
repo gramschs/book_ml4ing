@@ -64,10 +64,11 @@ Ensemble](https://scikit-learn.org/stable/modules/ensemble.html).
 ---
 width: 100%
 ---
-Konzept Stacking: die Prognosen von mehreren *unterschiedlichen* ML-Modellen
-werden zu einer finalen Prognose kombiniert. Die Kombination kann beispielsweise
-durch Mehrheitsentscheidung (Voting) oder Mittelwertbildung erfolgen oder durch
-ein weiteres ML-Modell.  
+Die Prognosen von mehreren *unterschiedlichen* ML-Modellen werden zu einer
+finalen Prognose kombiniert. Die Kombination kann beispielsweise durch
+Mehrheitsentscheidung (Voting) oder Mittelwertbildung (Averaging) erfolgen.
+Werden die Einzelprognosen durch ein weiteres ML-Modell zu einer finalen
+Prognose kombiniert, nennt man das *Stacking*.
 ```
 
 Stacking bedeutet auf Deutsch »Stapeln«, es werden sozusagen verschiedene
@@ -75,7 +76,7 @@ ML-Modelle gestapelt. In einem ersten Schritt werden mehrere ML-Modelle
 unabhängig voneinander auf den Trainingsdaten trainiert. Jedes dieser Modelle
 liefert eine Prognose, die dann auf verschiedene Arten miteinander kombiniert
 werden können. Bei Klassifikationsaufgaben ist **Voting**, also die Wahl durch
-**Mehrheitsentscheidung**, eine beliebte Methode, um die Prognosen zu
+**Mehrheitsentscheidung**, eine beliebte Methode, um die Einzelprognosen zu
 kombinieren. Wurden beispielsweie für das Stacking drei ML-Modellen gewählt, die
 jeweils ja oder nein prognostizieren, dann wird für die finale Prognose das
 Ergebnis genommen, das die Mehrheit der einzelnen Modelle vorausgesagt hat.
@@ -83,10 +84,10 @@ Scikit-Learn bietet dafür einen Voting Classifier an, siehe [Dokumentation
 Scikit-Learn → Voting
 Classifier](https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier). 
 
-Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt.
-Dabei kann entweder der übliche arithmetische Mittelwert verwendet werde oder ein
-**gewichteter Mittelwert**, was als  **Weighted Averaging** bezeichnet
-wird. Nichtsdestotrotz wird die Mittelwertbildung bei Regressionsaufgaben von
+Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt. Dabei
+kann entweder der übliche arithmetische Mittelwert verwendet werden oder ein
+**gewichteter Mittelwert**, was als  **Weighted Averaging** bezeichnet wird.
+Nichtsdestotrotz wird die Mittelwertbildung bei Regressionsaufgaben von
 Scikit-Learn ebenfalls als Voting bezeichnet, siehe [Dokumentation Scikit-Learn
 → Voting
 Regressor](https://scikit-learn.org/stable/modules/ensemble.html#voting-regressor). 
@@ -96,8 +97,9 @@ ML-Modells. In diesem Fall werden die Modelle, die die einzelnen Prognosen
 liefern, als Basismodelle bezeichnet. In der ML-Community ist auch der
 Fachbegriff **Weak Learner**, also schwache Lerner, für diese Basismodelle
 gebräuchlich. Die Prognosen der Basismodelle dienen dann als Trainingsdaten für
-ein weiteres ML-Modell, das als **Meta-Modell** bezeichnet wird.  Weitere
-Informationen liefert die [Scikit-Learn Dokumentation → Stacked
+ein weiteres ML-Modell, das als **Meta-Modell** bezeichnet wird. Diese
+Ensemble-Methode wird **Stacking** genannt. Weitere Informationen liefert die
+[Scikit-Learn Dokumentation → Stacked
 Generalization](https://scikit-learn.org/stable/modules/ensemble.html#stacked-generalization).
 
 Stacking bietet viele Vorteile. Der wichtigste Vorteil ist, dass die
