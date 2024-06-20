@@ -586,10 +586,11 @@ Ensemble</a>.</p>
 <figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/concept_stacking.svg"><img alt="../_images/concept_stacking.svg" src="../_images/concept_stacking.svg" width="100%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Konzept Stacking: die Prognosen von mehreren <em>unterschiedlichen</em> ML-Modellen
-werden zu einer finalen Prognose kombiniert. Die Kombination kann beispielsweise
-durch Mehrheitsentscheidung (Voting) oder Mittelwertbildung erfolgen oder durch
-ein weiteres ML-Modell.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Die Prognosen von mehreren <em>unterschiedlichen</em> ML-Modellen werden zu einer
+finalen Prognose kombiniert. Die Kombination kann beispielsweise durch
+Mehrheitsentscheidung (Voting) oder Mittelwertbildung (Averaging) erfolgen.
+Werden die Einzelprognosen durch ein weiteres ML-Modell zu einer finalen
+Prognose kombiniert, nennt man das <em>Stacking</em>.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Stacking bedeutet auf Deutsch »Stapeln«, es werden sozusagen verschiedene
@@ -597,17 +598,17 @@ ML-Modelle gestapelt. In einem ersten Schritt werden mehrere ML-Modelle
 unabhängig voneinander auf den Trainingsdaten trainiert. Jedes dieser Modelle
 liefert eine Prognose, die dann auf verschiedene Arten miteinander kombiniert
 werden können. Bei Klassifikationsaufgaben ist <strong>Voting</strong>, also die Wahl durch
-<strong>Mehrheitsentscheidung</strong>, eine beliebte Methode, um die Prognosen zu
+<strong>Mehrheitsentscheidung</strong>, eine beliebte Methode, um die Einzelprognosen zu
 kombinieren. Wurden beispielsweie für das Stacking drei ML-Modellen gewählt, die
 jeweils ja oder nein prognostizieren, dann wird für die finale Prognose das
 Ergebnis genommen, das die Mehrheit der einzelnen Modelle vorausgesagt hat.
 Scikit-Learn bietet dafür einen Voting Classifier an, siehe <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#voting-classifier">Dokumentation
 Scikit-Learn → Voting
 Classifier</a>.</p>
-<p>Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt.
-Dabei kann entweder der übliche arithmetische Mittelwert verwendet werde oder ein
-<strong>gewichteter Mittelwert</strong>, was als  <strong>Weighted Averaging</strong> bezeichnet
-wird. Nichtsdestotrotz wird die Mittelwertbildung bei Regressionsaufgaben von
+<p>Bei Regressionsaufgaben werden die einzelnen Prognosen häufig gemittelt. Dabei
+kann entweder der übliche arithmetische Mittelwert verwendet werden oder ein
+<strong>gewichteter Mittelwert</strong>, was als  <strong>Weighted Averaging</strong> bezeichnet wird.
+Nichtsdestotrotz wird die Mittelwertbildung bei Regressionsaufgaben von
 Scikit-Learn ebenfalls als Voting bezeichnet, siehe <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#voting-regressor">Dokumentation Scikit-Learn
 → Voting
 Regressor</a>.</p>
@@ -616,8 +617,9 @@ ML-Modells. In diesem Fall werden die Modelle, die die einzelnen Prognosen
 liefern, als Basismodelle bezeichnet. In der ML-Community ist auch der
 Fachbegriff <strong>Weak Learner</strong>, also schwache Lerner, für diese Basismodelle
 gebräuchlich. Die Prognosen der Basismodelle dienen dann als Trainingsdaten für
-ein weiteres ML-Modell, das als <strong>Meta-Modell</strong> bezeichnet wird.  Weitere
-Informationen liefert die <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#stacked-generalization">Scikit-Learn Dokumentation → Stacked
+ein weiteres ML-Modell, das als <strong>Meta-Modell</strong> bezeichnet wird. Diese
+Ensemble-Methode wird <strong>Stacking</strong> genannt. Weitere Informationen liefert die
+<a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#stacked-generalization">Scikit-Learn Dokumentation → Stacked
 Generalization</a>.</p>
 <p>Stacking bietet viele Vorteile. Der wichtigste Vorteil ist, dass die
 Prognosefähigkeit des Gesamtmodells in der Regel deutlich besser ist als die der
