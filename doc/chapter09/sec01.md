@@ -111,41 +111,49 @@ genügend Rechenleistung parallel trainiert werden können. Aus diesem Grund
 werden wir in dieser Vorlesung kein Stacking verwenden.
 
 
-## Bagging
+## Bagging 
 
-TODO
+```{figure} pics/concept_bagging.svg
+---
+width: 100%
+---
+Beim Bagging wird das gleiche ML-Modell auf *unterschiedlichen* Stichproben der
+Trainingsdaten trainiert (Bootstrapping). Die Einzelprognosen der Modelle werden
+dann zu einer finalen Prognose kombiniert (Aggregating).
+```
 
-Es gibt verschiedene Methoden, mit denen die Trainingsdaten beim Training eines
-Random Forests zufällig ausgewählt werden können:
+Bagging ist eine Ensemble-Methode, ähnlich wie Stacking. Im Gegensatz zum
+Stacking wird beim Bagging jedoch dasselbe Modell für die Einzelprognosen
+verwendet. Die Unterschiede in den Einzelprognosen entstehen dadurch, dass für
+das Training der einzelnen Modelle unterschiedliche Daten verwendet werden.
 
-1. **Bootstrapping**: Dies ist die gängigste Methode zur Auswahl der
-Trainingsdaten für jeden Entscheidungsbaum in einem Random Forest. Dabei werden
-einzelne Datenpunkte aus der Menge der Trainignsdaten zufällig ausgewählt,
-jedoch sofort wieder zurückgelegt. Dadurch können Datenpunkte auch mehrfach
-auftauchen, während andere Datenpunkte vielleicht gar nicht zum Training des
-Entscheidungsbaumes genutzt werden.
+Im ersten Schritt werden zufällige Datenpunkte aus den Trainingsdaten ausgewählt
+und in einen neuen Datensatz, „Stichprobe 1“, aufgenommen. Nachdem ein
+Datenpunkt ausgewählt wurde, kehrt er in die ursprüngliche Menge der
+Trainingsdaten zurück und kann erneut ausgewählt werden. Dieser Prozess wird in
+der Mathematik als **Ziehen mit Zurücklegen** bezeichnet, auf Englisch
+**Bootstrapping**. Durch Bootstrapping werden dann noch weitere Stichproben
+gebildet.
 
-2. **Stratifiziertes Sampling**: Bei dieser Methode werden die Trainingsdaten
-anhand eines Kriteriums in verschiedene "Schichten" eingeteilt, aus denen dann
-zufällig eine Teilmenge von Beispielen ausgewählt wird. Dies kann nützlich sein,
-wenn die Trainingsdaten unausgewogen sind, d. h. es gibt deutlich mehr Beispiele
-für eine Klasse als für die andere. Das Stratified Sampling kann dazu beitragen,
-dass jeder Baum im Random Forest auf einer repräsentativen Stichprobe der Daten
-trainiert wird.
+Im zweiten Schritt wird ein ML-Modell gewählt und für jede Bootstrap-Stichprobe
+trainiert. Da die Stichproben unterschiedliche Trainingsdaten enthalten,
+entstehen unterschiedlich trainierte Modelle, die für neue Daten verschiedene
+Einzelprognosen liefern. Diese Einzelprognosen werden kombiniert bzw. nach
+festgelegten Regeln zu einer finalen Prognose zusammengefasst. In der Statistik
+wird die Zusammenfassung von Daten als Aggregation bezeichnet. Auf Englisch
+heißt der Vorgang des Zusammenfassens **Aggregating**.
 
-3. **Cluster-Stichproben**: Bei dieser Methode werden die Trainingsdaten in
-separate Cluster unterteilt und dann eine Teilmenge der Cluster zufällig
-ausgewählt, die für das Training verwendet wird. Dies kann nützlich sein, wenn
-die Trainingsdaten auf natürliche Weise in verschiedene Cluster unterteilt sind
-und Sie sicherstellen möchten, dass jeder Baum im Random Forest auf einer
-repräsentativen Stichprobe der Daten trainiert wird.
-
-Es gibt auch andere Methoden, die zur zufälligen Auswahl der Trainingsdaten
-verwendet werden können, wie z. B. das systematische Sampling, bei dem Beispiele
-in regelmäßigen Abständen aus dem Trainingssatz ausgewählt werden, und das
-einfache Zufallsstichprobenverfahren, bei dem Beispiele ohne Ersetzung zufällig
-ausgewählt werden. Die Wahl der Methode hängt von den Besonderheiten der Daten
-und den Zielen des Modells ab.
+Die beiden wesentlichen Schritte der Bagging-Methode sind also **B**ootstrapping
+und **Agg**regat**ing**, was zu der Abkürzung Bagging geführt hat. Scikit-Learn
+bietet sowohl für Klassifikations- als auch für Regressionsaufgaben eine
+allgemeine Implementierung der Bagging-Methode an (siehe [Dokumentation
+Scikit-Learn →
+Bagging](https://scikit-learn.org/stable/modules/ensemble.html#bagging-meta-estimator)).
+Die bekannteste Bagging-Methode ist das Verfahren **Random Forests**, bei dem
+Entscheidungsbäume (Decision Trees) auf unterschiedlichen Stichproben trainiert
+und aggregiert werden. Random Forests werden wir im nächsten Kapitel
+detaillierter betrachten. Vorab beschäftigen wir uns noch mit dem Konzept der
+Boosting-Methoden.
 
 
 ## Boosting
