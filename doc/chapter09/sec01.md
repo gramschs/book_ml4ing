@@ -14,10 +14,13 @@ kernelspec:
 
 # 9.1 Stacking, Bagging und Boosting
 
-```{admonition} Warnung
-:class: warning
-Dieser Abschnitt wird gerade überarbeitet.
-```
+Eins, zwei, viele ... im Bereich des maschinellen Lernens sind Ensemble-Methoden
+eine leistungsstarke Technik zur Verbesserung der Modellgenauigkeit und
+Robustheit. Diese Methoden kombinieren mehrere Modelle, um die Gesamtleistung zu
+steigern, indem sie die individuellen Stärken der Modelle nutzen und deren
+Schwächen ausgleichen. In diesem Kapitel werden wir die grundlegenden
+Konzepte und Unterschiede zwischen diesen drei Methoden erläutern, um ein
+besseres Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.
 
 ```{admonition} Lernziele
 :class: goals
@@ -158,9 +161,79 @@ Boosting-Methoden.
 
 ## Boosting
 
-TODO
+```{figure} pics/concept_boosting.svg
+---
+width: 100%
+---
+Der Fehler in der Prognose wird benutzt, um das nächste Modell zu trainieren.
+Beim hier gezeigten Adaboost-Verfahren werden die Daten neu gewichtet, beim
+(Stochastic) Gradient Boosting werden Modelle zur Fehlerkorrektur trainiert.
+```
+
+Das englische Verb „to boost sth.“ hat viele Bedeutungen. Insbesondere wird es
+im Deutschen mit „etwas verstärken“ übersetzt. Im Kontext des maschinellen
+Lernens bezeichnet **Boosting** eine Ensemble-Methode, bei der mehrere ML-Modelle
+hintereinander geschaltet werden, um die Genauigkeit der Prognose zu verstärken.
+Die Idee des Boosting besteht darin, dass jedes Modell die Fehler des
+Vorgängermodells reduziert. Es gibt mehrere Varianten zur Fehlerreduktion, aus
+denen sich unterschiedliche Boosting-Methoden ableiten. Die wichtigsten
+Varianten sind:
+
+* Adaboost,
+* Gradient Boosting und
+* Stochastic Gradient Boosting.
+
+Beim **Adaboost**-Verfahren wird im ersten Schritt ein Modell (z.B. ein
+Entscheidungsbaum) auf den Trainingsdaten trainiert. Anschließend werden die
+Prognosen dieses Modells mit den tatsächlichen Werten verglichen. Im zweiten
+Schritt wird ein neuer Datensatz erstellt, wobei die Datenpunkte, die falsch
+prognostiziert wurden, ein größeres Gewicht erhalten. Nun wird erneut ein Modell
+trainiert; und dessen Prognosen werden wieder mit den echten Werten verglichen.
+Dieser Vorgang wird mehrfach wiederholt. Das Training der Modelle erfolgt
+sequentiell, da jedes Vorgängermodell die neue Gewichtung der Trainingsdaten
+liefert. Am Ende werden alle Einzelprognosen gewichtet zu einer finalen Prognose
+kombiniert. Weitere Details finden sich in der [Dokumentation Scikit-Learn →
+Adaboost](https://scikit-learn.org/stable/modules/ensemble.html#adaboost).
+
+Beim **Gradient Boosting** wird ebenfalls ein sequentieller Ansatz verfolgt,
+aber der Fokus liegt auf der Minimierung der Fehler. Im ersten Schritt wird ein
+ML-Modell (häufig ein Entscheidungsbaum) trainiert. Danach wird für jeden
+Datenpunkt der Fehler des Modells, das sogenannte **Residuum**, berechnet, indem
+die Differenzen zwischen dem tatsächlichen Wert und der Prognosen bestimmt wird.
+Im nächsten Schritt wird ein neues Modell trainiert, das darauf abzielt, diese
+Residuen vorherzusagen. Dieses neue Modell wird dann zu dem vorherigen Modell
+hinzugefügt, um die Gesamtprognose zu verbessern. Dieser Prozess wird
+wiederholt, wobei in jeder Iteration ein neues Modell trainiert wird, das die
+Fehler der bisherigen Modelle reduziert (mit Hilfe einer Verlustfunktion und
+eines Gradientenverfahrens). Am Ende ergibt sich eine starke Vorhersage, indem
+alle Modelle kombiniert werden. Da sehr häufig Entscheidungsbäume als Modell
+gewählt werden, bietet Scikit-Learn eine Implementierung der sogenannten
+**Gradient Boosted Decision Trees** an, siehe [Dokumentation Scikit-Learn →
+Gradient-boosted
+trees](https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosted-trees).
+
+**Stochastic Gradient Boosting** ist eine Erweiterung des Gradient Boosting, bei
+der zusätzlich Stochastik eingeführt wird. Hierbei wird in jedem Schritt nur
+eine zufällige Stichprobe der Trainingsdaten verwendet, um ein Modell zu
+trainieren. Der Trainingsprozess ähnelt dem von Gradient Boosting, wobei in
+jeder Runde ein neues Modell trainiert wird, das die Fehler der vorherigen
+Modelle korrigiert. Durch die zufällige Auswahl der Trainingsdaten in jeder
+Iteration wird eine höhere Robustheit gegenüber Overfitting (Überanpassung)
+erreicht. Stochastic Gradient Boosting wird nicht direkt von Sciukit-Learn
+unterstützt. Eine sehr bekannte Implmentierung davon ist XGBoost (siehe
+[https://xgboost.readthedocs.io/](https://xgboost.readthedocs.io/en/stable/)),
+die wir in einem der nächsten Kapitel noch näher betrachten werden.
 
 
 ## Zusammenfassung und Ausblick
 
-TODO
+In diesem Kapitel haben Sie die drei Konzepte Stacking, Bagging und Boosting
+eher theoretisch kennengelernt. Alle drei Methoden sind Ensemble-Methoden, bei
+denen mehrere ML-Modelle parallel oder sequentiell kombiniert werden. Obwohl
+diese Ensemble-Methoden allgemein für verschiedene ML-Modelle eingesetzt werden
+können, haben sich vor allem Random Forests (Bagging für Entscheidungsbäume) und
+Stochastic Gradient Boosting als besonders effektiv erwiesen. Letztere sind
+nicht in Scikit-Learn implementiert, sondern werden durch eine eigene Bibliothek
+namens XGBoost bereitgestellt. In den nächsten beiden Kapiteln werden wir beide
+auch mit praktischen Beispielen vertiefen.
+
