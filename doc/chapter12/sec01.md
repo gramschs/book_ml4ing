@@ -12,117 +12,185 @@ kernelspec:
   name: python3
 ---
 
-# 12.1 Mehrschichtiges Perzeptron
+# Logistische Regression ersetzt Perzeptron
+
+
+## Lernziele
 
 ```{admonition} Lernziele
 :class: goals
-* Sie wissen, was ein **Multilayer-Perzeptron** (MLP), also ein mehrschichtiges Perzeptron, ist.
-* Sie können den Begriff **Deep Learning** erklären.
-* Sie können mit Scikit-Learn ein neuronales Netz trainieren.
+* Sie können die **logistische Funktion** zeichnen.
+* Sie können die **Funktionsgleichung der logistischen Funktion** angeben.
+* Sie können das **logistische Regressionsmodell** schematisch darstellen. 
 ```
+
+## Perzeptron ungeeignet bei nicht trennbaren Daten
+
+Das Perzeptron ist ein simples ML-Verfahren für die binäre Klassifikation.
+Allerdings ist das Perzeptron nur für trennbare Datensätze geeignet. Dazu
+schauen wir uns zwei Beispiele aus dem Männerfußball an. Ziel der folgenden
+Klassifikationsaufgabe ist es, anhand des Marktwertes eines Vereines zu
+klassifizieren, ob der Verein in der Bundesliga oder in der 2. Bundesliga
+spielt.
+
+Dazu laden wir als erstes den Datensatz `20220801_Marktwert_Bundesliga.csv`
+(Download
+[csv](https://nextcloud.frankfurt-university.de/s/GESBZzRyXq6dLNC/download);
+Quelle: https://www.transfermarkt.de; Stichtag: 01.08.2022).
+
+```{code-cell} ipython3
+:tags: [output-scroll]
+
+import pandas as pd
+data_raw = pd.read_csv('data/20220801_Marktwert_Bundesliga.csv', skiprows=5, header=0, index_col=0)
+data_raw.info()
+```
+
+Die ersten fünf Einträge lauten wie folgt:
+
+```{code-cell} ipython3
+data_raw.head()
+```
+
+Die erste Spalte enthält den Vereinsnamen, die zweite Spalte listet die
+Ligazugehörigkeit (Bundesliga, 2. Bundesliga oder 3. Liga), die dritte Spalte
+beinhaltet den Marktwert des Vereins in Mio. Euro und die vierte Spalte listet
+die Anzahl der Spieler.
+
+Welche Ligen sind denn im Datensatz vertreten?
+
+```{code-cell} ipython3
+data_raw['Ligazugehörigkeit'].unique()
+```
+
+Zuerst erkunden wie die Daten und lassen uns den MArktwert abhängig von der
+Ligazugehörigkeit visualisieren.
+
+```{code-cell} ipython3
+import plotly.express as px
+
+fig = px.box(data_raw, x = 'Ligazugehörigkeit', y = 'Wert',
+             title='Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)')
+fig.show()
+```
+
+In der Bundesliga gibt es bezogen auf den Kaderwert drei Ausreißer, in der 3.
+Liga gibt es einen Ausreißer. Zoom man in die Visualisierung hinein, so sehen
+wir, dass ein Marktwert von 36 Mio. Euro die Erstligisten von den Zweitligisten
+trennt. Daher wäre für eine Klassifikation Bundesliga vs. 2. Bundesliga ein
+Perzeptron trainierbar. Eine solche Trennung funktioniert bei den Vereinen der
+1. Bundesliga und der 3. Liga nicht. Der minimale Marktwert der 2. Bundesliga
+(8.83 Mio. EUR) ist niedriger als der maximale Marktwert der 3. Liga (13.05 Mio.
+EUR). Wir betrachten nun nur noch 2. und 3. Liga und stellen die folgende Frage:
+
+Kann aufgrund des Marktwertes die Zugehörigkeit zur 2. Bundesliga oder 3. Liga
+prognostiziert werden? Wir visualisieren die einzelnen Datenpunkte mit der
+Ursache 'Wert' auf der x-Achse und 'Ligazugehörigkeit' auf der y-Achse.
+
+```{code-cell} ipython3
+data = data_raw[ data_raw['Ligazugehörigkeit'] != 'Bundesliga' ]
+
+fig = px.scatter(data, x = 'Wert', y = 'Ligazugehörigkeit',
+             title='Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)')
+fig.show()
+```
+
+Als nächstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
+Bezeichnungen wie "3. Liga" und "2. Bundesliga" kann Python nämlich nicht
+rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
+üblicherweise die Zahlen 0 und 1 verwendet, also
+<ul>
+    <li>3. Liga --> 0</li>
+    <li>2. Bundesliga --> 1</li>
+</ul>
+
+Das Klassifikationsproblem lautet also: angenommen, ein
+Verein hat den Marktwert x. Gehört der Verein dann zur Klasse 1 (= 2.
+Bundesliga)?
+
+Als zweites verabschieden wir uns von dem Perzeptron. Anstatt eine Gerade zur
+Trennung einzuziehen, nehmen wir eine S-förmige Funktion. Diese S-förmige
+Funktion interpretieren wir als **Wahrscheinlichkeit** der Ligazugehörigkeit.
+Die Werte liegen dabei zwischen 0 und 1. Bei einer Wahrscheinlichkeit von 1 sind
+wir also 100 % sicher, dass der Verein zur Klasse 1 (= 2. Bundesliga) gehört.
+Bei einem Wert von 0.7 gehen wir mit 70 % Wahrscheinlichkeit davon aus, dass der
+Verein zur Klasse 1 (= 2. Bundesliga) gehört.
+
+Als drittes verwandeln wir die Wahrscheinlichkeit mit Werten *zwischen* 0 und 1
+in die Klassen 0 oder 1. Dazu nutzen wir die Heaviside-Funktion. Die komplette
+Vorgehensweise ist in der folgenden Grafik dargestellt.
+
+```{figure} pics/bundesliga_decision_function_annotated.pdf
+---
+width: 600px
+name: bundesliga_decision_function_annotated
+---
+Die S-förmige schwarz gestrichelte Kurve gibt die Wahrscheinlichkeit an, dass ein Verein zur 2. Bundesliga gehört. Da nicht nach einer Wahrscheinlichkeit gefragt ist, sondern nur nach 2. Bundesliga -- ja oder nein -- werden alle Vereine mit einer Wahrscheinlichkeitgrößer 50 % (also $\geq 0.5$) als Zweitligisten klassifiziert.
+```
+
+Jetzt brauchen wir eine Funktion für die S-förmige Kurve, das wir dann mittels
+eines ML-Verfahrens an unsere Trainingsdaten anpassen können.
 
 +++
 
-## Viele Perzeptronen sind ein neuronales Netz
+## Logistische Funktion ersetzt Heaviside-Funktion
 
-In einem vorhergehenden Kapitel haben wir das Perzeptron, ein künstliches Neuron
-kennengelernt. Schematisch können wir es folgendermaßen darstellen:
+Beim Perzeptron wird auf die gewichtete Summe von Inputs die Heaviside-Funktion
+angewandt. So simpel die Heaviside-Funktion $\phi$ auch ist, sie hat einen
+entscheidenen Nachteil. Die Heaviside-Funktion ist unstetig, sie springt von
+Null auf Eins. Diese Sprungstelle hat die **logistische Funktion** nicht. 
 
-```{figure} pics/perceptron.svg
+Die logistische Funktion ist defininiert als
+
+$$\sigma(z) = \frac{1}{1+e^{-z}}.$$
+
+Um die logistische Funktion abzukürzen, verwenden wir dabei den griechischen
+Buchstaben Sigma $\sigma$, weil die logistische Funktion auch
+**Sigmoid-Funktion** genannt wird. In der folgenden Abbildung ist der
+Funktionsgraph der logistischen Funktion dargestellt.
+
+```{figure} pics/plot_logit_function.pdf
 ---
 width: 600px
+name: plot_logit_function
 ---
-Schematische Darstellung eines Perzeptrons
+Funktionsgraph der logistischen Funktion, auch Sigmoid-Funktion genannt
 ```
 
-Jedes Eingangssignal wird mit einem Gewicht multipliziert. Anschließend werden
-die gewichteten Eingangssignale summiert. Übersteigt die gewichtete Summe einen
-Schwellenwert, feuert sozusagen das künstliche Neuron. Das Ausgabesignal wird
-aktiviert.
+Damit haben wir die Bausteine des logistischen Regressionmodells komplettiert.
+Genau wie bei der linearen Regression oder beim Perzeptron werden zuerst die
+einzelnen Inputs gewichtet und aufsummiert. Auf die gewichtete Summe wird dann
+die logistische Funktion als Aktivierungsfunktione angewendet. Das Ergebnis ist
+die Wahrscheinlichkeit für die Klasse mit der Bezeichnung 1 (in unserem Beispiel
+die Zugehörigkeit zur 2. Bundesliga). Zuletzt wird noch die Heaviside-Funktion
+als Schwellenwertfunktion angewendet, um aus der Wahrscheinlichkeit eine Klasse
+zu machen.
 
-Mathematisch gesehen, wurde nach dem Bilden der gewichteten Summe die
-Heaviside-Funktion angewendet. Im Kapitel über die logistische Regression haben
-wir bereits gelernt, dass auch andere Funktionen zum Einsatz kommen können. Bei
-der logistischen Regression wird beispielsweise die Sigmoid-Funktion verwendet.
-Bei neuronalen Netzen sind insbesondere die
-[ReLU-Funktion](https://de.wikipedia.org/wiki/Rectifier_(neuronale_Netzwerke))
-(rectified linear unit) 
+Schematisch dargestellt sieht das logistische Regressionsmodell also
+folgendermaßen aus:
 
-```{figure} pics/plot_relu_function.svg
+
+```{figure} pics/topology_logistic_regression.svg
 ---
 width: 600px
+name: topology_logistic_regression
 ---
-ReLU-Funktion
+Das logistische Regressionsmodell als neuronales Netz formuliert.
 ```
 
-und der [Tangens hyperbolicus](https://de.wikipedia.org/wiki/Tangens_hyperbolicus_und_Kotangens_hyperbolicus)
+Mathematisch formuliert lautet das logistische Regressionsmodell folgendermaßen:
 
-```{figure} pics/plot_tanh_function.svg
----
-width: 600px
----
-Tangens hyperbolicus
-```
-
-häufig eingesetzte Aktivierungsfunktionen.
-
-Oft werden diese beiden Schritte -- Bilden der gewichteten Summe und Anwenden
-der Aktivierungsfunktion -- in einem Symbol gemeinsam dargestellt, wie in der
-folgenden Abbildung zu sehen.
-
-```{figure} pics/neuron.svg
----
-width: 600px
----
-Vereinfachte schematische Darstellung eines Perzeptrons
-```
-
-Tatsächlich sind sogar häufig Darstellungen verbreitet, bei denen nur noch durch
-die Kreise das Perzeptron oder das künstliche Neuron symbolisiert wird.
-
-```{figure} pics/neuron_symbolisch.svg
----
-width: 600px
----
-Symbolbild eines Perzeptrons bzw. eines künstlichen Neurons
-```
-
-Die Idee des mehrschichtigen Perzeptrons ist es, eine oder mehrere
-Zwischenschichten einzuführen. In dem folgenden Beispiel wird eine
-Zwischenschichtmit zwei Neuronen eingeführt:
-
-```{figure} pics/MLP_1layer_2neurons.svg
----
-width: 600px
----
-Ein mehrschichtiges Perzeptron (Mulitilayer Perceptron)
-```
-
-Es können beliebig viele Zwischenschichten eingeführt werden. Jede neue
-Zwischenschicht kann dabei unterschiedliche Anzahlen von Neuronen enthalten.
-Insgesamt nennen wir die so entstehende Rechenvorschrift **mehrschichtiges
-Perzeptron** oder **Multilayer Perceptron** oder **neuronales Netz**.
-
-Das folgende Video fasst die Struktur eines neuronalen Netzes noch einmal zusammen.
+$$\hat{P} = \sigma\left(\sum_{i=0}^{N} x_i \omega_i\right) = \frac{1}{1+e^{-\sum x_i \omega_i}} 
+\rightsquigarrow \hat{y} = \begin{cases} 0: & \hat{P} < 0.5 \\ 1: & \hat{P} \geq 0.5 \end{cases} $$
 
 +++
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2dBu9wgW2-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 +++
 
-## Viele Schichten = Deep Learning
+## Zusammenfassung und Ausblick
 
-Bei neuronalen Netzen werden viele Schichten mit vielen Neuronen in die
-Rechenvorschrift einbezogen. Das führt dazu, dass vor allem sogenannte tiefe
-neuronale Netze, also solche mit vielen Schichten, extrem leistungsfähig sind.
-Umgekehrt benötigen neuronale Netze aber auch eine große Anzahl an
-Trainingsdaten mit guter Qualität. 
-
-Die Firma Linguee verfügte genau über solche Deutsch-Englisch-Übersetzungen.
-2017 trainierten Mitarbeiter dieses Unternehmens auf Basis dieser Übersetzungen
-ein neuronales Netz, das die bisher dahin existierenden Übersetzungsdienste von
-beispielsweise Google Translate bei Weitem übertraf. 2022 wurde das daraus
-gegründete Start-Up DeepL zum sogenannten Einhorn, also zu einem Start-Up, das
-mit mehr als 1 Milliarde Dollar bewertet wird (siehe
-[Artikel](https://www.faz.net/aktuell/wirtschaft/deepl-der-online-uebersetzungsdienst-wird-zum-einhorn-18467883.html)).
+In diesem Abschnitt haben wir das logistische Regressionsmodell formuliert. Als
+nächstes betrachten wir ein Lernverfahren, um die Gewichte des logistischen
+Regressionsmodells zu erlernen.

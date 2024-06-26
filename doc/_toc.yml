@@ -73,16 +73,18 @@ parts:
     - file: chapter11/sec02.md   
     - file: chapter11/sec03.md   
     - file: chapter11/sec04.md   
-    - file: chapter11/sec05.md   
-    - file: chapter11/sec06.md   
-    - file: chapter11/sec07.md
-    - file: chapter11/sec08.md
   - file: chapter12/sec00.md
     sections:
-    - file: chapter12/sec01.md   
-    - file: chapter12/sec02.md 
-    - file: chapter12/sec03.md 
-    - file: chapter12/sec04.md     
+    - file: chapter12/sec01.md  
+    - file: chapter12/sec02.md   
+    - file: chapter12/sec03.md   
+    - file: chapter12/sec04.md  
+  - file: chapter13/sec00.md
+    sections:
+    - file: chapter13/sec01.md   
+    - file: chapter13/sec02.md 
+    - file: chapter13/sec03.md 
+    - file: chapter13/sec04.md     
 - caption: Extras 
   chapters:
   - file: extras_skimage/extras_skimage_sec00.md
