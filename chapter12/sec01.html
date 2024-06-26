@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>12.1 Mehrschichtiges Perzeptron &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>Logistische Regression ersetzt Perzeptron &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -64,11 +64,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter12/sec01';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12.2 Neuronale Netze mit Scikit-Learn" href="sec02.html" />
-    <link rel="prev" title="12. Neuronale Netze" href="sec00.html" />
+    <link rel="next" title="Logistische Regression lernt mit Maximum-Likelihood" href="sec02.html" />
+    <link rel="prev" title="12. Logistische Regression" href="sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -247,40 +249,43 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron und logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec04.html">Übungen Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec05.html">Logistische Regression ersetzt Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec06.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec07.html">Logistische Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec08.html">Übungen logistische Regression</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="sec00.html">12. Neuronale Netze</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">12.1 Mehrschichtiges Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec03.html">12.3 Skalierung von Daten</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sec00.html">12. Logistische Regression</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec03.html">Logistische Regression mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec04.html">Übungen logistische Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec03.html">12.3 Skalierung von Daten</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="sec04.html">Übungen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec04.html">Übungen</a></li>
 </ul>
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec01.html">Grafiken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec02.html">Filter anwenden</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec06.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec07.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec08.html">Plots mit Karten</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_matplotlib/extras_sec00.html">Daten visualisieren mit Matplotlib</a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec01.html">Das Modul NumPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_matplotlib/extras_sec03.html">Visualisierung von DataFrames</a></li>
@@ -510,7 +515,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>12.1 Mehrschichtiges Perzeptron</h1>
+    <h1>Logistische Regression ersetzt Perzeptron</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -520,8 +525,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viele-perzeptronen-sind-ein-neuronales-netz">Viele Perzeptronen sind ein neuronales Netz</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viele-schichten-deep-learning">Viele Schichten = Deep Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten">Perzeptron ungeeignet bei nicht trennbaren Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistische-funktion-ersetzt-heaviside-funktion">Logistische Funktion ersetzt Heaviside-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -533,97 +540,239 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mehrschichtiges-perzeptron">
-<h1>12.1 Mehrschichtiges Perzeptron<a class="headerlink" href="#mehrschichtiges-perzeptron" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistische-regression-ersetzt-perzeptron">
+<h1>Logistische Regression ersetzt Perzeptron<a class="headerlink" href="#logistische-regression-ersetzt-perzeptron" title="Permalink to this heading">#</a></h1>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie wissen, was ein <strong>Multilayer-Perzeptron</strong> (MLP), also ein mehrschichtiges Perzeptron, ist.</p></li>
-<li><p>Sie können den Begriff <strong>Deep Learning</strong> erklären.</p></li>
-<li><p>Sie können mit Scikit-Learn ein neuronales Netz trainieren.</p></li>
+<li><p>Sie können die <strong>logistische Funktion</strong> zeichnen.</p></li>
+<li><p>Sie können die <strong>Funktionsgleichung der logistischen Funktion</strong> angeben.</p></li>
+<li><p>Sie können das <strong>logistische Regressionsmodell</strong> schematisch darstellen.</p></li>
 </ul>
 </div>
-<section id="viele-perzeptronen-sind-ein-neuronales-netz">
-<h2>Viele Perzeptronen sind ein neuronales Netz<a class="headerlink" href="#viele-perzeptronen-sind-ein-neuronales-netz" title="Permalink to this heading">#</a></h2>
-<p>In einem vorhergehenden Kapitel haben wir das Perzeptron, ein künstliches Neuron
-kennengelernt. Schematisch können wir es folgendermaßen darstellen:</p>
-<figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/perceptron.svg"><img alt="../_images/perceptron.svg" src="../_images/perceptron.svg" width="600px" /></a>
+</section>
+<section id="perzeptron-ungeeignet-bei-nicht-trennbaren-daten">
+<h2>Perzeptron ungeeignet bei nicht trennbaren Daten<a class="headerlink" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten" title="Permalink to this heading">#</a></h2>
+<p>Das Perzeptron ist ein simples ML-Verfahren für die binäre Klassifikation.
+Allerdings ist das Perzeptron nur für trennbare Datensätze geeignet. Dazu
+schauen wir uns zwei Beispiele aus dem Männerfußball an. Ziel der folgenden
+Klassifikationsaufgabe ist es, anhand des Marktwertes eines Vereines zu
+klassifizieren, ob der Verein in der Bundesliga oder in der 2. Bundesliga
+spielt.</p>
+<p>Dazu laden wir als erstes den Datensatz <code class="docutils literal notranslate"><span class="pre">20220801_Marktwert_Bundesliga.csv</span></code>
+(Download
+<a class="reference external" href="https://nextcloud.frankfurt-university.de/s/GESBZzRyXq6dLNC/download">csv</a>;
+Quelle: <a class="reference external" href="https://www.transfermarkt.de">https://www.transfermarkt.de</a>; Stichtag: 01.08.2022).</p>
+<div class="cell tag_output-scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/20220801_Marktwert_Bundesliga.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data_raw</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/20220801_Marktwert_Bundesliga.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python311/lib/python3.11/site-packages/pandas/io/parsers/readers.py:948,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">945</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">948</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python311/lib/python3.11/site-packages/pandas/io/parsers/readers.py:611,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">610</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">611</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">614</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python311/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1448,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1447</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1448</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python311/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1705,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1703</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1704</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1705</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1706</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1707</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1709</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1710</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1711</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1712</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1713</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1714</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1715</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1716</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python311/lib/python3.11/site-packages/pandas/io/common.py:863,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">863</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">866</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">867</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/20220801_Marktwert_Bundesliga.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die ersten fünf Einträge lauten wie folgt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_raw</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die erste Spalte enthält den Vereinsnamen, die zweite Spalte listet die
+Ligazugehörigkeit (Bundesliga, 2. Bundesliga oder 3. Liga), die dritte Spalte
+beinhaltet den Marktwert des Vereins in Mio. Euro und die vierte Spalte listet
+die Anzahl der Spieler.</p>
+<p>Welche Ligen sind denn im Datensatz vertreten?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuerst erkunden wie die Daten und lassen uns den MArktwert abhängig von der
+Ligazugehörigkeit visualisieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data_raw</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Wert&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In der Bundesliga gibt es bezogen auf den Kaderwert drei Ausreißer, in der 3.
+Liga gibt es einen Ausreißer. Zoom man in die Visualisierung hinein, so sehen
+wir, dass ein Marktwert von 36 Mio. Euro die Erstligisten von den Zweitligisten
+trennt. Daher wäre für eine Klassifikation Bundesliga vs. 2. Bundesliga ein
+Perzeptron trainierbar. Eine solche Trennung funktioniert bei den Vereinen der</p>
+<ol class="arabic simple">
+<li><p>Bundesliga und der 3. Liga nicht. Der minimale Marktwert der 2. Bundesliga
+(8.83 Mio. EUR) ist niedriger als der maximale Marktwert der 3. Liga (13.05 Mio.
+EUR). Wir betrachten nun nur noch 2. und 3. Liga und stellen die folgende Frage:</p></li>
+</ol>
+<p>Kann aufgrund des Marktwertes die Zugehörigkeit zur 2. Bundesliga oder 3. Liga
+prognostiziert werden? Wir visualisieren die einzelnen Datenpunkte mit der
+Ursache ‘Wert’ auf der x-Achse und ‘Ligazugehörigkeit’ auf der y-Achse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data_raw</span><span class="p">[</span> <span class="n">data_raw</span><span class="p">[</span><span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Bundesliga&#39;</span> <span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Wert&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Ligazugehörigkeit&#39;</span><span class="p">,</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Deutscher Vereinsfußball der Männer (Stichtag: 1.8.2022)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Als nächstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
+Bezeichnungen wie “3. Liga” und “2. Bundesliga” kann Python nämlich nicht
+rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
+üblicherweise die Zahlen 0 und 1 verwendet, also</p>
+<ul>
+    <li>3. Liga --> 0</li>
+    <li>2. Bundesliga --> 1</li>
+</ul>
+<p>Das Klassifikationsproblem lautet also: angenommen, ein
+Verein hat den Marktwert x. Gehört der Verein dann zur Klasse 1 (= 2.
+Bundesliga)?</p>
+<p>Als zweites verabschieden wir uns von dem Perzeptron. Anstatt eine Gerade zur
+Trennung einzuziehen, nehmen wir eine S-förmige Funktion. Diese S-förmige
+Funktion interpretieren wir als <strong>Wahrscheinlichkeit</strong> der Ligazugehörigkeit.
+Die Werte liegen dabei zwischen 0 und 1. Bei einer Wahrscheinlichkeit von 1 sind
+wir also 100 % sicher, dass der Verein zur Klasse 1 (= 2. Bundesliga) gehört.
+Bei einem Wert von 0.7 gehen wir mit 70 % Wahrscheinlichkeit davon aus, dass der
+Verein zur Klasse 1 (= 2. Bundesliga) gehört.</p>
+<p>Als drittes verwandeln wir die Wahrscheinlichkeit mit Werten <em>zwischen</em> 0 und 1
+in die Klassen 0 oder 1. Dazu nutzen wir die Heaviside-Funktion. Die komplette
+Vorgehensweise ist in der folgenden Grafik dargestellt.</p>
+<figure class="align-default" id="bundesliga-decision-function-annotated">
+<a class="reference internal image-reference" href="../_images/bundesliga_decision_function_annotated.pdf"><img alt="../_images/bundesliga_decision_function_annotated.pdf" src="../_images/bundesliga_decision_function_annotated.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Die S-förmige schwarz gestrichelte Kurve gibt die Wahrscheinlichkeit an, dass ein Verein zur 2. Bundesliga gehört. Da nicht nach einer Wahrscheinlichkeit gefragt ist, sondern nur nach 2. Bundesliga – ja oder nein – werden alle Vereine mit einer Wahrscheinlichkeitgrößer 50 % (also <span class="math notranslate nohighlight">\(\geq 0.5\)</span>) als Zweitligisten klassifiziert.</span><a class="headerlink" href="#bundesliga-decision-function-annotated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Jedes Eingangssignal wird mit einem Gewicht multipliziert. Anschließend werden
-die gewichteten Eingangssignale summiert. Übersteigt die gewichtete Summe einen
-Schwellenwert, feuert sozusagen das künstliche Neuron. Das Ausgabesignal wird
-aktiviert.</p>
-<p>Mathematisch gesehen, wurde nach dem Bilden der gewichteten Summe die
-Heaviside-Funktion angewendet. Im Kapitel über die logistische Regression haben
-wir bereits gelernt, dass auch andere Funktionen zum Einsatz kommen können. Bei
-der logistischen Regression wird beispielsweise die Sigmoid-Funktion verwendet.
-Bei neuronalen Netzen sind insbesondere die
-<a class="reference external" href="https://de.wikipedia.org/wiki/Rectifier_(neuronale_Netzwerke)">ReLU-Funktion</a>
-(rectified linear unit)</p>
-<figure class="align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/plot_relu_function.svg"><img alt="../_images/plot_relu_function.svg" src="../_images/plot_relu_function.svg" width="600px" /></a>
+<p>Jetzt brauchen wir eine Funktion für die S-förmige Kurve, das wir dann mittels
+eines ML-Verfahrens an unsere Trainingsdaten anpassen können.</p>
+</section>
+<section id="logistische-funktion-ersetzt-heaviside-funktion">
+<h2>Logistische Funktion ersetzt Heaviside-Funktion<a class="headerlink" href="#logistische-funktion-ersetzt-heaviside-funktion" title="Permalink to this heading">#</a></h2>
+<p>Beim Perzeptron wird auf die gewichtete Summe von Inputs die Heaviside-Funktion
+angewandt. So simpel die Heaviside-Funktion <span class="math notranslate nohighlight">\(\phi\)</span> auch ist, sie hat einen
+entscheidenen Nachteil. Die Heaviside-Funktion ist unstetig, sie springt von
+Null auf Eins. Diese Sprungstelle hat die <strong>logistische Funktion</strong> nicht.</p>
+<p>Die logistische Funktion ist defininiert als</p>
+<div class="math notranslate nohighlight">
+\[\sigma(z) = \frac{1}{1+e^{-z}}.\]</div>
+<p>Um die logistische Funktion abzukürzen, verwenden wir dabei den griechischen
+Buchstaben Sigma <span class="math notranslate nohighlight">\(\sigma\)</span>, weil die logistische Funktion auch
+<strong>Sigmoid-Funktion</strong> genannt wird. In der folgenden Abbildung ist der
+Funktionsgraph der logistischen Funktion dargestellt.</p>
+<figure class="align-default" id="plot-logit-function">
+<a class="reference internal image-reference" href="../_images/plot_logit_function.pdf"><img alt="../_images/plot_logit_function.pdf" src="../_images/plot_logit_function.pdf" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">ReLU-Funktion</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Funktionsgraph der logistischen Funktion, auch Sigmoid-Funktion genannt</span><a class="headerlink" href="#plot-logit-function" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>und der <a class="reference external" href="https://de.wikipedia.org/wiki/Tangens_hyperbolicus_und_Kotangens_hyperbolicus">Tangens hyperbolicus</a></p>
-<figure class="align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/plot_tanh_function.svg"><img alt="../_images/plot_tanh_function.svg" src="../_images/plot_tanh_function.svg" width="600px" /></a>
+<p>Damit haben wir die Bausteine des logistischen Regressionmodells komplettiert.
+Genau wie bei der linearen Regression oder beim Perzeptron werden zuerst die
+einzelnen Inputs gewichtet und aufsummiert. Auf die gewichtete Summe wird dann
+die logistische Funktion als Aktivierungsfunktione angewendet. Das Ergebnis ist
+die Wahrscheinlichkeit für die Klasse mit der Bezeichnung 1 (in unserem Beispiel
+die Zugehörigkeit zur 2. Bundesliga). Zuletzt wird noch die Heaviside-Funktion
+als Schwellenwertfunktion angewendet, um aus der Wahrscheinlichkeit eine Klasse
+zu machen.</p>
+<p>Schematisch dargestellt sieht das logistische Regressionsmodell also
+folgendermaßen aus:</p>
+<figure class="align-default" id="topology-logistic-regression">
+<a class="reference internal image-reference" href="../_images/topology_logistic_regression.svg"><img alt="../_images/topology_logistic_regression.svg" src="../_images/topology_logistic_regression.svg" width="600px" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Tangens hyperbolicus</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Das logistische Regressionsmodell als neuronales Netz formuliert.</span><a class="headerlink" href="#topology-logistic-regression" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>häufig eingesetzte Aktivierungsfunktionen.</p>
-<p>Oft werden diese beiden Schritte – Bilden der gewichteten Summe und Anwenden
-der Aktivierungsfunktion – in einem Symbol gemeinsam dargestellt, wie in der
-folgenden Abbildung zu sehen.</p>
-<figure class="align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/neuron.svg"><img alt="../_images/neuron.svg" src="../_images/neuron.svg" width="600px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Vereinfachte schematische Darstellung eines Perzeptrons</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Tatsächlich sind sogar häufig Darstellungen verbreitet, bei denen nur noch durch
-die Kreise das Perzeptron oder das künstliche Neuron symbolisiert wird.</p>
-<figure class="align-default" id="id5">
-<a class="reference internal image-reference" href="../_images/neuron_symbolisch.svg"><img alt="../_images/neuron_symbolisch.svg" src="../_images/neuron_symbolisch.svg" width="600px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Symbolbild eines Perzeptrons bzw. eines künstlichen Neurons</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Die Idee des mehrschichtigen Perzeptrons ist es, eine oder mehrere
-Zwischenschichten einzuführen. In dem folgenden Beispiel wird eine
-Zwischenschichtmit zwei Neuronen eingeführt:</p>
-<figure class="align-default" id="id6">
-<a class="reference internal image-reference" href="../_images/MLP_1layer_2neurons.svg"><img alt="../_images/MLP_1layer_2neurons.svg" src="../_images/MLP_1layer_2neurons.svg" width="600px" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Ein mehrschichtiges Perzeptron (Mulitilayer Perceptron)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Es können beliebig viele Zwischenschichten eingeführt werden. Jede neue
-Zwischenschicht kann dabei unterschiedliche Anzahlen von Neuronen enthalten.
-Insgesamt nennen wir die so entstehende Rechenvorschrift <strong>mehrschichtiges
-Perzeptron</strong> oder <strong>Multilayer Perceptron</strong> oder <strong>neuronales Netz</strong>.</p>
-<p>Das folgende Video fasst die Struktur eines neuronalen Netzes noch einmal zusammen.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2dBu9wgW2-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></section>
-<section id="viele-schichten-deep-learning">
-<h2>Viele Schichten = Deep Learning<a class="headerlink" href="#viele-schichten-deep-learning" title="Permalink to this heading">#</a></h2>
-<p>Bei neuronalen Netzen werden viele Schichten mit vielen Neuronen in die
-Rechenvorschrift einbezogen. Das führt dazu, dass vor allem sogenannte tiefe
-neuronale Netze, also solche mit vielen Schichten, extrem leistungsfähig sind.
-Umgekehrt benötigen neuronale Netze aber auch eine große Anzahl an
-Trainingsdaten mit guter Qualität.</p>
-<p>Die Firma Linguee verfügte genau über solche Deutsch-Englisch-Übersetzungen.
-2017 trainierten Mitarbeiter dieses Unternehmens auf Basis dieser Übersetzungen
-ein neuronales Netz, das die bisher dahin existierenden Übersetzungsdienste von
-beispielsweise Google Translate bei Weitem übertraf. 2022 wurde das daraus
-gegründete Start-Up DeepL zum sogenannten Einhorn, also zu einem Start-Up, das
-mit mehr als 1 Milliarde Dollar bewertet wird (siehe
-<a class="reference external" href="https://www.faz.net/aktuell/wirtschaft/deepl-der-online-uebersetzungsdienst-wird-zum-einhorn-18467883.html">Artikel</a>).</p>
+<p>Mathematisch formuliert lautet das logistische Regressionsmodell folgendermaßen:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{P} = \sigma\left(\sum_{i=0}^{N} x_i \omega_i\right) = \frac{1}{1+e^{-\sum x_i \omega_i}} 
+\rightsquigarrow \hat{y} = \begin{cases} 0: &amp; \hat{P} &lt; 0.5 \\ 1: &amp; \hat{P} \geq 0.5 \end{cases} \end{split}\]</div>
+</section>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
+<p>In diesem Abschnitt haben wir das logistische Regressionsmodell formuliert. Als
+nächstes betrachten wir ein Lernverfahren, um die Gewichte des logistischen
+Regressionsmodells zu erlernen.</p>
 </section>
 </section>
 
@@ -663,7 +812,7 @@ mit mehr als 1 Milliarde Dollar bewertet wird (siehe
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">12. Neuronale Netze</p>
+        <p class="prev-next-title">12. Logistische Regression</p>
       </div>
     </a>
     <a class="right-next"
@@ -671,7 +820,7 @@ mit mehr als 1 Milliarde Dollar bewertet wird (siehe
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">12.2 Neuronale Netze mit Scikit-Learn</p>
+        <p class="prev-next-title">Logistische Regression lernt mit Maximum-Likelihood</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -691,8 +840,10 @@ mit mehr als 1 Milliarde Dollar bewertet wird (siehe
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viele-perzeptronen-sind-ein-neuronales-netz">Viele Perzeptronen sind ein neuronales Netz</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viele-schichten-deep-learning">Viele Schichten = Deep Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perzeptron-ungeeignet-bei-nicht-trennbaren-daten">Perzeptron ungeeignet bei nicht trennbaren Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistische-funktion-ersetzt-heaviside-funktion">Logistische Funktion ersetzt Heaviside-Funktion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 

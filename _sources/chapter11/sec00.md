@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 11. Perzeptron und logistische Regression
+# 11. Perzeptron 
 
 Durch neuronale Netze, die tief verschachtelt sind (= tiefe neuronale Netze =
 deep neural network), gab es im Bereich des maschinellen Lernens einen
@@ -39,12 +39,8 @@ Auf der Seite
 
 finden Sie einen kurzen Übersichtsartikel dazu, wie DeepL funktioniert.
 
-Das binäre Klassifikationsverfahren des Perzeptrons sortiert Datensätze in zwei
-Klassen. Ob dabei die Entscheidung für eine Klasse sehr knapp getroffen wird
-oder eindeutig erscheint, wird dabei nicht transparent. Im Folgenden
-beschäftigen wir uns mit einem binären Klassifikationsverfahren namens
-logistische Regression, das auf einer Prognose der Klassenwahrscheinlichkeit
-basiert.
+Die Grundlage der neuronalen Netze ist das Perzeptron, mit dem wir uns in diesem
+Kapitel beschäftigen.
 
 Kapitelübersicht:
 
