@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Das Modul NumPy &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -15,58 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'extras_matplotlib/extras_sec01';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Linien-, Balken- und Streudiagramme" href="extras_sec02.html" />
@@ -80,27 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,8 +113,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -147,6 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../intro.html">
   
@@ -164,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,122 +185,123 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec04.html">Übungen</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Theorie der linearen Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec01.html">8.1 Datenvorverarbeitung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec02.html">8.2 Modellvalidierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">9.2 Random Forests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">Übung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">9.3 XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec04.html">Übungen Perzeptron</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Logistische Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">Logistische Regression ersetzt Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">Logistische Regression mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec04.html">Übungen logistische Regression</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Neuronale Netze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec03.html">12.3 Skalierung von Daten</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec04.html">Übungen</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec01.html">Grafiken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec02.html">Filter anwenden</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec06.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec07.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec08.html">Plots mit Karten</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_sec00.html">Daten visualisieren mit Matplotlib</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_sec00.html">Daten visualisieren mit Matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Das Modul NumPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extras_sec02.html">Linien-, Balken- und Streudiagramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extras_sec03.html">Visualisierung von DataFrames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extras_sec04.html">Optional: Histogramme</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Anhang</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -320,14 +330,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -352,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/extras_matplotlib/extras_sec01.md" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -486,10 +496,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -497,14 +507,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -544,7 +554,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="das-modul-numpy">
-<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Permalink to this heading">#</a></h1>
+<h1>Das Modul NumPy<a class="headerlink" href="#das-modul-numpy" title="Link to this heading">#</a></h1>
 <p>Im letzten Kapitel haben wir gelernt, Daten in Form von Tabellen als
 Pandas-Objekte zu verwalten. Dabei arbeiten die Module Pandas, Scikit-Learn und
 auch das Visualisierungsmodul Matplotlib, das wir in diesem Kapitel kennenlernen
@@ -562,7 +572,7 @@ mehrdimensionale Arrays an.</p>
 <strong>NumPy-Array</strong> erarbeiten, um für Matplotlib und Scikit-Learn die Basis zu
 schaffen.</p>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -589,7 +599,7 @@ schaffen.</p>
 </div>
 </section>
 <section id="numpy-ist-schneller-durch-c">
-<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Permalink to this heading">#</a></h2>
+<h2>NumPy ist schneller durch C<a class="headerlink" href="#numpy-ist-schneller-durch-c" title="Link to this heading">#</a></h2>
 <p>Alle Daten lassen sich letztendlich als eine Folge von Zahlen schreiben.
 Beispielsweise kann ein Foto durch seine Pixel beschrieben werden
 zusammengesetzt aus den Werten RGB (rot - grün - blau). Python bietet dafür
@@ -620,23 +630,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.55148093 0.94081758 0.91802893 0.95930461 0.70529033 0.56619749
- 0.23713682 0.35571663 0.96017508 0.28938103 0.33413455 0.41309462
- 0.64642975 0.42468413 0.69055278 0.36452012 0.40021704 0.83128798
- 0.95474238 0.21654813 0.13094932 0.60974071 0.90950901 0.95435368
- 0.24964432 0.27971097 0.31636555 0.02704876 0.32837859 0.6566057
- 0.44734651 0.5013181  0.5571854  0.92935072 0.02616671 0.25843299
- 0.06019286 0.88182878 0.8522347  0.09899125 0.31275133 0.11167255
- 0.88895338 0.78447669 0.50532608 0.94916748 0.94416424 0.37711663
- 0.14371815 0.20187093 0.1567123  0.5098023  0.5381884  0.84268875
- 0.19761916 0.88651787 0.32730725 0.47456989 0.53198403 0.7745085
- 0.47961188 0.04993479 0.97451599 0.63005412 0.84364878 0.58463534
- 0.03001385 0.84534993 0.63992532 0.79343421 0.5178776  0.02918956
- 0.43478212 0.59423414 0.60904414 0.62539286 0.29817685 0.03388156
- 0.96642289 0.18580242 0.83332456 0.20786801 0.67578787 0.00491999
- 0.26160349 0.57286339 0.12068813 0.12093185 0.17516219 0.22780501
- 0.82840767 0.34119378 0.88885109 0.47894937 0.86881154 0.77299787
- 0.89664651 0.01754011 0.71537168 0.11369293]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.92795825 0.67902157 0.1408799  0.25339475 0.74968371 0.25514308
+ 0.90487285 0.40129664 0.13851202 0.11520313 0.18572095 0.86781396
+ 0.31127916 0.26261346 0.16694949 0.81393106 0.57028991 0.79877506
+ 0.13012213 0.19054973 0.56286132 0.03423597 0.78114361 0.92747638
+ 0.87726647 0.96666572 0.69476326 0.1759209  0.38158533 0.31970205
+ 0.24582885 0.65190454 0.14960741 0.59752581 0.9318906  0.90877551
+ 0.55344041 0.9076065  0.00245258 0.92086236 0.45600283 0.49668516
+ 0.26877602 0.39486323 0.07096838 0.90323893 0.63050483 0.32028476
+ 0.08748018 0.34828686 0.75010809 0.59975307 0.82639217 0.94900474
+ 0.63348183 0.50005419 0.49539842 0.60623996 0.11203395 0.01112166
+ 0.68402462 0.82709456 0.44897045 0.10277421 0.33864803 0.80793791
+ 0.38912905 0.26880487 0.76346276 0.92021245 0.9925048  0.57550029
+ 0.56472523 0.10478444 0.0463573  0.64965812 0.02564607 0.23660511
+ 0.24229326 0.59159246 0.26169879 0.32679934 0.98896369 0.92851526
+ 0.80612007 0.98368425 0.77793814 0.31509092 0.10879723 0.79862155
+ 0.59960736 0.10528532 0.76792426 0.71478706 0.61947446 0.67694226
+ 0.65818725 0.47447101 0.4493511  0.71521985]
 </pre></div>
 </div>
 </div>
@@ -654,8 +664,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9745159862974665
-NumPy max =  0.9745159862974665
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.992504800607764
+NumPy max =  0.992504800607764
 </pre></div>
 </div>
 </div>
@@ -674,10 +684,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.99 µs ± 13.7 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.97 μs ± 70 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3 µs ± 9.28 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.23 μs ± 5.34 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -685,7 +695,7 @@ Mittelwerte bildet.</p>
 <p>Sie sehen, die NumPy-Variante ist erheblich schneller als die Standard-Variante.</p>
 </section>
 <section id="erzeugung-von-numpy-arrays">
-<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Erzeugung von NumPy-Arrays<a class="headerlink" href="#erzeugung-von-numpy-arrays" title="Link to this heading">#</a></h2>
 <p>Im Gegensatz zu Python-Listen enthalten NumPy-Arrays nur Elemente des gleichen
 Datentyps. Wenn eine Liste nur aus gleichen Datentypen besteht, können wir
 direkt aus der Liste ein NumPy-Array erzeugen. Dazu verwenden wir <code class="docutils literal notranslate"><span class="pre">array()</span></code> aus
@@ -717,7 +727,7 @@ Die folgende Grafik zeigt das Nummerierungsschema:</p>
 <figure class="align-default" id="pics-fig-numpy-array">
 <a class="reference internal image-reference" href="../_images/fig_numpy_array.png"><img alt="../_images/fig_numpy_array.png" src="../_images/fig_numpy_array.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Nummerierungsschema bei NumPy-Arrays</span><a class="headerlink" href="#pics-fig-numpy-array" title="Link to this image">#</a></p>
 <div class="legend">
 <p>(<a class="reference external" href="https://predictivehacks.com/tips-about-NumPy-arrays/">Quelle:</a>)</p>
 </div>
@@ -896,8 +906,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.15956977 0.92506079 0.63188782]
- [0.46588125 0.88246007 0.07636635]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.45873541 0.34749271 0.7825612 ]
+ [0.91650366 0.07010289 0.42165301]]
 </pre></div>
 </div>
 </div>
@@ -911,9 +921,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.14017167 -0.81130968  2.78940182  1.60107522]
- [-0.37898824  0.88970786  0.65180498  0.46687701]
- [ 1.52619518  0.68221322  0.58592421 -0.87562795]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.35903273 -0.43752634 -0.47189251 -1.33357793]
+ [-0.78599998 -0.5237681   0.13089062  0.87585111]
+ [-0.30474388  0.1202338  -0.49368074  1.38927517]]
 </pre></div>
 </div>
 </div>
@@ -971,7 +981,7 @@ Mittelwert 37.5, Standardabweichung 0.8</p></li>
 </div>
 </section>
 <section id="attribute-von-numpy-arrays">
-<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Attribute von NumPy-Arrays<a class="headerlink" href="#attribute-von-numpy-arrays" title="Link to this heading">#</a></h2>
 <p>Damit wir besser verstehen, welche Attribute die NumPy-Arrays haben können,
 erzeugen wir uns zufällig drei NumPy-Arrays. Damit aber nicht bei jeder neuen
 Ausführung der Code-Zelle neue Zufallszahlen gezogen werden, fixieren wir den
@@ -1061,7 +1071,7 @@ kennengelernt.</p>
 </div>
 </section>
 <section id="zugriff-einzelner-elemente-eines-arrays">
-<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Zugriff einzelner Elemente eines Arrays<a class="headerlink" href="#zugriff-einzelner-elemente-eines-arrays" title="Link to this heading">#</a></h2>
 <p>Der Zugriff bei eindimensionalen Arrays erfolgt genau wie bei Listen über den
 <strong>Zugriffsoperator</strong> <code class="docutils literal notranslate"><span class="pre">[]</span></code>. Auch hier wird ab 0 beginnend gezählt.</p>
 <div class="cell docutils container">
@@ -1126,7 +1136,7 @@ nachher y =  [[  5   2   4]
 </div>
 </section>
 <section id="funktionen-auf-numpy-arrays-anwenden">
-<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Permalink to this heading">#</a></h2>
+<h2>Funktionen auf NumPy-Arrays anwenden<a class="headerlink" href="#funktionen-auf-numpy-arrays-anwenden" title="Link to this heading">#</a></h2>
 <p>NumPy-Arrays ermöglichen die Verarbeitung mit den typischen mathematischen
 Funktionen und den üblichen Statistik-Größen. Schauen wir uns einfach ein paar
 Beispiele an:</p>
@@ -1220,7 +1230,7 @@ max3 [1.10398039 3.45940709 2.15944153]
 </div>
 </section>
 <section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Permalink to this heading">#</a></h2>
+<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Link to this heading">#</a></h2>
 <p>In diesem Abschnitt haben wir das NumPy-Array kennengelernt, eine sehr
 effiziente Datenstruktur. Die Erzeugungsmethoden nach einem Muster werden wir
 vor allem für die Visualisierung von Funktionen brauchen. Das Bestimmen der
@@ -1257,7 +1267,7 @@ füttern.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1348,8 +1358,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

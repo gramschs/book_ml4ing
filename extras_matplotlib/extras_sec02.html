@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Linien-, Balken- und Streudiagramme &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
@@ -15,58 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'extras_matplotlib/extras_sec02';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Visualisierung von DataFrames" href="extras_sec03.html" />
@@ -80,27 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,8 +113,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -147,6 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../intro.html">
   
@@ -164,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -176,122 +185,123 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter04/chapter04_sec00.html">4. Tabellarische Daten erkunden</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter04/chapter04_sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec04.html">Übungen</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter06/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Theorie der linearen Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. Polynomiale Regression und ML-Workflow</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec01.html">8.1 Datenvorverarbeitung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec02.html">8.2 Modellvalidierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/sec04.html">Übungen</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">9.2 Random Forests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">Übung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">9.3 XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter11/sec04.html">Übungen Perzeptron</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Logistische Regression</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Logistische Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">Logistische Regression ersetzt Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">Logistische Regression mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter12/sec04.html">Übungen logistische Regression</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Neuronale Netze</a><input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-13"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Neuronale Netze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec03.html">12.3 Skalierung von Daten</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../chapter13/sec04.html">Übungen</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-14"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec01.html">Grafiken</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_skimage/extras_skimage_sec02.html">Filter anwenden</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras_plotly/extras_sec05.html">Plotly</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec06.html">Streudiagramm und Balkendiagramm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec07.html">Histogramme und Scattermatrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../extras_plotly/extras_sec08.html">Plots mit Karten</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_sec00.html">Daten visualisieren mit Matplotlib</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="extras_sec00.html">Daten visualisieren mit Matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="extras_sec01.html">Das Modul NumPy</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Linien-, Balken- und Streudiagramme</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extras_sec03.html">Visualisierung von DataFrames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="extras_sec04.html">Optional: Histogramme</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Anhang</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -320,14 +330,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -352,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/extras_matplotlib/extras_sec02.md" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -486,10 +496,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -497,14 +507,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -542,9 +552,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="linien-balken-und-streudiagramme">
-<h1>Linien-, Balken- und Streudiagramme<a class="headerlink" href="#linien-balken-und-streudiagramme" title="Permalink to this heading">#</a></h1>
+<h1>Linien-, Balken- und Streudiagramme<a class="headerlink" href="#linien-balken-und-streudiagramme" title="Link to this heading">#</a></h1>
 <section id="lernziele">
-<h2>Lernziele<a class="headerlink" href="#lernziele" title="Permalink to this heading">#</a></h2>
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -556,7 +566,7 @@ document.write(`
 </div>
 </section>
 <section id="liniendiagramme">
-<h2>Liniendiagramme<a class="headerlink" href="#liniendiagramme" title="Permalink to this heading">#</a></h2>
+<h2>Liniendiagramme<a class="headerlink" href="#liniendiagramme" title="Link to this heading">#</a></h2>
 <p>Liniendiagramme werden zur Visualisierung benutzt, wenn die Daten kontinuierlich
 sind und zu jedem x-Wert ein y-Wert vorliegt. Am häufigsten ist dies der Fall,
 wenn die Daten von einer mathematischen Funktion stammen. Obwohl die Daten
@@ -607,10 +617,10 @@ Linienplot und Beschriftungen hinzu.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10a7a0950&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11ff04e10&gt;]
 </pre></div>
 </div>
-<img alt="../_images/51b0f7f7383d55c188fe2efd958b17e22b235dac38e32d1891efa508817ec278.png" src="../_images/51b0f7f7383d55c188fe2efd958b17e22b235dac38e32d1891efa508817ec278.png" />
+<img alt="../_images/af93d28af6b9b5bfa5cfd39c8ce13162743d811cb3af29c27890391b3936e0d0.png" src="../_images/af93d28af6b9b5bfa5cfd39c8ce13162743d811cb3af29c27890391b3936e0d0.png" />
 </div>
 </div>
 <p>PS: Ohne Strichpunkt/Semikolon gibt Jupyter-Lab noch Objekttyp und Referenz des
@@ -641,7 +651,7 @@ nach eingestellter Anzahl.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/007345bd173f6aaf9802c21048247780412ef85417d6cdb0536a1d4ca6497b00.png" src="../_images/007345bd173f6aaf9802c21048247780412ef85417d6cdb0536a1d4ca6497b00.png" />
+<img alt="../_images/25f8993e8f8259ad41a5f0f7a8e2401edd9d63d3a31668f3958443a153ad1123.png" src="../_images/25f8993e8f8259ad41a5f0f7a8e2401edd9d63d3a31668f3958443a153ad1123.png" />
 </div>
 </div>
 <p>Nächstes Thema, Beschriftungen. Mit den Methoden <code class="docutils literal notranslate"><span class="pre">.set_xlabel()</span></code> und
@@ -663,7 +673,7 @@ Titel gesetzt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1ba038619b07eb2ed71a0fda52188a97e63237633b98143749239f9022cb70da.png" src="../_images/1ba038619b07eb2ed71a0fda52188a97e63237633b98143749239f9022cb70da.png" />
+<img alt="../_images/bd2aecdc4468a95996ae40dc01e50c26408f1a26d57be830eae4ee58a29d742a.png" src="../_images/bd2aecdc4468a95996ae40dc01e50c26408f1a26d57be830eae4ee58a29d742a.png" />
 </div>
 </div>
 <p>Zuletzt soll unser Plot gespeichert werden. Es stehen mehrere Grafikformate zur
@@ -728,11 +738,11 @@ Funktion achten?)</p>
 </div>
 </section>
 <section id="balkendiagramme">
-<h2>Balkendiagramme<a class="headerlink" href="#balkendiagramme" title="Permalink to this heading">#</a></h2>
+<h2>Balkendiagramme<a class="headerlink" href="#balkendiagramme" title="Link to this heading">#</a></h2>
 <p>Mit der Methode <code class="docutils literal notranslate"><span class="pre">.bar()</span></code> kann ein Balkendiagramm erstellt werden. Nehmen wir mal
 an, wir möchten auswerten, wie viele Nutzer/innen in Moodle auf die Jupyter
 Notebooks zum Download zugegriffen haben:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Woche</p></th>
 <th class="head"><p>Anzahl Nutzer/innen</p></th>
@@ -756,6 +766,7 @@ Notebooks zum Download zugegriffen haben:</p>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Dann wird das Balkendiagramm mit folgenden Code erzeugt:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,7 +784,7 @@ Notebooks zum Download zugegriffen haben:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7a6993bd6b76a79176ac98f22537c978af1c9a44a0b5d1ad586d3060d447048e.png" src="../_images/7a6993bd6b76a79176ac98f22537c978af1c9a44a0b5d1ad586d3060d447048e.png" />
+<img alt="../_images/9a84b3f5e8487dd1dccceef099d39d80182f8073c0446208340e2c2710eb016b.png" src="../_images/9a84b3f5e8487dd1dccceef099d39d80182f8073c0446208340e2c2710eb016b.png" />
 </div>
 </div>
 <div class="miniexercise admonition">
@@ -781,7 +792,7 @@ Notebooks zum Download zugegriffen haben:</p>
 <p>Hier ist eine Tabelle mit den Zugriffszahlen auf das MATLAB Live Script in der
 Vorlesung angewandte Informatik im Sommersemester 2021. Bitte stellen Sie die
 Daten als Balkendiagramm inklusive Beschriftungen dar.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Woche</p></th>
 <th class="head"><p>Anzahl Nutzer/innen</p></th>
@@ -805,6 +816,7 @@ Daten als Balkendiagramm inklusive Beschriftungen dar.</p>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -831,7 +843,7 @@ Daten als Balkendiagramm inklusive Beschriftungen dar.</p>
 </div>
 </section>
 <section id="streudiagramme">
-<h2>Streudiagramme<a class="headerlink" href="#streudiagramme" title="Permalink to this heading">#</a></h2>
+<h2>Streudiagramme<a class="headerlink" href="#streudiagramme" title="Link to this heading">#</a></h2>
 <p>Bei Streudiagrammen werden nicht die Punkte <span class="math notranslate nohighlight">\((x_1,y_2)\)</span> mit <span class="math notranslate nohighlight">\((x_2,y_2)\)</span> mit
 <span class="math notranslate nohighlight">\((x_3,y_3)\)</span> usw. durch Linien verbunden, sondern jeder Punkt selbst wird an der
 Stelle seiner Koordinaten eingezeichnet. Ob dazu ein Punkt, Kreis, Dreieck oder
@@ -851,7 +863,7 @@ Matplotlib-Methode auch <code class="docutils literal notranslate"><span class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b858359e98839115f5796c70090c49489d1fdebc98b9bedc9034536ef322c295.png" src="../_images/b858359e98839115f5796c70090c49489d1fdebc98b9bedc9034536ef322c295.png" />
+<img alt="../_images/358034d556c9406408cf61225a649dd3df11db223ef49d1b1ac7867e74d0bf8c.png" src="../_images/358034d556c9406408cf61225a649dd3df11db223ef49d1b1ac7867e74d0bf8c.png" />
 </div>
 </div>
 <p>Über die Option <code class="docutils literal notranslate"><span class="pre">marker=</span> </code> lässt sich das Symbol einstellen, mit dem das
@@ -875,7 +887,7 @@ aus:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ceef613ad72382bee3bc5e599058bae8bb69f262b6276ffc2703e313281c8fb5.png" src="../_images/ceef613ad72382bee3bc5e599058bae8bb69f262b6276ffc2703e313281c8fb5.png" />
+<img alt="../_images/4823619f317ebba714425f68b49a42002dc315e5945384dd9a1c8c8357eeadc0.png" src="../_images/4823619f317ebba714425f68b49a42002dc315e5945384dd9a1c8c8357eeadc0.png" />
 </div>
 </div>
 <p>Für bekannte Funktionen wie Sinus oder Kosinus würde man Liniendiagramme
@@ -899,7 +911,7 @@ Farben verwenden.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5878f4c864091c72c4d998cf9489b511d0da7538e405db079fe3195ea09f4015.png" src="../_images/5878f4c864091c72c4d998cf9489b511d0da7538e405db079fe3195ea09f4015.png" />
+<img alt="../_images/39f710b79b53809a14fcc785cf294f9694ca37a9db2d6ac2f28495f019e452bd.png" src="../_images/39f710b79b53809a14fcc785cf294f9694ca37a9db2d6ac2f28495f019e452bd.png" />
 </div>
 </div>
 <p>Dann ist es aber auch gut, die Visualisierung zu beschriften. Dazu kennzeichnet
@@ -927,7 +939,7 @@ zu den Namen (Labels) zugeordnet werden.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d76bb9beb414e81c08ee0afed945488405f01efaef51b72edf313bf72303ee4e.png" src="../_images/d76bb9beb414e81c08ee0afed945488405f01efaef51b72edf313bf72303ee4e.png" />
+<img alt="../_images/446eb43526eabf9ac236e1e3e7f930c68e3a36036e26958ea9dff10ba8ae01c5.png" src="../_images/446eb43526eabf9ac236e1e3e7f930c68e3a36036e26958ea9dff10ba8ae01c5.png" />
 </div>
 </div>
 <div class="miniexercise admonition">
@@ -970,7 +982,7 @@ Diamanten.</p>
 </div>
 </section>
 <section id="zusammenfassung-und-ausblick">
-<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Permalink to this heading">#</a></h2>
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
 <p>In diesem Abschnitt haben wir die drei wichtigsten Diagrammtypen wiederholt. Das
 Linien- und das Streudiagramm werden für die Visualisierung von kontinuierlichen
 Daten verwendet, wohingegen das Balkendiagramm dem Plot von diskreten Daten
@@ -1006,7 +1018,7 @@ zur Visualisierung von Tabellendaten in einem DataFrame.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1095,8 +1107,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
