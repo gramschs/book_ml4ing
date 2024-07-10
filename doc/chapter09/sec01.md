@@ -219,7 +219,7 @@ trainieren. Der Trainingsprozess ähnelt dem von Gradient Boosting, wobei in
 jeder Runde ein neues Modell trainiert wird, das die Fehler der vorherigen
 Modelle korrigiert. Durch die zufällige Auswahl der Trainingsdaten in jeder
 Iteration wird eine höhere Robustheit gegenüber Overfitting (Überanpassung)
-erreicht. Stochastic Gradient Boosting wird nicht direkt von Sciukit-Learn
+erreicht. Stochastic Gradient Boosting wird nicht direkt von Scikit-Learn
 unterstützt. Eine sehr bekannte Implmentierung davon ist XGBoost (siehe
 [https://xgboost.readthedocs.io/](https://xgboost.readthedocs.io/en/stable/)),
 die wir in einem der nächsten Kapitel noch näher betrachten werden.
