@@ -12,12 +12,12 @@ kernelspec:
   name: python3
 ---
 
-# 7.1 Theorie der linearen Regression 
+# 7.1 Einfache lineare Regression 
 
 Die lineare Regression gehört zu den überwachten maschinellen Lernverfahren
 (Supervised Learning). Meist ist sie das erste ML-Modell, das eingesetzt wird,
-um Regressionsprobleme zu lösen. In diesem Kapitel stellen wir die theoretischen
-Grundlagen der linearen Regression vor.
+um Regressionsprobleme zu lösen. In diesem Kapitel stellen wir in das Konzept
+und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
 
 ## Lernziele
 
@@ -87,7 +87,7 @@ Das Prinzip für das lineare Regressionsmodell und auch die folgenden ML-Modelle
 ist jedesmal gleich. Das Modell ist eine mathematische Funktion, die aber noch
 Parameter (hier beispielsweise die Koeffizienten der Gerade) enthält. Dann wird
 festgelegt, was eine gute Prognose ist, also wie Fehler berechnet und beurteilt
-werden sollen. Das hängt jeweils von dem bettrachteten Problem ab. Sobald das
+werden sollen. Das hängt jeweils von dem betrachteten Problem ab. Sobald das
 sogenannte Fehlermaß feststeht, werden die Parameter der Modellfunktion so
 berechnet, dass das Fehlermaß (z.B. Summe der Fehler oder Mittelwert der Fehler)
 möglichst klein wird. In der Mathematik sagt man dazu **Minimierungsproblem**. 
