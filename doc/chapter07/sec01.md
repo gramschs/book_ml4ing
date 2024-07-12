@@ -19,6 +19,7 @@ Die lineare Regression gehört zu den überwachten maschinellen Lernverfahren
 um Regressionsprobleme zu lösen. In diesem Kapitel stellen wir in das Konzept
 und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
 
+
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -29,6 +30,8 @@ und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
   **Minimierung** der Fehlerquadratsumme (Kleinste-Quadrate-Schätzer) erfolgt.
 * Sie können mit dem **Bestimmtheitsmaß** bzw. **R²-Score** beurteilen, ob das
   lineare Regressionsmodell geeignet zur Erklärung der Daten ist.
+* Sie können mit Scikit-Learn ein lineares Regressionsmodell trainieren und
+  bewerten.
 ```
 
 
@@ -36,7 +39,7 @@ und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
 
 In der Statistik beschäftigen sich Mathematikerinnen und Mathematiker bereits
 seit Jahrhunderten damit, Analyseverfahren zu entwickeln, mit denen
-experimentelle Daten gut erklärt werden können. Falls wir eine “erklärende”
+experimentelle Daten gut erklärt werden können. Falls wir eine "erklärende”
 Variable haben und wir versuchen, die Abhängigkeit einer Messgröße von der
 erklärenden Variable zu beschreiben, nennen wir das Regressionsanalyse oder kurz
 **Regression**. Bei vielen Problemen suchen wir nach einem linearen Zusammenhang
@@ -45,12 +48,12 @@ und sprechen daher von **linearer Regression**. Mehr Details finden Sie auch bei
 
 Etwas präziser formuliert ist lineare Regression ein Verfahren, bei dem es eine
 Einflussgröße $x$ und eine Zielgröße $y$ gibt. In der ML-Sprechweise wird die
-Einflussgröße $x$ typischerweise als Merkmal (oder englisch Feature) bezeichnet.
-Die Zielgröße (manchmal auch Output oder Target genannt), soll stetig sein
-(manchmal auch kontinuierlich, metrisch oder quantitativ genannt). Zu dem
-Merkmal oder den Merkmalen liegen $M$ Datenpunkte mit den dazugehörigen Werte
-der Zielgröße vor. Diese werden üblicherweise als Paare (wenn nur ein Merkmal
-vorliegt) zusammengefasst:
+Einflussgröße $x$ typischerweise als **Merkmal** (oder englisch **Input** oder
+**Feature**) bezeichnet. Die **Zielgröße** (manchmal auch **Output** oder
+**Target** genannt), soll stetig sein (manchmal auch kontinuierlich, metrisch
+oder quantitativ genannt). Zu dem Merkmal oder den Merkmalen liegen $M$
+Datenpunkte mit den dazugehörigen Werte der Zielgröße vor. Diese werden
+üblicherweise als Paare (wenn nur ein Merkmal vorliegt) zusammengefasst:
 
 $$(x^{(1)},y^{(1)}), \, (x^{(2)},y^{(2)}), \, \ldots, \, (x^{(M)},y^{(M)}).$$ 
 
@@ -68,10 +71,13 @@ Regressionsgerade ist in rot visualisiert.
 ---
 name: fig_linear_regression
 ---
-Lineare Regression: die erklärende Variable (= Input oder unabhängige Variable oder Ursache) ist auf der x-Achse, die
-abhängige Variable (= Output oder Wirkung) ist auf der y-Achse aufgetragen, Paare von Messungen sind in blau
-gekennzeichnet, das Modell in rot. 
-([Quelle:](https://en.wikipedia.org/wiki/Linear_regression#/media/File:Linear_regression.svg) "Example of simple linear regression, which has one independent variable" von Sewaqu. Lizenz: Public domain))
+Lineare Regression: die erklärende Variable (= Input oder unabhängige Variable
+oder Ursache) ist auf der x-Achse, die abhängige Variable (= Output oder
+Wirkung) ist auf der y-Achse aufgetragen, Paare von Messungen sind in blau
+gekennzeichnet, das Modell in rot.
+([Quelle:](https://en.wikipedia.org/wiki/Linear_regression#/media/File:Linear_regression.svg)
+"Example of simple linear regression, which has one independent variable" von
+Sewaqu. Lizenz: Public domain))
 ```
 
 In der Praxis werden die Daten nicht perfekt auf der Geraden liegen. Die Fehler
@@ -121,7 +127,101 @@ Residuen. Dann wird diese **Fehlerquadratsumme** minimiert, um die Koeffizienten
 des Regressionsmodells zu berechnen.
 
 
-## Ist das beste Modell gut genug?
+## Einfache lineare Regression mit Scikit-Learn
+
+Nach diesem theoretischen Exkurs möchten wir Scikit-Learn nutzen, um eine
+einfache lineare Regression durchzuführen. Aus didaktischen Gründen erzeugen wir
+uns dazu künstliche Daten mit der Funktion `make_regression` des Moduls
+`sklearn.datasets`. Wir transformieren die zufällig erzeugten Zahlen und packen
+sie in einen Pandas-DataFrame mit den Merkmalen »Leistung \[PS\]« eines Autos
+und dem »Preis \[EUR\]« eines Autos.
+
+```{code-cell} ipython3
+import numpy as np 
+import pandas as pd 
+from sklearn.datasets import make_regression
+
+X_array, y_array = make_regression(n_samples=100, n_features=1, noise=10, random_state=0)
+
+daten = pd.DataFrame({
+    'Leistung [PS]': np.floor(50*(X_array[:,0] + 3)),
+    'Preis [EUR]': 100*(y_array+150)
+    })
+```
+
+Mehr Details zu der Funktion `make_regression` finden Sie in der [Dokumentation
+Scikit-Learn →
+make_regression](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html#sklearn.datasets.make_regression).
+Wir visualisieren nun den Preis in Abhängigkeit von der Leistung des Autos.
+
+
+```{code-cell} ipython3
+import plotly.express as px 
+
+fig = px.scatter(daten, x = 'Leistung [PS]', y = 'Preis [EUR]',
+    title='Künstliche Daten: Verkaufspreise Autos')
+fig.show()
+```
+
+Es drängt sich die Vermutung auf, dass der Preis eines Autos linear von der
+Leistung abhängt. Je mehr PS, desto teurer das Auto.
+
+Als nächstes trainieren wir ein lineares Regressionsmodell auf den Daten.
+Lineare ML-Modelle fasst Scikit-Learn in einem Untermodul namens `linear_model`
+zusammen. Um also das lineare Regressionsmodell `LinearRegression` verwenden zu
+können, müssen wir es folgendermaßen importieren und initialisieren:
+
+```{code-cell} ipython3
+from sklearn.linear_model import LinearRegression
+
+modell = LinearRegression()
+```
+
+Mit der Methode `.fit()` werden die Parameter des linearen Regressionsmodells an
+die Daten angepasst. Dazu müssen die Daten in einem bestimmten Format vorliegen.
+Bei den Inputs wird davon ausgegangen, dass mehrere Merkmale in das Modell
+eingehen sollen. Die Eigenschaften stehen normalerweise in den Spalten des
+Datensatzes. Beim Output erwarten wir zunächst nur eine Eigenschaft, die durch
+das Modell erklärt werden soll. Daher geht Scikit-Learn davon aus, dass der
+Input eine Tabelle (Matrix) $X$ ist, die M Zeilen und N Spalten hat. M ist die
+Anzahl an Datenpunkten, hier also die Anzahl der Autos, und N ist die Anzahl der
+Merkmale, die betrachtet werden sollen. Da wir momentan nur die Abhängigkeit des
+Preises von der PS-Zahl analysieren wollen, ist $N=1$. Beim Output geht
+Scikit-Learn davon aus, dass eine Datenreihe (eindimensionaler Spaltenvektor)
+vorliegt, die natürlich ebenfalls M Zeilen hat. Wir müssen daher unsere
+PS-Zahlen noch in das Matrix-Format bringen. Dazu verwenden wir den Trick, dass
+mit `[ [list] ]` eine Tabelle extrahiert wird. 
+
+```{code-cell} ipython3
+# Adaption der Daten
+X = daten[['Leistung [PS]']]
+y = daten['Preis [EUR]']
+```
+
+Danach können wir das lineare Regressionsmodell trainieren.
+
+```{code-cell} ipython3
+modell.fit(X,y)
+```
+
+Es erfolgt keine Ausgabe, aber jetzt ist das lineare Regressionsmodell
+trainiert. Die durch das Training bestimmten Parameter des Modells sind im
+Modell selbst abgespeichert. Bei dem linearen Regressionsmodell sind das die
+beiden Parameter $w_0$ und $w_1$, also Steigung `.coef_` und den
+y-Achsenabschnitt `.intercept_`.
+
+```{code-cell} ipython3
+print(f'Steigung: {modell.coef_}')
+print(f'y-Achsenabschnitt: {modell.intercept_}')
+```
+
+Damit lautet das lineare Regressionsmodell, um aus der PS-Zahl eines Autos $x$
+den Verkaufspreis $y$ zu berechnen, folgendermaßen:
+
+$$y = 85.2 \cdot x + 2179.$$
+
+
+## Ist das beste Modell gut genug? Der R²-Score
 
 Auch wenn wir mit der Minimierung der Fehlerquadratsumme bzw. der
 Kleinsten-Quadrate-Methode die besten Parameter für unsere Modellfunktion
@@ -132,49 +232,14 @@ ein lineares Regressionsmodell völlig ungeeignet, auch wenn die
 Fehlerquadratsumme minimal wäre.
 
 Wir brauchen daher noch ein Kriterium dafür, ob das trainierte Modell auch
-valide ist. Über die Validierung eines ML-Modells werden wir auch in den
-nächsten Vorlesungen noch intensiv sprechen. Für die lineare Regression
-betrachten wir erstmal das **Bestimmtheitsmaß**, das in der ML-Community auch
-**R²-Score** genannt wird.
-
-Beim R²-Score wird zunächst der Mittelwert der Fehlerquadratsumme mit der
-Modellfunktion $f$ gebildet:
-
-$$\frac{1}{M}\sum_{i=1}^M (y^{(i)} - f(x^{(i)})^2. $$
-
-Danach wird der Mittelwert der Output-Daten gebildet, nämlich
-
-$$\bar{y} = \frac{1}{M} \sum_{i=1}^{M} y^{(i)}.$$
-
-Nun wird dieser Mittelwert in die Fehlerquadratsumme eingesetzt, als ob die
-Modellfunktion die konstante Funktion $f(x)=\bar{y}$ wäre.
-
-$$\frac{1}{M}\sum_{i=1}^M (y^{(i)} - \bar{y})^2.$$
-
-Diese beiden Fehlerquadratsummen werden nun miteinander ins Verhältnis gesetzt.
-Wir vergleichen sozusgen den mittleren Fehler bei Wahl der Modellfunktion mit
-dem mittleren Fehler, wenn wir machen würden, wenn wir einfach nur den
-Mittelwert als Schätzer für unser Modell nehmen würden. 
-
-In der Statistik wurde dieses Verhältnis (Gesamtfehler geteilt durch
-Gesamtfehler Mittelwert) als Qualitätkriterium für ein lineares
-Regressionsproblem festgelegt. Genaugenommen, rechnet man 1 - Gesamtfehler /
-(Gesamtfehler Mittelwert) und nennt diese Zahl Bestimmtheitsmaß oder R²-Score.
-Die Formel zur Berechnung des R²-Scores lautet:
-
-$$R^2 = 1 - \frac{\sum_{i=1}^M (y^{(i)} - f(x^{(i)}))^2}{\sum_{i=1}^M(y^{(i)}-\bar{y})}. $$
-
-Dabei kürzt sich das $\frac{1}{M}$ im Zähler und Nenner weg. Nachdem der
-R²-Score ausgerechnet wurde, können wir nun die Qualität der Anpassung
-beurteilen:
+valide ist. Für die lineare Regression nehmen wir das **Bestimmtheitsmaß**, das
+in der ML-Community auch **R²-Score** genannt wird. Der R²-Score wird dabei
+folgendermaßen interpretiert:
 
 * Wenn $R^2 = 1$  ist, dann gibt es den perfekten linearen Zusammenhang und die
   Modellfunktion ist eine sehr gute Anpassung an die Messdaten.
 * Wenn $R^2 = 0$ oder gar negativ ist, dann funktioniert die lineare
   Modellfunktion überhaupt nicht.
-
-
-## Interaktive Visualisierung R²-Score
 
 Auf der Seite [https://mathweb.de](https://mathweb.de) finden Sie eine Reihe von
 Aufgaben und interaktiven Demonstrationen rund um die Mathematik. Insbesondere
@@ -187,12 +252,27 @@ und der optimale R²-Wert angezeigt. Ziehen Sie an den weißen Punkten, um die
 Gerade zu verändern. Schaffen Sie es, den optimalen R²-Score zu treffen?
 Beobachten Sie dabei, wie die Fehler (rot) kleiner werden.
 
-<iframe width="560" height="315" src="https://lti.mint-web.de/examples/index.php?id=01010320"  allowfullscreen>
+<iframe width="560" height="315" 
+src="https://lti.mint-web.de/examples/index.php?id=01010320"  allowfullscreen>
 </iframe>
+
+Wie ist nun der R²-Score für das trainierte lineare Regressionsmodell? Dazu
+verwenden wir die `score()`-Methode.
+
+```{code-cell} ipython3
+r2_score = modell.score(X,y)
+print(f'Der R2-Score für das lineare Regressionsmodell ist: {r2_score:.2f}.')
+```
+
+Das lineare Regressionsmodell kann für die Trainingsdaten sehr gut die
+Verkaufspreise prognostizieren. Wie gut es allerdings noch unbekannte Daten
+prognostizieren könnte, ist ungewiss.
 
 
 ## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben Sie das theoretische Modell der linearen Regression
-kennengelernt. Im nächsten Kapitel trainieren wir ein lineares Regressionsmodell
-mit Scikit-Learn.
+kennengelernt. Das Training eines linearen Regressionsmodells mit Scikit-Learn
+erfolgt wie üblich mit der `fit()`-Methode, die Bewertung mit der
+`score()`-Methode. Im nächsten Kapitel betrachten wir die lineare Regression,
+wenn die Zielgröße von mehreren Merkmalen abhängt.
