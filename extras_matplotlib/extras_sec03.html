@@ -231,8 +231,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -650,16 +650,7 @@ verwenden wir ein Balkendiagramm.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># data</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
+<img alt="../_images/0153cf8aa25b4245f5687c58acba1df9956e2ad8607c4c7b13fea04866406f02.png" src="../_images/0153cf8aa25b4245f5687c58acba1df9956e2ad8607c4c7b13fea04866406f02.png" />
 </div>
 </div>
 <p>Leider kann man die Spielernamen nicht mehr lesen. Wir können händisch in das
@@ -678,6 +669,9 @@ drehen. Dann sieht der Code folgendermaßen aus:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/5c6d5a85e3f9db724b035ec232755211d7812d373cfa84ba3dff9c13ad6d644e.png" src="../_images/5c6d5a85e3f9db724b035ec232755211d7812d373cfa84ba3dff9c13ad6d644e.png" />
+</div>
 </div>
 </section>
 <section id="plot-vom-mittelwert-als-horizontale-linie">
@@ -692,6 +686,11 @@ den Mittelwert des Alters berechnen lassen.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert_alter</span> <span class="o">=</span> <span class="n">data_eintracht_frankfurt</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mittleres Alter der Spieler: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mittelwert_alter</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mittleres Alter der Spieler: 26.12
 </pre></div>
 </div>
 </div>
@@ -712,6 +711,9 @@ verwenden wir die Methode <code class="docutils literal notranslate"><span class
 <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">mittelwert_alter</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/53078888b06c0ab5db97eb439e558e37c30cb3854931724a188fabb847b0105a.png" src="../_images/53078888b06c0ab5db97eb439e558e37c30cb3854931724a188fabb847b0105a.png" />
 </div>
 </div>
 </section>
@@ -745,6 +747,9 @@ Hilfeseite</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/0a6014e0e5cdf983bee999c097cf447d0249ecb942fc5677b58648385d7bb2f7.png" src="../_images/0a6014e0e5cdf983bee999c097cf447d0249ecb942fc5677b58648385d7bb2f7.png" />
+</div>
 </div>
 <p>Die Grafik sieht irritierend aus, da die Altersangben der Spieler verbunden
 wurden. Ästhetischer und besser interpretierbar wird die Grafik, wenn wir noch
@@ -764,6 +769,9 @@ die folgenden Optionen in seinem Buch “Data Science mit Python”:</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Spielerdaten Eintracht Frankfurt 20/21&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d87a3a7be2546c2e0bcff012ec04ad4d03df798c5daf4d09c75ba7a36cf098df.png" src="../_images/d87a3a7be2546c2e0bcff012ec04ad4d03df798c5daf4d09c75ba7a36cf098df.png" />
 </div>
 </div>
 </section>

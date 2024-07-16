@@ -233,8 +233,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -617,16 +617,7 @@ kann dabei in absoluten Zahlen angegeben werden oder in relativen (Prozent).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;bmh&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
+<img alt="../_images/709c11333db13f615f9053152415bf93e224a6aef60758a77ac698318b7646d7.png" src="../_images/709c11333db13f615f9053152415bf93e224a6aef60758a77ac698318b7646d7.png" />
 </div>
 </div>
 <p>Diese Analysemethode wird sehr häufig eingesetzt. Daher stellen alle drei Module
@@ -652,6 +643,11 @@ aus. Und nein, in der Klausur werde ich nicht würfeln ;-)</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gewürfelte Noten:  [2, 5, 5, 2, 3, 5, 4, 6, 5, 1]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Danach verwenden wir die Methode <code class="docutils literal notranslate"><span class="pre">.hist()</span></code>, um ein Histogramm zu zeichnen.</p>
 <div class="cell docutils container">
@@ -664,6 +660,9 @@ aus. Und nein, in der Klausur werde ich nicht würfeln ;-)</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Klassenarbeit&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ff28734ace5dd470e14408a6b5e786a181bc2721c781ac9705444a752fe38ffd.png" src="../_images/ff28734ace5dd470e14408a6b5e786a181bc2721c781ac9705444a752fe38ffd.png" />
 </div>
 </div>
 <p>Die Darstellung sieht etwas ungewohnt aus. Mit den Optionen <code class="docutils literal notranslate"><span class="pre">bins=</span></code>,
@@ -681,6 +680,9 @@ aus. Und nein, in der Klausur werde ich nicht würfeln ;-)</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Klassenarbeit&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/328ce1cbb5665c42363340fc63f57afea75642c2286d66317c05e3170b81c3f1.png" src="../_images/328ce1cbb5665c42363340fc63f57afea75642c2286d66317c05e3170b81c3f1.png" />
 </div>
 </div>
 <p>Die Optionen sind ausführlich in der
@@ -739,6 +741,9 @@ jetzt die Anzahl der x, die in eine Bin fällt, im Histogram auf:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/8eb8ad10b0cf0eb5d60dd8610e8e4b964e675b598492c3b1e3bcbcef1070884f.png" src="../_images/8eb8ad10b0cf0eb5d60dd8610e8e4b964e675b598492c3b1e3bcbcef1070884f.png" />
+</div>
 </div>
 <p>Ändern Sie bitte in der folgenden Code-Zelle die Anzahl der Zufallszahlen.
 Probieren Sie z.B. N = 10, 100, 1000 oder 100000000 aus. Ab wann erkennen Sie
@@ -756,6 +761,9 @@ mehr ändert?</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0451c33c172d4c6934671be05b6cd0f186dd60bd259fe65b33d2e3358f00af3d.png" src="../_images/0451c33c172d4c6934671be05b6cd0f186dd60bd259fe65b33d2e3358f00af3d.png" />
 </div>
 </div>
 <p>In der Praxis ist es nicht so einfach, die Anzahl der Daten zu vergrößern. Daher
@@ -776,6 +784,9 @@ beobachten Sie?</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">number_bins</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e97912fc67a48b92b59b3994baf1741c01ad6b4413fe9c35f6fe74c898f14dd4.png" src="../_images/e97912fc67a48b92b59b3994baf1741c01ad6b4413fe9c35f6fe74c898f14dd4.png" />
 </div>
 </div>
 </section>

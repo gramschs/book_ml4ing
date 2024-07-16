@@ -233,8 +233,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -630,23 +630,23 @@ Zufallszahlen erzeugt.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.39683854 0.018728   0.96932421 0.73008158 0.53834683 0.39524418
- 0.24048262 0.97596792 0.54312542 0.73592976 0.42435553 0.96734973
- 0.93137678 0.47267891 0.6218476  0.55929644 0.97560153 0.15559498
- 0.60275724 0.48491288 0.42360271 0.05972511 0.31720025 0.25502581
- 0.92454827 0.26741562 0.81709914 0.82163647 0.22441967 0.11071903
- 0.98515929 0.07942099 0.94083968 0.75883855 0.522568   0.68003523
- 0.57514408 0.63875669 0.59281539 0.51819515 0.9656082  0.46501737
- 0.21893033 0.89739809 0.60422425 0.28991874 0.03127285 0.3336456
- 0.99103318 0.38560365 0.47647734 0.82431544 0.05223984 0.08295081
- 0.57633114 0.54667302 0.48952334 0.64427405 0.52242021 0.83591509
- 0.62443963 0.45139562 0.64180303 0.29989205 0.87878044 0.06045829
- 0.6041906  0.80156763 0.8597893  0.36548421 0.01928537 0.57356589
- 0.04471721 0.45031353 0.00603872 0.18669955 0.30120914 0.03689017
- 0.91385283 0.15191341 0.88198424 0.48275671 0.45169365 0.88490355
- 0.55011794 0.98176121 0.37272915 0.29605295 0.86229309 0.0863416
- 0.75286536 0.29316134 0.60307788 0.00540191 0.75633576 0.34071609
- 0.23427102 0.50156054 0.55268315 0.06290706]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.23250424 0.19493734 0.9849811  0.67056086 0.63726743 0.13814059
+ 0.05998735 0.88793676 0.1968903  0.00176784 0.93992995 0.43728527
+ 0.61433881 0.85584119 0.48372721 0.82744279 0.5881312  0.09711478
+ 0.59016947 0.95467862 0.2407069  0.88124009 0.72579404 0.21627779
+ 0.2880754  0.64952926 0.23494945 0.50088441 0.3977849  0.89355095
+ 0.31961745 0.79875344 0.05914303 0.86845082 0.16052804 0.21815261
+ 0.08116835 0.13986197 0.25205197 0.54822722 0.67611871 0.31331418
+ 0.91465698 0.73591763 0.64334919 0.08247703 0.16315478 0.64454182
+ 0.68210436 0.47270645 0.56338794 0.44441651 0.9765851  0.56119443
+ 0.37335725 0.91163803 0.06856266 0.42653641 0.12610341 0.48479716
+ 0.90109339 0.43514064 0.86373248 0.81729689 0.52067458 0.68918473
+ 0.43839733 0.17367156 0.18111804 0.5641552  0.89685974 0.53415244
+ 0.5227069  0.60436979 0.21299414 0.55023338 0.25681212 0.45496658
+ 0.92503957 0.0237486  0.51650864 0.22128904 0.17753216 0.2104395
+ 0.64038167 0.17889785 0.22777893 0.08246266 0.14784293 0.88394578
+ 0.78790391 0.61116775 0.8202125  0.43457974 0.57356902 0.51918491
+ 0.58272731 0.40933462 0.57480749 0.92923087]
 </pre></div>
 </div>
 </div>
@@ -664,8 +664,8 @@ eingebauten Standardfunktion <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9910331829807795
-NumPy max =  0.9910331829807795
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard max =  0.9849811003967693
+NumPy max =  0.9849811003967693
 </pre></div>
 </div>
 </div>
@@ -684,10 +684,10 @@ Mittelwerte bildet.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.13 μs ± 11.3 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.17 μs ± 48.2 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.29 μs ± 13 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.26 μs ± 8.38 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -906,8 +906,8 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.59857154 0.32431379 0.6697392 ]
- [0.15602126 0.12766465 0.99929146]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.22659024 0.04057812 0.36444114]
+ [0.45162898 0.92162196 0.09504474]]
 </pre></div>
 </div>
 </div>
@@ -921,9 +921,9 @@ Standardabweichung s</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.06165378 -1.09395151 -0.90955935 -0.04241886]
- [-0.75748127 -1.46855083 -0.91571578 -0.06993923]
- [ 0.86082602  0.70122873  0.93221257 -0.11696123]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.01350144  0.60511215 -1.44133038 -0.55138765]
+ [ 0.29294323  0.2782288   0.6985413   0.51996606]
+ [ 0.10988272 -1.18123108 -0.62829023  1.77756606]]
 </pre></div>
 </div>
 </div>

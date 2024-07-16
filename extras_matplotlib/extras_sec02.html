@@ -233,8 +233,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -591,16 +591,6 @@ Daher laden wir es zuerst mit der typischen Abkürzung <code class="docutils lit
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Matplotlib bietet zwei Schnittstellen an, die Funktionen und Methoden des Moduls
 zu benutzen. Die erste Schnittstelle ist <strong>zustandsorientiert</strong>, die zweite
@@ -625,6 +615,12 @@ Linienplot und Beschriftungen hinzu.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1214e1610&gt;]
+</pre></div>
+</div>
+<img alt="../_images/af93d28af6b9b5bfa5cfd39c8ce13162743d811cb3af29c27890391b3936e0d0.png" src="../_images/af93d28af6b9b5bfa5cfd39c8ce13162743d811cb3af29c27890391b3936e0d0.png" />
 </div>
 </div>
 <p>PS: Ohne Strichpunkt/Semikolon gibt Jupyter-Lab noch Objekttyp und Referenz des
@@ -654,6 +650,9 @@ nach eingestellter Anzahl.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/25f8993e8f8259ad41a5f0f7a8e2401edd9d63d3a31668f3958443a153ad1123.png" src="../_images/25f8993e8f8259ad41a5f0f7a8e2401edd9d63d3a31668f3958443a153ad1123.png" />
+</div>
 </div>
 <p>Nächstes Thema, Beschriftungen. Mit den Methoden <code class="docutils literal notranslate"><span class="pre">.set_xlabel()</span></code> und
 <code class="docutils literal notranslate"><span class="pre">.set_ylabel()</span></code> beschriften Sie die x- und y-Achse. Mit <code class="docutils literal notranslate"><span class="pre">.set_title()</span></code> wird der
@@ -672,6 +671,9 @@ Titel gesetzt.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Wechselstrom&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd2aecdc4468a95996ae40dc01e50c26408f1a26d57be830eae4ee58a29d742a.png" src="../_images/bd2aecdc4468a95996ae40dc01e50c26408f1a26d57be830eae4ee58a29d742a.png" />
 </div>
 </div>
 <p>Zuletzt soll unser Plot gespeichert werden. Es stehen mehrere Grafikformate zur
@@ -781,6 +783,9 @@ Notebooks zum Download zugegriffen haben:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/9a84b3f5e8487dd1dccceef099d39d80182f8073c0446208340e2c2710eb016b.png" src="../_images/9a84b3f5e8487dd1dccceef099d39d80182f8073c0446208340e2c2710eb016b.png" />
+</div>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
@@ -857,6 +862,9 @@ Matplotlib-Methode auch <code class="docutils literal notranslate"><span class="
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/358034d556c9406408cf61225a649dd3df11db223ef49d1b1ac7867e74d0bf8c.png" src="../_images/358034d556c9406408cf61225a649dd3df11db223ef49d1b1ac7867e74d0bf8c.png" />
+</div>
 </div>
 <p>Über die Option <code class="docutils literal notranslate"><span class="pre">marker=</span> </code> lässt sich das Symbol einstellen, mit dem das
 Streudiagramm erzeugt wird. Wie Sie sehen, ist ein ausgefüllter Kreis
@@ -878,6 +886,9 @@ aus:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/4823619f317ebba714425f68b49a42002dc315e5945384dd9a1c8c8357eeadc0.png" src="../_images/4823619f317ebba714425f68b49a42002dc315e5945384dd9a1c8c8357eeadc0.png" />
+</div>
 </div>
 <p>Für bekannte Funktionen wie Sinus oder Kosinus würde man Liniendiagramme
 verwenden. Streudiagramme eignen sich eher für die Visualisierung einzelner
@@ -898,6 +909,9 @@ Farben verwenden.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9f029f8ee99cf8177b40f55181d871dc61416a3a2378a13a932e54cac5d3c081.png" src="../_images/9f029f8ee99cf8177b40f55181d871dc61416a3a2378a13a932e54cac5d3c081.png" />
 </div>
 </div>
 <p>Dann ist es aber auch gut, die Visualisierung zu beschriften. Dazu kennzeichnet
@@ -923,6 +937,9 @@ zu den Namen (Labels) zugeordnet werden.</p>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Durchschnittstemperatur&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bc647958cbb2a1dcb38b58c3f3b0b02970fd50456ad7bd565a2f084d4234d560.png" src="../_images/bc647958cbb2a1dcb38b58c3f3b0b02970fd50456ad7bd565a2f084d4234d560.png" />
 </div>
 </div>
 <div class="miniexercise admonition">

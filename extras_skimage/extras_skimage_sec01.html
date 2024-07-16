@@ -231,8 +231,8 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Lineare Regression mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -612,16 +612,7 @@ einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">ims
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">skimage.io</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imshow</span>                                             
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">foto</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s2">&quot;muenzen_und_mehr_medium.jpg&quot;</span><span class="p">)</span>   
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">imshow</span><span class="p">(</span><span class="n">foto</span><span class="p">);</span>                                
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;skimage&#39;
-</pre></div>
-</div>
+<img alt="../_images/e66420c0f168de8b0d90a2e470824f8fca403343cec871789964848bb32e2be5.png" src="../_images/e66420c0f168de8b0d90a2e470824f8fca403343cec871789964848bb32e2be5.png" />
 </div>
 </div>
 <p>Das Foto zeigt einige Münzen, ein Teelicht und eine Mandarine. Die x- und y-Achse werden in Pixeln angegeben. Aber was ist eigentlich genau in der Variable <code class="docutils literal notranslate"><span class="pre">foto</span></code> gespeichert?</p>
@@ -629,6 +620,11 @@ einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">ims
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">foto</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;numpy.ndarray&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -643,6 +639,11 @@ Funktion <code class="docutils literal notranslate"><span class="pre">shape()</s
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1800, 2400, 3)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Die Variable speichert also drei Matrizen mit 1800 Zeilen und 2400 Spalten. Wir ermitteln schnell noch die minimalen und maximalen Einträge in jeder der drei Matrizen.</p>
 <div class="cell docutils container">
@@ -654,6 +655,16 @@ Funktion <code class="docutils literal notranslate"><span class="pre">shape()</s
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kanal: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">kanal</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;minimaler Wert: </span><span class="si">{}</span><span class="s1"> und maximaler Wert: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">minimal_wert</span><span class="p">,</span> <span class="n">maximal_wert</span><span class="p">))</span>
    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kanal: 0
+minimaler Wert: 0 und maximaler Wert: 255
+Kanal: 1
+minimaler Wert: 0 und maximaler Wert: 255
+Kanal: 2
+minimaler Wert: 0 und maximaler Wert: 245
 </pre></div>
 </div>
 </div>
@@ -683,6 +694,9 @@ Manchmal werden anstatt der Integer-Zahlen von 0 bis 255 auch Floats von 0.0 bis
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">kanal_blau</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/035ed49cd47647d739e8c8b95fcb19757f3c6c2306f9768ef97e2c78c8af9a77.png" src="../_images/035ed49cd47647d739e8c8b95fcb19757f3c6c2306f9768ef97e2c78c8af9a77.png" />
 </div>
 </div>
 <p>Wir erkennen beispielsweise, dass die orangefarbene Mandarine keinen Blauanteil
@@ -717,6 +731,13 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
 <span class="n">imshow</span><span class="p">(</span><span class="n">foto_grau</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape des Graustufenbildes: 
+(1800, 2400)
+</pre></div>
+</div>
+<img alt="../_images/169fc0b65ea20ad6a725ec34cb034c66393a627a790a74bb8eef2360ac5d6c4a.png" src="../_images/169fc0b65ea20ad6a725ec34cb034c66393a627a790a74bb8eef2360ac5d6c4a.png" />
 </div>
 </div>
 </section>
