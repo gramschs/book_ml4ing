@@ -12,268 +12,206 @@ kernelspec:
   name: python3
 ---
 
-# 7.2 Lineare Regression mit Scikit-Learn
+# 7.2 Multiple lineare Regression
 
-Im vorherigen Kapitel haben wir die theoretischen Grundlagen des lineare
-Regressionsmodells kennengelernt. Nun werden wir anhand eines praktischen
-Datensatzes das lineare Regressionmodell mit dem Modul Scikit-Learn
-ausprobieren.
+Bisher haben wir nur ein einzelnes Merkmal aus den gesammelten Daten
+herausgegriffen und untersucht, ob es zwischen diesem Merkmal und der Zielgröße
+einen linearen Zusammenhang gibt. So simpel ist die Welt normalerweise nicht,
+oft wirken mehrere Einflussfaktoren gleichzeitig. Daher steht die **multiple
+lineare Regression** in diesem Kapitel im Fokus.
 
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: goals
-* Sie können erste grundlegende Schritte der Datenvorverarbeitung anwenden:
-    * Sie können unvollständige Daten mit **dropna** aus dem Datensatz
-      entfernen. 
-    * Sie können Ausreißer mit **drop** entfernen.
-    * Sie können eine Eigenschaft als Input auswählen und mit **reshape** in
-      Matrixform bringen.
-* Sie können ein lineares Regressionsmodell aus Scikit-Learn laden und mit
-  **fit** trainieren.
-* Sie können mit dem trainierten Modell und **predict** eine Prognose abgeben.
+* Sie wissen, was eine **multiple lineare Regression** ist und können sie mit
+  Scikit-Learn durchführen.
+* Sie wissen, was **positive lineare Korrelation** und **negative lineare
+  Korrelation** bedeuten.
+* Sie können die lineare Korrelation der Merkmale miteinander mit Hilfe der
+  **Korrelationsmatrix** beurteilen.
+* Sie können die Korrelationsmatrix als **Heatmap** visualisieren.
 ```
 
 
-## Deutscher Gebrauchtwagenmarkt (Autoscout24)
+## Zwei Merkmale: PS und Alter beinflussen Preis
 
-**Question**: Angenommen, Sie besitzen ein Auto, möchten es aber verkaufen. Für wieviel Euro
-sollten Sie Ihr Auto zum Verkauf anbieten?
-
-**Understanding the data**: Um diese Frage zu beantworten, sammeln wir zuerst
-Daten von Auto-Verkaufspreisen und erkunden diese.
-
-Dazu benutzen wir einen Datensatz über den deutschen Gebrauchtwagenmarkt von 2011
-bis 2021 (Autoscout24). Der Datensatz stammt von
-[Kaggle](https://www.kaggle.com/datasets/ander289386/cars-germany). Enthalten
-sind Daten zu den Merkmalen
-
-* mileage: kilometres traveled by the vehicle (= Kilometerstand)
-* make: make of the car (= Marke)
-* model: model of the car (= Modell)
-* fuel: fuel type (= Treibstoffart)
-* gear: manual or automatic (= Getriebe)
-* offerType: type of offer (new, used, ...) (= Angebotsart)
-* price: sale price of the vehicle (= Gebrauchtpreis)
-* hp: horse power (= PS)
-* year: the vehicle registration year (= Baujahr)
-
-Wie immer laden wir die Daten und verschaffen uns zunächst einen Überblick.
+Im vorherigen Kapitel haben wir den Einfluss des Merkmals `Leistung [PS]` auf
+die Zielgröße `Preis [EUR]` betrachtet. Nun wollen wir noch das Merkmal `Alter`
+gemessen in Jahren hinzunehmen. 0 Jahre meint dabei einen Neuwagen. Aus
+didaktischen Gründen werden wir auch hier künstlich erzeugte Daten nutzen, um
+die multiple lineare Regression zu erklären. Als erstes erzeugen wir die Daten,
+diesmal direkt mit Hilfsmitteln des Moduls NumPy.
 
 ```{code-cell} ipython3
-import pandas as pd
+import numpy as np 
+import pandas as pd 
 
-data_raw = pd.read_csv('data/autoscout24-germany-dataset.csv')
-data_raw.info()
+np.random.seed(0)
+anzahl_autos = 100
+
+x = np.floor( np.random.uniform(0, 11, anzahl_autos) )
+y = np.floor( np.random.uniform(50, 301, anzahl_autos) )
+z = np.floor( -2000 * x + 200 * y + 500 * np.random.normal(0, 1, anzahl_autos) + 10000 )
+
+daten = pd.DataFrame({
+    'Alter': x,
+    'Leistung [PS]': y,
+    'Preis [EUR]': z
+    })
 ```
 
-Offensichtlich sind in den Spalten 'model', 'gear' und 'hp' einige Datensätze
-nicht vollständig. Das erkennen wir daran, dass insgesmt 46.405 Einträge
-vorliegen, aber in diesen drei Spalten weniger erfasst sind. 
-
-Wir machen es uns jetzt einfach und entfernen die nicht vollständigen Daten aus
-unserem Datensatz mit der Methode `.dropna()`, siehe [Pandas-Dokumentation →
-dropna)](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html).
-Bei einem echten Industrieprojekt müssten wir dem Problem nachgehen und die
-fehlenden Daten beschaffen. Sollte das nicht gehen, so müssten wir als nächstes
-analysieren, warum die Daten fehlen, ob beispielsweise eine Systematik
-dahintersteckt, und uns dann einen geeigneten Plan machen, wie mit den fehlenden
-Daten umzugehen ist. Das ist ein eigenständiges Thema innerhalb des ML, auf das
-wir im späteren Verlauf der Vorlesung noch näher eingehen werden.
-
-```{code-cell} ipython3
-data = data_raw.dropna().copy()
-data.info()
-```
-
-In dem Datensatz gibt es nur vier Eigenschaften, die numerisch sind, also
-metrische oder quantitative Merkmale repräsentieren. Wir wählen die Eigenschaft
-Preis als Zielgröße (=abhängige Variable oder Wirkung oder Output oder Target).
-
-Als nächstes visualisieren wir den Preis abhängig von den Merkmalen
-
-* Kilometerstand,
-* Baujahr und
-* PS.
-
-Wir fangen mit dem Kilometerstand der Autos an.
+Dann visualisieren wir die Daten.
 
 ```{code-cell} ipython3
 import plotly.express as px
 
-fig = px.scatter(data, x = 'mileage', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Kilometerstand [km]',
-    yaxis_title = 'Preis (Euro)'
-)
+fig = px.scatter_3d(daten, x = 'Alter', y = 'Leistung [PS]', z = 'Preis [EUR]',
+  title='Künstliche Verkaufspreise für Autos')
 fig.show()
 ```
 
-Sieht nicht besonders linear aus, eher wie eine Hyperbel. Als nächstes
-betrachten wir den Preis in Abhängigkeit des Baujahrs. 
+Mehr als zwei Merkmale und eine Zielgröße können wir nicht sinnvoll
+visualisieren. Um insbesondere zu visualisieren, wie die Zielgröße von jedem
+einzelnen Merkmal abhängt, verwenden wir die Scattermatrix. Das hilft uns auch
+zu erkennen, ob vielleicht ein Merkmal von einem anderen Merkmal abhängt.
 
 ```{code-cell} ipython3
-fig = px.scatter(data, x = 'year', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Baujahr',
-    yaxis_title = 'Preis (Euro)'
-)
+fig = px.scatter_matrix(daten,
+    title='Künstliche Daten: Verkaufspreise Autos')
 fig.show()
 ```
 
-Je jünger, desto teurer, könnte linear sein. Und zuletzt visualisieren wir den
-Preis abhängig von der PS-Zahl.
+Wir betrachten die letzte Zeile, in der die Zielgröße auf der y-Achse
+aufgetragen ist. In der ersten Spalte wird der Preis abhängig vom Alter
+dargestellt. Je älter das Auto, desto geringer der Preis. In der zweiten Spalte
+wird der Preis abhängig von der Leistung gezeigt. Je leistungsstärker ein Auto,
+desto höher der Preis. Insbesondere vermittelt das Diagramm den Eindruck, dass
+durch die Punktewolke sehr gut eine Regressionsgerade gelegt werden könnte, was
+bei der Abhängigkeit Alter -- Preis eher fraglich ist.
 
-```{code-cell} ipython3
-fig = px.scatter(data, x = 'hp', y = 'price', title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)')
-fig.update_layout(
-    xaxis_title = 'Leistung (PS)',
-    yaxis_title = 'Preis (Euro)'
-)
-fig.show()
-```
+Wir trainieren jetzt ein lineares Regressionsmodell
 
-Bei dem Input PS scheint es eine lineare Abhängigkeit zu geben. Je mehr PS desto
-teurer. Wir wählen daher als Merkmal für unsere lineare Regression die PS-Zahl
-aus.
+$$y = w_0 + w_1 \cdot x_1 + w_2 \cdot x_2.$$
 
+Damit ist gemeint, dass wir die Gewichte $w_0, w_1$ und $w_2$ des Modells so
+bestimmen wollen, dass der Preis $y$ möglichst gut durch die beiden Merkmale
+Alter $x_1$ und Leistung $x_2$ prognostiziert wird.
 
-## Training des linearen Regressionsmodell
-
-So wie wir Pandas zur Verwaltung der Daten nutzen, so verwenden wir das Modul
-**Scikit-Learn** für den ML-Part. Scikit-Learn ist eine der beliebtesten
-Open-Source-Bibliotheken für maschinelles Lernen in Python. Ein großer Vorteil
-von Scikit-Learn ist, dass die dort integrierten ML-Modelle stets dieselbe
-Schnittstelle bieten. Die Dokumentation findet sich hier:
-
-> https://scikit-learn.org/stable/index.html
-
-Das Modul der Bibiolthek Scikit-Learn hat den Namen `sklearn`.  Lineare
-ML-Modelle fasst Scikit-Learn in einem Untermodul namens `linear_model`
-zusammen. Um also das lineare Regressionsmodell `LinearRegression` verwenden zu
-können, müssen wir es folgendermaßen importieren und initialisieren:
+In einem ersten Schritt laden wir das lineare Regressionsmodul.
 
 ```{code-cell} ipython3
 from sklearn.linear_model import LinearRegression
 
-# Algorithm selection
-model = LinearRegression()
+modell = LinearRegression()
 ```
 
-Mit der Methode `.fit()` werden die Parameter des Modells an die Daten
-angepasst. Dazu müssen die Daten in einem bestimmten Format vorliegen. Bei den
-Inputs wird davon ausgegangen, dass mehrere Eigenschaften in das Modell eingehen
-sollen. Die Eigenschaften stehen normalerweise in den Spalten des Datensatzes.
-Beim Output erwarten wir zunächst nur eine Eigenschaft, die durch das Modell
-erklärt werden soll. Daher geht Scikit-Learn davon aus, dass der Input eine
-Tabelle (Matrix) $X$ ist, die M Zeilen und N Spalten hat. M ist die Anzahl an
-Datenpunkten, hier also die Anzahl der Autos, und N ist die Anzahl der Merkmale,
-die betrachtet werden sollen. Da wir momentan nur die Abhängigkeit des Preises
-von der PS-Zahl analysieren wollen, ist $N=1$. Beim Output geht Scikit-Learn
-davon aus, dass eine Datenreihe (eindimensionaler Spaltenvektor) vorliegt, die
-natürlich ebenfalls M Zeilen hat. Wir müssen daher unsere PS-Zahlen noch in das
-Matrix-Format bringen. Dazu verwenden wir den Trick, dass mit `[ [list] ]` eine
-Tabelle extrahiert wird. 
+Dann adaptieren wir die Daten. 
 
 ```{code-cell} ipython3
-# Adaption of the data
-X = data[['hp']]
-y = data['price']
-
-# Algorithm training
-model.fit(X, y);
+# Adaption der Daten
+X = daten[['Alter', 'Leistung [PS]']]
+y = daten['Preis [EUR]']
 ```
 
-Es erfolgt keine Ausgabe, aber jetzt ist das lineare Regressionsmodell
-trainiert. Die durch das Training bestimmten Parameter des Modells sind im
-Modell selbst abgespeichert. Bei dem linearen Regressionsmodell sind das die
-beiden Parameter $w_0$ und $w_1$, also Steigung `.coef_` und den
-y-Achsenabschnitt `.intercept_`.
+Jetzt können wir das lineare Regressionsmodell von Scikit-Learn mit der
+`.fit()`-Methode trainieren. Wir lassen auch gleich den R²-Score mit ausgeben.
 
 ```{code-cell} ipython3
-print(f'Steigung: {model.coef_}')
-print(f'y-Achsenabschnitt: {model.intercept_}')
-```
+# Training
+modell.fit(X, y)
 
-## Bewertung des Modell
-
-Im vorherigen Kapitel haben wir das R<sup>2</sup>-Bestimmtheitsmaß
-kennengelernt, das bewertet, wie gut das lineare Regressionsmodell
-prognostiziert. In Scikit-Learn werden die Bewertungsmaße über die Methode
-`.score()` ermittelt. 
-
-```{code-cell} ipython3
 # Validierung
-r2 = model.score(X, y)
-print('Der R2-Score ist: {:.2f}'.format(r2))
+r2_score = modell.score(X, y)
+print(f'Der R2-Score ist: {r2_score:.4f}')
 ```
 
-Ein R²-Score von 0.56 ist nicht besonders gut. Das lineare Regressionsmodell hat
-keine Hyperparameter, die feinjustiert werden könnten. Zur Bewertung lassen wir
-das Resultat visualisieren.
-
-Damit brauchen wir eine Wertetabelle für PS-Zahlen von 0 bis 800 PS und die
-Prognose des Modells für diese PS-Zahlen. Zunächst erzeugen 100 PS-Zahlen von 0
-bis 800 PS. Dazu nutzen wir aus dem NumPy-Modul den Befehl `linspace(start,
-stopp, anzahl_punkte)`.
+Schauen wir uns doch einmal an, welche Koeffizienten von Scikit-Learn für unsere
+mehrdimensionale lineare Modellfunktion gefunden wurden.
 
 ```{code-cell} ipython3
-import numpy as np
-
-ps_zahlen = np.linspace(0, 800, 100)
-print(ps_zahlen)
+print(f'Achsenabschnitt w0: {modell.intercept_:.2f}')
+print(f'Koeffizienten (Steigungen): {modell.coef_}')
 ```
 
-Das trainierte Modell erwartet Daten in demselben Format, mit dem es trainiert
-wurde. Daher erstellen wir nun mit dem NumPy-Array einen Pandas-DataFrame und
-lassen dann das trainierte Modell die Preise prognostizieren.
+Damit lautet unsere Modellfunktion abhängig von Alter und Leistung also
+
+$$y = f(x_1, x_2) = 10168 -2025\cdot x_1 + 199\cdot x_2.$$
+
+
+## Korrelationsmatrix
+
+Das Prognoseergebnis des multiplen linearen Regressionsmodell ist für die
+Trainingsdaten sehr gut. Beim Betrachten der Scattermatrix wirkt das Merkmal
+Leistung mehr einen linearen Einfluss zu haben als das Alter. Als nächstes
+wollen wir bewerten, wie viel mehr der lineare Einfluss jedes einzelnen Merkmals
+auf die Zielgröße ist. Dazu betrachten wir die sogenannte
+**Korrelationsmatrix**. Mit der Methode `corr()` können wir sie einfach
+berechnen lassen:
 
 ```{code-cell} ipython3
-X_predict = pd.DataFrame(ps_zahlen, columns=['hp'])
-y_predict = model.predict(X_predict)
+daten.corr()
+```
 
-import plotly.graph_objects as go
+In der ersten Zeile 'Alter' wird die Stärke der Korrelation von der Ursache
+Alter auf die Zielgrößen Alter, Leistung und Preis bewertet. Wenn eine Erhöhung
+der Ursache zu einer Erhöhung der Wirkung führt, nennt man das **positiv
+korreliert**. Der umgekehrte Fall ist, wenn eine Verminderung der Ursache zu
+einer Erhöhung der Wirkung führt. Dann spricht man von **negativ korreliert**.
+Die Zahl 1 drückt dabei aus, dass die beiden Merkmale perfekt linear positiv
+korreliert sind. In der ersten Zeile und der ersten Zeile wird der Einfluss des
+Alters auf die Zielgröße Alter bewertet. Dort muss eine 1 stehen, denn hier sind
+ja Ursache und Wirkung identisch. In der ersten Zeile und der zweiten Spalte
+wird die lineare Korrelation zwischen Alter und Leistung bewertet. Die Zahl
+-0.074244 ist nahe bei 0 und bedeutet daher, dass es nur einen sehr, sehr
+schwachen Zusammenhang zwischen Alter und Leistung gibt, wenn überhaupt. Unser
+technisches Verständnis eines Autos bestätigt, dass Alter und PS nicht
+zusammenhängen (zumidnest, wenn man die Leistung des Autos nimmt, wie sie im
+Fahrzeugschien eingetragen ist). Dahingegen scheint es eine schwache negative
+Korrelation zwischen Alter und Preis zu geben. Je älter ein Auto ist, desto
+geringer ist sein Preis. -1 würde bedeuten, dass die negative Korrelation
+perfekt ist.
 
-fig = go.Figure()
+Am stärksten linear scheint sich die Leistung auf den Preis auszuwirken. In der
+zweiten Zeile und der dritten Spalte findet sich der Eintrag 0.914003. Je größer
+die Leistung des Autos, desto höher sein Preis.
 
-fig.add_trace(go.Scatter(x = data['hp'], y = data['price'], mode='markers', name='Daten'))
-fig.add_trace(go.Scatter(x = X_predict['hp'], y = y_predict, mode='lines', name='Prognose'))
-fig.update_layout(
-  title='Gebrauchtwagenmarkt 2011-2021 (Autoscout24)',
-  xaxis_title = 'Leistung (PS)',
-  yaxis_title = 'Preis (Euro)'
-)
+
+## Heatmaps
+
+Es ist üblich, die Korrelationsmatrix als sogenanntes Heatmap-Diagramm zu
+visualisieren. Bei einer Heatmap wird die Zahlenwerte der Matrix durch Farben
+visualisiert. Ploty Express bietet dazu die Funktion `imshow()` an.
+
+```{code-cell} ipython3
+korrelationsmatrix = daten.corr()
+
+fig = px.imshow(korrelationsmatrix)
 fig.show()
 ```
 
-Damit könnten wir die Geradengleichung 
-
-$$y = 191.76073729 \cdot x + 8939.6499591744$$
-
-aufstellen und eine Funktion implementieren, um für eine PS-Zahl eine Prognose
-abzugeben, welchen Verkauspreis das Auto erzielen könnte. Aber tatsächlich hat
-das Scikit-Learn für uns schon erledigt. Die Methode `.predict()` berechnet mit
-den intern gespeicherten Koeffizienten des linearen Regressionsmodells eine
-Prognose. Für eine PS-Zahl von 80 PS wird ein Verkaufspreis von 
+Es ist hilfreich, die Werte der Korrelationsmatrix direkt in der Heatmap
+anzeigen zu lassen. Daher verwenden wir die zusätzliche Option `text_auto=True`.
 
 ```{code-cell} ipython3
-model.predict([[80]])
+fig = px.imshow(korrelationsmatrix, text_auto=True)
+fig.show()
 ```
 
-6.614 EUR erzielt. Denken Sie daran, dass eine Matrix als Input übergeben werden
-muss, daher die doppelten eckigen Klammern.
+Weitere Optionen zum Stylen der Heatmaps finden Sie in der [Plotly Dokumentation
+→ Heatmaps in Plotly](https://plotly.com/python/heatmaps/).
 
-
-
-
-
-+++
 
 ## Zusammenfassung
 
-In diesem Abschnitt haben Sie gelernt, dass das Training eines linearen
-Regressionsmodells darauf beruht, die Fehlerquadratsumme zu minimieren. Um
-überhaupt beurteilen zu können, ob ein ML-Modell geeignet ist, brauchen wir
-Qualitätskriterien. Für das lineare Regressionsmodell dient das Bestimmtheitsmaß
-bzw. der R²-Score als Qualitätskriterium.
+In diesem Kapitel haben wir uns mit der linearen multiplen Regression
+beschäftigt. Es wird eine lineare Modellfunktion für einen oder mehrere
+Einflussfaktoren gesucht. Die Parameter der Modellfunktion, also die
+Koeffizienten der mehrdimensionalen linearen Funktion werden so an die Daten
+angepasst, dass die Fehlerquadratsumme möglichst klein wird. Um beurteilen zu
+können, ob die beste gefundene Modellfunktion eine gute Prognose liefert, werten
+wir den R²-Score aus.
+
+Um zu analysieren, ob einzelne Merkmale miteinander linear korreliert sind,
+werden die Korrelationsmatrix und die Heatmap eingesetzt.
