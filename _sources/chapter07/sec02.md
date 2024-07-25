@@ -18,15 +18,22 @@ Bisher haben wir nur ein einzelnes Merkmal aus den gesammelten Daten
 herausgegriffen und untersucht, ob es zwischen diesem Merkmal und der Zielgröße
 einen linearen Zusammenhang gibt. So simpel ist die Welt normalerweise nicht,
 oft wirken mehrere Einflussfaktoren gleichzeitig. Daher steht die **multiple
-lineare Regression** in diesem Abschnitt im Fokus.
+lineare Regression** in diesem Kapitel im Fokus.
 
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: goals
-* Sie wissen, was eine **multiple lineare Regression** ist und können sie mit Scikit-Learn durchführen.
+* Sie wissen, was eine **multiple lineare Regression** ist und können sie mit
+  Scikit-Learn durchführen.
+* Sie wissen, was **positive lineare Korrelation** und **negative lineare
+  Korrelation** bedeuten.
+* Sie können die lineare Korrelation der Merkmale miteinander mit Hilfe der
+  **Korrelationsmatrix** beurteilen.
+* Sie können die Korrelationsmatrix als **Heatmap** visualisieren.
 ```
+
 
 ## Zwei Merkmale: PS und Alter beinflussen Preis
 
@@ -147,14 +154,64 @@ berechnen lassen:
 daten.corr()
 ```
 
+In der ersten Zeile 'Alter' wird die Stärke der Korrelation von der Ursache
+Alter auf die Zielgrößen Alter, Leistung und Preis bewertet. Wenn eine Erhöhung
+der Ursache zu einer Erhöhung der Wirkung führt, nennt man das **positiv
+korreliert**. Der umgekehrte Fall ist, wenn eine Verminderung der Ursache zu
+einer Erhöhung der Wirkung führt. Dann spricht man von **negativ korreliert**.
+Die Zahl 1 drückt dabei aus, dass die beiden Merkmale perfekt linear positiv
+korreliert sind. In der ersten Zeile und der ersten Zeile wird der Einfluss des
+Alters auf die Zielgröße Alter bewertet. Dort muss eine 1 stehen, denn hier sind
+ja Ursache und Wirkung identisch. In der ersten Zeile und der zweiten Spalte
+wird die lineare Korrelation zwischen Alter und Leistung bewertet. Die Zahl
+-0.074244 ist nahe bei 0 und bedeutet daher, dass es nur einen sehr, sehr
+schwachen Zusammenhang zwischen Alter und Leistung gibt, wenn überhaupt. Unser
+technisches Verständnis eines Autos bestätigt, dass Alter und PS nicht
+zusammenhängen (zumidnest, wenn man die Leistung des Autos nimmt, wie sie im
+Fahrzeugschien eingetragen ist). Dahingegen scheint es eine schwache negative
+Korrelation zwischen Alter und Preis zu geben. Je älter ein Auto ist, desto
+geringer ist sein Preis. -1 würde bedeuten, dass die negative Korrelation
+perfekt ist.
+
+Am stärksten linear scheint sich die Leistung auf den Preis auszuwirken. In der
+zweiten Zeile und der dritten Spalte findet sich der Eintrag 0.914003. Je größer
+die Leistung des Autos, desto höher sein Preis.
+
+
+## Heatmaps
+
+Es ist üblich, die Korrelationsmatrix als sogenanntes Heatmap-Diagramm zu
+visualisieren. Bei einer Heatmap wird die Zahlenwerte der Matrix durch Farben
+visualisiert. Ploty Express bietet dazu die Funktion `imshow()` an.
+
+```{code-cell} ipython3
+korrelationsmatrix = daten.corr()
+
+fig = px.imshow(korrelationsmatrix)
+fig.show()
+```
+
+Es ist hilfreich, die Werte der Korrelationsmatrix direkt in der Heatmap
+anzeigen zu lassen. Daher verwenden wir die zusätzliche Option `text_auto=True`.
+
+```{code-cell} ipython3
+fig = px.imshow(korrelationsmatrix, text_auto=True)
+fig.show()
+```
+
+Weitere Optionen zum Stylen der Heatmaps finden Sie in der [Plotly Dokumentation
+→ Heatmaps in Plotly](https://plotly.com/python/heatmaps/).
 
 
 ## Zusammenfassung
 
-In diesem Kapitel haben wir uns mit der linearen (multiplen Regression)
+In diesem Kapitel haben wir uns mit der linearen multiplen Regression
 beschäftigt. Es wird eine lineare Modellfunktion für einen oder mehrere
 Einflussfaktoren gesucht. Die Parameter der Modellfunktion, also die
 Koeffizienten der mehrdimensionalen linearen Funktion werden so an die Daten
 angepasst, dass die Fehlerquadratsumme möglichst klein wird. Um beurteilen zu
 können, ob die beste gefundene Modellfunktion eine gute Prognose liefert, werten
 wir den R²-Score aus.
+
+Um zu analysieren, ob einzelne Merkmale miteinander linear korreliert sind,
+werden die Korrelationsmatrix und die Heatmap eingesetzt.
