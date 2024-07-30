@@ -28,10 +28,10 @@ und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
 * Sie können erklären, was die **Fehlerquadratsumme** ist.
 * Sie wissen, dass das Training des lineare Regressionsmodells durch die
   **Minimierung** der Fehlerquadratsumme (Kleinste-Quadrate-Schätzer) erfolgt.
+* Sie können mit Scikit-Learn ein lineares Regressionsmodell trainieren.
+* Sie können mit einem trainierten linearen Regressionsmodell Prognosen treffen.
 * Sie können mit dem **Bestimmtheitsmaß** bzw. **R²-Score** beurteilen, ob das
   lineare Regressionsmodell geeignet zur Erklärung der Daten ist.
-* Sie können mit Scikit-Learn ein lineares Regressionsmodell trainieren und
-  bewerten.
 ```
 
 
@@ -221,6 +221,46 @@ den Verkaufspreis $y$ zu berechnen, folgendermaßen:
 $$y = 85.2 \cdot x + 2179.$$
 
 
+## Prognosen treffen
+
+Wenn wir die Parameter des trainierten Modells ausgeben lassen bzw. die lineare
+Funktion $y = 85.2 \cdot x + 2179$ verwenden, können wir mit dem linearen Modell
+Prognosen treffen. Den Umweg über das Ausgeben der trainierten Parameter und dem
+Basteln einer linearen Funktion können wir uns aber sparen, denn Scikit-Learn
+stellt für Prognosen mit dem trainierten Modell direkt eine Methode zur
+Verfügung. Mit Hilfe der `predict()`-Methode können für jedes Scikit-ML-Modell
+Prognosen getroffen werden.
+
+Wir möchten uns den kompletten Bereich zwischen 20 PS und 270 PS ansehen und
+erzeugen daher 100 Punkte in diesem Bereich. Diese packen wir in einen
+Pandas-DataFrame und verwenden dann die `predict()`-Methode.
+
+```{code-cell} 
+testdaten = pd.DataFrame({
+    'Leistung [PS]': np.linspace(20, 270)
+    })
+prognose = modell.predict(testdaten[['Leistung [PS]']])   
+```
+
+Diese Prognose wird dann zusammen mit den Verkaufsdaten in einem Diagramm
+visualisiert. Dazu generieren wir zuerst den Scatter-Plot mit den Verkaufsdaten
+und fügen dann mit der Funktion `add_scatter()` einen zweiten Scatter-Plot zu
+dem ersten hinzu. In diesem Scatter-Plot sollen die Punkte jedoch durch eine
+Linie verbunden werden, weshalb wir die Option `mode='lines'` nutzen. Zusätzlich
+kennzeichnen wir die Regressionsgerade noch mit dem Namen ` name='Prognose'`.
+
+```{code-cell} 
+fig = px.scatter(daten, x = 'Leistung [PS]', y = 'Preis [EUR]',
+    title='Verkaufspreise von Autos')
+fig.add_scatter(x = testdaten['Leistung [PS]'], y = prognose, mode='lines', name='Prognose')
+fig.show()
+```
+
+Der visuelle Eindruck ist gut, aber ist diese Regressionsgerade wirklich das
+beste Modell? Im nächsten Abschnitt sehen wir uns ein statistisches Bewertungsmaß
+an, um die Güte des Modells zu beurteilen. 
+
+
 ## Ist das beste Modell gut genug? Der R²-Score
 
 Auch wenn wir mit der Minimierung der Fehlerquadratsumme bzw. der
@@ -266,13 +306,13 @@ print(f'Der R2-Score für das lineare Regressionsmodell ist: {r2_score:.2f}.')
 
 Das lineare Regressionsmodell kann für die Trainingsdaten sehr gut die
 Verkaufspreise prognostizieren. Wie gut es allerdings noch unbekannte Daten
-prognostizieren könnte, ist ungewiss.
-
+prognostizieren könnte, ist ungewiss. 
 
 ## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben Sie das theoretische Modell der linearen Regression
 kennengelernt. Das Training eines linearen Regressionsmodells mit Scikit-Learn
-erfolgt wie üblich mit der `fit()`-Methode, die Bewertung mit der
+erfolgt wie üblich mit der `fit()`-Methode, die Prognose mit der
+`predict()`-Methode. Bewerten können Sie Prognosequalität mit der
 `score()`-Methode. Im nächsten Kapitel betrachten wir die lineare Regression,
-wenn die Zielgröße von mehreren Merkmalen abhängt.
+bei der die Zielgröße von mehreren Merkmalen abhängt.
