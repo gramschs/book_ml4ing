@@ -78,17 +78,7 @@ parts:
 - caption: Extras 
   chapters:
   - file: extras_skimage/extras_skimage_sec00.md
-  - file: extras_plotly/extras_sec05.md
-    sections:
-      - file: extras_plotly/extras_sec06.md
-      - file: extras_plotly/extras_sec07.md
-      - file: extras_plotly/extras_sec08.md
-  - file: extras_matplotlib/extras_sec00.md
-    sections:
-    - file: extras_matplotlib/extras_sec01.md
-    - file: extras_matplotlib/extras_sec02.md
-    - file: extras_matplotlib/extras_sec03.md
-    - file: extras_matplotlib/extras_sec04.md
+  - file: extras_plotly/extras_sec08.md
 - caption: Anhang
   chapters:
   - file: appendix.md
