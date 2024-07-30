@@ -23,19 +23,16 @@ parts:
     - file: chapter03/chapter03_sec01.md
     - file: chapter03/chapter03_sec02.md
     - file: chapter03/chapter03_sec03.md
-    - file: chapter03/chapter03_sec04.md
   - file: chapter04/chapter04_sec00.md
     sections:
     - file: chapter04/chapter04_sec01.md
     - file: chapter04/chapter04_sec02.md
     - file: chapter04/chapter04_sec03.md
-    - file: chapter04/chapter04_sec04.md
   - file: chapter05/chapter05_sec00.md
     sections:
     - file: chapter05/chapter05_sec01.md
     - file: chapter05/chapter05_sec02.md
     - file: chapter05/chapter05_sec03.md
-    - file: chapter05/chapter05_sec04.md
 - caption: ML-Verfahren
   chapters:
   - file: chapter06/sec00.md
@@ -43,49 +40,41 @@ parts:
     - file: chapter06/sec01.md
     - file: chapter06/sec02.md
     - file: chapter06/sec03.md
-    - file: chapter06/sec04.md
   - file: chapter07/sec00.md
     sections: 
     - file: chapter07/sec01.md
     - file: chapter07/sec02.md
     - file: chapter07/sec03.md
-    - file: chapter07/sec04.md
   - file: chapter08/sec00.md
     sections: 
     - file: chapter08/sec01.md
     - file: chapter08/sec02.md
     - file: chapter08/sec03.md
-    - file: chapter08/sec04.md
   - file: chapter09/sec00.md
     sections:
     - file: chapter09/sec01.md
     - file: chapter09/sec02.md
     - file: chapter09/sec03.md
-    - file: chapter09/sec04.md
   - file: chapter10/sec00.md
     sections:
     - file: chapter10/sec01.md
     - file: chapter10/sec02.md
     - file: chapter10/sec03.md
-    - file: chapter10/sec04.md
   - file: chapter11/sec00.md
     sections:
     - file: chapter11/sec01.md  
     - file: chapter11/sec02.md   
-    - file: chapter11/sec03.md   
-    - file: chapter11/sec04.md   
+    - file: chapter11/sec03.md     
   - file: chapter12/sec00.md
     sections:
     - file: chapter12/sec01.md  
     - file: chapter12/sec02.md   
     - file: chapter12/sec03.md   
-    - file: chapter12/sec04.md  
   - file: chapter13/sec00.md
     sections:
     - file: chapter13/sec01.md   
     - file: chapter13/sec02.md 
-    - file: chapter13/sec03.md 
-    - file: chapter13/sec04.md     
+    - file: chapter13/sec03.md  
 - caption: Extras 
   chapters:
   - file: extras_skimage/extras_skimage_sec00.md
