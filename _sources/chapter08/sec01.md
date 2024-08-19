@@ -33,7 +33,7 @@ Methoden kennen, damit umzugehen.
   * **Elimination** (Löschen) und
   * **Imputation** (Vervollständigen).
 * Sie können Daten gezielt mit **drop()** löschen.
-* Sie können fehlende Daten mit **fillna()** ersetzen.
+* Sie können fehlende Daten mit **fillna()** vervollständigen.
 ```
 
 ## Fehlende Daten aufspüren mit isnull()
@@ -57,7 +57,7 @@ daten.info()
 
 Wir hatten bereits festgestellt, dass die Anzahl der `non-null`-Einträge für die
 verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 963 Autos
-eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 988 Autos gültig.
+eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 987 Autos gültig.
 Am wenigsten gültige Einträge hat das Merkmal »Verbrauch (l/100 km)«, wohingegen
 bei der Eigenschaft »Kilometerstand (km)« nur ein ungültiger Eintrag auftaucht.
 Welche Einträge ungültig sind, können wir mit der Methode `isnull()` bestimmen.
@@ -94,7 +94,7 @@ fehlende_daten = daten.isnull()
 fehlende_daten.sum()
 ```
 
-Jetzt lassen wir uns diese 108 Autos anzeigen, bei denen ungültige Werte beim
+Jetzt lassen wir uns diese 109 Autos anzeigen, bei denen ungültige Werte beim
 »Verbrauch (l/100 km)« angegeben wurden. Dazu nutzen wir die True-Werte in der
 Spalte `Verbrauch (l/100 km)` als Filter für den ursprünglichen Datensatz.
 Zumindest die ersten 20 Autos lassen wir uns dann mit der `.head(20)`-Methode
@@ -215,7 +215,7 @@ daher den fehlenden Wert ersetzen. Eine Möglichkeit ist, eine Farbe zu erfinden
 z.B. 'bunt', oder die fehlenden Werte explizit durch einen Eintrag 'keine
 Angabe' zu vervollständigen. Dazu benutzen wir die Methode `fillna()` (siehe
 [Pandas-Dokumentation →
-fillna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)).
+fillna()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)).
 Die Vervollständigung soll nur die NaN-Werte der Spalte »Farbe« füllen. Daher
 filtern wir zuerst diese Spalte und wenden darauf die `fillna()`-Methode an. Das
 erste Argument der `fillna()`-Methode ist der Wert, durch den die NaN-Werte
@@ -239,8 +239,8 @@ daten_ohne_verbrauch.loc[2,:]
 Bei den PS-Zahlen haben wir ebenfalls nicht vollständige Daten vorliegen.
 Diesmal haben wir nicht kategoriale Daten wie die Farben, sondern numerische
 Werte. Daher bietet es sich hier eine zweite Methode der Ersetzung (Imputation)
-an. Wenn wir überall da, wo wir keine PS-Zahlen vorliegen haben, den Mittelwert
-der vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
+an. Wenn wir überall da, wo keine PS-Zahlen vorliegen, den Mittelwert der
+vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
 gesamten Datensatzes nicht kaputt. Wir berechnen daher zuerst den Mittelwert mit
 der Methode `.mean()` und nutzen dann die `fillna()`-Methode.
 
@@ -249,22 +249,35 @@ mittelwert = daten_ohne_verbrauch['Leistung (PS)'].mean()
 print(f'Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: {mittelwert:.2f}')
 
 daten_ohne_verbrauch['Leistung (PS)'] = daten_ohne_verbrauch['Leistung (PS)'].fillna(mittelwert)
+```
 
-# Kontrolle
+Noch einmal die Kontrolle, ob jetzt alle NaN-Werte eliminiert oder
+vervollständigt wurden:
+
+```{code-cell}
 daten_ohne_verbrauch.isnull().sum()
 ```
 
-Besser wäre natürlich zu versuchen, die fehlenden Daten zu recherchieren. Oder
-aber mittels linearer Regression die fehlenden Werte zu schätzen und dann zu
-ergänzen. Als erste Näherung nehmen wir jetzt den Mittelwert der vorhandenen
-Daten.
+Der Mittelwert der »Leistung (PS)« ist sehr hoch. Vielleicht haben wir doch den
+Datensatz eher verschlechtert, indem wir fehlende Werte durch den Mittelwert
+ersetzt haben. Beispielsweise könnte der Median eine bessere Alternative sein.
+Auch könnten wir zunächst die Autos mit fehlenden PS-Zahlen weglassen, für die
+übrigen Autos ein lineares Regressionsmodell oder einen Entscheidungsbaum
+trainieren und damit die fehlenden PS-Zahlen abschätzen. Bei diesem Beispiel
+wäre die beste Lösung zur Imputation der ungültigen Werte »Leistung (PS)« die
+Umrechung der vorhandenen, gültigen Werte der Spalte »Leistung (kW)«.
+Tatsächlich sind die beiden Merkmale redundant, da es sich um dasselbe Merkmal
+in zwei verschiedenen Einheiten handelt, so dass wir die Spalte »Leistung (PS)«
+auch entfernen könnten.
 
-## Zusammenfassung
+## Zusammenfassung und Ausblick
 
 Ein wichtiger Teil eines ML-Projektes beschäftigt sich mit der Aufbereitung der
 Daten für die ML-Algorithmen. Dabei ist es nicht nur wichtig, in großen
 Datensammlungen fehlende Einträge aufspüren zu können, sondern ein Gespür dafür
-zu entwickeln, wie mit den fehlenden Daten angesetzt werden sollen. Die
+zu entwickeln, wie mit den fehlenden Daten umgegangen werden soll. Die
 Strategien hängen dabei von der Anzahl der fehlenden Daten und ihrer Bedeutung
-ab. Häufig werden unvollständige Daten aus der Datensammlung gelöscht oder
-numerische Einträge durch den Mittelwert der vorhandenen Daten ersetzt.
+ab. Häufig werden unvollständige Daten aus der Datensammlung gelöscht
+(Elimination) oder numerische Einträge durch den Mittelwert der vorhandenen
+Daten ersetzt (Imputation). Wie kategoriale Daten für ML-Algorithmen aufbereitet
+werden müssen, wird im nächsten Kapitel erklärt.

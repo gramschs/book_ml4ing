@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
@@ -510,7 +510,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehlende-daten-aufspuren-mit-isnull">Fehlende Daten aufspüren mit isnull()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-elimination-mit-drop">Löschen (Elimination) mit drop()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vervollstandigung-imputation-mit-fillna">Vervollständigung (Imputation) mit fillna()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
         </div>
@@ -546,7 +546,7 @@ analysieren.</p></li>
 </ul>
 </li>
 <li><p>Sie können Daten gezielt mit <strong>drop()</strong> löschen.</p></li>
-<li><p>Sie können fehlende Daten mit <strong>fillna()</strong> ersetzen.</p></li>
+<li><p>Sie können fehlende Daten mit <strong>fillna()</strong> vervollständigen.</p></li>
 </ul>
 </div>
 </section>
@@ -580,15 +580,15 @@ Data columns (total 14 columns):
  3   Erstzulassung         1000 non-null   object 
  4   Jahr                  1000 non-null   object 
  5   Preis (Euro)          1000 non-null   object 
- 6   Leistung (kW)         1000 non-null   object 
- 7   Leistung (PS)         988 non-null    object 
+ 6   Leistung (kW)         1000 non-null   int64  
+ 7   Leistung (PS)         987 non-null    float64
  8   Getriebe              1000 non-null   object 
  9   Kraftstoff            1000 non-null   object 
- 10  Verbrauch (l/100 km)  892 non-null    object 
+ 10  Verbrauch (l/100 km)  891 non-null    object 
  11  Verbrauch (g/km)      1000 non-null   object 
  12  Kilometerstand (km)   999 non-null    float64
  13  Bemerkungen           1000 non-null   object 
-dtypes: float64(1), object(13)
+dtypes: float64(2), int64(1), object(11)
 memory usage: 109.5+ KB
 </pre></div>
 </div>
@@ -596,7 +596,7 @@ memory usage: 109.5+ KB
 </div>
 <p>Wir hatten bereits festgestellt, dass die Anzahl der <code class="docutils literal notranslate"><span class="pre">non-null</span></code>-Einträge für die
 verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 963 Autos
-eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 988 Autos gültig.
+eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 987 Autos gültig.
 Am wenigsten gültige Einträge hat das Merkmal »Verbrauch (l/100 km)«, wohingegen
 bei der Eigenschaft »Kilometerstand (km)« nur ein ungültiger Eintrag auftaucht.
 Welche Einträge ungültig sind, können wir mit der Methode <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> bestimmen.
@@ -856,7 +856,7 @@ Erstzulassung                                                06/2021
 Jahr                                                            2021
 Preis (Euro)                                                   42830
 Leistung (kW)                                                    162
-Leistung (PS)                                                    220
+Leistung (PS)                                                  220.0
 Getriebe                                                   Automatik
 Kraftstoff                                                    Hybrid
 Verbrauch (l/100 km)                                             NaN
@@ -892,10 +892,10 @@ Erstzulassung             0
 Jahr                      0
 Preis (Euro)              0
 Leistung (kW)             0
-Leistung (PS)            12
+Leistung (PS)            13
 Getriebe                  0
 Kraftstoff                0
-Verbrauch (l/100 km)    108
+Verbrauch (l/100 km)    109
 Verbrauch (g/km)          0
 Kilometerstand (km)       1
 Bemerkungen               0
@@ -904,7 +904,7 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Jetzt lassen wir uns diese 108 Autos anzeigen, bei denen ungültige Werte beim
+<p>Jetzt lassen wir uns diese 109 Autos anzeigen, bei denen ungültige Werte beim
 »Verbrauch (l/100 km)« angegeben wurden. Dazu nutzen wir die True-Werte in der
 Spalte <code class="docutils literal notranslate"><span class="pre">Verbrauch</span> <span class="pre">(l/100</span> <span class="pre">km)</span></code> als Filter für den ursprünglichen Datensatz.
 Zumindest die ersten 20 Autos lassen wir uns dann mit der <code class="docutils literal notranslate"><span class="pre">.head(20)</span></code>-Methode
@@ -961,7 +961,7 @@ anzeigen.</p>
       <td>2021</td>
       <td>42830</td>
       <td>162</td>
-      <td>220</td>
+      <td>220.0</td>
       <td>Automatik</td>
       <td>Hybrid</td>
       <td>NaN</td>
@@ -978,7 +978,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>16990</td>
       <td>96</td>
-      <td>131</td>
+      <td>131.0</td>
       <td>Schaltgetriebe</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1012,7 +1012,7 @@ anzeigen.</p>
       <td>2022</td>
       <td>54490</td>
       <td>214</td>
-      <td>291</td>
+      <td>291.0</td>
       <td>Automatik</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1029,7 +1029,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>29990</td>
       <td>130</td>
-      <td>177</td>
+      <td>177.0</td>
       <td>Automatik</td>
       <td>Diesel</td>
       <td>NaN</td>
@@ -1046,7 +1046,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>37890</td>
       <td>140</td>
-      <td>190</td>
+      <td>190.0</td>
       <td>Automatik</td>
       <td>Diesel</td>
       <td>NaN</td>
@@ -1063,7 +1063,7 @@ anzeigen.</p>
       <td>2020</td>
       <td>41900</td>
       <td>246</td>
-      <td>334</td>
+      <td>334.0</td>
       <td>Automatik</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1080,7 +1080,7 @@ anzeigen.</p>
       <td>2022</td>
       <td>42570</td>
       <td>140</td>
-      <td>190</td>
+      <td>190.0</td>
       <td>Automatik</td>
       <td>Diesel</td>
       <td>NaN</td>
@@ -1097,7 +1097,7 @@ anzeigen.</p>
       <td>2020</td>
       <td>25600</td>
       <td>117</td>
-      <td>159</td>
+      <td>159.0</td>
       <td>Automatik</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1114,7 +1114,7 @@ anzeigen.</p>
       <td>2015</td>
       <td>14500</td>
       <td>169</td>
-      <td>230</td>
+      <td>230.0</td>
       <td>Schaltgetriebe</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1131,7 +1131,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>22470</td>
       <td>110</td>
-      <td>150</td>
+      <td>150.0</td>
       <td>Automatik</td>
       <td>Diesel</td>
       <td>NaN</td>
@@ -1148,7 +1148,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>13990</td>
       <td>66</td>
-      <td>90</td>
+      <td>90.0</td>
       <td>Automatik</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1165,7 +1165,7 @@ anzeigen.</p>
       <td>2023</td>
       <td>9980</td>
       <td>9</td>
-      <td>12</td>
+      <td>12.0</td>
       <td>Automatik</td>
       <td>Elektro</td>
       <td>NaN</td>
@@ -1182,7 +1182,7 @@ anzeigen.</p>
       <td>2021</td>
       <td>57490</td>
       <td>223</td>
-      <td>303</td>
+      <td>303.0</td>
       <td>Automatik</td>
       <td>Hybrid</td>
       <td>NaN</td>
@@ -1199,7 +1199,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>24890</td>
       <td>110</td>
-      <td>150</td>
+      <td>150.0</td>
       <td>Automatik</td>
       <td>Elektro</td>
       <td>NaN</td>
@@ -1216,7 +1216,7 @@ anzeigen.</p>
       <td>2007</td>
       <td>2500</td>
       <td>110</td>
-      <td>150</td>
+      <td>150.0</td>
       <td>Schaltgetriebe</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1233,7 +1233,7 @@ anzeigen.</p>
       <td>2020</td>
       <td>36500</td>
       <td>162</td>
-      <td>220</td>
+      <td>220.0</td>
       <td>Automatik</td>
       <td>Hybrid</td>
       <td>NaN</td>
@@ -1250,7 +1250,7 @@ anzeigen.</p>
       <td>2014</td>
       <td>27980</td>
       <td>180</td>
-      <td>245</td>
+      <td>245.0</td>
       <td>Automatik</td>
       <td>Diesel</td>
       <td>NaN</td>
@@ -1267,7 +1267,7 @@ anzeigen.</p>
       <td>2021</td>
       <td>16150</td>
       <td>70</td>
-      <td>95</td>
+      <td>95.0</td>
       <td>Schaltgetriebe</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1284,7 +1284,7 @@ anzeigen.</p>
       <td>2019</td>
       <td>13979</td>
       <td>84</td>
-      <td>114</td>
+      <td>114.0</td>
       <td>Schaltgetriebe</td>
       <td>Benzin</td>
       <td>NaN</td>
@@ -1345,15 +1345,15 @@ Data columns (total 14 columns):
  3   Erstzulassung         1000 non-null   object 
  4   Jahr                  1000 non-null   object 
  5   Preis (Euro)          1000 non-null   object 
- 6   Leistung (kW)         1000 non-null   object 
- 7   Leistung (PS)         988 non-null    object 
+ 6   Leistung (kW)         1000 non-null   int64  
+ 7   Leistung (PS)         987 non-null    float64
  8   Getriebe              1000 non-null   object 
  9   Kraftstoff            1000 non-null   object 
- 10  Verbrauch (l/100 km)  892 non-null    object 
+ 10  Verbrauch (l/100 km)  891 non-null    object 
  11  Verbrauch (g/km)      1000 non-null   object 
  12  Kilometerstand (km)   999 non-null    float64
  13  Bemerkungen           1000 non-null   object 
-dtypes: float64(1), object(13)
+dtypes: float64(2), int64(1), object(11)
 memory usage: 109.5+ KB
 </pre></div>
 </div>
@@ -1385,13 +1385,13 @@ Data columns (total 12 columns):
  3   Erstzulassung        1000 non-null   object 
  4   Jahr                 1000 non-null   object 
  5   Preis (Euro)         1000 non-null   object 
- 6   Leistung (kW)        1000 non-null   object 
- 7   Leistung (PS)        988 non-null    object 
+ 6   Leistung (kW)        1000 non-null   int64  
+ 7   Leistung (PS)        987 non-null    float64
  8   Getriebe             1000 non-null   object 
  9   Kraftstoff           1000 non-null   object 
  10  Kilometerstand (km)  999 non-null    float64
  11  Bemerkungen          1000 non-null   object 
-dtypes: float64(1), object(11)
+dtypes: float64(2), int64(1), object(9)
 memory usage: 93.9+ KB
 </pre></div>
 </div>
@@ -1447,8 +1447,8 @@ memory usage: 93.9+ KB
       <td>37.500 km</td>
       <td>12/2020</td>
       <td>ACC</td>
-      <td>124 g/km</td>
-      <td>4,4 l/100 km</td>
+      <td>90</td>
+      <td>NaN</td>
       <td>Automatik</td>
       <td>Automatik</td>
       <td>NaN</td>
@@ -1484,13 +1484,13 @@ Data columns (total 12 columns):
  3   Erstzulassung        999 non-null    object 
  4   Jahr                 999 non-null    object 
  5   Preis (Euro)         999 non-null    object 
- 6   Leistung (kW)        999 non-null    object 
- 7   Leistung (PS)        987 non-null    object 
+ 6   Leistung (kW)        999 non-null    int64  
+ 7   Leistung (PS)        987 non-null    float64
  8   Getriebe             999 non-null    object 
  9   Kraftstoff           999 non-null    object 
  10  Kilometerstand (km)  999 non-null    float64
  11  Bemerkungen          999 non-null    object 
-dtypes: float64(1), object(11)
+dtypes: float64(2), int64(1), object(9)
 memory usage: 101.5+ KB
 </pre></div>
 </div>
@@ -1547,7 +1547,7 @@ Erstzulassung                           02/2018
 Jahr                                       2018
 Preis (Euro)                              15490
 Leistung (kW)                                92
-Leistung (PS)                               125
+Leistung (PS)                             125.0
 Getriebe                              Automatik
 Kraftstoff                               Benzin
 Kilometerstand (km)                     81192.0
@@ -1563,7 +1563,7 @@ daher den fehlenden Wert ersetzen. Eine Möglichkeit ist, eine Farbe zu erfinden
 z.B. ‘bunt’, oder die fehlenden Werte explizit durch einen Eintrag ‘keine
 Angabe’ zu vervollständigen. Dazu benutzen wir die Methode <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> (siehe
 <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html">Pandas-Dokumentation →
-fillna</a>).
+fillna()</a>).
 Die Vervollständigung soll nur die NaN-Werte der Spalte »Farbe« füllen. Daher
 filtern wir zuerst diese Spalte und wenden darauf die <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode an. Das
 erste Argument der <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode ist der Wert, durch den die NaN-Werte
@@ -1612,7 +1612,7 @@ Erstzulassung                           02/2018
 Jahr                                       2018
 Preis (Euro)                              15490
 Leistung (kW)                                92
-Leistung (PS)                               125
+Leistung (PS)                             125.0
 Getriebe                              Automatik
 Kraftstoff                               Benzin
 Kilometerstand (km)                     81192.0
@@ -1625,8 +1625,8 @@ Name: 2, dtype: object
 <p>Bei den PS-Zahlen haben wir ebenfalls nicht vollständige Daten vorliegen.
 Diesmal haben wir nicht kategoriale Daten wie die Farben, sondern numerische
 Werte. Daher bietet es sich hier eine zweite Methode der Ersetzung (Imputation)
-an. Wenn wir überall da, wo wir keine PS-Zahlen vorliegen haben, den Mittelwert
-der vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
+an. Wenn wir überall da, wo keine PS-Zahlen vorliegen, den Mittelwert der
+vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
 gesamten Datensatzes nicht kaputt. Wir berechnen daher zuerst den Mittelwert mit
 der Methode <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> und nutzen dann die <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode.</p>
 <div class="cell docutils container">
@@ -1635,99 +1635,64 @@ der Methode <code class="docutils literal notranslate"><span class="pre">.mean()
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mittelwert</span><span class="p">)</span>
-
-<span class="c1"># Kontrolle</span>
-<span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mittelwert</span> <span class="o">=</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mittelwert</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/series.py:6549,</span> in <span class="ni">Series.mean</span><span class="nt">(self, axis, skipna, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6541</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">make_doc</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">ndim</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">6542</span> <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">6543</span>     <span class="bp">self</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6547</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">6548</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">6549</span>     <span class="k">return</span> <span class="n">NDFrame</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/generic.py:12420,</span> in <span class="ni">NDFrame.mean</span><span class="nt">(self, axis, skipna, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12413</span> <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span>
-<span class="g g-Whitespace">  </span><span class="mi">12414</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">  </span><span class="mi">12415</span>     <span class="n">axis</span><span class="p">:</span> <span class="n">Axis</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12418</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">  </span><span class="mi">12419</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Series</span> <span class="o">|</span> <span class="nb">float</span><span class="p">:</span>
-<span class="ne">&gt; </span><span class="mi">12420</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stat_function</span><span class="p">(</span>
-<span class="g g-Whitespace">  </span><span class="mi">12421</span>         <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">nanops</span><span class="o">.</span><span class="n">nanmean</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="p">,</span> <span class="n">numeric_only</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">  </span><span class="mi">12422</span>     <span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/generic.py:12377,</span> in <span class="ni">NDFrame._stat_function</span><span class="nt">(self, name, func, axis, skipna, numeric_only, **kwargs)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12373</span> <span class="n">nv</span><span class="o">.</span><span class="n">validate_func</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="p">(),</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">  </span><span class="mi">12375</span> <span class="n">validate_bool_kwarg</span><span class="p">(</span><span class="n">skipna</span><span class="p">,</span> <span class="s2">&quot;skipna&quot;</span><span class="p">,</span> <span class="n">none_allowed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="ne">&gt; </span><span class="mi">12377</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reduce</span><span class="p">(</span>
-<span class="g g-Whitespace">  </span><span class="mi">12378</span>     <span class="n">func</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="n">numeric_only</span>
-<span class="g g-Whitespace">  </span><span class="mi">12379</span> <span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/series.py:6457,</span> in <span class="ni">Series._reduce</span><span class="nt">(self, op, name, axis, skipna, numeric_only, filter_type, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6452</span>     <span class="c1"># GH#47500 - change to TypeError to match other methods</span>
-<span class="g g-Whitespace">   </span><span class="mi">6453</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">6454</span>         <span class="sa">f</span><span class="s2">&quot;Series.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> does not allow </span><span class="si">{</span><span class="n">kwd_name</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">numeric_only</span><span class="si">}</span><span class="s2"> &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6455</span>         <span class="s2">&quot;with non-numeric dtypes.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">6456</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">6457</span> <span class="k">return</span> <span class="n">op</span><span class="p">(</span><span class="n">delegate</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/nanops.py:147,</span> in <span class="ni">bottleneck_switch.__call__.&lt;locals&gt;.f</span><span class="nt">(values, axis, skipna, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">147</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">alt</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/nanops.py:404,</span> in <span class="ni">_datetimelike_compat.&lt;locals&gt;.new_func</span><span class="nt">(values, axis, skipna, mask, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="k">if</span> <span class="n">datetimelike</span> <span class="ow">and</span> <span class="n">mask</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">402</span>     <span class="n">mask</span> <span class="o">=</span> <span class="n">isna</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">404</span> <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="n">skipna</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">406</span> <span class="k">if</span> <span class="n">datetimelike</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">_wrap_results</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">orig_values</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="n">iNaT</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/core/nanops.py:719,</span> in <span class="ni">nanmean</span><span class="nt">(values, axis, skipna, mask)</span>
-<span class="g g-Whitespace">    </span><span class="mi">716</span>     <span class="n">dtype_count</span> <span class="o">=</span> <span class="n">dtype</span>
-<span class="g g-Whitespace">    </span><span class="mi">718</span> <span class="n">count</span> <span class="o">=</span> <span class="n">_get_counts</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype_count</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">719</span> <span class="n">the_sum</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype_sum</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="n">the_sum</span> <span class="o">=</span> <span class="n">_ensure_numeric</span><span class="p">(</span><span class="n">the_sum</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">722</span> <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">the_sum</span><span class="p">,</span> <span class="s2">&quot;ndim&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
-
-<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/numpy/core/_methods.py:49,</span> in <span class="ni">_sum</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="k">def</span> <span class="nf">_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span>          <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">49</span>     <span class="k">return</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: 171.78
 </pre></div>
 </div>
 </div>
 </div>
-<p>Besser wäre natürlich zu versuchen, die fehlenden Daten zu recherchieren. Oder
-aber mittels linearer Regression die fehlenden Werte zu schätzen und dann zu
-ergänzen. Als erste Näherung nehmen wir jetzt den Mittelwert der vorhandenen
-Daten.</p>
+<p>Noch einmal die Kontrolle, ob jetzt alle NaN-Werte eliminiert oder
+vervollständigt wurden:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Marke                  0
+Modell                 0
+Farbe                  0
+Erstzulassung          0
+Jahr                   0
+Preis (Euro)           0
+Leistung (kW)          0
+Leistung (PS)          0
+Getriebe               0
+Kraftstoff             0
+Kilometerstand (km)    0
+Bemerkungen            0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Mittelwert der »Leistung (PS)« ist sehr hoch. Vielleicht haben wir doch den
+Datensatz eher verschlechtert, indem wir fehlende Werte durch den Mittelwert
+ersetzt haben. Beispielsweise könnte der Median eine bessere Alternative sein.
+Auch könnten wir zunächst die Autos mit fehlenden PS-Zahlen weglassen, für die
+übrigen Autos ein lineares Regressionsmodell oder einen Entscheidungsbaum
+trainieren und damit die fehlenden PS-Zahlen abschätzen. Bei diesem Beispiel
+wäre die beste Lösung zur Imputation der ungültigen Werte »Leistung (PS)« die
+Umrechung der vorhandenen, gültigen Werte der Spalte »Leistung (kW)«.
+Tatsächlich sind die beiden Merkmale redundant, da es sich um dasselbe Merkmal
+in zwei verschiedenen Einheiten handelt, so dass wir die Spalte »Leistung (PS)«
+auch entfernen könnten.</p>
 </section>
-<section id="zusammenfassung">
-<h2>Zusammenfassung<a class="headerlink" href="#zusammenfassung" title="Link to this heading">#</a></h2>
+<section id="zusammenfassung-und-ausblick">
+<h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
 <p>Ein wichtiger Teil eines ML-Projektes beschäftigt sich mit der Aufbereitung der
 Daten für die ML-Algorithmen. Dabei ist es nicht nur wichtig, in großen
 Datensammlungen fehlende Einträge aufspüren zu können, sondern ein Gespür dafür
-zu entwickeln, wie mit den fehlenden Daten angesetzt werden sollen. Die
+zu entwickeln, wie mit den fehlenden Daten umgegangen werden soll. Die
 Strategien hängen dabei von der Anzahl der fehlenden Daten und ihrer Bedeutung
-ab. Häufig werden unvollständige Daten aus der Datensammlung gelöscht oder
-numerische Einträge durch den Mittelwert der vorhandenen Daten ersetzt.</p>
+ab. Häufig werden unvollständige Daten aus der Datensammlung gelöscht
+(Elimination) oder numerische Einträge durch den Mittelwert der vorhandenen
+Daten ersetzt (Imputation). Wie kategoriale Daten für ML-Algorithmen aufbereitet
+werden müssen, wird im nächsten Kapitel erklärt.</p>
 </section>
 </section>
 
@@ -1799,7 +1764,7 @@ numerische Einträge durch den Mittelwert der vorhandenen Daten ersetzt.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehlende-daten-aufspuren-mit-isnull">Fehlende Daten aufspüren mit isnull()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-elimination-mit-drop">Löschen (Elimination) mit drop()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vervollstandigung-imputation-mit-fillna">Vervollständigung (Imputation) mit fillna()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>
 
