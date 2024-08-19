@@ -56,13 +56,15 @@ daten.info()
 ```
 
 Wir hatten bereits festgestellt, dass die Anzahl der `non-null`-Einträge für die
-verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 964 Autos eine Farbe eingetragen und 892 Autos
-die Eigenschaft »Verbrauch (l/100 km)« gültig und auch der »Kilometerstand (km)«
-enthält nur 999 gültige Einträge. Welche das sind, können wir mit der Methode
-`isnull()` bestimmen. Die Methode liefert ein Pandas DataFrame zurück, das
-True/False-Werte enthält. True steht dabei dafür, dass ein Wert fehlt bzw. mit
-dem Eintrag 'NaN' gekennzeichnet ist (= not a number). Weitere Details finden
-Sie in der [Pandas-Dokumentation →
+verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 963 Autos
+eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 988 Autos gültig.
+Am wenigsten gültige Einträge hat das Merkmal »Verbrauch (l/100 km)«, wohingegen
+bei der Eigenschaft »Kilometerstand (km)« nur ein ungültiger Eintrag auftaucht.
+Welche Einträge ungültig sind, können wir mit der Methode `isnull()` bestimmen.
+Die Methode liefert ein Pandas DataFrame zurück, das True/False-Werte enthält.
+True steht dabei dafür, dass ein Wert fehlt bzw. mit dem Eintrag `NaN`
+gekennzeichnet ist (= not a number). Weitere Details finden Sie in der
+[Pandas-Dokumentation →
 isnull()](https://pandas.pydata.org/docs/reference/api/pandas.isnull.html).
 
 ```{code-cell}
@@ -98,7 +100,7 @@ Spalte `Verbrauch (l/100 km)` als Filter für den ursprünglichen Datensatz.
 Zumindest die ersten 20 Autos lassen wir uns dann mit der `.head(20)`-Methode
 anzeigen.
 
-```{code-cell} ipython3
+```{code-cell}
 autos_mit_fehlendem_verbrauch_pro_100km = daten[ fehlende_daten['Verbrauch (l/100 km)'] == True ]
 autos_mit_fehlendem_verbrauch_pro_100km.head(20)
 ```
@@ -180,12 +182,6 @@ nachlesen können, gibt es zum expliziten Überschreiben der alten Variable auch
 die Alternative, die Option `inplace=True` zu setzen. Welche Option Sie nutzen,
 ist Geschmackssache.
 
-Jetzt sind alle Einträge des Datensatzes gültig, gültig im technischen Sinne.
-
-```{code-cell}
-daten_ohne_verbrauch.isnull().sum()
-```
-
 Ob alle Angaben plausibel sind, ist nicht gesagt. Bei dem Peugeot mit dem Index
 708 hatten wir ja gesehen, dass bei der Erstzulassung eine Kilometerangabe
 stand. Tatsächlich gab es bereits erste Hinweise darauf, dass manche Werte
@@ -206,47 +202,62 @@ werden, um statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.
 
 ## Vervollständigung (Imputation) mit fillna()
 
-Auch bei den Angaben zur Schaltung fehlen Einträge. Zum Beispiel die Zeile mit
-dem Index 243 ist unvollständig.
+Auch bei den Angaben zur Farbe fehlen Einträge. Zum Beispiel die Zeile mit
+dem Index 2 ist unvollständig.
 
-```{code-cell} ipython3
-#print(data_raw.loc[243, :])
+```{code-cell}
+daten_ohne_verbrauch.loc[2, :]
 ```
 
 Diesmal entscheiden wir uns dazu, diese Eigenschaft nicht wegzulassen.
-ML-Verfahren brauchen aber immer einen gültigen Wert und nicht NaN. Wir ersetzen
-die fehlenden Werte durch den Eintrag 'not defined'. Genausogut könnten wir auch
-'keine Angabe' oder 'nada' oder was auch immer nehmen. Dazu benutzen wir die
-Methode `fillna()` (siehe [Pandas-Dokumentation →
+ML-Verfahren brauchen aber immer einen gültigen Wert und nicht `NaN`. Wir müssen
+daher den fehlenden Wert ersetzen. Eine Möglichkeit ist, eine Farbe zu erfinden,
+z.B. 'bunt', oder die fehlenden Werte explizit durch einen Eintrag 'keine
+Angabe' zu vervollständigen. Dazu benutzen wir die Methode `fillna()` (siehe
+[Pandas-Dokumentation →
 fillna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)).
+Die Vervollständigung soll nur die NaN-Werte der Spalte »Farbe« füllen. Daher
+filtern wir zuerst diese Spalte und wenden darauf die `fillna()`-Methode an. Das
+erste Argument der `fillna()`-Methode ist der Wert, durch den die NaN-Werte
+ersetzt werden sollen (hier `'keine Angabe'`). Damit die Verwollständigung
+explizit gespeichert wird, überschreiben wir die Spalte.
 
-```{code-cell} ipython3
-#data_raw.loc[:, 'gear'] = data_raw.loc[:, 'gear'].fillna(value='not defined')
+```{code-cell}
+daten_ohne_verbrauch['Farbe'] = daten_ohne_verbrauch['Farbe'].fillna('keine Angabe')
+
+# Kontrolle der Vervollständigung
+daten_ohne_verbrauch.isnull().sum()
 ```
 
-Wenn wir uns jetzt noch einmal Zeile 243 ansehen, sehen wir, dass `fillna()`
-funktioniert hat.
+Wenn wir uns jetzt noch einmal die dritte Zeile ansehen, sehen wir, dass
+`fillna()` funktioniert hat.
 
 ```{code-cell} ipython3
-#print(data_raw.loc[243,:])
+daten_ohne_verbrauch.loc[2,:]
 ```
 
 Bei den PS-Zahlen haben wir ebenfalls nicht vollständige Daten vorliegen.
-Diesmal haben wir nicht diskrete Werte wie 'Schaltwagen' oder 'Automatik',
-sondern numerische Werte. Daher bietet es sich hier eine zweite Methode der
-Ersetzung an. Wenn wir überall da, wo wir keine PS-Zahlen vorliegen haben, den
-Mittelwert der vorhandenen PS-Zahlen einsetzen, machen wir zumindest den
-Mittelwert des gesamten Datensatzes nicht kaputt. Besser wäre natürlich zu
-versuchen, die fehlenden Daten zu recherchieren. Oder aber mittels linearer
-Regression die fehlenden Werte zu schätzen und dann zu ergänzen. Als erste
-Näherung nehmen wir jetzt den Mittelwert der vorhandenen Daten.
+Diesmal haben wir nicht kategoriale Daten wie die Farben, sondern numerische
+Werte. Daher bietet es sich hier eine zweite Methode der Ersetzung (Imputation)
+an. Wenn wir überall da, wo wir keine PS-Zahlen vorliegen haben, den Mittelwert
+der vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
+gesamten Datensatzes nicht kaputt. Wir berechnen daher zuerst den Mittelwert mit
+der Methode `.mean()` und nutzen dann die `fillna()`-Methode.
 
-```{code-cell} ipython3
-#mittelwert = data_raw.loc[: , 'hp'].mean()
-#print('Der Mittelwert der vorhandenen PS-Zahlen ist: {:.2f}'.format(mittelwert))
+```{code-cell}
+mittelwert = daten_ohne_verbrauch['Leistung (PS)'].mean()
+print(f'Der Mittelwert der vorhandenen Einträge »Leistung (PS)« ist: {mittelwert:.2f}')
 
-#data_raw.loc[:, 'hp'] = data_raw.loc[:, 'hp'].fillna(mittelwert)
+daten_ohne_verbrauch['Leistung (PS)'] = daten_ohne_verbrauch['Leistung (PS)'].fillna(mittelwert)
+
+# Kontrolle
+daten_ohne_verbrauch.isnull().sum()
 ```
+
+Besser wäre natürlich zu versuchen, die fehlenden Daten zu recherchieren. Oder
+aber mittels linearer Regression die fehlenden Werte zu schätzen und dann zu
+ergänzen. Als erste Näherung nehmen wir jetzt den Mittelwert der vorhandenen
+Daten.
 
 ## Zusammenfassung
 

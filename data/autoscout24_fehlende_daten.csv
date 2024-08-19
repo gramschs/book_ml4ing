@@ -449,7 +449,7 @@ opel,Opel Mokka,blau,12/2021,2021,22790,96,131,Schaltgetriebe,Benzin,"5,6 l/100 
 mercedes-benz,Mercedes-Benz SLS,silber,10/2010,2010,194900,420,571,Automatik,Benzin,"13,2 l/100 km",308 g/km,70782.0,"Coupe ""deutsch.Fahrzeug/B&O/Scheckheft"""
 volkswagen,Volkswagen Golf,schwarz,04/2011,2011,6890,90,122,Automatik,Benzin,"6,3 l/100 km",146 g/km,207000.0,VI Plus Team *2.Hand/Automatik/Scheckheft*
 mercedes-benz,Mercedes-Benz GLS 350,schwarz,10/2016,2016,40990,190,258,Automatik,Diesel,"7,1 l/100 km",185 g/km,137663.0,d 4Matic Pano el.AHK 7-Sitzer
-alfa-romeo,Alfa Romeo Stelvio,schwarz,10/2019,2019,34590,140,190,Automatik,Diesel,"4,7 l/100 km",124 g/km,59560.0,Super 2WD *Winter-/Assistenz-/Komfortpaket/DAB*
+alfa-romeo,Alfa Romeo Stelvio,schwarz,10/2019,2019,34590,140,190,Automatik,Diesel,"4,7 l/100 km",124,59560.0,Super 2WD *Winter-/Assistenz-/Komfortpaket/DAB*
 ford,Ford Focus,silber,06/2013,2013,4899,70,95,Schaltgetriebe,Diesel,"4,2 l/100 km",109 g/km,199997.0,1.6 TDCi DPF Start-Stopp-System Ambiente
 opel,Opel Corsa,grau,09/2015,2015,7100,66,90,Schaltgetriebe,Benzin,"5,4 l/100 km",- (g/km),59766.0,1.4 (ecoFLEX) Start/Stop Selection
 skoda,Skoda Octavia,schwarz,05/2018,2018,14890,85,116,Schaltgetriebe,Diesel,"4,1 l/100 km",106 g/km,116000.0,Combi Style*Klimaaut.*SHZ*PDC*MFL*ACC
@@ -571,7 +571,7 @@ volkswagen,Volkswagen Golf,blau,03/2019,2019,24770,135,184,Automatik,Diesel,"5,4
 ford,Ford Kuga,,01/2018,2018,25990,110,150,Schaltgetriebe,Benzin,"6,3 l/100 km",145 g/km,52365.0,1.5 EcoBoost 2x4 Titanium
 volkswagen,Volkswagen T6.1 California,rot,06/2023,2023,66220,110,150,Schaltgetriebe,Diesel,"6,7 l/100 km",177 g/km,1.0,"6.1 2,0TDi Beach Camper Edition 110 kW (150 PS)..."
 toyota,Toyota RAV 4,braun,04/2017,2017,30880,145,197,Automatik,Hybrid,5 l/100 km,117 g/km,39890.0,2.5 4x4 Hyb Exe Kamera Leder SHZ AHK Navi L-Heizun
-skoda,Skoda Octavia,schwarz,11/2015,2015,11999,110,150,Automatik,Diesel,"4,4 l/100 km",115 g/km,184500.0,Combi Edition
+skoda,Skoda Octavia,schwarz,11/2015,2015,11999,110,150,Automatik,Diesel,,115 g/km,184500.0,Combi Edition
 bmw,BMW X3,grau,03/2015,2015,23700,140,190,Automatik,Diesel,"5,2 l/100 km",138 g/km,122950.0,xDrive20d Aut. M Sport Ahk Pano°gr.Navi+HUP
 volvo,Volvo XC60,schwarz,07/2018,2018,37990,140,190,Automatik,Diesel,"5,8 l/100 km",153 g/km,52300.0,D4 Inscription AWD Stdhzg. AHK Cam Navi
 ford,Ford Transit Custom,weiß,01/2023,2023,65990,110,150,Schaltgetriebe,Diesel,"7,9 l/100 km",206 g/km,50.0,Nugget Aufstelldach Trail Fliegenschutztür Teilled
@@ -707,7 +707,7 @@ ford,Ford C-Max,grau,03/2016,2016,13990,77,105,Schaltgetriebe,Diesel,"3,8 l/100 
 toyota,Toyota Corolla,weiß,09/2021,2021,22700,85,116,Schaltgetriebe,Benzin,"6,6 l/100 km",151 g/km,5.0,1.2 Turbo Team Deutschland
 volkswagen,Volkswagen Sharan,silber,01/2017,2017,26990,135,184,Automatik,Diesel,"5,3 l/100 km",140 g/km,108205.0,Highline Klima Leder AHZV Standheizung
 hyundai,Hyundai i10,weiß,06/2017,2017,13990,64,87,Schaltgetriebe,Benzin,"4,9 l/100 km",0 g/km,37117.0,1.2 YES! Plus Navi SHZ LHZ DAB APP PDC GRA
-peugeot,Peugeot 508,,37.500 km,12/2020, ACC,124 g/km,"4,4 l/100 km",Automatik,Automatik,2020,Diesel,,GT BlueHDi 180 EAT8 Panoramadach
+peugeot,Peugeot 508,,37.500 km,12/2020, ACC,90,,Automatik,Automatik,2020,Diesel,,GT BlueHDi 180 EAT8 Panoramadach
 ford,Ford S-Max,grau,10/2016,2016,23890,110,150,Schaltgetriebe,Diesel,5 l/100 km,129 g/km,63766.0,2.0 TDCi Titanium LED*Klimaaut.*Sitzheiz.*PDC*1.Hd
 volkswagen,Volkswagen T5 Multivan,braun,04/2011,2011,25800,132,179,Schaltgetriebe,Diesel,"7,8 l/100 km",205 g/km,201900.0,"Multivan Highline ""Neuer Motor"""
 land-rover,Land Rover Discovery Sport,,10/2018,2018,27840,132,179,Automatik,Diesel,"5,1 l/100 km",135 g/km,86309.0,2.0TD4 Sport SE Navi|Cam|Sitzhzg
