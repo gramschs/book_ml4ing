@@ -34,19 +34,22 @@ Methoden kennen, damit umzugehen.
 gibt, sondern von Projekt zu Projekt entschieden werden muss.
 ```
 
-+++
-
 ## Fehlende Daten aufspüren mit isnull()
 
-Ein erstes Beispiel eines unvollständigen Datensatzes haben wir bereits im
-letzten Kapitel kennengelernt. Wir laden erneut die Tabelle mit den
-Gebrauchtwagenpreisen der Jahre 2011 bis 2021.
+Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
+[Autoscout24.de](https://www.autoscout24.de). Sie können die csv-Datei hier
+herunterladen {download}`Download autoscout24_DE_small.csv
+<./autoscout24_DE_small.csv>` und in das Jupyter Notebook importieren.
+Alternativ können Sie die csv-Datei auch über die URL
+`'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv'`
+importieren.
 
-```{code-cell} ipython3
+```{code-cell} 
 import pandas as pd
 
-data_raw = pd.read_csv('data/autoscout24-germany-dataset.csv')
-data_raw.info()
+data = pd.read_csv('autoscout24_DE_small.csv')
+# data = pd.read_csv('https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv')
+data.info()
 ```
 
 Wir hatten bereits festgestellt, dass die Anzahl der 'non-null'-Einträge für die
@@ -61,8 +64,8 @@ isnull](https://pandas.pydata.org/docs/reference/api/pandas.isnull.html).
 Dieses boolesche Array können wir dann wiederum als Filter einsetzen.
 
 ```{code-cell} ipython3
-filter = data_raw.loc[:, 'model'].isnull() == True
-data_raw.loc[filter, :].head(20)
+#filter = data_raw.loc[:, 'model'].isnull() == True
+#data_raw.loc[filter, :].head(20)
 ```
 
 Scheinbar fehlt die Modellangabe häufig, wenn das Fahrzeug mit Gas betrieben
@@ -87,7 +90,7 @@ drop](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
 nachlesen können.
 
 ```{code-cell} ipython3
-data_raw = data_raw.drop(columns='model')
+#data_raw = data_raw.drop(columns='model')
 ```
 
 ## Ersetzen mit fillna()
@@ -96,7 +99,7 @@ Auch bei den Angaben zur Schaltung fehlen Einträge. Zum Beispiel die Zeile mit
 dem Index 243 ist unvollständig.
 
 ```{code-cell} ipython3
-print(data_raw.loc[243, :])
+#print(data_raw.loc[243, :])
 ```
 
 Diesmal entscheiden wir uns dazu, diese Eigenschaft nicht wegzulassen.
@@ -107,14 +110,14 @@ Methode `fillna()` (siehe [Pandas-Dokumentation →
 fillna](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html)).
 
 ```{code-cell} ipython3
-data_raw.loc[:, 'gear'] = data_raw.loc[:, 'gear'].fillna(value='not defined')
+#data_raw.loc[:, 'gear'] = data_raw.loc[:, 'gear'].fillna(value='not defined')
 ```
 
 Wenn wir uns jetzt noch einmal Zeile 243 ansehen, sehen wir, dass `fillna()`
 funktioniert hat.
 
 ```{code-cell} ipython3
-print(data_raw.loc[243,:])
+#print(data_raw.loc[243,:])
 ```
 
 Bei den PS-Zahlen haben wir ebenfalls nicht vollständige Daten vorliegen.
@@ -128,10 +131,10 @@ Regression die fehlenden Werte zu schätzen und dann zu ergänzen. Als erste
 Näherung nehmen wir jetzt den Mittelwert der vorhandenen Daten.
 
 ```{code-cell} ipython3
-mittelwert = data_raw.loc[: , 'hp'].mean()
-print('Der Mittelwert der vorhandenen PS-Zahlen ist: {:.2f}'.format(mittelwert))
+#mittelwert = data_raw.loc[: , 'hp'].mean()
+#print('Der Mittelwert der vorhandenen PS-Zahlen ist: {:.2f}'.format(mittelwert))
 
-data_raw.loc[:, 'hp'] = data_raw.loc[:, 'hp'].fillna(mittelwert)
+#data_raw.loc[:, 'hp'] = data_raw.loc[:, 'hp'].fillna(mittelwert)
 ```
 
 ## Zusammenfassung

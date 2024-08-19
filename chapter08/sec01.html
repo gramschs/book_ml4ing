@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
@@ -547,35 +547,44 @@ gibt, sondern von Projekt zu Projekt entschieden werden muss.</p></li>
 </section>
 <section id="fehlende-daten-aufspuren-mit-isnull">
 <h2>Fehlende Daten aufspüren mit isnull()<a class="headerlink" href="#fehlende-daten-aufspuren-mit-isnull" title="Link to this heading">#</a></h2>
-<p>Ein erstes Beispiel eines unvollständigen Datensatzes haben wir bereits im
-letzten Kapitel kennengelernt. Wir laden erneut die Tabelle mit den
-Gebrauchtwagenpreisen der Jahre 2011 bis 2021.</p>
+<p>Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
+<a class="reference external" href="https://www.autoscout24.de">Autoscout24.de</a>. Sie können die csv-Datei hier
+herunterladen <a class="reference download internal" download="" href="../_downloads/6c30320db325ca8f79503c370f6c1841/autoscout24_DE_small.csv"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">autoscout24_DE_small.csv</span></code></a> und in das Jupyter Notebook importieren.
+Alternativ können Sie die csv-Datei auch über die URL
+<code class="docutils literal notranslate"><span class="pre">'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv'</span></code>
+importieren.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">data_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/autoscout24-germany-dataset.csv&#39;</span><span class="p">)</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_DE_small.csv&#39;</span><span class="p">)</span>
+<span class="c1"># data = pd.read_csv(&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv&#39;)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 46405 entries, 0 to 46404
-Data columns (total 9 columns):
- #   Column     Non-Null Count  Dtype  
----  ------     --------------  -----  
- 0   mileage    46405 non-null  int64  
- 1   make       46405 non-null  object 
- 2   model      46262 non-null  object 
- 3   fuel       46405 non-null  object 
- 4   gear       46223 non-null  object 
- 5   offerType  46405 non-null  object 
- 6   price      46405 non-null  int64  
- 7   hp         46376 non-null  float64
- 8   year       46405 non-null  int64  
-dtypes: float64(1), int64(3), object(5)
-memory usage: 3.2+ MB
+RangeIndex: 1000 entries, 0 to 999
+Data columns (total 14 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Marke                 1000 non-null   object 
+ 1   Modell                1000 non-null   object 
+ 2   Farbe                 1000 non-null   object 
+ 3   Erstzulassung         1000 non-null   object 
+ 4   Jahr                  1000 non-null   object 
+ 5   Preis (Euro)          1000 non-null   object 
+ 6   Leistung (kW)         1000 non-null   object 
+ 7   Leistung (PS)         1000 non-null   object 
+ 8   Getriebe              1000 non-null   object 
+ 9   Kraftstoff            1000 non-null   object 
+ 10  Verbrauch (l/100 km)  892 non-null    object 
+ 11  Verbrauch (g/km)      1000 non-null   object 
+ 12  Kilometerstand (km)   999 non-null    float64
+ 13  Bemerkungen           1000 non-null   object 
+dtypes: float64(1), object(13)
+memory usage: 109.5+ KB
 </pre></div>
 </div>
 </div>
@@ -591,285 +600,11 @@ isnull</a>.</p>
 <p>Dieses boolesche Array können wir dann wiederum als Filter einsetzen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">==</span> <span class="kc">True</span>
-<span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">filter</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filter = data_raw.loc[:, &#39;model&#39;].isnull() == True</span>
+<span class="c1">#data_raw.loc[filter, :].head(20)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>mileage</th>
-      <th>make</th>
-      <th>model</th>
-      <th>fuel</th>
-      <th>gear</th>
-      <th>offerType</th>
-      <th>price</th>
-      <th>hp</th>
-      <th>year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>365</th>
-      <td>3500</td>
-      <td>Others</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>5500</td>
-      <td>38.0</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>2001</th>
-      <td>2900</td>
-      <td>Others</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>7900</td>
-      <td>5.0</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>2009</th>
-      <td>60866</td>
-      <td>Opel</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>12290</td>
-      <td>82.0</td>
-      <td>2019</td>
-    </tr>
-    <tr>
-      <th>2019</th>
-      <td>3550</td>
-      <td>Opel</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>15800</td>
-      <td>110.0</td>
-      <td>2019</td>
-    </tr>
-    <tr>
-      <th>2496</th>
-      <td>3000</td>
-      <td>Audi</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Automatic</td>
-      <td>Demonstration</td>
-      <td>172450</td>
-      <td>598.0</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>2557</th>
-      <td>104574</td>
-      <td>MINI</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>10490</td>
-      <td>184.0</td>
-      <td>2013</td>
-    </tr>
-    <tr>
-      <th>2843</th>
-      <td>25</td>
-      <td>Baic</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>20900</td>
-      <td>136.0</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>3507</th>
-      <td>39500</td>
-      <td>9ff</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>7000</td>
-      <td>20.0</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>4310</th>
-      <td>46597</td>
-      <td>Volkswagen</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>10490</td>
-      <td>82.0</td>
-      <td>2015</td>
-    </tr>
-    <tr>
-      <th>4620</th>
-      <td>27785</td>
-      <td>Lexus</td>
-      <td>NaN</td>
-      <td>Electric/Gasoline</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>35990</td>
-      <td>197.0</td>
-      <td>2019</td>
-    </tr>
-    <tr>
-      <th>4749</th>
-      <td>94777</td>
-      <td>Skoda</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>9999</td>
-      <td>90.0</td>
-      <td>2015</td>
-    </tr>
-    <tr>
-      <th>4907</th>
-      <td>100000</td>
-      <td>Alpine</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>NaN</td>
-      <td>Used</td>
-      <td>7000</td>
-      <td>136.0</td>
-      <td>2012</td>
-    </tr>
-    <tr>
-      <th>5321</th>
-      <td>182982</td>
-      <td>Mercedes-Benz</td>
-      <td>NaN</td>
-      <td>Diesel</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>9490</td>
-      <td>136.0</td>
-      <td>2012</td>
-    </tr>
-    <tr>
-      <th>5751</th>
-      <td>193000</td>
-      <td>Citroen</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>4990</td>
-      <td>156.0</td>
-      <td>2012</td>
-    </tr>
-    <tr>
-      <th>5902</th>
-      <td>50</td>
-      <td>Volkswagen</td>
-      <td>NaN</td>
-      <td>Diesel</td>
-      <td>Automatic</td>
-      <td>Demonstration</td>
-      <td>62950</td>
-      <td>150.0</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>7377</th>
-      <td>3000</td>
-      <td>Audi</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Automatic</td>
-      <td>Demonstration</td>
-      <td>172450</td>
-      <td>598.0</td>
-      <td>2021</td>
-    </tr>
-    <tr>
-      <th>7512</th>
-      <td>89900</td>
-      <td>Caravans-Wohnm</td>
-      <td>NaN</td>
-      <td>Diesel</td>
-      <td>Manual</td>
-      <td>Used</td>
-      <td>15990</td>
-      <td>102.0</td>
-      <td>2017</td>
-    </tr>
-    <tr>
-      <th>8293</th>
-      <td>115805</td>
-      <td>Skoda</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>8990</td>
-      <td>122.0</td>
-      <td>2014</td>
-    </tr>
-    <tr>
-      <th>9033</th>
-      <td>25387</td>
-      <td>Alpine</td>
-      <td>NaN</td>
-      <td>Gasoline</td>
-      <td>Automatic</td>
-      <td>Used</td>
-      <td>53990</td>
-      <td>252.0</td>
-      <td>2019</td>
-    </tr>
-    <tr>
-      <th>9264</th>
-      <td>5</td>
-      <td>Aixam</td>
-      <td>NaN</td>
-      <td>Electric</td>
-      <td>Automatic</td>
-      <td>Pre-registered</td>
-      <td>22180</td>
-      <td>NaN</td>
-      <td>2021</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Scheinbar fehlt die Modellangabe häufig, wenn das Fahrzeug mit Gas betrieben
 wird. Dem müssten wir systematisch nachgehen. Sind das vielleicht umgebaute
@@ -892,7 +627,7 @@ drop</a>
 nachlesen können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_raw</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;model&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data_raw = data_raw.drop(columns=&#39;model&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -904,20 +639,7 @@ nachlesen können.</p>
 dem Index 243 ist unvollständig.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">243</span><span class="p">,</span> <span class="p">:])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mileage        93850
-make         Renault
-fuel          Diesel
-gear             NaN
-offerType       Used
-price           7990
-hp             110.0
-year            2012
-Name: 243, dtype: object
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(data_raw.loc[243, :])</span>
 </pre></div>
 </div>
 </div>
@@ -930,7 +652,7 @@ Methode <code class="docutils literal notranslate"><span class="pre">fillna()</s
 fillna</a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;gear&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;gear&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;not defined&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data_raw.loc[:, &#39;gear&#39;] = data_raw.loc[:, &#39;gear&#39;].fillna(value=&#39;not defined&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -939,20 +661,7 @@ fillna</a>).</p>
 funktioniert hat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">243</span><span class="p">,:])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mileage            93850
-make             Renault
-fuel              Diesel
-gear         not defined
-offerType           Used
-price               7990
-hp                 110.0
-year                2012
-Name: 243, dtype: object
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(data_raw.loc[243,:])</span>
 </pre></div>
 </div>
 </div>
@@ -968,15 +677,10 @@ Regression die fehlenden Werte zu schätzen und dann zu ergänzen. Als erste
 Näherung nehmen wir jetzt den Mittelwert der vorhandenen Daten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span> <span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Der Mittelwert der vorhandenen PS-Zahlen ist: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mittelwert</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#mittelwert = data_raw.loc[: , &#39;hp&#39;].mean()</span>
+<span class="c1">#print(&#39;Der Mittelwert der vorhandenen PS-Zahlen ist: {:.2f}&#39;.format(mittelwert))</span>
 
-<span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;hp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;hp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mittelwert</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der Mittelwert der vorhandenen PS-Zahlen ist: 132.99
+<span class="c1">#data_raw.loc[:, &#39;hp&#39;] = data_raw.loc[:, &#39;hp&#39;].fillna(mittelwert)</span>
 </pre></div>
 </div>
 </div>
