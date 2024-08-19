@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>8. Polynomiale Regression und ML-Workflow &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>8. ML-Workflow: Datenvorverarbeitung &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
@@ -64,7 +64,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8.1 Datenvorverarbeitung" href="sec01.html" />
+    <link rel="next" title="8.1 Fehlende Daten" href="sec01.html" />
     <link rel="prev" title="7.3 Polynomiale Regression" href="../chapter07/sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -233,10 +233,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8. Polynomiale Regression und ML-Workflow</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec01.html">8.1 Datenvorverarbeitung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec02.html">8.2 Modellvalidierung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">8. ML-Workflow: Datenvorverarbeitung</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec01.html">8.1 Fehlende Daten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec02.html">8.2 Kodierung und Skalierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec03.html">8.3 Trainings- und Testdaten</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -496,7 +496,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>8. Polynomiale Regression und ML-Workflow</h1>
+    <h1>8. ML-Workflow: Datenvorverarbeitung</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -510,14 +510,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="polynomiale-regression-und-ml-workflow">
-<h1>8. Polynomiale Regression und ML-Workflow<a class="headerlink" href="#polynomiale-regression-und-ml-workflow" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ml-workflow-datenvorverarbeitung">
+<h1>8. ML-Workflow: Datenvorverarbeitung<a class="headerlink" href="#ml-workflow-datenvorverarbeitung" title="Link to this heading">#</a></h1>
 <p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="sec01.html">8.1 Datenvorverarbeitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec02.html">8.2 Modellvalidierung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec03.html">8.3 Das Bias-Varianz-Dilemma am Beispiel der polynomialen Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec01.html">8.1 Fehlende Daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec02.html">8.2 Kodierung und Skalierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec03.html">8.3 Trainings- und Testdaten</a></li>
 </ul>
 </div>
 </section>
@@ -566,7 +566,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">8.1 Datenvorverarbeitung</p>
+        <p class="prev-next-title">8.1 Fehlende Daten</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
