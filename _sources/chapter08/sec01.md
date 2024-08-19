@@ -27,73 +27,184 @@ Methoden kennen, damit umzugehen.
 
 ```{admonition} Lernziele
 :class: goals
-* Sie können in einer großen Datensammlung mit **isnull()** fehlende Daten aufspüren.
+* Sie können in einem Datensatz mit **isnull()** fehlende Daten aufspüren und
+  analysieren.
+* Sie kennen die beiden grundlegenen Strategien, mit fehlenden Daten umzugehen:
+  * **Elimination** (Löschen) und
+  * **Imputation** (Vervollständigen).
 * Sie können Daten gezielt mit **drop()** löschen.
 * Sie können fehlende Daten mit **fillna()** ersetzen.
-* Sie wissen, dass es nicht eine *einzige* Strategie zum Umgang mit fehlenden Daten 
-gibt, sondern von Projekt zu Projekt entschieden werden muss.
 ```
 
 ## Fehlende Daten aufspüren mit isnull()
 
 Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
-[Autoscout24.de](https://www.autoscout24.de). Sie können die csv-Datei hier
-herunterladen {download}`Download autoscout24_DE_small.csv
-<./autoscout24_DE_small.csv>` und in das Jupyter Notebook importieren.
-Alternativ können Sie die csv-Datei auch über die URL
-`'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv'`
-importieren.
+[Autoscout24.de](https://www.autoscout24.de), der Verkaufsdaten zu 1000 Autos
+enthält. Sie können die csv-Datei hier herunterladen {download}`Download
+autoscout24_fehlende_daten.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv>` und in
+das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei auch über
+die URL importieren, wie es in der folgenden Code-Zelle gemacht wird.
 
-```{code-cell} 
+```{code-cell}
 import pandas as pd
 
-data = pd.read_csv('autoscout24_DE_small.csv')
-# data = pd.read_csv('https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv')
-data.info()
+url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv'
+daten = pd.read_csv(url)
+
+daten.info()
 ```
 
-Wir hatten bereits festgestellt, dass die Anzahl der 'non-null'-Einträge für die
-verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist bei manchen
-Angeboten die Eigenschaft 'model' nicht angegeben worden. Welche das sind,
-können wir mit der Methode `isnull()` bestimmen. Die Methode liefert ein Array
-zurück, das True/False-Werte enthält. True steht dabei dafür, dass ein Wert
-fehlt bzw. mit dem Eintrag 'NaN' gekennzeichnet ist (= not a number). Weitere
-Details finden Sie in der [Pandas-Dokumentation →
-isnull](https://pandas.pydata.org/docs/reference/api/pandas.isnull.html).
+Wir hatten bereits festgestellt, dass die Anzahl der `non-null`-Einträge für die
+verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 892 Autos
+die Eigenschaft »Verbrauch (l/100 km)« gültig und auch der »Kilometerstand (km)«
+enthält nur 999 gültige Einträge. Welche das sind, können wir mit der Methode
+`isnull()` bestimmen. Die Methode liefert ein Pandas DataFrame zurück, das
+True/False-Werte enthält. True steht dabei dafür, dass ein Wert fehlt bzw. mit
+dem Eintrag 'NaN' gekennzeichnet ist (= not a number). Weitere Details finden
+Sie in der [Pandas-Dokumentation →
+isnull()](https://pandas.pydata.org/docs/reference/api/pandas.isnull.html).
 
-Dieses boolesche Array können wir dann wiederum als Filter einsetzen.
+```{code-cell}
+daten.isnull()
+```
+
+Bereits in der zweiten Zeile befindet sich ein Auto, bei dem das Merkmal
+»Verbrauch (l/100 km)« nicht gültig ist (ggf. müssen Sie weiter nach rechts
+scrollen), den dort steht `True`. Wir betrachten uns diesen Eintrag:
+
+```{code-cell}
+daten.loc[1,:]
+```
+
+Bei dem Auto handelt es sich um einen Hybrid, vielleicht wurde deshalb der
+»Verbrauch (l/100 km)« nicht angegeben. Ist das vielleicht auch bei den anderen
+Autos der Grund? Wir speichern zunächst die isnull()-Datenstruktur in einer
+eigenen Variable ab und ermitteln zunächst, wie viele Autos keinen gültigen
+Eintrag bei diesem Merkmal haben. Dazu nutzen wir aus, dass der boolesche Wert
+`False` bei Rechnungen als 0 interpretiert wird und der boolesche Wert `True`
+als 1. Die Methode `.sum()` summiert pro Spalte alle Werte, so dass sie direkt
+die Anzahl der ungültigen Werte pro Spalte liefert.
+
+```{code-cell}
+fehlende_daten = daten.isnull()
+
+fehlende_daten.sum()
+```
+
+Jetzt lassen wir uns diese 108 Autos anzeigen, bei denen ungültige Werte beim
+»Verbrauch (l/100 km)« angegeben wurden. Dazu nutzen wir die True-Werte in der
+Spalte `Verbrauch (l/100 km)` als Filter für den ursprünglichen Datensatz.
+Zumindest die ersten 20 Autos lassen wir uns dann mit der `.head(20)`-Methode
+anzeigen.
 
 ```{code-cell} ipython3
-#filter = data_raw.loc[:, 'model'].isnull() == True
-#data_raw.loc[filter, :].head(20)
+autos_mit_fehlendem_verbrauch_pro_100km = daten[ fehlende_daten['Verbrauch (l/100 km)'] == True ]
+autos_mit_fehlendem_verbrauch_pro_100km.head(20)
 ```
 
-Scheinbar fehlt die Modellangabe häufig, wenn das Fahrzeug mit Gas betrieben
-wird. Dem müssten wir systematisch nachgehen. Sind das vielleicht umgebaute
-Fahrzeuge und fehlt deshalb die Modellangabe? Wie oft kommen gasbetriebene
-Fahrzeuge überhaupt im kompletten Datensatz vor? Und wie häufig in dem Datensatz
-mit den unvollständigen Angaben? Wir wenden uns aber zunächst dem Löschen der
-Daten zu.
+Bemerkung: Der Vergleich `== True` ist redundant und kann auch weggelassen werden.
 
-## Löschen mit drop()
+Beim Kraftstoff werden alle möglichen Angaben gemacht: Hybrid, Benzin, Diesel
+und Elektro. Wir müssten jetzt systematisch den fehlenden Angaben nachgehen. Für
+Elektrofahrzeuge und ggf. Hybridautos ist die Angabe »Verbrauch (l/ 100 km)«
+unsinnig. Aber das zweite Auto mit der Nr. 5 wird mit Benzin betrieben, da
+scheint Nachlässigkeit beim Ausfüllen der Merkmale vorzuliegen. Beim fünften
+Auto mit der Nr. 77 ist zwar der »Verbrauch (l/100 km)« nicht angegeben, aber
+dafür der »Verbrauch (g/km)«. Daraus könnten wir den »Verbrauch (l/100 km)«
+abschätzen und den fehlenden Wert ergänzen. Es gibt verschiedene Strategien, mit
+fehlenden Daten umzugehen. Die beiden wichtigsten Verfahren zum Umgang mit
+fehlenden Daten sind
 
-Im letzten Kapitel haben wir einfach alle Datensätze gelöscht, in denen Daten
-gefehlt haben — sozusagen die Brute-Force-Methode. Wenn wir uns mehr Zeit für
-die Datenvorverarbeitung nehmen, können wir aber auch filigraner vorgehen.
-Beispielsweise könnten wir beschließen, dass uns das Modell als Eigenschaft
-nicht so wichtig ist und somit die Spalte löschen.
+1. Löschen (Elimination) und
+2. Vervollständigung (Imputation).
 
-Dazu verwenden wir die `drop()`-Methode. Standardmäßig löscht `drop()` jedoch
-Zeilen. Mit der Option `columns=` können wir spaltenweise löschen, wie Sie in
-der [Pandas-Dokumentation →
-drop](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
-nachlesen können.
+Bei Elimination werden Datenpunkte (Autos) und/oder Merkmale gelöscht. Bei
+Imputation (Vervollständigung) werden die fehlenden Werte ergänzt. Beide
+Verfahren werden wir nun etwas detaillierter betrachten.
 
-```{code-cell} ipython3
-#data_raw = data_raw.drop(columns='model')
+## Löschen (Elimination) mit drop()
+
+Bei der Elimination (Löschen) können wir filigran vorgehen oder die
+Holzhammer-Methode verwenden. Beispielsweise könnten wir entscheiden, das
+Merkmal »Verbrauch (l/100 km)« komplett zu löschen und einfach nur den
+»Verbrauch (g/km)« zu berücksichtigen. Aber ein kurzer Blick auf die Daten hatte
+ja bereits gezeigt, dass diese Werte auch nur unzuverlässig gefüllt waren, auch
+wenn sie technisch gültig sind. Wir löschen beide Merkmale. Dazu benutzen wir
+die Methode `drop()` mit dem zusätzlichen Argument `columns=['Verbrauch (l/
+100 km)', 'Verbrauch (g/km)']`. Da wir gleich zwei Spalten aufeinmal eliminieren
+möchten, müssen wir die Spalten (Columns) als Liste übergeben. Danach überprüfen
+wir mit der Methode `.info()`, ob das Löschen geklappt hat.
+
+```{code-cell}
+daten.drop(columns=['Verbrauch (l/100 km)', 'Verbrauch (g/km)'])
+daten.info()
 ```
 
-## Ersetzen mit fillna()
+Leider hat der Befehl `drop()` nicht funktioniert! Was ist da los? Python und
+Pandas verfolgen das Programmierparadigma »Explizit ist besser als implizit!«
+Daher werden zwar werden durch den `drop()`-Befehl die beiden Spalten gelöscht,
+aber der Datensatz `daten` selbst bleibt aus Sicherheitsgründen unverändert.
+Möchten wir den Datensatz mit den gelöschten Merkmalen weiter verwenden, müssen
+wir ihn in einer neuen Variable speichern oder die alte Variable `daten` damit
+überschreiben. Wir nehmen eine neue Variable namens `daten_ohne_verbrauch`.
+
+```{code-cell}
+daten_ohne_verbrauch = daten.drop(columns=['Verbrauch (l/100 km)', 'Verbrauch (g/km)'])
+daten_ohne_verbrauch.info()
+```
+
+Ein weiterer Datenpunkt weist einen ungültigen Eintrag für den »Kilometerstand
+(km)« auf. Schauen wir zunächst nach, um welches Auto es sich handelt.
+
+```{code-cell}
+daten_ohne_verbrauch[ daten_ohne_verbrauch['Kilometerstand (km)'].isnull() ]
+```
+
+Bei den Einträgen des Autos sind noch mehr Probleme ersichtlich. Die
+Erstzulassung war sicherlich nicht bei 37.500 km und das Jahr ist nicht 12/2020.
+Wir können jetzt diesen Datenpunkt löschen oder den Datenpunkt reparieren.
+Zunächst einmal der Code zum Löschen des Datenpunktes. Standardmäßig löscht die
+`drop()`-Methode ohnehin Zeilen, also Datenpunkte, so dass wir ohne weitere
+Optionen den Index der zu löschenden Datenpunkte angeben. Diesmal verwenden wir
+die alte Variable um den reduzierten Datensatz zu speichern.
+
+```{code-cell}
+daten_ohne_verbrauch = daten_ohne_verbrauch.drop(708)
+daten_ohne_verbrauch.info()
+```
+
+Wie Sie in der [Dokumentation Scikit-Learn →
+drop()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
+nachlesen können, gibt es zum expliziten Überschreiben der alten Variable auch
+die Alternative, die Option `inplace=True` zu setzen. Welche Option Sie nutzen,
+ist Geschmackssache.
+
+Jetzt sind alle Einträge des Datensatzes gültig, gültig im technischen Sinne.
+
+```{code-cell}
+daten_ohne_verbrauch.isnull().sum()
+```
+
+Ob alle Angaben plausibel sind, ist nicht gesagt. Bei dem Peugeot mit dem Index
+708 hatten wir ja gesehen, dass bei der Erstzulassung eine Kilometerangabe
+stand. Tatsächlich gab es bereits erste Hinweise darauf, dass manche Werte
+technisch gültig, aber nicht plausibel sind. Die Spalte mit dem Jahr
+beispielsweise wurde beim Import als Datentyp Object klassifiziert. Zu erwarten
+wäre jedoch der Datentyp Integer gewesen. Schauen wir noch einmal in den
+ursprünglichen Datensatz hinein.
+
+```{code-cell}
+daten['Jahr'].unique()
+```
+
+Da bei dem Peugeot mit dem Index 708 das Jahr fälschlicherweise mit `12/2020`
+angegeben wurde, hat dieser eine Text-Eintrag dazu geführt, dass die komplette
+Spalte als Object klassifiziert wurde und nicht als Integer. Daher müssen stets
+weitere Plausibilitätsprüfungen durchgeführt werden, bevor die Daten genutzt
+werden, um statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.
+
+## Vervollständigung (Imputation) mit fillna()
 
 Auch bei den Angaben zur Schaltung fehlen Einträge. Zum Beispiel die Zeile mit
 dem Index 243 ist unvollständig.

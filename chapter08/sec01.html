@@ -508,8 +508,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehlende-daten-aufspuren-mit-isnull">Fehlende Daten aufspüren mit isnull()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-mit-drop">Löschen mit drop()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ersetzen-mit-fillna">Ersetzen mit fillna()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-elimination-mit-drop">Löschen (Elimination) mit drop()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vervollstandigung-imputation-mit-fillna">Vervollständigung (Imputation) mit fillna()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
 </ul>
             </nav>
@@ -537,104 +537,321 @@ Methoden kennen, damit umzugehen.</p>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie können in einer großen Datensammlung mit <strong>isnull()</strong> fehlende Daten aufspüren.</p></li>
+<li><p>Sie können in einem Datensatz mit <strong>isnull()</strong> fehlende Daten aufspüren und
+analysieren.</p></li>
+<li><p>Sie kennen die beiden grundlegenen Strategien, mit fehlenden Daten umzugehen:</p>
+<ul>
+<li><p><strong>Elimination</strong> (Löschen) und</p></li>
+<li><p><strong>Imputation</strong> (Vervollständigen).</p></li>
+</ul>
+</li>
 <li><p>Sie können Daten gezielt mit <strong>drop()</strong> löschen.</p></li>
 <li><p>Sie können fehlende Daten mit <strong>fillna()</strong> ersetzen.</p></li>
-<li><p>Sie wissen, dass es nicht eine <em>einzige</em> Strategie zum Umgang mit fehlenden Daten
-gibt, sondern von Projekt zu Projekt entschieden werden muss.</p></li>
 </ul>
 </div>
 </section>
 <section id="fehlende-daten-aufspuren-mit-isnull">
 <h2>Fehlende Daten aufspüren mit isnull()<a class="headerlink" href="#fehlende-daten-aufspuren-mit-isnull" title="Link to this heading">#</a></h2>
 <p>Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
-<a class="reference external" href="https://www.autoscout24.de">Autoscout24.de</a>. Sie können die csv-Datei hier
-herunterladen <a class="reference download internal" download="" href="../_downloads/6c30320db325ca8f79503c370f6c1841/autoscout24_DE_small.csv"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">autoscout24_DE_small.csv</span></code></a> und in das Jupyter Notebook importieren.
-Alternativ können Sie die csv-Datei auch über die URL
-<code class="docutils literal notranslate"><span class="pre">'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv'</span></code>
-importieren.</p>
+<a class="reference external" href="https://www.autoscout24.de">Autoscout24.de</a>, der Verkaufsdaten zu 1000 Autos
+enthält. Sie können die csv-Datei hier herunterladen <a class="reference download external" download="" href="https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">autoscout24_fehlende_daten.csv</span></code></a> und in
+das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei auch über
+die URL importieren, wie es in der folgenden Code-Zelle gemacht wird.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_DE_small.csv&#39;</span><span class="p">)</span>
-<span class="c1"># data = pd.read_csv(&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_small.csv&#39;)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv&#39;</span>
+<span class="n">daten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="n">daten</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 1000 entries, 0 to 999
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 1000 non-null   object 
- 1   Modell                1000 non-null   object 
- 2   Farbe                 1000 non-null   object 
- 3   Erstzulassung         1000 non-null   object 
- 4   Jahr                  1000 non-null   object 
- 5   Preis (Euro)          1000 non-null   object 
- 6   Leistung (kW)         1000 non-null   object 
- 7   Leistung (PS)         1000 non-null   object 
- 8   Getriebe              1000 non-null   object 
- 9   Kraftstoff            1000 non-null   object 
- 10  Verbrauch (l/100 km)  892 non-null    object 
- 11  Verbrauch (g/km)      1000 non-null   object 
- 12  Kilometerstand (km)   999 non-null    float64
- 13  Bemerkungen           1000 non-null   object 
-dtypes: float64(1), object(13)
-memory usage: 109.5+ KB
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">daten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">daten</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:521,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:630,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">630</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:559,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">559</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:639,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">639</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
 </pre></div>
 </div>
 </div>
 </div>
-<p>Wir hatten bereits festgestellt, dass die Anzahl der ‘non-null’-Einträge für die
-verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist bei manchen
-Angeboten die Eigenschaft ‘model’ nicht angegeben worden. Welche das sind,
-können wir mit der Methode <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> bestimmen. Die Methode liefert ein Array
-zurück, das True/False-Werte enthält. True steht dabei dafür, dass ein Wert
-fehlt bzw. mit dem Eintrag ‘NaN’ gekennzeichnet ist (= not a number). Weitere
-Details finden Sie in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.isnull.html">Pandas-Dokumentation →
-isnull</a>.</p>
-<p>Dieses boolesche Array können wir dann wiederum als Filter einsetzen.</p>
+<p>Wir hatten bereits festgestellt, dass die Anzahl der <code class="docutils literal notranslate"><span class="pre">non-null</span></code>-Einträge für die
+verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 892 Autos
+die Eigenschaft »Verbrauch (l/100 km)« gültig und auch der »Kilometerstand (km)«
+enthält nur 999 gültige Einträge. Welche das sind, können wir mit der Methode
+<code class="docutils literal notranslate"><span class="pre">isnull()</span></code> bestimmen. Die Methode liefert ein Pandas DataFrame zurück, das
+True/False-Werte enthält. True steht dabei dafür, dass ein Wert fehlt bzw. mit
+dem Eintrag ‘NaN’ gekennzeichnet ist (= not a number). Weitere Details finden
+Sie in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.isnull.html">Pandas-Dokumentation →
+isnull()</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#filter = data_raw.loc[:, &#39;model&#39;].isnull() == True</span>
-<span class="c1">#data_raw.loc[filter, :].head(20)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Scheinbar fehlt die Modellangabe häufig, wenn das Fahrzeug mit Gas betrieben
-wird. Dem müssten wir systematisch nachgehen. Sind das vielleicht umgebaute
-Fahrzeuge und fehlt deshalb die Modellangabe? Wie oft kommen gasbetriebene
-Fahrzeuge überhaupt im kompletten Datensatz vor? Und wie häufig in dem Datensatz
-mit den unvollständigen Angaben? Wir wenden uns aber zunächst dem Löschen der
-Daten zu.</p>
-</section>
-<section id="loschen-mit-drop">
-<h2>Löschen mit drop()<a class="headerlink" href="#loschen-mit-drop" title="Link to this heading">#</a></h2>
-<p>Im letzten Kapitel haben wir einfach alle Datensätze gelöscht, in denen Daten
-gefehlt haben — sozusagen die Brute-Force-Methode. Wenn wir uns mehr Zeit für
-die Datenvorverarbeitung nehmen, können wir aber auch filigraner vorgehen.
-Beispielsweise könnten wir beschließen, dass uns das Modell als Eigenschaft
-nicht so wichtig ist und somit die Spalte löschen.</p>
-<p>Dazu verwenden wir die <code class="docutils literal notranslate"><span class="pre">drop()</span></code>-Methode. Standardmäßig löscht <code class="docutils literal notranslate"><span class="pre">drop()</span></code> jedoch
-Zeilen. Mit der Option <code class="docutils literal notranslate"><span class="pre">columns=</span></code> können wir spaltenweise löschen, wie Sie in
-der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html">Pandas-Dokumentation →
-drop</a>
-nachlesen können.</p>
+<p>Bereits in der zweiten Zeile befindet sich ein Auto, bei dem das Merkmal
+»Verbrauch (l/100 km)« nicht gültig ist (ggf. müssen Sie weiter nach rechts
+scrollen), den dort steht <code class="docutils literal notranslate"><span class="pre">True</span></code>. Wir betrachten uns diesen Eintrag:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data_raw = data_raw.drop(columns=&#39;model&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Bei dem Auto handelt es sich um einen Hybrid, vielleicht wurde deshalb der
+»Verbrauch (l/100 km)« nicht angegeben. Ist das vielleicht auch bei den anderen
+Autos der Grund? Wir speichern zunächst die isnull()-Datenstruktur in einer
+eigenen Variable ab und ermitteln zunächst, wie viele Autos keinen gültigen
+Eintrag bei diesem Merkmal haben. Dazu nutzen wir aus, dass der boolesche Wert
+<code class="docutils literal notranslate"><span class="pre">False</span></code> bei Rechnungen als 0 interpretiert wird und der boolesche Wert <code class="docutils literal notranslate"><span class="pre">True</span></code>
+als 1. Die Methode <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> summiert pro Spalte alle Werte, so dass sie direkt
+die Anzahl der ungültigen Werte pro Spalte liefert.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fehlende_daten</span> <span class="o">=</span> <span class="n">daten</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+
+<span class="n">fehlende_daten</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jetzt lassen wir uns diese 108 Autos anzeigen, bei denen ungültige Werte beim
+»Verbrauch (l/100 km)« angegeben wurden. Dazu nutzen wir die True-Werte in der
+Spalte <code class="docutils literal notranslate"><span class="pre">Verbrauch</span> <span class="pre">(l/100</span> <span class="pre">km)</span></code> als Filter für den ursprünglichen Datensatz.
+Zumindest die ersten 20 Autos lassen wir uns dann mit der <code class="docutils literal notranslate"><span class="pre">.head(20)</span></code>-Methode
+anzeigen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">autos_mit_fehlendem_verbrauch_pro_100km</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span> <span class="n">fehlende_daten</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">True</span> <span class="p">]</span>
+<span class="n">autos_mit_fehlendem_verbrauch_pro_100km</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bemerkung: Der Vergleich <code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">True</span></code> ist redundant und kann auch weggelassen werden.</p>
+<p>Beim Kraftstoff werden alle möglichen Angaben gemacht: Hybrid, Benzin, Diesel
+und Elektro. Wir müssten jetzt systematisch den fehlenden Angaben nachgehen. Für
+Elektrofahrzeuge und ggf. Hybridautos ist die Angabe »Verbrauch (l/ 100 km)«
+unsinnig. Aber das zweite Auto mit der Nr. 5 wird mit Benzin betrieben, da
+scheint Nachlässigkeit beim Ausfüllen der Merkmale vorzuliegen. Beim fünften
+Auto mit der Nr. 77 ist zwar der »Verbrauch (l/100 km)« nicht angegeben, aber
+dafür der »Verbrauch (g/km)«. Daraus könnten wir den »Verbrauch (l/100 km)«
+abschätzen und den fehlenden Wert ergänzen. Es gibt verschiedene Strategien, mit
+fehlenden Daten umzugehen. Die beiden wichtigsten Verfahren zum Umgang mit
+fehlenden Daten sind</p>
+<ol class="arabic simple">
+<li><p>Löschen (Elimination) und</p></li>
+<li><p>Vervollständigung (Imputation).</p></li>
+</ol>
+<p>Bei Elimination werden Datenpunkte (Autos) und/oder Merkmale gelöscht. Bei
+Imputation (Vervollständigung) werden die fehlenden Werte ergänzt. Beide
+Verfahren werden wir nun etwas detaillierter betrachten.</p>
 </section>
-<section id="ersetzen-mit-fillna">
-<h2>Ersetzen mit fillna()<a class="headerlink" href="#ersetzen-mit-fillna" title="Link to this heading">#</a></h2>
+<section id="loschen-elimination-mit-drop">
+<h2>Löschen (Elimination) mit drop()<a class="headerlink" href="#loschen-elimination-mit-drop" title="Link to this heading">#</a></h2>
+<p>Bei der Elimination (Löschen) können wir filigran vorgehen oder die
+Holzhammer-Methode verwenden. Beispielsweise könnten wir entscheiden, das
+Merkmal »Verbrauch (l/100 km)« komplett zu löschen und einfach nur den
+»Verbrauch (g/km)« zu berücksichtigen. Aber ein kurzer Blick auf die Daten hatte
+ja bereits gezeigt, dass diese Werte auch nur unzuverlässig gefüllt waren, auch
+wenn sie technisch gültig sind. Wir löschen beide Merkmale. Dazu benutzen wir
+die Methode <code class="docutils literal notranslate"><span class="pre">drop()</span></code> mit dem zusätzlichen Argument <code class="docutils literal notranslate"><span class="pre">columns=['Verbrauch</span> <span class="pre">(l/</span> <span class="pre">100</span> <span class="pre">km)',</span> <span class="pre">'Verbrauch</span> <span class="pre">(g/km)']</span></code>. Da wir gleich zwei Spalten aufeinmal eliminieren
+möchten, müssen wir die Spalten (Columns) als Liste übergeben. Danach überprüfen
+wir mit der Methode <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, ob das Löschen geklappt hat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">,</span> <span class="s1">&#39;Verbrauch (g/km)&#39;</span><span class="p">])</span>
+<span class="n">daten</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Leider hat der Befehl <code class="docutils literal notranslate"><span class="pre">drop()</span></code> nicht funktioniert! Was ist da los? Python und
+Pandas verfolgen das Programmierparadigma »Explizit ist besser als implizit!«
+Daher werden zwar werden durch den <code class="docutils literal notranslate"><span class="pre">drop()</span></code>-Befehl die beiden Spalten gelöscht,
+aber der Datensatz <code class="docutils literal notranslate"><span class="pre">daten</span></code> selbst bleibt aus Sicherheitsgründen unverändert.
+Möchten wir den Datensatz mit den gelöschten Merkmalen weiter verwenden, müssen
+wir ihn in einer neuen Variable speichern oder die alte Variable <code class="docutils literal notranslate"><span class="pre">daten</span></code> damit
+überschreiben. Wir nehmen eine neue Variable namens <code class="docutils literal notranslate"><span class="pre">daten_ohne_verbrauch</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span> <span class="o">=</span> <span class="n">daten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">,</span> <span class="s1">&#39;Verbrauch (g/km)&#39;</span><span class="p">])</span>
+<span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ein weiterer Datenpunkt weist einen ungültigen Eintrag für den »Kilometerstand
+(km)« auf. Schauen wir zunächst nach, um welches Auto es sich handelt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span><span class="p">[</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Kilometerstand (km)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bei den Einträgen des Autos sind noch mehr Probleme ersichtlich. Die
+Erstzulassung war sicherlich nicht bei 37.500 km und das Jahr ist nicht 12/2020.
+Wir können jetzt diesen Datenpunkt löschen oder den Datenpunkt reparieren.
+Zunächst einmal der Code zum Löschen des Datenpunktes. Standardmäßig löscht die
+<code class="docutils literal notranslate"><span class="pre">drop()</span></code>-Methode ohnehin Zeilen, also Datenpunkte, so dass wir ohne weitere
+Optionen den Index der zu löschenden Datenpunkte angeben. Diesmal verwenden wir
+die alte Variable um den reduzierten Datensatz zu speichern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span> <span class="o">=</span> <span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="mi">708</span><span class="p">)</span>
+<span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie Sie in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html">Dokumentation Scikit-Learn →
+drop()</a>
+nachlesen können, gibt es zum expliziten Überschreiben der alten Variable auch
+die Alternative, die Option <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> zu setzen. Welche Option Sie nutzen,
+ist Geschmackssache.</p>
+<p>Jetzt sind alle Einträge des Datensatzes gültig, gültig im technischen Sinne.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ob alle Angaben plausibel sind, ist nicht gesagt. Bei dem Peugeot mit dem Index
+708 hatten wir ja gesehen, dass bei der Erstzulassung eine Kilometerangabe
+stand. Tatsächlich gab es bereits erste Hinweise darauf, dass manche Werte
+technisch gültig, aber nicht plausibel sind. Die Spalte mit dem Jahr
+beispielsweise wurde beim Import als Datentyp Object klassifiziert. Zu erwarten
+wäre jedoch der Datentyp Integer gewesen. Schauen wir noch einmal in den
+ursprünglichen Datensatz hinein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Da bei dem Peugeot mit dem Index 708 das Jahr fälschlicherweise mit <code class="docutils literal notranslate"><span class="pre">12/2020</span></code>
+angegeben wurde, hat dieser eine Text-Eintrag dazu geführt, dass die komplette
+Spalte als Object klassifiziert wurde und nicht als Integer. Daher müssen stets
+weitere Plausibilitätsprüfungen durchgeführt werden, bevor die Daten genutzt
+werden, um statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.</p>
+</section>
+<section id="vervollstandigung-imputation-mit-fillna">
+<h2>Vervollständigung (Imputation) mit fillna()<a class="headerlink" href="#vervollstandigung-imputation-mit-fillna" title="Link to this heading">#</a></h2>
 <p>Auch bei den Angaben zur Schaltung fehlen Einträge. Zum Beispiel die Zeile mit
 dem Index 243 ist unvollständig.</p>
 <div class="cell docutils container">
@@ -764,8 +981,8 @@ numerische Einträge durch den Mittelwert der vorhandenen Daten ersetzt.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fehlende-daten-aufspuren-mit-isnull">Fehlende Daten aufspüren mit isnull()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-mit-drop">Löschen mit drop()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ersetzen-mit-fillna">Ersetzen mit fillna()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loschen-elimination-mit-drop">Löschen (Elimination) mit drop()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vervollstandigung-imputation-mit-fillna">Vervollständigung (Imputation) mit fillna()</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung">Zusammenfassung</a></li>
 </ul>
   </nav></div>
