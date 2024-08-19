@@ -42,9 +42,9 @@ Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
 [Autoscout24.de](https://www.autoscout24.de), der Verkaufsdaten zu 1000 Autos
 enthält. Sie können die csv-Datei hier herunterladen {download}`Download
 autoscout24_fehlende_daten.csv
-<https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv>` und in
-das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei auch über
-die URL importieren, wie es in der folgenden Code-Zelle gemacht wird.
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv>`
+und in das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei
+auch über die URL importieren, wie es in der folgenden Code-Zelle gemacht wird.
 
 ```{code-cell}
 import pandas as pd
@@ -56,7 +56,7 @@ daten.info()
 ```
 
 Wir hatten bereits festgestellt, dass die Anzahl der `non-null`-Einträge für die
-verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 892 Autos
+verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 964 Autos eine Farbe eingetragen und 892 Autos
 die Eigenschaft »Verbrauch (l/100 km)« gültig und auch der »Kilometerstand (km)«
 enthält nur 999 gültige Einträge. Welche das sind, können wir mit der Methode
 `isnull()` bestimmen. Die Methode liefert ein Pandas DataFrame zurück, das
