@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 8. Polynomiale Regression und ML-Workflow
+# 8. ML-Workflow: Datenvorverarbeitung
 
 Kapitelübersicht:
 

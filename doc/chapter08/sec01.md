@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 8.1 Datenvorverarbeitung
+# 8.1 Fehlende Daten
 
 Realistische Datensätze sind oft unvollständig. In einer Umfrage hat eine Person
 mit einer Frage nichts anfangen können und daher nichts angekreuzt. Ein
