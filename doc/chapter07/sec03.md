@@ -21,7 +21,6 @@ Regression, bei der die Zielgröße von mehreren Merkmalen beeinflusst wird. In
 diesem Kapitel werden wir uns damit beschäftigen, wie eine Regression für
 quadratische, kubische oder allgemein für polynomiale Modelle durchgeführt wird.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -32,7 +31,6 @@ quadratische, kubische oder allgemein für polynomiale Modelle durchgeführt wir
   geeignetes Modell vorliegt.
 * Sie wissen, dass der Polynomgrad ein **Hyperparameter** ist.
 ```
-
 
 ## Künstliches Experiment zu Bremswegen eines Autos
 
@@ -56,7 +54,7 @@ der Geschwindigkeit gemessen wird. In einem ersten schritt erzeugen wir zufälli
 lassen wir zunächst die dazugehörigen Bremswege berechnen, addieren dann aber
 noch zufällige Schwankungen.
 
-```{code-cell} 
+```{code-cell}
 import numpy as np 
 import pandas as pd 
 
@@ -77,14 +75,13 @@ daten = pd.DataFrame({
 
 Als nächstes lassen wir die künstlich erzeugten Bremsweg-Experimente visualisieren.
 
-```{code-cell} 
+```{code-cell}
 import plotly.express as px 
 
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
     title='Künstliche Daten: Bremsweg eines Autos')
 fig.show()
 ```
-
 
 ## Erster Versuch: lineare Regression
 
@@ -94,7 +91,7 @@ $y$, dann lautet das lineare Regressionsmodell
 
 $$y = \omega_0 + \omega_1 \cdot x.$$
 
-```{code-cell} 
+```{code-cell}
 from sklearn.linear_model import LinearRegression
 
 # Adaption der Daten
@@ -114,10 +111,9 @@ Der R2-Score sieht sehr gut aus. Um uns einen Eindruck zu verschaffen, wie gut
 das lineare Modell tatsächlich ist (wir wissen ja, dass es eigentlich
 quadratisch ist!), erzeugen wir nun systematisch Geschwindigkeiten in dem
 Bereich von 30 km/h und 150 km/h und verwenden die Faustformel für die
-Berechnung der Bremswege. 
+Berechnung der Bremswege.
 
-
-```{code-cell} 
+```{code-cell}
 v_test = np.linspace(v_min, v_max, 200)
 s_test = 1/100 * v_test**2
 testdaten = pd.DataFrame({
@@ -129,7 +125,7 @@ testdaten = pd.DataFrame({
 Mit Hilfe des linearen Regressionsmodells prognostizieren wir die Bremswege für
 diese Geschwindigkeiten und lassen den R2-Score berechnen.
 
-```{code-cell} 
+```{code-cell}
 # Prognose 
 X_test = testdaten[['Geschwindigkeit [km/h]']]
 y_test = testdaten['Bremsweg [m]']
@@ -142,7 +138,7 @@ print(f'R2-score Testdaten: {r2_score}')
 
 Zuletzt visualisieren wir die Prognose.
 
-```{code-cell} 
+```{code-cell}
 fig = px.scatter(daten, x = 'Geschwindigkeit [km/h]', y = 'Bremsweg [m]',
     title='Bremsweg eines Autos: lineares Modell')
 fig.add_scatter(x = testdaten['Geschwindigkeit [km/h]'], y = y_prognose, mode='lines', name='Prognose')
@@ -158,13 +154,12 @@ oberhalb von 120 km/h unterschätzt es den Bremsweg wieder. Das Modell ist zu
 einfach für die Prognose, es liegt **Underfitting** vor. Daher probieren wir
 als nächstes ein quadratisches Regressionsmodell aus.
 
-
 ## Quadratische Regression
 
 Wenn Sie in der Dokumentation von Scikit-Learn nun nach einer Funktion zur
 quadratischen Regression suchen, werden Sie nicht fündig werden. Tatsächlich
 brauchen wir auch keine eigenständige Funktion, sondern können uns mit einem
-Trick weiterhelfen. 
+Trick weiterhelfen.
 
 Das lineare Regressionsmodell, das wir eben ausprobiert haben, lautet
 mathematisch formuliert folgendermaßen:
@@ -185,7 +180,7 @@ $$y = w_0 + w_1 \cdot x + w_2 \cdot x^2$$
 
 das *multiple* lineare Regressionsmodell
 
-$$y = w_0 + w_1 \cdot x_1 + w_2 \cdot x_2.$$ 
+$$y = w_0 + w_1 \cdot x_1 + w_2 \cdot x_2.$$
 
 Scikit-Learn stellt auch hier passende Methoden bereit. Aus dem
 Vorbereitungsmodul `sklearn.preprocessing` importieren wir `PolynomialFeatures`.
@@ -195,7 +190,7 @@ Wir erzeugen das PolynomialFeature-Objekt mit der Option `degree=2`, um die
 Quadrate hinzuzufügen. Dann transformieren wir die Input-Daten, indem wir die
 `fit_transform()`-Methode auf den Input anwenden.
 
-```{code-cell} 
+```{code-cell}
 from sklearn.preprocessing import PolynomialFeatures
 
 # Adaption der Daten
@@ -207,7 +202,7 @@ y = daten['Bremsweg [m]']
 Danach können wir das multiple lineare Regressionsmodell trainieren und bewerten
 lassen.
 
-```{code-cell} 
+```{code-cell}
 # Training des Modells
 model = LinearRegression()
 model.fit(X, y)
@@ -221,9 +216,9 @@ Zuletzt lassen wir das quadratische Regressionsmodell noch visualiseren. Wichtig
 ist, dass nun auch die Testdaten quadriert werden müssen, da das ML-Modell für
 Prognosen voraussetzt, dass die Daten in der gleichen Art und Weise vorliegen
 wie die Trainingsdaten. Wir müssen denselben  Transformator nehmen wie zum
-Training der Daten und neutzen daher nur die `transform()`-Methode. 
+Training der Daten und neutzen daher nur die `transform()`-Methode.
 
-```{code-cell} 
+```{code-cell}
 # Prognose 
 X_test = polynom_transformator.transform(testdaten[['Geschwindigkeit [km/h]']])
 y_prognose = model.predict(X_test)
@@ -240,7 +235,6 @@ kaum unterscheiden können. Kleinere Abweichungen gibt es bei den Bremswegen fü
 Geschwindigkeiten oberhalb von 130 km/h. Zoomen Sie in den Plot hinein, um sich
 die Unterschiede anzusehen.
 
-
 **Bemerkung:** Dieser Trick wird auch bei anderen ML-Verfahren angewandt. Aus
 einem Merkmal, aus einer Eigenschaft werden jetzt eine neue Eigenschaften
 erzeugt. Aus einem eindimensionalen Input wird ein zweidimensionaler Input.
@@ -250,7 +244,6 @@ möglich, andere Funktionen zu benutzen, um die Daten in einen höherdimensional
 Raum zu projizieren, z.B. radiale Gaußsche Basisfunktionen. Das nennt man dann
 **Kernel-Methoden**. In dieser Vorlesung bleiben wir aber bei den Polynomen als
 Basisfunktion.
-
 
 ## Polynomiale Regression
 
@@ -303,7 +296,6 @@ festgelegt wird und nicht aus den Daten während des Trainings gelernt wird. Die
 Hyperparameter steuern den gesamten Lernprozess und haben einen wesentlichen
 Einfluss auf die Leistung des Modells.
 ```
-
 
 ## Zusammenfassung und Ausblick
 
