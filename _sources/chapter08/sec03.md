@@ -14,6 +14,11 @@ kernelspec:
 
 # 8.3 Trainings- und Testdaten
 
+```{admonition} Warnung
+:class: warning
+Warnung: Dieser Abschnitt wird gerade überarbeitet.
+```
+
 Mit dem Bestimmtheitsmaß R²-Score haben wir eine Möglichkeit kennengelernt,
 einzuschätzen, wie gut unser Modell ist. Je näher der R²-Score an der 1 ist,
 desto besser. Aber selbst ein perfektes Bewertungsmaß bedeutet nicht, dass das
