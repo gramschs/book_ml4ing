@@ -104,7 +104,7 @@ getriebe_kodierung = {
 ```
 
 Dann verwenden wir `replace()`, um die Ersetzung vorzunehmen. Zuletzt wandeln
-wir die Strings `'0'` und `'1'` noch mit der Methode `astype()` in Integers um: 
+wir die Strings `'0'` und `'1'` noch mit der Methode `astype()` in Integers um:
 
 ```{code-cell}
 daten['Getriebe'] = daten['Getriebe'].replace(getriebe_kodierung)
@@ -127,7 +127,7 @@ Jahreswagen. Der Jahreswagen wiederum ist im Allgmeinen wertvoller als der junge
 Gebrauchtwagen. Am wenigsten wertvoll ist der Gebrauchtwagen. Durch diese
 Ordnung ist es sinnvoll, beim Kodieren der Zustände durch Integers die Ordnung
 beizubehalten. Ob wir jetzt die 0 für den Neuwagen vergeben und die 3 für den
-Gebrauchtwagen oder umgekehrt, ist Geschmackssache. 
+Gebrauchtwagen oder umgekehrt, ist Geschmackssache.
 
 ```{code-cell}
 zustand_kodierung = {
@@ -199,7 +199,7 @@ daten.info()
 ```
 
 Ein erster Blick auf die Daten zeigt bereits, dass die Eigenschaftswerte in
-unterschiedlichen Bereichen liegen. 
+unterschiedlichen Bereichen liegen.
 
 ```{code-cell}
 daten.head()
