@@ -63,8 +63,6 @@ parts:
   - file: chapter11/sec00.md
     sections:
     - file: chapter11/sec01.md  
-    - file: chapter11/sec02.md   
-    - file: chapter11/sec03.md     
   - file: chapter12/sec00.md
     sections:
     - file: chapter12/sec01.md  
@@ -75,6 +73,11 @@ parts:
     - file: chapter13/sec01.md   
     - file: chapter13/sec02.md 
     - file: chapter13/sec03.md  
+  - file: chapter14/sec00.md
+    sections:
+    - file: chapter14/sec01.md   
+    - file: chapter14/sec02.md 
+    - file: chapter14/sec03.md  
 - caption: Extras 
   chapters:
   - file: extras_skimage/extras_skimage_sec00.md
