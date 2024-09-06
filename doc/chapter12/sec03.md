@@ -12,141 +12,186 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression mit Scikit-Learn
+# 12.3 Training eines Perzeptrons mit Scikit-Learn
+
+Nachdem wir im letzten Abschnitt ein Perzeptron händisch für die
+Klassifikationsaufgabe des logischen Oders trainiert haben, benutzen wir nun
+Scikit-Learn.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: goals
-* Sie können ein logistisches Regressionsmodell mit Scikit-Learn trainieren.
+* Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen Trainingsdaten trainieren.
+* Sie wissen, wie Sie auf die Gewichte des gelernten Modells zugreifen.
 ```
 
-+++
+## Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn
 
-## LogisticRegression
+Im letzten Abschnitt {ref}`perzeptron_training_logisches_oder` haben wir
+händisch ein Perzeptron trainiert. Zur Erinnerung, wenn wir die Bias-Einheit
+weglassen, lautet das logische Oder in Tabellenform wie folgt:
 
-Scikit-Learn bietet ein logistisches Regressionsmodell an, bei dem verschiedene
-Gradientenverfahren im Hintergrund die Gewichte bestimmen, die zu einer
-minimalen mittleren Kostenfunktion führen. Die Dokumentation zu dem logistischen
-Regressionsmodell findet sich hier: [scikit-learn.org →
-LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html). 
+x1 | x2 | y
+---|----|---
+ 0 | 0  | 0
+ 0 | 1  | 1
+ 1 | 0  | 1
+ 1 | 1  | 1
 
-Wir wenden nun das Scikit-Learn-Modell auf unser Beispiel der binären
-Klassifikation "Ligazugehörigkeit abhängig vom Marktwert" deutscher
-Fußballvereine an. Dazu wiederholen laden wir die Daten und filtern zunächst
-nach Vereinen der 2. Bundesliga oder der 3. Liga.
+Diese Daten packen wir in ein DataFrame.
 
 ```{code-cell} ipython3
-# import all data
 import pandas as pd
-data_raw = pd.read_csv('data/20220801_Marktwert_Bundesliga.csv', skiprows=5, header=0, index_col=0)
 
-# filter wrt 2. Bundesliga and 3. Liga
-data = data_raw[ data_raw['Ligazugehörigkeit'] != 'Bundesliga' ]
-
-# print all data samples
-data.head(38)
+data =  pd.DataFrame({'x1' : [0, 0, 1, 1], 'x2'  : [0, 1, 0, 1], 'y' : [0, 1, 1, 1]})
+data.head()
 ```
 
-Als nächstes formulieren wir das Klassifikationsproblem: Gegeben ist ein Verein mit seinem Marktwert. Spielt der Verein in der 2. Bundesliga?
-
-Die Klasse `2. Bundesliga` wird in den Daten als `1` codiert, da der ML-Algorithmus nur mit numerischen Daten arbeiten kann. Den String `3. Liga` ersetzen wir in den Trainingsdaten durch eine `0`. 
+Nun wählen wir das Perzeptron als das zu trainierende ML-Modell aus. Direkt beim
+Laden des Modells legen wir die Hyperparameter des Modells fest. Welche
+Hyperparameter ein Modell hat, steht in der
+[Perzeptron-Dokumentation](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Perceptron.html?highlight=perceptron#sklearn.linear_model.Perceptron).
+In diesem Fall wäre beispielsweise die Lernrate ein Hyperparameter. Laut
+Dokumentation wird die Lernrate beim Scikit-Learn-Perzeptron mit `eta0`
+bezeichnet. Der Python-Code, um das Perzeptron-Modell mit einer Lernrate von 1
+zu laden, lautet also wie folgt:
 
 ```{code-cell} ipython3
-# encode categorical data
-data.replace('2. Bundesliga', 1, inplace=True)
-data.replace('3. Liga', 0, inplace=True)
+from sklearn.linear_model import Perceptron 
+model = Perceptron(eta0 = 1.0)
 ```
 
-Jetzt können wir das logistische Regressionsmodell laden:
+Nun können wir das Perzeptron-Modell mit den Input- und Outputdaten trainieren,
+indem wir die `.fit()`-Methode aufrufen. Zuvor bereiten wir die Daten noch
+passend für das Perzeptron auf.
 
 ```{code-cell} ipython3
-from sklearn.linear_model import LogisticRegression
+X = data[['x1', 'x2']]
+y = data['y']
 
-logistic_regression = LogisticRegression()
+model.fit(X,y)
 ```
 
-Die Daten werden jetzt in Matrizen gepackt und in Trainings- und Testdaten unterteilt:
+Nachdem wir den letzten Python-Befehl ausgeführt haben, passiert scheinbar
+nichts. Nur der Klassenname `Perceptron()` des Objekts `model` wird ausgegeben
+(wenn Sie den Code interaktiv ausführen). Intern wurde jedoch das
+Perzeptron-Modell trainiert, d.h. die Gewichte des Perzeptrons wurden iterativ
+bestimmt. Die Gewichte sind nun in dem Objekt `model` gespeichert. Davon können
+wir uns überzeugen, indem wir auf die Attribute des Objekts zugreifen und diese
+anzeigen lassen. Die Gewichte sind in dem Attribut `.coef_` gespeichert, während
+das Gewicht der Bias-Einheit sich im Attribut `.intercept_` befindet.
 
 ```{code-cell} ipython3
+print(model.coef_)
+print(model.intercept_)
+```
+
+Zuletzt können wir das trainierte Perzeptron-Modell Prognosen treffen lassen.
+Was prognostiziert das Modell beispielsweise für $x_1=0$ und $x_2=1$? Das
+tatsächliche Ergebnis der logischen Oder-Verknüpfung ist $y=1$, was liefert das
+Perzeptron?
+
+```{code-cell} ipython3
+y_prognose = model.predict([[0, 1]])
+print(y_prognose)
+```
+
+Wir können auch gleich für alle Datensätze eine Prognose erstellen.
+
+```{code-cell} ipython3
+y_prognose = model.predict(X)
+print(y_prognose)
+```
+
+Tatsächlich funktioniert unser trainiertes Perzeptron zu 100 % korrekt und ist
+damit validiert. Bei nur vier Datensätzen lässt sich relativ leicht überblicken,
+dass alle vier Prognosen korrekt sind. Sobald die Datenanzahl zunimmt, wird es
+schwieriger, den Überblick zu behalten. Daher stellt Scikit-Learn die Methode
+`.score()` zur Verfügung, die bei Klassifikatoren die Anzahl der korrekt
+prognostizierten Outputs im Verhältnis zur Gesamtanzahl berechnet. Das Ergbnis
+ist also eine Bewertung zwischen 0 (keine einzige korrekte Prognose) und 1
+(perfekt Prognose).
+
+```{code-cell} ipython3
+genauigkeit = model.score(X, y)
+print(genauigkeit)
+```
+
+## Erkennung von Brustkrebs
+
+Als nächstes betrachten wir einen sehr bekannten ML-Datensatz, nämlich Daten zur
+Erkennung von Brustkrebs, siehe
+<https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-dataset>.
+
+```{code-cell} ipython3
+# Importieren des Breast Cancer Datensatzes aus Scikit-Learn
 import numpy as np
-from sklearn.model_selection import train_test_split
+import pandas as pd
+from sklearn.datasets import load_breast_cancer
 
-X = data[['Wert']]
-y = data['Ligazugehörigkeit']
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+cancer = load_breast_cancer()
+data = pd.DataFrame(np.c_[cancer['data'], cancer['target']],
+                  columns= np.append(cancer['feature_names'], ['target']))
+data.info()
 ```
 
-Danach können wir das logistische Regressionsmodell trainieren:
+Wie immer berschaffen wir uns einen Überblick über die statistischen Kennzahlen.
 
 ```{code-cell} ipython3
-logistic_regression.fit(X_train, y_train)
+data.describe()
 ```
 
-Und dann als nächstes beurteilen, wie viele der Testdaten korrekt klassfiziert werden.
+Für das Training des Perzeptrons teilen wir die Daten in Trainings- und Testdaten auf.
 
 ```{code-cell} ipython3
-logistic_regression.score(X_test, y_test)
+from sklearn.model_selection import train_test_split 
+data_train, data_test = train_test_split(data, test_size=0.2, random_state=42)
+
+X_train = data_train.loc[:, 'mean radius' : 'worst fractal dimension']
+X_test  = data_test.loc[:, 'mean radius' : 'worst fractal dimension']
+
+y_train = data_train['target']
+y_test = data_test['target']
 ```
 
-90 % der Testdaten werden korrekt klassifiziert. Mit einer anderen Aufteilung in
-Trainings- und Testdaten können wir auch höhere Erkennungsraten erzielen.
-Beispielsweise führt ein Split mit `random_state=1` zu einer 100 % genauen
-Klassifikation der Testdaten.
-
-Als nächstes lassen wir Python alle Daten zusammen mit der
-Wahrscheinlichkeitsfunktion visualisieren.
+Nun laden wir das Perzeptron-Modell und trainieren es mit den Trainingsdaten.
 
 ```{code-cell} ipython3
-# extrahiere die Gewichte des logistischen Regressionsmodells
-gewichte = np.concatenate((logistic_regression.intercept_, logistic_regression.coef_[:,0]))
-print(f'Gewichte: {gewichte}')
+# Create a Perceptron model 
+model = Perceptron(eta0=0.1)
 
-# definiere Wahrschinelichkeitsfunktion
-def wahrscheinlichkeitsfunktion(x, w):
-    z = w[0] + x * w[1]
-    return 1/(1+np.exp(-z))
-
-# stelle Wartetabelle der Wahrscheinlichkeitsfunktion auf
-x = np.linspace(0, 35)
-sigma_z = wahrscheinlichkeitsfunktion(x, gewichte)
-
-# trenne Daten gemäß Ligazugehörigkeit
-data_zweite_liga = data[data['Ligazugehörigkeit'] == 1]
-data_dritte_liga = data[data['Ligazugehörigkeit'] == 0]
+# Train the model 
+model.fit(X_train, y_train)
 ```
+
+Wie üblich können wir es nun zu Prognosen nutzen.
 
 ```{code-cell} ipython3
-import plotly.express as px
-import plotly.graph_objects as go
-
-fig3 = px.scatter(data_dritte_liga, x = 'Wert', y = 'Ligazugehörigkeit')
-fig2 = px.scatter(data_zweite_liga, x = 'Wert', y = 'Ligazugehörigkeit')
-fig_model = px.line(x = x, y = sigma_z)
-
-fig = go.Figure(fig_model.data + fig2.data + fig3.data)
-fig.update_layout(title='Klassifikation 2. Bundesliga / 3. Liga',
-                  xaxis_title='Marktwert',
-                  yaxis_title='Ligazugehörigkeit')
-fig.show()
+# Make predictions 
+y_test_prognose = model.predict(X_test) 
+print(y_test_prognose)
 ```
 
-Aus der Visualisierung der Wahrscheinlichkeitsfunktion können wir grob
-abschätzen, bei welchem Marktwert ein Verein als Zweit- oder Drittligist
-klassifiziert wird. Die Wahrscheinlichkeitsfunktion schneidet die 50 %
-Grenzlinie ungefähr bei einem Marktwert von 11 Mio. Euro. Etwas genauer können
-wir diese Grenze durch das Kommando `fsolve` aus dem Scipy-Modul bestimmen
-lassen:
+Vor allem aber die systematische Bestimmung der Scores für Trainingsdaten und
+Testdaten ist interessant:
 
 ```{code-cell} ipython3
-from scipy.optimize import fsolve
+score_train = model.score(X_train, y_train)
+score_test = model.score(X_test, y_test)
 
-x_grenze =  fsolve(lambda x: wahrscheinlichkeitsfunktion(x, gewichte) - 0.5, 11.0)
-print('Grenze des Marktwertes: {:.2f} Mio. Euro'.format(x_grenze[0]))
+print(f'Score Trainingsdaten: {score_train}')
+print(f'Score Testdaten: {score_test}')
 ```
 
-## Zusammenfassung
+Wir könnten vermuten, dass wir bereits im Bereich des Overfittings sind.
+Allerdings ist auch die Initialisierung der Zufallszahlen fixiert. Ohne
+`random_state=42` kommen andere Scores für Trainings- und Testdaten heraus, so
+dass wir das Perzeptron-Modell zunächst für eine erste Schätzung nehmen dürfen.
 
-In diesem Abschnitt haben wir an einem Beispiel gesehen, wie das logistische
-Regressionsmodell von Scikit-Learn trainiert und bewertet wird.
+## Zusammenfassung und Ausblick
+
+Mit Scikit-Learn steht schon eine Implementierung des Perzeptrons zur Verfügung,
+die auch bei größeren Datenmengen eine binäre Klassifikation erlaubt. Welche
+Daten dabei überhaupt binär klassifiziert können, klären wir in einem der
+folgenden Abschnitte.
