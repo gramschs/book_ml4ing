@@ -12,156 +12,175 @@ kernelspec:
   name: python3
 ---
 
-# Logistische Regression lernt mit Maximum-Likelihood
+# 12.2 Die Perzeptron-Lernregel
 
-
-## Lernziele
+In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann.
 
 ```{admonition} Lernziele
 :class: goals
-* Sie kennen die Begriffe **Fehlermaß**, **Kostenfunktion** und **Verlustfunktion**.
+* Sie kennen die drei Phasen, in denen ein Perzeptron trainiert wird:
+  * Initialisierung der Gewichte und Festlegung der Lernrate;
+  * Berechnung des prognostizierten Outputs und Aktualisierung der Gewichte sowie
+  * Terminierung des Trainings.
+* In Zusammenhang mit dem Training von ML-Verfahren kennen Sie die Fachbegriffe Lernrate und Epoche.
 ```
 
 +++
 
-## Wir basteln eine Kostenfunktion
+## Hebbsche Regel
 
-Bei der linearen Regression werden die prognostizierten Daten $\hat{y}$ mit den
-echten Daten $y$ verglichen. Dazu wird der Abstand der beiden Werte berechnet
-und quadriert, damit der Fehler immer positiv ist. Zuletzt wird der Mittelwert
-aller Fehler für alle Trainingsdaten gebildet. Die Gewichte des linearen
-Regressionsmodells werden dann so berechnet, dass die mittlere Summe der
-Fehlerquadrate möglichst klein, also minimiert wird. In der Wirtschaft
-verursachen Fehler Kosten. Daher wird ein **Fehlermaß**, in der ML Community
-auch **Kostenfunktion (cost function)** genannt. Da das Fehlermaß bzw. die
-Kostenfunktion minimiert werden soll, sprechen mache auch von **Verlustfunktion
-(loss function)**. 
+Kaum zu glauben, aber die Idee zum Lernen der Gewichte eines Perzeptrons stammt
+nicht von Informatiker:innen, sondern von einem Psychologen namens [Donald
+Olding Hebb](https://de.wikipedia.org/wiki/Donald_O._Hebb). Im Englischen wird
+seine Arbeit meist durch das Zitat
 
-So ein Maß, egal wie wir es am Ende nennen, brauchen wir hier auch. Wir müssen
-beurteilen können, ob die gewählten Gewichte gut oder schlecht sind, also kleine
-Fehler oder große Fehler produzieren. Nur passt diesmal leider die kleinste
-Summe der Fehlerquadrate nicht. Bei der binären Klassifikation gibt es nämlich
-nur zwei Fehler. Entweder, ich prognostiziere Klasse 1, aber es wäre Klasse 0
-gewesen. Oder ich prognostiziere *nicht* Klasse 1, obwohl Klasse 1 richtig
-gewesen wäre. Damit haben wir auch zwei Fehlerarten. Für beide Fehlerarten
-führen wir ein eigenes Fehlermaß bzw. Kostenfunktion bzw. Verlustfunktion ein.
+>"what fires together, wires together"
 
-Damit wir uns bei den folgenden Überlegungen etwas Schreibarbeit sparen können,
-kürzen wir die gewichtete Summe mit $z$ ab, also
+kurz zusammengefasst. Hebb hat die Veränderung der synaptischen Übertragung von
+Neuronen untersucht und dabei festgestellt, dass je häufiger zwei Neuronen
+gemeinsam aktiv sind, desto eher werden die beiden aufeinander reagieren.
 
-$$z = \sum_{i=0}^{N} x_i \omega_i.$$
+Die Hebbsche Regel wird beim maschinellen Lernen dadurch umgesetzt, dass der
+Lernprozess mit zufälligen Gewichten startet und dann der prognostizierte Output
+mit dem echten Output verglichen wird. Je nachdem, ob der echte Output erreicht
+wurde oder nicht, werden nun die Gewichte und damit der Einfluss eines einzelnen
+Inputs verstärkt oder nicht. Dieser Prozess — Vergleichen und Abändern der
+Gewichte — wird solange wiederholt, bis die passenden Gewichte gefunden sind.
 
+```{admonition} Mini-Übung
+:class: miniexercise
+Angenommen, in unserem "Ist-der-Rasen-nass-Problem" (siehe [](rasen_nass_problem)) sind die Gewichte alle Null, also $\omega_0 = \omega_1 = \omega_2 = 0$. Was prognostiziert das Perzeptron für "es regnet nicht" ($x_1=0$) und "der Rasensprenger ist aus" ($x_2=0$)?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+Das Perzeptron prognostiziert fälschlicherweise, dass der Rasen nass ist. Die gewichtete Summe wird zu
+
+$$\mathbf{x}^{T} \boldsymbol{\omega} = \begin{pmatrix} 0, 0, 0 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = 0$$
+
+berechnet. Da aber dann noch die Aktivierungsfunktion (Heaviside-Funktion) angewendet werden muss, erhalten wir
+
+$$\Phi(0)=1,$$
+
+also der Rasen ist nass.
+````
+
+## Lernregel für das Perzeptron
+
+Wie werden die Gewichte konkret verstärkt oder abgeschwächt, wenn der
+prognostizierte Output nicht mit dem echten Output übereinstimmt? Die Lernregel
+für das Perzeptron sieht zunächst einmal kompliziert aus:
+
+$$\omega_i^{\text{neu}} = \omega_i^{\text{aktuell}} + \alpha \cdot(y -
+\hat{y}^{\text{aktuell}}) \cdot x_i.\strut$$
+
+Gehen wir die Rechenvorschrift Stück für Stück durch. Zunächst einmal fällt auf,
+dass ein Index $i$ auftaucht. Das liegt daran, dass wir mehrere Eingabewerte
+haben und damit mehrere Gewichte — ein Gewicht pro Eingabewert. Da die
+Lernvorschrift allgemeingültig formuliert werden soll, gehen wir jetzt einfach
+mal davon aus, dass wir $m$ verschiedene Eingabewerte haben. $x_i$ meint also
+den i-ten Eingabewert und mit $\omega_i$ bezeichnen wir das dazugehörige
+Gewicht. Dabei dürfen wir den Bias nicht vergessen.
+
+Bisher hatten wir den Output einfach mit $y$ gekennzeichnet. Jetzt müssen wir
+aber etwas sorgfältiger vorgehen und genau unterscheiden, ob wir den Output
+meinen, den das Perzeptron prognostiziert oder den echten (gemessenen) Output.
+Über berechnete bzw. prognostizierte Outputs setzen wir ein kleines Dachsymbol
+$\wedge$. Etwas präziser bezeichnen wir den prognostizierten Output, den das
+Perzeptron mit den aktuellen Gewichten $(\omega_0^{\text{aktuell}},
+\omega_1^{\text{aktuell}}, \ldots, \omega_m^{\text{aktuell}})$ berechnen würde,
+mit der Abkürzung $\hat{y}^{\text{aktuell}}$ . Für den echten Output bleiben wir
+einfach bei der Bezeichnung $y$.
+
+Fehlt noch das $\alpha$, doch dazu kommen wir gleich. Schauen wir uns erst
+einmal an, wie sich die Differenz $y - \hat{y}^{\text{aktuell}}$ auf die
+Verstärkung oder Abschwächung der Gewichte auswirkt.
+
+Wenn der echte Output und der prognostizierte Output gleich sind, ist deren
+Differenz Null und es ändert sich nichts. Ansonsten gibt es zwei Möglichkeiten:
+
+* Wenn der *echte Output größer ist als der prognostizierte Output*, dann ist
+  $y - \hat{y}^{\text{aktuell}} > 0$. Indem wir nun zu den alten Gewichten den Term
+  $ \alpha \cdot(y - \hat{y}^{\text{aktuell}})$ addieren, verstärken wir die
+  alten Gewichte. Dabei berücksichtigen wir, ob der Input überhaupt einen
+  Beitrag zum Output liefert, indem wir zusätzlich mit $x_i$ multiplizieren. Ist
+  nämlich der Input $x_i=0$, wird so nichts an den Gewichten geändert.
+* Ist jedoch *der echte Output kleiner als der prognostizierte Output*, dann ist
+  $y - \hat{y}^{\text{aktuell}} < 0$. Daher werden nun die alten Gewichte durch
+  die Addition des negativen Terms $\alpha \cdot(y - \hat{y}^{\text{aktuell}})
+  \cdot x_i$ abgeschwächt.
+
+Damit die Schritte zwischen der Abschwächung und der Verstärkung nicht zu groß
+werden, werden sie noch mit einem Vorfaktor $\alpha$ multipliziert, der zwischen
+0 und 1 liegt. Ein typischer Wert von $\alpha$ ist $0.0001$. Dieser Vorfaktor
+$\alpha$ wird **Lernrate** genannt.
+
+```{admonition} Was ist ... die Lernrate?
+Die Lernrate ist eine Zahl, die zu Beginn des ML-Trainings gesetzt wird (ein sogenannter Hyperparameter). Sie bestimmt, wie stark die neuen Gewichte auf Fehler zwischen Prognose und tatsächlichem Output des aktuellen Durchgangs reagieren.
+```
 
 +++
 
-### Kostenfunktion, wenn Klasse 1 richtig wäre
+(perzeptron_training_logisches_oder)=
+## Perzeptron-Training am Beispiel des logischen ODER
 
-$\sigma(z)$ gibt die Wahrscheinlichkeit an, dass der prognostizierte Output
-$\hat{y}$ in Klasse 1 einsortiert werden sollte. Wenn das richtig ist, also
-tatsächlich für den echten Output $y=1$ gilt, dann ist der Fehler bzw. sind die
-Kosten 0. Sollte jedoch das logistische Regressionsmodell $\sigma(z)$ fehlerhaft
-Richtung 0 tendieren, so sollten auch hohe Kosten anfallen. Die Kostenfunktion
-muss also stark steigen, je mehr sich die Wahrscheinlichkeit
-$\sigma(z)$ der 0 nähert.
+Das logische Oder ist bereits durch die Angabe der folgenden vier Datensätzen
+komplett definiert. Dabei haben wir noch die Bias-Einheit $x_0=1$ ergänzt.
 
-Es gibt einige Funktionen, die ein solches Verhalten beschreiben. Wir verwenden
-die folgende Kostenfunktion:
+x0 | x1 | x2 | y
+---|---|----|---
+1  | 0 | 0  | 0
+1  | 0 | 1  | 1
+1  | 1 | 0  | 1
+1  | 1 | 1  | 1
 
-$$c_{1}(z) = 
-- \log\left(\sigma(z)\right), \quad \text{ falls } y=1.$$
+Im Folgenden wird das Training eines Perzeptrons Schritt für Schritt vorgerechnet.
 
-Vielleicht mag man sich jetzt wundern, wie man auf diese Funktion kommt. Diese
-Funktion wie auch die nachfolgenden Überlegungen basieren auf der
-[Maximum-Likelihood-Methode](https://de.wikipedia.org/wiki/Maximum-Likelihood-Methode),
-einem sehr bekannten statistischen Verfahren.
++++
 
-Am einfachsten ist es wahrscheinlich, sich den Graph der Funktion anzusehen. Da
-$\sigma(z)$ für jede Kombination von Inputs $x_i$ und Gewichten $\omega_i$
-zwischen 0 und 1 liegt, brauchen wir die Kostenfunktion $c_1$ auch nur auf dem
-Intervall $[0, 1]$ plotten.
+### Schritt 1: Initialisierung der Gewichte und der Lernrate
+
+Wir brauchen für die drei Inputs drei Gewichte und setzen diese drei Gewichte
+jeweils auf 0. Wir sammeln die Gewichte als Vektor, also
+
+$$\boldsymbol{\omega} = \begin{pmatrix}\omega_0 \\ \omega_1 \\ \omega_2\end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0\end{pmatrix}.$$
+
+Darüber hinaus müssen wir uns für eine Lernrate $\alpha$ entscheiden. Obwohl
+normalerweise ein kleiner (aber positiver) Wert gewählt wird, setzen wir der
+Einfachheit halber die Lernrate auf 1, also $\alpha = 1$.
+
++++
+
+### Schritt 2: Berechnung des Outputs und ggf. Anpassung der Gewichte
+
+Wir setzen nun solange nacheinander den ersten, zweiten, dritten und vierten
+Trainingsdatensatz in die Berechnungsvorschrift unseres Perzeptrons ein, bis die
+Gewichte für alle vier Trainingsdatensätze zu einer korrekten Prognose führen.
+Zur Erinnerung, wir berechnen den aktuellen Output des Perzeptrons mit der
+Formel
+
+$$\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(x_0
+\omega_0 + x_1 \omega_1 + x_2 \omega_2 ).\strut$$
+
+Blättern Sie Seite für Seite durch. Jede Seite entspricht einem Durchgang. Ein Durchgang wird im ML (wie auch in der Mathematik) als eine **Iteration** bezeichnet.
 
 ```{code-cell} ipython3
-import numpy as np
-import plotly.express as px
-
-sigma_z = np.linspace(0, 1)[1:]
-cost_1 = - np.log(sigma_z)
-
-fig = px.line(x = sigma_z, y = cost_1,
-              title='Kostenfunktion, falls Klasse 1 korrekt (y=1)',
-              labels={'x': 'sigma(z)', 'y': 'Kosten c_1'})
-fig.show()
+:tags: [remove-input]
+from IPython.display import HTML
+HTML('../assets/chapter08/Perzeptron-Lernregel.html')
 ```
 
-### Kostenfunktion, wenn Klasse 1 nicht richtig wäre
+### Schritt 3: Terminierung
 
-Nun betrachten wir den zweiten Fall. Der echte Output soll nicht der Klasse 1
-angehören, also $y=0$. Sollte die Wahrscheinlichkeit des logistischen
-Regressionsmodells $\sigma(z)$ in Richtung 0 gehen, so sollen kaum Kosten
-anfallen. Falls korrekterweise die Wahrscheinlicheit 0 ist, so sollen gar keine
-Kosten anfallen, denn der Fehler geht gegen 0. Und umgekehrt, wenn die
-Wahrscheinlichkeit des logistischen Regressionsmodells Richtung 1 tendiert, so
-sollen die Kosten stark steigen. Wir nehmen als zweite Kostenfunktion für den
-Fall $y=0$ die folgende Funktion:
+Die letzten vier Iterationen mit den Gewichten $(-1,1,1)$ prognostizierten
+jeweils das richtige Ergebnis. Daher können wir nun mit den Iterationen stoppen.
 
-$$c_{0}(z) = - \log\left(1-\sigma(z)\right), \quad \text{ falls } y=0.$$
+Insgesamt brauchten wir 13 Iterationen, bis wir die Gewichte für unser Perzeptron gefunden haben. Die finalen Gewichte haben wir bereits nach neun Iterationen gefunden. Weitere vier Iterationen brauchten wir, um zu überprüfen, ob das Perzeptron die vier Datensätze korrekt prognostiziert. Oder anders ausgedrückt, mussten alle vier Datensätze noch einmal durchlaufen werden. Das Durchlaufen aller Datensätze kommt beim mschinellen Lernen häufig vor, so dass es dafür einen eigenen Fachbegriff gibt, nämlich die Epoche.
 
-```{code-cell} ipython3
-sigma_z = np.linspace(0, 1)[:-1]
-cost_0 = - np.log(1 - sigma_z)
-
-fig = px.line(x = sigma_z, y = cost_0,
-              title='Kostenfunktion, falls Klasse 1 nicht korrekt (y=0)',
-              labels={'x': 'sigma(z)', 'y': 'Kosten c_0'})
-fig.show()
+```{admonition} Was ist ... eine Epoche?
+Das komplette Durchlaufen aller Trainingsdaten wird eine Epoche genannt.
 ```
 
-### Beide Kostenfunktionen kombiniert
+## Zusammenfassung und Ausblick
 
-Zusammengefasst haben wir also zwei Kostenfunktionen für die beiden Fälle.
-
-$$ 
-c(z) = 
-\begin{cases} 
-c_{0}(z): & y = 0 \\
-c_{1}(z): & y = 1 \\
-\end{cases} \qquad = \qquad 
-\begin{cases} 
-- \log\left(1-\sigma(z)\right): & y = 0 \\
-- \log\left(\sigma(z)\right): & y = 1 \\
-\end{cases}.
-$$
-
-Es wäre besser, die Fallunterscheidung weglassen zu können und nur eine
-Kostenfunktion zu betrachten. Dafür gibt es einen bekannten Trick, die
-sogenannte *Konvexkombination* beider Funktionen funktioniert:
-
-$$
-c(z) = y\cdot c_{1}(z) + (1-y) c_{0}(z).
-$$
-
-Wenn wir einmal $y=0$ einsetzen und einmal $y=1$, so sehen wir, dass entweder
-$c_{1}(z)$ oder aber $c_{0}(z)$ übrig bleibt — so wie gewünscht.
-
-Also lautet die konvex kombiniert Kostenfunktion für einen einzelnen
-Trainingsdatensatz mit den Inputs $x_i$ und den Gewichten $\omega_i$
-
-$$ c(\mathbf{x}; \boldsymbol{\omega}) = - y\cdot
-\log\left(\sigma\left(\sum_{i=0}^{N}x_i \omega_i\right)\right) - (1-y)
-\log\left(\sigma\left(1-\sum_{i=0}^{N}x_i \omega_i\right)\right) $$
-
-mit der logistischen Funktion $\sigma(z) = \frac{1}{1+e^{-z}}$. 
-
-
-
-
-
-
-
-+++
-
-## Lernregel für die logistische Regression
-
-Wie bei der linearen Regression wird nun die Kostenfunktion für jeden einzelnen Trainingsdatensatz berechnet und anschließend wird über alle Kosten der Mittelwert gebildet. Nun müssen die Gewichte so gewähle werden, dass der Mittelwert der Kosten minimiert wird. Anders als bei der linearen Regression kann dafür nicht einfach eine Gleichgun gelöst werden, die die Gewichte berechnet. Stattdessen muss wie beim Pereptron ein iteratives Verfahren verwendet werden. Damit ist gemeint, dass mit zufällig gewählten Gewichten die mittleren Kosten berechnet werden. Danach wird solange an den Gewichten gedreht, bis ein Minumum der mittleren Kosten erreicht wird. Wie an den Gewichten gedreht wird, gibt der **Gradient der Kostenfunktion** vor.
-
-In dieser Vorlesung gehen wir *nicht* auf das sehr mathematiklastige Thema Gradientenverfahren ein. Der KI-Campus bietet einen spielerischen Zugang zu dem Thema mit weiterführenden Texten an: [https://learn.ki-campus.org](https://learn.ki-campus.org/courses/explorables-schule-imaginary2021/items/7H9nZI186JgjC8jOjxdbaT) (eine Anmeldung ist dafür erforderlich, aber kostenfrei).
+In diesem Abschnitt haben wir uns mit dem händischen Training eines Perzeptrons beschäftigt. Als nächstes werden wir dazu eine Bibliothek kennenlernen, die diese Arbeit für uns übernimmt.

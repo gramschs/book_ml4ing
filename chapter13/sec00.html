@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13. Neuronale Netze &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>13. Logistische Regression &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=fcc42dec" />
@@ -64,8 +64,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="12.1 Mehrschichtiges Perzeptron" href="sec01.html" />
-    <link rel="prev" title="Logistische Regression mit Scikit-Learn" href="../chapter12/sec03.html" />
+    <link rel="next" title="13.1 Logistische Regression ersetzt Perzeptron" href="sec01.html" />
+    <link rel="prev" title="12.3 Training eines Perzeptrons mit Scikit-Learn" href="../chapter12/sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -251,23 +251,26 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">Grundbaustein neuronaler Netze</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">Die Perzeptron-Lernregel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec03.html">Training eines Perzeptrons mit Scikit-Learn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. ML-Workflow: Modellbewertung und Auswahl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">11.1 Kreuzvalidierung</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Logistische Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">Logistische Regression ersetzt Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">Logistische Regression lernt mit Maximum-Likelihood</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">Logistische Regression mit Scikit-Learn</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">12.1 Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">12.2 Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">12.3 Training eines Perzeptrons mit Scikit-Learn</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">13. Neuronale Netze</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sec03.html">12.3 Skalierung von Daten</a></li>
-
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">13. Logistische Regression</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sec01.html">13.1 Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec02.html">13.2 Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec03.html">13.3 Logistische Regression mit Scikit-Learn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/sec00.html">14. Neuronale Netze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14/sec01.html">14.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14/sec02.html">14.2 Neuronale Netze mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14/sec03.html">14.3 Skalierung von Daten</a></li>
 </ul>
 </details></li>
 </ul>
@@ -496,7 +499,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>13. Neuronale Netze</h1>
+    <h1>13. Logistische Regression</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -510,38 +513,20 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="neuronale-netze">
-<h1>13. Neuronale Netze<a class="headerlink" href="#neuronale-netze" title="Link to this heading">#</a></h1>
-<p>Durch neuronale Netze, die tief verschachtelt sind (= tiefe neuronale Netze =
-deep neural network), gab es im Bereich des maschinellen Lernens einen
-Durchbruch. Neuronale Netze sind eine Technik aus der Statistik, die bereits in
-den 1940er Jahren entwickelt wurde. Seit ca. 10 Jahren erleben diese Techniken
-verbunden mit Fortschritten in der Computertechnologie eine Renaissance.</p>
-<p>Neuronale Netze bzw. Deep Learning kommt vor allem da zum Einsatz, wo es kaum
-systematisches Wissen gibt. Damit neuronale Netze erfolgreich trainiert werden
-können, brauchen sie sehr große Datenmengen. Nachdem in den letzten 15 Jahren
-mit dem Aufkommen von Smartphones die Daten im Bereich Videos und Fotos massiv
-zugenommen haben, lohnt sich der Einsatz der neuronalen Netze fúr
-Spracherkennung, Gesichtserkennung oder Texterkennung besonders.</p>
-<p>Beispielsweise hat ein junges deutsches Start-Up-Unternehmen 2017 aus einem
-neuronalen Netz zum Übersetzen Englisch &lt;-&gt; Deutsch eine Webanwendung entwickelt
-und ins Internet gestellt, die meinen Alltag massiv beeinflusst: <a class="reference external" href="http://DeepL.com">DeepL.com</a>,
-siehe</p>
-<blockquote>
-<div><p><a class="reference external" href="https://www.deepl.com/en/blog/how-does-deepl-work">https://www.deepl.com/en/blog/how-does-deepl-work</a></p>
-</div></blockquote>
-<p>Mittlerweile beherrscht DeepL 23 Sprachen, siehe auch den Wikipedia-Artikel zu
-DeepL:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://de.wikipedia.org/wiki/DeepL">https://de.wikipedia.org/wiki/DeepL</a></p>
-</div></blockquote>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistische-regression">
+<h1>13. Logistische Regression<a class="headerlink" href="#logistische-regression" title="Link to this heading">#</a></h1>
+<p>Das binäre Klassifikationsverfahren des Perzeptrons sortiert Datensätze in zwei
+Klassen. Ob dabei die Entscheidung für eine Klasse sehr knapp getroffen wird
+oder eindeutig erscheint, wird dabei nicht transparent. Im Folgenden
+beschäftigen wir uns mit einem binären Klassifikationsverfahren namens
+logistische Regression, das auf einer Prognose der Klassenwahrscheinlichkeit
+basiert.</p>
 <p>Kapitelübersicht:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="sec01.html">12.1 Mehrschichtiges Perzeptron</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec02.html">12.2 Neuronale Netze mit Scikit-Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec03.html">12.3 Skalierung von Daten</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sec03.html#beispiel-weinqualitat">Beispiel: Weinqualität</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec01.html">13.1 Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec02.html">13.2 Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sec03.html">13.3 Logistische Regression mit Scikit-Learn</a></li>
 </ul>
 </div>
 </section>
@@ -582,7 +567,7 @@ DeepL:</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logistische Regression mit Scikit-Learn</p>
+        <p class="prev-next-title">12.3 Training eines Perzeptrons mit Scikit-Learn</p>
       </div>
     </a>
     <a class="right-next"
@@ -590,7 +575,7 @@ DeepL:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">12.1 Mehrschichtiges Perzeptron</p>
+        <p class="prev-next-title">13.1 Logistische Regression ersetzt Perzeptron</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
