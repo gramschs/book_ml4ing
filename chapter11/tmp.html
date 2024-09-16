@@ -251,6 +251,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="sec00.html">11. ML-Workflow: Modellbewertung und Auswahl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="sec01.html">11.1 Kreuzvalidierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec02.html">11.2 Gittersuche</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -506,54 +507,20 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">KFold</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
-<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
-
-<span class="c1"># Beispiel: K-Fold mit k=5</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
-
-<span class="c1"># K-Fold Kreuzvalidierung</span>
-<span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Durchschnittliche Genauigkeit:&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Durchschnittliche Genauigkeit: 0.9066666666666666
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_moons</span> 
-
-<span class="n">X_array</span><span class="p">,</span> <span class="n">y_array</span> <span class="o">=</span> <span class="n">make_moons</span><span class="p">(</span><span class="n">noise</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="c1"># Transformation der Merkmalswerte in einen positiven Bereich und </span>
-<span class="c1"># Umwandlung in eine Integer-Matrix</span>
-<span class="n">X_array</span> <span class="o">=</span> <span class="n">X_array</span> <span class="o">+</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_array</span><span class="p">))</span>
-<span class="n">X_array</span> <span class="o">=</span> <span class="n">X_array</span> <span class="o">+</span> <span class="mf">1.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">X_array</span><span class="p">))</span>
-<span class="n">X_array</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">X_array</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30000</span><span class="p">)</span>
-<span class="n">X_array</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">X_array</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_array</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Kilometerstand [km]&#39;</span><span class="p">,</span> <span class="s1">&#39;Preis [EUR]&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">))</span>
-
-<span class="c1"># Zuweisung von True/False basierend auf den Kategorien 1 bzw. 0</span>
-<span class="n">y_array</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_array</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_array</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;verkauft&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_moons</span> 
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Kilometerstand [km]&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Preis [EUR]&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Künstliche Daten Autohaus&#39;</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;Kilometerstand [km]&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;Preis [EUR]&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;verkauft&#39;</span><span class="p">})</span>
+<span class="n">X_array</span><span class="p">,</span> <span class="n">y_array</span> <span class="o">=</span> <span class="n">make_moons</span><span class="p">(</span><span class="n">noise</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">daten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Merkmal 1&#39;</span><span class="p">:</span> <span class="n">X_array</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="s1">&#39;Merkmal 2&#39;</span><span class="p">:</span> <span class="n">X_array</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="s1">&#39;Wirkung&#39;</span><span class="p">:</span> <span class="n">y_array</span>
+<span class="p">})</span>
+<span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Wirkung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Wirkung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">daten</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Merkmal 1&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Merkmal 2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;Wirkung&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Künstliche Daten&#39;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -579,9 +546,9 @@ document.write(`
         });
         }
         </script>
-        </div><div class="output text_html"><div>                            <div id="577a6a47-cb5c-41b3-ac50-795a6f16bf12" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("577a6a47-cb5c-41b3-ac50-795a6f16bf12")) {                    Plotly.newPlot(                        "577a6a47-cb5c-41b3-ac50-795a6f16bf12",                        [{"hovertemplate":"verkauft=True\u003cbr\u003eKilometerstand [km]=%{x}\u003cbr\u003ePreis [EUR]=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"True","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"True","orientation":"v","showlegend":true,"x":[81274,81687,57713,102397,76707,32983,77852,45809,46470,46088,85254,74077,82712,93832,23700,84139,39866,31257,73954,33333,45043,87815,107219,101463,59147],"xaxis":"x","y":[28185,36634,29668,26370,17480,23379,30264,26593,31251,36168,17114,30926,24734,6186,18470,28802,25156,26345,31562,23724,24652,16063,31603,21654,20088],"yaxis":"y","type":"scatter"},{"hovertemplate":"verkauft=False\u003cbr\u003eKilometerstand [km]=%{x}\u003cbr\u003ePreis [EUR]=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"False","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"False","orientation":"v","showlegend":true,"x":[107890,128466,82114,55912,112708,120654,100014,92020,60500,83001,121133,76621,70798,123277,113754,72793,84024,77748,71200,64601,103473,112959,105996,121609,124540],"xaxis":"x","y":[6389,17016,20013,27267,33151,8992,12977,21749,23178,23249,14519,23582,21645,22524,23259,18478,14930,15906,18900,32403,12773,13052,31609,20776,24823],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Kilometerstand [km]"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Preis [EUR]"}},"legend":{"title":{"text":"verkauft"},"tracegroupgap":0},"title":{"text":"K\u00fcnstliche Daten Autohaus"}},                        {"responsive": true}                    ).then(function(){
+        </div><div class="output text_html"><div>                            <div id="2a02e7a9-22aa-4726-840f-c14ab995c992" class="plotly-graph-div" style="height:525px; width:100%;"></div>            <script type="text/javascript">                require(["plotly"], function(Plotly) {                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("2a02e7a9-22aa-4726-840f-c14ab995c992")) {                    Plotly.newPlot(                        "2a02e7a9-22aa-4726-840f-c14ab995c992",                        [{"hovertemplate":"Wirkung=True\u003cbr\u003eMerkmal 1=%{x}\u003cbr\u003eMerkmal 2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"True","marker":{"color":"#636efa","symbol":"circle"},"mode":"markers","name":"True","orientation":"v","showlegend":true,"x":[1.8282094177668968,0.20009795460330781,0.5954835037813074,1.469093719687022,1.4411391423608813,2.2398395665506015,1.466638438910426,0.7654268310080705,0.53392113792689,0.5520534874580467,1.1751840799944824,0.011808857848383952,0.8641065049995323,1.0262036242319574,1.4642018826962426,0.8536428151201844,-0.3391063396705759,1.677400909058177,0.4080378983003224,1.39485940828958,1.4698146244339823,1.227637144943774,1.2237430149509319,0.7333062857084254,0.524906643369647,-0.1121793993270746,2.0535286471958116,0.6020360189609272,-0.29673870794538604,1.6558736764305884,0.034350627222053814,1.349476550985968,0.5521811956381983,0.9156529675944799,-1.006986790712395,1.0619370207201766,2.1253285205728853,1.654468321154798,0.6661332287481155,2.5736323965563055,0.3610247894145362,-0.22786846785938583,0.7432911522251928,0.5242617503677165,0.15674872131596257,0.06222900422258104,1.8499106186791865,1.264742479823905,0.3843546483996779,-0.24631220553484012],"xaxis":"x","y":[1.012055510823593,-0.31129087369048886,0.6876577477322173,0.7585105942190346,0.5296708886415251,0.7740379799508178,-0.9061379197655972,-0.9192566211082984,-0.11379741297081114,-0.3108385991440877,-0.44132647331330427,1.033539769817911,-0.21313635380189971,-0.5532036862545171,0.1220508320444092,-0.07704759154280033,0.7132175372200377,0.8064100093254942,-0.22989988222554308,0.14781052166430786,0.6019582257738386,-0.015727184665384267,-0.26261005175189517,-0.5128508057252436,0.08413156053101334,-0.3401819475361134,-0.4942773666169411,0.26584505737471953,0.037206590707341586,-0.2608526838992153,-0.7451143243523671,0.17595219499818038,0.5622175048050362,0.5319179180110913,-0.10826471679147293,-0.18487554211162358,-0.37829723993329706,-0.07159853703007509,0.48743887117597284,0.4448854222990381,0.5169450036284226,1.4312986861804098,-0.08614951958675846,-0.3609703969799936,0.4605487139739508,-0.40520222565848696,1.4136855951218046,0.535953046687355,-0.5652109848291998,-0.2024746106722074],"yaxis":"y","type":"scatter"},{"hovertemplate":"Wirkung=False\u003cbr\u003eMerkmal 1=%{x}\u003cbr\u003eMerkmal 2=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"False","marker":{"color":"#EF553B","symbol":"circle"},"mode":"markers","name":"False","orientation":"v","showlegend":true,"x":[1.0033896087272627,-0.5793872276045597,-0.7299333288919925,-0.11321784615383856,0.9106197119436047,-0.8676560293651072,0.43555882582043526,-0.5301520017337692,1.3350848723243058,0.6060276319458372,1.289825855530984,0.11755795158390253,-1.4089099391591384,-0.7220324512200437,1.0619308801335787,0.6335804099813472,-0.7289887872756344,1.168853228994797,-0.7251706128186519,-1.2913354551790044,0.5823964788685756,-0.5176127937920885,-0.41050642693384143,-0.2543789391703301,-1.3795165036027606,0.8361993906037772,-0.47808543023277134,-1.2942508098397145,-0.49545887077115613,-0.003700552845060767,-0.5660113676608372,-1.0877091038921134,0.8916550101239397,-0.09040237948858504,0.8234276962590714,0.7540275849166224,0.07575059365014732,0.18495281030336147,1.17081634145811,-0.9387136820289078,0.45688344049226814,0.4342787522345143,-0.694697437857731,1.3350213972361091,-0.31935787182089115,0.8802642336498044,1.0822592116006327,0.7143255190356121,2.337522324256068,0.005077652976411606],"xaxis":"x","y":[-0.1568306320888881,0.5584270924804753,1.6953176700730916,0.9394538507999065,1.1294760443613696,0.5619635707027189,0.5676605286192578,-0.39311373205138433,0.7701757479439818,0.12545423015727275,0.4101847709215606,1.1298065440073075,0.8003733899956255,0.06641329672921337,0.45862580037103284,0.878312245696737,0.5456802042864334,0.3882325182590067,0.04878198928070243,0.5897425043115521,1.475951022084616,1.352914651324503,0.707324596360279,0.9863374485322141,0.22753139327708985,0.5901966116277833,0.913506209375304,-0.7732779114055388,0.3043280288797545,0.6615993879663512,0.5915488733383663,0.45083219070587033,0.6756481328217117,0.7651042624476793,0.1904827655914877,0.04498865011878703,1.8485163823377997,0.8484684940303933,1.101677660069587,0.8156151595770882,0.4411057813652342,0.738672197422678,0.0035977984019230913,0.9188208582882399,1.4315950475576809,1.0217281770588937,-0.20467945682456545,0.13289352337400254,0.5048955732380617,1.657069828338128],"yaxis":"y","type":"scatter"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"Merkmal 1"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"Merkmal 2"}},"legend":{"title":{"text":"Wirkung"},"tracegroupgap":0},"title":{"text":"K\u00fcnstliche Daten"}},                        {"responsive": true}                    ).then(function(){
                             
-var gd = document.getElementById('577a6a47-cb5c-41b3-ac50-795a6f16bf12');
+var gd = document.getElementById('2a02e7a9-22aa-4726-840f-c14ab995c992');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
         if (!display || display === 'none') {{
@@ -607,30 +574,849 @@ if (outputEl) {{
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span><span class="p">,</span> <span class="n">KFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">KFold</span>
-<span class="c1"># K-Fold Kreuzvalidierung</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[[</span><span class="s1">&#39;Merkmal 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Merkmal 2&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Wirkung&#39;</span><span class="p">]</span>
+
 <span class="n">kfold</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">max_tiefe</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+    <span class="n">modell</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_tiefe</span><span class="p">)</span>
+    <span class="n">cv_results_modell</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">modell</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+    <span class="n">test_scores</span> <span class="o">=</span> <span class="n">cv_results_modell</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mittelwert Testscores: </span><span class="si">{</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Standardabweichung: </span><span class="si">{</span><span class="n">std</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.  0.8 0.6 0.8 0.6 0.6 0.6 0.8 0.8 0.2]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mittelwert Testscores: 0.75, Standardabweichung: 0.15
+Mittelwert Testscores: 0.71, Standardabweichung: 0.10
+Mittelwert Testscores: 0.74, Standardabweichung: 0.08
+Mittelwert Testscores: 0.71, Standardabweichung: 0.14
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kfold</span><span class="o">.</span><span class="n">get_n_splits</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">min_punkte</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+    <span class="n">modell</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_punkte</span><span class="p">)</span>
+    <span class="n">cv_results_modell</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">modell</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+    <span class="n">test_scores</span> <span class="o">=</span> <span class="n">cv_results_modell</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mittelwert Testscores: </span><span class="si">{</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Standardabweichung: </span><span class="si">{</span><span class="n">std</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mittelwert Testscores: 0.67, Standardabweichung: 0.08
+Mittelwert Testscores: 0.68, Standardabweichung: 0.13
+Mittelwert Testscores: 0.75, Standardabweichung: 0.11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">max_tiefe</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">min_punkte</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
+        <span class="n">modell</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">max_tiefe</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_punkte</span><span class="p">)</span>
+        <span class="n">cv_results_modell</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">modell</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+        <span class="n">test_scores</span> <span class="o">=</span> <span class="n">cv_results_modell</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mittelwert Testscores: </span><span class="si">{</span><span class="n">mean</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Standardabweichung: </span><span class="si">{</span><span class="n">std</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mittelwert Testscores: 0.75, Standardabweichung: 0.15
+Mittelwert Testscores: 0.76, Standardabweichung: 0.16
+Mittelwert Testscores: 0.78, Standardabweichung: 0.13
+Mittelwert Testscores: 0.70, Standardabweichung: 0.10
+Mittelwert Testscores: 0.72, Standardabweichung: 0.12
+Mittelwert Testscores: 0.73, Standardabweichung: 0.11
+Mittelwert Testscores: 0.72, Standardabweichung: 0.11
+Mittelwert Testscores: 0.72, Standardabweichung: 0.11
+Mittelwert Testscores: 0.75, Standardabweichung: 0.09
+Mittelwert Testscores: 0.73, Standardabweichung: 0.12
+Mittelwert Testscores: 0.71, Standardabweichung: 0.14
+Mittelwert Testscores: 0.75, Standardabweichung: 0.11
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">parameter_gitter</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+    <span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">optimiertes_modell</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">DecisionTreeClassifier</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameter_gitter</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">kfold</span><span class="p">)</span>
+<span class="n">optimiertes_modell</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=KFold(n_splits=10, random_state=None, shuffle=False),
+             estimator=DecisionTreeClassifier(),
+             param_grid={&#x27;max_depth&#x27;: [3, 4, 5, 6],
+                         &#x27;min_samples_leaf&#x27;: [1, 2, 3]})</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;GridSearchCV<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=KFold(n_splits=10, random_state=None, shuffle=False),
+             estimator=DecisionTreeClassifier(),
+             param_grid={&#x27;max_depth&#x27;: [3, 4, 5, 6],
+                         &#x27;min_samples_leaf&#x27;: [1, 2, 3]})</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">best_estimator_: DecisionTreeClassifier</label><div class="sk-toggleable__content fitted"><pre>DecisionTreeClassifier(max_depth=3)</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;DecisionTreeClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.tree.DecisionTreeClassifier.html">?<span>Documentation for DecisionTreeClassifier</span></a></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeClassifier(max_depth=3)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ergebnisse_kreuzvalidierung</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">optimiertes_modell</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">)</span>
+<span class="n">ergebnisse_kreuzvalidierung</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_fit_time</th>
+      <th>std_fit_time</th>
+      <th>mean_score_time</th>
+      <th>std_score_time</th>
+      <th>param_max_depth</th>
+      <th>param_min_samples_leaf</th>
+      <th>params</th>
+      <th>split0_test_score</th>
+      <th>split1_test_score</th>
+      <th>split2_test_score</th>
+      <th>split3_test_score</th>
+      <th>split4_test_score</th>
+      <th>split5_test_score</th>
+      <th>split6_test_score</th>
+      <th>split7_test_score</th>
+      <th>split8_test_score</th>
+      <th>split9_test_score</th>
+      <th>mean_test_score</th>
+      <th>std_test_score</th>
+      <th>rank_test_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000574</td>
+      <td>0.000119</td>
+      <td>0.000454</td>
+      <td>0.000075</td>
+      <td>3</td>
+      <td>1</td>
+      <td>{'max_depth': 3, 'min_samples_leaf': 1}</td>
+      <td>1.000</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>1.000</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>0.714286</td>
+      <td>0.571429</td>
+      <td>0.714286</td>
+      <td>0.769643</td>
+      <td>0.162970</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000466</td>
+      <td>0.000006</td>
+      <td>0.000393</td>
+      <td>0.000006</td>
+      <td>3</td>
+      <td>2</td>
+      <td>{'max_depth': 3, 'min_samples_leaf': 2}</td>
+      <td>1.000</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>1.000</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>0.714286</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.755357</td>
+      <td>0.173141</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000462</td>
+      <td>0.000005</td>
+      <td>0.000400</td>
+      <td>0.000020</td>
+      <td>3</td>
+      <td>3</td>
+      <td>{'max_depth': 3, 'min_samples_leaf': 3}</td>
+      <td>1.000</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>1.000</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>0.714286</td>
+      <td>0.571429</td>
+      <td>0.714286</td>
+      <td>0.769643</td>
+      <td>0.162970</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.000470</td>
+      <td>0.000012</td>
+      <td>0.000389</td>
+      <td>0.000005</td>
+      <td>4</td>
+      <td>1</td>
+      <td>{'max_depth': 4, 'min_samples_leaf': 1}</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>0.875</td>
+      <td>0.714286</td>
+      <td>0.857143</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.664286</td>
+      <td>0.129953</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000464</td>
+      <td>0.000002</td>
+      <td>0.000386</td>
+      <td>0.000002</td>
+      <td>4</td>
+      <td>2</td>
+      <td>{'max_depth': 4, 'min_samples_leaf': 2}</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>1.000</td>
+      <td>0.714286</td>
+      <td>0.857143</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.703571</td>
+      <td>0.134392</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.000483</td>
+      <td>0.000026</td>
+      <td>0.000397</td>
+      <td>0.000010</td>
+      <td>4</td>
+      <td>3</td>
+      <td>{'max_depth': 4, 'min_samples_leaf': 3}</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>1.000</td>
+      <td>0.714286</td>
+      <td>1.000000</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.857143</td>
+      <td>0.746429</td>
+      <td>0.152530</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.000499</td>
+      <td>0.000050</td>
+      <td>0.000399</td>
+      <td>0.000011</td>
+      <td>5</td>
+      <td>1</td>
+      <td>{'max_depth': 5, 'min_samples_leaf': 1}</td>
+      <td>0.875</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>0.857143</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.662500</td>
+      <td>0.145610</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.000477</td>
+      <td>0.000007</td>
+      <td>0.000394</td>
+      <td>0.000007</td>
+      <td>5</td>
+      <td>2</td>
+      <td>{'max_depth': 5, 'min_samples_leaf': 2}</td>
+      <td>0.750</td>
+      <td>0.875</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>0.571429</td>
+      <td>0.857143</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.662500</td>
+      <td>0.134451</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.000478</td>
+      <td>0.000016</td>
+      <td>0.000389</td>
+      <td>0.000004</td>
+      <td>5</td>
+      <td>3</td>
+      <td>{'max_depth': 5, 'min_samples_leaf': 3}</td>
+      <td>0.875</td>
+      <td>0.875</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.728571</td>
+      <td>0.157467</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.000479</td>
+      <td>0.000014</td>
+      <td>0.000390</td>
+      <td>0.000002</td>
+      <td>6</td>
+      <td>1</td>
+      <td>{'max_depth': 6, 'min_samples_leaf': 1}</td>
+      <td>0.875</td>
+      <td>0.875</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>0.857143</td>
+      <td>0.714286</td>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.701786</td>
+      <td>0.153208</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.000515</td>
+      <td>0.000130</td>
+      <td>0.000402</td>
+      <td>0.000024</td>
+      <td>6</td>
+      <td>2</td>
+      <td>{'max_depth': 6, 'min_samples_leaf': 2}</td>
+      <td>0.750</td>
+      <td>0.750</td>
+      <td>0.625</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>0.571429</td>
+      <td>0.857143</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.428571</td>
+      <td>0.650000</td>
+      <td>0.119042</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.000473</td>
+      <td>0.000010</td>
+      <td>0.000392</td>
+      <td>0.000007</td>
+      <td>6</td>
+      <td>3</td>
+      <td>{'max_depth': 6, 'min_samples_leaf': 3}</td>
+      <td>0.875</td>
+      <td>0.875</td>
+      <td>0.625</td>
+      <td>0.750</td>
+      <td>0.875</td>
+      <td>0.571429</td>
+      <td>1.000000</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.571429</td>
+      <td>0.728571</td>
+      <td>0.157467</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;mean&#39; from &#39;math&#39; (/opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/lib-dynload/math.cpython-312-darwin.so)
 </pre></div>
 </div>
 </div>
