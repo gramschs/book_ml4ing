@@ -78,7 +78,6 @@ parts:
     sections:
     - file: chapter14/sec01.md   
     - file: chapter14/sec02.md 
-    - file: chapter14/sec03.md  
 - caption: Extras 
   chapters:
   - file: extras_skimage/extras_skimage_sec00.md
