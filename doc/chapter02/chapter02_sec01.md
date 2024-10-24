@@ -19,7 +19,6 @@ Daten alles Mögliche umfassen, beispielsweise Zahlen oder Texte. Daher
 beschäftigen wir uns zuerst mit Datentypen. Dann geht es um Variablen und deren
 Ausgabe auf dem Bildschirm.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -31,7 +30,6 @@ Ausgabe auf dem Bildschirm.
 * Sie wissen, was eine **Variable** ist und kennen den **Zuweisungsoperator**.
 * Sie können die **print()**-Funktion zur Ausgabe auf dem Bildschirm anwenden.
 ```
-
 
 ## Einfache Datentypen
 
@@ -65,38 +63,37 @@ In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen
 * Float und
 * String.
 
-
-### Integer und Float 
+### Integer und Float
 
 In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
 den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
 in der Mathematik als **ganze Zahlen** bezeichnet. In der Informatik wird jedoch
-der englische Begriff dafür verwendet: **Integer**. 
+der englische Begriff dafür verwendet: **Integer**.
 
 Mit Integern können wir ganz normal rechnen, also arithmetische Operationen
 ausführen:
 
-```{code-cell} ipython3
+```{code-cell}
 2+3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 2*3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 6-7
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 3*(4+7)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 25/5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 4**2
 ```
 
@@ -105,27 +102,27 @@ den Bereich der Integers. `25/5` ist wieder eine ganze Zahl, nicht jedoch
 `25/3`. Damit sind wir bei den Fließkommazahlen. Auch hier wird üblicherweise
 der englische Begriff **Float** für **Fließkommazahl** verwendet.
 
-```{code-cell} ipython3
+```{code-cell}
 2.3 + 4.5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 5.6 - 2.1
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 2.1 * 3.5
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 3.4 / 1.7
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 3.4 ** 2
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 3.5 * (2.6 - 3.8 / 1.9)
 ```
 
@@ -155,18 +152,18 @@ andere Zeichen wie beispielsweise !"§$%&/()=?.
 Strings werden in Python durch einfache Hochkomma oder Anführungszeichen
 definiert.
 
-```{code-cell} ipython3
+```{code-cell}
 'Dies ist ein String!'
 ```
 
 Mit Strings kann man ebenfalls "rechnen", nur ist das Ergebnis vielleicht anders
 als erwartet.
 
-```{code-cell} ipython3
+```{code-cell}
 2 * 'Dies ist ein String!'
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 'String 1 ' + 'String 2' 
 ```
 
@@ -179,7 +176,6 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-
 ## Variablen und Zuweisung
 
 **Variablen** sind beschriftete Schubladen. Oder anders formuliert sind
@@ -187,7 +183,7 @@ Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese
 Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen
 Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
 Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von $\pi$ oder
-die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein. 
+die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.
 
 ### Zuweisungen sind keine Gleichungen
 
@@ -197,18 +193,18 @@ wir, dass eine Schublade angelegt wird und die Schublade dann erstmalig gefüllt
 wird. Das erstmalige Füllen der Schublade nennt man in der Informatik auch
 Initialisieren. Für die Zuweisung wird in Python das `=`-Zeichen verwendet.
 
-```{code-cell} ipython3
+```{code-cell}
 x = 0.5
 ```
 
 Sobald die Variable `x` in diesem Beispiel durch eine Zuweisung von 0.5 erstellt
 wurde, können wir sie verwenden:
 
-```{code-cell} ipython3
+```{code-cell}
 x * 3
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x + 17
 ```
 
@@ -216,7 +212,7 @@ Wichtig ist, dass das `=` in der Informatik eine andere Bedeutung hat als in der
 Mathematik. `=` meint nicht das Gleichheitszeichen, sondern den sogenannten
 **Zuweisungsoperator**. Das ist in der Programmierung ein Kommando, das eine
 Schublade befüllt oder technischer ausgedrückt, ein Objekt einer Variable
-zuweist. 
+zuweist.
 
 Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
 sie verwendet werden können, sonst tritt ein Fehler auf.
@@ -226,16 +222,14 @@ sie verwendet werden können, sonst tritt ein Fehler auf.
 Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur `n`. Lassen Sie die Code-Zelle ausführen. Was passiert?
 ```
 
-+++
-
 ```{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor sie das erste Mal benutzt wird.
 ```
 
 Sehr häufig findet man Code wie
 
-```{code-cell} ipython3
+```{code-cell}
 x = x + 1
 ```
 
@@ -253,7 +247,7 @@ gelesen werden:
    Variablennamen zu (in Python-Sprechweise: binde dem Namen auf der linken
    Seite an das auf der rechten Seite angezeigte Objekt).
 
-```{code-cell} ipython3ß
+```{code-cell}
 x = 4     
 x = x + 1
 x
@@ -268,7 +262,7 @@ Variablennamen zu nehmen. Stattdessen werden Namen benutzt, bei denen man
 erraten kann, was die Variable für einen Einsatzzweck hat. Beispielsweise lässt
 der Code
 
-```{code-cell} ipython3
+```{code-cell}
 m = 0.19
 n = 80
 b = n + m*n
@@ -278,7 +272,7 @@ b
 nur schwer vermuten, was damit bezweckt wird. Dagegen erahnt man bei diesem Code
 schon eher, was bezweckt wird:
 
-```{code-cell} ipython3
+```{code-cell}
 mehrwertsteuersatz = 19/100
 nettopreis = 80
 bruttopreis = nettopreis + mehrwertsteuersatz * nettopreis
@@ -319,7 +313,7 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-### Datentypen ermitteln mit type() 
+### Datentypen ermitteln mit type()
 
 Werden zwei Integer geteilt, so wird das Ergebnis automatisch in einen Float
 umgewandelt. Mit Hilfe der Funktion `type()` können wir den Python-Interpreter
@@ -331,14 +325,14 @@ Variable handelt, werden runde Klammern an den Namen der Funktion gehängt.
 
 In diesem Fall soll der Datentyp eines Objektes ermittelt werden. Damit der
 Python-Interpreter weiß, von welcher Variable der Datentyp ermittelt werden
-soll, schreiben wir die Variable in runde Klammern. 
+soll, schreiben wir die Variable in runde Klammern.
 
-```{code-cell} ipython3
+```{code-cell}
 x = 25 * 5
 type(x)
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 x = 25 / 5
 type(x)
 ```
@@ -355,7 +349,6 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-
 ## Ausgaben mit print()
 
 Jetzt lernen Sie eine weitere Python-Funktion kennen. Bei den obigen
@@ -363,7 +356,7 @@ Rechenaufgaben wurde automatisch das Ergebnis der Rechnung angezeigt, sobald die
 Code-Zelle ausgeführt wurde. Dies ist eine Besonderheit der Jupyter Notebooks,
 würde aber in einem normalen Python-Programm nicht funktionieren. Auch möchte
 man vielleicht ein Zwischenergebnis anzeigen lassen. Die interaktive Ausgabe der
-Jupyter Notebooks zeigt jedoch immer nur den Inhalt der letzten Zeile an. 
+Jupyter Notebooks zeigt jedoch immer nur den Inhalt der letzten Zeile an.
 
 Für die Anzeige von Rechenergebnissen oder Texten gibt es in Python die
 **print()**-Funktion. Die print()-Funktion in Python gibt den Wert am Bildschirm
@@ -371,7 +364,7 @@ aus, der ihr als sogenanntes **Argument** in den runden Klammern übergeben wird
 Das kann zum Beispiel eine Zahl oder eine Rechenaufgabe sein, wie in dem
 folgenden Beispiel.
 
-```{code-cell} ipython3
+```{code-cell}
 print(2)
 print(3+3)
 ```
@@ -380,13 +373,13 @@ In der ersten Zeile ist das Argument für die print()-Funktion die Zahl 2. Das
 Argument wird in runde Klammern hinter den Funktionsnamen `print` geschrieben.
 Ein Argument ist sozusagen der Input, der an die print()-Funktion übergeben
 wird, damit der Python-Interpreter weiß, welcher Wert auf dem Bildschirm
-angezeigt werden soll. 
+angezeigt werden soll.
 
 Das zweite Beispiel in der zweiten Zeile funktioniert genauso. Nur wird diesmal
 eine komplette Rechnung als Argument an die print()-Funktion übergeben. In dem
 Fall rechnet der Python-Interpreter erst den Wert der Rechnung, also `3+3=6` aus
 und übergibt dann die `6` an die print()-Funktion. Die print()-Funktion wiederum
-zeigt dann die `6` am Bildschirm an. 
+zeigt dann die `6` am Bildschirm an.
 
 ```{admonition} Mini-Übung
 :class: miniexercise
@@ -398,7 +391,7 @@ Lassen Sie Python den Term $3:4$ berechnen und geben Sie das Ergebnis mit der pr
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 print(3/4)
 ```
@@ -407,7 +400,7 @@ print(3/4)
 Python kann mit der print()-Funktion jedoch nicht nur Zahlen ausgeben, sondern
 auch Texte, also Strings.
 
-```{code-cell} ipython3
+```{code-cell}
 print('Hallo')
 ```
 
@@ -423,7 +416,7 @@ ausgeben :-)
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 print("Hallo Welt")
 ```
@@ -441,10 +434,10 @@ einzubetten. Dazu werden geschweifte Klammern verwendet, also `{` und `}` und zu
 Beginn des Strings wird ein `f` eingefügt, um aus dem String einen f-String zu
 machen. Der Python-Interpreter fügt dann zur Laufzeit des Programms den
 entsprechenden Wert der Variable in den String ein.
- 
+
 Hier ein Beispiel:
 
-```{code-cell} ipython3
+```{code-cell}
 name = 'Alice'
 alter = 20
 print(f'Mein Name ist {name} und ich bin {alter} Jahre alt.')
@@ -457,7 +450,7 @@ Nachkommastellen festgelegt werden. Zusätzlich setzen wir ein `f` in die
 geschweiften Klammern, um einen Float anzeigen zu lassen. Im folgenden Beispiel
 geben wir $\pi$ auf zwei Nachkommastellen an.
 
-```{code-cell} ipython3
+```{code-cell}
 pi = 3.141592653589793238462643383279
 print(f'Pi = {pi:1.2f}')
 ```
@@ -468,13 +461,13 @@ Internetseite
 finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Ddokument
 herunterladen.
 
-
-````{admonition} Mini-Übung
+```{admonition} Mini-Übung
 :class: miniexercise
 Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beide Seitenlängen werden jeweils in den Variablen `laenge` und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.", wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.
-````
+```
+
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 # Eingabe
 laenge = 5.5
@@ -487,7 +480,6 @@ flaeche = laenge * breite
 print(f'Der Flächeninhalt eines Rechtecks mit den Seiten {laenge} und {breite} ist {flaeche:.1f}.')
 ```
 ````
-
 
 ## Zusammenfassung und Ausblick
 

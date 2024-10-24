@@ -32,7 +32,6 @@ Methoden ein.
 * Sie wissen, was **Klassen** und **Methoden** sind.
 ```
 
-
 ## Funktionen
 
 Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
@@ -47,7 +46,6 @@ mathematischen Funktion zu tun, auch wenn oft mathematische Funktionen als
 Beispiel verwendet werden. Ein Beispiel für eine nicht-mathematische Funktion
 haben Sie mit `print()` bereits kennengelernt.
 
-
 ### Die Benutzung von Funktionen (oder der Aufruf von Funktionen)
 
 Eine Funktion wird benutzt, indem man den Namen der Funktion hinschreibt und
@@ -55,20 +53,20 @@ dann in runden Klammern ihre Argumente. Welche Argumente für eine Funktion
 verwendet werden dürfen, hängt von der Implementierung der Funktion ab.
 
 Beispielsweise kann als Argument für die `len()`-Funktion ein String übergeben
-werden oder eine Liste. 
+werden oder eine Liste.
 
-```{code-cell} ipython3
+```{code-cell}
 len('Hallo')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 len([1,2,3,4,8,2])
 ```
 
 In der Regel geben Funktionen wieder Ergebnisse zurück. Diese können einer
 Variable zugewiesen werden, um weiter mit dem Ergebnis zu arbeiten.
 
-```{code-cell} ipython3
+```{code-cell}
 wort = 'Hallo'
 anzahl_zeichen = len(wort)
 print(f'Mein Wort {wort} hat {anzahl_zeichen} Zeichen.')
@@ -84,7 +82,7 @@ sollen, sobald die Funktion aufgerufen wird, werden eingerückt.
 Als erstes Beispiel einer sehr einfachen Funktion betrachten wir die folgende
 Funktion:
 
-```{code-cell} ipython3
+```{code-cell}
 def gruesse_ausrichten():
     print('Ich grüße Sie!')
 ```
@@ -93,7 +91,7 @@ Die Funktion hat keine Argumente und keine Rückgabe, sondern gibt einfqach nur
 einen Text auf dem Bildschirm aus. Nachdem die Funktion `gruesse_ausrichten()`
 so implementiert wurde, können wir sie im Folgenden direkt verwenden.
 
-```{code-cell} ipython3
+```{code-cell}
 gruesse_ausrichten()
 ```
 
@@ -109,7 +107,7 @@ Schreiben Sie eine Funktion, die den Namen `hallihallo` hat und das Wort Halliha
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 def hallihallo():
     print('Hallihallo!')
@@ -133,7 +131,7 @@ Meistens haben Funktionen Argumente, um Eingaben/Input entgegennehmen und
 verarbeiten zu können. Das Argument wird bei der Implementierung der Funktion
 mit einer Variable eingeführt, wie in dem folgenden Beispiel `name`.
 
-```{code-cell} ipython3
+```{code-cell}
 def gruesse_ausrichten_mit_parameter(name):
     print(f'Ich grüße {name}')
 ```
@@ -142,31 +140,30 @@ Der Aufruf einer Funktion ohne passende Argumente führt zu einer Fehlermeldung.
 Entfernen Sie das Kommentarzeichen `#` und führen Sie die nachfolgende
 Code-Zelle aus:
 
-```{code-cell} ipython3
+```{code-cell}
 #gruesse_ausrichten_mit_parameter()
 ```
 
 Daher müssen wir die modifizierte Funktion nun wie folgt aufrufen:
 
-```{code-cell} ipython3
+```{code-cell}
 gruesse_ausrichten_mit_parameter('Bob')
 ```
 
 Die Funktion `gruesse_ausrichten_mit_parameter()` hat aber keinen Rückgabewert.
 Das können wir wie folgt testen:
 
-```{code-cell} ipython3
+```{code-cell}
 x = gruesse_ausrichten_mit_parameter('Alice')
 type(x)
 ```
 
-`x` ist vom Typ `NoneType` oder anders ausgedrückt, es hat keinen Datentyp. 
+`x` ist vom Typ `NoneType` oder anders ausgedrückt, es hat keinen Datentyp.
 
 Sind Funktionen ohne Rückgabewert sinnvoll? Ja, denn so können Codeblöcke
 vereinfacht werden. Sollte in einem Programm Code mehrmals ausgeführt werden,
 lohnt es sich, diesen in eine Funktion auszulagern, um diese einfach aufrufen zu
 können.
-
 
 ````{admonition} Mini-Übung
 :class: miniexercise
@@ -185,7 +182,7 @@ Nachname: Miller
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 def gruesse_ausrichten_mit_parametern(vorname, nachname):
     print(f'Vorname: {vorname}')
@@ -210,7 +207,7 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 In der Regel jedoch haben Funktionen einen Rückgabewert. Schauen wir uns ein
 Beispiel an:
 
-```{code-cell} ipython3
+```{code-cell}
 def berechne_quadrat(x):
     return x*x
 
@@ -232,7 +229,7 @@ Schreiben Sie eine Funktion mit zwei Parametern, nämlich den beiden Seitenläng
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 def berechne_flaecheninhalt_rechteck(seite1, seite2):
     return seite1 * seite2
@@ -250,7 +247,6 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-
 ## Objektorientierte Programmierung
 
 In den ersten beiden Teilen unseres Crashkurses Python haben wir uns die
@@ -266,12 +262,12 @@ Programmierung**. Python gehört jedoch zu den objektorientierten
 Programmiersprachen, so dass wir uns jetzt noch dem Thema Objektorientierung
 widmen.
 
-### Konzept 
+### Konzept
 
 Bei der bisherigen prozeduralen Programmierweise haben wir Funktionen und Daten
 getrennt. Die Daten werden in Variablen gespeichert. Funktionen funktionieren
 nach dem EVA-Prinzip. In der Regel erwartet eine Funktion eine Eingabe von
-Daten, verarbeitet diese Daten und gibt Daten zurück. 
+Daten, verarbeitet diese Daten und gibt Daten zurück.
 
 Angenommen, wir wollten ein Programm zur Verwaltung von Lottoscheinen schreiben.
 Zu einem Lottoschein wollen wir Name, Adresse und die angekreuzten Zahlen
@@ -295,7 +291,7 @@ usw.? Umständlich...
 Die Idee der objektorientierten Programmierung ist, für solche Szenarien
 **Objekte** einzuführen. Ein Objekt fasst verschiedene Eigenschaften wie hier
 Vorname, Nachname, Straße, usw. zu einem Objekt Lottoschein zusammen. In der
-Informatik wird eine Eigenschaft eines Objekts **Attribut** genannt. 
+Informatik wird eine Eigenschaft eines Objekts **Attribut** genannt.
 
 Damit hätten wir erst einmal nur einen neuen Datentyp. Ein Objekt macht noch
 mehr aus, denn zu dem neuen Datentyp kommen noch Funktionen dazu, die die
@@ -308,7 +304,6 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 ```
-
 
 ### Klassen und Methoden
 
@@ -337,7 +332,7 @@ unterscheiden, werden Variablennamen klein geschrieben.
 
 Danach folgt ein Abschnitt namens `def __init__(self):`, in dem die
 Eigenschaften der Klasse aufgelistet werden. `init` steht dabei für
-initialisieren, also den ersten Zustand, den das Objekt später haben wird. 
+initialisieren, also den ersten Zustand, den das Objekt später haben wird.
 
 Wie Sie sehen, können die Eingabe-Parameter der `init()`-Methode die gleichen
 Namen tragen wie die Attribute der Klasse, also `self.strasse = strasse`, müssen
@@ -358,7 +353,7 @@ können die Python-Entwickler nicht wissen, welche Klassen Sie entwickeln... Wir
 müssen also eine eigene Adressen-print()-Funktion implementieren. Da diese
 print()-Funktion nicht allgemeingültig sein kann, sondern nur für die Objekte
 `Adresse` funktionieren wird, gehört sie auch folgerichtig zur Klasse selbst.
-Sie ist also keine Funktion, sondern eine **Methode**. 
+Sie ist also keine Funktion, sondern eine **Methode**.
 
 Eine Methode wird definiert, indem innerhalb des Anweisungsblocks der Klasse
 eine Funktion mit dem Schlüsselwort `def` definiert wird. Der erste Eingabewert
@@ -369,7 +364,7 @@ Bleibt nur noch eine Frage? Wie wird nun die Methode ausgeführt? Methoden werde
 ausgeführt, indem die Variable hingeschrieben wird, dann ein Punkt gesetzt wird
 und dann die Methode mit runden Klammern angefügt wird.
 
-```{code-cell} ipython3
+```{code-cell}
 adresse_fra_uas.print()
 ```
 
@@ -406,7 +401,3 @@ die bereits implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei
 der Datenexploration und den maschinellen Lernalgorithmen benutzen wir die
 vorgefertigten Funktionsbausteine eher als eigene zu definieren, wie wir in den
 nächsten Kapiteln sehen werden.
-
-
-
-

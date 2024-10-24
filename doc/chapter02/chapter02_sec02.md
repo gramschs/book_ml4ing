@@ -31,7 +31,6 @@ Oft kommt es vor, dass für jedes Element der Liste bestimmte Aktionen
 durchgeführt werden sollen. Daher werden wir uns auch mit der Wiederholung von
 Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -52,7 +51,6 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
   (Leerzeichen oder Tab) erfolgen.
 ```
 
-
 ## Datentyp Liste
 
 Eine Liste ist eine Sammlung von Objekten. Dabei können die Objekte einen
@@ -60,7 +58,7 @@ beliebigen Datentyp aufweisen. Eine Liste wird durch eckige Klammern erzeugt.
 
 Beispielsweise könnte eine Liste drei Integer enthalten:
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 12, 54]
 print(a)
 ```
@@ -68,21 +66,21 @@ print(a)
 Das folgende Beispiel zeigt eine Liste mit vier Namen, die durch Strings
 repräsentiert werden:
 
-```{code-cell} ipython3
+```{code-cell}
 a = ['Alice', 'Bob', 'Charlie', 'Dora']
 print(a)
 ```
 
 Eine leere Liste wird durch `[]` definiert:
 
-```{code-cell} ipython3
+```{code-cell}
 a = []
 print(a)
 ```
 
 Der Datentyp heißt formal `list`:
 
-```{code-cell} ipython3
+```{code-cell}
 type(a)
 ```
 
@@ -92,7 +90,7 @@ Funktion `len()` mit einer Liste (oder mit einem String) als Argument
 aufgerufen, gibt sie die Anzahl der Listenelemente (oder Anzahl der Zeichen im
 String) zurück.
 
-```{code-cell} ipython3
+```{code-cell}
 a = ['Hund', 'Katze', 'Maus', 'Affe','Elefant']
 len(a)
 ```
@@ -102,7 +100,7 @@ erlaubt, in eine Liste Objekte mit verschiedenen Datentypen zu sammeln. Das
 folgende Beispiel zeigt eine Mischung aus Elementen der drei Datentypen Integer,
 Float und String.
 
-```{code-cell} ipython3
+```{code-cell}
 a = [123, 'Ente', -42, 17.4, 0, 'Elefant']
 print(a)
 ```
@@ -120,7 +118,7 @@ geben Sie dann die Anzahl aus.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
 anzahl_zutaten = len(einkaufsliste)
@@ -146,7 +144,7 @@ Um an das Ende der Liste ein neues Element einzufügen, verwendet man die Method
 gehört und daher an die Variable angehängt wird, indem man einen Punkt schreibt
 und dann den Methodennamen.
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 56, 23]
 print(a)
 
@@ -158,7 +156,7 @@ Aus der Liste können Elemente durch die `remove()`-Methode gelöscht werden.
 Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
 übergeben. Es wird der erste auftretende Wert aus der Liste gelöscht.
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 56, 23, 42]
 print(a)
 
@@ -176,7 +174,7 @@ Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt 
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 einkaufsliste_alt = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
 einkaufsliste_neu = einkaufsliste_alt + ['Zimt', 'Zucker']
@@ -212,13 +210,13 @@ den Index -1 eingeführt.
 
 Probieren wir ein Beispiel aus:
 
-```{code-cell} ipython3
+```{code-cell}
 a = [34, 56, 23, 42]
 erstes = a[0]
 print(f'Das erste Element in der Liste ist: {erstes}')
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Erzeugung Liste
 meine_liste = ['rot', 'grün', 'blau', 'gelb', 'weiß', 'schwarz']
 
@@ -237,13 +235,12 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 ```
 
-
 ## Code wiederholen mit der for-Schleife
 
 Manchmal möchte man für jedes Element einer Liste eine oder mehrere Aktionen
-durchführen. Dazu gibt es die **for-Schleife**. 
+durchführen. Dazu gibt es die **for-Schleife**.
 
-```{code-cell} ipython3
+```{code-cell}
 for i in [2, 4, 6, 8, 10]:
     print(i)
 ```
@@ -277,7 +274,7 @@ Liste `[2, 4, 6, 8, 10]` auf dem Bildschirm ausgegeben.
 Schauen wir uns ein erstes Beispiel an. Jedes Element der Liste `[4,5,7,11,21]`
 soll um 2 erhöht werden.
 
-```{code-cell} ipython3
+```{code-cell}
 for zahl in [4,5,7,11,21]:
     summe = zahl + 2
     print(f'Wenn ich {zahl} + 2 rechne, erhalte ich {summe}.')
@@ -289,12 +286,12 @@ print('Ich bin fertig!')
 Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben. 
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Hier Ihr Code:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 einkaufsliste = ['Apfel', 'Bananen', 'Trauben', 'Joghurt', 'Honig', 'Zimt']
 for zutat in einkaufsliste:
@@ -312,7 +309,7 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
 Dafür stellt Python3 die Funktion `range()`zur Verfügung.
 
-```{code-cell} ipython3
+```{code-cell}
 for zahl in range(3):
     print(zahl)
 print('Fertig!')
@@ -323,7 +320,7 @@ Python-Interpreter stets von `0` an zu zählen. Dabei ist die `endzahl` nicht
 inkludiert, d.h. der Python-Interpreter stoppt bei `endzahl - 1`. Es ist auch
 möglich, eine Startzahl vorzugeben, also:
 
-```{code-cell} ipython3
+```{code-cell}
 for zahl in range(1,4):
     print(zahl)
 print('Fertig!')
@@ -333,7 +330,7 @@ Zusätzlich kann der Zahlenbereich noch durch die Angabe einer Schrittweite
 spezifiziert werden. Dadurch ist es beispielsweise möglich, nur ungerade Zahlen
 zu generieren:
 
-```{code-cell} ipython3
+```{code-cell}
 for zahl in range(3, 13, 2):
     print(zahl)
 print('Fertig!')
@@ -349,7 +346,7 @@ Lassen Sie alle geraden Zahlen zwischen 100 und 120 ausgeben.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 ```python
 for zahl in range(100, 122, 2):
     print(zahl)
@@ -358,7 +355,7 @@ for zahl in range(100, 122, 2):
 
 Durch Angabe einer negativen Schrittweite kann auch rückwärts gezählt werden:
 
-```{code-cell} ipython3
+```{code-cell}
 for zahl in range(13, 3, -2):
     print(zahl)
 print('Fertig!')
@@ -385,5 +382,3 @@ eine bestimmte Bedingung erfüllt ist. Anstatt uns weiterhin auf solche Aspekte
 der Python-Programmierung zu konzentrieren, werden wir im nächsten Kapitel den
 Fokus auf die Implementierung eigener Funktionen legen und einen kurzen Ausflug
 in die objektorientierte Programmierung unternehmen.
-
-
