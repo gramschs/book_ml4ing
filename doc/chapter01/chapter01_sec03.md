@@ -23,8 +23,7 @@ Modelle aus Bibliotheken wie beispielsweise
 [scikit-learn](https://scikit-learn.org/stable/index.html) verwenden, die wir
 dann noch an die Daten anpassen müssen. In diesem Kapitel werden die technischen
 Voraussetzungen beschrieben, um maschinelles Lernen mit Python und den
-sogenannten **Jupyter Notebooks** umzusetzen. 
-
+sogenannten **Jupyter Notebooks** umzusetzen.
 
 ## Lernziele
 
@@ -36,13 +35,12 @@ sogenannten **Jupyter Notebooks** umzusetzen.
   **Markdown-Zellen** und **Code-Zellen**.
 ```
 
-
 ## Was sind Jupyter Notebooks?
 
 Die Vorlesung wird in Form von **Jupyter Notebooks** zur Verfügung gestellt.
 Jupyter Notebooks sind interaktive digitale Notizbücher, die sowohl Texte,
 Bilder oder Videos enthalten können als auch Python-Code, der direkt im
-Notizbuch ausführbar ist. 
+Notizbuch ausführbar ist.
 
 Die Kombination von Text, Python-Code und Visualisierungen macht Jupyter
 Notebooks zu einem sehr leistungsstarken Werkzeug für die Datenanalyse. Daten
@@ -54,7 +52,6 @@ werden, ohne dass eine externe Anwendung gestartet werden müssen. Daher sind si
 eine der bekanntesten Anwendungen im Bereich Data Science und werden oft zur
 Datenanalyse, maschinellem Lernen und Visualisierung eingesetzt.
 
-
 ## Installation Python
 
 Python wird in der Regel mit dem Betriebsystem ausgeliefert. Für maschinelles
@@ -62,7 +59,7 @@ Lernen benötigen wir jedoch weitere **Python-Module**, die die grundlegenden
 Funktionalitäten von Python um ML-Funktionalitäten erweitern. Diese sind
 normalerweise nicht vorinstalliert, sondern müssen nachinstalliert werden. Bevor
 man sich die Module aus verschiedenen Internetquellen zusammensucht, ist es
-einfacher, eine sogenannte Python-Distribution zu benutzen. 
+einfacher, eine sogenannte Python-Distribution zu benutzen.
 
 Eine **Distribution** ist eine Zusammenstellung von Software oder
 Bibliotheken/Modulen. Die Firma Anaconda, Inc. wurde 2012 mit dem Ziel
@@ -82,20 +79,19 @@ Hier ist eine Schritt-für-Schritt-Anleitung zum Installieren von Python mit der
 Distribution Anaconda für Windows und MacOS:
 
 1. Öffnen Sie die offizielle Anaconda-Website unter
-   https://www.anaconda.com/products/individual und laden Sie die neueste
+   <https://www.anaconda.com/products/individual> und laden Sie die neueste
    Version von Anaconda für Ihr Betriebssystem herunter.
 2. Führen Sie die Installationsdatei aus und folgen Sie den Anweisungen auf dem
-   Bildschirm. 
+   Bildschirm.
 3. Öffnen Sie nach der Installation das Anaconda-Navigator-Programm, das im
    Startmenü oder Launchpad verfügbar sein sollte.
-
 
 ## Mit welcher App wird ein Jupyter Notebook bearbeitet?
 
 Es gibt mehrere Applikationen, die Jupyter Notebooks bearbeiten können. Am
 bekanntesten ist sicherlich [JupyterLab](https://jupyter.org), das wir auch in
 dieser Vorlesung verwenden. Neben JupyterLab gibt es aber auch weitere
-Möglichkeiten, um Jupyter Notebooks zu bearbeiten. 
+Möglichkeiten, um Jupyter Notebooks zu bearbeiten.
 
 Die beiden Entwicklungsumgebungen
 
@@ -116,8 +112,7 @@ Datenschutzbestimmungen des Anbieters vertraut machen, bevor man den Dienst in
 Anspruch nimmt. Aufgrund des Datenschutzes empfehle ich stets, Python/Anaconda
 lokal zu installieren.
 
-
-## Start von JupyterLab und das erste Jupyter Notebook 
+## Start von JupyterLab und das erste Jupyter Notebook
 
 Anaconda installiert JupyterLab automatisch mit, so dass wir direkt loslegen
 können. Sollte es Probleme geben, finden Sie hier die [Dokumentation von
@@ -145,7 +140,6 @@ in JupyterLab erstellt wird.
 Startansicht der Software JupyterLab: ein neues Jupyter Notebook wird mit Klick auf den Button Python 3 (ipykernel) erstellt.
 ```
 
-
 ## Grundlegende Funktionalitäten von Jupyter Notebooks
 
 Ein Jupyter Notebook besteht aus einer Abfolge von Zellen, in denen Text, Code
@@ -168,7 +162,7 @@ Text-Zellen wird die sogenannte
 sie **Markdown-Zellen** genannt werden. Bei dieser Art, Text zu formatieren,
 werden Textzeichen benutzt anstatt auf einen Button zu klicken. Um
 beispielsweise ein Wort fettgedruckt anzuzeigen, werden zwei Sternchen `**` vor
-und hinter das Wort gesetzt, also ich bin `**fett**` gedruckt. 
+und hinter das Wort gesetzt, also ich bin `**fett**` gedruckt.
 
 In **Code-Zellen** (2) können Sie direkt Python-Code eingeben. Sie erkennen eine
 Code-Zelle daran, dass eckige Klammern links daneben stehen. Eine Code-Zelle

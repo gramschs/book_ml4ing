@@ -16,7 +16,7 @@ kernelspec:
 
 KI (Künstliche Intelligenz) ist in aller Munde. Etwas seltener wird der Begriff
 **maschinelles Lernen** verwendet. Maschinelles Lernen, oft auch **Machine
-Learning** genannt, ist ein Teilgebiet der Künstlichen Intelligenz. 
+Learning** genannt, ist ein Teilgebiet der Künstlichen Intelligenz.
 
 Wir kürzen in dieser Vorlesung maschinelles Lernen oft mit **ML** ab. Damit
 umgehen wir die Diskussion, warum Künstliche Intelligenz mit einem
@@ -35,7 +35,6 @@ grundlegenenden Bestandteile eines ML-Systems ein.
   **Modell**. 
 ```
 
-
 ## Ein wenig Geschichte
 
 Viele glauben, dass die Forschungsgebiete Künstliche Intelligenz und
@@ -49,7 +48,7 @@ ohne explizit darauf programmiert zu sein.«
 Arthur L. Samuel, 1959
 ```
 
-[Wikipedia → Maschinelles Lernen](https://de.wikipedia.org/wiki/Maschinelles_Lernen) 
+[Wikipedia → Maschinelles Lernen](https://de.wikipedia.org/wiki/Maschinelles_Lernen)
 bietet eine weitere Definition:
 
 ```{epigraph}
@@ -93,8 +92,9 @@ warum maschinelles Lernen zuletzt so stark nachgefragt wurde?
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ````
+
 ```{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 Jannik nennt bei Zeitindex 2:44 min drei Gründe, warum in den letzten zwei Jahrzehnten maschinelles Lernen an Bedeutung gewonnen hat:
 
 1. mehr Daten
@@ -141,13 +141,12 @@ genannt. Das folgende Video gibt eine Einführung dazu.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tCApwsdijDk?si=Qf6x6MhoAuEBZv7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
 
-
 ## Was sind Algorithmen und Modelle?
 
 Ein notwendiger Baustein des maschinellen Lernens sind Daten, am besten ganz,
 ganz viele! Aber selbst ein riesiger Haufen an Daten ist alleine wertlos. Erst
 durch Algorithmen, die in diesen Daten Muster finden, gewinnen wir neues Wissen,
-können Prozesse analysieren und Entscheidungen treffen. 
+können Prozesse analysieren und Entscheidungen treffen.
 
 Aber was ist nun ein Algorithmus? In dem folgenden Video wird zuerst erklärt,
 was ein Algorithmus ist. Danach werden die ersten grundlegenden Fachbegriffe des
@@ -166,8 +165,9 @@ Schauen Sie sich das folgende Video an und beantworten Sie die folgenden Fragen:
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
+
 ```{admonition} Lösung
-:class: minisolution, toggle
+:class: miniexercise, toggle
 1. Bei Zeitindex 0:28 min wird erklärt, dass ein Algorithmus eine exakte
    Handlungsvorschrift zum Lösen eines Problems ist. Als erstes Beispiel wird
    die Anweisung, wie ein mathematisches Problem zu lösen ist, genannt. Als
@@ -218,7 +218,7 @@ Kommunikationsverhalten von Menschen beschreibt.
 
 In der Welt des maschinellen Lernens bezieht sich der begriff Modell darauf,
 Daten zu interpretieren und basierend auf diesen Daten Vorhersagen oder
-Entscheidungen zu treffen. 
+Entscheidungen zu treffen.
 
 ```{admonition} Was ist ... ein Modell?
 :class: note
@@ -227,7 +227,6 @@ maschinellen Lernens ist das ML-Modell eine abstrake Beschreibung eines Systems,
 das unbekannte Daten interpretieren kann oder basierend auf diesen Daten
 Vorhersagen oder Entscheidungen treffen kann.
 ```
-
 
 ## Maschinelles Lernen ist wie Kuchenbacken
 
@@ -238,7 +237,7 @@ aus denen ein Kuchen gebacken werden soll. Der Algorithmus ist das Rezept mit
 einer detaillierten Schritt-für-Schritt-Anleitung, wie der Kuchen gebacken
 werden soll. Das Modell hingegen ist der fertige Kuchen, der aus dem Prozess
 herauskommt. Es ist somit das Endprodukt, das erstellt wird, indem man den
-Anweisungen des Rezepts (dem Algorithmus) folgt und die Zutaten zusammenfügt. 
+Anweisungen des Rezepts (dem Algorithmus) folgt und die Zutaten zusammenfügt.
 
 Sobald das Modell bzw. der Kuchen fertig ist, wird dieses Modell
 dann verwendet, um Vorhersagen zu treffen oder Entscheidungen zu treffen, genau
@@ -272,7 +271,7 @@ Phase des maschinellen Lernen wird auch **Datenerkundung** oder
 **Datenexploration** genannt. Sollten wir die Daten jedoch nicht verbessern
 können (oder wollen, weil zu teuer oder die Abgabefrist der Bachelorarbeit
 ansteht), dann müssen wir die Auswahl des Modells an die vorhandenen Daten
-anpassen.   
+anpassen.
 
 Zutaten komplett, Rezept ausgewählt, Kuchen gebacken, der Gast beißt in den
 Kuchen und verzieht das Gesicht ... Zucker und Salz verwechselt. Hätten wir den
@@ -288,13 +287,13 @@ Kuchen noch besser schmeckt. Solche Parameter zum Finetunen eines Modells werden
 **Hyperparameter** genannt. Hyperparameter haben nichts mit den vorhanden Daten
 zu tun, sondern gehören zum ML-Modell. Aber auch wenn sich Daten verändern und
 neue Daten hinzukommen, muss das Modell aktualisiert werden, um mit den sich
-ändernden Bedingungen zurechtzukommen. 
+ändernden Bedingungen zurechtzukommen.
 
 Die folgende Skizze zeigt den schematischen Ablauf eines typischen ML-Projektes.
-Dabei benutzen wir das sogenannte QUA<sup>3</sup>CK-Modell nach einem Vorschlag
-von {cite}`stock2020`. Das QUA<sup>3</sup>CK-Modell zeigt den typischen Ablauf
-eines ML-Projektes von der wissenschaftlichen Fragestellung (Q -- Question) bis
-zu deren Beantwortung (K -- Knowledge Transfer). Dazu gehört das Sammeln und
+Dabei benutzen wir das sogenannte QUA3CK-Modell nach einem Vorschlag von
+{cite}`stock2020`. Das QUA3CK-Modell zeigt den typischen Ablauf eines
+ML-Projektes von der wissenschaftlichen Fragestellung (Q -- Question) bis zu
+deren Beantwortung (K -- Knowledge Transfer). Dazu gehört das Sammeln und
 Erkunden der Daten (U -- Understanding the data), mit Hilfe derer die Frage
 beantwortet werden soll. Die Phase der ML-Modellbildung wird mehrfach
 durchlaufen und besteht aus der Auswahl und dem Training des Algorithmus bzw.
@@ -332,8 +331,3 @@ wir die drei großen Kategorien betrachten, in die ML-Modelle eingeteilt werden:
 * Überwachtes Lernen (Supervised Learning),
 * Unüberwachtes Lernen (Unsupervised Learning) und
 * Verstärkendes Lernen (Reinforcement Learning).
-
-
-
-
-

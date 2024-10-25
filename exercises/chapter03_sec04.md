@@ -14,7 +14,7 @@ kernelspec:
 
 # Übungen
 
-Gegeben sind folgende Daten zu der Verteilung von Studierenden (männlich/weiblich) auf die Hochschularten Universität und Fachhochschulen (Hochschulen für angewandte Wissenschaften), Quelle: https://www.statistischebibliothek.de/mir/receive/DESerie_mods_00007716
+Gegeben sind folgende Daten zu der Verteilung von Studierenden (männlich/weiblich) auf die Hochschularten Universität und Fachhochschulen (Hochschulen für angewandte Wissenschaften), Quelle: [https://www.statistischebibliothek.de/mir/receive/DESerie_mods_00007716]
 
 ```python
 bundeslaender = ['Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg', 
@@ -40,12 +40,12 @@ studierende_fachhochschulen_weiblich = [65332, 63198, 33333, 6323,
 ```
 
 ```{admonition} Übung 3.1
-:class: tip
+:class: miniexercise
 Laden Sie die Daten zu den Studentinnen an Fachhochschulen. Verschaffen Sie sich einen Überblick über die statistischen Kennzahlen. Lesen Sie dann ab: In welchem Bundesland studieren am wenigsten Studentinnen und im welchem Bundesland am meisten?
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: miniexercise, toggle
 Zuerst laden wir den Datensatz und verschaffen uns einen Überblick über die statistischen Kennzahlen, um Minimum und Maximum zu bestimmen.
 
 ```python
@@ -70,7 +70,7 @@ Wir lesen ab: am wenigsten Studentinnen an Fachhochschulen studieren im Saarland
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: miniexercise, toggle
 ```python
 stud_uni_maennlich = pd.Series(data= studierende_universitaeten_maennlich, index=bundeslaender, name='Studenten an Universitäten')
 stud_uni_weiblich = pd.Series(data=studierende_universitaeten_weiblich, index=bundeslaender, name='Studentinnen an Universitäten')
@@ -102,12 +102,12 @@ Zusammenfassung: bei den Universitäten studieren die wenigsten Studierenden im 
 ````
 
 ```{admonition} Übung 3.3
-:class: tip
+:class: miniexercise
 Lassen Sie jeden der vier Datensätze durch einen Boxplot darstellen. Verwenden Sie dabei unterschiedliche Variablen zum Speichern des Boxplots (also beispielsweise fig1, fig2, fig3 und fig4). Gibt es Ausreißer?
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: miniexercise, toggle
 ```python
 import plotly.express as px
 
@@ -139,7 +139,7 @@ Bei den Studierenden an Universitäten und bei den Studenten an Fachhochschulen 
 ````
 
 ````{admonition} Übung 3.4
-:class: tip
+:class: miniexercise
 Es wäre schön, die Boxplots in einer Grafik nebeneinander zu stellen. Dazu benötigen wir das Untermodul `Graph Objects` von `Plotly`. Danach können die Grafiken wie folgt kombiniert werden. 
 
 ```python
@@ -155,7 +155,7 @@ Kopieren Sie den oben Code in eine Code-Zelle und führen Sie die Code-Zelle aus
 ````
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: miniexercise, toggle
 ```python
 import plotly.graph_objects as go
 
@@ -168,12 +168,12 @@ Am ehesten liegt der Median bei den Studenten an Fachhochschulen in der Mitte de
 ````
 
 ```{admonition} Übung 3.5
-:class: tip
+:class: miniexercise
 Recherchieren Sie im Internet (auch Large Language Models wie ChatGPT oder Bard sind erlaubt), wie die y-Achse auf das Intervall [0, 135000] begrenzt wird, damit der Vergleich leichter fällt und die Ausreißer "abgeschnitten" werden. Modifizieren Sie den gemeinsamen Plot der vier Boxplots entsprechend und beurteilen Sie erneut, wo der Median am ehesten in der Mitte des Interquartilabstandes liegt.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: miniexercise, toggle
 ```python
 # gemeinsame Darstellung der vier Boxplots
 fig = go.Figure(data = fig1.data + fig2.data + fig3.data + fig4.data)
@@ -185,4 +185,3 @@ fig.update_layout(title='Verteilung Studierende 2022', yaxis_range=[0,135000])
 fig.show()
 ```
 ````
-
