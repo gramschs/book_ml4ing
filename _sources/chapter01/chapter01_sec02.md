@@ -19,7 +19,6 @@ ist, betrachten wir in diesem Kapitel die drei großen Kategorien von
 ML-Modellen: überwachtes Lernen (Supervised Learning), unüberwachtes Lernen
 (Unsupervised Learning) und verstärkendes Lernen (Reinforcement Learning).
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -31,7 +30,6 @@ ML-Modellen: überwachtes Lernen (Supervised Learning), unüberwachtes Lernen
 * Sie können beim überwachten Lernen zwischen **Regression** und
   **Klassifikation** unterscheiden.
 ```
-
 
 ## Überwachtes Lernen (Supervised Learning)
 
@@ -86,7 +84,7 @@ viele verschiedene mögliche Werte.
 Viele ML-Modelle funktionieren sowohl für diskrete als auch kontinuierliche
 Daten, aber nicht alle. Daher ist es notwendig, bereits zu Beginn zu
 entscheiden, ob das Modell für diskrete oder kontinuierliche Ausgabedaten
-eingesetzt werden soll. 
+eingesetzt werden soll.
 
 Das überwachte Lernen wird daher wiederum in zwei Arten unterteilt:
 
@@ -101,7 +99,7 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; cli
 encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
 
-### Regression 
+### Regression
 
 ```{admonition} Was ist ... Regression?
 :class: note
@@ -207,7 +205,6 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
-
 
 ## Zusammenfassung und Ausblick
 
