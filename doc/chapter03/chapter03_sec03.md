@@ -49,7 +49,7 @@ Erstellung von Diagrammen zur Verfügung stellt.
 und schauen uns mit der `dir()`-Funktion an, welche Funktionalitäten Plotly
 Express bietet.
 
-```{code-cell} ipython
+```{code-cell}
 import plotly.express as px
 
 dir(px)
@@ -59,7 +59,7 @@ dir(px)
 
 Wir greifen erneut unser Autoscout24-Beispiel mit den 10 Autos auf.
 
-```{code-cell} ipython
+```{code-cell}
 import pandas as pd
 
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
@@ -75,7 +75,7 @@ der Variablen `diagramm`. Um es dann auch nach seiner Erzeugung tatsächlich
 anzeigen zu lassen, verwenden wir die Methode `.show()`. Zusammen sieht der
 Python-Code zur Erzeugung eines Boxplots folgendermaßen aus:
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise)
 diagramm.show()
 ```
@@ -92,7 +92,7 @@ Elemente in der Box. Der Median wird durch die Linie in der Box dargestellt.
 
 Das folgende Video erklärt, wie der Boxplot zu interpretieren ist.
 
-```{dropdown} Video zu "Boxplot" von DATAtab
+```{dropdown} Video zu "Boxplot" von Datatab
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1I_ma7nvKQw" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
@@ -110,7 +110,7 @@ Tabelle interpretiert wird und die erste Spalte den Index 0 hat. Wir können der
 Spalte aber auch einen eigenen Namen geben. Am einfachsten klappt das direkt bei
 der Erzeugung, indem der Parameter `name=` gesetzt wird.
 
-```{code-cell} ipython
+```{code-cell}
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 preise_mit_name = pd.Series(preisliste, index = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 
     'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5'],
@@ -122,7 +122,7 @@ print(preise_mit_name)
 Der neue Name 'XXS-Liste von Autoscout24' wird zusätzlich zur Information 'dtype' angezeigt.
 Damit sieht der Boxplot folgendermaßen aus:
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name)
 diagramm.show()
 ```
@@ -133,7 +133,7 @@ Eingeleitet wird die Ersetzung durch das Schlüsselwort `labels=`. Danach steht
 in geschweiften Klammern `{` und `}` der alten Name, dann folgt ein Doppelpunkt
 und dann der neue Name.
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name, labels={'variable': 'Name des Datensatzes'})
 diagramm.show()
 ```
@@ -141,7 +141,7 @@ diagramm.show()
 Sollen gleich mehrere Beschriftungen ersetzt werden, werden alle Paare mit einem
 Komma getrennt aufgelistet.
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name, labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'})
 diagramm.show()
 ```
@@ -150,7 +150,7 @@ Fehlt noch eine Überschrift, ein Titel. Wie das englische Wort 'title' heißt
 auch das entsprechende Schlüsselwort zum Erzeugen eines Titels, nämlich
 `title=`.
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name, 
               labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
               title='Statistische Kennzahlen als Boxplot')
@@ -166,7 +166,7 @@ Ausreißer (`'outliers'`).
 
 Lassen wir zuerst alle Punkte anzeigen und setzen also `points='all'`.
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name, 
               labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
               points='all')
@@ -176,7 +176,7 @@ diagramm.show()
 Die Punkte werden links vom Boxplot platziert. Als nächstes lassen wir uns die
 Ausreißer anzeigen.
 
-```{code-cell} ipython
+```{code-cell}
 diagramm = px.box(preise_mit_name, 
               labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
               points='outliers')
@@ -198,7 +198,7 @@ Autopreise kommen keine Ausreißer vor, weil Minimum und Maximum noch innerhalb
 dieses Bereichs liegen. Wir fügen daher noch ein neues, teureres Auto ein. Jetzt
 sehen wir einen Ausreißer.
 
-```{code-cell} ipython
+```{code-cell}
 preise_mit_name['BMW Nr. 3'] = 62999
 diagramm = px.box(preise_mit_name, 
               labels={'variable': 'Name des Datensatzes', 'value': 'Verkaufspreis [EUR]'},
