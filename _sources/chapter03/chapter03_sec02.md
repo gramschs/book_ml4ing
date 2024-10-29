@@ -41,7 +41,7 @@ Die Methode `.describe()` aus dem Pandas-Modul liefert eine schnelle Übersicht
 sollte diese Methode direkt am Anfang angewendet werden. Wir bleiben bei unserem
 Beispiel mit den zehn Autos und deren Verkaufspreisen.
 
-```{code-cell} ipython3
+```{code-cell}
 # Import des Pandas-Moduls 
 import pandas as pd
 
@@ -53,7 +53,7 @@ preise = pd.Series(preisliste, index = autos)
 
 Die Anwendung der `.describe()`-Methode liefert folgende Ausgabe:
 
-```{code-cell} ipython3
+```{code-cell}
 preise.describe()
 ```
 
@@ -65,14 +65,14 @@ erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch.
 Aber was machen wir, wenn wir die statistischen Kennzahlen erst später verwenden
 wollen, können wir sie zwischenspeichern? Probieren wir es aus.
 
-```{code-cell} ipython
+```{code-cell}
 statistische_kennzahlen = preise.describe()
 ```
 
 Es kommt keine Fehlermeldung. Und was ist in der Variable
 `statistische_kennzahlen` nun genau gespeichert, welcher Datentyp?
 
-```{code-cell} ipython
+```{code-cell}
 type(statistische_kennzahlen)
 ```
 
@@ -83,7 +83,7 @@ Kapitel schon gelernt haben, dass mit eckigen Klammern und dem Index auf einen
 einzelnen Wert zugegriffen werden kann, können wir uns so den minimalen
 Verkaufspreis ausgeben lassen:
 
-```{code-cell} ipython
+```{code-cell}
 minimaler_preis = statistische_kennzahlen['min']
 print(f'Das billigste Auto wird für {minimaler_preis} EUR angeboten.')
 ```
@@ -97,7 +97,7 @@ statistischen Kennzahlen, d.h. mit .describe() ermitteln. Vergleichen Sie beide
 Werte.
 ```
 
-```{code-cell} ipython
+```{code-cell}
 # Hier Ihr Code
 ```
 
@@ -132,7 +132,7 @@ Einträge, wobei die fehlenden Einträge verschiedene Ursachen haben können:
   schwanger ist)
 * NA = no answer (eine Person hat bei dem Umfrage nichts angegeben)
 
-```{code-cell} ipython3
+```{code-cell}
 anzahl_gueltige_preise = preise.count()
 print(f'Im Series-Objekt sind {anzahl_gueltige_preise} nicht NA-Werte, also gültige Datensätze gespeichert.')
 ```
@@ -144,7 +144,7 @@ praktisch, dass wir mit .count() schon die Anzahl der gültigen Werte geliefert
 bekommen. Rechnen wir zuerst einmal "händisch" nach, was der durchschnittliche
 Verkaufspreis der 10 Autos ist.
 
-```{code-cell} ipython3
+```{code-cell}
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 12450]
 summe = 1999 + 35990 + 17850 + 46830 + 27443 + 14240 + 19950 + 15950 + 21990 + 12450
 print(f'Die Summe ist {summe} EUR.')
@@ -155,7 +155,7 @@ print(f'Der durchschnittliche Verkaufspreis ist {mittelwert} EUR.')
 Mittelwert heißt auf Englisch mean. Daher ist es nicht verwunderlich, dass die
 Methode `.mean()` den Mittelwert der Einträge in jeder Spalte berechnet.
 
-```{code-cell} ipython3
+```{code-cell}
 mittelwert = preise.mean()
 print(f'Der mittlere Verkaufspreis beträgt {mittelwert} Euro.')
 ```
@@ -184,7 +184,7 @@ die Streuung von Daten um den Mittelwert angibt, ist die **Standardabweichung**.
 Zur Berechnung der Standardabweichung werden zuerst die Abweichungen jedes
 Datenpunktes zum Mittelwert berechnet.
 
-```{code-cell} ipython3
+```{code-cell}
 mittelwert = preise.mean()
 differenzen = preise - mittelwert
 print(differenzen)
@@ -193,7 +193,7 @@ print(differenzen)
 Die negativen Vorzeichen stören, wir wollen ja die Abweichung. Daher quadrieren
 wir die Differenzen.
 
-```{code-cell} ipython3
+```{code-cell}
 quadrate = differenzen * differenzen
 print(quadrate)
 ```
@@ -203,7 +203,7 @@ Verkaufspreise vom Mittelwert sind. Daher bilden wir nun von den Abweichungen
 wiederum den Mittelwert. Da Quadrate ein Series-Objekt ist, machen wir das
 diesmal nicht händisch, sondern nutzen die Methode `.mean()`.
 
-```{code-cell} ipython3
+```{code-cell}
 durchschnittliche_abweichungen = quadrate.mean()
 print(f'Die durchschnittliche Abweichung ist {durchschnittliche_abweichungen}.')
 ```
@@ -216,7 +216,7 @@ Abweichung ist also EUR². Das ist aber unpraktisch. Also ziehen wir wieder die
 Wurzel, damit wir ein Maß für die durchschnittliche Abweichung haben, das auch
 direkt Verkaufspreise widerspiegelt. Das nennen wir dann Standardabweichung.
 
-```{code-cell} ipython3
+```{code-cell}
 standardabweichung = quadrate.mean()**0.5
 print(f'Die Standardabweichung ist {standardabweichung:.2f} EUR.')
 ```
@@ -227,7 +227,7 @@ Benutzen wir Pandas, so liefert die Methode `.std()` die Standardabweichung. Das
 dem englischen Fachbegriff 'standard deviation' benannt. Probieren wir die
 Methode für die Autopreise aus.
 
-```{code-cell} ipython3
+```{code-cell}
 standardabweichung = preise.std()
 print(f'Die Standardabweichung bei den Verkaufspreisen beträgt {standardabweichung} Euro.')
 ```
@@ -259,7 +259,7 @@ dass das Minimum oder das Maximum mehrfach vorkommt.
 Schauen wir uns an, was der niedrigste Verkaufspreis ist. Und dann schauen wir
 nach, welches Auto am teuersten ist.
 
-```{code-cell} ipython3
+```{code-cell}
 preis_min = preise.min()
 print(f'Das billigste oder die billigsten Autos werden zum Preis von {preis_min} EUR angeboten.')
 
@@ -278,7 +278,7 @@ Angenommen, wir würden gerne das 0.5-Quantil (auch Median genannt) der Preise
 wissen. Mit der Methode `.quantile()` können wir diesen Wert leicht aus den
 Daten holen.
 
-```{code-cell} ipython3
+```{code-cell}
 quantil50 =preise.quantile(0.5)
 print(f'Der Median, d.h. das 50 % Quantil, liegt bei {quantil50} EUR.')
 ```
@@ -287,7 +287,7 @@ Das 50 % -Quantil liegt bei 18900 EUR. 50 % aller Autos werden zu einem Preis
 angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
 teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an.
 
-```{code-cell} ipython3
+```{code-cell}
 quantil75 = preise.quantile(0.75)
 print(f'75 % aller Autos haben einen Preis kleiner gleich {quantil75} EUR.')
 ```
@@ -296,7 +296,7 @@ print(f'75 % aller Autos haben einen Preis kleiner gleich {quantil75} EUR.')
 natürlich für jede beliebigen Prozentsatz zwischen 0 % und 100 % das Quantil
 ansehen können, interessieren wir uns noch für das 25 % Quantil.
 
-```{code-cell} ipython3
+```{code-cell}
 quantil25 = preise.quantile(0.25)
 print(f'25 % aller Autos haben einen Preis kleiner gleich {quantil25} EUR.')
 ```

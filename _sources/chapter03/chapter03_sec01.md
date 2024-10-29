@@ -235,7 +235,7 @@ Alice, Bob, Charlie und Dora sind 22, 20, 24 und 22 Jahre alt. Speichern Sie
 diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.
 ```
 
-```{code-cell} ipython3
+```{code-cell}
 # Hier Ihr Code
 ```
 
