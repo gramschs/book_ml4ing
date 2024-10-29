@@ -21,7 +21,6 @@ Datensatz. Die große Stärke der Boxplots ist normalerweise, die statistischen
 Kennzahlen von verschiedenen Datensätzen nebeneinander zu visualisieren, um so
 leicht einen Vergleich der Datensätze zu ermöglichen.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -48,7 +47,7 @@ Erstellung von Diagrammen zur Verfügung stellt.
 
 Üblicherweise wird Plotly Express als `px` abgekürzt. Wir importieren das Modul
 und schauen uns mit der `dir()`-Funktion an, welche Funktionalitäten Plotly
-Express bietet. 
+Express bietet.
 
 ```{code-cell} ipython
 import plotly.express as px
@@ -206,7 +205,6 @@ diagramm = px.box(preise_mit_name,
               points='outliers')
 diagramm.show()
 ```
-
 
 ## Zusammenfassung und Ausblick
 

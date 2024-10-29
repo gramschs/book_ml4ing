@@ -18,8 +18,7 @@ Pandas dient nicht nur dazu, Daten zu sammeln, sondern ermöglicht auch
 statistische Analysen. Die deskriptive Statistik hat zum Ziel, Daten durch
 einfache Kennzahlen und Diagramme zu beschreiben. In diesem Kapitel geht es
 darum, die wichtigsten statistischen Kennzahlen mit Pandas zu ermitteln und zu
-interpretieren. 
-
+interpretieren.
 
 ## Lernziele
 
@@ -34,7 +33,6 @@ interpretieren.
 * Sie wissen wie ein Quantil interpretiert wird und wie es mit **.quantile()**
   berechnet wird.
 ```
-
 
 ## Schnelle Übersicht mit .describe()
 
@@ -62,7 +60,7 @@ preise.describe()
 Offensichtlich liefert die Methode `.describe()` acht statistische Kennzahlen,
 deren Bedeutung in der
 [Pandas-Dokumentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html)
-erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch. 
+erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch.
 
 Aber was machen wir, wenn wir die statistischen Kennzahlen erst später verwenden
 wollen, können wir sie zwischenspeichern? Probieren wir es aus.
@@ -98,9 +96,11 @@ wird es bei Autoscout24 angeboten? Lassen Sie dann das Maximum über die
 statistischen Kennzahlen, d.h. mit .describe() ermitteln. Vergleichen Sie beide
 Werte.
 ```
+
 ```{code-cell} ipython
 # Hier Ihr Code
 ```
+
 ````{admonition} Lösung
 :class: minisolution, toggle
 Der folgende Code sortiert die Preise aufsteigend und lässt sie anzeigen:
@@ -119,7 +119,7 @@ print(f'Maximaler Preis mit .describe() ermittelt: {maximaler_preis}')
 
 Neben der Möglichkeit, die statistischen Kennzahlen über .describe() berechnen
 zu lassen und dann mit dem expliziten Index darauf zuzugreifen, gibt es auch
-Methoden, um die statistischen Kennzahlen direkt zu ermitteln. 
+Methoden, um die statistischen Kennzahlen direkt zu ermitteln.
 
 ## Anzahl count()
 
@@ -136,7 +136,6 @@ Einträge, wobei die fehlenden Einträge verschiedene Ursachen haben können:
 anzahl_gueltige_preise = preise.count()
 print(f'Im Series-Objekt sind {anzahl_gueltige_preise} nicht NA-Werte, also gültige Datensätze gespeichert.')
 ```
-
 
 ## Mittelwert mean()
 
@@ -164,12 +163,11 @@ print(f'Der mittlere Verkaufspreis beträgt {mittelwert} Euro.')
 Falls Sie prinzipiell nochmal die Berechnung des Mittelwertes wiederholen
 wollen, können Sie folgendes Video ansehen.
 
-```{dropdown} Video zu "Mittelwert" von Datatab 
+```{dropdown} Video zu "Mittelwert" von Datatab
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
-
 
 ## Standardabweichung std()
 
@@ -241,8 +239,6 @@ die Quadrate gebildet, indem die Summe durch die Anzahl aller Elemente geteilt
 wird, so wie wir es getan haben. Wir haben durch 10 geteilt. Bei der anderen
 Formel wird die Summe der Quadrate durch 9 geteilt.
 
-
-
 Was war eigentlich nochmal die Standardabweichung? Falls Sie dazu eine kurze
 Wiederholung der Theorie benötigen, empfehle ich Ihnen dieses Video.
 
@@ -251,7 +247,6 @@ Wiederholung der Theorie benötigen, empfehle ich Ihnen dieses Video.
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
-
 
 ## Minimum und Maximum mit min() und max()
 
@@ -272,13 +267,12 @@ preis_max = preise.max()
 print(f'Das teuerste oder die teuersten Autos werden für {preis_max} EUR angeboten.')
 ```
 
-
 ## Quantil mit quantile()
 
 Das Quantil $p \%$ ist der Wert, bei dem $p %$ der Einträge kleiner oder gleich
 als diese Zahl sind und $100 \% - p \%$ sind größer. Meist werden nicht
 Prozentzahlen verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 %
-steht. 
+steht.
 
 Angenommen, wir würden gerne das 0.5-Quantil (auch Median genannt) der Preise
 wissen. Mit der Methode `.quantile()` können wir diesen Wert leicht aus den
@@ -291,7 +285,7 @@ print(f'Der Median, d.h. das 50 % Quantil, liegt bei {quantil50} EUR.')
 
 Das 50 % -Quantil liegt bei 18900 EUR. 50 % aller Autos werden zu einem Preis
 angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
-teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an. 
+teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an.
 
 ```{code-cell} ipython3
 quantil75 = preise.quantile(0.75)
@@ -307,12 +301,11 @@ quantil25 = preise.quantile(0.25)
 print(f'25 % aller Autos haben einen Preis kleiner gleich {quantil25} EUR.')
 ```
 
-
 ## Zusammenfassung und Ausblick
 
 In diesem Abschnitt haben wir uns mit einfachen statistischen Kennzahlen
 beschäftigt, die Pandas mit der Methode `.describe()` zusammenfasst, die aber
-auch einzeln über 
+auch einzeln über
 
 * `.count()`
 * `.mean()`
