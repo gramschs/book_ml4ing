@@ -19,7 +19,6 @@ Pandas-Moduls. Die Series dient vor allem dazu, Daten zu verwalten und
 statistisch zu erkunden. Bevor wir die neue Datenstruktur näher beleuchten,
 machen wir uns aber zuerst mit dem **Modul Pandas** vertraut.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -36,14 +35,13 @@ machen wir uns aber zuerst mit dem **Modul Pandas** vertraut.
   aufsteigend und absteigend sortieren lassen.
 ```
 
-
 ## Das Modul Pandas
 
 Stellen Sie sich vor, Sie möchten Spaghetti mit Tomatensauce kochen. Am
 einfachsten ist es, die Spaghetti-Nudeln und die Tomatensauce im Supermarkt zu
 kaufen. Sie können aber auch nur die Nudeln kaufen und die Tomatensauce selbst
 aus Tomaten und Basilikum zubereiten. Oder Sie gehen noch einen Schritt weiter
-und machen sogar die Nudeln aus Mehl, Eiern, Wasser und Salz selbst. 
+und machen sogar die Nudeln aus Mehl, Eiern, Wasser und Salz selbst.
 
 In der Programmierung verhält es sich ähnlich. Sie können alle Funktionalitäten
 (d.h. die Spagehtti oder die Tomatensauce) selbst programmieren. Oder sie
@@ -68,7 +66,7 @@ Modul zur Verarbeitung und Analyse von Daten. Es ist üblich, das Modul `pandas`
 mit der Abkürzung `pd` zu importieren, damit wir nicht immer `pandas` schreiben
 müssen, wenn wir Code aus dem Pandas-Modul benutzen.
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 ```
 
@@ -77,7 +75,7 @@ installiert. Installieren Sie zunächst Pandas beispielsweise mit `!conda instal
 pandas` oder `!pip install pandas`. Mit der Funktion `dir()` werden alle
 Funktionalitäten des Moduls aufgelistet.
 
-```{code-cell} ipython3
+```{code-cell}
 dir(pd)
 ```
 
@@ -100,7 +98,7 @@ Internetplattform [Autoscout24](https://www.autoscout24.de). Die Preise kommen
 zunächst in eine Liste (erkennbar an den eckigen Klammern), aus der dann ein
 Series-Objekt erzeugt wird.
 
-```{code-cell} ipython3
+```{code-cell}
 preisliste = [1999, 35990, 17850, 46830, 27443, 14240, 19950, 15950, 21990, 50000]
 preise = pd.Series(preisliste)
 print(preise)
@@ -115,7 +113,7 @@ der Initialisierung einer Liste automatisch ein nummerierter Index 0, 1, 2, 3,
 werden soll, dann verwenden wir den Index 2 (zur Erinnerung: Python zählt ab 0)
 und schreiben
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preisliste[2]
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -127,7 +125,7 @@ Datensatz in den folgenden Kapiteln noch weiter vertiefen. An dieser Stelle
 halten wir fest, dass die ersten drei Autos von der Marke Audi sind, die
 nächsten sind BMWs und die letzten fünf sind von der Marke Citroen.
 
-```{code-cell} ipython3
+```{code-cell}
 autos = ['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3', 'BMW Nr. 1', 'BMW Nr. 2', 'Citroen Nr. 1', 'Citroen Nr. 2', 'Citroen Nr. 3', 'Citroen Nr. 4', 'Citroen Nr. 5']
 preise = pd.Series(preisliste, index = autos)
 print(preise)
@@ -139,7 +137,7 @@ Series-Objekt noch einen impliziten Index wie eine Liste. Den expliziten Index
 nutzen wir jetzt, um auf den Verkaufspreis des dritten Autos zuzugreifen. Das
 dritte Auto ist `Audi Nr. 3`. Wie bei Listen verwenden wir eckige Klammern:
 
-```{code-cell} ipython3
+```{code-cell}
 preis_drittes_auto = preise['Audi Nr. 3']
 print(f'Preis des dritten Autos: {preis_drittes_auto} EUR')
 ```
@@ -150,7 +148,7 @@ der Datenstruktur ist noch eine Zusatzinformation gespeichert, die Eigenschaft
 Auf diese Eigenschaft kann auch direkt mit dem sogenannten Punktoperator
 zugegegriffen werden.
 
-```{code-cell} ipython3
+```{code-cell}
 datentyp_preise = preise.dtype
 print(f'Die einzelnen Elemente des Series-Objektes "preise" haben den Datentyp {datentyp_preise}, sind also Integer.')
 ```
@@ -182,7 +180,7 @@ Typ ist (Integer oder Float), können wir mit den Einträgen auch rechnen. So
 lassen sich beispielweise die Preise nicht in Euro, sondern als Preis pro
 Tausend Euro angeben, wenn wir alle Preise durch 1000 teilen.
 
-```{code-cell} ipython3
+```{code-cell}
 preise_pro_1000euro = preise / 1000
 print(preise_pro_1000euro)
 ```
@@ -191,7 +189,7 @@ Oder Sie könnten auf die Idee kommen, das billigste Auto auf den Preis 0 zu
 setzen und sich ausgeben lassen, um wie viel Euro die anderen Autos teuer sind.
 Oder anders ausgedrückt, wir subtrahieren von jedem Preis den Wert 1999 EUR:
 
-```{code-cell} ipython3
+```{code-cell}
 preise_differenz = preise - 1999
 print(preise_differenz)
 ```
@@ -202,7 +200,7 @@ Preise aufsteigend oder absteigend zu sortieren. Dazu nutzen wir die Methode
 `.sort_values()`. Der Name lässt vermuten, dass die Methode die Elemente nach
 ihrem Wert sortiert.
 
-```{code-cell} ipython3
+```{code-cell}
 preise_aufsteigend = preise.sort_values()
 print(preise_aufsteigend)
 ```
@@ -217,7 +215,7 @@ True` gewünscht wird, also dass `aufsteigend = wahr` sein soll. Wollen wir
 absteigend sortieren, müssen wir `aufsteigend = falsch` setzen, also `ascending
  = False`.
 
-```{code-cell} ipython3
+```{code-cell}
 preise_absteigend = preise.sort_values(ascending = False)
 print(preise_absteigend)
 ```
@@ -254,7 +252,6 @@ personen_sortiert = personen.sort_values(ascending = False)
 print(personen_sortiert)
 ```
 ````
-
 
 ## Zusammenfassung und Ausblick
 
