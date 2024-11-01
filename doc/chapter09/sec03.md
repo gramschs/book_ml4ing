@@ -24,7 +24,6 @@ Stochastic Gradient Boosting anbietet: **XGBoost**.
 Falls bei Ihnen XGBoost nicht installiert sein sollte, folgen Sie bitte den Anweisungen auf der Internesetseite [https://xgboost.readthedocs.io](https://xgboost.readthedocs.io/en/stable/install.html) und installieren Sie XGBoost jetzt nach.
 ```
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -39,7 +38,6 @@ Falls bei Ihnen XGBoost nicht installiert sein sollte, folgen Sie bitte den Anwe
   Gittersuche oder weiteren Bibliotheken (z.B. Optuna).
 ```
 
-
 ## XGBoost benutzt Scikit-Learn API
 
 XGBoost steht für e**X**treme **G**radient **Boost**ing und ist aus
@@ -52,7 +50,7 @@ keine C++\-Programmierkenntnisse, sondern können weiterhin mit Python arbeiten.
 Wir bleiben bei unserem Beispiel mit der Verkaufsaktion im Autohaus aus dem
 vorherigen Kapitel.
 
-```{code-cell} ipython
+```{code-cell}
 import pandas as pd 
 from sklearn.datasets import make_moons
 
@@ -69,9 +67,9 @@ daten = pd.DataFrame({
 XGBoost kann Pandas DataFrames nicht verarbeiten, sondern benötigt die reinen
 Zahlenwerte in Form von Matrizen. Das ist in der Tat kein Problem, denn die
 Datenstruktur DataFrame stellt die reinen Matrizen über die Methode `.values`
-direkt zur Verfügung. 
+direkt zur Verfügung.
 
-```{code-cell} ipython3
+```{code-cell}
 # Adaption der Daten
 X = daten[['Kilometerstand [km]', 'Preis [EUR]']].values
 y = daten['verkauft'].values
@@ -81,7 +79,7 @@ Als nächstes importieren wir XGBoost. Es ist üblich, das ganze Modul zu
 importieren und mit `xgb` abzukürzen. Danach initialisieren wir das
 Klassifikationsmodell `XGBClassifier` und trainieren es auf den Daten. 
 
-```{code-cell} ipython3
+```{code-cell}
 import xgboost as xgb 
 
 modell = xgb.XGBClassifier()
@@ -91,7 +89,7 @@ modell.fit(X,y)
 Als nächstes visualisieren wir die Prognose des trainierten
 XGBoost-Klassifikators.
 
-```{code-cell} ipython3
+```{code-cell}
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 from matplotlib.colors import ListedColormap
@@ -107,7 +105,6 @@ fig.ax_.set_title('XGBoost: Entscheidungsgrenzen');
 
 Die Entscheidungsgrenzen sehr plausibel aus.
 
-
 ## XGBoost neigt stark zur Überanpassung (Overfitting)
 
 XGBoost ist bekannt für Überanpassung (Overfitting) an die Trainingsdaten. Um
@@ -115,7 +112,7 @@ das an unserem Beispiel mit der Verkaufsaktion im Autohaus zu zeigen, fügen wir
 noch neue, unbekannte Testdaten hinzu. Dazu verdoppeln wir die Anzahl der Autos
 (`n_samples=2000`).
 
-```{code-cell} ipython3
+```{code-cell}
 # Erzeugung künstlicher Daten
 X_array, y_array = make_moons(n_samples=2000, random_state=0, noise=0.3)
 
@@ -132,7 +129,7 @@ y = daten['verkauft'].values
 Anschließend teilen wir die 2000 Autos in zwei Gruppen: Trainings- und
 Testdaten.
 
-```{code-cell} ipython3
+```{code-cell}
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, train_size=0.5, random_state=0)
@@ -143,7 +140,7 @@ bestehen soll. Dazu setzen wir `n_estimators=200`. Oft wird auch von der Anzahl
 der »Boosting-Runden« gesprochen. Das Training auf den Trainingsdaten liefert
 sehr gute Ergebnisse:
 
-```{code-cell} ipython3
+```{code-cell}
 import xgboost as xgb
 
 modell = xgb.XGBClassifier(n_estimators=200)
@@ -176,7 +173,7 @@ Technisch setzen wir dies um, indem wir bei der Initialisierung des
 XGBoost-Modells das optionale Argument `eval_metric=['error', 'logloss']`
 setzen.
 
-```{code-cell} ipython3
+```{code-cell}
 modell = xgb.XGBClassifier(n_estimators=200, eval_metric=['error', 'logloss'])
 ```
 
@@ -184,9 +181,9 @@ Allerdings ist damit noch nicht festgelegt, auf welchen Daten die Fehler-Maßzah
 und die Logloss-Maßzahl berechnet werden. Zunächst sollen beide Maßzahlen für
 die Trainingsdaten berechnet werden, dann für die Testdaten. Das erreichen wir
 mit dem optionalen Argument `eval_set=`, dem wir folgendermaßen die Trainings-
-und Testdaten mitgeben. 
+und Testdaten mitgeben.
 
-```{code-cell} ipython3
+```{code-cell}
 modell.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)], verbose=False)
 ```
 
@@ -210,7 +207,7 @@ losslog = pd.DataFrame({
 
 Wir visualisieren Fehler und Losslog getrennt voneinander.
 
-```{code-cell} ipython3
+```{code-cell}
 import plotly.express as px 
 
 fig = px.scatter(fehler,
@@ -226,7 +223,7 @@ steigen. Dieses Verhalten ist typisch für Überanpassung (Overfitting). Etwas
 deutlicher wird dieses Phänomen, wenn wir uns die (transoformierte) Differenz
 der Wahrscheinlichkeiten ansehen, die Losslog-Maßzahl.
 
-```{code-cell} ipython3
+```{code-cell}
 import plotly.express as px 
 
 fig = px.scatter(losslog,
@@ -238,8 +235,7 @@ fig.show()
 Am kleinsten ist die Losslog-Maßzahl für die Iteration 9, danach steigt die
 Losslog-Maßzahl wieder an. Am besten wäre es nach dieser Analyse gewesen, nach
 der 6. oder 9. Iteration aufzuhören, da dann die Überanpassung (Overfitting) an
-die Trainingsdaten einsetzt. 
-
+die Trainingsdaten einsetzt.
 
 ## Bekämpfen von Überanpassung (Overfitting)
 
@@ -247,18 +243,18 @@ Es gibt einige Hyperparamter von XGBoost, die helfen, Überanpassung
 (Overfitting) zu reduzieren. Eine Möglichkeit ist es, früher zu stoppen und
 nicht die voreingestellte Anzahl an Modellen bzw. Iterationen / Boosting-Runden
 zu durchlaufen. Das wird durch das optionale Argument `early_stopping_rounds=`
-ermöglicht. Die Zahl, die diesem Parameter übergeben wird, gibt die Anzahl der
-Boosting-Runden vor, nach denen gestoppt wird, falls sich kaum etwas an der
-Maßzahl geändert hat.
+im Konstruktor ermöglicht. Die Zahl, die diesem Parameter übergeben wird, gibt
+die Anzahl der Boosting-Runden vor, nach denen gestoppt wird, falls sich kaum
+etwas an der Maßzahl geändert hat.
 
-```{code-cell} ipython3
-modell.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)],     
-    early_stopping_rounds=10, verbose=False)
+```{code-cell}
+modell = xgb.XGBClassifier(n_estimators=200, early_stopping_rounds=10, eval_metric=['error', 'logloss'])
+modell.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)], verbose=False)
 ```
 
 Visualisiert sieht die Losslog-Statistik für das obige Beispiel so aus:
 
-```{code-cell} ipython3
+```{code-cell}
 masszahlen = modell.evals_result()
 fehler = pd.DataFrame({
     'Fehler Trainingsdaten': masszahlen['validation_0']['error'],
@@ -285,7 +281,7 @@ darin, die Tiefe der Entscheidungsbäume zu begrenzen. Wir benutzen
 Entscheidungsbaum-Stümpfe, die eine Tiefe von Eins haben. Das erreichen wir mit
 dem optionalen Argument `max_depth=1`.
 
-```{code-cell} ipython3
+```{code-cell}
 modell = xgb.XGBClassifier(max_depth=1, n_estimators=200, eval_metric=['error', 'logloss'])
 modell.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_test, y_test)], verbose=False)
 
@@ -314,7 +310,6 @@ Es gibt noch einige weitere Hyperparameter, die für "das" beste Modell
 feinjustiert werden können. Händisch gelingt es kaum, alle Hyperparameter
 optimal einzustellen, so dass hier eine Gittersuche oder gar eine Bibliothek wie
 [Optuna](https://github.com/optuna/optuna) eingesetzt werden sollte.
-
 
 ## Zusammenfassung und Ausblick
 
