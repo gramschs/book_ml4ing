@@ -16,6 +16,7 @@ parts:
     - file: chapter02/chapter02_sec01.md
     - file: chapter02/chapter02_sec02.md
     - file: chapter02/chapter02_sec03.md
+    - file: chapter02/chapter02_sec04.md
 - caption: Datenexploration
   chapters:
   - file: chapter03/chapter03_sec00.md
