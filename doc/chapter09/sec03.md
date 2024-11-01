@@ -77,7 +77,7 @@ y = daten['verkauft'].values
 
 Als nächstes importieren wir XGBoost. Es ist üblich, das ganze Modul zu
 importieren und mit `xgb` abzukürzen. Danach initialisieren wir das
-Klassifikationsmodell `XGBClassifier` und trainieren es auf den Daten. 
+Klassifikationsmodell `XGBClassifier` und trainieren es auf den Daten.
 
 ```{code-cell}
 import xgboost as xgb 
