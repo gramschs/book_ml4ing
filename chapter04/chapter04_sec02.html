@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -559,11 +559,10 @@ damit auch DataFrames ist es üblich, dass die Eigenschaften in den Spalten
 stehen und in den Zeilen die einzelnen Datensätze. Mit den eckigen Klammern und
 dem Indexnamen greifen wir diesmal also nicht nur ein Element heraus, sondern
 gleich eine ganze Spalte.</p>
-<p>Falls Sie aus dem vorherigen Kapitel den Datensatz <code class="docutils literal notranslate"><span class="pre">autoscout24_xxs.csv</span></code> noch
-geladen haben, können Sie sich mit <code class="docutils literal notranslate"><span class="pre">.info()</span></code> die Spaltenüberschriften, also den
-Index, direkt anzeigen lassen. Ansonsten importieren Sie zuerst Pandas mit
-seiner üblichen Abkürzung pd und laden den Datensatz <a class="reference external" href="https://nextcloud.frankfurt-university.de/s/xDoGYwbmcrD9sDc"><code class="docutils literal notranslate"><span class="pre">→</span> <span class="pre">Download</span></code></a>. Spalte
-heißt auf Englisch columns.</p>
+<p>Falls Sie aus dem vorherigen Kapitel den Datensatz <a class="reference download external" download="" href="https://gramschs.github.io/book_ml4ing/data/autoscout24_xxs.csv"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">autoscout24_xxs.csv</span></code></a> noch geladen
+haben, können Sie sich mit <code class="docutils literal notranslate"><span class="pre">.info()</span></code> die Spaltenüberschriften, also den Index,
+direkt anzeigen lassen. Ansonsten importieren Sie zuerst Pandas mit seiner
+üblichen Abkürzung pd und laden den Datensatz.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -645,10 +644,10 @@ Name: Farbe, dtype: object
 <section id="zugriff-auf-zeilen">
 <h2>Zugriff auf Zeilen<a class="headerlink" href="#zugriff-auf-zeilen" title="Link to this heading">#</a></h2>
 <p>Natürlich kann es auch Gründe geben, sich einen einzelnen Datensatz mit allen
-Eigenschaften herauszugreifen. Oder anders ausgedrückt, möchte man in der
-Tabelle eine einzelne Zeile auswählen. Dazu gibt es das Attribut <code class="docutils literal notranslate"><span class="pre">.loc</span></code>. Danach
-werden wirder eckige Klammern benutzt, wobei deismal der Zeilenindex verwendet
-wird.</p>
+Eigenschaften herauszugreifen. Oder anders ausgedrückt, vielleicht möchte man in
+der Tabelle eine einzelne Zeile auswählen. Dazu gibt es das Attribut <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.
+Danach werden wieder eckige Klammern benutzt, wobei diesmal der Zeilenindex
+verwendet wird.</p>
 <p>Der folgende Code-Schnippsel speichert die Zeile des 4. Autos (= BMW Nr. 1) in
 der Variable <code class="docutils literal notranslate"><span class="pre">viertes_auto</span></code> ab. Wir ermitteln gleich den Datentyp dazu.</p>
 <div class="cell docutils container">
@@ -730,7 +729,7 @@ bieten.</p>
 <section id="mehrere-zeilen-oder-spalten">
 <h2>Mehrere Zeilen oder Spalten<a class="headerlink" href="#mehrere-zeilen-oder-spalten" title="Link to this heading">#</a></h2>
 <p>Sollen mehrere Zeilen oder Spalten gleichzeitig ausgewählt werden, so werden die
-entspchenden Indizes als eine Liste in die eckigen Klammern gesetzt.</p>
+entsprechenden Indizes als eine Liste in die eckigen Klammern gesetzt.</p>
 <p>Der folgende Code wählt sowohl die Erstzulassung als auch den Preis aus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -974,7 +973,8 @@ Ende.</p>
 </section>
 <section id="neue-spalte-oder-zeile-einfugen">
 <h2>Neue Spalte oder Zeile einfügen<a class="headerlink" href="#neue-spalte-oder-zeile-einfugen" title="Link to this heading">#</a></h2>
-<p>Eine neue Spalte einzufügen, funktioniert recht einfach. Dazu wird ein neuer Spaltenindex erzeugt.</p>
+<p>Eine neue Spalte einzufügen, funktioniert recht einfach. Dazu wird ein neuer
+Spaltenindex erzeugt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Verbrauch pro Leistung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tabelle</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span>

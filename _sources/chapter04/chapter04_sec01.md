@@ -169,7 +169,7 @@ Kennzahlen
 ausgegeben.
 
 Die Bedeutung der Kennzahlen wird in der
-[Pandas-Dokumentation/DataFrame.describe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
+[Dokumentation → describe()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)
 erläutert. Sie entsprechen den statistischen Kennzahlen, die die Methode
 .describe() für Series-Objekte liefert. Pandas hat hier auch auf den Datentyp
 reagiert. Nur für numerische Werte (Integer oder Float) wurden die statistischen

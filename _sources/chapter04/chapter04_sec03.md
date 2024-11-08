@@ -25,8 +25,7 @@ die Diagrammtypen
 * Scatterplot und
 * Scattermatrix.
 
-Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen. 
-
+Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.
 
 ## Lernziele
 
@@ -37,12 +36,11 @@ Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.
 * Sie kennen die folgenden Styling-Optionen 
   * Textannotation **text=**, 
   * Farbe **color=** und
-  * Größe **size=**, um Zusatzinformationen zu visualisieren.
+  * Größe **size=**.
 * Sie können mit **title=** den Titel des Diagramms setzen.
 * Sie können eine **Scattermatrix** mit **scatter_matrix()** erzeugen und
   interpretieren. 
 ```
-
 
 ## Scatterplots
 
@@ -50,11 +48,12 @@ Scatterplots (deutsch: Streudiagramme) werden eingesetzt, wenn der Zusammenhang
 zwischen zwei numerischen Größen untersucht werden soll. Das ist vor allem bei
 Experimenten häufig der Fall.
 
-Im Folgenden soll der Scatterplot anhand des Autoscout24-Beispiels [`→
-Download`](https://nextcloud.frankfurt-university.de/s/xDoGYwbmcrD9sDc)
-demonstriert werden. Dazu laden wir die Tabelle wie üblich mit Pandas.
+Im Folgenden soll der Scatterplot anhand des Autoscout24-Beispiels
+{download}`Download autoscout24_xxs.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_xxs.csv>` demonstriert
+werden. Dazu laden wir die Tabelle wie üblich mit Pandas.
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd
 daten = pd.read_csv('autoscout24_xxs.csv', index_col=0)
 daten.info()
@@ -63,12 +62,12 @@ daten.info()
 Uns interessieren zunächst die Verkaufspreise der Autos. Zu jedem Auto soll
 entlang der y-Achse der Verkaufspreis aufgetragen werden. Dazu wird zuerst
 Plotly Express mit der üblichen Abkürzung px importiert. Danach nutzen wir die
-Funktion `scatter()`. Das erste Argument un Klammern ist die komplette Tabelle,
-also `daten`. Danach geben wir direkt den Spaltenindex der Spalte an, die
-visualisiert werden soll, also `y = 'Preis (Euro)'`. Zuletzt lassen wir den
-Scatterplot auch mit `.show()` anzeigen.
+Funktion `scatter()`. Das erste Argument in den runden Klammern ist die
+komplette Tabelle, also `daten`. Danach geben wir direkt den Spaltenindex der
+Spalte an, die visualisiert werden soll, also `y = 'Preis (Euro)'`. Zuletzt
+lassen wir den Scatterplot auch mit `.show()` anzeigen.
 
-```{code-cell} ipython3
+```{code-cell}
 import plotly.express as px
 diagramm = px.scatter(daten, y = 'Preis (Euro)')
 diagramm.show()
@@ -84,9 +83,9 @@ visuell zu erkunden, um Abhängigkeiten von Ursache und Wirkung zu erkunden. Wir
 könnten beispielsweise auf die Idee kommen, dass der Preis (= Wirkung) auch
 abhängig ist von der Anzahl der gefahrenen Kilometer (= Ursache). Wir setzen die
 vermutete Ursache auf die x-Achse mit dem Argument `x = 'Kilometerstand (km)'`
-und die vermutete Wirkung auf die y-Achse mit `y = 'Preis (Euro)'`.   
+und die vermutete Wirkung auf die y-Achse mit `y = 'Preis (Euro)'`.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)')
 diagramm.show()
 ```
@@ -94,12 +93,11 @@ diagramm.show()
 Von der Tendenz her scheint unsere Vermutung richtig zu sein. Je mehr Kilometer
 ein Auto bereits gefahren wurde, desto günstiger ist sein Verkaufspreis.
 Allerdings scheint es zwei Autos zu geben, die nicht ganz in dieses Muster
-passen. Ein Auto wird trotz eines Kilomterstandes von 117433 km für 46 TEUR
+passen. Ein Auto wird trotz eines Kilometerstandes von 117433 km für 46 TEUR
 angeboten, an anderes hat nur 15200 km auf dem Buckel, soll aber trotzdem für
 nur 12 TEUR verkauft werden. Aber welche Autos sind die beiden Ausnahmen? Um
 mehr Informationen aus den Daten zu holen, beschäftigen wir uns mit dem Styling
 von Scatterplots.
-
 
 ## Styling von Scatterplots
 
@@ -109,7 +107,7 @@ werden können. Eine Möglichkeit, durch das Styling der Diagramme
 Zusatzinformationen zu visualisieren, bietet die Option `text=`. Wir verwenden
 den Zeilenindex als Text, der in dem Attribut `.index` gespeichert ist.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)', text=daten.index)
 diagramm.show()
 ```
@@ -122,9 +120,9 @@ heißen **trace**. Sie werden durch `update_traces()` aktualisiert oder anders
 ausgedrückt, die Voreinstellungen werden dadurch überschrieben. Wir möchten,
 dass die Position der Texte oberhalb der Datenpunkte ist, aber dennoch zentriert
 zum Datenpunkt. Durch das Argument `textposition='top center'` erreichen wir
-dieses Ziel, wie der folgende Scatterplot zeigt.     
+dieses Ziel, wie der folgende Scatterplot zeigt.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)', text=daten.index)
 diagramm.update_traces(textposition='top center')
 diagramm.show()
@@ -142,7 +140,7 @@ nutzen das Jahr der Erstzulassung, um das Alter der Autos abzuschätzen. Die
 Anweisung an Python, die Punkte des Scatterplots nach der Erstzulassung
 einzufärben, wird durch das optionale Argument `color='Jahr'` gegeben.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)', text=daten.index, color='Jahr')
 diagramm.update_traces(textposition='top center')
 diagramm.show()
@@ -156,12 +154,12 @@ bisher gefahren.
 
 Als zweite Möglichkeit, Zusatzinformationen direkt mit den Datenpunkten im
 Scatterplot zu visualisieren, dient die Größe der Punkte. Mit dem optionalen
-Argument `size=` wird sie gestuert. Wiederum verwenden wir einen Spaltenindex
+Argument `size=` wird sie gesteuert. Wiederum verwenden wir einen Spaltenindex
 als Argument. Die Leistung könnte erfahrungsgemäß ebenfalls den Verkaufspreis
 beeinflussen. Also setzen wir `size='Leistung (PS)'` und betrachten das so
 erweiterte Diagramm.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)', text=daten.index, color='Jahr', size='Leistung (PS)')
 diagramm.update_traces(textposition='top center')
 diagramm.show()
@@ -175,12 +173,11 @@ Als letzte Styling-Möglichkeit betrachten wir den Titel. Im Gegensatz zu den
 vorherigen Styling-Möglichkeiten, ist der Titel stets Pflicht. **Jedes Diagramm
 muss einen Titel haben!** Der Titel wird mit dem Argument `title=` gesetzt.
 
-```{code-cell} ipython3
+```{code-cell}
 diagramm = px.scatter(daten, x = 'Kilometerstand (km)', y = 'Preis (Euro)', text=daten.index, color='Jahr', size='Leistung (PS)', title='Verkaufsdaten von 10 Autos (Quelle: Autocout24.de)')
 diagramm.update_traces(textposition='top center')
 diagramm.show()
 ```
-
 
 ## Scattermatrix
 
@@ -191,24 +188,24 @@ werden und auf der x-Achse aufgetragen werden. Zu jeder dieser sieben
 Eigenschaften können dann die verbleibenden sechs Eigenschaften als Wirkung
 interpretiert werden und auf der y-Achse dargestellt werden. Also müssten wir 42
 Scatterplots untersuchen. Die Scattermatrix vereinfacht das Zusammenstellen
-dieser Kombinatinen. Dazu legen wir erst eine Liste mit den Spaltenindizes an,
+dieser Kombinationen. Dazu legen wir erst eine Liste mit den Spaltenindizes an,
 die in die Scattermatrix aufgenommen werden sollen. Danach erzeugen wir mit der
 Funktion `scatter_matrix()` die gewünschten Kombinationen. Als erstes Argument
 werden die Daten aus der Tabelle übergeben, dann folgt die Liste der
 ausgewählten Spalten als Argument für den Parameter `dimensions=`.
 
-```{code-cell} ipython3
+```{code-cell}
 auswahl = ['Jahr', 'Preis (Euro)', 'Leistung (kW)', 'Leistung (PS)', 'Verbrauch (l/100 km)', 'Verbrauch (g/km)', 'Kilometerstand (km)']
 diagramm = px.scatter_matrix(daten, dimensions=auswahl)
 diagramm.show()
 ```
 
 Es werden 49 Diagramme angezeigt, die allerdings kaum lesbar sind. Warum 49 und
-nicht 42? Tatsächlich wird auch jede Eigenschaft als Ursache mit sich selbst als
-Wirkung dargestellt. Da das Diagramm so kaum lesbar ist, reduzieren wir die
-Auswahl weiter und nehmen nur die ersten vier Eigenschaften.
+nicht 42? Tatsächlich wird auch jede Eigenschaft als Ursache mit ihrer Wirkung
+auf sich selbst dargestellt. Da das Diagramm so kaum lesbar ist, reduzieren wir
+die Auswahl weiter und nehmen nur die ersten vier Eigenschaften.
 
-```{code-cell} ipython3
+```{code-cell}
 auswahl = ['Jahr', 'Preis (Euro)', 'Leistung (kW)', 'Leistung (PS)']
 diagramm = px.scatter_matrix(daten, dimensions=auswahl)
 diagramm.show()
@@ -235,7 +232,7 @@ ungefähr 0,00136 Pferdestärken (PS). Die Scattermatrix zeigt uns nun (wenn wir
 es nicht schon vorher wussten), dass wir nur eine der beiden Spalten brauchen.
 Diese Spalte könnte für die weitere Datenexploration gelöscht werden.
 
-```{code-cell} ipython3
+```{code-cell}
 auswahl = ['Jahr', 'Preis (Euro)', 'Leistung (kW)']
 diagramm = px.scatter_matrix(daten, dimensions=auswahl)
 diagramm.show()
@@ -251,7 +248,6 @@ Datenexploration schnell, interessante Zusammenhänge zwischen einzelnen
 Eigenschaften aufzudecken, die dann durch einzelne Scatterplots näher untersucht
 werden können.
 
-
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir uns mit der Visualisierung von numerischen Werten
@@ -262,4 +258,3 @@ detaillierter beleuchtet werden können. Bisher haben wir aber nur die
 numerischen Werte untersucht. Wie auch die nicht-numerischen Werte wie
 beispielsweise die Farbe der Autos mit in die Visualisierung einbezogen werden
 können, sehen wir im nächsten Kapitel.
-
