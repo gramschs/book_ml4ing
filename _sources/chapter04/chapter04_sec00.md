@@ -14,8 +14,6 @@ kernelspec:
 
 # 4. Tabellarische Daten erkunden
 
-TODO
-
 Kapitelübersicht:
 
 ```{tableofcontents}
