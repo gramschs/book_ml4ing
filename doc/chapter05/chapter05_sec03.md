@@ -44,12 +44,15 @@ mit einer Laufleistung von bis zu 200.000 km in den Fokus zu nehmen und die
 Ausreißer auszuschließen. Daher widmen wir uns in diesem Kapitel der Filterung
 von tabellarischen Datensätzen mithilfe von Pandas.
 
-Zuerst laden wir den Datensatz und überprüfen den Inhalt.
+Zuerst laden wir den Datensatz {download}`autoscout24_DE_2020.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv>` und
+überprüfen den Inhalt.
 
 ```{code-cell}
 import pandas as pd
 
-data = pd.read_csv('autoscout24_DE_2020.csv')
+url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv'
+data = pd.read_csv(url)
 data.info()
 ```
 

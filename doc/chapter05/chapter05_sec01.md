@@ -60,13 +60,17 @@ dargestellt werden und werden numerische Daten genannt. Ein anderer Name für
 metrische Daten ist der Begriff quantitative Daten. 
 ```
 
-Betrachten wir erneut den Datensatz der Autoverkaufspreise von Autoscout24.de,
-diesmal jedoch mit allen Autos, die im Jahr 2020 zugelassen wurden. Ein kurzer
-Überblick über den Datensatz hilft uns, die Art der Daten besser zu verstehen.
+Wir betrachten den Datensatz {download}`Download autoscout24_DE_2020.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv>` mit
+Autoverkaufspreises von [Autoscout24.de](https://www.autoscout24.de), der alle
+Autos enthält, die im Jahr 2020 zugelassen wurden. Ein kurzer Überblick über den
+Datensatz hilft uns, die Art der Daten besser zu verstehen.
 
 ```{code-cell}
 import pandas as pd
-data = pd.read_csv('autoscout24_DE_2020.csv')
+
+url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv'
+data = pd.read_csv(url)
 data.info()
 ```
 

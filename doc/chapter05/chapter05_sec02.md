@@ -59,13 +59,15 @@ zugehörigen Wert darstellt.
 ```
 
 Probieren wir Barplots am Beispiel der Autoscout24-Verkaufspreise für Autos aus,
-die 2020 zugelassen wurden. Zuerst laden wir die Daten und verschaffen uns einen
-Überblick.
+die 2020 zugelassen wurden ({download}`Download autoscout24_DE_2020.csv
+<https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv>`). Zuerst
+laden wir die Daten und verschaffen uns einen Überblick.
 
 ```{code-cell}
 import pandas as pd
 
-data = pd.read_csv('autoscout24_DE_2020.csv')
+url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv'
+data = pd.read_csv(url)
 data.info()
 ```
 
