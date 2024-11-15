@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Übungen &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter04/chapter04_sec04';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Kategoriale Daten erkunden" href="../chapter05/chapter05_sec00.html" />
+    <link rel="prev" title="4.3 Scatterplots und Scattermatrix" href="chapter04_sec03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Willkommen zu ML4ING
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started...</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter01/chapter01_sec00.html">1. Grundbegriffe des maschinellen Lernens</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec01.html">1.1 Was ist maschinelles Lernen?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec02.html">1.2 Überwachtes, unüberwachtes und verstärkendes Lernen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter01/chapter01_sec03.html">1.3 Technische Voraussetzungen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter02/chapter02_sec00.html">2. Crashkurs Python</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter02/chapter02_sec04.html">Übungen</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datenexploration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter03/chapter03_sec00.html">3. Pandas und Plotly anstatt Excel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec01.html">3.1 Pandas Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec02.html">3.2 Statistik mit Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec03.html">3.3 Boxplots mit Plotly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter03/chapter03_sec04.html">Übungen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter04_sec00.html">4. Tabellarische Daten erkunden</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec01.html">4.1 Datenstruktur DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec02.html">4.2 Arbeiten mit Tabellendaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter04_sec03.html">4.3 Scatterplots und Scattermatrix</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Übungen</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter05/chapter05_sec00.html">5. Kategoriale Daten erkunden</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec01.html">5.1 Was sind kategoriale Daten?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec02.html">5.2 Barplots und Histogramme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter05/chapter05_sec03.html">5.3 Daten filtern und gruppieren</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. ML-Workflow: Datenvorverarbeitung</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec01.html">8.1 Fehlende Daten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec02.html">8.2 Trainings- und Testdaten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter08/sec03.html">8.3 Kodierung und Skalierung</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">9.2 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">9.3 XGBoost</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. ML-Workflow: Modellbewertung und Auswahl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec01.html">11.1 Kreuzvalidierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter11/sec02.html">11.2 Gittersuche</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter12/sec00.html">12. Perzeptron</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec01.html">12.1 Grundbaustein neuronaler Netze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec02.html">12.2 Die Perzeptron-Lernregel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter12/sec03.html">12.3 Training eines Perzeptrons mit Scikit-Learn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter13/sec00.html">13. Logistische Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec01.html">13.1 Logistische Regression ersetzt Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec02.html">13.2 Logistische Regression lernt mit Maximum-Likelihood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter13/sec03.html">13.3 Logistische Regression mit Scikit-Learn</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter14/sec00.html">14. Neuronale Netze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14/sec01.html">14.1 Mehrschichtiges Perzeptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter14/sec02.html">14.2 Neuronale Netze mit Scikit-Learn</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Extras</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../extras_skimage/extras_skimage_sec00.html">Bildverarbeitung mit Scikit-Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extras_plotly/extras_sec08.html">Plots mit Karten</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Anhang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix.html">Referenzen</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/gramschs/book_ml4ing/main?urlpath=lab/tree/docs/chapter04/chapter04_sec04.md" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/gramschs/book_ml4ing" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter04/chapter04_sec04.ipynb" target="_blank"
+   class="btn btn-sm btn-download-notebook-button dropdown-item"
+   title="Download notebook file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="../_sources/chapter04/chapter04_sec04.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Übungen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ubungen">
+<h1>Übungen<a class="headerlink" href="#ubungen" title="Link to this heading">#</a></h1>
+<p>Daten für die Übungen:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nextcloud.frankfurt-university.de/s/ddfDzAAnJtJ4FZQ">12612-0001_de.csv</a></p></li>
+<li><p><a class="reference external" href="https://nextcloud.frankfurt-university.de/s/bpZ8TZrzafKqAxq">stromverbrauch_hessen.csv</a></p></li>
+</ul>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.1 - Teilaufgabe a)</p>
+<p>Schauen Sie sich die csv-Datei ‘12612-0001_de.csv’ im Texteditor an. Der
+Datensatz enthält die Lebendgeburten in Deutschland getrennt nach männlich,
+weiblich und insgesamt (Quelle: <a class="reference external" href="https://www-genesis.destatis.de/datenbank/beta/statistic/12612/table/12612-0001">Statistisches
+Bundesamt</a>).</p>
+<p>Ab welcher Zeile beginnen die Daten und in welcher Zeile enden sie? Importieren
+Sie dann die Daten, wobei Kopf- und Fußzeilen beim Import übersprungen werden
+sollen. Schlagen Sie dazu in der Dokumentation nach, wie Zeilen beim Lesen einer
+csv-Datei Übersprungen werden.</p>
+<p>Tipp: Importieren Sie pandas mit dem üblichen Alias pd und führen Sie dann die
+folgende Code-Zeile in einer Code-Zelle aus:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pd.read_csv?
+</pre></div>
+</div>
+<p>Welches Argument könnte für das Überspringen der Kopfzeilen stehen, welches für
+die Fußzeilen?</p>
+<p>Welche Spalte ist als Index-Spalte geeignet? Setzen Sie eine passende
+Spalte als Index. Verschaffen Sie sich einen Überblick über die Daten und
+erstellen Sie eine Übersicht der statistischen Kennzahlen.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+
+pd.read_csv?
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5 Kopfzeilen, 4 Fußzeilen; Jahreszahlen sind der Index</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/12612-0001_de.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">skipfooter</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Datensatz enthält 3 Spalten: männlich, weiblich und insgesamt. Jede Spalte enthält 73 gültige Einträge. Jede Spalte enthält Integers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.1 - Teilaufgabe a)</p>
+<p>Kontrollieren Sie, ob die Spalte ‘insgesamt’ tatsächlich die Summe der beiden
+Spalten ‘männlich’ und ‘weiblich’ ist. Bilden Sie dazu die Differenz ‘insgesamt’ -
+‘männlich’ - ‘weiblich’ und fügen Sie diese Differenz als neue Spalte dem
+DataFrame hinzu. Wie lauten die statistischen Kennzahlen dieser Spalte? Welchen
+Schluss ziehen Sie daraus? Haben Sie eine Vermutung, was passiert ist?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Differenz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;insgesamt&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;männlich&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;weiblich&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Differenz&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Mittelwert ist 0.369863 und nicht wie erwartet 0. Das Maximum ist 17 und
+nicht wie erwartet 0. Die Spalte ‘insgesamt’ ist daher nicht die Summe der
+beiden Spalten ‘männlich’ und ‘weiblich’. Normalerweise würden wir jetzt nach
+den Jahren filtern, bei denen die Differenz nicht Null ist. Da wir das noch
+nicht gelernt haben, visualisieren wir die Differenz als Scatterplot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Differenz&#39;</span><span class="p">],</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Differenz &quot;insgesamt - männlich - weiblich&quot;&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Geburten&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Abweichungen treten in den Jahren 2016 und 2017 auf. Das passt zu der
+Bemerkung “Ab 2016: Die Gesamtzahl der Lebendgeborenen enthält auch die Fälle
+mit unbestimmtem Geschlecht.” Vermutlich ist die Zahl der Geburten ‘insgesamt’
+höher als die Summe der Geburten ‘männlich’ + ‘weiblich’, weil das Geschlecht
+unbestimmt war.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.1 - Teilaufgabe c)</p>
+<p>Lassen Sie die statistischen Kennzahlen der Lebendgeburten ‘männlich’ und
+‘weiblich’ als Boxplot visualisieren. Wurden mehr Jungen oder Mädchen geboren?
+Liegt der Median mittig zwischen Q1 und Q3?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;männlich&#39;</span><span class="p">,</span><span class="s1">&#39;weiblich&#39;</span><span class="p">]],</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Statistische Kennzahlen der Lebendgeburten in Deutschland&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Geburten&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Geschlecht&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Es wurden insgesamt mehr Jungen als Mädchen geboren. Bei beiden Geschlechtern
+ist auffällig, dass der Median recht nahe bei dem Q1-Quantil liegt. Das deutet
+auf eine asymmetrische Verteilung der Geburten über die Jahre hin.
+Wahrscheinlich gibt es wenige Ausreißer mit geburtenstarken Jahrgängen.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.1 - Teilaufgabe c)</p>
+<p>Visualisieren Sie die Anzahl der männlichen und weiblichen Lebendgeburten pro
+Jahr als Scatterplot. Beschriften Sie auch die Achsen und setzen Sie einen
+Titel.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;männlich&#39;</span><span class="p">,</span><span class="s1">&#39;weiblich&#39;</span><span class="p">]],</span> 
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Lebendgeborene in Deutschland&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Lebendgeburten&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Geschlecht&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.2 - Teilaufgabe a)</p>
+<p>Schauen Sie sich die csv-Datei ‘stromverbrauch_hessen.csv’ im Texteditor an.
+Welche Daten enthält die Datei? Ab welcher Zeile beginnen die Daten und in
+welcher Zeile enden sie? Importieren Sie dann die Daten, wobei Kopf- und
+Fußzeilen beim Import übersprungen werden sollen. Welche Spalte ist als
+Index-Spalte geeignet? Setzen Sie eine passende Spalte als Index. Verschaffen
+Sie sich einen Überblick über die Daten und erstellen Sie eine Übersicht der
+statistischen Kennzahlen. Interpretieren Sie den Stromverbrauch der
+Verbrauchergruppen.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<p>Die Datei enthält den Stromverbrauch in Hessen 2000 bis 2021 nach
+Verbrauchergruppen in Gigawattstunden. Es bietet sich an, das Jahr als Index zu
+wählen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;stromverbrauch_hessen.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Datensatz enthält 22 Zeilen mit dem Stromverbrauch von 2000 bis
+einschließlich 2021. In den Spalten stehen der Stromverbrauch</p>
+<ul class="simple">
+<li><p>der Industrie,</p></li>
+<li><p>des Verkehrs und</p></li>
+<li><p>der Haushalte, etc.</p></li>
+</ul>
+<p>Alle Einträge sind gültig.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der mittlere Stromverbrauch der Industrie ist ungefähr 10x so groß wie der
+Stromverbrauch des Verkehrs. Nochmal doppelt soviel Strom verbrauchen aber
+Haushalte, Gewerbe, etc.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.2 - Teilaufgabe b)</p>
+<p>Checken Sie, ob die Spalte ‘insgesamt’ tatsächlich die Summe der anderen Spalten ist.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Differenz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;insgesamt&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Industrie&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Verkehr&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher&#39;</span><span class="p">]</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Differenz&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Es gibt Abweichungen, Minimum und Maximum weichen jeweils um eine Gigawattstunde
+ab. Angesichts der absoluten Werte wird es sich dabei um Rundungsfehler handeln
+und bedarf keiner weiteren Maßnahmen.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.2 - Teilaufgabe c)</p>
+<p>Fertigen Sie Boxplots an und bewerten Sie die statistischen Kennzahlen.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;insgesamt&#39;</span><span class="p">],</span> 
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021 (insgesamt)&#39;</span><span class="p">,</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Median liegt nahe am 25%-Quantil, die Verteilung des Stromverbrauchs der
+einzelnen Jahre scheint nicht symmetrisch zu sein. Es gibt einen Ausreißer mit
+39351 Gigawattstunden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Industrie&#39;</span><span class="p">,</span> <span class="s1">&#39;Verkehr&#39;</span><span class="p">,</span> <span class="s1">&#39;Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher&#39;</span><span class="p">]],</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021&#39;</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Sektoren&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Eine gemeinsame Visualisierung der drei Kategorien ist hier nicht sinnvoll, da die statistischen Kennzahlen weit auseinander liegen. Daher wird jede Kategorie einzeln untersucht.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Industrie&#39;</span><span class="p">],</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021 (Industrie)&#39;</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Verteilung des Stromverbrauchs ist symmetrisch, der Median liegt ungefähr
+mittig zwischen Q1 und Q3. Es gibt zwei Ausreißer nach unten.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Verkehr&#39;</span><span class="p">],</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021 (Verkehr)&#39;</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Die Verteilung des Stromverbrauchs ist ungefähr symmetrisch, es gibt einen
+Ausreißer nach unten und einen Ausreißr nach oben.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher&#39;</span><span class="p">],</span>
+            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021 (Haushalte, etc.)&#39;</span><span class="p">,</span>
+            <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Es gibt keine Ausreißer, der Median ist ungefähr mittig zwischen Q1 und Q3.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 4.2 - Teilaufgabe d)</p>
+<p>Visualisieren Sie den Stromverbrauch der drei relvanten Sektoren Industrie,
+Verkehr und Haushalte abhängig vom Jahr in einem gemeinsamen Scatterplot. Setzen
+Sie einen Titel und beschriften Sie auch die Achsen.</p>
+<p>Gibt es Auffälligkeiten?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Industrie&#39;</span><span class="p">,</span> <span class="s1">&#39;Verkehr&#39;</span><span class="p">,</span> <span class="s1">&#39;Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher&#39;</span><span class="p">]],</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stromverbrauch Hessen von 2000 bis 2021&#39;</span><span class="p">,</span>
+                 <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Gigawattstunden&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Legende&#39;</span><span class="p">})</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Der Stromverbrauch der Industrie ist 2009 etwas eingebrochen. Vielleicht hat die
+Weltfinanzkrise 2007–2008 dazu geführt, dass 2009 die Industrie in Hessen
+weniger produziert hat und daher weniger Strom verbraucht hat. Aber das ist eine
+Hypothese, die durch weitere Analysen belegt oder widerlegt werden müsste.</p>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "gramschs/book_ml4ing",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chapter04_sec03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">4.3 Scatterplots und Scattermatrix</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter05/chapter05_sec00.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. Kategoriale Daten erkunden</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Simone Gramsch
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <div>
+<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img class="license" alt="Creative Commons License" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a> This book is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons BY-NC-SA 4.0 License</a>.
+</div>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
