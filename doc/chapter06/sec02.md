@@ -21,7 +21,6 @@ visualisieren zu lassen. Darüber hinaus lernen wir, was das
 Gini-Impurity-Kriterion ist und welche weiteren Einstellmöglichkeiten es für
 Entscheidungsbäume in Scikit-Learn gibt.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -33,7 +32,6 @@ Entscheidungsbäume in Scikit-Learn gibt.
 * Sie kennen weitere Parameter für Entscheidungsbäume wie `random_state=` oder
   `criterion=`.
 ```
-
 
 ## Entscheidungsbäume visualisieren
 
@@ -99,14 +97,13 @@ Angaben `samples` und `values` können so leichter von ihrer Bedeutung her
 eingeordnet werden. `samples` gibt die Anzahl der Datenobjekte an, die sich in
 diesem Knoten befinden. `values` listet auf, wie viele Datenobjekte die
 Zielgröße `nicht verkauft` (= False bzw. 0) haben und wie viele zu der Klasse
-`verkauft` (= True bzw. 1) gehören. 
+`verkauft` (= True bzw. 1) gehören.
 
 Weitere Details zu den Optionen der `plot_tree`-Funktion finden Sie in der
 [Dokumentation Scikit-Learn →
 plot_tree](https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html).
 
 Als nächstes widmen wir uns der Bedeutung von `gini`.
-
 
 ## Was ist das Gini-Impurity-Kriterium?
 
@@ -126,7 +123,7 @@ $$\text{GI} = 1 - p^2 - (1-p)^2,$$
 wenn $p$ der prozentuale Anteil der verkauften Autos ist (das gilt natürlich
 allgemein für binäre Klassifikationsaufgaben und nicht nur das
 Autohaus-Beispiel).
- 
+
 Die folgende Abbildung zeigt die konkreten Werte des Gini-Impurity-Kriteriums
 für den prozentualen Anteil an verkauften Autos.
 
@@ -180,7 +177,6 @@ encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="stric
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
-
 
 ## Entscheidungsbäume trainieren
 

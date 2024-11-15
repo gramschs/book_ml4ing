@@ -1,12 +1,13 @@
 ---
 jupytext:
+  formats: ipynb,md:myst
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: python310
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -14,62 +15,7 @@ kernelspec:
 # Übungen
 
 ```{admonition} Übung 5.1
-:class: tip
-Lesen Sie die csv-Datei 'statistic_id1301764_formel1-fahrerwertung-saison-2022.csv' (Formel 1 Fahrerwertung, Stand 30.10.2022, Quelle: https://de.statista.com/statistik/daten/studie/1301764/umfrage/formel-1-wm-stand/) ein. 
-
-Führen Sie eine statistische Datenanalyse inklusive Visualisierung durch. Visualisieren Sie zusätzlich die Fahrerwertung.
-```
-
-````{admonition} Lösung
-:class: tip, toggle
-
-```python
-import pandas as pd
-
-data = pd.read_csv('statistic_id1301764_formel1-fahrerwertung-saison-2022.csv', index_col=0, skiprows=2)
-data.info()
-```
-
-Die Datei enthält 21 Zeilen mit den Fahrernamen und eine Spalte mit der Wertung. Der Datentyp der Spalte Wertung ist Integer. Alle Einträge sind gültig. 
-
-```python
-data.head()
-```
-
-Statistische Analyse:
-
-```python
-data.describe()
-```
-
-```python
-import plotly.express as px
-
-fig = px.box(data, title='Formel-1-Saison 2022', labels={'value': 'Punkte', 'variable': ''})
-fig.show()
-```
-
-Der Mittelwert der erreichten Punkte in der Fahrerwertung liegt bei 100.5
-Punkten, der Median jedoch bei 36 Punkten. Es liegt also eine deutlich schiefe
-Verteilung der Punkte vor. 50 % der Fahrer haben weniger als 36 Punkte erreicht,
-die besten 25 % der Fahrer haben mehr als 213 Punkte. Diese ungleiche Verteilung
-der Punkte zeigt sich auch in einer hohen Standardabweichung von 120 Punkten,
-die größer als der Mittelwert ist.
-
-Verteilung der Wertung auf die einzelnen Fahrer:
-
-```python
-fig = px.bar(data, title='Formel-1-Saison 2022',
-             labels={'value':'Punkte', 'variable': 'Legende'})
-fig.show()
-```
-
-Die Visualisierung der Wertung der Fahrer zeigt, das Max Verstappen mit 416 Punkten die Saison gewonnen hat. Dabei hatte er einen deutlichen Vorsprung vor Sergio Perez, der nur 280 Punkte erreichte. Somit hat der Zweitplatzierte nur ca. 67 % der Punkte von Verstappen erreicht.
-````
-
-
-```{admonition} Übung 5.2
-:class: tip
+:class: miniexercise
 Schauen Sie sich die Datei 'kaggle_germany-wind-energy.csv' im Texteditor bzw.
 im JupyterLab an. Welche Spalte könnte als Zeilenindex dienen? Importieren Sie
 passend die Daten.
@@ -88,8 +34,8 @@ Schlussfolgerungen ziehen Sie aus den Plots?
 Visualisieren Sie drei Eigenschaften als Scattermatrix. Gibt es Abhängigkeiten?
 ```
 
-````{admonition} Lösung 
-:class: tip, toggle
+````{admonition} Lösung
+:class: minisolution, toggle
 
 ```python
 import pandas as pd
@@ -204,8 +150,8 @@ Temperaturen (Minusgrade) oder höheren Temperaturen (über 20 Grad Celsius) wir
 weniger als die Hälfte des Maximalwertes erzeugt. 
 ````
 
-```{admonition} Übung 5.3
-:class: tip
+```{admonition} Übung 5.2
+:class: miniexercise
 
 Importieren Sie den Datensatz 'kaggle_ikea.csv' und verschaffen Sie sich einen
 Überblick über die Daten. 
@@ -225,7 +171,7 @@ Artikel (ID?) in dieser Kategorie und wie wird er beschrieben?
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: minisolution, toggle
 
 ```python
 import pandas as pd
@@ -317,4 +263,65 @@ einen Schrank mit der Artikel-ID "19275075" und der Beschreibung "Wardrobe,
 ```python
 print(most_expensive_children_furniture['link'])
 ```
+````
+
+```{admonition} Hinweis
+:class: warning
+Die in Übung 5.3 verwendete csv-Datei stehen aus lizenzrechtlichen Gründen
+nur Studierenden der Frankfurt UAS zur Verfügung. Studierende können diese über
+campUAS herunterladen.
+```
+
+```{admonition} Übung 5.3
+:class: miniexercise
+Lesen Sie die csv-Datei 'statistic_id1301764_formel1-fahrerwertung-saison-2022.csv' (Formel 1 Fahrerwertung, Stand 30.10.2022, Quelle: https://de.statista.com/statistik/daten/studie/1301764/umfrage/formel-1-wm-stand/) ein. 
+
+Führen Sie eine statistische Datenanalyse inklusive Visualisierung durch. Visualisieren Sie zusätzlich die Fahrerwertung.
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+
+```python
+import pandas as pd
+
+data = pd.read_csv('statistic_id1301764_formel1-fahrerwertung-saison-2022.csv', index_col=0, skiprows=2)
+data.info()
+```
+
+Die Datei enthält 21 Zeilen mit den Fahrernamen und eine Spalte mit der Wertung. Der Datentyp der Spalte Wertung ist Integer. Alle Einträge sind gültig. 
+
+```python
+data.head()
+```
+
+Statistische Analyse:
+
+```python
+data.describe()
+```
+
+```python
+import plotly.express as px
+
+fig = px.box(data, title='Formel-1-Saison 2022', labels={'value': 'Punkte', 'variable': ''})
+fig.show()
+```
+
+Der Mittelwert der erreichten Punkte in der Fahrerwertung liegt bei 100.5
+Punkten, der Median jedoch bei 36 Punkten. Es liegt also eine deutlich schiefe
+Verteilung der Punkte vor. 50 % der Fahrer haben weniger als 36 Punkte erreicht,
+die besten 25 % der Fahrer haben mehr als 213 Punkte. Diese ungleiche Verteilung
+der Punkte zeigt sich auch in einer hohen Standardabweichung von 120 Punkten,
+die größer als der Mittelwert ist.
+
+Verteilung der Wertung auf die einzelnen Fahrer:
+
+```python
+fig = px.bar(data, title='Formel-1-Saison 2022',
+             labels={'value':'Punkte', 'variable': 'Legende'})
+fig.show()
+```
+
+Die Visualisierung der Wertung der Fahrer zeigt, das Max Verstappen mit 416 Punkten die Saison gewonnen hat. Dabei hatte er einen deutlichen Vorsprung vor Sergio Perez, der nur 280 Punkte erreichte. Somit hat der Zweitplatzierte nur ca. 67 % der Punkte von Verstappen erreicht.
 ````
