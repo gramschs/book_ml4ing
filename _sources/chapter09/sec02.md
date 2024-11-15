@@ -27,19 +27,18 @@ Bagging mit Entscheidungsbäumen, die sogenannten Random Forests.
   Einfluss eines Merkmals auf die Prognosegenauigkeit des Random Forests ist.
 ```
 
-
 ## Random Forests mit Scikit-Learn
 
-Entscheidungsbäume (Decision Trees) haben wir im Kapitel {ref}`chap06` bereits
-betrachtet. Sie sind aufgrund ihrer Einfachheit und vor allem aufgrund ihrer
-Interpretierbarkeit sehr beliebt. Allerdings ist ihre Tendenz zum Overfitting
-problematisch. Daher kombinieren wir die Ensemble-Methode Bagging mit
-Entscheidungsbäumen (Decision Trees). Indem aus den Trainingsdaten zufällig
-kleinere Bootstrap-Stichproben ausgewählt werden, erhalten wir unterschiedliche
-Entscheidungsbäume (Decision Trees). Zusätzlich wird beim Training der
-Entscheidungsbäume nicht mit allen Merkmalen (Features) trainiert, sondern auch
-hier wählen wir die Merkmale zufällig aus. Durch diese zwei Maßnahmen wird die
-Anpassung der Entscheidungsbäume an die Trainingsdaten (Overfitting) reduziert.
+Entscheidungsbäume (Decision Trees) haben wir bereits betrachtet. Sie sind
+aufgrund ihrer Einfachheit und vor allem aufgrund ihrer Interpretierbarkeit sehr
+beliebt. Allerdings ist ihre Tendenz zum Overfitting problematisch. Daher
+kombinieren wir die Ensemble-Methode Bagging mit Entscheidungsbäumen (Decision
+Trees). Indem aus den Trainingsdaten zufällig kleinere Bootstrap-Stichproben
+ausgewählt werden, erhalten wir unterschiedliche Entscheidungsbäume (Decision
+Trees). Zusätzlich wird beim Training der Entscheidungsbäume nicht mit allen
+Merkmalen (Features) trainiert, sondern auch hier wählen wir die Merkmale
+zufällig aus. Durch diese zwei Maßnahmen wird die Anpassung der
+Entscheidungsbäume an die Trainingsdaten (Overfitting) reduziert.
 
 Um den Random Forest von Scikit-Learn praktisch auszuprobieren, erzeugen wir
 künstliche Daten. Dazu verwenden wir die Funktion `make_moons` von Scikit-Learn,
@@ -134,8 +133,7 @@ for (nummer, baum) in zip(range(4), model_random_forest.estimators_):
     fig.ax_.set_title(f'Entscheidungsbaum {nummer+1}');
 ```
 
-
-## Feature Importance 
+## Feature Importance
 
 Der Random Forest reduziert das Overfitting und ist damit für zukünftige
 Prognosen besser gerüstet, verliert aber seine leichte Interpretierbarkeit. Ein
@@ -144,7 +142,7 @@ Entscheidungen als eine Abfolge von Entscheidungsfragen gut nachvollziehen
 können. Jeder der einzelnen Entscheidungsbäume kommt jedoch zu einer anderen
 Reihenfolge der Entscheidungsfragen und zu anderen Grenzen. Dafür bietet der
 Random-Forest-Algorithmus eine alternative Bewertung, wie wichtig einzelne
-Merkmale (Features) sind, die sogenannte **Feature Importance**. 
+Merkmale (Features) sind, die sogenannte **Feature Importance**.
 
 Feature Importance bewertet, wie wichtig der Einfluss eines Merkmals (Features)
 auf die Prognoseleistung ist. Ist die Feature Importance eines Merkmals
@@ -164,7 +162,7 @@ Mittelwert bilden, erhalten wir ein aussagekräftiges Bewertungskriterium, wie
 stark einzelne Merkmale die Prognosefähigkeit beeinflussen.
 
 Wir trainieren nun einen Random Forest mit der Standardeinstellung von 100
-Entscheidungsbäumen und lassen uns dann die Feature Importance ausgeben. 
+Entscheidungsbäumen und lassen uns dann die Feature Importance ausgeben.
 
 ```{code-cell} ipython3
 model = RandomForestClassifier(random_state=0)
@@ -187,7 +185,6 @@ fig.show()
 
 Der Preis ist demnach wichtiger als der Kilometerstand (wobei es hier ja ein
 künstliches Beispiel ist).
-
 
 ## Zusammenfassung und Ausblick
 

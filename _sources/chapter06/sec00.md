@@ -12,9 +12,7 @@ kernelspec:
   name: python3
 ---
 
-(chap06)=
 # 6. Entscheidungsbäume (Decision Trees)
-
 
 Kapitelübersicht:
 

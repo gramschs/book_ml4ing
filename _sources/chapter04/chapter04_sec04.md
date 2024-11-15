@@ -214,7 +214,7 @@ und bedarf keiner weiteren Maßnahmen.
 
 ````{admonition} Übung 4.2 - Teilaufgabe c)
 :class: miniexercise
-Fertigen Sie Boxplots an und bewerten Sie die statistischen Kennzahlen. 
+Fertigen Sie Boxplots an und interpretieren Sie die statistischen Kennzahlen. 
 ````
 
 ````{admonition} Lösung
@@ -259,7 +259,7 @@ fig.show()
 ```
 
 Die Verteilung des Stromverbrauchs ist ungefähr symmetrisch, es gibt einen
-Ausreißer nach unten und einen Ausreißr nach oben.
+Ausreißer nach unten und einen Ausreißer nach oben.
 
 ```python
 fig = px.box(data['Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher'],

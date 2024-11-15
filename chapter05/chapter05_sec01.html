@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -514,7 +514,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-metrische-daten">Was wir bisher hatten: metrische Daten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten">Das Gegenteil von metrischen Daten: kategoriale Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-numerischen-daten-kategoriale-daten">Das Gegenteil von numerischen Daten: kategoriale Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
@@ -532,7 +532,7 @@ document.write(`
 <h1>5.1 Was sind kategoriale Daten?<a class="headerlink" href="#was-sind-kategoriale-daten" title="Link to this heading">#</a></h1>
 <p>In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
 Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt.
-Unsere statistische Analysen und Visualisierungen konzentrierten sich
+Unsere statistischen Analysen und Visualisierungen konzentrierten sich
 hauptsächlich auf numerische Werte wie den Kilometerstand. Dies liegt daran,
 dass es für Daten wie Farben oder Automarken keine Rechenoperationen gibt. In
 diesem Kapitel werden wir uns intensiver mit diesen nicht-numerischen Daten
@@ -542,7 +542,7 @@ auseinandersetzen.</p>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie wissen, was <strong>metrische (quantitative) Daten</strong> sind.</p></li>
+<li><p>Sie wissen, was <strong>numerische (metrische oder quantitative) Daten</strong> sind.</p></li>
 <li><p>Sie wissen, was <strong>kategoriale (qualitative) Daten</strong> sind.</p></li>
 <li><p>Sie können die Methode <strong>.unique()</strong> benutzen, um die eindeutigen Werte eines
 Pandas-Series-Objektes aufzulisten.</p></li>
@@ -560,88 +560,181 @@ können diesen mit der Methode <strong>.mode()</strong> bestimmen lassen.</p></l
 <p>In den bisherigen Kapiteln lag unser Fokus auf den Verkaufspreisen von Autos.
 Die Methode <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> in Pandas bietet eine schnelle Möglichkeit, einen
 Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
-Interessanterweise berücksichtigt diese Methode nur numerische Werte (also
-Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch die
-nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Wer würde schon
-ein Auto in Pink bevorzugen?</p>
+Interessanterweise berücksichtigt die <code class="docutils literal notranslate"><span class="pre">describe()</span></code>-Methode nur numerische Werte
+(also Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch
+die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Wer würde
+schon ein Auto in Pink bevorzugen?</p>
 <p>Bevor wir uns den nicht-numerischen Daten widmen, vertiefen wir unser
 Verständnis für numerische Daten. Diese werden oft auch als <strong>metrische oder
 quantitative Daten</strong> bezeichnet.</p>
 <div class="note admonition">
-<p class="admonition-title">Was sind … metrische/quantitative Daten?</p>
+<p class="admonition-title">Was sind … metrische/quantitative/numerische Daten?</p>
 <p>Metrische Daten sind Informationen, die gemessen werden können. Daher können sie
 durch Zahlen (ganze Zahlen, rationale oder reelle Zahlen) auf einer Skala
-dargestellt werden. Ein anderer Name für metrische Daten ist der Begriff
-quantitative Daten.</p>
+dargestellt werden und werden numerische Daten genannt. Ein anderer Name für
+metrische Daten ist der Begriff quantitative Daten.</p>
 </div>
-<p>Betrachten wir erneut den Datensatz der Autoverkaufspreise von <a class="reference external" href="http://Autoscout24.de">Autoscout24.de</a>,
-diesmal jedoch mit allen Autos, die im Jahr 2020 zugelassen wurden. Ein kurzer
-Überblick über den Datensatz hilft uns, die Art der Daten besser zu verstehen.</p>
+<p>Wir betrachten den Datensatz <a class="reference download external" download="" href="https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">autoscout24_DE_2020.csv</span></code></a> mit
+Autoverkaufspreises von <a class="reference external" href="https://www.autoscout24.de">Autoscout24.de</a>, der alle
+Autos enthält, die im Jahr 2020 zugelassen wurden. Ein kurzer Überblick über den
+Datensatz hilft uns, die Art der Daten besser zu verstehen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_DE_2020.csv&#39;</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 18566 entries, 0 to 18565
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 18566 non-null  object 
- 1   Modell                18566 non-null  object 
- 2   Farbe                 18546 non-null  object 
- 3   Erstzulassung         18566 non-null  object 
- 4   Jahr                  18566 non-null  int64  
- 5   Preis (Euro)          18566 non-null  int64  
- 6   Leistung (kW)         18552 non-null  float64
- 7   Leistung (PS)         18552 non-null  float64
- 8   Getriebe              18566 non-null  object 
- 9   Kraftstoff            18566 non-null  object 
- 10  Verbrauch (l/100 km)  15501 non-null  object 
- 11  Verbrauch (g/km)      18566 non-null  object 
- 12  Kilometerstand (km)   18566 non-null  float64
- 13  Bemerkungen           18566 non-null  object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 2.0+ MB
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:521,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:630,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">630</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:559,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">559</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:639,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">639</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
 </pre></div>
 </div>
 </div>
 </div>
-<div class="tip admonition">
+<div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Welche Eigenschaften der Autos sind metrisch (quantitativ)? Würden Sie bei anderen
-Eigenschaften ebenfalls einen metrischen Datentyp erwarten?</p>
+<p>Welche Eigenschaften der Autos sind numerisch (metrisch/quantitativ)? Würden Sie
+bei anderen Eigenschaften ebenfalls einen metrischen Datentyp erwarten?</p>
 </div>
-<div class="tip toggle admonition">
+<div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
 <p>Das Jahr und der Preis (Euro) sind ganze Zahlen (Integers). Die Leistung der
 Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
 oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
 repräsentiert. Das hätte man auch für den Verbrauch in Spalte 10 oder 11
 erwarten können. Die Angabe der Einheit l/100 km oder g/km in den Zellen hat
-verhindert, dass Pandas diese Informationen als Zahl interpretiert hat.</p>
+verhindert, dass Pandas diese Informationen als Zahl interpretiert.</p>
 </div>
-<p>Mit metrischen bzw. quantitativen Daten können wir umfangreiche Datenanalysen
-durchführen. Wir können vergleichen, ob zwei Messwerte gleich oder ungleich
-sind. Wir können beurteilen, ob ein Messwert kleiner oder größer als ein anderer
-ist oder sogar das Minimum und das Maximum aller Messwerte bestimmen. Und vor
-allem können wir mit metrischen Daten rechnen. Erst dadurch ist es möglich,
-einen Mittelwert zu bilden oder Streuungsmaße wie Spannweite, Standardabweichung
-und Interquartilsabstand zu berechnen. Solche detaillierten Berechnungen sind
-nur bei metrischen (quantitativen) Daten möglich.</p>
+<p>Mit numerischen Daten können wir umfangreiche Datenanalysen durchführen. Wir
+können vergleichen, ob zwei Messwerte gleich oder ungleich sind. Wir können
+beurteilen, ob ein Messwert kleiner oder größer als ein anderer ist oder sogar
+das Minimum und das Maximum aller Messwerte bestimmen. Und vor allem können wir
+mit metrischen Daten rechnen. Erst dadurch ist es möglich, einen Mittelwert zu
+bilden oder Streuungsmaße wie Spannweite, Standardabweichung und
+Interquartilsabstand zu berechnen. Solche detaillierten Berechnungen sind nur
+bei metrischen (quantitativen) Daten möglich.</p>
 </section>
-<section id="das-gegenteil-von-metrischen-daten-kategoriale-daten">
-<h2>Das Gegenteil von metrischen Daten: kategoriale Daten<a class="headerlink" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten" title="Link to this heading">#</a></h2>
-<p>Während metrische Daten messbare Informationen darstellen, sind <strong>kategoriale
+<section id="das-gegenteil-von-numerischen-daten-kategoriale-daten">
+<h2>Das Gegenteil von numerischen Daten: kategoriale Daten<a class="headerlink" href="#das-gegenteil-von-numerischen-daten-kategoriale-daten" title="Link to this heading">#</a></h2>
+<p>Während numerische Daten messbare Informationen darstellen, sind <strong>kategoriale
 Daten</strong> durch ihre Zugehörigkeit zu bestimmten Kategorien oder Gruppen
 definiert. Ein weiterer Begriff für kategoriale Daten ist <strong>qualitative Daten</strong>.
 Ein gutes Beispiel für kategoriale Daten ist die Farbe eines Autos. Oft gibt der
 Datentyp einer bestimmten Eigenschaft in einem Datensatz bereits Hinweise
-darauf, ob es sich um kategoriale oder metrische Daten handelt.</p>
+darauf, ob es sich um kategoriale oder numerische Daten handelt.</p>
 <p>Der obige Ausführung der Anweisung <code class="docutils literal notranslate"><span class="pre">data.info()</span></code> hat gezeigt, dass einige Daten
 als <code class="docutils literal notranslate"><span class="pre">objects</span></code> gespeichert sind, was oft auf kategoriale Daten hinweist. Ein
 Blick in die Spalte »Marke« gibt uns weitere Einblicke.</p>
@@ -651,42 +744,12 @@ Blick in die Spalte »Marke« gibt uns weitere Einblicke.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    alfa-romeo
-1    alfa-romeo
-2    alfa-romeo
-3    alfa-romeo
-4    alfa-romeo
-5    alfa-romeo
-6    alfa-romeo
-7    alfa-romeo
-8    alfa-romeo
-9    alfa-romeo
-Name: Marke, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <p>Die ersten 10 Autos sind offensichtlich Alfa Romeos. Sind vielleicht nur Alfa
 Romeos in der Tabelle enthalten? Wir schauen uns die letzten 10 Einträge an.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18556    volvo
-18557    volvo
-18558    volvo
-18559    volvo
-18560    volvo
-18561    volvo
-18562    volvo
-18563    volvo
-18564    volvo
-18565    volvo
-Name: Marke, dtype: object
 </pre></div>
 </div>
 </div>
@@ -700,17 +763,6 @@ so dass wir diese Methode hier benutzen können.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Marke&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;alfa-romeo&#39;, &#39;aston-martin&#39;, &#39;audi&#39;, &#39;bentley&#39;, &#39;bmw&#39;, &#39;cadillac&#39;,
-       &#39;chevrolet&#39;, &#39;citroen&#39;, &#39;dacia&#39;, &#39;dodge&#39;, &#39;ferrari&#39;, &#39;fiat&#39;,
-       &#39;ford&#39;, &#39;honda&#39;, &#39;hyundai&#39;, &#39;infiniti&#39;, &#39;isuzu&#39;, &#39;jaguar&#39;, &#39;jeep&#39;,
-       &#39;kia&#39;, &#39;lada&#39;, &#39;lamborghini&#39;, &#39;land-rover&#39;, &#39;maserati&#39;, &#39;mazda&#39;,
-       &#39;mercedes-benz&#39;, &#39;mini&#39;, &#39;mitsubishi&#39;, &#39;nissan&#39;, &#39;opel&#39;, &#39;peugeot&#39;,
-       &#39;porsche&#39;, &#39;renault&#39;, &#39;rover&#39;, &#39;seat&#39;, &#39;skoda&#39;, &#39;smart&#39;,
-       &#39;ssangyong&#39;, &#39;toyota&#39;, &#39;volkswagen&#39;, &#39;volvo&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -731,7 +783,7 @@ qualitative Daten.</p>
 <p>Diese Definition ist nicht präzise. Der Begriff “begrenzte Anzahl” von Werten
 ist etwas schwammig. Sind damit 10 Kategorien gemeint oder 100 oder 1000? Welche
 Eigenschaften des Auto-Datensatzes sind kategorial?</p>
-<div class="tip admonition">
+<div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
 <p>Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen sie
 die Anzahl der einzigartigen Einträge dieser Eigenschaft.</p>
@@ -739,7 +791,7 @@ die Anzahl der einzigartigen Einträge dieser Eigenschaft.</p>
 hier wie eine Liste benutzt werden kann. Die Python-Funktion <code class="docutils literal notranslate"><span class="pre">len()</span></code> kann die
 Länge einer Liste, also die Anzahl der Elemente der Liste, bestimmen.</p>
 </div>
-<div class="tip toggle admonition">
+<div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_einzigartige_werte</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Modell&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Spalte/Eigenschaft Modell hat </span><span class="si">{</span><span class="n">anzahl_einzigartige_werte</span><span class="si">}</span><span class="s1"> einzigartige Werte.&#39;</span><span class="p">)</span>
@@ -771,7 +823,7 @@ Länge einer Liste, also die Anzahl der Elemente der Liste, bestimmen.</p>
 </div>
 </div>
 <p>Bei unserem Beispiel sind die Eigenschaften Marke, Modell, Farbe, Getriebe,
-Kraftstoff und Bemerkungen nicht-metrische Eigenschaften. Allerdings hat die
+Kraftstoff und Bemerkungen nicht-numerische Eigenschaften. Allerdings hat die
 Eigenschaft Bemerkungen 16547 verschiedene Werte. Ein Merkmal von kategorialen
 bzw. qualitativen Daten ist aber, dass nur eine begrenzte Anzahl von
 verschiedenen Werten angenommen wird. Das ist hier nicht mehr der Fall, so dass
@@ -800,7 +852,7 @@ können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
 wird der <strong>Modus</strong> oder <strong>Modalwert</strong> bestimmt.</p>
 <div class="notes admonition">
 <p class="admonition-title">Was ist … der Modus (Modalwert)?</p>
-<p>Der Modus, auch Modalwert genannt, ist der häufigste auftretende Werte in dem
+<p>Der Modus, auch Modalwert genannt, ist der häufigste auftretende Wert in dem
 Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
 für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.</p>
 </div>
@@ -815,12 +867,6 @@ wird dann die Methode angewendet.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die häufigste Farbe ist 0    schwarz
-Name: Farbe, dtype: object.
-</pre></div>
-</div>
-</div>
 </div>
 <p>Und wie häufig kommen die anderen Farben vor? Die Methode <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>
 zählt die Anzahl an Autos mit einer bestimmten Farbe.</p>
@@ -830,39 +876,12 @@ zählt die Anzahl an Autos mit einer bestimmten Farbe.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Farbe
-schwarz    3612
-grau       3561
-weiß       3397
-blau       2442
-silber     2155
-rot        2044
-orange      418
-grün        290
-braun       238
-gelb        148
-beige       129
-bronze       47
-gold         36
-violett      29
-Name: count, dtype: int64
-</pre></div>
-</div>
-</div>
 </div>
 <p>Bleiben noch die geordneten kategorialen Daten. Dazu inspizieren wir die
 einzigartigen Werte der Erstzulassung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;09/2020&#39;, &#39;06/2020&#39;, &#39;04/2020&#39;, &#39;12/2020&#39;, &#39;05/2020&#39;, &#39;10/2020&#39;,
-       &#39;02/2020&#39;, &#39;11/2020&#39;, &#39;08/2020&#39;, &#39;07/2020&#39;, &#39;03/2020&#39;, &#39;01/2020&#39;],
-      dtype=object)
 </pre></div>
 </div>
 </div>
@@ -878,36 +897,12 @@ bestimmen.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    02/2020
-Name: Erstzulassung, dtype: object
-</pre></div>
-</div>
-</div>
 </div>
 <p>Die meisten Autos wurden im Februar zugelassen. Wir können auch mit
 <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> für jeden Monat die Anzahl der Zulassungen auszählen lassen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erstzulassung
-02/2020    1954
-01/2020    1934
-03/2020    1892
-12/2020    1748
-11/2020    1522
-10/2020    1435
-07/2020    1432
-09/2020    1424
-05/2020    1383
-04/2020    1350
-06/2020    1299
-08/2020    1193
-Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -938,33 +933,12 @@ intensiver beschäftigen. Jetzt gehen wir händisch vor und benutzen die
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_14669/1066607467.py:9: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
-The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
-
-For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
-
-
-  data[&#39;Erstzulassung&#39;].replace(kodierung_string, kodierung_integer, inplace=True)
-/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_14669/1066607467.py:9: FutureWarning: Downcasting behavior in `replace` is deprecated and will be removed in a future version. To retain the old behavior, explicitly call `result.infer_objects(copy=False)`. To opt-in to the future behavior, set `pd.set_option(&#39;future.no_silent_downcasting&#39;, True)`
-  data[&#39;Erstzulassung&#39;].replace(kodierung_string, kodierung_integer, inplace=True)
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9,  6,  4, 12,  5, 10,  2, 11,  8,  7,  3,  1])
-</pre></div>
-</div>
-</div>
 </div>
 <p>Jetzt können wir von Pandas den Median berechnen lassen, den die ganzen Zahlen
 von 1 bis 12 haben eine natürliche Reihenfolge. Der Median ist</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
 </pre></div>
 </div>
 </div>
@@ -975,17 +949,18 @@ Tag der Zulassung nicht ermitteln.</p>
 </section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
-<p>In diesem Kapitel haben wir uns mit dem Unterschied zwischen qualitativen
-(metrischen) und quantitativen (kategorialen) Daten beschäftigt. Dabei wird bei
-quantitativen Daten noch zwischen ungeordneten und geordneten Kategorien
-unterschieden. Abhängig von der Art der Daten können unterschiedliche
-statistische Kennzahlen erhoben werden. Bei ungeordneten kategorialen Daten kann
-nur der Modus (Modalwert) berechnet werden. Bei geordneten kategorialen Daten
-können zusätzlich noch Quantile (insbeondere der Median) berechnet werden. Nur
-bei metrischen (qualitativen) Daten ist es möglich, den Mittelwert und
-zusätzlich die Streuungsmaße (Spannbreite, Standardabweichung und
-Interquartilsabstand) zu bestimmen. Im nächsten Kapitel werden uns mit der
-Visualisierung der kategorialen Daten beschäftigen.</p>
+<p>In diesem Kapitel haben wir uns mit dem Unterschied zwischen numerischen
+(metrischen bzw. quantitativen) und kategorialen (qualitativen) Daten
+beschäftigt. Dabei wird bei kategorialen Daten noch zwischen ungeordneten und
+geordneten Kategorien unterschieden. Abhängig von der Art der Daten können
+unterschiedliche statistische Kennzahlen erhoben werden. Bei ungeordneten
+kategorialen Daten kann nur der Modus (Modalwert) berechnet werden. Bei
+geordneten kategorialen Daten können zusätzlich noch Quantile (insbesondere der
+Median) berechnet werden. Nur bei numerischen (metrischen bzw. qualitativen)
+Daten ist es möglich, den Mittelwert und zusätzlich die Streuungsmaße
+(Spannbreite, Standardabweichung und Interquartilsabstand) zu bestimmen. Im
+nächsten Kapitel werden wir uns mit der Visualisierung der kategorialen Daten
+beschäftigen.</p>
 </section>
 </section>
 
@@ -1055,7 +1030,7 @@ Visualisierung der kategorialen Daten beschäftigen.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-metrische-daten">Was wir bisher hatten: metrische Daten</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-metrischen-daten-kategoriale-daten">Das Gegenteil von metrischen Daten: kategoriale Daten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-numerischen-daten-kategoriale-daten">Das Gegenteil von numerischen Daten: kategoriale Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>

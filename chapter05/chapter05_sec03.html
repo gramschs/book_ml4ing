@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -540,7 +540,7 @@ gruppierten Daten zugreifen und zusätzliche Analysen durchführen können.</p>
 <ul class="simple">
 <li><p>Sie wissen, dass die Wahrheitswerte <code class="docutils literal notranslate"><span class="pre">True</span></code> (wahr)  oder <code class="docutils literal notranslate"><span class="pre">False</span></code> (falsch) in
 dem Datentyp <strong>bool</strong> gespeichert werden.</p></li>
-<li><p>Sie kennen die wichtigstens Vergleichsoperatoren (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>,
+<li><p>Sie kennen die wichtigsten Vergleichsoperatoren (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>,
 <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code>) in Python.</p></li>
 <li><p>Sie können ein Pandas-DataFrame-Objekt nach einem Wert filtern.</p></li>
 <li><p>Sie können ein Pandas-DataFrame-Objekt mit den Methoden <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> und
@@ -559,38 +559,130 @@ erheblich. Um eine genauere Analyse zu ermöglichen, wäre es sinnvoll, Fahrzeug
 mit einer Laufleistung von bis zu 200.000 km in den Fokus zu nehmen und die
 Ausreißer auszuschließen. Daher widmen wir uns in diesem Kapitel der Filterung
 von tabellarischen Datensätzen mithilfe von Pandas.</p>
-<p>Zuerst laden wir den Datensatz und überprüfen den Inhalt.</p>
+<p>Zuerst laden wir den Datensatz <a class="reference download external" download="" href="https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv"><code class="xref download docutils literal notranslate"><span class="pre">autoscout24_DE_2020.csv</span></code></a> und
+überprüfen den Inhalt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;autoscout24_DE_2020.csv&#39;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 18566 entries, 0 to 18565
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 18566 non-null  object 
- 1   Modell                18566 non-null  object 
- 2   Farbe                 18546 non-null  object 
- 3   Erstzulassung         18566 non-null  object 
- 4   Jahr                  18566 non-null  int64  
- 5   Preis (Euro)          18566 non-null  int64  
- 6   Leistung (kW)         18552 non-null  float64
- 7   Leistung (PS)         18552 non-null  float64
- 8   Getriebe              18566 non-null  object 
- 9   Kraftstoff            18566 non-null  object 
- 10  Verbrauch (l/100 km)  15501 non-null  object 
- 11  Verbrauch (g/km)      18566 non-null  object 
- 12  Kilometerstand (km)   18566 non-null  float64
- 13  Bemerkungen           18566 non-null  object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 2.0+ MB
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:215,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">215</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:521,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">520</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">521</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:630,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">630</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:559,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">558</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">559</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:492,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">492</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File /opt/homebrew/Caskroom/miniconda/base/envs/python312/lib/python3.12/urllib/request.py:639,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">639</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
 </pre></div>
 </div>
 </div>
@@ -614,29 +706,12 @@ Datentyp an:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
-</pre></div>
-</div>
-</div>
 </div>
 <p>Offensichtlich handelt es sich um ein Pandas-Series-Objekt. Für weitere
 Informationen können wir die <code class="docutils literal notranslate"><span class="pre">.info()</span></code>-Methode aufrufen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bedingung</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
-RangeIndex: 18566 entries, 0 to 18565
-Series name: Kilometerstand (km)
-Non-Null Count  Dtype
---------------  -----
-18566 non-null  bool 
-dtypes: bool(1)
-memory usage: 18.3 KB
 </pre></div>
 </div>
 </div>
@@ -650,27 +725,12 @@ Einträge ausgeben:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    True
-1    True
-2    True
-3    True
-4    True
-Name: Kilometerstand (km), dtype: bool
-</pre></div>
-</div>
-</div>
 </div>
 <p>Sind alle Einträge mit dem Wert <code class="docutils literal notranslate"><span class="pre">True</span></code> gefüllt? Wie viele und vor allem welche
 einzigartige Einträge gibt es in diesem Series-Objekt?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bedingung</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False])
 </pre></div>
 </div>
 </div>
@@ -684,11 +744,6 @@ zeigt:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">19</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span>  <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 </pre></div>
 </div>
 </div>
@@ -716,36 +771,11 @@ ein Element in einer Liste ist oder eben nicht.</p>
 </div>
 <p>Aber was machen wir jetzt mit diesem Series-Objekt? Wir können es als Index
 benutzen für den ursprünglichen Datensatz benutzen. Die Zeilen, in denen <code class="docutils literal notranslate"><span class="pre">True</span></code>
-sthet, werden übernommen, die anderen verworfen.</p>
+steht, werden übernommen, die anderen verworfen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">autos_bis_200000km</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">bedingung</span><span class="p">]</span>
 <span class="n">autos_bis_200000km</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 18525 entries, 0 to 18565
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 18525 non-null  object 
- 1   Modell                18525 non-null  object 
- 2   Farbe                 18505 non-null  object 
- 3   Erstzulassung         18525 non-null  object 
- 4   Jahr                  18525 non-null  int64  
- 5   Preis (Euro)          18525 non-null  int64  
- 6   Leistung (kW)         18511 non-null  float64
- 7   Leistung (PS)         18511 non-null  float64
- 8   Getriebe              18525 non-null  object 
- 9   Kraftstoff            18525 non-null  object 
- 10  Verbrauch (l/100 km)  15472 non-null  object 
- 11  Verbrauch (g/km)      18525 non-null  object 
- 12  Kilometerstand (km)   18525 non-null  float64
- 13  Bemerkungen           18525 non-null  object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 2.1+ MB
 </pre></div>
 </div>
 </div>
@@ -759,134 +789,15 @@ geglückt? Wir verschaffen uns mit der <code class="docutils literal notranslate
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Jahr</th>
-      <th>Preis (Euro)</th>
-      <th>Leistung (kW)</th>
-      <th>Leistung (PS)</th>
-      <th>Kilometerstand (km)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>18525.0</td>
-      <td>18525.000000</td>
-      <td>18511.000000</td>
-      <td>18511.000000</td>
-      <td>18525.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>2020.0</td>
-      <td>33513.975816</td>
-      <td>135.327697</td>
-      <td>184.079466</td>
-      <td>42251.647935</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.0</td>
-      <td>37458.475775</td>
-      <td>75.548942</td>
-      <td>102.680858</td>
-      <td>28741.442712</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>2020.0</td>
-      <td>5950.000000</td>
-      <td>4.000000</td>
-      <td>5.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>2020.0</td>
-      <td>19990.000000</td>
-      <td>90.000000</td>
-      <td>122.000000</td>
-      <td>22720.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2020.0</td>
-      <td>26489.000000</td>
-      <td>110.000000</td>
-      <td>150.000000</td>
-      <td>35722.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>2020.0</td>
-      <td>35490.000000</td>
-      <td>148.000000</td>
-      <td>201.000000</td>
-      <td>54422.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>2020.0</td>
-      <td>959980.000000</td>
-      <td>596.000000</td>
-      <td>810.000000</td>
-      <td>199000.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Der maximale Eintrag für die Spalte <code class="docutils literal notranslate"><span class="pre">Kilometerstand</span> <span class="pre">(km)</span></code> ist 199000 km. Mit dem
-Tilde-Operaot <code class="docutils literal notranslate"><span class="pre">~</span></code> können wir das Pandas-Series-Objekt <code class="docutils literal notranslate"><span class="pre">bedingung</span></code> in das
+Tilde-Operator <code class="docutils literal notranslate"><span class="pre">~</span></code> können wir das Pandas-Series-Objekt <code class="docutils literal notranslate"><span class="pre">bedingung</span></code> in das
 Gegenteil umwandeln. Damit können wir also die Autos, bei denen der Vergleich
 <code class="docutils literal notranslate"><span class="pre">&lt;=</span> <span class="pre">200000</span></code> zu <code class="docutils literal notranslate"><span class="pre">False</span></code> ausgewertet wurde, herausfiltern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">autos_ab_200000km</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">bedingung</span><span class="p">]</span>
 <span class="n">autos_ab_200000km</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 41 entries, 968 to 18517
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 41 non-null     object 
- 1   Modell                41 non-null     object 
- 2   Farbe                 41 non-null     object 
- 3   Erstzulassung         41 non-null     object 
- 4   Jahr                  41 non-null     int64  
- 5   Preis (Euro)          41 non-null     int64  
- 6   Leistung (kW)         41 non-null     float64
- 7   Leistung (PS)         41 non-null     float64
- 8   Getriebe              41 non-null     object 
- 9   Kraftstoff            41 non-null     object 
- 10  Verbrauch (l/100 km)  29 non-null     object 
- 11  Verbrauch (g/km)      41 non-null     object 
- 12  Kilometerstand (km)   41 non-null     float64
- 13  Bemerkungen           41 non-null     object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 4.8+ KB
 </pre></div>
 </div>
 </div>
@@ -900,100 +811,6 @@ Statistik an.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Jahr</th>
-      <th>Preis (Euro)</th>
-      <th>Leistung (kW)</th>
-      <th>Leistung (PS)</th>
-      <th>Kilometerstand (km)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>41.0</td>
-      <td>41.000000</td>
-      <td>41.000000</td>
-      <td>41.000000</td>
-      <td>41.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>2020.0</td>
-      <td>20958.926829</td>
-      <td>115.463415</td>
-      <td>156.975610</td>
-      <td>245033.951220</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>0.0</td>
-      <td>8955.785235</td>
-      <td>40.915216</td>
-      <td>55.554247</td>
-      <td>53031.305157</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>2020.0</td>
-      <td>8000.000000</td>
-      <td>56.000000</td>
-      <td>76.000000</td>
-      <td>201000.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>2020.0</td>
-      <td>15740.000000</td>
-      <td>85.000000</td>
-      <td>116.000000</td>
-      <td>209800.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>2020.0</td>
-      <td>19950.000000</td>
-      <td>103.000000</td>
-      <td>140.000000</td>
-      <td>227846.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>2020.0</td>
-      <td>26000.000000</td>
-      <td>140.000000</td>
-      <td>190.000000</td>
-      <td>259000.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>2020.0</td>
-      <td>44900.000000</td>
-      <td>255.000000</td>
-      <td>347.000000</td>
-      <td>435909.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Und was sind das für Autos?</p>
 <div class="cell docutils container">
@@ -1002,215 +819,6 @@ Statistik an.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Marke</th>
-      <th>Modell</th>
-      <th>Farbe</th>
-      <th>Erstzulassung</th>
-      <th>Jahr</th>
-      <th>Preis (Euro)</th>
-      <th>Leistung (kW)</th>
-      <th>Leistung (PS)</th>
-      <th>Getriebe</th>
-      <th>Kraftstoff</th>
-      <th>Verbrauch (l/100 km)</th>
-      <th>Verbrauch (g/km)</th>
-      <th>Kilometerstand (km)</th>
-      <th>Bemerkungen</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>968</th>
-      <td>audi</td>
-      <td>Audi A6</td>
-      <td>silber</td>
-      <td>05/2020</td>
-      <td>2020</td>
-      <td>29100</td>
-      <td>170.0</td>
-      <td>231.0</td>
-      <td>Automatik</td>
-      <td>Hybrid (Elektro/Diesel)</td>
-      <td>5,9 l/100 km</td>
-      <td>187 g/km</td>
-      <td>215000.0</td>
-      <td>Avant 45 TDI quattro sport</td>
-    </tr>
-    <tr>
-      <th>1136</th>
-      <td>audi</td>
-      <td>Audi S4</td>
-      <td>weiß</td>
-      <td>08/2020</td>
-      <td>2020</td>
-      <td>34990</td>
-      <td>255.0</td>
-      <td>347.0</td>
-      <td>Automatik</td>
-      <td>Diesel</td>
-      <td>6,3 l/100 km</td>
-      <td>165 g/km</td>
-      <td>227846.0</td>
-      <td>Avant 3.0 TDI quattro Optik-Paket</td>
-    </tr>
-    <tr>
-      <th>2265</th>
-      <td>bmw</td>
-      <td>BMW 530</td>
-      <td>weiß</td>
-      <td>05/2020</td>
-      <td>2020</td>
-      <td>32999</td>
-      <td>195.0</td>
-      <td>265.0</td>
-      <td>Automatik</td>
-      <td>Diesel</td>
-      <td>5,9 l/100 km</td>
-      <td>156 g/km</td>
-      <td>209800.0</td>
-      <td>Baureihe 5 Touring 530 d xDrive M Sport</td>
-    </tr>
-    <tr>
-      <th>2340</th>
-      <td>bmw</td>
-      <td>BMW 218</td>
-      <td>orange</td>
-      <td>08/2020</td>
-      <td>2020</td>
-      <td>27500</td>
-      <td>100.0</td>
-      <td>136.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Benzin</td>
-      <td>6 l/100 km</td>
-      <td>- (g/km)</td>
-      <td>290000.0</td>
-      <td>218i Coupe M Sport</td>
-    </tr>
-    <tr>
-      <th>2726</th>
-      <td>citroen</td>
-      <td>Citroen Jumper</td>
-      <td>weiß</td>
-      <td>06/2020</td>
-      <td>2020</td>
-      <td>17999</td>
-      <td>103.0</td>
-      <td>140.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>NaN</td>
-      <td>- (g/km)</td>
-      <td>273999.0</td>
-      <td>L3 H4#Hoch/Lang#AT Motor erst 100.000km#</td>
-    </tr>
-    <tr>
-      <th>2732</th>
-      <td>citroen</td>
-      <td>Citroen Jumper</td>
-      <td>weiß</td>
-      <td>09/2020</td>
-      <td>2020</td>
-      <td>19975</td>
-      <td>103.0</td>
-      <td>140.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>6,5 l/100 km</td>
-      <td>170 g/km</td>
-      <td>215000.0</td>
-      <td>35 L4H2 Club Heavy BlueHD (AT Motor/Getr)</td>
-    </tr>
-    <tr>
-      <th>2734</th>
-      <td>citroen</td>
-      <td>Citroen Berlingo</td>
-      <td>weiß</td>
-      <td>09/2020</td>
-      <td>2020</td>
-      <td>11781</td>
-      <td>56.0</td>
-      <td>76.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>4,1 l/100 km</td>
-      <td>109 g/km</td>
-      <td>204377.0</td>
-      <td>Kasten 1,5 BlueHDI Club M/L1 Klima Pdc</td>
-    </tr>
-    <tr>
-      <th>2736</th>
-      <td>citroen</td>
-      <td>Citroen Berlingo</td>
-      <td>weiß</td>
-      <td>03/2020</td>
-      <td>2020</td>
-      <td>10980</td>
-      <td>75.0</td>
-      <td>102.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>4 l/100 km</td>
-      <td>106 g/km</td>
-      <td>236400.0</td>
-      <td>Kasten BlueHDi 100 Club M/L1 Kühlkasten</td>
-    </tr>
-    <tr>
-      <th>2942</th>
-      <td>dacia</td>
-      <td>Dacia Dokker</td>
-      <td>grau</td>
-      <td>02/2020</td>
-      <td>2020</td>
-      <td>9500</td>
-      <td>70.0</td>
-      <td>95.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>4,2 l/100 km</td>
-      <td>111 g/km</td>
-      <td>237420.0</td>
-      <td>Express Comfort/1Hd./Scheckheftgepflegt</td>
-    </tr>
-    <tr>
-      <th>3045</th>
-      <td>dacia</td>
-      <td>Dacia Logan</td>
-      <td>silber</td>
-      <td>03/2020</td>
-      <td>2020</td>
-      <td>9600</td>
-      <td>70.0</td>
-      <td>95.0</td>
-      <td>Schaltgetriebe</td>
-      <td>Diesel</td>
-      <td>3,6 l/100 km</td>
-      <td>92 g/km</td>
-      <td>217400.0</td>
-      <td>MCV II Kombi Comfort Navi Standh. PDC 8-fach b...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="gruppieren">
@@ -1229,31 +837,6 @@ den folgenden Code:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 1190 entries, 104 to 1293
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 1190 non-null   object 
- 1   Modell                1190 non-null   object 
- 2   Farbe                 1190 non-null   object 
- 3   Erstzulassung         1190 non-null   object 
- 4   Jahr                  1190 non-null   int64  
- 5   Preis (Euro)          1190 non-null   int64  
- 6   Leistung (kW)         1189 non-null   float64
- 7   Leistung (PS)         1189 non-null   float64
- 8   Getriebe              1190 non-null   object 
- 9   Kraftstoff            1190 non-null   object 
- 10  Verbrauch (l/100 km)  1010 non-null   object 
- 11  Verbrauch (g/km)      1190 non-null   object 
- 12  Kilometerstand (km)   1190 non-null   float64
- 13  Bemerkungen           1190 non-null   object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 139.5+ KB
-</pre></div>
-</div>
-</div>
 </div>
 <p>Diese Bedingung erfüllen 1.190 Autos. Der Gesamtdatensatz enthält jedoch 41
 unterschiedliche Automarken. Es wäre ineffizient, für jede Marke eine separate
@@ -1267,14 +850,9 @@ gruppieren:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.groupby.generic.DataFrameGroupBy
-</pre></div>
-</div>
-</div>
 </div>
 <p>Das Resultat ist eine spezielle Pandas-Datenstruktur namens <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code>.
-Es sind nicht alle bisher bekannte Methoden auf dieses Objekt anwendbar, aber
+Es sind nicht alle bisher bekannten Methoden auf dieses Objekt anwendbar, aber
 beispielsweise die <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>-Methode darf verwendet werden:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1282,1078 +860,11 @@ beispielsweise die <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="8" halign="left">Jahr</th>
-      <th colspan="2" halign="left">Preis (Euro)</th>
-      <th>...</th>
-      <th colspan="2" halign="left">Leistung (PS)</th>
-      <th colspan="8" halign="left">Kilometerstand (km)</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th>count</th>
-      <th>mean</th>
-      <th>std</th>
-      <th>min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>max</th>
-      <th>count</th>
-      <th>mean</th>
-      <th>...</th>
-      <th>75%</th>
-      <th>max</th>
-      <th>count</th>
-      <th>mean</th>
-      <th>std</th>
-      <th>min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>max</th>
-    </tr>
-    <tr>
-      <th>Marke</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>alfa-romeo</th>
-      <td>88.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>88.0</td>
-      <td>40263.840909</td>
-      <td>...</td>
-      <td>280.00</td>
-      <td>510.0</td>
-      <td>88.0</td>
-      <td>40671.568182</td>
-      <td>24303.271950</td>
-      <td>1000.0</td>
-      <td>23475.00</td>
-      <td>36950.0</td>
-      <td>49743.75</td>
-      <td>121800.0</td>
-    </tr>
-    <tr>
-      <th>aston-martin</th>
-      <td>16.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>16.0</td>
-      <td>174516.750000</td>
-      <td>...</td>
-      <td>551.00</td>
-      <td>725.0</td>
-      <td>16.0</td>
-      <td>18923.250000</td>
-      <td>10374.581569</td>
-      <td>25.0</td>
-      <td>10965.00</td>
-      <td>19200.0</td>
-      <td>23942.00</td>
-      <td>42000.0</td>
-    </tr>
-    <tr>
-      <th>audi</th>
-      <td>1190.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1190.0</td>
-      <td>42584.115126</td>
-      <td>...</td>
-      <td>310.00</td>
-      <td>810.0</td>
-      <td>1190.0</td>
-      <td>50733.891597</td>
-      <td>32154.868792</td>
-      <td>23.0</td>
-      <td>28500.00</td>
-      <td>42811.0</td>
-      <td>65000.00</td>
-      <td>227846.0</td>
-    </tr>
-    <tr>
-      <th>bentley</th>
-      <td>41.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>41.0</td>
-      <td>239720.682927</td>
-      <td>...</td>
-      <td>635.00</td>
-      <td>635.0</td>
-      <td>41.0</td>
-      <td>29706.804878</td>
-      <td>20568.477634</td>
-      <td>20.0</td>
-      <td>13500.00</td>
-      <td>26900.0</td>
-      <td>39900.00</td>
-      <td>93600.0</td>
-    </tr>
-    <tr>
-      <th>bmw</th>
-      <td>1039.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1039.0</td>
-      <td>38951.122233</td>
-      <td>...</td>
-      <td>265.00</td>
-      <td>625.0</td>
-      <td>1039.0</td>
-      <td>51443.319538</td>
-      <td>33237.040181</td>
-      <td>57.0</td>
-      <td>27675.50</td>
-      <td>44500.0</td>
-      <td>67218.00</td>
-      <td>290000.0</td>
-    </tr>
-    <tr>
-      <th>cadillac</th>
-      <td>1.0</td>
-      <td>2020.0</td>
-      <td>NaN</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1.0</td>
-      <td>74900.000000</td>
-      <td>...</td>
-      <td>426.00</td>
-      <td>426.0</td>
-      <td>1.0</td>
-      <td>51000.000000</td>
-      <td>NaN</td>
-      <td>51000.0</td>
-      <td>51000.00</td>
-      <td>51000.0</td>
-      <td>51000.00</td>
-      <td>51000.0</td>
-    </tr>
-    <tr>
-      <th>chevrolet</th>
-      <td>26.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>26.0</td>
-      <td>42018.346154</td>
-      <td>...</td>
-      <td>453.00</td>
-      <td>659.0</td>
-      <td>26.0</td>
-      <td>35102.769231</td>
-      <td>15601.368936</td>
-      <td>4000.0</td>
-      <td>21422.25</td>
-      <td>40258.0</td>
-      <td>43662.75</td>
-      <td>65505.0</td>
-    </tr>
-    <tr>
-      <th>citroen</th>
-      <td>446.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>446.0</td>
-      <td>22244.840807</td>
-      <td>...</td>
-      <td>140.00</td>
-      <td>299.0</td>
-      <td>446.0</td>
-      <td>45375.890135</td>
-      <td>36573.992887</td>
-      <td>10.0</td>
-      <td>22870.00</td>
-      <td>35000.0</td>
-      <td>56112.50</td>
-      <td>273999.0</td>
-    </tr>
-    <tr>
-      <th>dacia</th>
-      <td>268.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>268.0</td>
-      <td>15726.611940</td>
-      <td>...</td>
-      <td>131.00</td>
-      <td>150.0</td>
-      <td>268.0</td>
-      <td>38283.585821</td>
-      <td>28492.869299</td>
-      <td>2729.0</td>
-      <td>20300.00</td>
-      <td>33003.5</td>
-      <td>48292.25</td>
-      <td>237420.0</td>
-    </tr>
-    <tr>
-      <th>dodge</th>
-      <td>77.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>77.0</td>
-      <td>52081.272727</td>
-      <td>...</td>
-      <td>401.00</td>
-      <td>727.0</td>
-      <td>77.0</td>
-      <td>47216.012987</td>
-      <td>26368.755931</td>
-      <td>6300.0</td>
-      <td>26959.00</td>
-      <td>43097.0</td>
-      <td>64465.00</td>
-      <td>135200.0</td>
-    </tr>
-    <tr>
-      <th>ferrari</th>
-      <td>54.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>54.0</td>
-      <td>391129.833333</td>
-      <td>...</td>
-      <td>721.00</td>
-      <td>799.0</td>
-      <td>54.0</td>
-      <td>9954.703704</td>
-      <td>8160.580428</td>
-      <td>94.0</td>
-      <td>4165.25</td>
-      <td>7325.0</td>
-      <td>13242.00</td>
-      <td>33407.0</td>
-    </tr>
-    <tr>
-      <th>fiat</th>
-      <td>493.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>493.0</td>
-      <td>16630.772819</td>
-      <td>...</td>
-      <td>95.00</td>
-      <td>178.0</td>
-      <td>493.0</td>
-      <td>33325.330629</td>
-      <td>40859.386352</td>
-      <td>334.0</td>
-      <td>14900.00</td>
-      <td>22966.0</td>
-      <td>35540.00</td>
-      <td>399000.0</td>
-    </tr>
-    <tr>
-      <th>ford</th>
-      <td>1632.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1632.0</td>
-      <td>27152.117034</td>
-      <td>...</td>
-      <td>190.00</td>
-      <td>771.0</td>
-      <td>1632.0</td>
-      <td>40053.620711</td>
-      <td>29541.064757</td>
-      <td>10.0</td>
-      <td>20895.00</td>
-      <td>33158.0</td>
-      <td>50000.00</td>
-      <td>275000.0</td>
-    </tr>
-    <tr>
-      <th>honda</th>
-      <td>68.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>68.0</td>
-      <td>27821.191176</td>
-      <td>...</td>
-      <td>184.00</td>
-      <td>320.0</td>
-      <td>68.0</td>
-      <td>32249.588235</td>
-      <td>18204.167592</td>
-      <td>6275.0</td>
-      <td>18337.50</td>
-      <td>27830.0</td>
-      <td>44491.75</td>
-      <td>87150.0</td>
-    </tr>
-    <tr>
-      <th>hyundai</th>
-      <td>431.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>431.0</td>
-      <td>23627.011601</td>
-      <td>...</td>
-      <td>179.00</td>
-      <td>275.0</td>
-      <td>431.0</td>
-      <td>36495.324826</td>
-      <td>21943.146134</td>
-      <td>700.0</td>
-      <td>21904.00</td>
-      <td>31850.0</td>
-      <td>46900.00</td>
-      <td>142215.0</td>
-    </tr>
-    <tr>
-      <th>infiniti</th>
-      <td>3.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>3.0</td>
-      <td>30128.333333</td>
-      <td>...</td>
-      <td>258.50</td>
-      <td>306.0</td>
-      <td>3.0</td>
-      <td>47491.666667</td>
-      <td>39365.402987</td>
-      <td>20000.0</td>
-      <td>24944.00</td>
-      <td>29888.0</td>
-      <td>61237.50</td>
-      <td>92587.0</td>
-    </tr>
-    <tr>
-      <th>isuzu</th>
-      <td>3.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>3.0</td>
-      <td>43564.000000</td>
-      <td>...</td>
-      <td>163.00</td>
-      <td>163.0</td>
-      <td>3.0</td>
-      <td>29081.333333</td>
-      <td>47560.960475</td>
-      <td>1622.0</td>
-      <td>1622.00</td>
-      <td>1622.0</td>
-      <td>42811.00</td>
-      <td>84000.0</td>
-    </tr>
-    <tr>
-      <th>jaguar</th>
-      <td>317.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>317.0</td>
-      <td>41897.331230</td>
-      <td>...</td>
-      <td>300.00</td>
-      <td>575.0</td>
-      <td>317.0</td>
-      <td>44402.170347</td>
-      <td>23793.378971</td>
-      <td>650.0</td>
-      <td>28890.00</td>
-      <td>41800.0</td>
-      <td>57200.00</td>
-      <td>143444.0</td>
-    </tr>
-    <tr>
-      <th>jeep</th>
-      <td>190.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>190.0</td>
-      <td>36574.905263</td>
-      <td>...</td>
-      <td>250.00</td>
-      <td>710.0</td>
-      <td>190.0</td>
-      <td>39909.336842</td>
-      <td>26124.141280</td>
-      <td>10.0</td>
-      <td>23000.00</td>
-      <td>33850.0</td>
-      <td>53025.00</td>
-      <td>149429.0</td>
-    </tr>
-    <tr>
-      <th>kia</th>
-      <td>491.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>491.0</td>
-      <td>24249.158859</td>
-      <td>...</td>
-      <td>200.00</td>
-      <td>370.0</td>
-      <td>491.0</td>
-      <td>42324.835031</td>
-      <td>25980.689971</td>
-      <td>4000.0</td>
-      <td>23695.00</td>
-      <td>35717.0</td>
-      <td>54278.50</td>
-      <td>254228.0</td>
-    </tr>
-    <tr>
-      <th>lada</th>
-      <td>7.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>7.0</td>
-      <td>15404.857143</td>
-      <td>...</td>
-      <td>102.00</td>
-      <td>106.0</td>
-      <td>7.0</td>
-      <td>18841.714286</td>
-      <td>9263.874760</td>
-      <td>35.0</td>
-      <td>19380.00</td>
-      <td>20000.0</td>
-      <td>21048.50</td>
-      <td>31000.0</td>
-    </tr>
-    <tr>
-      <th>lamborghini</th>
-      <td>50.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>50.0</td>
-      <td>389851.860000</td>
-      <td>...</td>
-      <td>650.00</td>
-      <td>770.0</td>
-      <td>50.0</td>
-      <td>19970.060000</td>
-      <td>22682.325994</td>
-      <td>292.0</td>
-      <td>4928.75</td>
-      <td>16977.5</td>
-      <td>28100.00</td>
-      <td>143000.0</td>
-    </tr>
-    <tr>
-      <th>land-rover</th>
-      <td>415.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>415.0</td>
-      <td>53566.137349</td>
-      <td>...</td>
-      <td>300.00</td>
-      <td>575.0</td>
-      <td>415.0</td>
-      <td>47685.327711</td>
-      <td>25125.806376</td>
-      <td>0.0</td>
-      <td>29597.50</td>
-      <td>42000.0</td>
-      <td>59900.00</td>
-      <td>144800.0</td>
-    </tr>
-    <tr>
-      <th>maserati</th>
-      <td>61.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>61.0</td>
-      <td>89467.704918</td>
-      <td>...</td>
-      <td>460.00</td>
-      <td>581.0</td>
-      <td>61.0</td>
-      <td>33712.180328</td>
-      <td>30107.363753</td>
-      <td>50.0</td>
-      <td>9900.00</td>
-      <td>24583.0</td>
-      <td>52534.00</td>
-      <td>150000.0</td>
-    </tr>
-    <tr>
-      <th>mazda</th>
-      <td>250.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>250.0</td>
-      <td>25678.544000</td>
-      <td>...</td>
-      <td>184.00</td>
-      <td>194.0</td>
-      <td>250.0</td>
-      <td>36376.016000</td>
-      <td>23666.670345</td>
-      <td>1000.0</td>
-      <td>19726.25</td>
-      <td>33023.0</td>
-      <td>46136.75</td>
-      <td>150000.0</td>
-    </tr>
-    <tr>
-      <th>mercedes-benz</th>
-      <td>1454.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1454.0</td>
-      <td>47093.824622</td>
-      <td>...</td>
-      <td>286.00</td>
-      <td>700.0</td>
-      <td>1454.0</td>
-      <td>41981.423659</td>
-      <td>32327.716743</td>
-      <td>300.0</td>
-      <td>21052.50</td>
-      <td>34584.0</td>
-      <td>52000.00</td>
-      <td>435909.0</td>
-    </tr>
-    <tr>
-      <th>mini</th>
-      <td>621.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>621.0</td>
-      <td>24969.685990</td>
-      <td>...</td>
-      <td>192.00</td>
-      <td>306.0</td>
-      <td>621.0</td>
-      <td>35424.582931</td>
-      <td>17090.361947</td>
-      <td>1100.0</td>
-      <td>22900.00</td>
-      <td>32850.0</td>
-      <td>44873.00</td>
-      <td>98000.0</td>
-    </tr>
-    <tr>
-      <th>mitsubishi</th>
-      <td>105.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>105.0</td>
-      <td>21177.552381</td>
-      <td>...</td>
-      <td>150.00</td>
-      <td>224.0</td>
-      <td>105.0</td>
-      <td>37161.800000</td>
-      <td>23745.767214</td>
-      <td>2800.0</td>
-      <td>20604.00</td>
-      <td>30158.0</td>
-      <td>50857.00</td>
-      <td>92252.0</td>
-    </tr>
-    <tr>
-      <th>nissan</th>
-      <td>312.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>312.0</td>
-      <td>25267.009615</td>
-      <td>...</td>
-      <td>159.00</td>
-      <td>570.0</td>
-      <td>312.0</td>
-      <td>40053.500000</td>
-      <td>22080.302440</td>
-      <td>2000.0</td>
-      <td>25000.00</td>
-      <td>37000.0</td>
-      <td>49997.75</td>
-      <td>139870.0</td>
-    </tr>
-    <tr>
-      <th>opel</th>
-      <td>1538.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1538.0</td>
-      <td>20929.912874</td>
-      <td>...</td>
-      <td>145.00</td>
-      <td>300.0</td>
-      <td>1538.0</td>
-      <td>38827.157347</td>
-      <td>26136.851607</td>
-      <td>15.0</td>
-      <td>21000.00</td>
-      <td>32000.0</td>
-      <td>49830.75</td>
-      <td>187340.0</td>
-    </tr>
-    <tr>
-      <th>peugeot</th>
-      <td>361.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>361.0</td>
-      <td>24319.847645</td>
-      <td>...</td>
-      <td>155.00</td>
-      <td>299.0</td>
-      <td>361.0</td>
-      <td>46022.229917</td>
-      <td>31726.338358</td>
-      <td>25.0</td>
-      <td>25000.00</td>
-      <td>40000.0</td>
-      <td>59500.00</td>
-      <td>323190.0</td>
-    </tr>
-    <tr>
-      <th>porsche</th>
-      <td>169.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>169.0</td>
-      <td>120431.982249</td>
-      <td>...</td>
-      <td>559.25</td>
-      <td>761.0</td>
-      <td>169.0</td>
-      <td>32106.573964</td>
-      <td>24197.348669</td>
-      <td>12.0</td>
-      <td>13774.00</td>
-      <td>29700.0</td>
-      <td>45217.00</td>
-      <td>168000.0</td>
-    </tr>
-    <tr>
-      <th>renault</th>
-      <td>558.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>558.0</td>
-      <td>20071.415771</td>
-      <td>...</td>
-      <td>150.00</td>
-      <td>300.0</td>
-      <td>558.0</td>
-      <td>41591.388889</td>
-      <td>35992.337097</td>
-      <td>20.0</td>
-      <td>20827.00</td>
-      <td>32035.0</td>
-      <td>47050.00</td>
-      <td>259000.0</td>
-    </tr>
-    <tr>
-      <th>rover</th>
-      <td>2.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2.0</td>
-      <td>71770.000000</td>
-      <td>...</td>
-      <td>363.25</td>
-      <td>404.0</td>
-      <td>2.0</td>
-      <td>49350.000000</td>
-      <td>4242.640687</td>
-      <td>46350.0</td>
-      <td>47850.00</td>
-      <td>49350.0</td>
-      <td>50850.00</td>
-      <td>52350.0</td>
-    </tr>
-    <tr>
-      <th>seat</th>
-      <td>1492.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1492.0</td>
-      <td>23371.157507</td>
-      <td>...</td>
-      <td>150.00</td>
-      <td>300.0</td>
-      <td>1492.0</td>
-      <td>39579.088472</td>
-      <td>25351.928571</td>
-      <td>10.0</td>
-      <td>23493.25</td>
-      <td>34186.5</td>
-      <td>49302.50</td>
-      <td>234000.0</td>
-    </tr>
-    <tr>
-      <th>skoda</th>
-      <td>1518.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1518.0</td>
-      <td>25831.535573</td>
-      <td>...</td>
-      <td>190.00</td>
-      <td>320.0</td>
-      <td>1518.0</td>
-      <td>51537.660079</td>
-      <td>34791.848676</td>
-      <td>10.0</td>
-      <td>27602.00</td>
-      <td>44688.0</td>
-      <td>68789.25</td>
-      <td>282000.0</td>
-    </tr>
-    <tr>
-      <th>smart</th>
-      <td>48.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>48.0</td>
-      <td>15391.104167</td>
-      <td>...</td>
-      <td>82.00</td>
-      <td>82.0</td>
-      <td>48.0</td>
-      <td>14515.062500</td>
-      <td>8497.519732</td>
-      <td>1064.0</td>
-      <td>8692.75</td>
-      <td>12050.0</td>
-      <td>20012.50</td>
-      <td>36360.0</td>
-    </tr>
-    <tr>
-      <th>ssangyong</th>
-      <td>17.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>17.0</td>
-      <td>21770.352941</td>
-      <td>...</td>
-      <td>163.00</td>
-      <td>181.0</td>
-      <td>17.0</td>
-      <td>38387.529412</td>
-      <td>25740.267049</td>
-      <td>11000.0</td>
-      <td>22955.00</td>
-      <td>33119.0</td>
-      <td>48000.00</td>
-      <td>107980.0</td>
-    </tr>
-    <tr>
-      <th>toyota</th>
-      <td>783.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>783.0</td>
-      <td>24200.436782</td>
-      <td>...</td>
-      <td>179.00</td>
-      <td>381.0</td>
-      <td>783.0</td>
-      <td>37311.786718</td>
-      <td>27091.019478</td>
-      <td>5.0</td>
-      <td>19628.00</td>
-      <td>31489.0</td>
-      <td>48484.50</td>
-      <td>255800.0</td>
-    </tr>
-    <tr>
-      <th>volkswagen</th>
-      <td>1359.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>1359.0</td>
-      <td>28523.032377</td>
-      <td>...</td>
-      <td>199.00</td>
-      <td>462.0</td>
-      <td>1359.0</td>
-      <td>44662.082414</td>
-      <td>31129.343058</td>
-      <td>50.0</td>
-      <td>23986.00</td>
-      <td>37000.0</td>
-      <td>56294.50</td>
-      <td>228336.0</td>
-    </tr>
-    <tr>
-      <th>volvo</th>
-      <td>572.0</td>
-      <td>2020.0</td>
-      <td>0.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>2020.0</td>
-      <td>572.0</td>
-      <td>41352.417832</td>
-      <td>...</td>
-      <td>303.00</td>
-      <td>408.0</td>
-      <td>572.0</td>
-      <td>53661.150350</td>
-      <td>32460.347772</td>
-      <td>1246.0</td>
-      <td>32400.00</td>
-      <td>47682.0</td>
-      <td>66307.75</td>
-      <td>223000.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>41 rows × 40 columns</p>
-</div></div></div>
 </div>
 <p>Für jede Automarke werden nun für jede Spalte mit metrischen (quantitativen)
 Informationen die statistischen Kennzahlen ermittelt. Die entstehende Tabelle
 ist etwas unübersichtlich. Besser ist daher, sich die statistischen Kennzahlen
-einzeln ausgeben zu lassen. Im folgenden ermitteln wir die Mittelwerte der
+einzeln ausgeben zu lassen. Im Folgenden ermitteln wir die Mittelwerte der
 metrischen Informationen nach Automarke. Damit tatsächlich auch nur die
 metrischen Daten gemittelt werden, müssen wir als Argument noch zusätzlich
 <code class="docutils literal notranslate"><span class="pre">numeric_only=True</span></code> setzen.</p>
@@ -2363,372 +874,6 @@ metrischen Daten gemittelt werden, müssen wir als Argument noch zusätzlich
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Jahr</th>
-      <th>Preis (Euro)</th>
-      <th>Leistung (kW)</th>
-      <th>Leistung (PS)</th>
-      <th>Kilometerstand (km)</th>
-    </tr>
-    <tr>
-      <th>Marke</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>alfa-romeo</th>
-      <td>2020.0</td>
-      <td>40263.840909</td>
-      <td>182.704545</td>
-      <td>248.318182</td>
-      <td>40671.568182</td>
-    </tr>
-    <tr>
-      <th>aston-martin</th>
-      <td>2020.0</td>
-      <td>174516.750000</td>
-      <td>406.562500</td>
-      <td>553.000000</td>
-      <td>18923.250000</td>
-    </tr>
-    <tr>
-      <th>audi</th>
-      <td>2020.0</td>
-      <td>42584.115126</td>
-      <td>181.142136</td>
-      <td>246.392767</td>
-      <td>50733.891597</td>
-    </tr>
-    <tr>
-      <th>bentley</th>
-      <td>2020.0</td>
-      <td>239720.682927</td>
-      <td>425.585366</td>
-      <td>578.658537</td>
-      <td>29706.804878</td>
-    </tr>
-    <tr>
-      <th>bmw</th>
-      <td>2020.0</td>
-      <td>38951.122233</td>
-      <td>176.198459</td>
-      <td>239.561657</td>
-      <td>51443.319538</td>
-    </tr>
-    <tr>
-      <th>cadillac</th>
-      <td>2020.0</td>
-      <td>74900.000000</td>
-      <td>313.000000</td>
-      <td>426.000000</td>
-      <td>51000.000000</td>
-    </tr>
-    <tr>
-      <th>chevrolet</th>
-      <td>2020.0</td>
-      <td>42018.346154</td>
-      <td>286.692308</td>
-      <td>389.846154</td>
-      <td>35102.769231</td>
-    </tr>
-    <tr>
-      <th>citroen</th>
-      <td>2020.0</td>
-      <td>22244.840807</td>
-      <td>94.712360</td>
-      <td>128.883146</td>
-      <td>45375.890135</td>
-    </tr>
-    <tr>
-      <th>dacia</th>
-      <td>2020.0</td>
-      <td>15726.611940</td>
-      <td>79.458955</td>
-      <td>108.317164</td>
-      <td>38283.585821</td>
-    </tr>
-    <tr>
-      <th>dodge</th>
-      <td>2020.0</td>
-      <td>52081.272727</td>
-      <td>292.220779</td>
-      <td>397.285714</td>
-      <td>47216.012987</td>
-    </tr>
-    <tr>
-      <th>ferrari</th>
-      <td>2020.0</td>
-      <td>391129.833333</td>
-      <td>519.666667</td>
-      <td>706.722222</td>
-      <td>9954.703704</td>
-    </tr>
-    <tr>
-      <th>fiat</th>
-      <td>2020.0</td>
-      <td>16630.772819</td>
-      <td>63.817444</td>
-      <td>86.606491</td>
-      <td>33325.330629</td>
-    </tr>
-    <tr>
-      <th>ford</th>
-      <td>2020.0</td>
-      <td>27152.117034</td>
-      <td>128.540491</td>
-      <td>174.839877</td>
-      <td>40053.620711</td>
-    </tr>
-    <tr>
-      <th>honda</th>
-      <td>2020.0</td>
-      <td>27821.191176</td>
-      <td>123.500000</td>
-      <td>168.000000</td>
-      <td>32249.588235</td>
-    </tr>
-    <tr>
-      <th>hyundai</th>
-      <td>2020.0</td>
-      <td>23627.011601</td>
-      <td>108.303944</td>
-      <td>147.357309</td>
-      <td>36495.324826</td>
-    </tr>
-    <tr>
-      <th>infiniti</th>
-      <td>2020.0</td>
-      <td>30128.333333</td>
-      <td>178.333333</td>
-      <td>242.666667</td>
-      <td>47491.666667</td>
-    </tr>
-    <tr>
-      <th>isuzu</th>
-      <td>2020.0</td>
-      <td>43564.000000</td>
-      <td>120.000000</td>
-      <td>163.000000</td>
-      <td>29081.333333</td>
-    </tr>
-    <tr>
-      <th>jaguar</th>
-      <td>2020.0</td>
-      <td>41897.331230</td>
-      <td>193.880126</td>
-      <td>263.492114</td>
-      <td>44402.170347</td>
-    </tr>
-    <tr>
-      <th>jeep</th>
-      <td>2020.0</td>
-      <td>36574.905263</td>
-      <td>156.831579</td>
-      <td>213.289474</td>
-      <td>39909.336842</td>
-    </tr>
-    <tr>
-      <th>kia</th>
-      <td>2020.0</td>
-      <td>24249.158859</td>
-      <td>107.002045</td>
-      <td>145.580777</td>
-      <td>42324.835031</td>
-    </tr>
-    <tr>
-      <th>lada</th>
-      <td>2020.0</td>
-      <td>15404.857143</td>
-      <td>67.428571</td>
-      <td>91.714286</td>
-      <td>18841.714286</td>
-    </tr>
-    <tr>
-      <th>lamborghini</th>
-      <td>2020.0</td>
-      <td>389851.860000</td>
-      <td>493.918367</td>
-      <td>671.612245</td>
-      <td>19970.060000</td>
-    </tr>
-    <tr>
-      <th>land-rover</th>
-      <td>2020.0</td>
-      <td>53566.137349</td>
-      <td>183.736715</td>
-      <td>249.852657</td>
-      <td>47685.327711</td>
-    </tr>
-    <tr>
-      <th>maserati</th>
-      <td>2020.0</td>
-      <td>89467.704918</td>
-      <td>300.262295</td>
-      <td>408.409836</td>
-      <td>33712.180328</td>
-    </tr>
-    <tr>
-      <th>mazda</th>
-      <td>2020.0</td>
-      <td>25678.544000</td>
-      <td>114.779116</td>
-      <td>155.995984</td>
-      <td>36376.016000</td>
-    </tr>
-    <tr>
-      <th>mercedes-benz</th>
-      <td>2020.0</td>
-      <td>47093.824622</td>
-      <td>176.962147</td>
-      <td>240.475568</td>
-      <td>41981.423659</td>
-    </tr>
-    <tr>
-      <th>mini</th>
-      <td>2020.0</td>
-      <td>24969.685990</td>
-      <td>117.262903</td>
-      <td>159.517742</td>
-      <td>35424.582931</td>
-    </tr>
-    <tr>
-      <th>mitsubishi</th>
-      <td>2020.0</td>
-      <td>21177.552381</td>
-      <td>93.657143</td>
-      <td>127.514286</td>
-      <td>37161.800000</td>
-    </tr>
-    <tr>
-      <th>nissan</th>
-      <td>2020.0</td>
-      <td>25267.009615</td>
-      <td>111.038462</td>
-      <td>151.060897</td>
-      <td>40053.500000</td>
-    </tr>
-    <tr>
-      <th>opel</th>
-      <td>2020.0</td>
-      <td>20929.912874</td>
-      <td>98.739272</td>
-      <td>134.412874</td>
-      <td>38827.157347</td>
-    </tr>
-    <tr>
-      <th>peugeot</th>
-      <td>2020.0</td>
-      <td>24319.847645</td>
-      <td>101.548476</td>
-      <td>138.290859</td>
-      <td>46022.229917</td>
-    </tr>
-    <tr>
-      <th>porsche</th>
-      <td>2020.0</td>
-      <td>120431.982249</td>
-      <td>346.690476</td>
-      <td>471.476190</td>
-      <td>32106.573964</td>
-    </tr>
-    <tr>
-      <th>renault</th>
-      <td>2020.0</td>
-      <td>20071.415771</td>
-      <td>91.946237</td>
-      <td>125.066308</td>
-      <td>41591.388889</td>
-    </tr>
-    <tr>
-      <th>rover</th>
-      <td>2020.0</td>
-      <td>71770.000000</td>
-      <td>237.000000</td>
-      <td>322.500000</td>
-      <td>49350.000000</td>
-    </tr>
-    <tr>
-      <th>seat</th>
-      <td>2020.0</td>
-      <td>23371.157507</td>
-      <td>109.851206</td>
-      <td>149.576408</td>
-      <td>39579.088472</td>
-    </tr>
-    <tr>
-      <th>skoda</th>
-      <td>2020.0</td>
-      <td>25831.535573</td>
-      <td>114.588274</td>
-      <td>155.995389</td>
-      <td>51537.660079</td>
-    </tr>
-    <tr>
-      <th>smart</th>
-      <td>2020.0</td>
-      <td>15391.104167</td>
-      <td>60.000000</td>
-      <td>82.000000</td>
-      <td>14515.062500</td>
-    </tr>
-    <tr>
-      <th>ssangyong</th>
-      <td>2020.0</td>
-      <td>21770.352941</td>
-      <td>111.058824</td>
-      <td>151.000000</td>
-      <td>38387.529412</td>
-    </tr>
-    <tr>
-      <th>toyota</th>
-      <td>2020.0</td>
-      <td>24200.436782</td>
-      <td>100.373402</td>
-      <td>136.507673</td>
-      <td>37311.786718</td>
-    </tr>
-    <tr>
-      <th>volkswagen</th>
-      <td>2020.0</td>
-      <td>28523.032377</td>
-      <td>120.367918</td>
-      <td>163.841795</td>
-      <td>44662.082414</td>
-    </tr>
-    <tr>
-      <th>volvo</th>
-      <td>2020.0</td>
-      <td>41352.417832</td>
-      <td>181.819930</td>
-      <td>247.120629</td>
-      <td>53661.150350</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Eine sehr wichtige Methode der GroupBy-Datenstruktur ist die
 <code class="docutils literal notranslate"><span class="pre">get_group()</span></code>-Methode. Damit können wir ein bestimmtes DataFrame-Objekt aus dem
@@ -2740,31 +885,6 @@ GroupBy-Objekt extrahieren:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 1190 entries, 104 to 1293
-Data columns (total 14 columns):
- #   Column                Non-Null Count  Dtype  
----  ------                --------------  -----  
- 0   Marke                 1190 non-null   object 
- 1   Modell                1190 non-null   object 
- 2   Farbe                 1190 non-null   object 
- 3   Erstzulassung         1190 non-null   object 
- 4   Jahr                  1190 non-null   int64  
- 5   Preis (Euro)          1190 non-null   int64  
- 6   Leistung (kW)         1189 non-null   float64
- 7   Leistung (PS)         1189 non-null   float64
- 8   Getriebe              1190 non-null   object 
- 9   Kraftstoff            1190 non-null   object 
- 10  Verbrauch (l/100 km)  1010 non-null   object 
- 11  Verbrauch (g/km)      1190 non-null   object 
- 12  Kilometerstand (km)   1190 non-null   float64
- 13  Bemerkungen           1190 non-null   object 
-dtypes: float64(3), int64(2), object(9)
-memory usage: 139.5+ KB
-</pre></div>
-</div>
-</div>
 </div>
 <p>In der Variablen <code class="docutils literal notranslate"><span class="pre">audis_alternativ</span></code> steckt nun der gleiche Datensatz wie in der
 Variablen <code class="docutils literal notranslate"><span class="pre">audis</span></code>, den wir bereits durch das Filtern des ursprünglichen
@@ -2772,16 +892,16 @@ Datensatzes extrahiert haben.</p>
 </section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
-<p>Dieses Kapitel hat uns in die Technik des Datenfilterns eingeführt. Um
+<p>In diesem Kapitel haben wir die Technik des Datenfilterns kennengelernt. Um
 spezifische Einträge aus einem Datensatz basierend auf einem bestimmten Wert zu
 extrahieren, nutzen wir Vergleichsoperationen und verwenden das resultierende
 Series-Objekt als Index. Wenn das Ziel darin besteht, Daten anhand der
 einzigartigen Werte einer Spalte zu gruppieren, dann ist die Kombination von
 <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> und <code class="docutils literal notranslate"><span class="pre">.get_group()</span></code> oft der effizienteste Weg. Damit haben wir
 unsere Einführung in die Datenexploration abgeschlossen, obwohl es noch viele
-weitere Möglichkeiten gibt, die Daten zu erkunden. Im nächsten Kapitel starten
-wir mit den Grundlagen des maschinellen Lernens und befassen uns mit der
-linearen Regression.</p>
+weitere Möglichkeiten gibt, die Daten zu erkunden. Im nächsten Kapitel beginnen
+wir mit den Grundlagen des maschinellen Lernens und beschäftigen uns mit
+Entscheidungsbäumen.</p>
 </section>
 </section>
 
