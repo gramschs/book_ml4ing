@@ -38,7 +38,7 @@ auseinandersetzen.
   können diesen mit der Methode **.mode()** bestimmen lassen.
 ```
 
-## Was wir bisher hatten: metrische Daten
+## Was wir bisher hatten: numerische Daten
 
 In den bisherigen Kapiteln lag unser Fokus auf den Verkaufspreisen von Autos.
 Die Methode `.describe()` in Pandas bietet eine schnelle Möglichkeit, einen
@@ -150,7 +150,7 @@ von verschiedenen Werten an. Oft bezeichnet man kategoriale Daten auch als
 qualitative Daten.
 ```
 
-Diese Definition ist nicht präzise. Der Begriff "begrenzte Anzahl" von Werten
+Diese Definition ist nicht präzise. Der Begriff 'begrenzte Anzahl' von Werten
 ist etwas schwammig. Sind damit 10 Kategorien gemeint oder 100 oder 1000? Welche
 Eigenschaften des Auto-Datensatzes sind kategorial?
 
@@ -281,22 +281,25 @@ Insgesamt scheinen im ersten Quartal besonders viele Autos zugelassen zu werden.
 Dadurch, dass aber die Monate geordnet werden können, ist auch möglich den
 Median oder allgemein Quantile zu bestimmen. Allerdings kennt Pandas nicht die
 natürliche Reihenfolge der Monatsangaben 01/2020, 02/2020, 03/2020, usw. Wir
-ersetzen daher die Strings durch Integer, also "01/2020" --> 1, "02/2020" --> 2,
+ersetzen daher die Strings durch Integer, also '01/2020' --> 1, '02/2020' --> 2,
 usw. Diesen Vorgang nennt man in der Informatik **Kodierung**. Das Thema, wie
 kategoriale (qualitative Daten) am geschicktesten kodiert werden, wird uns noch
 intensiver beschäftigen. Jetzt gehen wir händisch vor und benutzen die
-`.replace()`-Methode von Pandas.
+`.replace()`-Methode von Pandas. Zunächst erstellen wir ein Dictionary mit den
+alten und neuen String-Werten. Aus `'01/2020'` wird beispielsweise `'1'`. Nach
+der Ersetzung mit `.replace()` wandeln wir die Strings noch mit der Methode
+`.astype('int')` in Integers um.
 
 ```{code-cell}
-# alte Datenwerte (Monatsangaben als Strings)
-kodierung_string = ["01/2020", "02/2020", "03/2020", "04/2020", "05/2020", "06/2020",
-"07/2020", "08/2020", "09/2020", "10/2020", "11/2020", "12/2020"]
-
-# neue Datenwerte (nur der Monat als Integer)
-kodierung_integer = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+kodierung = {'01/2020': '1', '02/2020': '2', '03/2020': '3', '04/2020': '4', 
+'05/2020': '5', '06/2020': '6', '07/2020': '7', '08/2020': '8', '09/2020': '9',
+'10/2020': '10', '11/2020': '11', '12/2020': '12'}
 
 # Ersetzung der alten Datenwerte durch die neue Kodierung
-data['Erstzulassung'].replace(kodierung_string, kodierung_integer, inplace=True)
+data['Erstzulassung'] = data['Erstzulassung'].replace(kodierung)
+
+# Umwandlung des Datentyps String in einen Integer
+data['Erstzulassung'] = data['Erstzulassung'].astype('int')
 
 # Anzeige, ob alles funktioniert hat
 data['Erstzulassung'].unique()
