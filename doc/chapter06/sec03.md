@@ -18,7 +18,6 @@ Entscheidungsbäume bieten viele Vorteile, haben aber auch Nachteile, die wir in
 diesem Kapitel diskutieren werden. Darüber hinaus lernen wir Methoden kennen,
 bei Entscheidungsbäumen diese Nachteile zu reduzieren.
 
-
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -36,7 +35,6 @@ bei Entscheidungsbäumen diese Nachteile zu reduzieren.
 * Sie können die Hyperparameter zum **Prä-Pruning** (deutsch: vorab
   Zurechtschneiden) geeignet wählen.
 ```
-
 
 ## Die Tendenz von Entscheidungsbäumen zum Overfitting
 
@@ -157,8 +155,7 @@ das Zurechtschneiden (Pruning) der Entscheidungsbäume. Eine andere ist, aus
 mehreren Entscheidungbäumen einen »durchschnittlichen« Entscheidungsbaum zu
 bilden. Dieses Verfahren heißt Zufallswald (Random Forest) und wird ausführlich
 in einem eigenen Kapitel behandelt werden. In diesem Kapitel betrachten wir nur
-das Zurechtschneiden der Entscheidungsbäume. 
-
+das Zurechtschneiden der Entscheidungsbäume.
 
 ## Zurechtschneiden von Entscheidungsbäumen
 
@@ -178,9 +175,10 @@ Generalisierungsfähigkeit aufweist.
 
 Für Entscheidungsbäume gibt es prinzipiell zwei Methoden des Prunings:
 **Prä-Pruning** und **Post-Pruning**. Das Prä-Pruning findet *vor* dem Training
-des Entscheidungsbaumes statt, das Post-Pruning *nach* dem Training. Die beiden wichtigsten Prä-Pruning-Maßnahmen sind 
+des Entscheidungsbaumes statt, das Post-Pruning *nach* dem Training. Die beiden
+wichtigsten Prä-Pruning-Maßnahmen sind
 
-* die Begrenzung der maximalen Tiefe des Baumes und 
+* die Begrenzung der maximalen Tiefe des Baumes und
 * die Forderung nach einer Mindestanzahl von Datenpunkten (entweder pro Knoten
   oder pro Blatt).
 
@@ -188,7 +186,6 @@ Beim Post-Pruning werden im Nachhinein Knoten mit wenig Informationen aus dem
 Entscheidungsbaum entfernt oder es werden Knoten zusammengelegt. Scikit-Learn
 hat nur Prä-Pruning implementiert, so dass wir hier nicht weiter auf
 Post-Pruning eingehen.
-
 
 ### Prä-Pruning: Baumtiefe
 
@@ -273,7 +270,6 @@ Einfluss auf die Leistung des Modells.
 Kommen wir nun zu einem anderen Hyperparameter der Entscheidungsbäume, der
 Mindestanzahl von Datenpunkten.
 
-
 ### Prä-Pruning: Mindestanzahl Datenpunkte
 
 Genau wie der Hyperparameter zur Begrenzung der Baumtiefe wird die Mindestanzahl
@@ -327,14 +323,13 @@ print(f'Score des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte
 In diesem Fall erhalten wir einen Entscheidungsbaum mit einem Score von 0.82.
 Was jetzt die bessere Wahl ist -- Begrenzung der Baumtiefe oder Festlegung einer
 Mindestanzahl von Datenpunkten Knoten/Blatt -- und vor allem welche Wert der
-Hyperparameter haben soll, muss gesondert untersucht werden. 
+Hyperparameter haben soll, muss gesondert untersucht werden.
 
 ```{dropdown} Video "How to Implement Decision Trees in Python / Scikit-Learn" von Misra Turp
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wxS5P7yDHRA?si=rawkRWRmUi0ZZAub" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
-
 
 ## Zusammenfassung und Ausblick
 

@@ -17,7 +17,7 @@ kernelspec:
 Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregel sind
 simpel. Eine Person wählt eine berühmte Person oder eine Figur aus einem Film
 oder Buch, die die Mitspieler:innen erraten müssen. Die Mitspieler:innen
-dürfen jedoch nur Fragen stellen, die mit "Ja" oder "Nein" beantwortet werden. 
+dürfen jedoch nur Fragen stellen, die mit "Ja" oder "Nein" beantwortet werden.
 
 Hier ist ein Beispiel, wie eine typische Runde von "Wer bin ich?" ablaufen
 könnte:
@@ -37,8 +37,7 @@ die umgekehrte Variante. Der Name der zu ratenden Person/Figur wird der Person
 mit einem Zettel auf die Stirn geklebt. Und nun muss die Person raten, während
 die Mitspieler:innen mit Ja/Nein antworten.
 
-Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen. 
-
+Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 
 ## Lernziele
 
@@ -54,7 +53,6 @@ Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 * Sie können mit Hilfe eines Entscheidungsbaumes Prognosen treffen.
 ```
 
-
 ## Ein Entscheidungsbaum im Autohaus
 
 Ein **Entscheidungsbaum** gehört zu den überwachten Lernverfahren (Supervised
@@ -64,7 +62,7 @@ Entscheidungsbäumen ist ihre Flexibilität, denn sie können sowohl für
 Klassifikations- als auch Regressionsaufgaben eingesetzt werden. Im Folgenden
 betrachten wir als Beispiel eine Klassifikationsaufgabe. In einem Autohaus
 vereinbaren zehn Personen eine Probefahrt. In der folgenden Tabelle ist notiert,
-welchen 
+welchen
 
 * `Kilometerstand [in km]` und
 * `Preis [in EUR]`
@@ -111,20 +109,20 @@ Entscheidungsregeln in Form einer Baumstruktur. Zu Beginn wurde noch keine Frage
 gestellt und alle Autos befinden sich gemeinsam in einem **Knoten** (Node) des
 Entscheidungsbaumes, der visuell durch einen rechteckigen Kasten symbolisiert
 wird. Dieser erste Knoten wird als **Wurzelknoten** (Root Node) bezeichnet, da
-er die Wurzel des Entscheidungsbaumes darstellt. 
+er die Wurzel des Entscheidungsbaumes darstellt.
 
-<img src="pics/combined_decisiontree00.svg" 
-alt="Entscheidungsbaum - Start" 
+<img src="pics/combined_decisiontree00.svg"
+alt="Entscheidungsbaum - Start"
 class="image169"
 width=100%>
 
-<img src="pics/scatterplot00.svg" 
-alt="Entscheidungsbaum - Start" 
+<img src="pics/scatterplot00.svg"
+alt="Entscheidungsbaum - Start"
 class="image43"
 width=100%>
 
-<img src="pics/decisiontree_cars00.svg" 
-alt="Entscheidungsbaum - Start" 
+<img src="pics/decisiontree_cars00.svg"
+alt="Entscheidungsbaum - Start"
 class="image43"
 width=100%>
 
@@ -140,18 +138,18 @@ einem Verkaufspreis kleiner/gleich 16376.5 EUR blau sind, also »nicht verkauft�
 wurden, wird im Streudiagramm (Scatterplot) alles unterhalb der horizontalen
 Linie blau eingefärbt.
 
-<img src="pics/combined_decisiontree01.svg" 
-alt="Entscheidungsbaum - 1. Entscheidung" 
+<img src="pics/combined_decisiontree01.svg"
+alt="Entscheidungsbaum - 1. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/scatterplot01.svg" 
-alt="Entscheidungsbaum - 1. Entscheidung" 
+<img src="pics/scatterplot01.svg"
+alt="Entscheidungsbaum - 1. Entscheidung"
 class="image43"
 width=100%>
 
-<img src="pics/decisiontree_cars01.svg" 
-alt="Entscheidungsbaum - 1. Entscheidung" 
+<img src="pics/decisiontree_cars01.svg"
+alt="Entscheidungsbaum - 1. Entscheidung"
 class="image43"
 width=100%>
 
@@ -172,18 +170,18 @@ zweiten Spalte, entscheiden wir uns für die Frage nach dem Kilometerstand: *»I
 der Kilometerstand kleiner oder gleich 13500 km?«* Alternativ könnten wir auch
 den Zufall entscheiden lassen.
   
-<img src="pics/combined_decisiontree02.svg" 
-alt="Entscheidungsbaum - 2. Entscheidung" 
+<img src="pics/combined_decisiontree02.svg"
+alt="Entscheidungsbaum - 2. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/scatterplot02.svg" 
-alt="Entscheidungsbaum - 2. Entscheidung" 
+<img src="pics/scatterplot02.svg"
+alt="Entscheidungsbaum - 2. Entscheidung"
 class="image43"
 width=100%>
 
-<img src="pics/decisiontree_cars02.svg" 
-alt="Entscheidungsbaum - 2. Entscheidung" 
+<img src="pics/decisiontree_cars02.svg"
+alt="Entscheidungsbaum - 2. Entscheidung"
 class="image43"
 width=100%>
 
@@ -192,19 +190,19 @@ vertikalen Linie 13500 km rot gefärbt. Im linken Knoten (Node) sind aber nur
 noch zwei Autos, so dass diesmal eine weitere Frage ausreicht, die beiden Autos
 in zwei Klassen zu sortieren. Wir fragen: *»Ist der Kilometerstand kleiner oder
 gleich 8198 km?«*
-   
-<img src="pics/combined_decisiontree03.svg" 
-alt="Entscheidungsbaum - 3. Entscheidung" 
+
+<img src="pics/combined_decisiontree03.svg"
+alt="Entscheidungsbaum - 3. Entscheidung"
 class="image169"
 width=100%>
 
-<img src="pics/scatterplot03.svg" 
-alt="Entscheidungsbaum - 3. Entscheidung" 
+<img src="pics/scatterplot03.svg"
+alt="Entscheidungsbaum - 3. Entscheidung"
 class="image43"
 width=100%>
 
-<img src="pics/decisiontree_cars03.svg" 
-alt="Entscheidungsbaum - 3. Entscheidung" 
+<img src="pics/decisiontree_cars03.svg"
+alt="Entscheidungsbaum - 3. Entscheidung"
 class="image43"
 width=100%>
 
@@ -238,7 +236,6 @@ encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="stric
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
 gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
-
 
 ## Entscheidungsbäume mit Scikit-Learn trainieren
 
@@ -304,7 +301,6 @@ die Trainingsdaten funktioniert der Entscheidungsbaum also perfekt. Ob der
 Entscheidungsbaum ein neues, elftes Auto korrekt klassifizieren würde, kann so
 erst einmal nicht entschieden werden.
 
-
 ## Prognosen mit Entscheidungsbäumen treffen
 
 Soll für neue Autos eine Prognose abgegeben werden, ob sie sich eher verkaufen
@@ -347,24 +343,23 @@ blau ein.
 Jedes neue Auto durchläuft jetzt die Entscheidungen, bis es in einem Blatt
 angekommen ist. Die Klasse des Blattes ist dann die Prognose für dieses Auto.
 
-<img src="pics/combined_decisiontree_prediction.svg" 
-alt="Entscheidungsbaum - Prognose" 
+<img src="pics/combined_decisiontree_prediction.svg"
+alt="Entscheidungsbaum - Prognose"
 class="image169"
 width=100%>
 
-<img src="pics/scatterplot_prediction.svg" 
-alt="Entscheidungsbaum - Prognose" 
+<img src="pics/scatterplot_prediction.svg"
+alt="Entscheidungsbaum - Prognose"
 class="image43"
 width=100%>
 
-<img src="pics/decisiontree_cars_prediction.svg" 
-alt="Entscheidungsbaum - Prognose" 
+<img src="pics/decisiontree_cars_prediction.svg"
+alt="Entscheidungsbaum - Prognose"
 class="image43"
 width=100%>
 
 Der Entscheidungsbaum prognostiziert, dass Auto 11 und Auto 12 nicht verkauft
 werden, aber Auto 13 könnte verkaufbar sein.
-
 
 ## Zusammenfassung und Ausblick
 
