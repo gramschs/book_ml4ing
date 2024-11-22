@@ -14,6 +14,13 @@ kernelspec:
 
 # Übungen
 
+```{admonition} Hinweis
+:class: warning
+Die in dieser Übung verwendeten csv-Dateien können Studierende der Frankfurt UAS
+über meinen campUAS-Kurs herunterladen. Für Externe sind die Quellen verlinkt,
+jedoch werden ein Kaggle- bzw. ein Statista-Account benötigt.
+```
+
 ```{admonition} Übung 5.1
 :class: miniexercise
 Schauen Sie sich die Datei 'kaggle_germany-wind-energy.csv' im Texteditor bzw.
@@ -154,7 +161,7 @@ weniger als die Hälfte des Maximalwertes erzeugt.
 :class: miniexercise
 
 Importieren Sie den Datensatz 'kaggle_ikea.csv' und verschaffen Sie sich einen
-Überblick über die Daten. 
+Überblick über die Daten (Quelle: [Kaggle](https://www.kaggle.com/datasets/thedevastator/ikea-product)).
 
 In welche verschiedenen Katgorien (category) sind die IKEA-Artikel unterteilt?
 Erstellen Sie für jede Kategorie einen Boxplot der Verkaufspreise und ziehen Sie 
@@ -264,13 +271,6 @@ einen Schrank mit der Artikel-ID "19275075" und der Beschreibung "Wardrobe,
 print(most_expensive_children_furniture['link'])
 ```
 ````
-
-```{admonition} Hinweis
-:class: warning
-Die in Übung 5.3 verwendete csv-Datei stehen aus lizenzrechtlichen Gründen
-nur Studierenden der Frankfurt UAS zur Verfügung. Studierende können diese über
-campUAS herunterladen.
-```
 
 ```{admonition} Übung 5.3
 :class: miniexercise
