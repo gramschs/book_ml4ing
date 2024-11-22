@@ -36,6 +36,7 @@ parts:
     - file: chapter05/chapter05_sec01.md
     - file: chapter05/chapter05_sec02.md
     - file: chapter05/chapter05_sec03.md
+    - file: chapter05/chapter05_sec04.md
 - caption: ML-Verfahren
   chapters:
   - file: chapter06/sec00.md
