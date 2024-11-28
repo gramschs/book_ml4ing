@@ -14,7 +14,7 @@ kernelspec:
 
 # Übung
 
-```{admonition} Aufgabe 
+```{admonition} Aufgabe
 :class: tip
 
 Das Schiff Titanic galt bei seiner Fertigstellung als unsinkbar. 1912
@@ -34,7 +34,7 @@ logistisches Regressionsmodell und ein SVM. Welches Modell kann am besten die
 Testdaten validieren.
 ```
 
-````{admonition} Lösung 
+````{admonition} Lösung
 :class: tip, toggle
 
 ```python
@@ -205,6 +205,5 @@ score_svm = model_svm.score(X_train, y_train)
 print(f'Score SVM Trainingsdaten: {score_svm :.2f}')
 ```
 
-Am besten schneidet die logistische Regression ab, die eine Genauigkeit der Prognose auf den Trainingsdaten von 0.80 erreicht. Am zweitbesten funktioniert -- zumindest auf den Trainignsdaten -- das SVM-Modell mit einem Score von 0.78. Das Perzeptron ist mit einem Score von 0.68 am schlechtesten.
+Am besten schneidet die logistische Regression ab, die eine Genauigkeit der Prognose auf den Trainingsdaten von 0.80 erreicht. Am zweitbesten funktioniert -- zumindest auf den Trainingsdaten -- das SVM-Modell mit einem Score von 0.78. Das Perzeptron ist mit einem Score von 0.68 am schlechtesten.
 ````
-

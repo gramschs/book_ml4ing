@@ -31,7 +31,7 @@ Die Anzahl der Ringe +1.5 gibt das Alter der Abalone an.
    Ausreißern.  
 3. Wählen Sie ein Modell.
 4. Bereiten Sie die Daten für das Modell auf. Dazu gehört insbesondere auch der
-   Splitin Trainings- und Testdaten.
+   Split in Trainings- und Testdaten.
 5. Validieren Sie das Modell. Erhöhen Sie die Modellkomplexität und beurteilen
    Sie, ob Over- oder Underfitting vorliegt.
 ```
@@ -271,7 +271,7 @@ Der Datensatz
 'statistic_id226994_annual-average-unemployment-figures-for-germany-2005-2022.csv'
 stammt von Statista. Die Daten beschreiben die Entwicklung der
 Arbeitslosenzahlen (in Mio.) seit 1991. Im Original-Excel sind einige
-Ungereimtheiten, die sich auch so im csv-File befinden. 
+Ungereimtheiten, die sich auch so im csv-File befinden.
 
 1. Korrigieren Sie den Datensatz zuerst mit einem Texteditor. 
 2. Führen Sie dann eine explorative Datenanalyse durch (Übersicht, statistische
@@ -279,8 +279,8 @@ Ungereimtheiten, die sich auch so im csv-File befinden.
    Jahr.)
 3. Wählen Sie mehrere ML-Modelle aus. Adaptieren Sie die Daten für das Training
    und lassen Sie die gewählten ML-Modelle trainieren.
-4. Validieren Sie Ihr Modell: ist es geeignet? Bewerten Sie die Modelle bzgl. Over-
-   und Underfitting.
+4. Validieren Sie Ihr Modell: ist es geeignet? Bewerten Sie die Modelle bzgl.
+   Over- und Underfitting.
 5. Visualisieren Sie eine Prognose von 1990 bis 2030.
 ```
 
