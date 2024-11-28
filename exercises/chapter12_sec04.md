@@ -14,7 +14,6 @@ kernelspec:
 
 # Übungen logistische Regression
 
-
 ```{admonition} Aufgabe 1
 :class: tip
 
@@ -41,7 +40,7 @@ In dem Datensatz sind Beispiele für die drei Irisarten
 4. Vergleichen Sie ein trainiertes Perzeptron mit einem trainierten logistischen Regressionsmodell.
 ```
 
-````{admonition} Lösung 
+````{admonition} Lösung
 :class: tip, toggle
 
 ```python
@@ -233,17 +232,17 @@ wurden, siehe
 https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download
 . Bei Frauen des Pima-Stammes wurden folgende medizinische Daten erhoben:
 
-* Pregnancies: Anzahl der Schwangerschaften	
+* Pregnancies: Anzahl der Schwangerschaften 
 * Glucose: Glukose-Level im Blut
-* BloodPressure: Messung des Blutdrucks	
-* SkinThickness: Dicke der Haut	
+* BloodPressure: Messung des Blutdrucks 
+* SkinThickness: Dicke der Haut 
 * Insulin: Messung des Insulinspiegels im Blut
-* BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat)	
-* DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie	
-* Age: Alter	
+* BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat) 
+* DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie 
+* Age: Alter 
 
 Enthalten ist auch, ob bei der Person Diabetes festgestellt wurde oder nicht.
-* Outcome: Diabetes = 1, kein Diabetes = 0	
+* Outcome: Diabetes = 1, kein Diabetes = 0 
 
 Im letzten Kapitel haben wir bereits ein Perzeptron zur Prognose Diabetes
 ja/nein trainiert. Vergleichen Sie nun das Perzeptron mit der logistischen

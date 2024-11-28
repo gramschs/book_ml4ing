@@ -14,21 +14,21 @@ kernelspec:
 
 # Übungen Perzeptron
 
-```{admonition} Aufgabe 
+```{admonition} Aufgabe
 :class: tip
 Der Datensatz 'diabetes.csv' ist eine Sammlung von medizinischen Daten, die vom National Institute of Diabetes and Digestive and Kidney Diseases, erhoben wurden, siehe https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download . Bei Frauen des Pima-Stammes wurden folgende medizinische Daten erhoben:
 
-* Pregnancies: Anzahl der Schwangerschaften	
+* Pregnancies: Anzahl der Schwangerschaften 
 * Glucose: Glukose-Level im Blut
-* BloodPressure: Messung des Blutdrucks	
-* SkinThickness: Dicke der Haut	
+* BloodPressure: Messung des Blutdrucks 
+* SkinThickness: Dicke der Haut 
 * Insulin: Messung des Insulinspiegels im Blut
-* BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat)	
-* DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie	
-* Age: Alter	
+* BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat) 
+* DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie 
+* Age: Alter 
 
 Enthalten ist auch, ob bei der Person Diabetes festgestellt wurde oder nicht.
-* Outcome: Diabetes = 1, kein Diabetes = 0	
+* Outcome: Diabetes = 1, kein Diabetes = 0 
 
 Fragen:
 * Laden Sie den Datensatz und überprüfen Sie die Daten auf Vollständigkeit. Sind
