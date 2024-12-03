@@ -14,196 +14,418 @@ kernelspec:
 
 # Übung
 
-```{admonition} Aufgabe
-:class: tip
+## Aufgabe 6.1
 
 Das Schiff Titanic galt bei seiner Fertigstellung als unsinkbar. 1912
 kollidierte die Titanic mit einem Eisberg und sank. Bei dem Unglück kamen 1514
-von 2220 Personen ums Leben, so dass der titanic-Untergan zu den größten
+von 2220 Personen ums Leben, so dass der Titanic-Untergang zu den größten
 Unglücken der Schifffahrt zählt. Mehr Informationen zu der Titanic finden Sie
-bei Wikipedia https://de.wikipedia.org/wiki/Titanic_(Schiff).
+bei Wikipedia
+[https://de.wikipedia.org/wiki/Titanic_(Schiff)](https://de.wikipedia.org/wiki/Titanic_(Schiff)).
 
 In der folgenden Übung werden Passagierlisten der Titanic benutzt, um die
 Überlebenswahrscheinlichkeit zu prognostizieren (0 = gestorben, 1 = überlebt),
-deren Quelle hier ist: https://www.kaggle.com/c/titanic
+deren Quelle hier ist:
+[https://www.kaggle.com/c/titanic](https://www.kaggle.com/c/titanic).
 
-Laden sie den Datensatz 'titanic_train_DE.csv'. Führen Sie dann eine explorative
-Datenanalyse (EDA) durch. Trainieren Sie zuletzt ein Perzeptron, ein
-logistisches Regressionsmodell und ein SVM. Welches Modell kann am besten die
-Überlebenswahrscheinlichkeit prognostizieren? Sie können Ihr Modell mit den
-Testdaten validieren.
+Laden sie den Datensatz 'titanic_DE_cleaned.csv'.
+
+### EDA Titanic
+
+Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
+Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
+auf die folgenden Frage an.
+
+```{admonition} Überblick über die Daten
+:class: miniexercise
+Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
+enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten
+vollständig?
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: minisolution, toggle
+```python
+import pandas as pd 
+daten = pd.read_csv('titanic_DE_cleaned.csv')
+
+daten.info()
+```
+
+Der Datensatz enthält 183 Einträge, also 183 Personen. Es gibt 11 Merkmale. Die
+Daten sind vollständig. Für jedes Merkmal werden 183 non-null Einträge
+angezeigt.
+````
+
+```{admonition} Datentypen
+:class: miniexercise
+Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche
+sind kategorial?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integers. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
+
+```python
+daten.head()
+```
+
+Name, Tickets und Kabine sind Strings. Geschlecht und Einstiegshafen sind zwar vom Datentyp her Strings, könnten aber hier auch für Klassen stehen.
+````
+
+```{admonition} Statistik und Ausreißer
+:class: miniexercise
+
+Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen
+Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots.
+Interpretieren Sie die statistischen Merkmale. Gibt es Ausreißer? Sind die Werte
+plausibel?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+```python
+daten.describe()
+```
+
+Die statistischen Daten zu `'ueberlebt'` sind unplausibel. Auch wenn hier Integer verwendet wurden, um überlebt/nicht überlebt zu klassifizieren, sind es eigentlich Klassen und sollten daher nicht statistisch ausgewertet werden.
+
+Auf der Titanic gab es drei Preisklassen von 1 bis 3. Minimum und Maximum sind plausibel, aber dass 75 % der Passagiere in Klasse 1 (der teuersten Klasse) mitgereist sind, erscheint unwahrscheinlich.
+
+Beim Alter fällt auf, dass das minimale Alter 0.92 ist. Da Jahre normalerweise als ganze Zahlen angegeben werden, ist das ungewöhnlich, aber nicht unplausibel. Die älteste Person war 80 Jahre alt. Der Durchschnitt lag bei 35.6 Jahren und der Median bei 36. 75 % der Passagiere waren jünger als 47.5 Jahre. Es erscheint plausibel, das vor allem jüngere Passagiere die Strapazen der Schifffahrt auf sich genommen haben.  
+
+50 % der Passagiere reisten alleine, nur sehr wenige in Familien.
+
+Offensichtlich wurden Passagiere auch kostenlos mitgenommen, denn der minimale Ticketpreis ist 0. Das Maximum verwundert, vielleicht eine Umrechnung der Währungen, denn normalerweise werden nur 2 Nachkommastellen angegeben.
+
+```python
+import plotly.express as px 
+
+kastendiagramm = px.box(daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder', 'Ticketpreis']],
+                       labels={'value': 'Wert', 'variable': 'Merkmal'},
+                       title='Boxplot der numerischen Werte des Titanic-Datensatzes')
+kastendiagramm.show()
+```
+
+Beim Ticketpreis gibt es deutiche Ausreißer, bei den anderen Merkmalen gibt es vereinzelte Ausreißer.
+````
+
+```{admonition} Analyse der kategorialen Daten
+:class: miniexercise
+Untersuchen Sie die kategorialen Daten. Sind es wirklich kategoriale Daten?
+Prüfen Sie für jedes kategoriale Merkmal die Einzigartigkeit der auftretenden
+Werte und erstellen Sie ein Balkendiagramm mit den Häufigkeiten.
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+```python
+merkmale = ['Name', 'Geschlecht', 'Ticket', 'Kabine', 'Einstiegshafen']
+for m in merkmale:
+    einzigartige_eintraege = daten[m].unique()
+    anzahl = len(einzigartige_eintraege)
+    print(f'Merkmal {m} hat {anzahl} einzigartige Einträge.')
+```
+
+Beim Merkmal Geschlecht gibt es nur zwei verschiedene Einträge, beim Einstiegshafen nur drei verschiedene Einstiegshäfen. Das sind (ungeordnete) kategoriale Daten. Die anderen Merkmale sind zu verschieden und sind damit nicht mehr als kategoriale Daten einzustufen. Es werden daher die Balkendiagramme mit den Häufigkeiten nur für die beiden Merkmale Geschlecht und Einstiegshafen erstellt.
+
+```python
+geschlecht = daten['Geschlecht']
+
+balkendiagramm_geschlecht = px.bar(geschlecht.value_counts(),
+                                  labels={'value': 'Anzahl', 'variable': 'Geschlecht'},
+                                  title='Häufigkeit Geschlecht')
+balkendiagramm_geschlecht.show()
+```
+
+```python
+hafen = daten['Einstiegshafen']
+
+balkendiagramm_hafen = px.bar(hafen.value_counts(),
+                                  labels={'value': 'Anzahl', 'variable': 'Hafen'},
+                                  title='Häufigkeit Einstiegshafen')
+balkendiagramm_hafen.show()
+```
+````
+
+### ML-Modell Titanic
+
+```{admonition} Entscheidungsbaum
+:class: miniexercise
+Trainieren Sie mit den numerischen Merkmalen einen Entscheidungsbaum/Decision
+Tree. Visualisieren Sie den Entscheidungsbaum.
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+```python
+X = daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder','Ticketpreis']]
+y = daten['ueberlebt']
+
+from sklearn.tree import DecisionTreeClassifier
+
+entscheidungsbaum =  DecisionTreeClassifier()
+entscheidungsbaum.fit(X,y)
+entscheidungsbaum.score(X,y)
+```
+
+```python
+from sklearn.tree import plot_tree
+
+plot_tree(entscheidungsbaum);
+```
+````
+
+```{admonition} Hyperparameter-Tuning und Interpretation
+:class: miniexercise
+
+Spielen Sie mit den Hyperparametern des Entscheidungsbaumes/Decision Trees.
+Begrenzen Sie die Baumtiefe auf 2, 3 und 4. Was sind die wichtigsten Merkmale,
+die ein Überleben der Passagiere gesichert haben?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
+```python
+for baumtiefe in [2, 3, 4]:
+    baum = DecisionTreeClassifier(max_depth=baumtiefe)
+    baum.fit(X,y)
+    score = baum.score(X,y)
+    print(f'Score für eine Baumtiefe von {baumtiefe}: {score: .2f}')
+```
+
+Tatsächlich ist der Entscheidungsbaum/Decision Tree mit einer Baumtiefe von 3
+und 4 kaum besser als der mit einer Baumtiefe von 2. Wir werten daher den
+Entscheidungsbaum mit einer Baumtiefe von 2 aus:
+
+```python
+finales_modell = DecisionTreeClassifier(max_depth=2)
+finales_modell.fit(X,y)
+
+plot_tree(finales_modell,
+    feature_names=['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder','Ticketpreis'],
+    class_names=['nicht ueberlebt', 'ueberlebt']);
+```
+
+Zunächst einmal erscheint ein jüngeres Alter die Überlebenschance erhöht zu haben. Danach wirkt es so, also ob der Ticketpreis eine wichtige Rolle gepsielt haben könnte.
+````
+
+## Aufgabe 6.2
+
+Der Datensatz 'diabetes.csv' ist eine Sammlung von medizinischen Daten, die vom
+National Institute of Diabetes and Digestive and Kidney Diseases, erhoben
+wurden, siehe
+[https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download](https://www.kaggle.com/datasets/whenamancodes/predict-diabities?resource=download).
+Bei Frauen des Pima-Stammes wurden folgende medizinische Daten erhoben:
+
+* Pregnancies: Anzahl der Schwangerschaften
+* Glucose: Glukose-Level im Blut
+* BloodPressure: Messung des Blutdrucks
+* SkinThickness: Dicke der Haut
+* Insulin: Messung des Insulinspiegels im Blut
+* BMI: Body-Maß-Index (Gewicht geteilt durch Körpergröße ins Quadrat)
+* DiabetesPedigreeFunction: Wahrscheinlichkeit von Diabetes aufgrund der Familienhistorie
+* Age: Alter
+
+Enthalten ist auch, ob bei der Person Diabetes festgestellt wurde oder nicht.
+
+* Outcome: Diabetes = 1, kein Diabetes = 0
+
+### EDA Diabetes
+
+Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
+Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
+auf die folgenden Frage an.
+
+```{admonition} Überblick
+:class: miniexercise
+
+Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
+enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten
+vollständig?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
 
 ```python
 import pandas as pd 
 
-data = pd.read_csv('titanic_train_DE.csv', index_col=0)
+daten = pd.read_csv('diabetes.csv')
+daten.info()
 ```
 
-```python
-data.info()
+Der Datensatz enthält 768 Personen mit insgesamt 9 Merkmalen. Aufgelistet sind die Merkmale Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age und Outcome.
+
+Die Daten sind für jedes Merkmal vollständig. In jeder Spalte gibt es 768 non-null Einträge.
+````
+
+```{admonition} Datentyp
+:class: miniexercise
+
+Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche
+sind kategorial?
 ```
 
-```python
-data.head()
+````{admonition} Lösung
+:class: minisolution, toggle
+
+Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integers. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
+````
+
+```{admonition} Statistik
+:class: miniexercise
+
+Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen
+Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots.
+Interpretieren Sie die statistischen Merkmale. Gibt es Ausreißer? Sind die Werte
+plausibel?
 ```
 
-Der Datensatz 'titanic_train_DE.csv' enthält 891 Einträge. Es gibt 11 Eigenschaften, wobei die Kategorie ueberlebt, die Klasse, die Anzahl_Geschwister_Partner und Anzahl_Eltern_Kinder durch Integers repräsentiert werden, das Alter und der Ticketpreis sind Floats und die Eigenschaften Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte.
-
-Die Eigenschaften Alter, Kabine und Einstiegshafen sind unvollständig.
+````{admonition} Lösung
+:class: minisolution, toggle
 
 ```python
-data.describe()
+daten.describe()
 ```
 
-Die Eigenschaften ueberlebt und Klasse werden zwar durch Integers repräsentiert, aber ein Blick in die Daten zeigt, dass es sich um kategoriale Daten handelt.
+Die Pregnancies reichen von 0 Schwangerschaften bis hin zu 17 Schwangerschaften,
+was ungewöhnlich hoch ist. Der Mittelwert von 3.85 Schwangerschaften erscheint
+plausibel, 50 % der Frauen waren maximal dreimal schwanger.
 
-```python
-data['ueberlebt'].unique()
+Der Glucose-Wert reicht von 0 bis 199. An der Stelle müsste mit einem Mediziner
+Rücksprache gehalten werden, ob ein Glucose-Wert von 0 plausibel ist.
+
+Beim BloodPressure, also den Blutdruck, ist der minimale Wert von 0 jedoch
+unplausibel. Eine PErson mit einem Blutdruck von 0 ist tot.
+
+SkinThickness kann erneut nur von Medizinern korrekt eingeordnet werden. Ob eine
+minimale SkinThickness von 0 und eine maximale SkinThickness von 99 sinnvolle
+Werte darstellen, können Nichtmediziner nicht sinnvoll beurteilen.
+
+Auch der minimale Insulin-Wert von 0 wirkt seltsam sowie der Body-Maß-Index BMI.
+Ein BMI von 0 kann nicht sein, denn beim BMI wird das Gewicht einer Person durch
+die quadrierte Körpergröße geteilt. Ein BMI von 0 bedeutet ein Gewicht von 0,
+was nicht sein kann.
+
+Die DiabetesPedigree-Funktion können wir ohne medizinisches Fachwissen nicht
+bewerten.
+
+Beim Alter fällt auf, dass keine Kinder dabei waren. Die jüngste Person ist 21,
+das mittlere Alter liegt bei 33 Jahren und 75 % aller Personen sind jünger als
+41.
+
+Das Outcome darf nicht einfach statistisch interpretiert werden. Das Outcome
+gibt an, ob eine Person Diabetes hat (1) oder nicht (0). Auch wenn hier Zahlen
+verwendet wurden, ist das Outcome eigentlich ein kategoriales Merkmal. Es ist
+sogar die kategoriale Zielgröße unserer Problemstellung.
+````
+
+```{admonition} Untersuchung Ursache - Wirkung
+:class: miniexercise
+
+Erstellen Sie eine Scatter-Matrix mit Insulin, BMI und Outcome. Welche der
+beiden Eigeschaften Insulin oder BMI könnte ehr geeignet sein, Diabetes ja/nein
+zu prognostizieren?
+
+Visualisieren Sie Diabetes ja/nein in Abhängigkeit der gewählten Eigenschaft.
+Vermuten Sie einen Zusammenhang?
 ```
 
-Es gibt nur zwei Kategorien für die Eigenschaft 'ueberlebt', nämlich 0 (gestorben) und 1 (überlebt).
+````{admonition} Lösung
+:class: minisolution, toggle
 
 ```python
-import plotly.express as px
+import plotly.express as px 
 
-fig = px.bar(data['ueberlebt'].value_counts(), title='Trainingsdaten Titanic',
-             labels={'index': 'Überlebensvariable', 'value': 'Anzahl Personen'})
+auswahl = ['Insulin', 'BMI', 'Outcome']
+fig = px.scatter_matrix(daten[auswahl],
+    title='Wirkung Insulin und BMI auf Diabetes')
 fig.show()
 ```
 
-Bei dem Titanic-Unglück sind mehr Personen gestorben (549) als überlebt haben (342).
+Beim Insulin kann man kaum eine Wirkung des Insulins auf den Diabeteszustand
+erkennen. Beim BMI kann man erkennen, dass ein höherer BMI scheinbar mehr zu
+Diabetes führt als ein niedriger BMI.
 
 ```python
-data['Klasse'].unique()
-```
-
-Es gibt nur drei Kategorien bei der Eigenschaft Klasse, nämlich Klasse 1, 2 und 3.
-
-```python
-fig = px.bar(data['Klasse'].value_counts(),
-             title='Trainingsdaten Titanic',
-             labels={'index': 'Klasse', 'value': 'Anzahl Personen'})
+fig = px.scatter(daten, x = 'BMI', y = 'Outcome',
+    title='Wirkung BMI auf Diabetes')
 fig.show()
 ```
 
-In der 2. Klasse gab es am wenigsten Passagiere (184). 216 Personen fuhren in der 1. Klasse mit und am meisten (491) Personen reisten in der 3. Klasse. 
+Es ist kaum ein Zusammenhang erkennbar außer der Feststellung, dass höherer BMI
+anscheinend häufiger mit Diabetes korreliert ist als niedriger BMI.
+````
 
-```python
-fig = px.box(data['Alter'],
-             title='Trainingsdaten Titanic',
-             labels={'variable': '', 'value': 'Alter [Jahre]'})
-fig.show()
+### ML-Modell Diabetes
+
+```{admonition} Entscheidungsbaum
+:class: miniexercise
+
+Trainieren Sie mit den numerischen Merkmalen einen Entscheidungsbaum/Decision
+Tree. Visualisieren Sie den Entscheidungsbaum.
 ```
 
-Die Passagiere sind zwischen 0 und 80 Jahre alt. Die Hälfte aller Passigiere ist im Alter von 20 bis 38 bei einem Median von 28 Jahren. Der Median stimmt auch gut mit dem Mittelwert von 29.7 Jahren überein. Es gibt allerdings auch Ausreißer nach oben.
-
+````{admonition} Lösung
+:class: minisolution, toggle
 ```python
-fig = px.bar(data['Anzahl_Geschwister_Partner'].value_counts(),
-             title='Trainingsdaten Titanic',
-             labels={'index': 'Anzahl Geschwister/Partner', 'value': 'Anzahl Personen'})
-fig.show()
-```
-
-Die meisten Passagiere (608) reisten ohne Geschwister oder Partner. 209 Passagiere gaben an, mit einem Geschwister oder Partner zu reisen. Die Anzahl von Passagieren, die mit zwei oder mehr Geschwistern/Partnern reisten, ist klein (zusammen 70 Personen).
-
-```python
-fig = px.bar(data['Anzahl_Eltern_Kinder'].value_counts(),
-             title='Trainingsdaten Titanic',
-             labels={'index': 'Anzahl der mitreisenden Eltern oder Kindern', 'value': 'Anzahl Personen'})
-fig.show()
-```
-
-Auch sind die meisten Personen (687) ohne Eltern oder Kinder gereist. 
-
-```python
-fig = px.box(data['Ticketpreis'],
-             title='Trainingsdaten Titanic',
-             labels={'variable': '', 'value': 'Preis'})
-
-fig.show()
-```
-
-Bei den Ticketpreisen gibt es einen sehr deutlichen Ausreißer nach oben (512) und andere Ausreißer (zwischen 65 und 263), aber es konnten auch einige Personen kostenlos mitreisen.
-
-
-```python
-data_by_class = data.groupby('Klasse')
-
-fig = px.bar(data_by_class['ueberlebt'].mean(),
-             title='Trainingsdaten Titanic',
-             labels={'value': 'Überlwebenswahrscheinlichkeit'})
-fig.show()
-```
-
-Die Passagiere der 1. Klasse hatten eine deutlich höhere Wahrscheinlichkeit (knapp 63 %), das Unglück zu überleben. Passagiere der 2. Klasse überlebten zu 47 %, wohingegen Passagiere der 3. Klasse nur zu 24 % überlebten.
-
-```python
-data_by_sex = data.groupby('Geschlecht')
-
-fig = px.bar(data_by_sex['ueberlebt'].mean(),
-             title='Trainingsdaten Titanic',
-             labels={'value': 'Überlebenswahrscheinlichkeit'})
-fig.show()
-```
-
-Frauen und Kinder zuerst gilt tatsächlich für das Titanic-Unglück. Zumindest überlebten 74 % der weiblichen Passagiere, aber nur knapp 19 % der Männer.
-
-Vorbereitung der Daten
-
-```python
-data_cleaned = data.copy()
-data_cleaned = data.drop(columns=['Name', 'Ticket', 'Kabine', 'Einstiegshafen'], axis=0)
-
-data_cleaned['Geschlecht'] = data_cleaned['Geschlecht'].replace('maennlich', 0)
-data_cleaned['Geschlecht'] = data_cleaned['Geschlecht'].replace('weiblich', 1)
-
-data_cleaned = data_cleaned.dropna()
-data_cleaned.info()
-```
-
-Training der ML-Modelle
-
-```python
-y_train = data_cleaned['ueberlebt']
-X_train = data_cleaned.loc[:, 'Klasse' : 'Ticketpreis']
+X = daten.loc[:, 'Pregnancies' : 'Age']
+y = daten['Outcome']
 ```
 
 ```python
-from sklearn.linear_model import Perceptron 
+from sklearn.tree import DecisionTreeClassifier
 
-model_perceptron = Perceptron()
+modell = DecisionTreeClassifier()
+modell.fit(X,y)
 
-model_perceptron.fit(X_train, y_train)
-score_perceptron = model_perceptron.score(X_train, y_train)
-
-print(f'Score Perzeptron Trainingsdaten: {score_perceptron :.2f}')
+score = modell.score(X,y)
+print(f'Score: {score:.2f}')
 ```
 
 ```python
-from sklearn.linear_model import LogisticRegression
+from sklearn.tree import plot_tree
 
-model_log_reg = LogisticRegression()
-
-model_log_reg.fit(X_train, y_train)
-score_log_reg = model_log_reg.score(X_train, y_train)
-
-print(f'Score Logistische Regression Trainingsdaten: {score_log_reg :.2f}')
+plot_tree(modell);
 ```
+````
+
+```{admonition} Hyperparameter und Interpretation
+:class: miniexercise
+
+Spielen Sie mit den Hyperparametern des Entscheidungsbaumes/Decision Trees.
+Begrenzen Sie die Baumtiefe auf 2, 3 und 4. Was sind die wichtigsten Merkmale,
+die Diabetes auslösen können?
+```
+
+````{admonition} Lösung
+:class: minisolution, toggle
 
 ```python
-from sklearn import svm
-
-model_svm = svm.SVC(kernel='linear')
-
-model_svm.fit(X_train, y_train)
-score_svm = model_svm.score(X_train, y_train)
-
-print(f'Score SVM Trainingsdaten: {score_svm :.2f}')
+for baumtiefe in [2, 3, 4]:
+    baum = DecisionTreeClassifier(max_depth=baumtiefe)
+    baum.fit(X,y)
+    score = baum.score(X,y)
+    print(f'Score für eine Baumtiefe von {baumtiefe}: {score: .2f}')
 ```
 
-Am besten schneidet die logistische Regression ab, die eine Genauigkeit der Prognose auf den Trainingsdaten von 0.80 erreicht. Am zweitbesten funktioniert -- zumindest auf den Trainingsdaten -- das SVM-Modell mit einem Score von 0.78. Das Perzeptron ist mit einem Score von 0.68 am schlechtesten.
+Wieder gibt es kaum Unetrschiede im Score für die verschiedenen Baumtiefen. Wir
+betrachten nun ein Modell das Baumtiefe 2.
+
+```python
+finales_modell = DecisionTreeClassifier(max_depth=2)
+finales_modell.fit(X,y)
+
+plot_tree(finales_modell,
+    feature_names=['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin',
+       'BMI', 'DiabetesPedigreeFunction', 'Age'],
+    class_names=['kein Diabetes', 'Diabetes']);
+```
+
+Als erstes Entscheidungskriteriujm wird der Glucose-Wert benutzt. Je nachdem, ob
+der Glucose-Wert kleiner 127.5 ist oder nicht, wird danach das Alter (jünger als
+28.5 bedeutet dann kein Diabetes) oder der BMI (kleiner als 29.95 kein Diabetes)
+als Entscheidungsmerkmal verwendet.
 ````

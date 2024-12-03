@@ -416,4 +416,3 @@ Jahre nach 2020 wieder nach oben. Dieses Verhalten wird nicht von den
 Trainingsdaten gestützt. Daher sollte das Modell nicht für eine Prognose in die
 Zukunft genutzt werden.
 ````
-

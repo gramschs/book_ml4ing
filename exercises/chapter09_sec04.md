@@ -14,7 +14,7 @@ kernelspec:
 
 # Übung
 
-```{admonition} Aufgabe 
+```{admonition} Aufgabe
 :class: tip
 
 Auf der Internetseite
@@ -30,7 +30,7 @@ trainieren und validieren, um die Materialeigenschaft Stein/Metall auf Basis der
 numerischen Werte zu prognostizieren.
 ```
 
-````{admonition} Lösung 
+````{admonition} Lösung
 :class: tip, toggle
 
 Import der Daten (es gibt keine Spaltenüberschriften, daher wird das optionale Argument 'header=None' gesetzt):

@@ -39,11 +39,12 @@ parts:
     - file: chapter05/chapter05_sec04.md
 - caption: ML-Verfahren
   chapters:
-  - file: chapter06/sec00.md
+  - file: chapter06/chapter06_sec00.md
     sections:
-    - file: chapter06/sec01.md
-    - file: chapter06/sec02.md
-    - file: chapter06/sec03.md
+    - file: chapter06/chapter06_sec01.md
+    - file: chapter06/chapter06_sec02.md
+    - file: chapter06/chapter06_sec03.md
+    - file: chapter06/chapter06_sec04.md
   - file: chapter07/sec00.md
     sections: 
     - file: chapter07/sec01.md
