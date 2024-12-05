@@ -256,7 +256,7 @@ print(f'Prognose im Jahr 2100: {prognose_linear[-1]:.1f}')
 ```
 ````
 
-## Aufgabe 7.2
+## Aufgabe 7.2 Marketing über soziale Medien
 
 Eine Firma erhebt statistische Daten zu ihren Verkaufszahlen (angegeben in
 Tausend US-Dollar) abhängig von dem eingesetzten Marketing-Budget in den
@@ -409,27 +409,8 @@ for merkmal in ['youtube', 'facebook', 'newspaper']:
     print(f'Input: {merkmal}, Score = {score:.2f}')
 ```
 
-Wie erwartet sind die Verkaufszahlen bei YouTube linear abhängig, bei Facebook
-nur schwach linear abhängig und bei den Zeitungen scheint es keine lineare
-Abhängigkeit zu geben. Wenn wir nur ein Medium wählen dürfte, so wäre das 
-sicherlich YouTube.
-
-Zuletzt trainieren wir noch ein multiples Regressionsmodell mit dem
-Marketing-Budget YouTube und Facebook.
-
-```python
-# multiples lineares Regressionsmodell für alle Inputs
-X = data.loc[:, ['youtube', 'facebook']]
-y = data.loc[:,'sales']
-
-model = LinearRegression()
-model.fit(X, y)
-r2 = model.score(X,y)
-
-print(f'R2-Score für lineares Regressionsmodell mit YouTube und Facebook: {r2:.2f}')
-```
-
-Zusammen kommen wir nun auf einen R2-Score von 0.9.
+Wie erwartet sind die Scores bei YouTube besser als bei Facebook und den
+Newspapern, da dort ein lineares Modell besser passt.
 ````
 
 ```{admonition} Finales Modell
