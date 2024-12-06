@@ -223,16 +223,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">ML-Verfahren</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/sec00.html">6. Entscheidungsbäume (Decision Trees)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter06/sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter06/chapter06_sec00.html">6. Entscheidungsbäume (Decision Trees)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec01.html">6.1 Was ist ein Entscheidungsbaum?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec02.html">6.2 Entscheidungsbäume visualisieren und trainieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec03.html">6.3 Entscheidungsbäume in der Praxis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter06/chapter06_sec04.html">Übung</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec01.html">7.1 Einfache lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec02.html">7.2 Multiple lineare Regression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter07/sec03.html">7.3 Polynomiale Regression</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter07/chapter07_sec00.html">7. Lineare Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec01.html">7.1 Einfache lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec02.html">7.2 Multiple lineare Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec03.html">7.3 Polynomiale Regression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter07/chapter07_sec04.html">Übungen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter08/sec00.html">8. ML-Workflow: Datenvorverarbeitung</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -622,7 +624,7 @@ aufgerufen.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_cecc9e90ed0c40c4015a5e0ebcd2b68f {
+                #map_23f9e87c131a361ff4dfc8a3cdf8dc13 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -636,14 +638,14 @@ aufgerufen.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_cecc9e90ed0c40c4015a5e0ebcd2b68f&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_23f9e87c131a361ff4dfc8a3cdf8dc13&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_cecc9e90ed0c40c4015a5e0ebcd2b68f = L.map(
-                &quot;map_cecc9e90ed0c40c4015a5e0ebcd2b68f&quot;,
+            var map_23f9e87c131a361ff4dfc8a3cdf8dc13 = L.map(
+                &quot;map_23f9e87c131a361ff4dfc8a3cdf8dc13&quot;,
                 {
                     center: [50.11088, 8.67949],
                     crs: L.CRS.EPSG3857,
@@ -657,10 +659,10 @@ aufgerufen.</p>
 
         
     
-            var tile_layer_eeefa9682facc338e8b64429fb7cd258 = L.tileLayer(
+            var tile_layer_5bb05d8a3211dd5101568e3f0edcf73f = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_cecc9e90ed0c40c4015a5e0ebcd2b68f);
+            ).addTo(map_23f9e87c131a361ff4dfc8a3cdf8dc13);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -718,7 +720,7 @@ hinzufügen können:</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_8692f9debecff87f782d8600a891f31a {
+                #map_2caab633374eb58ebed742709a950057 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -732,14 +734,14 @@ hinzufügen können:</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_8692f9debecff87f782d8600a891f31a&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_2caab633374eb58ebed742709a950057&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_8692f9debecff87f782d8600a891f31a = L.map(
-                &quot;map_8692f9debecff87f782d8600a891f31a&quot;,
+            var map_2caab633374eb58ebed742709a950057 = L.map(
+                &quot;map_2caab633374eb58ebed742709a950057&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -753,28 +755,28 @@ hinzufügen können:</p>
 
         
     
-            var tile_layer_4a61850f0f3e1524042f3eddc37c8d44 = L.tileLayer(
+            var tile_layer_7dd14ae9e8ae31cc33c9614c726bd641 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_8692f9debecff87f782d8600a891f31a);
+            ).addTo(map_2caab633374eb58ebed742709a950057);
         
     
-            var marker_9c10442b9e314de0bfd3e9905a14d6e7 = L.marker(
+            var marker_99ea27b3e2ceacd17732c39935a69f3f = L.marker(
                 [50.13085378545699, 8.691700550887166],
                 {}
-            ).addTo(map_8692f9debecff87f782d8600a891f31a);
+            ).addTo(map_2caab633374eb58ebed742709a950057);
         
     
-        var popup_fc433890c166c0f5332775f987b3c9a3 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_a4ad5b09da6be96289119b527346a3bf = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_2cc110e10986677802497398a59189d3 = $(`&lt;div id=&quot;html_2cc110e10986677802497398a59189d3&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
-                popup_fc433890c166c0f5332775f987b3c9a3.setContent(html_2cc110e10986677802497398a59189d3);
+                var html_0f1f81d319ba0aa58928f7f83ef76e36 = $(`&lt;div id=&quot;html_0f1f81d319ba0aa58928f7f83ef76e36&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
+                popup_a4ad5b09da6be96289119b527346a3bf.setContent(html_0f1f81d319ba0aa58928f7f83ef76e36);
             
         
 
-        marker_9c10442b9e314de0bfd3e9905a14d6e7.bindPopup(popup_fc433890c166c0f5332775f987b3c9a3)
+        marker_99ea27b3e2ceacd17732c39935a69f3f.bindPopup(popup_a4ad5b09da6be96289119b527346a3bf)
         ;
 
         
@@ -871,7 +873,7 @@ angegeben werden.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_da8da13c37a856a2d300f8e9b091ec43 {
+                #map_6c1fb45a2f7458a83d9de89b0e628244 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -885,14 +887,14 @@ angegeben werden.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_da8da13c37a856a2d300f8e9b091ec43&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_6c1fb45a2f7458a83d9de89b0e628244&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_da8da13c37a856a2d300f8e9b091ec43 = L.map(
-                &quot;map_da8da13c37a856a2d300f8e9b091ec43&quot;,
+            var map_6c1fb45a2f7458a83d9de89b0e628244 = L.map(
+                &quot;map_6c1fb45a2f7458a83d9de89b0e628244&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -906,40 +908,40 @@ angegeben werden.</p>
 
         
     
-            var tile_layer_e86ce7a6c7c6e9edc5552ef334f1cf6e = L.tileLayer(
+            var tile_layer_e8a2ea4d4e22e124e1162924a4bba3f3 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_da8da13c37a856a2d300f8e9b091ec43);
+            ).addTo(map_6c1fb45a2f7458a83d9de89b0e628244);
         
     
-            var choropleth_d7599eb96b43fbd76dbe8d3fb1d5eb94 = L.featureGroup(
+            var choropleth_518c4260da2b7c96d097f9f630c2542f = L.featureGroup(
                 {}
-            ).addTo(map_da8da13c37a856a2d300f8e9b091ec43);
+            ).addTo(map_6c1fb45a2f7458a83d9de89b0e628244);
         
     
-        function geo_json_e154cf578e469983c9e2880bfc21fc76_styler(feature) {
+        function geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_styler(feature) {
             switch(feature.properties.name) {
                 default:
                     return {&quot;color&quot;: &quot;black&quot;, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.6, &quot;opacity&quot;: 1, &quot;weight&quot;: 1};
             }
         }
 
-        function geo_json_e154cf578e469983c9e2880bfc21fc76_onEachFeature(feature, layer) {
+        function geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_onEachFeature(feature, layer) {
             layer.on({
             });
         };
-        var geo_json_e154cf578e469983c9e2880bfc21fc76 = L.geoJson(null, {
-                onEachFeature: geo_json_e154cf578e469983c9e2880bfc21fc76_onEachFeature,
+        var geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a = L.geoJson(null, {
+                onEachFeature: geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_onEachFeature,
             
-                style: geo_json_e154cf578e469983c9e2880bfc21fc76_styler,
+                style: geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_styler,
         });
 
-        function geo_json_e154cf578e469983c9e2880bfc21fc76_add (data) {
-            geo_json_e154cf578e469983c9e2880bfc21fc76
+        function geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_add (data) {
+            geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a
                 .addData(data)
-                .addTo(choropleth_d7599eb96b43fbd76dbe8d3fb1d5eb94);
+                .addTo(choropleth_518c4260da2b7c96d097f9f630c2542f);
         }
-            geo_json_e154cf578e469983c9e2880bfc21fc76_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_2b7d8ff45bedd95ef51dbc9e7782c38a_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
 &lt;/script&gt;
