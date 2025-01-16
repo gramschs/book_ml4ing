@@ -26,16 +26,12 @@ kernelspec:
   Margin** (= weicher Randabstand) dennoch klassifiziert werden können.
 ```
 
-+++
-
 ## Welche Trenn-Gerade soll es sein?
 
-Mit Support Vactor Machines (SVM) wollen wir erneut binäre
-Klassifikationsprobleme lösen. Bisher haben wir bereits das Perzeptron und das
-logistische Regressionsmodell kennengelernt. Liegen nur wenige Datensätze vor,
-so ist das logistische Regressionsmodell empfehlenswert. Bei größeren Mengen an
-Trainingsdaten skaliert das SVM-Verfahren jedoch besser. Auch neigt es weniger
-zu Overfitting. Daher lohnt es sich, Support Vector Machines anzusehen.
+Support Vector Machines (SVM) können sowohl für Klassifikations- als auch
+Regressionsprobleme genutzt werden. Insbesondere wenn viele Merkmale (Features)
+vorliegen, sind SVMs gut geeignet. Auch neigen SVMs weniger zu Overfitting.
+Daher lohnt es sich, Support Vector Machines anzusehen.
 
 Warum es weniger zu Overfitting neigt und mit Ausreißern besser umgehen kann,
 sehen wir bereits an der zugrundeliegenden Idee, die hinter dem Verfahren
@@ -59,21 +55,27 @@ Option `n_features` auf den Wert 2 voreingestellt ist, und einen Output, bei dem
 die Labels entweder durch 0 oder 1 gekennzeichnet sind. Durch die Option
 `random_state=0` wird der Zufall ausgeschaltet.
 
-Wenn wir die Daten visualisieren, erhalten wir folgenden Plot.
+Wenn wir die Daten in einen Pandas-DataFrame packen und anschließend
+visualisieren, erhalten wir folgenden Plot.
 
 ```{code-cell} ipython3
+import pandas as pd 
 import plotly.express as px
 
-fig = px.scatter(x = X[:,0], y = X[:,1],  color=y, color_continuous_scale=['#3b4cc0', '#b40426'],
-                 title='Künstliche Daten',
-                 labels={'x': 'Feature 1', 'y': 'Feature 2'})
+daten = pd.DataFrame({
+    'Feature 1': X[:,0],
+    'Feature 2': X[:,1],
+    'Status': y.astype(bool),
+    })
+
+fig = px.scatter(daten, x = 'Feature 1', y = 'Feature 2',  color='Status',
+                 title='Künstliche Daten', color_discrete_sequence=['#b40426','#3b4cc0'])
 fig.show()
 ```
 
 Wir können uns jetzt verschiedene Geraden vorstellen, die die blauen Punkte von
 den roten Punkten trennen. In der folgenden Grafik sind drei eingezeichnet.
 Welche würden Sie nehmen und warum?
-
 
 ```{figure} pics/fig10_01_annotated.pdf
 ---
@@ -83,8 +85,6 @@ name: fig10_01_annotated
 Drei Geraden trennen die roten von den blauen Punkten, aber welche ist die bessere Wahl?
 ```
 
-+++
-
 Alle drei Geraden trennen die blauen von den roten Punkten. Jedoch könnte Gerade
 3 problematisch werden, wenn beispielsweise ein neuer blauer Datenpunkt an der
 Position (2.3, 3.3) dazukäme. Dann würde Gerade 3 diesen Punkt als rot
@@ -93,7 +93,6 @@ Datenpunkt an der Position (0.5, 3) würde fälschlicherweise als rot
 klassifiziert werden. Gerade 2 bietet den sichersten Abstand zu den bereits
 vorhandenen Datenpunkten. Wir können diesen "Sicherheitsstreifen" folgendermaßen
 visualisieren.
-
 
 ```{figure} pics/fig10_02_annotated.pdf
 ---
@@ -122,8 +121,6 @@ Einige wenige Punkte (gelb markiert) bestimmen den Verlauf des Randabstandes. Di
 die vom Ursprung des Koordinatensystems zu diesen Punkten zeigen, werden Stützvektoren (= Support Vectors) genannt.
 ```
 
-+++
-
 ## Großer, aber weicher Randabstand
 
 Bei dem oben betrachteten Beispiel lassen sich blaue und rote Datenpunkte
@@ -133,20 +130,18 @@ wollen, die im Sicherheitsstreifen liegen, steuern wir mit dem Parameter `C`.
 Ein großes `C` bedeutet, dass wir eine große Mauer an den Grenzen des
 Sicherheitsabstandes errichten. Es kommt kaum vor, dass Datenpunkte innerhalb
 des Margins liegen. Je kleiner `C` wird, desto mehr Datenpunkte sind innerhalb
-des Sicherheitsbereichs erlaubt. 
+des Sicherheitsbereichs erlaubt.
 
 Im Folgenden betrachten wir einen neuen künstlichen Datensatz, bei dem die
 blauen von den roten Punkte nicht mehr ganz so stark getrennt sind. Schauen Sie
 sich die fünf verschiedenen Margins an, die entstehen, wenn der Parameter `C`
-variiert wird. 
+variiert wird.
 
 ```{code-cell} ipython3
 :tags: [remove-input]
 from IPython.display import HTML
 HTML('../assets/chapter10/fig04.html')
 ```
-
-+++
 
 ## Zusammenfassung
 

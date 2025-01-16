@@ -27,8 +27,8 @@ Wenn wir in der Dokumentation von Scikit-Learn
 [Scikit-Learn/SVM](https://scikit-learn.org/stable/modules/svm.html) die Support
 Vector Machines nachschlagen, so finden wir drei Einträge
 
-* SVC, 
-* NuSVC und 
+* SVC,
+* NuSVC und
 * LinearSVC.
 
 Die Beispiele des letzten Abschnittes sind linearer Natur, so dass sich
@@ -97,7 +97,6 @@ visualisieren. Dazu modifizieren wir einen Code-Schnippsel aus dem Buch: »Data
 Science mit Python« von Jake VanderPlas (mitp Verlag 2017), ISBN 978-3-95845-
 695-2, siehe
 [https://github.com/jakevdp/PythonDataScienceHandbook](https://github.com/jakevdp/PythonDataScienceHandbook).
-
 
 ```{code-cell} ipython3
 # Quelle: VanderPlas "Data Science mit Python", S. 482
@@ -203,6 +202,6 @@ Verwenden wir den SVC-Klassifikator aus dem Modul SVM von Scikit-Learn, können
 wir mittels der Option `kernel='linear'` eine binäre Klassifikation durchführen,
 bei der die Trennungsgerade den größtmöglichen Abstand zwischen den
 Punkteclustern erzeugt, also einen möglichst großen Margin. Sind die Daten nicht
-linear trennbar, so können wir mit der Option `C= ` steuern, wie viele Ausnahmen
+linear trennbar, so können wir mit der Option `C=` steuern, wie viele Ausnahmen
 erlaubt werden sollen. Mit Ausnahmen sind Punkte innerhalb des Margins gemeint.
 Im nächsten Abschnitt betrachten wir nichtlineare Trennungsgrenzen.
