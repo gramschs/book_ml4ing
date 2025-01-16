@@ -24,7 +24,7 @@ kernelspec:
 
 ## Nichtlineare trennbare Daten
 
-Für die Support Vecror Machines sind wir bisher davon ausgegangen, dass die
+Für die Support Vector Machines sind wir bisher davon ausgegangen, dass die
 Daten -- ggf. bis auf wenige Ausnahmen -- linear getrennt werden können. Im
 Folgenden betrachten wir nun einen künstlichen Messdatensatz, bei dem das
 offensichtlich nicht geht. Dazu nutzen wir die in Scikit-Learn integrierte
@@ -58,7 +58,7 @@ einfach nicht.
 
 Die Idee zur Überwindung dieses Problems klingt zunächst einmal absurd. Wir
 machen aus zwei Features drei Features. Als drittes Feature wählen wir das
-Quadrat des Abstandes eines Punktes zum Ursprung. 
+Quadrat des Abstandes eines Punktes zum Ursprung.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -93,7 +93,6 @@ name: fig_10_06
 Schematische Darstellung der Trennebene in 3D
 ```
 
-
 ```{figure} pics/fig10_07_with_circle.png
 ---
 width: 600px
@@ -122,7 +121,7 @@ beiden Features berechnet, was sehr zeitaufwendig werden könnte, sondern die
 Transformationsfunktion wird direkt in das Lernverfahren eingebaut. Da
 Funktionen, die dafür geeignet sind, werden als **Kernel-Funktionen**
 bezeichnet.
- 
+
 Am häufigsten zum Einsatz kommt dabei die sogenannte **radiale Basisfunktion**.
 Die radialen Basisfunktionen werden mit **RBF** abgekürzt. Sie haben die tolle
 Eigenschaft, dass sie nur vom Abstand eines Punktes zum Ursprung abhängen; so
@@ -130,7 +129,7 @@ wie unser Beispiel oben.
 
 Um nichtlinear trennbare Daten zu klassifizieren, nutzen wir in Scikit-Learn das
 SVC-Lernverfahren. Doch diesmal wählen wir als Kern nicht die linearen
-Funktionen, sondern die sogenannten radialen Basisfunktionen RBF. 
+Funktionen, sondern die sogenannten radialen Basisfunktionen RBF.
 
 ```{code-cell} ipython3
 from sklearn import svm
