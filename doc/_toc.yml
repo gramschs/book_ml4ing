@@ -67,6 +67,7 @@ parts:
     - file: chapter10/sec01.md
     - file: chapter10/sec02.md
     - file: chapter10/sec03.md
+    - file: chapter10/sec04.md
   - file: chapter11/sec00.md
     sections:
     - file: chapter11/sec01.md  

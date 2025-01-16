@@ -15,7 +15,7 @@ kernelspec:
 # Übung
 
 ```{admonition} Aufgabe
-:class: tip
+:class: miniexercise
 
 Auf der Internetseite
 https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks
@@ -31,7 +31,7 @@ numerischen Werte zu prognostizieren.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: minisolution, toggle
 
 Import der Daten (es gibt keine Spaltenüberschriften, daher wird das optionale Argument 'header=None' gesetzt):
 
