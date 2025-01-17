@@ -112,7 +112,7 @@ y = data.loc[:, 60]
 y.replace('Stein', 0, inplace=True)
 y.replace('Metall', 1, inplace=True)
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y)
 ```
 
 ```python
@@ -154,7 +154,7 @@ from sklearn.ensemble import RandomForestClassifier
 list_score_train = []
 list_score_test = []
 for n in range(1,101):
-    model_random_forest = RandomForestClassifier(n_estimators=n, random_state=0)
+    model_random_forest = RandomForestClassifier(n_estimators=n)
     model_random_forest.fit(X_train, y_train)
 
     score_random_forest_train = model_random_forest.score(X_train, y_train)
