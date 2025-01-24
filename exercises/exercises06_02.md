@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-## Aufgabe 6.2
+# Aufgabe 6.2
 
 Der Datensatz 'diabetes.csv' ist eine Sammlung von medizinischen Daten, die vom
 National Institute of Diabetes and Digestive and Kidney Diseases, erhoben
@@ -70,9 +70,9 @@ daten.describe()
 
 Die Pregnancies reichen von 0 Schwangerschaften bis hin zu 17 Schwangerschaften, was ungewöhnlich hoch ist. Der Mittelwert von 3.85 Schwangerschaften erscheint plausibel, 50 % der Frauen waren maximal dreimal schwanger.
 
-Der Glucose-Wert reicht von 0 bis 199. An der Stelle müsste mit einem Mediziner Rücksprache gehalten werden, ob ein Glucose-Wert von 0 plausibel ist. 
+Der Glucose-Wert reicht von 0 bis 199. An der Stelle müsste mit einem Mediziner Rücksprache gehalten werden, ob ein Glucose-Wert von 0 plausibel ist.
 
-Beim BloodPressure, also den Blutdruck, ist der minimale Wert von 0 jedoch unplausibel. Eine PErson mit einem Blutdruck von 0 ist tot. 
+Beim BloodPressure, also den Blutdruck, ist der minimale Wert von 0 jedoch unplausibel. Eine PErson mit einem Blutdruck von 0 ist tot.
 
 SkinThickness kann erneut nur von Medizinern korrekt eingeordnet werden. Ob eine minimale SkinThickness von 0 und eine maximale SkinThickness von 99 sinnvolle Werte darstellen, können Nichtmediziner nicht sinnvoll beurteilen.
 
@@ -80,7 +80,7 @@ Auch der minimale Insulin-Wert von 0 wirkt seltsam sowie der Body-Maß-Index BMI
 
 Die DiabetesPedigree-Funktion können wir ohne medizinisches Fachwissen nicht bewerten.
 
-Beim Alter fällt auf, dass keine Kinder dabei waren. Die jüngste Person ist 21, das mittlere Alter liegt bei 33 Jahren und 75 % aller Personen sind jünger als 41. 
+Beim Alter fällt auf, dass keine Kinder dabei waren. Die jüngste Person ist 21, das mittlere Alter liegt bei 33 Jahren und 75 % aller Personen sind jünger als 41.
 
 Das Outcome darf nicht einfach statistisch interpretiert werden. Das Outcome gibt an, ob eine Person Diabetes hat (1) oder nicht (0). Auch wenn hier Zahlen verwendet wurden, ist das Outcome eigentlich ein kategoriales Merkmal. Es ist sogar die kategoriale Zielgröße unserer Problemstellung.
 
