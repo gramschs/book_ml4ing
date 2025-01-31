@@ -39,8 +39,8 @@ Fragen:
   ja/nein zu prognostizieren? 
 * Visualisieren Sie Diabetes ja/nein in Abhängigkeit der gewählten Eigenschaft.
   Vermuten Sie einen Zusammenhang? 
-* Trainieren Sie ein Perzeptron mit der gewählten Eigenschaft.
-* Trainieren Sie ein Perzeptron, um zu prognostizieren, ob eine Person bei den
+* Trainieren Sie ein Perzeptron mit dieser ausgewählten Eigenschaft.
+* Trainieren Sie ein Perzeptron mit allen passenden Eigenschaften, um zu prognostizieren, ob eine Person bei den
   gegebenen medizinischen Kennzahlen Diabetes haben könnte oder nicht.
 * Vergleichen Sie beide Modelle.
 ```
