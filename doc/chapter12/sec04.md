@@ -6,41 +6,41 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.3
 kernelspec:
-  display_name: python312
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
 # Übung
 
-Der folgende Datensatz `automarkt_polen_DE.csv` enthält die Preise und
-Eigenschaften von Autos aus Polen. Das Jahr bezieht sich auf die Erstzulassung
-der Autos. Stadt bzw. Region beziehen sich auf den Verkaufsort des Autos. Die
-übrigen Eigenschaften sind selbsterklärend und ggf. mit ihren Einheiten
-angegeben.
+Der folgende Datensatz `automarkt_polen_DE.csv` (siehe campUAS) enthält die
+Preise und Eigenschaften von Autos aus Polen. Das Jahr bezieht sich auf die
+Erstzulassung der Autos. Stadt bzw. Region beziehen sich auf den Verkaufsort des
+Autos. Die übrigen Eigenschaften sind selbsterklärend und ggf. mit ihren
+Einheiten angegeben.
 
 Bearbeiten Sie die folgenden Aufgaben. Vorab können Sie die folgenden Module
 importieren. Schreiben Sie Ihre Antworten in eine Markdown-Zelle.
 
 ```{code-cell} ipython3
-import numpy as np
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+# import numpy as np
+# import pandas as pd
+# import plotly.express as px
+# import plotly.graph_objects as go
 
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from sklearn.linear_model import LinearRegression, LogisticRegression, Perceptron
-from sklearn.model_selection import train_test_split, cross_validate, KFold, GridSearchCV
-from sklearn.neural_network import MLPClassifier, MLPRegressor
-from sklearn.preprocessing import PolynomialFeatures, MinMaxScaler, StandardScaler
-from sklearn.svm  import SVC, SVR
-from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
+# from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+# from sklearn.linear_model import LinearRegression, LogisticRegression, Perceptron
+# from sklearn.model_selection import train_test_split, cross_validate, KFold, GridSearchCV
+# from sklearn.neural_network import MLPClassifier, MLPRegressor
+# from sklearn.preprocessing import PolynomialFeatures, MinMaxScaler, StandardScaler
+# from sklearn.svm  import SVC, SVR
+# from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor, plot_tree
 
-pd.DataFrame.iteritems = pd.DataFrame.items
+# pd.DataFrame.iteritems = pd.DataFrame.items
 ```
 
-## Aufgabe 1: Import und Bereinigung der Daten
-
+```{admonition} Import und Bereinigung der Daten
+:class: miniexercise
 Importieren Sie die Daten 'automarkt_polen_DE.csv'. Verschaffen Sie sich einen
 Überblick und beantworten Sie folgende Fragen:
 
@@ -54,13 +54,16 @@ Importieren Sie die Daten 'automarkt_polen_DE.csv'. Verschaffen Sie sich einen
 
 Falls der Datensatz ungültige Werte aufweist oder Unstimmigkeiten enthält,
 bereinigen Sie ihn.
+```
 
-```{code-cell} ipython3
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
 data = pd.read_csv('automarkt_polen_DE.csv', skiprows=3)
 data.info()
 ```
 
-```{code-cell} ipython3
+```python
 data.head()
 ```
 
@@ -81,12 +84,14 @@ Es gibt Eigenschaften, die unvollständig sind:
 * Modell: 24
 * Hubraum [cm3]: 96
 
-```{code-cell} ipython3
+```python
 data.dropna(inplace=True)
 data.info()
 ```
+````
 
-## Aufgabe 2: Statistische Kennzahlen der numerischen Eigenschaften
+```{admonition} Statistische Kennzahlen (numerische Eigenschaften)
+:class: miniexercise
 
 * Ermitteln Sie von den numerischen Eigenschaften die statistischen Kennzahlen
   und visualisieren Sie sie. Verwenden Sie beim Plot eine aussagefähige
@@ -98,12 +103,15 @@ data.info()
 * Beantworten Sie folgende Fragen:
   * In welchem Jahr wurden die meisten Autos zugelassen?
   * Wie viele Autos wurden in diesem Jahr mit den meisten Zulassungen zugelassen?
+```
 
-```{code-cell} ipython3
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
 data.describe()
 ```
 
-```{code-cell} ipython3
+```python
 numerical_features = ['Preis [Zloty]', 'Kilometerstand [km]', 'Hubraum [cm3]', 'Jahr', 'Alter']
 fig = px.box(data[numerical_features],
     labels={'variable': 'Merkmal', 'value':'Wert'},
@@ -116,7 +124,7 @@ Mittelwert liegt deutlich höher als der Median, d.h. wenige Autos, die sehr
 teuer sind, verzerren den Preis nach oben. Wir entfernen alle Ausreißer und
 wählen als Grenze 189750 Zloty.
 
-```{code-cell} ipython3
+```python
 rows = data[data['Preis [Zloty]'] > 189750].index
 data = data.drop(rows)
 data.info()
@@ -124,13 +132,13 @@ data.info()
 
 Auch der Kilometerstand hat einige Ausreißer mit Autos, die sehr viele Kilometer haben. Diese entfernen wir ebenfalls, wir wählen als Grenze 420000 km.
 
-```{code-cell} ipython3
+```python
 rows = data[data['Kilometerstand [km]'] > 420000].index
 data = data.drop(rows)
 data.info()
 ```
 
-```{code-cell} ipython3
+```python
 fig = px.box(data[numerical_features])
 fig.show()
 ```
@@ -139,13 +147,13 @@ Der Hubraum fängt bei 0 cm^3 an und geht bis 8300 cm^3. Ein Auto kann keinen
 Hubraum von 0 cm^3 haben, Das ist eine Ungereimtheit. Diese Daten werden daher
 entfernt.
 
-```{code-cell} ipython3
+```python
 rows = data[data['Hubraum [cm3]'] < 1].index
 data = data.drop(rows)
 data.info()
 ```
 
-```{code-cell} ipython3
+```python
 fig = px.box(data[['Hubraum [cm3]','Jahr', 'Alter']])
 fig.show()
 ```
@@ -153,20 +161,21 @@ fig.show()
 Jahr und Alter sind direkt linear korreliert. Daher entfernen wir eine der
 beiden Eigenschaften und nehmen das Alter.
 
-```{code-cell} ipython3
+```python
 data.drop(columns='Alter', inplace=True)
 data.info()
 ```
 
-```{code-cell} ipython3
+```python
 data['Jahr'].value_counts()
 ```
 
 Im Jahr 2017 wurden die meisten Autos zugelassen, die aktuell in Polen zum
 Verkauf stehen. Es sind 1395 Autos.
+````
 
-## Aufgabe 3: Statistische Kennzahlen (kategoriale Eigenschaften)
-
+```{admonition} Statistische Kennzahlen (kategoriale Eigenschaften)
+:class: miniexercise
 Beantworten Sie durch Datenanalyse die folgenden Fragen. Fassen Sie die
 Ergebnisse bzw. die Interpretation davon jeweils kurz zusammen (als Kommentar in
 der Code-Zelle oder in einer Markdown-Zelle).
@@ -178,8 +187,11 @@ der Code-Zelle oder in einer Markdown-Zelle).
 * Analysieren Sie die Regionen. Gibt es Regionen, die Sie überraschen? Wenn ja,
   warum?
 * Wie viel Prozent der Autos haben ein Automatik-Getriebe?
+```
 
-```{code-cell} ipython3
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
 marken = data['Marke'].value_counts()
 print(marken)
 ```
@@ -187,32 +199,33 @@ print(marken)
 Volkswagen wird mit 2473 Autos am häufigsten angeboten, Bentley mit 2 am
 seltesten.
 
-```{code-cell} ipython3
+```python
 fig = px.bar(marken,
     title='angebotene Autos in Polen',
     labels={'value':'Anzahl Autos'})
 fig.show()
 ```
 
-```{code-cell} ipython3
+```python
 regionen = data['Region'].unique()
 print(regionen)
 ```
 
 Etwas überraschend sind Regionen aus Deutschland dabei wie Berlin.
 
-```{code-cell} ipython3
+```python
 data['Getriebe'].value_counts()
 ```
 
-```{code-cell} ipython3
+```python
 7065 / (12465 + 7065) * 100
 ```
 
 36 % der Autos haben ein Automatik-Getriebe.
+````
 
-## Aufgabe 4: Regression
-
+```{admonition} Regression
+:class: miniexercise
 Ziel der Regressionsaufgabe ist es, den Preis der Autos zu prognostizieren.
 
 * Wählen Sie zwei Regressionsmodelle aus. Begründen Sie Ihre Auswahl mit einer
@@ -224,8 +237,11 @@ Ziel der Regressionsaufgabe ist es, den Preis der Autos zu prognostizieren.
 * Validieren Sie jedes ML-Modell bzgl. der Trainingsdaten und der Testdaten.
 * Bewerten Sie abschließend: welches der zwei Modelle würden Sie empfehlen?
   Begründen Sie Ihre Empfehlung.
+```
 
-```{code-cell} ipython3
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
 fig = px.scatter_matrix(data[['Preis [Zloty]', 'Kilometerstand [km]', 'Hubraum [cm3]', 'Jahr']])
 fig.show()
 ```
@@ -234,7 +250,7 @@ Im Scatterplot Jahr -- Preis ist eine Tendenz erkennbar, je größer das Jahr
 (also jünger das Auto), desto teurer ist das Auto. Aber ansonsten scheinen
 lineare Modelle eher unpassend zu sein.
 
-```{code-cell} ipython3
+```python
 X = data.loc[:, ['Kilometerstand [km]', 'Hubraum [cm3]', 'Jahr']]
 y = data['Preis [Zloty]']
 
@@ -247,7 +263,7 @@ X_trained_scaled = scaler.transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 ```
 
-```{code-cell} ipython3
+```python
 # Modell 1: SVM
 
 model = SVR()
@@ -259,7 +275,7 @@ print(f'Score Trainingsdaten: {score_train:.2f}')
 print(f'Score Testdaten: {score_test:.2f}')
 ```
 
-```{code-cell} ipython3
+```python
 # Modell 2: neuronales Netz
 model = MLPRegressor(solver='lbfgs', max_iter=300)
 
@@ -270,7 +286,7 @@ print(f'Score Trainingsdaten: {score_train:.2f}')
 print(f'Score Testdaten: {score_test:.2f}')
 ```
 
-```{code-cell} ipython3
+```python
 # Modell 3: DecisionTree
 model = DecisionTreeRegressor()
 
@@ -286,11 +302,10 @@ zwar positiv, aber nicht wirklich gut. Der Entscheidungsbaum ist sehr gut an die
 Trainingsdaten angepasst, zeigt aber Overfitting. Daher würde ich keines der
 Modelle produktiv einsetzen, sondern nach besseren Modellen suchen oder die
 Hyperparameter tunen.
+````
 
-+++
-
-## Aufgabe 5
-
+```{admonition} Klassifikation
+:class: miniexercise
 Ziel der Klassifikationsaufgabe ist es, die Preisklasse "billig" oder "teuer"
 der Autos zu prognostizieren.
 
@@ -311,8 +326,11 @@ als "teuer" klassifiziert werden.
 * Bewerten Sie abschließend: Ist das Jahr oder der Kilometerstand wichtiger für
   die Einstufung als billiges oder teures Auto? Begründen Sie Ihre Entscheidung
   anhand des Entscheidungsbaumes (Decision Trees).
+```
 
-```{code-cell} ipython3
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
 # Vorbereitung
 
 # Einteilung der Autos nach billig (=0) oder teuer (=1)
@@ -324,7 +342,7 @@ data.loc[ data['Preis [Zloty]'] >= median, 'Preisklasse'] = 1
 data['Preisklasse'].unique()
 ```
 
-```{code-cell} ipython3
+```python
 X = data[['Jahr', 'Kilometerstand [km]']]
 y = data['Preisklasse']
 
@@ -337,3 +355,4 @@ plot_tree(model, feature_names=['Jahr', 'Kilometerstand [km]'], filled=True);
 ```
 
 Das Jahr wird benutzt, scheint also wichtiger zu sein.
+````

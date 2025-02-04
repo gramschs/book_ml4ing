@@ -77,7 +77,8 @@ parts:
     sections:
     - file: chapter12/sec01.md  
     - file: chapter12/sec02.md   
-    - file: chapter12/sec03.md   
+    - file: chapter12/sec03.md
+    - file: chapter12/sec04.md   
   - file: chapter13/sec00.md
     sections:
     - file: chapter13/sec01.md   
