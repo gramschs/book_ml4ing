@@ -173,9 +173,9 @@ Im Folgenden soll die Art der Pinguine anhand der numerischen Merkmale Schnabell
 
 Trainieren Sie nun drei ML-Modelle:
 
-* Entscheidungsbaum (Decision Tree), 
-* Random Forests und 
-* SVM. 
+* Entscheidungsbaum (Decision Tree),
+* Random Forests und
+* SVM.
 
 Führen Sie dazu vorab einen Split in Trainings- und Testdaten durch. Verwenden Sie Kreuzvalidierung und/oder Gittersuche, um die Hyperparameter zu justieren. Für welches Modell würden Sie sich entscheiden? Begründen Sie Ihre Wahl.
 
