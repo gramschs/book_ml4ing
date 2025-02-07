@@ -83,7 +83,8 @@ parts:
     sections:
     - file: chapter13/sec01.md   
     - file: chapter13/sec02.md 
-    - file: chapter13/sec03.md  
+    - file: chapter13/sec03.md
+    - file: chapter13/sec04.md  
   - file: chapter14/sec00.md
     sections:
     - file: chapter14/sec01.md   
