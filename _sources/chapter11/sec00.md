@@ -14,13 +14,6 @@ kernelspec:
 
 # 11. ML-Workflow: Modellbewertung und Auswahl
 
-TODO
-
-```{admonition} Warnung
-:class: warning
-Dieser Teil des Vorlesungsskriptes wird gerade überarbeitet.
-```
-
 Kapitelübersicht:
 
 ```{tableofcontents}
