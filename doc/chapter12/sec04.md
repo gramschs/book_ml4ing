@@ -76,12 +76,12 @@ Die numerischen Eigenschaften sind:
   
 Die kategorialen Eigenschaften sind:
 
-* Marke, Modell, Preis [Zloty], Getriebe, Kraftstoff, Stadt, Region  mit
-  dem Datentyp Objects (wahrscheinlich Strings)
+* Marke, Modell, Getriebe, Kraftstoff, Stadt, Region  mit dem 
+  Datentyp Objects (wahrscheinlich Strings)
 
 Es gibt Eigenschaften, die unvollständig sind:
 
-* Modell: 24
+* Modell: 70
 * Hubraum [cm3]: 96
 
 ```python
