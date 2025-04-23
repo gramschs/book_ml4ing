@@ -16,31 +16,34 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +69,7 @@
     <link rel="prev" title="Bildverarbeitung mit Scikit-Image" href="../extras_skimage/extras_skimage_sec00.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +85,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +94,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +101,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +118,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,21 +149,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Maschinelles Lernen für Studierende der Ingenieurwissenschaften - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -299,9 +288,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -479,24 +473,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -629,7 +615,7 @@ aufgerufen.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_b5cdceb982a7f9f9ee4ba1ee15cfad01 {
+                #map_6a3810407bdaaf7624d185394b55a34b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -643,14 +629,14 @@ aufgerufen.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_b5cdceb982a7f9f9ee4ba1ee15cfad01&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_6a3810407bdaaf7624d185394b55a34b&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_b5cdceb982a7f9f9ee4ba1ee15cfad01 = L.map(
-                &quot;map_b5cdceb982a7f9f9ee4ba1ee15cfad01&quot;,
+            var map_6a3810407bdaaf7624d185394b55a34b = L.map(
+                &quot;map_6a3810407bdaaf7624d185394b55a34b&quot;,
                 {
                     center: [50.11088, 8.67949],
                     crs: L.CRS.EPSG3857,
@@ -664,10 +650,10 @@ aufgerufen.</p>
 
         
     
-            var tile_layer_886b3fdb76eaf1fec919f60b9717b3c5 = L.tileLayer(
+            var tile_layer_334987cbc580fbeb90fdb459b1e13231 = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_b5cdceb982a7f9f9ee4ba1ee15cfad01);
+            ).addTo(map_6a3810407bdaaf7624d185394b55a34b);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -725,7 +711,7 @@ hinzufügen können:</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_6f2ae145be5b5ab5aa72f37dc3f4fd59 {
+                #map_3f0a2397da040ff6fc1823d8789a609b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -739,14 +725,14 @@ hinzufügen können:</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_6f2ae145be5b5ab5aa72f37dc3f4fd59&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_3f0a2397da040ff6fc1823d8789a609b&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_6f2ae145be5b5ab5aa72f37dc3f4fd59 = L.map(
-                &quot;map_6f2ae145be5b5ab5aa72f37dc3f4fd59&quot;,
+            var map_3f0a2397da040ff6fc1823d8789a609b = L.map(
+                &quot;map_3f0a2397da040ff6fc1823d8789a609b&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -760,28 +746,28 @@ hinzufügen können:</p>
 
         
     
-            var tile_layer_50bbf0bcb1e61f35516f298b3d33073c = L.tileLayer(
+            var tile_layer_70d53e11cb1db5d98db24a63aa54f4db = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_6f2ae145be5b5ab5aa72f37dc3f4fd59);
+            ).addTo(map_3f0a2397da040ff6fc1823d8789a609b);
         
     
-            var marker_bb15122a6c48b33b285e8fc127ea39b8 = L.marker(
+            var marker_a2532b90947b71247620dad938f29d4d = L.marker(
                 [50.13085378545699, 8.691700550887166],
                 {}
-            ).addTo(map_6f2ae145be5b5ab5aa72f37dc3f4fd59);
+            ).addTo(map_3f0a2397da040ff6fc1823d8789a609b);
         
     
-        var popup_0343ca652408f1a9dfcecfb0e694abbc = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+        var popup_950cf23b5a235c1d51e7e8596dcb903f = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
 
         
             
-                var html_79e8b86e270e29fe5c8a6edae4db39d1 = $(`&lt;div id=&quot;html_79e8b86e270e29fe5c8a6edae4db39d1&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
-                popup_0343ca652408f1a9dfcecfb0e694abbc.setContent(html_79e8b86e270e29fe5c8a6edae4db39d1);
+                var html_3824a8a91d122c1042dcad19981652f8 = $(`&lt;div id=&quot;html_3824a8a91d122c1042dcad19981652f8&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;&gt;Hier sitzen wir :-)&lt;/div&gt;`)[0];
+                popup_950cf23b5a235c1d51e7e8596dcb903f.setContent(html_3824a8a91d122c1042dcad19981652f8);
             
         
 
-        marker_bb15122a6c48b33b285e8fc127ea39b8.bindPopup(popup_0343ca652408f1a9dfcecfb0e694abbc)
+        marker_a2532b90947b71247620dad938f29d4d.bindPopup(popup_950cf23b5a235c1d51e7e8596dcb903f)
         ;
 
         
@@ -834,14 +820,23 @@ der Pfad und der Dateiname der GeoJSON-Datei bei dem Argument <code class="docut
 angegeben werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">geojson_datei</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://raw.githubusercontent.com/gramschs/book_ml4ing/refs/heads/main/doc/extras_plotly/data/geojson_frankfurt_uas.json&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erstellen Sie eine Karte Frankfurt UAS als Ausgangspunkt und Zoomfaktor</span>
 <span class="n">karte_geojson</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">50.13085378545699</span><span class="p">,</span> <span class="mf">8.691700550887166</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 
-<span class="n">geojson_datei</span> <span class="o">=</span> <span class="s2">&quot;data/geojson_frankfurt_uas.json&quot;</span>
-
 <span class="c1"># Erstellen Sie eine Choroplethenkarte und fügen Sie sie zur Karte hinzu</span>
 <span class="n">folium</span><span class="o">.</span><span class="n">Choropleth</span><span class="p">(</span>
-    <span class="n">geo_data</span><span class="o">=</span><span class="s2">&quot;data/geojson_frankfurt_uas.json&quot;</span><span class="p">,</span>
+    <span class="n">geo_data</span><span class="o">=</span><span class="n">geojson_datei</span><span class="p">,</span>
     <span class="n">name</span><span class="o">=</span><span class="s1">&#39;choropleth&#39;</span>
 <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">karte_geojson</span><span class="p">)</span>
 
@@ -878,7 +873,7 @@ angegeben werden.</p>
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_a4add7aeca2fae542f92e7216b0d9c2c {
+                #map_33c5bd9f62eea0d9cf3bf552a36f4561 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -892,14 +887,14 @@ angegeben werden.</p>
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_a4add7aeca2fae542f92e7216b0d9c2c&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_33c5bd9f62eea0d9cf3bf552a36f4561&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_a4add7aeca2fae542f92e7216b0d9c2c = L.map(
-                &quot;map_a4add7aeca2fae542f92e7216b0d9c2c&quot;,
+            var map_33c5bd9f62eea0d9cf3bf552a36f4561 = L.map(
+                &quot;map_33c5bd9f62eea0d9cf3bf552a36f4561&quot;,
                 {
                     center: [50.13085378545699, 8.691700550887166],
                     crs: L.CRS.EPSG3857,
@@ -913,40 +908,40 @@ angegeben werden.</p>
 
         
     
-            var tile_layer_63769d1990c10e40bbc27768f9f35659 = L.tileLayer(
+            var tile_layer_9812f0e84bb114220972afad2a7a99db = L.tileLayer(
                 &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            ).addTo(map_a4add7aeca2fae542f92e7216b0d9c2c);
+            ).addTo(map_33c5bd9f62eea0d9cf3bf552a36f4561);
         
     
-            var choropleth_d5c8e80c2a45476c5699249b8cf8d474 = L.featureGroup(
+            var choropleth_49736c916fa017280ca1e85020e0d1ce = L.featureGroup(
                 {}
-            ).addTo(map_a4add7aeca2fae542f92e7216b0d9c2c);
+            ).addTo(map_33c5bd9f62eea0d9cf3bf552a36f4561);
         
     
-        function geo_json_c2b16c2fbf173739cefbf7ce250e6963_styler(feature) {
+        function geo_json_3c8a93e45bdeed59b9937b916aeb7295_styler(feature) {
             switch(feature.properties.name) {
                 default:
                     return {&quot;color&quot;: &quot;black&quot;, &quot;fillColor&quot;: &quot;blue&quot;, &quot;fillOpacity&quot;: 0.6, &quot;opacity&quot;: 1, &quot;weight&quot;: 1};
             }
         }
 
-        function geo_json_c2b16c2fbf173739cefbf7ce250e6963_onEachFeature(feature, layer) {
+        function geo_json_3c8a93e45bdeed59b9937b916aeb7295_onEachFeature(feature, layer) {
             layer.on({
             });
         };
-        var geo_json_c2b16c2fbf173739cefbf7ce250e6963 = L.geoJson(null, {
-                onEachFeature: geo_json_c2b16c2fbf173739cefbf7ce250e6963_onEachFeature,
+        var geo_json_3c8a93e45bdeed59b9937b916aeb7295 = L.geoJson(null, {
+                onEachFeature: geo_json_3c8a93e45bdeed59b9937b916aeb7295_onEachFeature,
             
-                style: geo_json_c2b16c2fbf173739cefbf7ce250e6963_styler,
+                style: geo_json_3c8a93e45bdeed59b9937b916aeb7295_styler,
         });
 
-        function geo_json_c2b16c2fbf173739cefbf7ce250e6963_add (data) {
-            geo_json_c2b16c2fbf173739cefbf7ce250e6963
+        function geo_json_3c8a93e45bdeed59b9937b916aeb7295_add (data) {
+            geo_json_3c8a93e45bdeed59b9937b916aeb7295
                 .addData(data)
-                .addTo(choropleth_d5c8e80c2a45476c5699249b8cf8d474);
+                .addTo(choropleth_49736c916fa017280ca1e85020e0d1ce);
         }
-            geo_json_c2b16c2fbf173739cefbf7ce250e6963_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_3c8a93e45bdeed59b9937b916aeb7295_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[8.69298230074574, 50.12943806766884], [8.693707347493216, 50.12962489671568], [8.694005896154096, 50.13024006037389], [8.693529639956608, 50.13037220560963], [8.694005896154096, 50.13133366513037], [8.693430123737016, 50.13144758085514], [8.692520261151401, 50.13140657122554], [8.69192316382967, 50.13146580734619], [8.69188762232298, 50.131684524694265], [8.691631723470351, 50.13167996809298], [8.691631723470351, 50.13148403383002], [8.691183900479103, 50.13144302423126], [8.69136160801574, 50.13071395883679], [8.690935109927977, 50.130700288754696], [8.690928001627555, 50.13011702827515], [8.69298230074574, 50.12943806766884]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;properties&quot;: {&quot;name&quot;: &quot;Frankfurt UAS&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
 &lt;/script&gt;
@@ -1016,7 +1011,8 @@ hinzuziehen.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1077,8 +1073,8 @@ By Simone Gramsch
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

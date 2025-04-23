@@ -152,14 +152,20 @@ der Pfad und der Dateiname der GeoJSON-Datei bei dem Argument `geo_data`
 angegeben werden.  
 
 ```{code-cell} ipython3
+import requests
+
+geojson_datei = requests.get(
+    "https://raw.githubusercontent.com/gramschs/book_ml4ing/refs/heads/main/doc/extras_plotly/data/geojson_frankfurt_uas.json"
+).json()
+```
+
+```{code-cell} ipython3
 # Erstellen Sie eine Karte Frankfurt UAS als Ausgangspunkt und Zoomfaktor
 karte_geojson = folium.Map(location=[50.13085378545699, 8.691700550887166], zoom_start=13)
 
-geojson_datei = "data/geojson_frankfurt_uas.json"
-
 # Erstellen Sie eine Choroplethenkarte und fügen Sie sie zur Karte hinzu
 folium.Choropleth(
-    geo_data="data/geojson_frankfurt_uas.json",
+    geo_data=geojson_datei,
     name='choropleth'
 ).add_to(karte_geojson)
 
