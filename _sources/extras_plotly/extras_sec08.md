@@ -146,7 +146,7 @@ Webseite [http://geojson.io/](http://geojson.io/) erstellt wird.
 
 Um GeoJSON in einer mit Folium erstellten Karte zu verwenden, gehen wir folgt
 vor. Zuerst wird die Karte wie üblich mit der `.Map()` Funktion erstellt. Danach
-wird eine Choroplethenkarte mit `folium.Choroplth()` erzeugt und mit `.add_to()`
+wird eine Choroplethenkarte mit `folium.Choropleth()` erzeugt und mit `.add_to()`
 zu der ersten Karte hinzugefügt. Bei der Erstellung der Choroplethenkarte muss
 der Pfad und der Dateiname der GeoJSON-Datei bei dem Argument `geo_data`
 angegeben werden.  
