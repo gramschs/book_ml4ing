@@ -26,6 +26,9 @@ schreiben Sie Ihre Antwort hinter den Pfeil.
 * 3,3 -->
 * 3**3 -->
 * 3**(1/3) -->
+
+Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
+überprüfen.
 ```
 
 ```{admonition} Lösung
@@ -47,7 +50,7 @@ ausgibt, also "Das Quadrat von 5 ist 25." usw.
 
 ````{admonition} Lösung
 :class: minisolution, dropdown
-```{code}
+```python
 for zahl in range(5, 16):
     print(f'Das Quadrat von {zahl} ist {zahl**2}.')
 ```
@@ -70,7 +73,7 @@ Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
 
 ````{admonition} Lösung
 :class: minisolution, dropdown
-```{code}
+```python
 for zahl in range(1, 8):
     print(f'{zahl}/7 = {zahl/7:.2f}.')
 ```
@@ -78,7 +81,7 @@ for zahl in range(1, 8):
 
 ````{admonition} Übung 2.4
 :class: miniexercise 
-Schreiben Sie ein Programm, das eine Liste von Namen durchgeht und jede Person
+Schreiben Sie ein Programm, das eine Liste von Namen durchläuft und jede Person
 begrüßt. Wenn beispielsweise die Namen Alice, Bob und Charlie in der Liste
 stehen, lauten die Begrüßungen:
 
@@ -91,30 +94,59 @@ Hallo, Charlie!
 
 ````{admonition} Lösung
 :class: minisolution, dropdown
-```{code}
+```python
 namensliste = ['Alice', 'Bob', 'Charlie']
 for name in namensliste:
     print(f'Hallo, {name}!')
 ```
 ````
 
-````{admonition} Übung 2.5
-:class: miniexercise 
-Schreiben Sie ein Programm, das das kleine 1x1 in schöner Tabellenform ausgibt,
-also
+```{admonition} Übung 2.5
+:class: miniexercise
+Erstellen Sie ein Dictionary für einen Studierenden mit folgenden Informationen:
 
-```{code}
-1 x 1 = 1
-1 x 2 = 2
-```
-usw.
+- vorname: "Max"
+- nachname: "Mustermann"
+- matrikelnummer: 123456
+- studiengang: "Maschinenbau"
+
+Geben Sie dann folgende Information aus: "Max Mustermann (123456) studiert Maschinenbau."
 ````
 
 ````{admonition} Lösung
 :class: minisolution, dropdown
-```{code}
-for i in range(1,11):
-    for j in range(1,11):
-        print(f'{i} x {j} = {i*j}')
+```python
+studierender = {
+    "vorname": "Max",
+    "nachname": "Mustermann",
+    "matrikelnummer": 123456,
+    "studiengang": "Maschinenbau"
+}
+
+print(f'{studierender["vorname"]} {studierender["nachname"]} ({studierender["matrikelnummer"]}) studiert {studierender["studiengang"]}.')
+```
+````
+
+```{admonition} Übung 2.6
+:class: miniexercise
+Gegeben ist die Liste: `zahlen = [5, 12, 3, 8, 1]`
+
+1. Fügen Sie die Zahl 7 am Ende der Liste hinzu.
+2. Erstellen Sie einen String `text = "Python Programmierung"` und wandeln Sie ihn in Großbuchstaben um.
+3. Geben Sie beide Ergebnisse aus.
+```
+
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
+# Liste bearbeiten
+zahlen = [5, 12, 3, 8, 1]
+zahlen.append(7)
+print(f'Liste: {zahlen}')
+
+# String bearbeiten
+text = "Python Programmierung"
+text_gross = text.upper()
+print(f'Text in Großbuchstaben: {text_gross}')
 ```
 ````

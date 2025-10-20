@@ -12,94 +12,100 @@ kernelspec:
   name: python3
 ---
 
-# 2.3 Funktionen und Methoden
+# 2.3 Dictionaries, Funktionen und Methoden
 
-Sobald die Funktionalitäten komplexer werden, lohnt es sich Code in eigene
-Funktionsbausteine auszulagern und vor allem auf Code von anderen
-Programmier:innen zurückzugreifen. Code, der eine Teilaufgabe löst und einen
-eigenständigen Namen bekommt, wird **Funktion** genannt. Ist die Funktion direkt
-an einen Datentyp gekoppelt, wird die Funktion **Methode** genannt. In diesem
-Kapitel gehen wir sehr kurz auf die wichtigsten Grundlagen von Funktionen und
-Methoden ein.
+Sobald die Funktionalitäten komplexer werden, ist es wichtig zu verstehen, wie
+wir mit verschiedenen Datenstrukturen arbeiten und wie Code in Python
+organisiert ist. In diesem Kapitel lernen wir zunächst mit Dictionaries eine
+weitere wichtige Datenstruktur kennen. Anschließend vertiefen wir unser
+Verständnis von Funktionen und lernen das Konzept der objektorientierten
+Programmierung kennen. Funktionen, die direkt an einen Datentyp gekoppelt sind,
+werden **Methoden** genannt.
 
 ## Lernziele
 
 ```{admonition} Lernziele
 :class: goals
-* Sie können selbst eine **Funktion** mit Parametern und Rückgabewert
-  implementieren.
-* Sie kennen das Konzept der **objektorientierten Programmierung**.
-* Sie wissen, was **Klassen** und **Methoden** sind.
+* Sie kennen den Datentyp **Dictionary** und können Schlüssel-Wert-Paare
+erstellen und nutzen.
+* Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
+Rückgabewerten arbeiten.
+* Sie wissen, was **Methoden** sind und kennen das **Konzept der
+objektorientierten Programmierung**.
 ```
 
-## Funktionen
+## Dictionaries
 
-Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
-löst. Dabei arbeitet die Funktion nach dem EVA-Prinzip (Eingabe, Verarbeitung,
-Ausgabe). Die Funktion übernimmt Objekte als Eingabe, verarbeitet diese und
-liefert Objekte als Ergebnis zurück. Wie die Funktion dabei im Inneren genau
-funktioniert (Verarbeitung), ist unwichtig.
+Bisher haben wir Listen kennengelernt, um mehrere Daten zu sammeln. Listen haben
+jedoch einen Nachteil: Wir müssen uns merken, an welcher Position welche
+Information steht. Bei einer Liste `[7900, 200000, 190]` ist nicht sofort klar,
+was die einzelnen Zahlen bedeuten. Für solche Fälle gibt es eine Datenstruktur,
+die besser geeignet ist, das sogenannte **Dictionary**.
 
-Insbesondere muss die Teilaufgabe, die die Funktion löst, nichts mit Mathematik
-zu tun haben. Eine Funktion in der Informatik hat nichts mit einer
-mathematischen Funktion zu tun, auch wenn oft mathematische Funktionen als
-Beispiel verwendet werden. Ein Beispiel für eine nicht-mathematische Funktion
-haben Sie mit `print()` bereits kennengelernt.
+Dictionaries (deutsch: Wörterbücher) speichern Daten in Form von
+Schlüssel-Wert-Paaren. Wir können uns ein Dictionary wie ein Wörterbuch
+vorstellen: Wir schlagen einen Begriff nach (das ist der Schlüssel) und erhalten
+die zugehörige Information (das ist der Wert). Im Gegensatz zu Listen, die über
+einen numerischen Index angesprochen werden, erfolgt der Zugriff bei
+Dictionaries über aussagekräftige Schlüssel.
 
-### Die Benutzung von Funktionen (oder der Aufruf von Funktionen)
-
-Eine Funktion wird benutzt, indem man den Namen der Funktion hinschreibt und
-dann in runden Klammern ihre Argumente. Welche Argumente für eine Funktion
-verwendet werden dürfen, hängt von der Implementierung der Funktion ab.
-
-Beispielsweise kann als Argument für die `len()`-Funktion ein String übergeben
-werden oder eine Liste.
+Ein Dictionary wird mit geschweiften Klammern `{}` erstellt. Die
+Schlüssel-Wert-Paare werden durch Doppelpunkte `:` getrennt, mehrere Paare durch
+Kommas `,`. Schauen wir uns dazu ein Beispiel an:
 
 ```{code-cell}
-len('Hallo')
+person = {
+    "name": "Alice",
+    "alter": 25,
+    "stadt": "Berlin"
+}
+print(person)
 ```
+
+Der Zugriff auf einzelne Werte erfolgt über die Angabe des Schlüssels in eckigen
+Klammern:
 
 ```{code-cell}
-len([1,2,3,4,8,2])
+print(f'Name: {person["name"]}')
+print(f'Alter: {person["alter"]}')
+print(f'Stadt: {person["stadt"]}')
 ```
 
-In der Regel geben Funktionen wieder Ergebnisse zurück. Diese können einer
-Variable zugewiesen werden, um weiter mit dem Ergebnis zu arbeiten.
+Wir können auch Werte ändern oder neue Schlüssel-Wert-Paare hinzufügen:
 
 ```{code-cell}
-wort = 'Hallo'
-anzahl_zeichen = len(wort)
-print(f'Mein Wort {wort} hat {anzahl_zeichen} Zeichen.')
+# Wert ändern
+person["alter"] = 26
+print(f'Neues Alter: {person["alter"]}')
+
+# Neues Schlüssel-Wert-Paar hinzufügen
+person["beruf"] = "Datenwissenschaftlerin"
+print(person)
 ```
 
-### Definition von einfachen Funktionen
-
-Um selbst eine Funktion zu definieren, benutzen wir das Schlüsselwort `def`.
-Danach wählen wir einen Funktionsnamen und hängen an den Funktionsnamen runde
-Klammern gefolgt von einem Doppelpunkt. Die Anweisungen, die ausgeführt werden
-sollen, sobald die Funktion aufgerufen wird, werden eingerückt.
-
-Als erstes Beispiel einer sehr einfachen Funktion betrachten wir die folgende
-Funktion:
+Der Vorteil von Dictionaries gegenüber Listen wird besonders deutlich, wenn wir
+die beiden Datenstrukturen vergleichen. In einer Liste müssten wir uns merken,
+dass der Name an Position 0 steht, das Alter an Position 1 und so weiter. Bei
+einem Dictionary können wir direkt mit aussagekräftigen Begriffen arbeiten.
 
 ```{code-cell}
-def gruesse_ausrichten():
-    print('Ich grüße Sie!')
+# Als Liste (unübersichtlich)
+person_liste = ["Alice", 25, "Berlin"]
+print(f'Name (Liste): {person_liste[0]}')  # Was bedeutet Index 0?
+
+# Als Dictionary (selbsterklärend)
+person_dict = {"name": "Alice", "alter": 25, "stadt": "Berlin"}
+print(f'Name (Dictionary): {person_dict["name"]}')
 ```
-
-Die Funktion hat keine Argumente und keine Rückgabe, sondern gibt einfqach nur
-einen Text auf dem Bildschirm aus. Nachdem die Funktion `gruesse_ausrichten()`
-so implementiert wurde, können wir sie im Folgenden direkt verwenden.
-
-```{code-cell}
-gruesse_ausrichten()
-```
-
-Und natürlich kann man sie in Programmverzweigungen und Schleifen einbauen.
 
 ```{admonition} Mini-Übung
 :class: miniexercise
-Schreiben Sie eine Funktion, die den Namen `hallihallo` hat und das Wort Hallihallo ausgibt. Testen Sie Ihre Funktion auch.
+Erstellen Sie ein Dictionary für einen Datenpunkt mit folgenden Informationen:
+- temperatur: 23.5
+- luftfeuchtigkeit: 65
+- standort: "Sensor_01"
+
+Geben Sie dann die Temperatur und den Standort mit passenden Beschriftungen aus.
 ```
 
 ```{code-cell} ipython3
@@ -109,15 +115,65 @@ Schreiben Sie eine Funktion, die den Namen `hallihallo` hat und das Wort Halliha
 ````{admonition} Lösung
 :class: miniexercise, toggle
 ```python
-def hallihallo():
-    print('Hallihallo!')
+# Dictionary für Datenpunkt erstellen
+messwert = {
+    "temperatur": 23.5,
+    "luftfeuchtigkeit": 65,
+    "standort": "Sensor_01"
+}
 
-# Test
-hallihallo()
+# Zugriff auf spezifische Werte
+print(f'Temperatur: {messwert["temperatur"]} °C')
+print(f'Standort: {messwert["standort"]}')
 ```
 ````
 
-Das folgende Video zeigt, wie Funktionen selbst definiert werden.
+Dictionaries werden uns in späteren Kapiteln häufiger begegnen. Insbesondere bei
+der Visualisierung mit Plotly werden wir Dictionaries verwenden, um
+Konfigurationen für Diagramme zu definieren.
+
+## Funktionen
+
+Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
+löst. Wir haben bereits verschiedene Funktionen kennengelernt und verwendet. Die
+Funktion `print()` gibt Text oder Werte auf dem Bildschirm aus. Die Funktion
+`len()` ermittelt die Länge einer Liste oder eines Strings. Die Funktion
+`type()` gibt uns den Datentyp einer Variable zurück.
+
+Eine Funktion wird aufgerufen, indem wir den Namen der Funktion hinschreiben und
+dann in runden Klammern ihre Argumente übergeben. Welche Argumente eine Funktion
+erwartet, hängt von der jeweiligen Funktion ab. Betrachten wir dazu einige
+Beispiele:
+
+```{code-cell}
+# len() mit verschiedenen Argumenten
+print(len('Hallo'))  # String als Argument
+print(len([1, 2, 3, 4, 8, 2]))  # Liste als Argument
+
+# type() ermittelt den Datentyp
+x = 42
+print(type(x))
+y = 3.14
+print(type(y))
+```
+
+Die meisten Funktionen geben ein Ergebnis zurück. Dieses können wir einer
+Variable zuweisen, um weiter damit zu arbeiten:
+
+```{code-cell}
+wort = 'Maschinelles Lernen'
+anzahl_zeichen = len(wort)
+print(f'Der Text "{wort}" hat {anzahl_zeichen} Zeichen.')
+```
+
+Beim maschinellen Lernen werden wir vor allem Funktionen aus Bibliotheken wie
+NumPy, Pandas und scikit-learn verwenden. Diese Funktionen sind bereits fertig
+implementiert und wir müssen nur wissen, wie wir sie aufrufen. Das Schreiben
+eigener Funktionen ist seltener nötig, weshalb wir uns darauf konzentrieren, wie
+wir bestehende Funktionen effektiv nutzen können.
+
+Falls Sie sich dafür interessieren, Funktionen selbst zu definieren, finden Sie
+in den drei folgenden Videos weitere Details zur Implementierung von Funktionen.
 
 ```{dropdown} Video zu "Funktionen selbst definieren" von Programmieren lernen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LQCfN5HS9xI" 
@@ -125,120 +181,12 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
-### Funktionen mit Parametern
-
-Meistens haben Funktionen Argumente, um Eingaben/Input entgegennehmen und
-verarbeiten zu können. Das Argument wird bei der Implementierung der Funktion
-mit einer Variable eingeführt, wie in dem folgenden Beispiel `name`.
-
-```{code-cell}
-def gruesse_ausrichten_mit_parameter(name):
-    print(f'Ich grüße {name}')
-```
-
-Der Aufruf einer Funktion ohne passende Argumente führt zu einer Fehlermeldung.
-Entfernen Sie das Kommentarzeichen `#` und führen Sie die nachfolgende
-Code-Zelle aus:
-
-```{code-cell}
-#gruesse_ausrichten_mit_parameter()
-```
-
-Daher müssen wir die modifizierte Funktion nun wie folgt aufrufen:
-
-```{code-cell}
-gruesse_ausrichten_mit_parameter('Bob')
-```
-
-Die Funktion `gruesse_ausrichten_mit_parameter()` hat aber keinen Rückgabewert.
-Das können wir wie folgt testen:
-
-```{code-cell}
-x = gruesse_ausrichten_mit_parameter('Alice')
-type(x)
-```
-
-`x` ist vom Typ `NoneType` oder anders ausgedrückt, es hat keinen Datentyp.
-
-Sind Funktionen ohne Rückgabewert sinnvoll? Ja, denn so können Codeblöcke
-vereinfacht werden. Sollte in einem Programm Code mehrmals ausgeführt werden,
-lohnt es sich, diesen in eine Funktion auszulagern, um diese einfach aufrufen zu
-können.
-
-````{admonition} Mini-Übung
-:class: miniexercise
-Schreiben Sie eine Funktion mit zwei Parametern, nämlich Vor- und Nachname. Wenn 
-die Funktion z.B. mit `(Alice, Miller)` aufgerufen wird, soll sie Folgendes auf 
-dem Bildschirm ausgeben:
-
-```python
-Vorname: Alice
-Nachname: Miller
-```
-````
-
-```{code-cell} ipython3
-# Hier Ihr Code:
-```
-
-````{admonition} Lösung
-:class: miniexercise, toggle
-```python
-def gruesse_ausrichten_mit_parametern(vorname, nachname):
-    print(f'Vorname: {vorname}')
-    print(f'Nachname: {nachname})
-
-gruesse_ausrichten_mit_parametern('Alice', 'im Wunderland')
-```
-````
-
-Das folgende Video zeigt, wie Funktionen mit Parametern in Python implementiert
-werden.
-
 ```{dropdown} Video zu "Funktionen mit Parametern" von Programmieren lernen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/af9ORp1Pty0" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 ```
-
-### Funktionen mit Rückgabewert
-
-In der Regel jedoch haben Funktionen einen Rückgabewert. Schauen wir uns ein
-Beispiel an:
-
-```{code-cell}
-def berechne_quadrat(x):
-    return x*x
-
-# Aufruf der Funktion
-berechne_quadrat(7)
-```
-
-Die Rückgabe wird durch das Schlüsselwort `return` erzeugt. Es ist auch möglich,
-mehrere Ergebnisse gleichzeitig zurückzugeben. Diese werden einfach nach dem
-Schlüsselwort `return` mit Kommas getrennt gelistet.
-
-````{admonition} Mini-Übung
-:class: miniexercise
-Schreiben Sie eine Funktion mit zwei Parametern, nämlich den beiden Seitenlängen eines Rechtecks. Lassen Sie die Fläche des Rechtecks berechnen und zurückgeben. Testen Sie Ihr Funktion auch.
-````
-
-```{code-cell} ipython3
-# Hier Ihr Code:
-```
-
-````{admonition} Lösung
-:class: miniexercise, toggle
-```python
-def berechne_flaecheninhalt_rechteck(seite1, seite2):
-    return seite1 * seite2
-
-# Test der Funktion
-A = berechne_flaecheninhalt_rechteck(2,3)
-print(A)
-```
-````
 
 ```{dropdown} Video zu "Funktionen mit Rückgabewert" von Programmieren lernen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ehSP-sYoKCY" 
@@ -249,54 +197,75 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Objektorientierte Programmierung
 
-In den ersten beiden Teilen unseres Crashkurses Python haben wir uns die
-Grundlagen der Programmierung erarbeitet:
+Nachdem wir gesehen haben, wie Funktionen aufgerufen werden, schauen wir uns nun
+an, wie Python Funktionen und Daten in Objekten organisiert.
 
-* Datentypen (Integer, Float, String, List)
-* Kontrollstrukturen: for-Schleife
-* Funktionen.
+Die Idee der objektorientierten Programmierung ist, Daten und die dazugehörigen
+Funktionen zusammenzufassen. Bisher haben wir Funktionen und Daten getrennt. Die
+Daten werden in Variablen gespeichert und Funktionen verarbeiten diese Daten
+nach dem EVA-Prinzip (Eingabe, Verarbeitung, Ausgabe). In der objektorientierten
+Programmierung werden Daten und Funktionen zu einem **Objekt** kombiniert. Die
+Eigenschaften eines Objekts werden **Attribute** genannt. Funktionen, die zu
+einem Objekt gehören, nennen wir **Methoden**.
 
-In einigen Programmiersprachen wie beispielsweise C hätten wir damit auch alle
-Sprachelement kennengelernt. Diese Programmierung nennt man **prozedurale
-Programmierung**. Python gehört jedoch zu den objektorientierten
-Programmiersprachen, so dass wir uns jetzt noch dem Thema Objektorientierung
-widmen.
+Tatsächlich haben wir bereits Methoden verwendet, ohne es explizit zu wissen.
+Listen sind Objekte und wenn wir `liste.append(4)` schreiben, rufen wir die
+Methode `.append()` des Listen-Objekts auf. Auch bei Dictionaries stehen
+Methoden wie `.keys()` oder `.values()` zur Verfügung, auch wenn wir diese
+bisher nicht verwendet haben.
 
-### Konzept
+```{code-cell}
+meine_liste = [17, 3.5]
+meine_liste.append(4)
+print(meine_liste)
+```
 
-Bei der bisherigen prozeduralen Programmierweise haben wir Funktionen und Daten
-getrennt. Die Daten werden in Variablen gespeichert. Funktionen funktionieren
-nach dem EVA-Prinzip. In der Regel erwartet eine Funktion eine Eingabe von
-Daten, verarbeitet diese Daten und gibt Daten zurück.
+Sehen wir uns noch ein weiteres Beispiel an. Ein String ist in Python ein
+Objekt. Strings haben verschiedene Methoden, die uns die Arbeit erleichtern.
 
-Angenommen, wir wollten ein Programm zur Verwaltung von Lottoscheinen schreiben.
-Zu einem Lottoschein wollen wir Name, Adresse und die angekreuzten Zahlen
-speichern. Dann müssten wir mit unserem bisherigen Wissen folgende Variablen pro
-Lottoschein einführen:
+```{code-cell}
+text = "Hallo Welt"
 
-* vorname
-* nachname
-* strasse
-* postleitzahl
-* stadt
-* liste_mit_sechs_zahlen
+# Methode upper(): wandelt alle Buchstaben in Großbuchstaben um
+text_gross = text.upper()
+print(text_gross)
 
-Wenn jetzt viele Spielerinnen und Spieler Lotto spielen wollen, wie gehen wir
-jetzt mit den Daten um? Legen wir eine Liste für die Vornamen und eine Liste für
-die Nachnamen usw. an? Und wenn jetzt der 17. Eintrag in der Liste mit den sechs
-angekreuzten Lottozahlen sechs Richtige hat, suchen wir dann den 17. Eintrag in
-der Liste mit den Vornamen und den 17. Eintrag in der Liste mit den Nachnamen
-usw.? Umständlich...
+# Methode lower(): wandelt alle Buchstaben in Kleinbuchstaben um
+text_klein = text.lower()
+print(text_klein)
 
-Die Idee der objektorientierten Programmierung ist, für solche Szenarien
-**Objekte** einzuführen. Ein Objekt fasst verschiedene Eigenschaften wie hier
-Vorname, Nachname, Straße, usw. zu einem Objekt Lottoschein zusammen. In der
-Informatik wird eine Eigenschaft eines Objekts **Attribut** genannt.
+# Methode replace(): ersetzt Teile des Strings
+text_neu = text.replace("Welt", "Python")
+print(text_neu)
+```
 
-Damit hätten wir erst einmal nur einen neuen Datentyp. Ein Objekt macht noch
-mehr aus, denn zu dem neuen Datentyp kommen noch Funktionen dazu, die die
-Verwaltung des Objektes erleichtern. Funktionen, die zu einem Objekt gehören,
-nennt man **Methoden**.
+Das nächste Beispiel zeigt den Einsatz von Methoden bei Dictionaries:
+
+```{code-cell}
+# Dictionary-Methoden
+person = {"name": "Alice", "alter": 25}
+print(person.keys())    # dict_keys(['name', 'alter'])
+print(person.values())  # dict_values(['Alice', 25])
+```
+
+Methoden werden also aufgerufen, indem wir die Variable (das Objekt)
+hinschreiben, dann einen Punkt setzen und dann den Methodennamen mit runden
+Klammern anfügen. Falls die Methode Argumente benötigt, werden diese in die
+runden Klammern geschrieben.
+
+In den kommenden Kapiteln werden wir viele Bibliotheken für maschinelles Lernen
+verwenden. Diese Bibliotheken arbeiten mit Objekten und Methoden. Beispielsweise
+werden wir später mit scikit-learn arbeiten. Dort erstellen wir ein
+Modell-Objekt und rufen dann Methoden wie `fit()` auf, um das Modell zu
+trainieren, oder `predict()`, um Vorhersagen zu machen. Das Prinzip ist immer
+das gleiche wie bei `liste.append()` oder `text.upper()`.
+
+Python ermöglicht es uns auch, eigene Objekte zu definieren. Dazu verwenden wir
+das Schlüsselwort `class`. In diesem Einführungskurs werden wir jedoch keine
+eigenen Klassen erstellen, sondern nur die Klassen und Methoden verwenden, die
+uns die verschiedenen Bibliotheken zur Verfügung stellen. Die folgenden Videos
+geben einen vertieften Einblick in die Objektorientierung mit Python für alle,
+die mehr darüber erfahren möchten.
 
 ```{dropdown} Video zu "Konzept der Objektorientierung" von Programmieren lernen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/46yolPy-2VQ" 
@@ -304,73 +273,6 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 ```
-
-### Klassen und Methoden
-
-Im Folgenden sehen Sie, wie ein Objekt in Python definiert wird. Die
-Implementierung erfolgt als sogenannte **Klasse**.
-
-```{code-cell}
-class Adresse:
-    def __init__(self, strasse, hausnummer, plz, stadt):
-        self.strasse = strasse
-        self.hausnummer = hausnummer
-        self.postleitzahl = plz
-        self.stadt = stadt
-    
-    def print(self):
-        print('Straße = ', self.strasse)
-        print('Hausnummer = ', self.hausnummer)
-        print('Postleitzahl = ', self.postleitzahl)
-        print('Stadt = ', self.stadt)
-```
-
-Eingeleitet wird eine Klasse mit dem Schlüsselwort `class` und dann dem Namen
-der Klasse. Da Klassen Objekte sind, ist es Standard, den ersten Buchstaben des
-Klassennamens groß zu schreiben. Um Variablen von Objekten leichter zu
-unterscheiden, werden Variablennamen klein geschrieben.
-
-Danach folgt ein Abschnitt namens `def __init__(self):`, in dem die
-Eigenschaften der Klasse aufgelistet werden. `init` steht dabei für
-initialisieren, also den ersten Zustand, den das Objekt später haben wird.
-
-Wie Sie sehen, können die Eingabe-Parameter der `init()`-Methode die gleichen
-Namen tragen wie die Attribute der Klasse, also `self.strasse = strasse`, müssen
-sie aber nicht. Das Beispiel `self.postleitzahl = plz` zeigt, dass das Attribut
-`self.postleitzahl` einfach den Wert des 4. Parameters bekommt, egal wie der
-heißt.
-
-Eine Adresse wird nun folgendermaßen initialisiert:
-
-```{code-cell}
-adresse_fra_uas = Adresse('Nibelungenplatz', 1, 60318, 'Frankfurt am Main')
-```
-
-Würden wir nun versuchen, mit `print(adresse_fra_uas)` die Adresse am Bildschirm
-ausgeben zu lassen, würden wir eine Fehlermeldung erhalten. Die Funktion
-`print()` ist nicht für den Datentyp `Adresse` entwickelt worden. Schließlich
-können die Python-Entwickler nicht wissen, welche Klassen Sie entwickeln... Wir
-müssen also eine eigene Adressen-print()-Funktion implementieren. Da diese
-print()-Funktion nicht allgemeingültig sein kann, sondern nur für die Objekte
-`Adresse` funktionieren wird, gehört sie auch folgerichtig zur Klasse selbst.
-Sie ist also keine Funktion, sondern eine **Methode**.
-
-Eine Methode wird definiert, indem innerhalb des Anweisungsblocks der Klasse
-eine Funktion mit dem Schlüsselwort `def` definiert wird. Der erste Eingabewert
-muss zwingend der `self`-Parameter sein. Ansonsten gelten aber die gleichen
-Regeln für Methoden wie für Funktionen.
-
-Bleibt nur noch eine Frage? Wie wird nun die Methode ausgeführt? Methoden werden
-ausgeführt, indem die Variable hingeschrieben wird, dann ein Punkt gesetzt wird
-und dann die Methode mit runden Klammern angefügt wird.
-
-```{code-cell}
-adresse_fra_uas.print()
-```
-
-Objektorientierung ist ein sehr detailreiches Thema, das wir in diesem Kapitel
-nur streifen konnten. Die folgenden Videos geben einen vertieften Einblick in
-die Objektorientierung mit Python.
 
 ```{dropdown} Video zu "Klassen und Objekte" von Programmieren lernen
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XxCZrT7Z3G4" 
@@ -395,9 +297,16 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Zusammenfassung und Ausblick
 
-In diesem Kapitel haben wir gelernt, selbst Funktionen und Klassen mit Methoden
-zu definieren. Oft ist es aber praktischer, Funktionen und Klassen zu nutzen,
-die bereits implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei
-der Datenexploration und den maschinellen Lernalgorithmen benutzen wir die
-vorgefertigten Funktionsbausteine eher als eigene zu definieren, wie wir in den
-nächsten Kapiteln sehen werden.
+In diesem Kapitel haben wir drei wichtige Konzepte kennengelernt. Zunächst haben
+wir mit Dictionaries eine Datenstruktur gesehen, die uns erlaubt, Daten über
+aussagekräftige Schlüssel statt über numerische Indizes anzusprechen.
+Anschließend haben wir vertieft, wie wir Funktionen aufrufen und mit ihren
+Rückgabewerten arbeiten. Zum Schluss haben wir einen ersten Einblick in die
+objektorientierte Programmierung erhalten und verstehen nun, was Methoden sind
+und wie sie sich von normalen Funktionen unterscheiden.
+
+Oft ist es aber praktischer, Funktionen und Klassen zu nutzen, die bereits
+implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei der
+Datenexploration und den maschinellen Lernalgorithmen werden wir die
+vorgefertigten Funktionsbausteine nutzen, wie wir in den nächsten Kapiteln sehen
+werden.
