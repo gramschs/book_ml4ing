@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -559,24 +559,18 @@ Ausgabe auf dem Bildschirm.</p>
 <section id="einfache-datentypen">
 <h2>Einfache Datentypen<a class="headerlink" href="#einfache-datentypen" title="Link to this heading">#</a></h2>
 <p>Beim maschinellen Lernen geht es um die Sammlung, Erkundung und Analyse von
-Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
-maschinelles Lernen folgendermaßen dar:</p>
-<figure class="align-default" id="fig01-prozess">
-<a class="reference internal image-reference" href="../_images/fig01_prozess.png"><img alt="../_images/fig01_prozess.png" src="../_images/fig01_prozess.png" style="width: 600px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematische Darstellung der Vorgehensweise im maschinellen Lernen</span><a class="headerlink" href="#fig01-prozess" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem
-Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0
-und 1 gespeichert. Damit es für uns Programmierinnen und Programmierer einfacher
-wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.</p>
+Daten, um Antworten auf vorgegebene Fragen zu finden.  Der Computer kann
+Informationen aber nur als 0 und 1 verarbeiten. Auf dem Speichermedium oder im
+Speicher selbst werden Daten daher als eine Folge von 0 und 1 gespeichert. Damit
+es für uns Programmierinnen und Programmierer einfacher wird, Daten zu speichern
+und zu verarbeiten, wurden Datentypen eingeführt.</p>
 <p><strong>Datentypen</strong> fassen gleichartige Objekte zusammen und stellen den
-Programmierer:innen passende Operationen zur Verfügung. Mit Operationen sind die
-Aktionen gemeint, die mit diesen Datenobjekten durchgeführt werden dürfen.
-Zahlen dürfen beispielsweise addiert werden, Buchstaben aber nicht. Es hängt von
-der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie diese im
-Hintergrund gespeichert werden und welche Operationen möglich sind.</p>
+Programmiererinnen und Programmierern passende Operationen zur Verfügung. Mit
+Operationen sind die Aktionen gemeint, die mit diesen Datenobjekten durchgeführt
+werden dürfen. Zahlen dürfen beispielsweise addiert werden, Buchstaben aber
+nicht. Es hängt von der Programmiersprache ab, welche Datentypen zur Verfügung
+stehen, wie diese im Hintergrund gespeichert werden und welche Operationen
+möglich sind.</p>
 <p>In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen</p>
 <ul class="simple">
 <li><p>Integer,</p></li>
@@ -586,8 +580,7 @@ Hintergrund gespeichert werden und welche Operationen möglich sind.</p>
 <section id="integer-und-float">
 <h3>Integer und Float<a class="headerlink" href="#integer-und-float" title="Link to this heading">#</a></h3>
 <p>In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
-den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
-in der Mathematik als <strong>ganze Zahlen</strong> bezeichnet. In der Informatik wird jedoch
+den <strong>ganzen Zahlen</strong> und den Fließkommazahlen. In der Informatik wird jedoch
 der englische Begriff dafür verwendet: <strong>Integer</strong>.</p>
 <p>Mit Integern können wir ganz normal rechnen, also arithmetische Operationen
 ausführen:</p>
@@ -816,10 +809,10 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 <h2>Variablen und Zuweisung<a class="headerlink" href="#variablen-und-zuweisung" title="Link to this heading">#</a></h2>
 <p><strong>Variablen</strong> sind beschriftete Schubladen. Oder anders formuliert sind
 Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese
-Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen
-Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
-Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von <span class="math notranslate nohighlight">\(\pi\)</span> oder
-die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.</p>
+Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Der Inhalt der
+Schubladen kann sehr unterschiedlich sein. Beispielsweise können in den
+Schubladen die Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle
+von <span class="math notranslate nohighlight">\(\pi\)</span> oder die aktuelle Position des Mauszeigers enthalten sein.</p>
 <section id="zuweisungen-sind-keine-gleichungen">
 <h3>Zuweisungen sind keine Gleichungen<a class="headerlink" href="#zuweisungen-sind-keine-gleichungen" title="Link to this heading">#</a></h3>
 <p>Wir verwenden Variablen, um bestimmte Werte oder ein bestimmtes Objekt zu
@@ -873,7 +866,8 @@ sie verwendet werden können, sonst tritt ein Fehler auf.</p>
 </div>
 <div class="miniexercise toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor sie das erste Mal benutzt wird.</p>
+<p>Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor
+sie das erste Mal benutzt wird.</p>
 </div>
 <p>Sehr häufig findet man Code wie</p>
 <div class="cell docutils container">
@@ -958,9 +952,11 @@ deren Wert angezeigt werden soll. Das ist etwas umständlich und funktioniert
 auch nur mit Jupyter Notebooks. Normalerweise gibt es dazu eine Python-Funktion
 <code class="docutils literal notranslate"><span class="pre">print()</span></code>, auf die wir später noch zurückkommen.</p>
 <p>Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü
-oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll,
-lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte
-Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise</p>
+oder ß. Python erlaubt es zwar, Umlaute in Variablennamen zu verwenden, es ist
+aber gute Praxis, dies nicht zu tun. Zahlen sind erlaubt, aber nicht am Anfang
+des Namens. Es ist sinnvoll, lange Variablen durch einen Unterstrich besser
+lesbar zu gestalten (sogenannte Snake-Case-Formatierung). Ich empfehle für
+Variablennamen beispielsweise</p>
 <p><code class="docutils literal notranslate"><span class="pre">dateiname_alt</span></code> oder <code class="docutils literal notranslate"><span class="pre">dateiname_neu</span></code></p>
 <p>wenn beispielsweise eine Datei umbenannt wird. Sie sind frei in der Gestaltung
 der Variablennamen, verboten sind nur die sogannnten Schlüsselwörter.</p>
@@ -988,10 +984,10 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 <p>Werden zwei Integer geteilt, so wird das Ergebnis automatisch in einen Float
 umgewandelt. Mit Hilfe der Funktion <code class="docutils literal notranslate"><span class="pre">type()</span></code> können wir den Python-Interpreter
 bestimmen lassen, welcher Datentyp in einer Variable gespeichert ist. Mit
-Funktion ist an dieser Stelle keine mathematische Funktion gemeint. Eine
-<strong>Funktion</strong> sind viele Anweisungen nacheinander, um eine bestimmte Teilaufgabe
-zu lösen. Damit klar ist, dass es sich um eine Funktion und nicht um eine
-Variable handelt, werden runde Klammern an den Namen der Funktion gehängt.</p>
+Funktion ist hier keine mathematische Funktion gemeint. Eine <strong>Funktion</strong> sind
+viele Anweisungen nacheinander, um eine bestimmte Teilaufgabe zu lösen. Damit
+klar ist, dass es sich um eine Funktion und nicht um eine Variable handelt,
+werden runde Klammern an den Namen der Funktion gehängt.</p>
 <p>In diesem Fall soll der Datentyp eines Objektes ermittelt werden. Damit der
 Python-Interpreter weiß, von welcher Variable der Datentyp ermittelt werden
 soll, schreiben wir die Variable in runde Klammern.</p>
@@ -1169,11 +1165,11 @@ geben wir <span class="math notranslate nohighlight">\(\pi\)</span> auf zwei Nac
 <p>Es ist schwierig, sich alle Formatierungsoptionen zu merken. Auf der
 Internetseite
 <a class="reference external" href="https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/">https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/</a>
-finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Ddokument
+finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Dokument
 herunterladen.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beide Seitenlängen werden jeweils in den Variablen <code class="docutils literal notranslate"><span class="pre">laenge</span></code> und <code class="docutils literal notranslate"><span class="pre">breite</span></code> gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: “Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.”, wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.</p>
+<p>Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beiden Seitenlängen werden jeweils in den Variablen <code class="docutils literal notranslate"><span class="pre">laenge</span></code> und <code class="docutils literal notranslate"><span class="pre">breite</span></code> gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: “Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.”, wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.</p>
 </div>
 <div class="miniexercise toggle admonition">
 <p class="admonition-title">Lösung</p>

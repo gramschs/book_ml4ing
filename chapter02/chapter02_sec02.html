@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -547,11 +547,11 @@ Code-Abschnitten mittels der sogenannten <strong>for-Schleife</strong> beschäft
 <ul class="simple">
 <li><p>Sie kennen den Datentyp <strong>Liste</strong>.</p></li>
 <li><p>Sie können Listen mit eckigen Klammern erzeugen.</p></li>
-<li><p>Sie können Listen mit dem <strong>Plus-Operator</strong> verketten, Elemente mit
-<strong>.append()</strong> anhängen oder Werte mit <strong>.remove()</strong> aus der Liste löschen.</p></li>
-<li><p>Sie können über den <strong>Index</strong> auf einzelne Listenelementer zugreifen.</p></li>
+<li><p>Sie können Listen mit dem <strong>Plus-Operator</strong> verketten und Elemente mit
+<strong>.append()</strong> anhängen.</p></li>
+<li><p>Sie können über den <strong>Index</strong> auf einzelne Listenelemente zugreifen.</p></li>
 <li><p>Sie können eine <strong>for-Schleife mit Liste</strong> programmieren.</p></li>
-<li><p>Sie wissen, wie die Fachbegriffe der einzelnen Bestandteil der Schleife
+<li><p>Sie wissen, wie die Fachbegriffe der einzelnen Bestandteile der Schleife
 lauten:</p>
 <ul>
 <li><p><strong>Kopfzeile</strong>, wird mit <strong>Doppelpunkt :</strong> abgeschlossen</p></li>
@@ -608,19 +608,6 @@ repräsentiert werden:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Der Datentyp heißt formal <code class="docutils literal notranslate"><span class="pre">list</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -724,29 +711,10 @@ und dann den Methodennamen.</p>
 </div>
 </div>
 </div>
-<p>Aus der Liste können Elemente durch die <code class="docutils literal notranslate"><span class="pre">remove()</span></code>-Methode gelöscht werden.
-Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
-übergeben. Es wird der erste auftretende Wert aus der Liste gelöscht.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-
-<span class="n">a</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">56</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34, 56, 23, 42]
-[34, 23, 42]
-</pre></div>
-</div>
-</div>
-</div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt und Zucker hinzu. Leider passen in Ihren Einkaufswagen nur maximal 5 Sachen. Lassen Sie daher die Anzahl der Elemente ausgeben.</p>
+<p>Nehmen Sie Ihre Einkaufsliste für den Obstsalat von vorhin. Fügen Sie noch Zimt
+und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,10 +725,11 @@ Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
 </div>
 <div class="miniexercise toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste_alt</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Trauben&#39;</span><span class="p">,</span> <span class="s1">&#39;Joghurt&#39;</span><span class="p">]</span>
-<span class="n">einkaufsliste_neu</span> <span class="o">=</span> <span class="n">einkaufsliste_alt</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Zimt&#39;</span><span class="p">,</span> <span class="s1">&#39;Zucker&#39;</span><span class="p">]</span>
-<span class="n">anzahl_zutaten</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste_neu</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl der Zutaten: </span><span class="si">{</span><span class="n">anzahl_zutaten</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">einkaufsliste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Trauben&#39;</span><span class="p">,</span> <span class="s1">&#39;Joghurt&#39;</span><span class="p">]</span>
+<span class="n">einkaufsliste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Zimt&#39;</span><span class="p">)</span>
+<span class="n">einkaufsliste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Zucker&#39;</span><span class="p">)</span>
+<span class="n">anzahl</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">einkaufsliste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl: </span><span class="si">{</span><span class="n">anzahl</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -775,31 +744,26 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </details></section>
 <section id="zugriff-auf-einzelne-listenelemente">
 <h2>Zugriff auf einzelne Listenelemente<a class="headerlink" href="#zugriff-auf-einzelne-listenelemente" title="Link to this heading">#</a></h2>
-<p>Listen sind (übrigens genau wie Strings) ein sogenannter <strong>sequentieller
-Container</strong>. Sequentielle Container sind Sammlungen von Datenobjekten. Was heißt
-das? Eine Straße ist eine Sammlung von Häusern. Aber in einer Straße sind die
-Häuser zusätzlich durchnummeriert. Eine Hausnummer ermöglicht es, die Position
-eines Hauses innerhalb der Straße zu bestimmen. Sammlungen von Objekten mit
-einer Positionsnummer werden sequentielle Container genannt. Sie sind mit ganzen
-Zahlen, also Integern, durchnummeriert. In Python beginnt die Nummerierung bei
-0. Die Nummer eines Elementes aus der Sequenz nennt man <strong>Index</strong>.
-Umgangssprachlich könnte man den Index also auch als Hausnummer bezeichnen.</p>
-<p>In einer Liste hat also das erste Element den Index 0. Das zweite Element hat
-den Index 1 usw. Um ein einzelnes Element einer Liste herausgreifen zu können,
-schreibt man <code class="docutils literal notranslate"><span class="pre">liste[i]</span></code>. Dabei ist <code class="docutils literal notranslate"><span class="pre">liste</span></code> der Name der Liste und <code class="docutils literal notranslate"><span class="pre">i</span></code> der Idnex.
-Um einfach auf das letzte Element einer Liste zugreifen zu können, hat Python
-den Index -1 eingeführt.</p>
+<p>Listen sind in Python durchnummeriert, beginnend bei Index <code class="docutils literal notranslate"><span class="pre">0</span></code>. Die
+Positionsnummer eines Elements nennt man <strong>Index</strong>. Um auf ein einzelnes Element
+zuzugreifen, schreibt man <code class="docutils literal notranslate"><span class="pre">liste[i]</span></code>, wobei <code class="docutils literal notranslate"><span class="pre">i</span></code> der Index ist. Um einfach auf
+das letzte Element einer Liste zugreifen zu können, hat Python den Index -1
+eingeführt.</p>
 <p>Probieren wir ein Beispiel aus:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
 <span class="n">erstes</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Das erste Element in der Liste ist: </span><span class="si">{</span><span class="n">erstes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">letztes</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Das letzte Element in der Liste ist: </span><span class="si">{</span><span class="n">letztes</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Das erste Element in der Liste ist: 34
+Das letzte Element in der Liste ist: 42
 </pre></div>
 </div>
 </div>
@@ -809,7 +773,7 @@ den Index -1 eingeführt.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erzeugung Liste</span>
 <span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;grün&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;gelb&#39;</span><span class="p">,</span> <span class="s1">&#39;weiß&#39;</span><span class="p">,</span> <span class="s1">&#39;schwarz&#39;</span><span class="p">]</span>
 
-<span class="c1"># das fünfte Elment weiß wird durch lila ersetzt</span>
+<span class="c1"># das fünfte Element weiß wird durch lila ersetzt</span>
 <span class="n">meine_liste</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;lila&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
 </pre></div>
@@ -834,8 +798,9 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </details></section>
 <section id="code-wiederholen-mit-der-for-schleife">
 <h2>Code wiederholen mit der for-Schleife<a class="headerlink" href="#code-wiederholen-mit-der-for-schleife" title="Link to this heading">#</a></h2>
-<p>Manchmal möchte man für jedes Element einer Liste eine oder mehrere Aktionen
-durchführen. Dazu gibt es die <strong>for-Schleife</strong>.</p>
+<p>Wenn wir mit jedem Element einer Liste etwas tun wollen, wäre es mühsam, jedes
+Element einzeln über seinen Index anzusprechen. Hierfür gibt es die
+<strong>for-Schleife</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
@@ -876,13 +841,13 @@ den Wert <code class="docutils literal notranslate"><span class="pre">i</span> <
 normalen Programm weiter. Bei unserem kurzen Beispiel ist aber schon das Ende
 des Programmes erreicht. Zusammengefasst, werden nacheinander die Elemente der
 Liste <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">8,</span> <span class="pre">10]</span></code> auf dem Bildschirm ausgegeben.</p>
-<p>Schauen wir uns ein erstes Beispiel an. Jedes Element der Liste <code class="docutils literal notranslate"><span class="pre">[4,5,7,11,21]</span></code>
-soll um 2 erhöht werden.</p>
+<p>Schauen wir uns ein weiteres Beispiel an. Jedes Element der Liste
+<code class="docutils literal notranslate"><span class="pre">[4,5,7,11,21]</span></code> soll um 2 erhöht werden.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">21</span><span class="p">]:</span>
-    <span class="n">summe</span> <span class="o">=</span> <span class="n">zahl</span> <span class="o">+</span> <span class="mi">2</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wenn ich </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1"> + 2 rechne, erhalte ich </span><span class="si">{</span><span class="n">summe</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">zahl</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Wenn ich </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1"> + 2 rechne, erhalte ich </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ich bin fertig!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -926,12 +891,13 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 </div>
 </details><p>Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
-Dafür stellt Python3 die Funktion <code class="docutils literal notranslate"><span class="pre">range()</span></code>zur Verfügung.</p>
+Dafür stellt Python3 die Funktion <code class="docutils literal notranslate"><span class="pre">range()</span></code> zur Verfügung. Das folgende
+Code-Fragment gibt beispielsweise die Zahlen von 0 bis 4 aus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zahlen von 0 bis 4 ausgeben</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -939,93 +905,14 @@ Dafür stellt Python3 die Funktion <code class="docutils literal notranslate"><s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 1
 2
-Fertig!
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wird <code class="docutils literal notranslate"><span class="pre">range(endzahl)</span></code> mit nur einem Parameter aufgerufen, dann beginnt der
-Python-Interpreter stets von <code class="docutils literal notranslate"><span class="pre">0</span></code> an zu zählen. Dabei ist die <code class="docutils literal notranslate"><span class="pre">endzahl</span></code> nicht
-inkludiert, d.h. der Python-Interpreter stoppt bei <code class="docutils literal notranslate"><span class="pre">endzahl</span> <span class="pre">-</span> <span class="pre">1</span></code>. Es ist auch
-möglich, eine Startzahl vorzugeben, also:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-2
 3
-Fertig!
+4
 </pre></div>
 </div>
 </div>
 </div>
-<p>Zusätzlich kann der Zahlenbereich noch durch die Angabe einer Schrittweite
-spezifiziert werden. Dadurch ist es beispielsweise möglich, nur ungerade Zahlen
-zu generieren:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-5
-7
-9
-11
-Fertig!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise admonition">
-<p class="admonition-title">Mini-Übung</p>
-<p>Lassen Sie alle geraden Zahlen zwischen 100 und 120 ausgeben.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise toggle admonition">
-<p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Durch Angabe einer negativen Schrittweite kann auch rückwärts gezählt werden:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">zahl</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fertig!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>13
-11
-9
-7
-5
-Fertig!
-</pre></div>
-</div>
-</div>
-</div>
-<p>Zum Abschluss folgt hier noch ein weiteres Video zu for-Schleifen.</p>
+<p>Mehr Details zu <code class="docutils literal notranslate"><span class="pre">range()</span></code> in Kombination mit einer for-Schleife finden Sie in
+dem folgenden Video.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “for-Schleife in Python: Zählerschleife”</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">

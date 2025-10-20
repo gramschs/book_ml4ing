@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3. Pandas und Plotly anstatt Excel" href="../chapter03/chapter03_sec00.html" />
-    <link rel="prev" title="2.3 Funktionen und Methoden" href="chapter02_sec03.html" />
+    <link rel="prev" title="2.3 Dictionaries, Funktionen und Methoden" href="chapter02_sec03.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -181,7 +181,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">2. Crashkurs Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">2.3 Funktionen und Methoden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter02_sec03.html">2.3 Dictionaries, Funktionen und Methoden</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Übungen</a></li>
 </ul>
 </details></li>
@@ -523,6 +523,8 @@ schreiben Sie Ihre Antwort hinter den Pfeil.</p>
 <li><p>3**3 –&gt;</p></li>
 <li><p>3**(1/3) –&gt;</p></li>
 </ul>
+<p>Verwenden Sie anschließend <code class="docutils literal notranslate"><span class="pre">type()</span></code> in einer Code-Zelle, um Ihre Antwort zu
+überprüfen.</p>
 </div>
 <div class="minisolution dropdown admonition">
 <p class="admonition-title">Lösung</p>
@@ -543,7 +545,7 @@ ausgibt, also “Das Quadrat von 5 ist 25.” usw.</p>
 </div>
 <div class="minisolution dropdown admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Das Quadrat von </span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1"> ist </span><span class="si">{</span><span class="n">zahl</span><span class="o">**</span><span class="mi">2</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -564,14 +566,14 @@ Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:</p>
 </div>
 <div class="minisolution dropdown admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1">/7 = </span><span class="si">{</span><span class="n">zahl</span><span class="o">/</span><span class="mi">7</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Übung 2.4</p>
-<p>Schreiben Sie ein Programm, das eine Liste von Namen durchgeht und jede Person
+<p>Schreiben Sie ein Programm, das eine Liste von Namen durchläuft und jede Person
 begrüßt. Wenn beispielsweise die Namen Alice, Bob und Charlie in der Liste
 stehen, lauten die Begrüßungen:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hallo, Alice!
@@ -582,7 +584,7 @@ Hallo, Charlie!
 </div>
 <div class="minisolution dropdown admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">namensliste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">namensliste</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Charlie&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">namensliste</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hallo, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">!&#39;</span><span class="p">)</span>
 </pre></div>
@@ -590,19 +592,48 @@ Hallo, Charlie!
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Übung 2.5</p>
-<p>Schreiben Sie ein Programm, das das kleine 1x1 in schöner Tabellenform ausgibt,
-also</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">x</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="mi">1</span> <span class="n">x</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>usw.</p>
+<p>Erstellen Sie ein Dictionary für einen Studierenden mit folgenden Informationen:</p>
+<ul class="simple">
+<li><p>vorname: “Max”</p></li>
+<li><p>nachname: “Mustermann”</p></li>
+<li><p>matrikelnummer: 123456</p></li>
+<li><p>studiengang: “Maschinenbau”</p></li>
+</ul>
+<p>Geben Sie dann folgende Information aus: “Max Mustermann (123456) studiert Maschinenbau.”</p>
 </div>
 <div class="minisolution dropdown admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> x </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">i</span><span class="o">*</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">studierender</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;vorname&quot;</span><span class="p">:</span> <span class="s2">&quot;Max&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nachname&quot;</span><span class="p">:</span> <span class="s2">&quot;Mustermann&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;matrikelnummer&quot;</span><span class="p">:</span> <span class="mi">123456</span><span class="p">,</span>
+    <span class="s2">&quot;studiengang&quot;</span><span class="p">:</span> <span class="s2">&quot;Maschinenbau&quot;</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">studierender</span><span class="p">[</span><span class="s2">&quot;vorname&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">studierender</span><span class="p">[</span><span class="s2">&quot;nachname&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">studierender</span><span class="p">[</span><span class="s2">&quot;matrikelnummer&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">) studiert </span><span class="si">{</span><span class="n">studierender</span><span class="p">[</span><span class="s2">&quot;studiengang&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Übung 2.6</p>
+<p>Gegeben ist die Liste: <code class="docutils literal notranslate"><span class="pre">zahlen</span> <span class="pre">=</span> <span class="pre">[5,</span> <span class="pre">12,</span> <span class="pre">3,</span> <span class="pre">8,</span> <span class="pre">1]</span></code></p>
+<ol class="arabic simple">
+<li><p>Fügen Sie die Zahl 7 am Ende der Liste hinzu.</p></li>
+<li><p>Erstellen Sie einen String <code class="docutils literal notranslate"><span class="pre">text</span> <span class="pre">=</span> <span class="pre">&quot;Python</span> <span class="pre">Programmierung&quot;</span></code> und wandeln Sie ihn in Großbuchstaben um.</p></li>
+<li><p>Geben Sie beide Ergebnisse aus.</p></li>
+</ol>
+</div>
+<div class="minisolution dropdown admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Liste bearbeiten</span>
+<span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">zahlen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Liste: </span><span class="si">{</span><span class="n">zahlen</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># String bearbeiten</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Python Programmierung&quot;</span>
+<span class="n">text_gross</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Text in Großbuchstaben: </span><span class="si">{</span><span class="n">text_gross</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -644,7 +675,7 @@ also</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">2.3 Funktionen und Methoden</p>
+        <p class="prev-next-title">2.3 Dictionaries, Funktionen und Methoden</p>
       </div>
     </a>
     <a class="right-next"

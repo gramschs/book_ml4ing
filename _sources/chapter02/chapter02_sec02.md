@@ -37,11 +37,11 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 :class: goals
 * Sie kennen den Datentyp **Liste**.
 * Sie können Listen mit eckigen Klammern erzeugen. 
-* Sie können Listen mit dem **Plus-Operator** verketten, Elemente mit
-  **.append()** anhängen oder Werte mit **.remove()** aus der Liste löschen.
-* Sie können über den **Index** auf einzelne Listenelementer zugreifen. 
+* Sie können Listen mit dem **Plus-Operator** verketten und Elemente mit
+  **.append()** anhängen.
+* Sie können über den **Index** auf einzelne Listenelemente zugreifen. 
 * Sie können eine **for-Schleife mit Liste** programmieren.
-* Sie wissen, wie die Fachbegriffe der einzelnen Bestandteil der Schleife
+* Sie wissen, wie die Fachbegriffe der einzelnen Bestandteile der Schleife
   lauten:
   * **Kopfzeile**, wird mit **Doppelpunkt :** abgeschlossen
   * Schlüsselwörter **for** und **in**
@@ -76,12 +76,6 @@ Eine leere Liste wird durch `[]` definiert:
 ```{code-cell}
 a = []
 print(a)
-```
-
-Der Datentyp heißt formal `list`:
-
-```{code-cell}
-type(a)
 ```
 
 Listen können gekürzt und erweitert werden. Eine sehr nützliche Funktion ist
@@ -152,21 +146,10 @@ a.append(42)
 print(a)
 ```
 
-Aus der Liste können Elemente durch die `remove()`-Methode gelöscht werden.
-Dabei wird das Element, das gelöscht werden soll, der Methode als Argument
-übergeben. Es wird der erste auftretende Wert aus der Liste gelöscht.
-
-```{code-cell}
-a = [34, 56, 23, 42]
-print(a)
-
-a.remove(56)
-print(a)
-```
-
 ```{admonition} Mini-Übung
 :class: miniexercise
-Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt und Zucker hinzu. Leider passen in Ihren Einkaufswagen nur maximal 5 Sachen. Lassen Sie daher die Anzahl der Elemente ausgeben.
+Nehmen Sie Ihre Einkaufsliste für den Obstsalat von vorhin. Fügen Sie noch Zimt
+und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.
 ```
 
 ```{code-cell} ipython3
@@ -176,10 +159,11 @@ Nehmen Sie Ihre Einkaufsliste für den Obsalat von vorhin. Fügen Sie noch Zimt 
 ````{admonition} Lösung
 :class: miniexercise, toggle
 ```python
-einkaufsliste_alt = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
-einkaufsliste_neu = einkaufsliste_alt + ['Zimt', 'Zucker']
-anzahl_zutaten = len(einkaufsliste_neu)
-print(f'Anzahl der Zutaten: {anzahl_zutaten}')
+einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
+einkaufsliste.append('Zimt')
+einkaufsliste.append('Zucker')
+anzahl = len(einkaufsliste)
+print(f'Anzahl: {anzahl}')
 ```
 ````
 
@@ -192,21 +176,11 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Zugriff auf einzelne Listenelemente
 
-Listen sind (übrigens genau wie Strings) ein sogenannter **sequentieller
-Container**. Sequentielle Container sind Sammlungen von Datenobjekten. Was heißt
-das? Eine Straße ist eine Sammlung von Häusern. Aber in einer Straße sind die
-Häuser zusätzlich durchnummeriert. Eine Hausnummer ermöglicht es, die Position
-eines Hauses innerhalb der Straße zu bestimmen. Sammlungen von Objekten mit
-einer Positionsnummer werden sequentielle Container genannt. Sie sind mit ganzen
-Zahlen, also Integern, durchnummeriert. In Python beginnt die Nummerierung bei
-0. Die Nummer eines Elementes aus der Sequenz nennt man **Index**.
-Umgangssprachlich könnte man den Index also auch als Hausnummer bezeichnen.
-
-In einer Liste hat also das erste Element den Index 0. Das zweite Element hat
-den Index 1 usw. Um ein einzelnes Element einer Liste herausgreifen zu können,
-schreibt man `liste[i]`. Dabei ist `liste` der Name der Liste und `i` der Idnex.
-Um einfach auf das letzte Element einer Liste zugreifen zu können, hat Python
-den Index -1 eingeführt.
+Listen sind in Python durchnummeriert, beginnend bei Index `0`. Die
+Positionsnummer eines Elements nennt man **Index**. Um auf ein einzelnes Element
+zuzugreifen, schreibt man `liste[i]`, wobei `i` der Index ist. Um einfach auf
+das letzte Element einer Liste zugreifen zu können, hat Python den Index -1
+eingeführt.
 
 Probieren wir ein Beispiel aus:
 
@@ -214,13 +188,16 @@ Probieren wir ein Beispiel aus:
 a = [34, 56, 23, 42]
 erstes = a[0]
 print(f'Das erste Element in der Liste ist: {erstes}')
+
+letztes = a[-1]
+print(f'Das letzte Element in der Liste ist: {letztes}')
 ```
 
 ```{code-cell}
 # Erzeugung Liste
 meine_liste = ['rot', 'grün', 'blau', 'gelb', 'weiß', 'schwarz']
 
-# das fünfte Elment weiß wird durch lila ersetzt
+# das fünfte Element weiß wird durch lila ersetzt
 meine_liste[4] = 'lila'
 print(meine_liste)
 ```
@@ -237,8 +214,9 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Code wiederholen mit der for-Schleife
 
-Manchmal möchte man für jedes Element einer Liste eine oder mehrere Aktionen
-durchführen. Dazu gibt es die **for-Schleife**.
+Wenn wir mit jedem Element einer Liste etwas tun wollen, wäre es mühsam, jedes
+Element einzeln über seinen Index anzusprechen. Hierfür gibt es die
+**for-Schleife**.
 
 ```{code-cell}
 for i in [2, 4, 6, 8, 10]:
@@ -271,13 +249,13 @@ normalen Programm weiter. Bei unserem kurzen Beispiel ist aber schon das Ende
 des Programmes erreicht. Zusammengefasst, werden nacheinander die Elemente der
 Liste `[2, 4, 6, 8, 10]` auf dem Bildschirm ausgegeben.
 
-Schauen wir uns ein erstes Beispiel an. Jedes Element der Liste `[4,5,7,11,21]`
-soll um 2 erhöht werden.
+Schauen wir uns ein weiteres Beispiel an. Jedes Element der Liste
+`[4,5,7,11,21]` soll um 2 erhöht werden.
 
 ```{code-cell}
 for zahl in [4,5,7,11,21]:
-    summe = zahl + 2
-    print(f'Wenn ich {zahl} + 2 rechne, erhalte ich {summe}.')
+    ergebnis = zahl + 2
+    print(f'Wenn ich {zahl} + 2 rechne, erhalte ich {ergebnis}.')
 print('Ich bin fertig!')
 ```
 
@@ -307,61 +285,17 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 ```
 
 Es kommt sehr häufig vor, dass über Listen mit Zahlen iteriert werden soll.
-Dafür stellt Python3 die Funktion `range()`zur Verfügung.
+Dafür stellt Python3 die Funktion `range()` zur Verfügung. Das folgende
+Code-Fragment gibt beispielsweise die Zahlen von 0 bis 4 aus.
 
 ```{code-cell}
-for zahl in range(3):
-    print(zahl)
-print('Fertig!')
+# Zahlen von 0 bis 4 ausgeben
+for i in range(5):
+    print(i)
 ```
 
-Wird `range(endzahl)` mit nur einem Parameter aufgerufen, dann beginnt der
-Python-Interpreter stets von `0` an zu zählen. Dabei ist die `endzahl` nicht
-inkludiert, d.h. der Python-Interpreter stoppt bei `endzahl - 1`. Es ist auch
-möglich, eine Startzahl vorzugeben, also:
-
-```{code-cell}
-for zahl in range(1,4):
-    print(zahl)
-print('Fertig!')
-```
-
-Zusätzlich kann der Zahlenbereich noch durch die Angabe einer Schrittweite
-spezifiziert werden. Dadurch ist es beispielsweise möglich, nur ungerade Zahlen
-zu generieren:
-
-```{code-cell}
-for zahl in range(3, 13, 2):
-    print(zahl)
-print('Fertig!')
-```
-
-```{admonition} Mini-Übung
-:class: miniexercise 
-Lassen Sie alle geraden Zahlen zwischen 100 und 120 ausgeben.
-```
-
-```{code-cell} ipython3
-# Hier Ihr Code:
-```
-
-````{admonition} Lösung
-:class: miniexercise, toggle
-```python
-for zahl in range(100, 122, 2):
-    print(zahl)
-```
-````
-
-Durch Angabe einer negativen Schrittweite kann auch rückwärts gezählt werden:
-
-```{code-cell}
-for zahl in range(13, 3, -2):
-    print(zahl)
-print('Fertig!')
-```
-
-Zum Abschluss folgt hier noch ein weiteres Video zu for-Schleifen.
+Mehr Details zu `range()` in Kombination mit einer for-Schleife finden Sie in
+dem folgenden Video.
 
 ```{dropdown} Video zu "for-Schleife in Python: Zählerschleife"
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pQh5Idw2sKM" 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>2.3 Funktionen und Methoden &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
+    <title>2.3 Dictionaries, Funktionen und Methoden &#8212; Maschinelles Lernen für Studierende der Ingenieurwissenschaften</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -181,7 +181,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter02_sec00.html">2. Crashkurs Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="chapter02_sec01.html">2.1 Datentypen, Variablen und print()</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapter02_sec02.html">2.2 Listen und for-Schleifen</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3 Funktionen und Methoden</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.3 Dictionaries, Funktionen und Methoden</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapter02_sec04.html">Übungen</a></li>
 </ul>
 </details></li>
@@ -496,7 +496,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>2.3 Funktionen und Methoden</h1>
+    <h1>2.3 Dictionaries, Funktionen und Methoden</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -507,18 +507,9 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen">Funktionen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">Die Benutzung von Funktionen (oder der Aufruf von Funktionen)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-einfachen-funktionen">Definition von einfachen Funktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-parametern">Funktionen mit Parametern</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-ruckgabewert">Funktionen mit Rückgabewert</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektorientierte-programmierung">Objektorientierte Programmierung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konzept">Konzept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassen-und-methoden">Klassen und Methoden</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen">Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektorientierte-programmierung">Objektorientierte Programmierung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
@@ -531,122 +522,132 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="funktionen-und-methoden">
-<h1>2.3 Funktionen und Methoden<a class="headerlink" href="#funktionen-und-methoden" title="Link to this heading">#</a></h1>
-<p>Sobald die Funktionalitäten komplexer werden, lohnt es sich Code in eigene
-Funktionsbausteine auszulagern und vor allem auf Code von anderen
-Programmier:innen zurückzugreifen. Code, der eine Teilaufgabe löst und einen
-eigenständigen Namen bekommt, wird <strong>Funktion</strong> genannt. Ist die Funktion direkt
-an einen Datentyp gekoppelt, wird die Funktion <strong>Methode</strong> genannt. In diesem
-Kapitel gehen wir sehr kurz auf die wichtigsten Grundlagen von Funktionen und
-Methoden ein.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="dictionaries-funktionen-und-methoden">
+<h1>2.3 Dictionaries, Funktionen und Methoden<a class="headerlink" href="#dictionaries-funktionen-und-methoden" title="Link to this heading">#</a></h1>
+<p>Sobald die Funktionalitäten komplexer werden, ist es wichtig zu verstehen, wie
+wir mit verschiedenen Datenstrukturen arbeiten und wie Code in Python
+organisiert ist. In diesem Kapitel lernen wir zunächst mit Dictionaries eine
+weitere wichtige Datenstruktur kennen. Anschließend vertiefen wir unser
+Verständnis von Funktionen und lernen das Konzept der objektorientierten
+Programmierung kennen. Funktionen, die direkt an einen Datentyp gekoppelt sind,
+werden <strong>Methoden</strong> genannt.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
-<li><p>Sie können selbst eine <strong>Funktion</strong> mit Parametern und Rückgabewert
-implementieren.</p></li>
-<li><p>Sie kennen das Konzept der <strong>objektorientierten Programmierung</strong>.</p></li>
-<li><p>Sie wissen, was <strong>Klassen</strong> und <strong>Methoden</strong> sind.</p></li>
+<li><p>Sie kennen den Datentyp <strong>Dictionary</strong> und können Schlüssel-Wert-Paare
+erstellen und nutzen.</p></li>
+<li><p>Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
+Rückgabewerten arbeiten.</p></li>
+<li><p>Sie wissen, was <strong>Methoden</strong> sind und kennen das <strong>Konzept der
+objektorientierten Programmierung</strong>.</p></li>
 </ul>
 </div>
 </section>
-<section id="funktionen">
-<h2>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h2>
-<p>Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
-löst. Dabei arbeitet die Funktion nach dem EVA-Prinzip (Eingabe, Verarbeitung,
-Ausgabe). Die Funktion übernimmt Objekte als Eingabe, verarbeitet diese und
-liefert Objekte als Ergebnis zurück. Wie die Funktion dabei im Inneren genau
-funktioniert (Verarbeitung), ist unwichtig.</p>
-<p>Insbesondere muss die Teilaufgabe, die die Funktion löst, nichts mit Mathematik
-zu tun haben. Eine Funktion in der Informatik hat nichts mit einer
-mathematischen Funktion zu tun, auch wenn oft mathematische Funktionen als
-Beispiel verwendet werden. Ein Beispiel für eine nicht-mathematische Funktion
-haben Sie mit <code class="docutils literal notranslate"><span class="pre">print()</span></code> bereits kennengelernt.</p>
-<section id="die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">
-<h3>Die Benutzung von Funktionen (oder der Aufruf von Funktionen)<a class="headerlink" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen" title="Link to this heading">#</a></h3>
-<p>Eine Funktion wird benutzt, indem man den Namen der Funktion hinschreibt und
-dann in runden Klammern ihre Argumente. Welche Argumente für eine Funktion
-verwendet werden dürfen, hängt von der Implementierung der Funktion ab.</p>
-<p>Beispielsweise kann als Argument für die <code class="docutils literal notranslate"><span class="pre">len()</span></code>-Funktion ein String übergeben
-werden oder eine Liste.</p>
+<section id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<p>Bisher haben wir Listen kennengelernt, um mehrere Daten zu sammeln. Listen haben
+jedoch einen Nachteil: Wir müssen uns merken, an welcher Position welche
+Information steht. Bei einer Liste <code class="docutils literal notranslate"><span class="pre">[7900,</span> <span class="pre">200000,</span> <span class="pre">190]</span></code> ist nicht sofort klar,
+was die einzelnen Zahlen bedeuten. Für solche Fälle gibt es eine Datenstruktur,
+die besser geeignet ist, das sogenannte <strong>Dictionary</strong>.</p>
+<p>Dictionaries (deutsch: Wörterbücher) speichern Daten in Form von
+Schlüssel-Wert-Paaren. Wir können uns ein Dictionary wie ein Wörterbuch
+vorstellen: Wir schlagen einen Begriff nach (das ist der Schlüssel) und erhalten
+die zugehörige Information (das ist der Wert). Im Gegensatz zu Listen, die über
+einen numerischen Index angesprochen werden, erfolgt der Zugriff bei
+Dictionaries über aussagekräftige Schlüssel.</p>
+<p>Ein Dictionary wird mit geschweiften Klammern <code class="docutils literal notranslate"><span class="pre">{}</span></code> erstellt. Die
+Schlüssel-Wert-Paare werden durch Doppelpunkte <code class="docutils literal notranslate"><span class="pre">:</span></code> getrennt, mehrere Paare durch
+Kommas <code class="docutils literal notranslate"><span class="pre">,</span></code>. Schauen wir uns dazu ein Beispiel an:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">person</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="s2">&quot;stadt&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span>
+<span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;Alice&#39;, &#39;alter&#39;: 25, &#39;stadt&#39;: &#39;Berlin&#39;}
 </pre></div>
 </div>
 </div>
 </div>
+<p>Der Zugriff auf einzelne Werte erfolgt über die Angabe des Schlüssels in eckigen
+Klammern:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name: </span><span class="si">{</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Alter: </span><span class="si">{</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stadt: </span><span class="si">{</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;stadt&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: Alice
+Alter: 25
+Stadt: Berlin
 </pre></div>
 </div>
 </div>
 </div>
-<p>In der Regel geben Funktionen wieder Ergebnisse zurück. Diese können einer
-Variable zugewiesen werden, um weiter mit dem Ergebnis zu arbeiten.</p>
+<p>Wir können auch Werte ändern oder neue Schlüssel-Wert-Paare hinzufügen:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wort</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
-<span class="n">anzahl_zeichen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mein Wort </span><span class="si">{</span><span class="n">wort</span><span class="si">}</span><span class="s1"> hat </span><span class="si">{</span><span class="n">anzahl_zeichen</span><span class="si">}</span><span class="s1"> Zeichen.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wert ändern</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">26</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Neues Alter: </span><span class="si">{</span><span class="n">person</span><span class="p">[</span><span class="s2">&quot;alter&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Neues Schlüssel-Wert-Paar hinzufügen</span>
+<span class="n">person</span><span class="p">[</span><span class="s2">&quot;beruf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Datenwissenschaftlerin&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mein Wort Hallo hat 5 Zeichen.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neues Alter: 26
+{&#39;name&#39;: &#39;Alice&#39;, &#39;alter&#39;: 26, &#39;stadt&#39;: &#39;Berlin&#39;, &#39;beruf&#39;: &#39;Datenwissenschaftlerin&#39;}
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="definition-von-einfachen-funktionen">
-<h3>Definition von einfachen Funktionen<a class="headerlink" href="#definition-von-einfachen-funktionen" title="Link to this heading">#</a></h3>
-<p>Um selbst eine Funktion zu definieren, benutzen wir das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">def</span></code>.
-Danach wählen wir einen Funktionsnamen und hängen an den Funktionsnamen runde
-Klammern gefolgt von einem Doppelpunkt. Die Anweisungen, die ausgeführt werden
-sollen, sobald die Funktion aufgerufen wird, werden eingerückt.</p>
-<p>Als erstes Beispiel einer sehr einfachen Funktion betrachten wir die folgende
-Funktion:</p>
+<p>Der Vorteil von Dictionaries gegenüber Listen wird besonders deutlich, wenn wir
+die beiden Datenstrukturen vergleichen. In einer Liste müssten wir uns merken,
+dass der Name an Position 0 steht, das Alter an Position 1 und so weiter. Bei
+einem Dictionary können wir direkt mit aussagekräftigen Begriffen arbeiten.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gruesse_ausrichten</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ich grüße Sie!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Funktion hat keine Argumente und keine Rückgabe, sondern gibt einfqach nur
-einen Text auf dem Bildschirm aus. Nachdem die Funktion <code class="docutils literal notranslate"><span class="pre">gruesse_ausrichten()</span></code>
-so implementiert wurde, können wir sie im Folgenden direkt verwenden.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gruesse_ausrichten</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Als Liste (unübersichtlich)</span>
+<span class="n">person_liste</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name (Liste): </span><span class="si">{</span><span class="n">person_liste</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Was bedeutet Index 0?</span>
+
+<span class="c1"># Als Dictionary (selbsterklärend)</span>
+<span class="n">person_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s2">&quot;stadt&quot;</span><span class="p">:</span> <span class="s2">&quot;Berlin&quot;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Name (Dictionary): </span><span class="si">{</span><span class="n">person_dict</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Sie!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name (Liste): Alice
+Name (Dictionary): Alice
 </pre></div>
 </div>
 </div>
 </div>
-<p>Und natürlich kann man sie in Programmverzweigungen und Schleifen einbauen.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Schreiben Sie eine Funktion, die den Namen <code class="docutils literal notranslate"><span class="pre">hallihallo</span></code> hat und das Wort Hallihallo ausgibt. Testen Sie Ihre Funktion auch.</p>
+<p>Erstellen Sie ein Dictionary für einen Datenpunkt mit folgenden Informationen:</p>
+<ul class="simple">
+<li><p>temperatur: 23.5</p></li>
+<li><p>luftfeuchtigkeit: 65</p></li>
+<li><p>standort: “Sensor_01”</p></li>
+</ul>
+<p>Geben Sie dann die Temperatur und den Standort mit passenden Beschriftungen aus.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,15 +658,80 @@ so implementiert wurde, können wir sie im Folgenden direkt verwenden.</p>
 </div>
 <div class="miniexercise toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hallihallo</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hallihallo!&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary für Datenpunkt erstellen</span>
+<span class="n">messwert</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;temperatur&quot;</span><span class="p">:</span> <span class="mf">23.5</span><span class="p">,</span>
+    <span class="s2">&quot;luftfeuchtigkeit&quot;</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="s2">&quot;standort&quot;</span><span class="p">:</span> <span class="s2">&quot;Sensor_01&quot;</span>
+<span class="p">}</span>
 
-<span class="c1"># Test</span>
-<span class="n">hallihallo</span><span class="p">()</span>
+<span class="c1"># Zugriff auf spezifische Werte</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Temperatur: </span><span class="si">{</span><span class="n">messwert</span><span class="p">[</span><span class="s2">&quot;temperatur&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Standort: </span><span class="si">{</span><span class="n">messwert</span><span class="p">[</span><span class="s2">&quot;standort&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<p>Das folgende Video zeigt, wie Funktionen selbst definiert werden.</p>
+<p>Dictionaries werden uns in späteren Kapiteln häufiger begegnen. Insbesondere bei
+der Visualisierung mit Plotly werden wir Dictionaries verwenden, um
+Konfigurationen für Diagramme zu definieren.</p>
+</section>
+<section id="funktionen">
+<h2>Funktionen<a class="headerlink" href="#funktionen" title="Link to this heading">#</a></h2>
+<p>Eine Funktion ist eine Zusammenfassung von Code, der eine bestimmte Teilaufgabe
+löst. Wir haben bereits verschiedene Funktionen kennengelernt und verwendet. Die
+Funktion <code class="docutils literal notranslate"><span class="pre">print()</span></code> gibt Text oder Werte auf dem Bildschirm aus. Die Funktion
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> ermittelt die Länge einer Liste oder eines Strings. Die Funktion
+<code class="docutils literal notranslate"><span class="pre">type()</span></code> gibt uns den Datentyp einer Variable zurück.</p>
+<p>Eine Funktion wird aufgerufen, indem wir den Namen der Funktion hinschreiben und
+dann in runden Klammern ihre Argumente übergeben. Welche Argumente eine Funktion
+erwartet, hängt von der jeweiligen Funktion ab. Betrachten wir dazu einige
+Beispiele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># len() mit verschiedenen Argumenten</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">))</span>  <span class="c1"># String als Argument</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span>  <span class="c1"># Liste als Argument</span>
+
+<span class="c1"># type() ermittelt den Datentyp</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+6
+&lt;class &#39;int&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die meisten Funktionen geben ein Ergebnis zurück. Dieses können wir einer
+Variable zuweisen, um weiter damit zu arbeiten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wort</span> <span class="o">=</span> <span class="s1">&#39;Maschinelles Lernen&#39;</span>
+<span class="n">anzahl_zeichen</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">wort</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der Text &quot;</span><span class="si">{</span><span class="n">wort</span><span class="si">}</span><span class="s1">&quot; hat </span><span class="si">{</span><span class="n">anzahl_zeichen</span><span class="si">}</span><span class="s1"> Zeichen.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der Text &quot;Maschinelles Lernen&quot; hat 19 Zeichen.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beim maschinellen Lernen werden wir vor allem Funktionen aus Bibliotheken wie
+NumPy, Pandas und scikit-learn verwenden. Diese Funktionen sind bereits fertig
+implementiert und wir müssen nur wissen, wie wir sie aufrufen. Das Schreiben
+eigener Funktionen ist seltener nötig, weshalb wir uns darauf konzentrieren, wie
+wir bestehende Funktionen effektiv nutzen können.</p>
+<p>Falls Sie sich dafür interessieren, Funktionen selbst zu definieren, finden Sie
+in den drei folgenden Videos weitere Details zur Implementierung von Funktionen.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Funktionen selbst definieren” von Programmieren lernen</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -673,96 +739,7 @@ so implementiert wurde, können wir sie im Folgenden direkt verwenden.</p>
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
-</details></section>
-<section id="funktionen-mit-parametern">
-<h3>Funktionen mit Parametern<a class="headerlink" href="#funktionen-mit-parametern" title="Link to this heading">#</a></h3>
-<p>Meistens haben Funktionen Argumente, um Eingaben/Input entgegennehmen und
-verarbeiten zu können. Das Argument wird bei der Implementierung der Funktion
-mit einer Variable eingeführt, wie in dem folgenden Beispiel <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ich grüße </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Der Aufruf einer Funktion ohne passende Argumente führt zu einer Fehlermeldung.
-Entfernen Sie das Kommentarzeichen <code class="docutils literal notranslate"><span class="pre">#</span></code> und führen Sie die nachfolgende
-Code-Zelle aus:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#gruesse_ausrichten_mit_parameter()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Daher müssen wir die modifizierte Funktion nun wie folgt aufrufen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Bob
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">gruesse_ausrichten_mit_parameter()</span></code> hat aber keinen Rückgabewert.
-Das können wir wie folgt testen:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">gruesse_ausrichten_mit_parameter</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">)</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ich grüße Alice
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NoneType
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">x</span></code> ist vom Typ <code class="docutils literal notranslate"><span class="pre">NoneType</span></code> oder anders ausgedrückt, es hat keinen Datentyp.</p>
-<p>Sind Funktionen ohne Rückgabewert sinnvoll? Ja, denn so können Codeblöcke
-vereinfacht werden. Sollte in einem Programm Code mehrmals ausgeführt werden,
-lohnt es sich, diesen in eine Funktion auszulagern, um diese einfach aufrufen zu
-können.</p>
-<div class="miniexercise admonition">
-<p class="admonition-title">Mini-Übung</p>
-<p>Schreiben Sie eine Funktion mit zwei Parametern, nämlich Vor- und Nachname. Wenn
-die Funktion z.B. mit <code class="docutils literal notranslate"><span class="pre">(Alice,</span> <span class="pre">Miller)</span></code> aufgerufen wird, soll sie Folgendes auf
-dem Bildschirm ausgeben:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Vorname</span><span class="p">:</span> <span class="n">Alice</span>
-<span class="n">Nachname</span><span class="p">:</span> <span class="n">Miller</span>
-</pre></div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise toggle admonition">
-<p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gruesse_ausrichten_mit_parametern</span><span class="p">(</span><span class="n">vorname</span><span class="p">,</span> <span class="n">nachname</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Vorname: </span><span class="si">{</span><span class="n">vorname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nachname: </span><span class="si">{</span><span class="n">nachname</span><span class="si">}</span><span class="s1">)</span>
-
-<span class="n">gruesse_ausrichten_mit_parametern</span><span class="p">(</span><span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;im Wunderland&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<p>Das folgende Video zeigt, wie Funktionen mit Parametern in Python implementiert
-werden.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Funktionen mit Parametern” von Programmieren lernen</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/af9ORp1Pty0" 
@@ -770,53 +747,7 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </div>
-</details></section>
-<section id="funktionen-mit-ruckgabewert">
-<h3>Funktionen mit Rückgabewert<a class="headerlink" href="#funktionen-mit-ruckgabewert" title="Link to this heading">#</a></h3>
-<p>In der Regel jedoch haben Funktionen einen Rückgabewert. Schauen wir uns ein
-Beispiel an:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">berechne_quadrat</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
-
-<span class="c1"># Aufruf der Funktion</span>
-<span class="n">berechne_quadrat</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>49
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Rückgabe wird durch das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">return</span></code> erzeugt. Es ist auch möglich,
-mehrere Ergebnisse gleichzeitig zurückzugeben. Diese werden einfach nach dem
-Schlüsselwort <code class="docutils literal notranslate"><span class="pre">return</span></code> mit Kommas getrennt gelistet.</p>
-<div class="miniexercise admonition">
-<p class="admonition-title">Mini-Übung</p>
-<p>Schreiben Sie eine Funktion mit zwei Parametern, nämlich den beiden Seitenlängen eines Rechtecks. Lassen Sie die Fläche des Rechtecks berechnen und zurückgeben. Testen Sie Ihr Funktion auch.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hier Ihr Code:</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="miniexercise toggle admonition">
-<p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">berechne_flaecheninhalt_rechteck</span><span class="p">(</span><span class="n">seite1</span><span class="p">,</span> <span class="n">seite2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">seite1</span> <span class="o">*</span> <span class="n">seite2</span>
-
-<span class="c1"># Test der Funktion</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">berechne_flaecheninhalt_rechteck</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Funktionen mit Rückgabewert” von Programmieren lernen</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ehSP-sYoKCY" 
@@ -825,53 +756,97 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 </div>
 </details></section>
-</section>
 <section id="objektorientierte-programmierung">
 <h2>Objektorientierte Programmierung<a class="headerlink" href="#objektorientierte-programmierung" title="Link to this heading">#</a></h2>
-<p>In den ersten beiden Teilen unseres Crashkurses Python haben wir uns die
-Grundlagen der Programmierung erarbeitet:</p>
-<ul class="simple">
-<li><p>Datentypen (Integer, Float, String, List)</p></li>
-<li><p>Kontrollstrukturen: for-Schleife</p></li>
-<li><p>Funktionen.</p></li>
-</ul>
-<p>In einigen Programmiersprachen wie beispielsweise C hätten wir damit auch alle
-Sprachelement kennengelernt. Diese Programmierung nennt man <strong>prozedurale
-Programmierung</strong>. Python gehört jedoch zu den objektorientierten
-Programmiersprachen, so dass wir uns jetzt noch dem Thema Objektorientierung
-widmen.</p>
-<section id="konzept">
-<h3>Konzept<a class="headerlink" href="#konzept" title="Link to this heading">#</a></h3>
-<p>Bei der bisherigen prozeduralen Programmierweise haben wir Funktionen und Daten
-getrennt. Die Daten werden in Variablen gespeichert. Funktionen funktionieren
-nach dem EVA-Prinzip. In der Regel erwartet eine Funktion eine Eingabe von
-Daten, verarbeitet diese Daten und gibt Daten zurück.</p>
-<p>Angenommen, wir wollten ein Programm zur Verwaltung von Lottoscheinen schreiben.
-Zu einem Lottoschein wollen wir Name, Adresse und die angekreuzten Zahlen
-speichern. Dann müssten wir mit unserem bisherigen Wissen folgende Variablen pro
-Lottoschein einführen:</p>
-<ul class="simple">
-<li><p>vorname</p></li>
-<li><p>nachname</p></li>
-<li><p>strasse</p></li>
-<li><p>postleitzahl</p></li>
-<li><p>stadt</p></li>
-<li><p>liste_mit_sechs_zahlen</p></li>
-</ul>
-<p>Wenn jetzt viele Spielerinnen und Spieler Lotto spielen wollen, wie gehen wir
-jetzt mit den Daten um? Legen wir eine Liste für die Vornamen und eine Liste für
-die Nachnamen usw. an? Und wenn jetzt der 17. Eintrag in der Liste mit den sechs
-angekreuzten Lottozahlen sechs Richtige hat, suchen wir dann den 17. Eintrag in
-der Liste mit den Vornamen und den 17. Eintrag in der Liste mit den Nachnamen
-usw.? Umständlich…</p>
-<p>Die Idee der objektorientierten Programmierung ist, für solche Szenarien
-<strong>Objekte</strong> einzuführen. Ein Objekt fasst verschiedene Eigenschaften wie hier
-Vorname, Nachname, Straße, usw. zu einem Objekt Lottoschein zusammen. In der
-Informatik wird eine Eigenschaft eines Objekts <strong>Attribut</strong> genannt.</p>
-<p>Damit hätten wir erst einmal nur einen neuen Datentyp. Ein Objekt macht noch
-mehr aus, denn zu dem neuen Datentyp kommen noch Funktionen dazu, die die
-Verwaltung des Objektes erleichtern. Funktionen, die zu einem Objekt gehören,
-nennt man <strong>Methoden</strong>.</p>
+<p>Nachdem wir gesehen haben, wie Funktionen aufgerufen werden, schauen wir uns nun
+an, wie Python Funktionen und Daten in Objekten organisiert.</p>
+<p>Die Idee der objektorientierten Programmierung ist, Daten und die dazugehörigen
+Funktionen zusammenzufassen. Bisher haben wir Funktionen und Daten getrennt. Die
+Daten werden in Variablen gespeichert und Funktionen verarbeiten diese Daten
+nach dem EVA-Prinzip (Eingabe, Verarbeitung, Ausgabe). In der objektorientierten
+Programmierung werden Daten und Funktionen zu einem <strong>Objekt</strong> kombiniert. Die
+Eigenschaften eines Objekts werden <strong>Attribute</strong> genannt. Funktionen, die zu
+einem Objekt gehören, nennen wir <strong>Methoden</strong>.</p>
+<p>Tatsächlich haben wir bereits Methoden verwendet, ohne es explizit zu wissen.
+Listen sind Objekte und wenn wir <code class="docutils literal notranslate"><span class="pre">liste.append(4)</span></code> schreiben, rufen wir die
+Methode <code class="docutils literal notranslate"><span class="pre">.append()</span></code> des Listen-Objekts auf. Auch bei Dictionaries stehen
+Methoden wie <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> oder <code class="docutils literal notranslate"><span class="pre">.values()</span></code> zur Verfügung, auch wenn wir diese
+bisher nicht verwendet haben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meine_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="n">meine_liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meine_liste</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[17, 3.5, 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sehen wir uns noch ein weiteres Beispiel an. Ein String ist in Python ein
+Objekt. Strings haben verschiedene Methoden, die uns die Arbeit erleichtern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hallo Welt&quot;</span>
+
+<span class="c1"># Methode upper(): wandelt alle Buchstaben in Großbuchstaben um</span>
+<span class="n">text_gross</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_gross</span><span class="p">)</span>
+
+<span class="c1"># Methode lower(): wandelt alle Buchstaben in Kleinbuchstaben um</span>
+<span class="n">text_klein</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_klein</span><span class="p">)</span>
+
+<span class="c1"># Methode replace(): ersetzt Teile des Strings</span>
+<span class="n">text_neu</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Welt&quot;</span><span class="p">,</span> <span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text_neu</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HALLO WELT
+hallo welt
+Hallo Python
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das nächste Beispiel zeigt den Einsatz von Methoden bei Dictionaries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary-Methoden</span>
+<span class="n">person</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;alter&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>    <span class="c1"># dict_keys([&#39;name&#39;, &#39;alter&#39;])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># dict_values([&#39;Alice&#39;, 25])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;name&#39;, &#39;alter&#39;])
+dict_values([&#39;Alice&#39;, 25])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Methoden werden also aufgerufen, indem wir die Variable (das Objekt)
+hinschreiben, dann einen Punkt setzen und dann den Methodennamen mit runden
+Klammern anfügen. Falls die Methode Argumente benötigt, werden diese in die
+runden Klammern geschrieben.</p>
+<p>In den kommenden Kapiteln werden wir viele Bibliotheken für maschinelles Lernen
+verwenden. Diese Bibliotheken arbeiten mit Objekten und Methoden. Beispielsweise
+werden wir später mit scikit-learn arbeiten. Dort erstellen wir ein
+Modell-Objekt und rufen dann Methoden wie <code class="docutils literal notranslate"><span class="pre">fit()</span></code> auf, um das Modell zu
+trainieren, oder <code class="docutils literal notranslate"><span class="pre">predict()</span></code>, um Vorhersagen zu machen. Das Prinzip ist immer
+das gleiche wie bei <code class="docutils literal notranslate"><span class="pre">liste.append()</span></code> oder <code class="docutils literal notranslate"><span class="pre">text.upper()</span></code>.</p>
+<p>Python ermöglicht es uns auch, eigene Objekte zu definieren. Dazu verwenden wir
+das Schlüsselwort <code class="docutils literal notranslate"><span class="pre">class</span></code>. In diesem Einführungskurs werden wir jedoch keine
+eigenen Klassen erstellen, sondern nur die Klassen und Methoden verwenden, die
+uns die verschiedenen Bibliotheken zur Verfügung stellen. Die folgenden Videos
+geben einen vertieften Einblick in die Objektorientierung mit Python für alle,
+die mehr darüber erfahren möchten.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Konzept der Objektorientierung” von Programmieren lernen</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -880,83 +855,7 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 </iframe>
 </div>
-</details></section>
-<section id="klassen-und-methoden">
-<h3>Klassen und Methoden<a class="headerlink" href="#klassen-und-methoden" title="Link to this heading">#</a></h3>
-<p>Im Folgenden sehen Sie, wie ein Objekt in Python definiert wird. Die
-Implementierung erfolgt als sogenannte <strong>Klasse</strong>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Adresse</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strasse</span><span class="p">,</span> <span class="n">hausnummer</span><span class="p">,</span> <span class="n">plz</span><span class="p">,</span> <span class="n">stadt</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span> <span class="o">=</span> <span class="n">strasse</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span> <span class="o">=</span> <span class="n">hausnummer</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span> <span class="o">=</span> <span class="n">plz</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span> <span class="o">=</span> <span class="n">stadt</span>
-    
-    <span class="k">def</span> <span class="nf">print</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">strasse</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hausnummer = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hausnummer</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Postleitzahl = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">postleitzahl</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Stadt = &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stadt</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Eingeleitet wird eine Klasse mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">class</span></code> und dann dem Namen
-der Klasse. Da Klassen Objekte sind, ist es Standard, den ersten Buchstaben des
-Klassennamens groß zu schreiben. Um Variablen von Objekten leichter zu
-unterscheiden, werden Variablennamen klein geschrieben.</p>
-<p>Danach folgt ein Abschnitt namens <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">__init__(self):</span></code>, in dem die
-Eigenschaften der Klasse aufgelistet werden. <code class="docutils literal notranslate"><span class="pre">init</span></code> steht dabei für
-initialisieren, also den ersten Zustand, den das Objekt später haben wird.</p>
-<p>Wie Sie sehen, können die Eingabe-Parameter der <code class="docutils literal notranslate"><span class="pre">init()</span></code>-Methode die gleichen
-Namen tragen wie die Attribute der Klasse, also <code class="docutils literal notranslate"><span class="pre">self.strasse</span> <span class="pre">=</span> <span class="pre">strasse</span></code>, müssen
-sie aber nicht. Das Beispiel <code class="docutils literal notranslate"><span class="pre">self.postleitzahl</span> <span class="pre">=</span> <span class="pre">plz</span></code> zeigt, dass das Attribut
-<code class="docutils literal notranslate"><span class="pre">self.postleitzahl</span></code> einfach den Wert des 4. Parameters bekommt, egal wie der
-heißt.</p>
-<p>Eine Adresse wird nun folgendermaßen initialisiert:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span> <span class="o">=</span> <span class="n">Adresse</span><span class="p">(</span><span class="s1">&#39;Nibelungenplatz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">60318</span><span class="p">,</span> <span class="s1">&#39;Frankfurt am Main&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Würden wir nun versuchen, mit <code class="docutils literal notranslate"><span class="pre">print(adresse_fra_uas)</span></code> die Adresse am Bildschirm
-ausgeben zu lassen, würden wir eine Fehlermeldung erhalten. Die Funktion
-<code class="docutils literal notranslate"><span class="pre">print()</span></code> ist nicht für den Datentyp <code class="docutils literal notranslate"><span class="pre">Adresse</span></code> entwickelt worden. Schließlich
-können die Python-Entwickler nicht wissen, welche Klassen Sie entwickeln… Wir
-müssen also eine eigene Adressen-print()-Funktion implementieren. Da diese
-print()-Funktion nicht allgemeingültig sein kann, sondern nur für die Objekte
-<code class="docutils literal notranslate"><span class="pre">Adresse</span></code> funktionieren wird, gehört sie auch folgerichtig zur Klasse selbst.
-Sie ist also keine Funktion, sondern eine <strong>Methode</strong>.</p>
-<p>Eine Methode wird definiert, indem innerhalb des Anweisungsblocks der Klasse
-eine Funktion mit dem Schlüsselwort <code class="docutils literal notranslate"><span class="pre">def</span></code> definiert wird. Der erste Eingabewert
-muss zwingend der <code class="docutils literal notranslate"><span class="pre">self</span></code>-Parameter sein. Ansonsten gelten aber die gleichen
-Regeln für Methoden wie für Funktionen.</p>
-<p>Bleibt nur noch eine Frage? Wie wird nun die Methode ausgeführt? Methoden werden
-ausgeführt, indem die Variable hingeschrieben wird, dann ein Punkt gesetzt wird
-und dann die Methode mit runden Klammern angefügt wird.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adresse_fra_uas</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Straße =  Nibelungenplatz
-Hausnummer =  1
-Postleitzahl =  60318
-Stadt =  Frankfurt am Main
-</pre></div>
-</div>
-</div>
-</div>
-<p>Objektorientierung ist ein sehr detailreiches Thema, das wir in diesem Kapitel
-nur streifen konnten. Die folgenden Videos geben einen vertieften Einblick in
-die Objektorientierung mit Python.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Klassen und Objekte” von Programmieren lernen</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XxCZrT7Z3G4" 
@@ -981,15 +880,20 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </iframe>
 </div>
 </details></section>
-</section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
-<p>In diesem Kapitel haben wir gelernt, selbst Funktionen und Klassen mit Methoden
-zu definieren. Oft ist es aber praktischer, Funktionen und Klassen zu nutzen,
-die bereits implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei
-der Datenexploration und den maschinellen Lernalgorithmen benutzen wir die
-vorgefertigten Funktionsbausteine eher als eigene zu definieren, wie wir in den
-nächsten Kapiteln sehen werden.</p>
+<p>In diesem Kapitel haben wir drei wichtige Konzepte kennengelernt. Zunächst haben
+wir mit Dictionaries eine Datenstruktur gesehen, die uns erlaubt, Daten über
+aussagekräftige Schlüssel statt über numerische Indizes anzusprechen.
+Anschließend haben wir vertieft, wie wir Funktionen aufrufen und mit ihren
+Rückgabewerten arbeiten. Zum Schluss haben wir einen ersten Einblick in die
+objektorientierte Programmierung erhalten und verstehen nun, was Methoden sind
+und wie sie sich von normalen Funktionen unterscheiden.</p>
+<p>Oft ist es aber praktischer, Funktionen und Klassen zu nutzen, die bereits
+implementiert sind, anstatt das Rad neu zu erfinden. Vor allem bei der
+Datenexploration und den maschinellen Lernalgorithmen werden wir die
+vorgefertigten Funktionsbausteine nutzen, wie wir in den nächsten Kapiteln sehen
+werden.</p>
 </section>
 </section>
 
@@ -1059,18 +963,9 @@ nächsten Kapiteln sehen werden.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen">Funktionen</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#die-benutzung-von-funktionen-oder-der-aufruf-von-funktionen">Die Benutzung von Funktionen (oder der Aufruf von Funktionen)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-von-einfachen-funktionen">Definition von einfachen Funktionen</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-parametern">Funktionen mit Parametern</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen-mit-ruckgabewert">Funktionen mit Rückgabewert</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektorientierte-programmierung">Objektorientierte Programmierung</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konzept">Konzept</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#klassen-und-methoden">Klassen und Methoden</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funktionen">Funktionen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektorientierte-programmierung">Objektorientierte Programmierung</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>

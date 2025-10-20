@@ -34,28 +34,19 @@ Ausgabe auf dem Bildschirm.
 ## Einfache Datentypen
 
 Beim maschinellen Lernen geht es um die Sammlung, Erkundung und Analyse von
-Daten, um Antworten auf vorgegebene Fragen zu finden. Schematisch stellen wir
-maschinelles Lernen folgendermaßen dar:
-
-```{figure} pics/fig01_prozess.png
----
-width: 600px
-name: fig01_prozess
----
-Schematische Darstellung der Vorgehensweise im maschinellen Lernen
-```
-
-Der Computer kann Informationen aber nur als 0 und 1 verarbeiten. Auf dem
-Speichermedium oder im Speicher selbst werden Daten daher als eine Folge von 0
-und 1 gespeichert. Damit es für uns Programmierinnen und Programmierer einfacher
-wird, Daten zu speichern und zu verarbeiten, wurden Datentypen eingeführt.  
+Daten, um Antworten auf vorgegebene Fragen zu finden.  Der Computer kann
+Informationen aber nur als 0 und 1 verarbeiten. Auf dem Speichermedium oder im
+Speicher selbst werden Daten daher als eine Folge von 0 und 1 gespeichert. Damit
+es für uns Programmierinnen und Programmierer einfacher wird, Daten zu speichern
+und zu verarbeiten, wurden Datentypen eingeführt.  
 
 **Datentypen** fassen gleichartige Objekte zusammen und stellen den
-Programmierer:innen passende Operationen zur Verfügung. Mit Operationen sind die
-Aktionen gemeint, die mit diesen Datenobjekten durchgeführt werden dürfen.
-Zahlen dürfen beispielsweise addiert werden, Buchstaben aber nicht. Es hängt von
-der Programmiersprache ab, welche Datentypen zur Verfügung stehen, wie diese im
-Hintergrund gespeichert werden und welche Operationen möglich sind.
+Programmiererinnen und Programmierern passende Operationen zur Verfügung. Mit
+Operationen sind die Aktionen gemeint, die mit diesen Datenobjekten durchgeführt
+werden dürfen. Zahlen dürfen beispielsweise addiert werden, Buchstaben aber
+nicht. Es hängt von der Programmiersprache ab, welche Datentypen zur Verfügung
+stehen, wie diese im Hintergrund gespeichert werden und welche Operationen
+möglich sind.
 
 In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen
 
@@ -66,8 +57,7 @@ In diesem Kapitel beschäftigen wir uns mit den einfachen Datentypen
 ### Integer und Float
 
 In der Programmierung unterscheidet man grundsätzlich zwischen zwei Zahlenarten,
-den Ganzzahlen und den Gleitkommazahlen/Fließkommazahlen. Die Ganzzahlen werden
-in der Mathematik als **ganze Zahlen** bezeichnet. In der Informatik wird jedoch
+den **ganzen Zahlen** und den Fließkommazahlen. In der Informatik wird jedoch
 der englische Begriff dafür verwendet: **Integer**.
 
 Mit Integern können wir ganz normal rechnen, also arithmetische Operationen
@@ -180,10 +170,10 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 **Variablen** sind beschriftete Schubladen. Oder anders formuliert sind
 Variablen Objekte, denen man einen Namen gibt. Technisch gesehen sind diese
-Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Was in diesen
-Schubladen aufbewahrt wird, kann sehr unterschiedlich sein. Beispielsweise die
-Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle von $\pi$ oder
-die aktuelle Position des Mauszeigers können in den Schubladen enthalten sein.
+Schubladen ein kleiner Bereich im Arbeitsspeicher des Computers. Der Inhalt der
+Schubladen kann sehr unterschiedlich sein. Beispielsweise können in den
+Schubladen die Telefonnummer des ADAC-Pannendienstes, die 10. Nachkommastelle
+von $\pi$ oder die aktuelle Position des Mauszeigers enthalten sein.
 
 ### Zuweisungen sind keine Gleichungen
 
@@ -224,7 +214,8 @@ Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur `
 
 ```{admonition} Lösung
 :class: miniexercise, toggle
-Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor sie das erste Mal benutzt wird.
+Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor
+sie das erste Mal benutzt wird.
 ```
 
 Sehr häufig findet man Code wie
@@ -287,9 +278,11 @@ auch nur mit Jupyter Notebooks. Normalerweise gibt es dazu eine Python-Funktion
 `print()`, auf die wir später noch zurückkommen.
 
 Verwenden Sie für Variablennamen nur ASCII-Zeichen, also keine Umlaute wie ö, ü
-oder ß. Zahlen sind erlaubt, aber nicht am Anfang des Namens. Es ist sinnvoll,
-lange Variablen durch einen Unterstrich besser lesbar zu gestalten (sogenannte
-Snake-Case-Formatierung). Ich empfehle für Variablennamen beispielsweise
+oder ß. Python erlaubt es zwar, Umlaute in Variablennamen zu verwenden, es ist
+aber gute Praxis, dies nicht zu tun. Zahlen sind erlaubt, aber nicht am Anfang
+des Namens. Es ist sinnvoll, lange Variablen durch einen Unterstrich besser
+lesbar zu gestalten (sogenannte Snake-Case-Formatierung). Ich empfehle für
+Variablennamen beispielsweise
 
 `dateiname_alt` oder `dateiname_neu`
 
@@ -318,10 +311,10 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 Werden zwei Integer geteilt, so wird das Ergebnis automatisch in einen Float
 umgewandelt. Mit Hilfe der Funktion `type()` können wir den Python-Interpreter
 bestimmen lassen, welcher Datentyp in einer Variable gespeichert ist. Mit
-Funktion ist an dieser Stelle keine mathematische Funktion gemeint. Eine
-**Funktion** sind viele Anweisungen nacheinander, um eine bestimmte Teilaufgabe
-zu lösen. Damit klar ist, dass es sich um eine Funktion und nicht um eine
-Variable handelt, werden runde Klammern an den Namen der Funktion gehängt.
+Funktion ist hier keine mathematische Funktion gemeint. Eine **Funktion** sind
+viele Anweisungen nacheinander, um eine bestimmte Teilaufgabe zu lösen. Damit
+klar ist, dass es sich um eine Funktion und nicht um eine Variable handelt,
+werden runde Klammern an den Namen der Funktion gehängt.
 
 In diesem Fall soll der Datentyp eines Objektes ermittelt werden. Damit der
 Python-Interpreter weiß, von welcher Variable der Datentyp ermittelt werden
@@ -458,12 +451,12 @@ print(f'Pi = {pi:1.2f}')
 Es ist schwierig, sich alle Formatierungsoptionen zu merken. Auf der
 Internetseite
 [https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/](https://cheatography.com/brianallan/cheat-sheets/python-f-strings-basics/)
-finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Ddokument
+finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Dokument
 herunterladen.
 
 ```{admonition} Mini-Übung
 :class: miniexercise
-Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beide Seitenlängen werden jeweils in den Variablen `laenge` und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.", wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.
+Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beiden Seitenlängen werden jeweils in den Variablen `laenge` und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.", wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.
 ```
 
 ````{admonition} Lösung
