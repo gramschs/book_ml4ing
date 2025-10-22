@@ -30,7 +30,7 @@ interpretieren.
 * Sie kennen die statistischen Kennzahlen Mittelwert und Standardabweichung und
   wissen, wie diese mit **.mean()** und **.std()** berechnet werden.
 * Sie können das Minimum und das Maximum mit **.min()** und **.max()** bestimmen.
-* Sie wissen wie ein Quantil interpretiert wird und wie es mit **.quantile()**
+* Sie wissen, wie ein Quantil interpretiert wird und wie es mit **.quantile()**
   berechnet wird.
 ```
 
@@ -57,13 +57,13 @@ Die Anwendung der `.describe()`-Methode liefert folgende Ausgabe:
 preise.describe()
 ```
 
-Offensichtlich liefert die Methode `.describe()` acht statistische Kennzahlen,
-deren Bedeutung in der
+Die Methode `.describe()` liefert acht statistische Kennzahlen, deren Bedeutung
+in der
 [Pandas-Dokumentation](https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html)
 erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch.
 
-Aber was machen wir, wenn wir die statistischen Kennzahlen erst später verwenden
-wollen, können wir sie zwischenspeichern? Probieren wir es aus.
+Was machen wir aber, wenn wir die statistischen Kennzahlen erst später verwenden
+wollen? Können wir sie zwischenspeichern? Probieren wir es aus.
 
 ```{code-cell}
 statistische_kennzahlen = preise.describe()
@@ -76,7 +76,7 @@ Es kommt keine Fehlermeldung. Und was ist in der Variable
 type(statistische_kennzahlen)
 ```
 
-Offensichtlich wird durch das Anwenden der `.describe()`-Methode auf das
+Wie wir sehen wird durch das Anwenden der `.describe()`-Methode auf das
 Series-Objekt `preise` ein neues Series-Objekt erzeugt, in dem wiederum die
 statistischen Kennzahlen von `preise` gespeichert sind. Da wir im letzten
 Kapitel schon gelernt haben, dass mit eckigen Klammern und dem Index auf einen
@@ -90,11 +90,14 @@ print(f'Das billigste Auto wird für {minimaler_preis} EUR angeboten.')
 
 ```{admonition} Mini-Übung
 :class: miniexercise
-Lassen Sie zuerst die Verkaufspreise aufsteigend sortieren und ausgeben. Lesen
-Sie anhand der Ausgabe ab: welches Auto ist am teuersten und für wieviel Euro
-wird es bei Autoscout24 angeboten? Lassen Sie dann das Maximum über die
-statistischen Kennzahlen, d.h. mit .describe() ermitteln. Vergleichen Sie beide
-Werte.
+Lassen Sie die Verkaufspreise aufsteigend sortieren und ausgeben. Welches Auto
+ist am teuersten und für wie viel EUR wird es angeboten?
+
+Ermitteln Sie dann das Maximum mit `.describe()` und vergleichen Sie beide Werte.
+
+*Zusatzfrage:* Die Spanne (Maximum - Minimum) ist über 44.000 EUR groß. Wie
+groß ist die Standardabweichung im Vergleich zur Spanne? Was bedeutet das für
+die Streuung der Daten?
 ```
 
 ```{code-cell}
@@ -103,18 +106,28 @@ Werte.
 
 ````{admonition} Lösung
 :class: minisolution, toggle
-Der folgende Code sortiert die Preise aufsteigend und lässt sie anzeigen:
 ```python
+# Sortierung und Ausgabe
 preise_aufsteigend = preise.sort_values()
 print('Preise aufsteigend sortiert: ')
 print(preise_aufsteigend)
-```
-Das teuerste Auto ist der BMW Nr. 1. Er wird für 46830 EUR angeboten. Jetzt wird der maximale Preise über die .describe()-Methode ermittelt.
-```python
+
+# Maximum ermitteln
 statistische_kennzahlen = preise.describe()
 maximaler_preis = statistische_kennzahlen['max']
-print(f'Maximaler Preis mit .describe() ermittelt: {maximaler_preis}')
+print(f'\nMaximaler Preis mit .describe() ermittelt: {maximaler_preis}')
+
+# Zusatzfrage: Spanne und Standardabweichung
+spanne = statistische_kennzahlen['max'] - statistische_kennzahlen['min']
+standardabweichung = statistische_kennzahlen['std']
+print(f'\nSpanne: {spanne:.2f} EUR')
+print(f'Standardabweichung: {standardabweichung:.2f} EUR')
+print(f'Die Standardabweichung beträgt ca. {standardabweichung/spanne:.1%} der Spanne.')
 ```
+
+Interpretation: Das teuerste Auto ist BMW Nr. 1 für 46830 EUR. Die Standardabweichung 
+(~13.000 EUR) ist etwa 29 % der Spanne (~44.800 EUR), was auf eine starke, aber nicht 
+extreme Streuung hindeutet.
 ````
 
 Neben der Möglichkeit, die statistischen Kennzahlen über .describe() berechnen
@@ -124,13 +137,13 @@ Methoden, um die statistischen Kennzahlen direkt zu ermitteln.
 ## Anzahl count()
 
 Mit `.count()` wird die Anzahl der Einträge bestimmt, die *nicht* 'NA' sind. Der
-Begriff 'NA' ist ein Fachbegriff des maschinellen Lernens. Gemeint sind fehlende
+Begriff 'NA' ist ein Fachbegriff der Datenanalyse. Gemeint sind fehlende
 Einträge, wobei die fehlenden Einträge verschiedene Ursachen haben können:
 
 * NA = not available (der Messsensor hat versagt)
 * NA = not applicable (es ist sinnlos bei einem Mann nachzufragen, ob er
   schwanger ist)
-* NA = no answer (eine Person hat bei dem Umfrage nichts angegeben)
+* NA = no answer (eine Person hat bei der Umfrage nichts angegeben)
 
 ```{code-cell}
 anzahl_gueltige_preise = preise.count()
@@ -157,11 +170,10 @@ Methode `.mean()` den Mittelwert der Einträge in jeder Spalte berechnet.
 
 ```{code-cell}
 mittelwert = preise.mean()
-print(f'Der mittlere Verkaufspreis beträgt {mittelwert} Euro.')
+print(f'Der mittlere Verkaufspreis beträgt {mittelwert} EUR.')
 ```
 
-Falls Sie prinzipiell nochmal die Berechnung des Mittelwertes wiederholen
-wollen, können Sie folgendes Video ansehen.
+Das folgende Video wiederholt das Konzept des Mittelwerts.
 
 ```{dropdown} Video zu "Mittelwert" von Datatab
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IKfsGPwACnU" 
@@ -171,76 +183,38 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 
 ## Standardabweichung std()
 
-Der Mittelwert ist eine sehr wichtige statistische Kennzahl. Allerdings verrät
-der Mittelwert nicht, wie sich die einzelnen Autopreise relativ zum Mittelwert
-verhalten. Bei den 10 Autos sehen wir mit einem Blick, dass einzelne Autos sehr
-stark vom Mittelwert abweichen. Audi Nr. 1 kostet nur 1999 EUR und damit nur
-circa 10 % vom durchschnittlichen Verkaufspreis. Dafür ist BMW Nr. 1 mehr als
-doppelt so teuer. Es ist daher wichtig, sich zusätzlich zum Mittelwert
-anzusehen, wie die anderen Datenpunkte vom Mittelwert abweichen. In der
-Statistik wird das als **Streuung** bezeichnet. Eine statistische Kennzahl, die
-die Streuung von Daten um den Mittelwert angibt, ist die **Standardabweichung**.
-
-Zur Berechnung der Standardabweichung werden zuerst die Abweichungen jedes
-Datenpunktes zum Mittelwert berechnet.
+Der Mittelwert ist wichtig, aber er erzählt nicht die ganze Geschichte. Betrachten wir unsere Autopreise:
 
 ```{code-cell}
 mittelwert = preise.mean()
-differenzen = preise - mittelwert
-print(differenzen)
+print(f'Durchschnittspreis: {mittelwert:.2f} EUR')
+print('\nAber schauen wir genauer hin:')
+print(f'Günstigstes Auto: {preise.min():.2f} EUR')
+print(f'Teuerstes Auto: {preise.max():.2f} EUR')
+print(f'Spanne: {preise.max() - preise.min():.2f} EUR')
 ```
 
-Die negativen Vorzeichen stören, wir wollen ja die Abweichung. Daher quadrieren
-wir die Differenzen.
-
-```{code-cell}
-quadrate = differenzen * differenzen
-print(quadrate)
-```
-
-Die durchschnittliche Abweichung beschreibt nun, wie weit "weg" die anderen
-Verkaufspreise vom Mittelwert sind. Daher bilden wir nun von den Abweichungen
-wiederum den Mittelwert. Da Quadrate ein Series-Objekt ist, machen wir das
-diesmal nicht händisch, sondern nutzen die Methode `.mean()`.
-
-```{code-cell}
-durchschnittliche_abweichungen = quadrate.mean()
-print(f'Die durchschnittliche Abweichung ist {durchschnittliche_abweichungen}.')
-```
-
-Wenn wir die durchschnittliche Abweichung wiederum als Verkaufspreis gemessen in
-Euro interpretieren wollen, gibt es ein Problem. Offensichtlich ist diese Zahl
-soviel größer als das teuerste Auto. Das ist nicht verwunderlich, denn wir haben
-ja die quadrierten Differenzen genommen. Die Einheit der durchschnittlichen
-Abweichung ist also EUR². Das ist aber unpraktisch. Also ziehen wir wieder die
-Wurzel, damit wir ein Maß für die durchschnittliche Abweichung haben, das auch
-direkt Verkaufspreise widerspiegelt. Das nennen wir dann Standardabweichung.
-
-```{code-cell}
-standardabweichung = quadrate.mean()**0.5
-print(f'Die Standardabweichung ist {standardabweichung:.2f} EUR.')
-```
-
-Benutzen wir Pandas, so liefert die Methode `.std()` die Standardabweichung. Das
-'st' in `.std()` für Standard steht, ist nachvollziehbar. Der dritte Buchstabe
-'d' kommt von 'deviation', also Abweichung. Somit ist wiederum die Methode nach
-dem englischen Fachbegriff 'standard deviation' benannt. Probieren wir die
-Methode für die Autopreise aus.
+Die Spanne von über 44.000 EUR zeigt: Diese Autos sind sehr unterschiedlich! Die **Standardabweichung** beschreibt diese Streuung in einer einzigen Zahl:
 
 ```{code-cell}
 standardabweichung = preise.std()
-print(f'Die Standardabweichung bei den Verkaufspreisen beträgt {standardabweichung} Euro.')
+print(f'Standardabweichung: {standardabweichung:.2f} EUR')
 ```
 
-Der Wert, den Pandas berechnet, unterscheidet sich von dem Wert, den wir
-"händisch" berechnet haben. Der Unterschied kommt daher, dass es zwei Formeln
-zur Berechnung der Standardabweichung gibt. Einmal wird der Durchschnitt über
-die Quadrate gebildet, indem die Summe durch die Anzahl aller Elemente geteilt
-wird, so wie wir es getan haben. Wir haben durch 10 geteilt. Bei der anderen
-Formel wird die Summe der Quadrate durch 9 geteilt.
+Was bedeutet das konkret? Eine Standardabweichung von 13.000 EUR bei einem
+Mittelwert von 21.500 EUR bedeutet: Die Preise schwanken stark. Wenn wir ein
+"durchschnittliches" Auto für 21.500 EUR erwarten, müssen wir mit Abweichungen
+von ±13.000 EUR rechnen.
 
-Was war eigentlich nochmal die Standardabweichung? Falls Sie dazu eine kurze
-Wiederholung der Theorie benötigen, empfehle ich Ihnen dieses Video.
+Schauen wir uns das an unseren konkreten Daten an:
+
+* Mittelwert ± Standardabweichung = 21.469 ± 13.000 EUR
+* Das ergibt den Bereich: [8.469 EUR, 34.469 EUR]
+* Tatsächlich liegen 7 von 10 Autos in diesem Bereich
+
+Die Standardabweichung hat dieselbe Einheit wie die Originaldaten (hier: EUR).
+Das macht sie direkt interpretierbar im Gegensatz zur Varianz, die in EUR²
+gemessen wird.
 
 ```{dropdown} Video zu "Standardabweichung" von Datatab
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QNNt7BvmUJM" 
@@ -269,32 +243,32 @@ print(f'Das teuerste oder die teuersten Autos werden für {preis_max} EUR angebo
 
 ## Quantil mit quantile()
 
-Das Quantil $p \%$ ist der Wert, bei dem $p %$ der Einträge kleiner oder gleich
-als diese Zahl sind und $100 \% - p \%$ sind größer. Meist werden nicht
-Prozentzahlen verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 %
-steht.
+Das Quantil $p\%$ ist der Wert, bei dem $p\%$ der Einträge kleiner oder gleich
+diesem Wert sind und $100\% - p\%$ sind größer. Meist werden nicht Prozentzahlen
+verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 % steht.
 
 Angenommen, wir würden gerne das 0.5-Quantil (auch Median genannt) der Preise
 wissen. Mit der Methode `.quantile()` können wir diesen Wert leicht aus den
 Daten holen.
 
 ```{code-cell}
-quantil50 =preise.quantile(0.5)
+quantil50 = preise.quantile(0.5)
 print(f'Der Median, d.h. das 50 % Quantil, liegt bei {quantil50} EUR.')
 ```
 
 Das 50 % -Quantil liegt bei 18900 EUR. 50 % aller Autos werden zu einem Preis
 angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
-teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an.
+teurer angeboten. Wir schauen uns jetzt das 75 % Quantil an.
 
 ```{code-cell}
 quantil75 = preise.quantile(0.75)
 print(f'75 % aller Autos haben einen Preis kleiner gleich {quantil75} EUR.')
 ```
 
-75 % aller Autos werden günstiger als 26079.75 EUR angeboten. Auch wenn Sie sich
-natürlich für jede beliebigen Prozentsatz zwischen 0 % und 100 % das Quantil
-ansehen können, interessieren wir uns noch für das 25 % Quantil.
+75 % aller Autos werden günstiger als 26079.75 EUR angeboten. Wir können uns für
+jeden beliebigen Prozentsatz zwischen 0 % und 100 % das Quantil ansehen, aber
+häufig wird neben dem 75 % Quantil, dem 50 % Quantil noch das 25 % Quantil
+betrachtet.
 
 ```{code-cell}
 quantil25 = preise.quantile(0.25)

@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -538,7 +538,7 @@ machen wir uns aber zuerst mit dem <strong>Modul Pandas</strong> vertraut.</p>
 <strong>pd</strong> importieren.</p></li>
 <li><p>Sie kennen die Pandas-Datenstruktur <strong>Series</strong>.</p></li>
 <li><p>Sie wissen, was ein <strong>Index</strong> ist.</p></li>
-<li><p>Sie können aus Listen eine Series-Objekt erzeugen und mit einem Index
+<li><p>Sie können aus Listen ein Series-Objekt erzeugen und mit einem Index
 versehen.</p></li>
 <li><p>Sie können mit Series-Objekten rechnen.</p></li>
 <li><p>Sie können die Elemente eines Series-Objektes mit <strong>sort_values()</strong>
@@ -548,18 +548,12 @@ aufsteigend und absteigend sortieren lassen.</p></li>
 </section>
 <section id="das-modul-pandas">
 <h2>Das Modul Pandas<a class="headerlink" href="#das-modul-pandas" title="Link to this heading">#</a></h2>
-<p>Stellen Sie sich vor, Sie möchten Spaghetti mit Tomatensauce kochen. Am
-einfachsten ist es, die Spaghetti-Nudeln und die Tomatensauce im Supermarkt zu
-kaufen. Sie können aber auch nur die Nudeln kaufen und die Tomatensauce selbst
-aus Tomaten und Basilikum zubereiten. Oder Sie gehen noch einen Schritt weiter
-und machen sogar die Nudeln aus Mehl, Eiern, Wasser und Salz selbst.</p>
-<p>In der Programmierung verhält es sich ähnlich. Sie können alle Funktionalitäten
-(d.h. die Spagehtti oder die Tomatensauce) selbst programmieren. Oder sie
-verwenden schon fertige Komponenten und setzen Sie so zusammen, wie Sie es zur
-Lösung ihres Problems brauchen. Eine Sammlung von fertigen Python-Komponenten zu
-einem bestimmten Thema wird <strong>Modul</strong> genannt. In anderen Programmiersprachen
-oder allgemein in der Informatik nennt man eine solche Sammlung auch
-<strong>Bibliothek</strong> oder verwendet den englischen Begriff <strong>Library</strong>.</p>
+<p>In der Programmierung können wir alle Funktionalitäten selbst programmieren.
+Oder wir verwenden schon fertige Komponenten und setzen sie so zusammen, wie wir
+es zur Lösung unseres Problems brauchen. Eine Sammlung von fertigen
+Python-Komponenten zu einem bestimmten Thema wird <strong>Modul</strong> genannt. In anderen
+Programmiersprachen oder allgemein in der Informatik nennt man eine solche
+Sammlung auch <strong>Bibliothek</strong> oder verwendet den englischen Begriff <strong>Library</strong>.</p>
 <div class="note admonition">
 <p class="admonition-title">Was ist … ein Modul?</p>
 <p>Ein Modul (oder eine Bibliothek oder eine Library) ist eine Sammlung von
@@ -580,7 +574,7 @@ müssen, wenn wir Code aus dem Pandas-Modul benutzen.</p>
 </div>
 </div>
 </div>
-<p>Sollten Sie jetzt eine Fehlermeldung erhalten haben, ist das Pandas-Modul nicht
+<p>Sollten jetzt eine Fehlermeldung auftauchen, ist das Pandas-Modul nicht
 installiert. Installieren Sie zunächst Pandas beispielsweise mit <code class="docutils literal notranslate"><span class="pre">!conda</span> <span class="pre">install</span> <span class="pre">pandas</span></code> oder <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">pandas</span></code>. Mit der Funktion <code class="docutils literal notranslate"><span class="pre">dir()</span></code> werden alle
 Funktionalitäten des Moduls aufgelistet.</p>
 <div class="cell docutils container">
@@ -735,18 +729,425 @@ Funktionalitäten des Moduls aufgelistet.</p>
 </div>
 </div>
 </div>
-<p>Eine sehr lange Liste.</p>
+<p>Die Ausgabe ist sehr lang und zunächst unübersichtlich. Wenn wir mehr über eine
+bestimmte Funktionalität erfahren möchten, können wir die <code class="docutils literal notranslate"><span class="pre">help()</span></code>-Funktion
+verwenden. Beispielsweise liefert <code class="docutils literal notranslate"><span class="pre">help(pd.read_csv)</span></code> eine ausführliche
+Beschreibung der Funktion zum Import von csv-Dateien:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function read_csv in module pandas.io.parsers.readers:
+
+read_csv(filepath_or_buffer: &#39;FilePath | ReadCsvBuffer[bytes] | ReadCsvBuffer[str]&#39;, *, sep: &#39;str | None | lib.NoDefault&#39; = &lt;no_default&gt;, delimiter: &#39;str | None | lib.NoDefault&#39; = None, header: &quot;int | Sequence[int] | None | Literal[&#39;infer&#39;]&quot; = &#39;infer&#39;, names: &#39;Sequence[Hashable] | None | lib.NoDefault&#39; = &lt;no_default&gt;, index_col: &#39;IndexLabel | Literal[False] | None&#39; = None, usecols: &#39;UsecolsArgType&#39; = None, dtype: &#39;DtypeArg | None&#39; = None, engine: &#39;CSVEngine | None&#39; = None, converters: &#39;Mapping[Hashable, Callable] | None&#39; = None, true_values: &#39;list | None&#39; = None, false_values: &#39;list | None&#39; = None, skipinitialspace: &#39;bool&#39; = False, skiprows: &#39;list[int] | int | Callable[[Hashable], bool] | None&#39; = None, skipfooter: &#39;int&#39; = 0, nrows: &#39;int | None&#39; = None, na_values: &#39;Hashable | Iterable[Hashable] | Mapping[Hashable, Iterable[Hashable]] | None&#39; = None, keep_default_na: &#39;bool&#39; = True, na_filter: &#39;bool&#39; = True, verbose: &#39;bool | lib.NoDefault&#39; = &lt;no_default&gt;, skip_blank_lines: &#39;bool&#39; = True, parse_dates: &#39;bool | Sequence[Hashable] | None&#39; = None, infer_datetime_format: &#39;bool | lib.NoDefault&#39; = &lt;no_default&gt;, keep_date_col: &#39;bool | lib.NoDefault&#39; = &lt;no_default&gt;, date_parser: &#39;Callable | lib.NoDefault&#39; = &lt;no_default&gt;, date_format: &#39;str | dict[Hashable, str] | None&#39; = None, dayfirst: &#39;bool&#39; = False, cache_dates: &#39;bool&#39; = True, iterator: &#39;bool&#39; = False, chunksize: &#39;int | None&#39; = None, compression: &#39;CompressionOptions&#39; = &#39;infer&#39;, thousands: &#39;str | None&#39; = None, decimal: &#39;str&#39; = &#39;.&#39;, lineterminator: &#39;str | None&#39; = None, quotechar: &#39;str&#39; = &#39;&quot;&#39;, quoting: &#39;int&#39; = 0, doublequote: &#39;bool&#39; = True, escapechar: &#39;str | None&#39; = None, comment: &#39;str | None&#39; = None, encoding: &#39;str | None&#39; = None, encoding_errors: &#39;str | None&#39; = &#39;strict&#39;, dialect: &#39;str | csv.Dialect | None&#39; = None, on_bad_lines: &#39;str&#39; = &#39;error&#39;, delim_whitespace: &#39;bool | lib.NoDefault&#39; = &lt;no_default&gt;, low_memory: &#39;bool&#39; = True, memory_map: &#39;bool&#39; = False, float_precision: &quot;Literal[&#39;high&#39;, &#39;legacy&#39;] | None&quot; = None, storage_options: &#39;StorageOptions | None&#39; = None, dtype_backend: &#39;DtypeBackend | lib.NoDefault&#39; = &lt;no_default&gt;) -&gt; &#39;DataFrame | TextFileReader&#39;
+    Read a comma-separated values (csv) file into DataFrame.
+
+    Also supports optionally iterating or breaking of the file
+    into chunks.
+
+    Additional help can be found in the online docs for
+    `IO Tools &lt;https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html&gt;`_.
+
+    Parameters
+    ----------
+    filepath_or_buffer : str, path object or file-like object
+        Any valid string path is acceptable. The string could be a URL. Valid
+        URL schemes include http, ftp, s3, gs, and file. For file URLs, a host is
+        expected. A local file could be: file://localhost/path/to/table.csv.
+
+        If you want to pass in a path object, pandas accepts any ``os.PathLike``.
+
+        By file-like object, we refer to objects with a ``read()`` method, such as
+        a file handle (e.g. via builtin ``open`` function) or ``StringIO``.
+    sep : str, default &#39;,&#39;
+        Character or regex pattern to treat as the delimiter. If ``sep=None``, the
+        C engine cannot automatically detect
+        the separator, but the Python parsing engine can, meaning the latter will
+        be used and automatically detect the separator from only the first valid
+        row of the file by Python&#39;s builtin sniffer tool, ``csv.Sniffer``.
+        In addition, separators longer than 1 character and different from
+        ``&#39;\s+&#39;`` will be interpreted as regular expressions and will also force
+        the use of the Python parsing engine. Note that regex delimiters are prone
+        to ignoring quoted data. Regex example: ``&#39;\r\t&#39;``.
+    delimiter : str, optional
+        Alias for ``sep``.
+    header : int, Sequence of int, &#39;infer&#39; or None, default &#39;infer&#39;
+        Row number(s) containing column labels and marking the start of the
+        data (zero-indexed). Default behavior is to infer the column names: if no ``names``
+        are passed the behavior is identical to ``header=0`` and column
+        names are inferred from the first line of the file, if column
+        names are passed explicitly to ``names`` then the behavior is identical to
+        ``header=None``. Explicitly pass ``header=0`` to be able to
+        replace existing names. The header can be a list of integers that
+        specify row locations for a :class:`~pandas.MultiIndex` on the columns
+        e.g. ``[0, 1, 3]``. Intervening rows that are not specified will be
+        skipped (e.g. 2 in this example is skipped). Note that this
+        parameter ignores commented lines and empty lines if
+        ``skip_blank_lines=True``, so ``header=0`` denotes the first line of
+        data rather than the first line of the file.
+    names : Sequence of Hashable, optional
+        Sequence of column labels to apply. If the file contains a header row,
+        then you should explicitly pass ``header=0`` to override the column names.
+        Duplicates in this list are not allowed.
+    index_col : Hashable, Sequence of Hashable or False, optional
+      Column(s) to use as row label(s), denoted either by column labels or column
+      indices.  If a sequence of labels or indices is given, :class:`~pandas.MultiIndex`
+      will be formed for the row labels.
+
+      Note: ``index_col=False`` can be used to force pandas to *not* use the first
+      column as the index, e.g., when you have a malformed file with delimiters at
+      the end of each line.
+    usecols : Sequence of Hashable or Callable, optional
+        Subset of columns to select, denoted either by column labels or column indices.
+        If list-like, all elements must either
+        be positional (i.e. integer indices into the document columns) or strings
+        that correspond to column names provided either by the user in ``names`` or
+        inferred from the document header row(s). If ``names`` are given, the document
+        header row(s) are not taken into account. For example, a valid list-like
+        ``usecols`` parameter would be ``[0, 1, 2]`` or ``[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]``.
+        Element order is ignored, so ``usecols=[0, 1]`` is the same as ``[1, 0]``.
+        To instantiate a :class:`~pandas.DataFrame` from ``data`` with element order
+        preserved use ``pd.read_csv(data, usecols=[&#39;foo&#39;, &#39;bar&#39;])[[&#39;foo&#39;, &#39;bar&#39;]]``
+        for columns in ``[&#39;foo&#39;, &#39;bar&#39;]`` order or
+        ``pd.read_csv(data, usecols=[&#39;foo&#39;, &#39;bar&#39;])[[&#39;bar&#39;, &#39;foo&#39;]]``
+        for ``[&#39;bar&#39;, &#39;foo&#39;]`` order.
+
+        If callable, the callable function will be evaluated against the column
+        names, returning names where the callable function evaluates to ``True``. An
+        example of a valid callable argument would be ``lambda x: x.upper() in
+        [&#39;AAA&#39;, &#39;BBB&#39;, &#39;DDD&#39;]``. Using this parameter results in much faster
+        parsing time and lower memory usage.
+    dtype : dtype or dict of {Hashable : dtype}, optional
+        Data type(s) to apply to either the whole dataset or individual columns.
+        E.g., ``{&#39;a&#39;: np.float64, &#39;b&#39;: np.int32, &#39;c&#39;: &#39;Int64&#39;}``
+        Use ``str`` or ``object`` together with suitable ``na_values`` settings
+        to preserve and not interpret ``dtype``.
+        If ``converters`` are specified, they will be applied INSTEAD
+        of ``dtype`` conversion.
+
+        .. versionadded:: 1.5.0
+
+            Support for ``defaultdict`` was added. Specify a ``defaultdict`` as input where
+            the default determines the ``dtype`` of the columns which are not explicitly
+            listed.
+    engine : {&#39;c&#39;, &#39;python&#39;, &#39;pyarrow&#39;}, optional
+        Parser engine to use. The C and pyarrow engines are faster, while the python engine
+        is currently more feature-complete. Multithreading is currently only supported by
+        the pyarrow engine.
+
+        .. versionadded:: 1.4.0
+
+            The &#39;pyarrow&#39; engine was added as an *experimental* engine, and some features
+            are unsupported, or may not work correctly, with this engine.
+    converters : dict of {Hashable : Callable}, optional
+        Functions for converting values in specified columns. Keys can either
+        be column labels or column indices.
+    true_values : list, optional
+        Values to consider as ``True`` in addition to case-insensitive variants of &#39;True&#39;.
+    false_values : list, optional
+        Values to consider as ``False`` in addition to case-insensitive variants of &#39;False&#39;.
+    skipinitialspace : bool, default False
+        Skip spaces after delimiter.
+    skiprows : int, list of int or Callable, optional
+        Line numbers to skip (0-indexed) or number of lines to skip (``int``)
+        at the start of the file.
+
+        If callable, the callable function will be evaluated against the row
+        indices, returning ``True`` if the row should be skipped and ``False`` otherwise.
+        An example of a valid callable argument would be ``lambda x: x in [0, 2]``.
+    skipfooter : int, default 0
+        Number of lines at bottom of file to skip (Unsupported with ``engine=&#39;c&#39;``).
+    nrows : int, optional
+        Number of rows of file to read. Useful for reading pieces of large files.
+    na_values : Hashable, Iterable of Hashable or dict of {Hashable : Iterable}, optional
+        Additional strings to recognize as ``NA``/``NaN``. If ``dict`` passed, specific
+        per-column ``NA`` values.  By default the following values are interpreted as
+        ``NaN``: &quot; &quot;, &quot;#N/A&quot;, &quot;#N/A N/A&quot;, &quot;#NA&quot;, &quot;-1.#IND&quot;, &quot;-1.#QNAN&quot;, &quot;-NaN&quot;, &quot;-nan&quot;,
+        &quot;1.#IND&quot;, &quot;1.#QNAN&quot;, &quot;&lt;NA&gt;&quot;, &quot;N/A&quot;, &quot;NA&quot;, &quot;NULL&quot;, &quot;NaN&quot;, &quot;None&quot;,
+        &quot;n/a&quot;, &quot;nan&quot;, &quot;null &quot;.
+
+    keep_default_na : bool, default True
+        Whether or not to include the default ``NaN`` values when parsing the data.
+        Depending on whether ``na_values`` is passed in, the behavior is as follows:
+
+        * If ``keep_default_na`` is ``True``, and ``na_values`` are specified, ``na_values``
+          is appended to the default ``NaN`` values used for parsing.
+        * If ``keep_default_na`` is ``True``, and ``na_values`` are not specified, only
+          the default ``NaN`` values are used for parsing.
+        * If ``keep_default_na`` is ``False``, and ``na_values`` are specified, only
+          the ``NaN`` values specified ``na_values`` are used for parsing.
+        * If ``keep_default_na`` is ``False``, and ``na_values`` are not specified, no
+          strings will be parsed as ``NaN``.
+
+        Note that if ``na_filter`` is passed in as ``False``, the ``keep_default_na`` and
+        ``na_values`` parameters will be ignored.
+    na_filter : bool, default True
+        Detect missing value markers (empty strings and the value of ``na_values``). In
+        data without any ``NA`` values, passing ``na_filter=False`` can improve the
+        performance of reading a large file.
+    verbose : bool, default False
+        Indicate number of ``NA`` values placed in non-numeric columns.
+
+        .. deprecated:: 2.2.0
+    skip_blank_lines : bool, default True
+        If ``True``, skip over blank lines rather than interpreting as ``NaN`` values.
+    parse_dates : bool, list of Hashable, list of lists or dict of {Hashable : list}, default False
+        The behavior is as follows:
+
+        * ``bool``. If ``True`` -&gt; try parsing the index. Note: Automatically set to
+          ``True`` if ``date_format`` or ``date_parser`` arguments have been passed.
+        * ``list`` of ``int`` or names. e.g. If ``[1, 2, 3]`` -&gt; try parsing columns 1, 2, 3
+          each as a separate date column.
+        * ``list`` of ``list``. e.g.  If ``[[1, 3]]`` -&gt; combine columns 1 and 3 and parse
+          as a single date column. Values are joined with a space before parsing.
+        * ``dict``, e.g. ``{&#39;foo&#39; : [1, 3]}`` -&gt; parse columns 1, 3 as date and call
+          result &#39;foo&#39;. Values are joined with a space before parsing.
+
+        If a column or index cannot be represented as an array of ``datetime``,
+        say because of an unparsable value or a mixture of timezones, the column
+        or index will be returned unaltered as an ``object`` data type. For
+        non-standard ``datetime`` parsing, use :func:`~pandas.to_datetime` after
+        :func:`~pandas.read_csv`.
+
+        Note: A fast-path exists for iso8601-formatted dates.
+    infer_datetime_format : bool, default False
+        If ``True`` and ``parse_dates`` is enabled, pandas will attempt to infer the
+        format of the ``datetime`` strings in the columns, and if it can be inferred,
+        switch to a faster method of parsing them. In some cases this can increase
+        the parsing speed by 5-10x.
+
+        .. deprecated:: 2.0.0
+            A strict version of this argument is now the default, passing it has no effect.
+
+    keep_date_col : bool, default False
+        If ``True`` and ``parse_dates`` specifies combining multiple columns then
+        keep the original columns.
+    date_parser : Callable, optional
+        Function to use for converting a sequence of string columns to an array of
+        ``datetime`` instances. The default uses ``dateutil.parser.parser`` to do the
+        conversion. pandas will try to call ``date_parser`` in three different ways,
+        advancing to the next if an exception occurs: 1) Pass one or more arrays
+        (as defined by ``parse_dates``) as arguments; 2) concatenate (row-wise) the
+        string values from the columns defined by ``parse_dates`` into a single array
+        and pass that; and 3) call ``date_parser`` once for each row using one or
+        more strings (corresponding to the columns defined by ``parse_dates``) as
+        arguments.
+
+        .. deprecated:: 2.0.0
+           Use ``date_format`` instead, or read in as ``object`` and then apply
+           :func:`~pandas.to_datetime` as-needed.
+    date_format : str or dict of column -&gt; format, optional
+        Format to use for parsing dates when used in conjunction with ``parse_dates``.
+        The strftime to parse time, e.g. :const:`&quot;%d/%m/%Y&quot;`. See
+        `strftime documentation
+        &lt;https://docs.python.org/3/library/datetime.html
+        #strftime-and-strptime-behavior&gt;`_ for more information on choices, though
+        note that :const:`&quot;%f&quot;` will parse all the way up to nanoseconds.
+        You can also pass:
+
+        - &quot;ISO8601&quot;, to parse any `ISO8601 &lt;https://en.wikipedia.org/wiki/ISO_8601&gt;`_
+            time string (not necessarily in exactly the same format);
+        - &quot;mixed&quot;, to infer the format for each element individually. This is risky,
+            and you should probably use it along with `dayfirst`.
+
+        .. versionadded:: 2.0.0
+    dayfirst : bool, default False
+        DD/MM format dates, international and European format.
+    cache_dates : bool, default True
+        If ``True``, use a cache of unique, converted dates to apply the ``datetime``
+        conversion. May produce significant speed-up when parsing duplicate
+        date strings, especially ones with timezone offsets.
+
+    iterator : bool, default False
+        Return ``TextFileReader`` object for iteration or getting chunks with
+        ``get_chunk()``.
+    chunksize : int, optional
+        Number of lines to read from the file per chunk. Passing a value will cause the
+        function to return a ``TextFileReader`` object for iteration.
+        See the `IO Tools docs
+        &lt;https://pandas.pydata.org/pandas-docs/stable/io.html#io-chunking&gt;`_
+        for more information on ``iterator`` and ``chunksize``.
+
+    compression : str or dict, default &#39;infer&#39;
+        For on-the-fly decompression of on-disk data. If &#39;infer&#39; and &#39;filepath_or_buffer&#39; is
+        path-like, then detect compression from the following extensions: &#39;.gz&#39;,
+        &#39;.bz2&#39;, &#39;.zip&#39;, &#39;.xz&#39;, &#39;.zst&#39;, &#39;.tar&#39;, &#39;.tar.gz&#39;, &#39;.tar.xz&#39; or &#39;.tar.bz2&#39;
+        (otherwise no compression).
+        If using &#39;zip&#39; or &#39;tar&#39;, the ZIP file must contain only one data file to be read in.
+        Set to ``None`` for no decompression.
+        Can also be a dict with key ``&#39;method&#39;`` set
+        to one of {``&#39;zip&#39;``, ``&#39;gzip&#39;``, ``&#39;bz2&#39;``, ``&#39;zstd&#39;``, ``&#39;xz&#39;``, ``&#39;tar&#39;``} and
+        other key-value pairs are forwarded to
+        ``zipfile.ZipFile``, ``gzip.GzipFile``,
+        ``bz2.BZ2File``, ``zstandard.ZstdDecompressor``, ``lzma.LZMAFile`` or
+        ``tarfile.TarFile``, respectively.
+        As an example, the following could be passed for Zstandard decompression using a
+        custom compression dictionary:
+        ``compression={&#39;method&#39;: &#39;zstd&#39;, &#39;dict_data&#39;: my_compression_dict}``.
+
+        .. versionadded:: 1.5.0
+            Added support for `.tar` files.
+
+        .. versionchanged:: 1.4.0 Zstandard support.
+
+    thousands : str (length 1), optional
+        Character acting as the thousands separator in numerical values.
+    decimal : str (length 1), default &#39;.&#39;
+        Character to recognize as decimal point (e.g., use &#39;,&#39; for European data).
+    lineterminator : str (length 1), optional
+        Character used to denote a line break. Only valid with C parser.
+    quotechar : str (length 1), optional
+        Character used to denote the start and end of a quoted item. Quoted
+        items can include the ``delimiter`` and it will be ignored.
+    quoting : {0 or csv.QUOTE_MINIMAL, 1 or csv.QUOTE_ALL, 2 or csv.QUOTE_NONNUMERIC, 3 or csv.QUOTE_NONE}, default csv.QUOTE_MINIMAL
+        Control field quoting behavior per ``csv.QUOTE_*`` constants. Default is
+        ``csv.QUOTE_MINIMAL`` (i.e., 0) which implies that only fields containing special
+        characters are quoted (e.g., characters defined in ``quotechar``, ``delimiter``,
+        or ``lineterminator``.
+    doublequote : bool, default True
+       When ``quotechar`` is specified and ``quoting`` is not ``QUOTE_NONE``, indicate
+       whether or not to interpret two consecutive ``quotechar`` elements INSIDE a
+       field as a single ``quotechar`` element.
+    escapechar : str (length 1), optional
+        Character used to escape other characters.
+    comment : str (length 1), optional
+        Character indicating that the remainder of line should not be parsed.
+        If found at the beginning
+        of a line, the line will be ignored altogether. This parameter must be a
+        single character. Like empty lines (as long as ``skip_blank_lines=True``),
+        fully commented lines are ignored by the parameter ``header`` but not by
+        ``skiprows``. For example, if ``comment=&#39;#&#39;``, parsing
+        ``#empty\na,b,c\n1,2,3`` with ``header=0`` will result in ``&#39;a,b,c&#39;`` being
+        treated as the header.
+    encoding : str, optional, default &#39;utf-8&#39;
+        Encoding to use for UTF when reading/writing (ex. ``&#39;utf-8&#39;``). `List of Python
+        standard encodings
+        &lt;https://docs.python.org/3/library/codecs.html#standard-encodings&gt;`_ .
+
+    encoding_errors : str, optional, default &#39;strict&#39;
+        How encoding errors are treated. `List of possible values
+        &lt;https://docs.python.org/3/library/codecs.html#error-handlers&gt;`_ .
+
+        .. versionadded:: 1.3.0
+
+    dialect : str or csv.Dialect, optional
+        If provided, this parameter will override values (default or not) for the
+        following parameters: ``delimiter``, ``doublequote``, ``escapechar``,
+        ``skipinitialspace``, ``quotechar``, and ``quoting``. If it is necessary to
+        override values, a ``ParserWarning`` will be issued. See ``csv.Dialect``
+        documentation for more details.
+    on_bad_lines : {&#39;error&#39;, &#39;warn&#39;, &#39;skip&#39;} or Callable, default &#39;error&#39;
+        Specifies what to do upon encountering a bad line (a line with too many fields).
+        Allowed values are :
+
+        - ``&#39;error&#39;``, raise an Exception when a bad line is encountered.
+        - ``&#39;warn&#39;``, raise a warning when a bad line is encountered and skip that line.
+        - ``&#39;skip&#39;``, skip bad lines without raising or warning when they are encountered.
+
+        .. versionadded:: 1.3.0
+
+        .. versionadded:: 1.4.0
+
+            - Callable, function with signature
+              ``(bad_line: list[str]) -&gt; list[str] | None`` that will process a single
+              bad line. ``bad_line`` is a list of strings split by the ``sep``.
+              If the function returns ``None``, the bad line will be ignored.
+              If the function returns a new ``list`` of strings with more elements than
+              expected, a ``ParserWarning`` will be emitted while dropping extra elements.
+              Only supported when ``engine=&#39;python&#39;``
+
+        .. versionchanged:: 2.2.0
+
+            - Callable, function with signature
+              as described in `pyarrow documentation
+              &lt;https://arrow.apache.org/docs/python/generated/pyarrow.csv.ParseOptions.html
+              #pyarrow.csv.ParseOptions.invalid_row_handler&gt;`_ when ``engine=&#39;pyarrow&#39;``
+
+    delim_whitespace : bool, default False
+        Specifies whether or not whitespace (e.g. ``&#39; &#39;`` or ``&#39;\t&#39;``) will be
+        used as the ``sep`` delimiter. Equivalent to setting ``sep=&#39;\s+&#39;``. If this option
+        is set to ``True``, nothing should be passed in for the ``delimiter``
+        parameter.
+
+        .. deprecated:: 2.2.0
+            Use ``sep=&quot;\s+&quot;`` instead.
+    low_memory : bool, default True
+        Internally process the file in chunks, resulting in lower memory use
+        while parsing, but possibly mixed type inference.  To ensure no mixed
+        types either set ``False``, or specify the type with the ``dtype`` parameter.
+        Note that the entire file is read into a single :class:`~pandas.DataFrame`
+        regardless, use the ``chunksize`` or ``iterator`` parameter to return the data in
+        chunks. (Only valid with C parser).
+    memory_map : bool, default False
+        If a filepath is provided for ``filepath_or_buffer``, map the file object
+        directly onto memory and access the data directly from there. Using this
+        option can improve performance because there is no longer any I/O overhead.
+    float_precision : {&#39;high&#39;, &#39;legacy&#39;, &#39;round_trip&#39;}, optional
+        Specifies which converter the C engine should use for floating-point
+        values. The options are ``None`` or ``&#39;high&#39;`` for the ordinary converter,
+        ``&#39;legacy&#39;`` for the original lower precision pandas converter, and
+        ``&#39;round_trip&#39;`` for the round-trip converter.
+
+    storage_options : dict, optional
+        Extra options that make sense for a particular storage connection, e.g.
+        host, port, username, password, etc. For HTTP(S) URLs the key-value pairs
+        are forwarded to ``urllib.request.Request`` as header options. For other
+        URLs (e.g. starting with &quot;s3://&quot;, and &quot;gcs://&quot;) the key-value pairs are
+        forwarded to ``fsspec.open``. Please see ``fsspec`` and ``urllib`` for more
+        details, and for more examples on storage options refer `here
+        &lt;https://pandas.pydata.org/docs/user_guide/io.html?
+        highlight=storage_options#reading-writing-remote-files&gt;`_.
+
+    dtype_backend : {&#39;numpy_nullable&#39;, &#39;pyarrow&#39;}, default &#39;numpy_nullable&#39;
+        Back-end data type applied to the resultant :class:`DataFrame`
+        (still experimental). Behaviour is as follows:
+
+        * ``&quot;numpy_nullable&quot;``: returns nullable-dtype-backed :class:`DataFrame`
+          (default).
+        * ``&quot;pyarrow&quot;``: returns pyarrow-backed nullable :class:`ArrowDtype`
+          DataFrame.
+
+        .. versionadded:: 2.0
+
+    Returns
+    -------
+    DataFrame or TextFileReader
+        A comma-separated values (csv) file is returned as two-dimensional
+        data structure with labeled axes.
+
+    See Also
+    --------
+    DataFrame.to_csv : Write DataFrame to a comma-separated values (csv) file.
+    read_table : Read general delimited file into DataFrame.
+    read_fwf : Read a table of fixed-width formatted lines into DataFrame.
+
+    Examples
+    --------
+    &gt;&gt;&gt; pd.read_csv(&#39;data.csv&#39;)  # doctest: +SKIP
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternativ können wir auch in der offiziellen
+<a class="reference external" href="https://pandas.pydata.org/docs/user_guide/index.html">Pandas-Dokumentation</a>
+nachschlagen, die übersichtlicher formatiert ist und viele Beispiele enthält.</p>
 </section>
 <section id="die-datenstruktur-series">
 <h2>Die Datenstruktur Series<a class="headerlink" href="#die-datenstruktur-series" title="Link to this heading">#</a></h2>
-<p>Einfache Listen reichen nicht aus, um größere Datenmengen oder Tabellen
-effizient zu speichern. Dazu benutzen Data Scientists die Datenstrukturen
+<p>Einfache Listen reichen nicht aus, um größere Datenmengen effizient zu speichern
+und zu analysieren. Listen haben mehrere Nachteile: Sie speichern keine
+Information über den Datentyp ihrer Elemente, bieten keine Möglichkeit,
+Metadaten wie beschreibende Labels zu hinterlegen, und sind bei großen
+Datenmengen ineffizient. Dazu benutzen Data Scientists die Datenstrukturen
 <code class="docutils literal notranslate"><span class="pre">Series</span></code> oder <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> aus dem Pandas-Modul. Dabei wird <strong>Series</strong> für
 Datenreihen genommen. Damit sind Vektoren gemeint, wenn alle Elemente der
 Datenreihe aus Zahlen bestehen, oder eindimensionale Arrays. Die Datenstruktur
 <strong>DataFrame</strong> wiederum dient zum Speichern und Verarbeiten von tabellierten
-Daten, also sozusagen Matrizen, wenn alle Elemente Zahlen sind, oder
-zweidimensionale Arrays.</p>
+Daten, also Matrizen, wenn alle Elemente Zahlen sind, oder zweidimensionale
+Arrays.</p>
 <p>Wir starten mit der Datenstruktur Series. Als Beispiel betrachten wir die
 Verkaufspreise (in Euro) von zehn Autos. Die Daten stammen von der
 Internetplattform <a class="reference external" href="https://www.autoscout24.de">Autoscout24</a>. Die Preise kommen
@@ -778,11 +1179,10 @@ dtype: int64
 </div>
 <p>Was ist aber jetzt der Vorteil von Pandas? Warum nicht einfach bei der Liste
 bleiben? Der wichtigste Unterschied zwischen Liste und Series ist der <strong>Index</strong>.</p>
-<p>Bei einer Liste ist der Index implizit definiert. Damit ist gemeint, dass bei
-der Initialisierung einer Liste automatisch ein nummerierter Index 0, 1, 2, 3,
-… angelegt wird. Wenn bei einer Liste auf das dritte Element zugegriffen
-werden soll, dann verwenden wir den Index 2 (zur Erinnerung: Python zählt ab 0)
-und schreiben</p>
+<p>Bei einer Liste werden Elemente über ihre Position angesprochen, der Index ist
+immer eine Ganzzahl beginnend bei 0. Wenn bei einer Liste auf das dritte Element
+zugegriffen werden soll, dann verwenden wir den Index 2 (zur Erinnerung: Python
+zählt ab 0) und schreiben</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preis_drittes_auto</span> <span class="o">=</span> <span class="n">preisliste</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -796,7 +1196,7 @@ und schreiben</p>
 </div>
 </div>
 </div>
-<p>Die Datenstruktur Series ermöglich es aber, einen <em>expliziten Index</em> zu setzen.
+<p>Die Datenstruktur Series ermöglicht es aber, einen <em>expliziten Index</em> zu setzen.
 Über den optionalen Parameter <code class="docutils literal notranslate"><span class="pre">index=</span></code> speichern wir als Zusatzinformation noch
 ab, von welchem Auto der Verkaufspreis erfasst wurde. Wir werden diesen
 Datensatz in den folgenden Kapiteln noch weiter vertiefen. An dieser Stelle
@@ -826,11 +1226,10 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Jetzt ist auch klar, warum beim ersten Mal, als wir <code class="docutils literal notranslate"><span class="pre">print(preise)</span></code> ausgeführt
-haben, die Zahlen 0, 1, 2, usw. ausgegeben wurden. Zu dem Zeitpunkt hatte das
-Series-Objekt noch einen impliziten Index wie eine Liste. Den expliziten Index
-nutzen wir jetzt, um auf den Verkaufspreis des dritten Autos zuzugreifen. Das
-dritte Auto ist <code class="docutils literal notranslate"><span class="pre">Audi</span> <span class="pre">Nr.</span> <span class="pre">3</span></code>. Wie bei Listen verwenden wir eckige Klammern:</p>
+<p>Beim ersten Aufruf von <code class="docutils literal notranslate"><span class="pre">print(preise)</span></code> wurden die Zahlen 0, 1, 2, usw.
+ausgegeben, weil das Series-Objekt zu dem Zeitpunkt noch einen automatisch
+generierten ganzzahligen Index hatte. Den expliziten Index nutzen wir jetzt, um
+auf den Verkaufspreis des dritten Autos zuzugreifen. Das dritte Auto ist <code class="docutils literal notranslate"><span class="pre">Audi</span> <span class="pre">Nr.</span> <span class="pre">3</span></code>. Wie bei Listen verwenden wir eckige Klammern:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preis_drittes_auto</span> <span class="o">=</span> <span class="n">preise</span><span class="p">[</span><span class="s1">&#39;Audi Nr. 3&#39;</span><span class="p">]</span>
@@ -847,8 +1246,8 @@ dritte Auto ist <code class="docutils literal notranslate"><span class="pre">Aud
 <p>Die Datenstruktur Series hat gegenüber der Liste noch einen weiteren Vorteil. In
 der Datenstruktur ist noch eine Zusatzinformation gespeichert, die Eigenschaft
 <code class="docutils literal notranslate"><span class="pre">dtype</span></code>. Darin gespeichert ist der Datentyp der Elemente des Series-Objektes.
-Auf diese Eigenschaft kann auch direkt mit dem sogenannten Punktoperator
-zugegegriffen werden.</p>
+Auf diese Eigenschaft können wir direkt mit dem sogenannten Punktoperator
+zugreifen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datentyp_preise</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">dtype</span>
@@ -862,11 +1261,13 @@ zugegegriffen werden.</p>
 </div>
 </div>
 </div>
-<p>Offensichtlich sind die gespeicherten Werte Integer.</p>
+<p>Offensichtlich sind die gespeicherten Werte Integer. Die Zusatzinformation
+<code class="docutils literal notranslate"><span class="pre">int64</span></code> bedeutet, dass es sich um einen 64-Bit-Integer handelt.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Erzeugen Sie ein Series-Objekt mit den Wochentagen als Index und der Anzahl der
-Vorlesungsstunden (SWS) an diesem Wochentag.</p>
+<p>Erzeugen Sie ein Series-Objekt mit den Wochentagen als Index. Verwenden Sie
+dabei nur die Werktage und speichern Sie, wie viele Stunden Sie an diesem Tag
+schlafen (nicht die Vorlesungsstunden). Welchen Datentyp haben die Elemente?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,8 +1278,11 @@ Vorlesungsstunden (SWS) an diesem Wochentag.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stundenplan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Montag&#39;</span><span class="p">,</span> <span class="s1">&#39;Dienstag&#39;</span><span class="p">,</span> <span class="s1">&#39;Mittwoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Donnerstag&#39;</span><span class="p">,</span> <span class="s1">&#39;Freitag&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stundenplan</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schlafzeiten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">,</span> <span class="mf">8.1</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">],</span> 
+  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Montag&#39;</span><span class="p">,</span> <span class="s1">&#39;Dienstag&#39;</span><span class="p">,</span> <span class="s1">&#39;Mittwoch&#39;</span><span class="p">,</span> <span class="s1">&#39;Donnerstag&#39;</span><span class="p">,</span> <span class="s1">&#39;Freitag&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">schlafzeiten</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Datentyp: </span><span class="si">{</span><span class="n">schlafzeiten</span><span class="o">.</span><span class="n">dtype</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -912,9 +1316,9 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Oder Sie könnten auf die Idee kommen, das billigste Auto auf den Preis 0 zu
-setzen und sich ausgeben lassen, um wie viel Euro die anderen Autos teuer sind.
-Oder anders ausgedrückt, wir subtrahieren von jedem Preis den Wert 1999 EUR:</p>
+<p>Wir könnten auch auf die Idee kommen, das billigste Auto auf den Preis 0 zu
+setzen und ausgeben, um wie viel Euro die anderen Autos teurer sind. Oder anders
+ausgedrückt, wir subtrahieren von jedem Preis den Wert 1999 EUR:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">preise_differenz</span> <span class="o">=</span> <span class="n">preise</span> <span class="o">-</span> <span class="mi">1999</span>
@@ -996,18 +1400,19 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Vielleicht ist Ihnen aufgefallen, dass wir das sortierte Series-Objekt gleich in
-einer neuen Vaiable abgespeichert haben. Das ist notwendig, wenn die neue
-Sortierung erhalten bleiben soll. Standardmäßig wirkt der Sortierungsbefehl
-nämlich nur einmalig und ändert die eigentliche Reihenfolge im Original nicht.
-Auch das könnte man durch weitere Parameter ändern (<code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code>), wie Sie
-in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html">Pandas-Dokumentation →
+<p>Wir haben das sortierte Series-Objekt gleich in einer neuen Variable
+abgespeichert. Das ist notwendig, wenn die neue Sortierung erhalten bleiben
+soll. Standardmäßig wirkt der Sortierungsbefehl nämlich nur einmalig und ändert
+die eigentliche Reihenfolge im Original nicht. Auch das könnte man durch weitere
+Parameter ändern (<code class="docutils literal notranslate"><span class="pre">inplace</span> <span class="pre">=</span> <span class="pre">True</span></code>), wie wir in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html">Pandas-Dokumentation →
 sort_values()</a>
 nachlesen können.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
 <p>Alice, Bob, Charlie und Dora sind 22, 20, 24 und 22 Jahre alt. Speichern Sie
-diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.</p>
+diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.
+Zusatzfrage: Was fällt Ihnen bei der Sortierung auf, wenn zwei Personen gleich
+alt sind? Bleibt ihre ursprüngliche Reihenfolge erhalten?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1023,9 +1428,15 @@ diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.<
 <span class="n">alter</span> <span class="o">=</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
 <span class="n">personen</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">alter</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">namen</span><span class="p">)</span>
 
-<span class="c1"># Sortierung ud Ausgabe</span>
+<span class="c1"># Sortierung und Ausgabe</span>
 <span class="n">personen_sortiert</span> <span class="o">=</span> <span class="n">personen</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">personen_sortiert</span><span class="p">)</span>
+
+<span class="c1"># Beobachtung: Alice und Dora sind beide 22 Jahre alt. </span>
+<span class="c1"># In der sortierten Ausgabe erscheint Dora vor Alice, </span>
+<span class="c1"># obwohl Alice in der ursprünglichen Liste zuerst kam.</span>
+<span class="c1"># Die Sortierung ist also nicht stabil. Die ursprüngliche </span>
+<span class="c1"># Reihenfolge bei gleichen Werten wird nicht unbedingt erhalten.</span>
 </pre></div>
 </div>
 </div>

@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -545,7 +545,7 @@ verschaffen.</p></li>
 <li><p>Sie kennen die statistischen Kennzahlen Mittelwert und Standardabweichung und
 wissen, wie diese mit <strong>.mean()</strong> und <strong>.std()</strong> berechnet werden.</p></li>
 <li><p>Sie können das Minimum und das Maximum mit <strong>.min()</strong> und <strong>.max()</strong> bestimmen.</p></li>
-<li><p>Sie wissen wie ein Quantil interpretiert wird und wie es mit <strong>.quantile()</strong>
+<li><p>Sie wissen, wie ein Quantil interpretiert wird und wie es mit <strong>.quantile()</strong>
 berechnet wird.</p></li>
 </ul>
 </div>
@@ -590,12 +590,12 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>Offensichtlich liefert die Methode <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> acht statistische Kennzahlen,
-deren Bedeutung in der
+<p>Die Methode <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> liefert acht statistische Kennzahlen, deren Bedeutung
+in der
 <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.describe.html">Pandas-Dokumentation</a>
 erläutert wird. Wir gehen im Folgenden jede Kennzahl einzeln durch.</p>
-<p>Aber was machen wir, wenn wir die statistischen Kennzahlen erst später verwenden
-wollen, können wir sie zwischenspeichern? Probieren wir es aus.</p>
+<p>Was machen wir aber, wenn wir die statistischen Kennzahlen erst später verwenden
+wollen? Können wir sie zwischenspeichern? Probieren wir es aus.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">statistische_kennzahlen</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -617,7 +617,7 @@ wollen, können wir sie zwischenspeichern? Probieren wir es aus.</p>
 </div>
 </div>
 </div>
-<p>Offensichtlich wird durch das Anwenden der <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>-Methode auf das
+<p>Wie wir sehen wird durch das Anwenden der <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>-Methode auf das
 Series-Objekt <code class="docutils literal notranslate"><span class="pre">preise</span></code> ein neues Series-Objekt erzeugt, in dem wiederum die
 statistischen Kennzahlen von <code class="docutils literal notranslate"><span class="pre">preise</span></code> gespeichert sind. Da wir im letzten
 Kapitel schon gelernt haben, dass mit eckigen Klammern und dem Index auf einen
@@ -638,11 +638,12 @@ Verkaufspreis ausgeben lassen:</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Lassen Sie zuerst die Verkaufspreise aufsteigend sortieren und ausgeben. Lesen
-Sie anhand der Ausgabe ab: welches Auto ist am teuersten und für wieviel Euro
-wird es bei Autoscout24 angeboten? Lassen Sie dann das Maximum über die
-statistischen Kennzahlen, d.h. mit .describe() ermitteln. Vergleichen Sie beide
-Werte.</p>
+<p>Lassen Sie die Verkaufspreise aufsteigend sortieren und ausgeben. Welches Auto
+ist am teuersten und für wie viel EUR wird es angeboten?</p>
+<p>Ermitteln Sie dann das Maximum mit <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> und vergleichen Sie beide Werte.</p>
+<p><em>Zusatzfrage:</em> Die Spanne (Maximum - Minimum) ist über 44.000 EUR groß. Wie
+groß ist die Standardabweichung im Vergleich zur Spanne? Was bedeutet das für
+die Streuung der Daten?</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,18 +654,27 @@ Werte.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Der folgende Code sortiert die Preise aufsteigend und lässt sie anzeigen:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">preise_aufsteigend</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sortierung und Ausgabe</span>
+<span class="n">preise_aufsteigend</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Preise aufsteigend sortiert: &#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">preise_aufsteigend</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Das teuerste Auto ist der BMW Nr. 1. Er wird für 46830 EUR angeboten. Jetzt wird der maximale Preise über die .describe()-Methode ermittelt.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">statistische_kennzahlen</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="c1"># Maximum ermitteln</span>
+<span class="n">statistische_kennzahlen</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 <span class="n">maximaler_preis</span> <span class="o">=</span> <span class="n">statistische_kennzahlen</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Maximaler Preis mit .describe() ermittelt: </span><span class="si">{</span><span class="n">maximaler_preis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Maximaler Preis mit .describe() ermittelt: </span><span class="si">{</span><span class="n">maximaler_preis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Zusatzfrage: Spanne und Standardabweichung</span>
+<span class="n">spanne</span> <span class="o">=</span> <span class="n">statistische_kennzahlen</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">statistische_kennzahlen</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span>
+<span class="n">standardabweichung</span> <span class="o">=</span> <span class="n">statistische_kennzahlen</span><span class="p">[</span><span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Spanne: </span><span class="si">{</span><span class="n">spanne</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Standardabweichung: </span><span class="si">{</span><span class="n">standardabweichung</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Standardabweichung beträgt ca. </span><span class="si">{</span><span class="n">standardabweichung</span><span class="o">/</span><span class="n">spanne</span><span class="si">:</span><span class="s1">.1%</span><span class="si">}</span><span class="s1"> der Spanne.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Interpretation: Das teuerste Auto ist BMW Nr. 1 für 46830 EUR. Die Standardabweichung
+(~13.000 EUR) ist etwa 29 % der Spanne (~44.800 EUR), was auf eine starke, aber nicht
+extreme Streuung hindeutet.</p>
 </div>
 <p>Neben der Möglichkeit, die statistischen Kennzahlen über .describe() berechnen
 zu lassen und dann mit dem expliziten Index darauf zuzugreifen, gibt es auch
@@ -673,13 +683,13 @@ Methoden, um die statistischen Kennzahlen direkt zu ermitteln.</p>
 <section id="anzahl-count">
 <h2>Anzahl count()<a class="headerlink" href="#anzahl-count" title="Link to this heading">#</a></h2>
 <p>Mit <code class="docutils literal notranslate"><span class="pre">.count()</span></code> wird die Anzahl der Einträge bestimmt, die <em>nicht</em> ‘NA’ sind. Der
-Begriff ‘NA’ ist ein Fachbegriff des maschinellen Lernens. Gemeint sind fehlende
+Begriff ‘NA’ ist ein Fachbegriff der Datenanalyse. Gemeint sind fehlende
 Einträge, wobei die fehlenden Einträge verschiedene Ursachen haben können:</p>
 <ul class="simple">
 <li><p>NA = not available (der Messsensor hat versagt)</p></li>
 <li><p>NA = not applicable (es ist sinnlos bei einem Mann nachzufragen, ob er
 schwanger ist)</p></li>
-<li><p>NA = no answer (eine Person hat bei dem Umfrage nichts angegeben)</p></li>
+<li><p>NA = no answer (eine Person hat bei der Umfrage nichts angegeben)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,18 +733,17 @@ Methode <code class="docutils literal notranslate"><span class="pre">.mean()</sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der mittlere Verkaufspreis beträgt </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">}</span><span class="s1"> Euro.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der mittlere Verkaufspreis beträgt </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">}</span><span class="s1"> EUR.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der mittlere Verkaufspreis beträgt 21469.2 Euro.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Der mittlere Verkaufspreis beträgt 21469.2 EUR.
 </pre></div>
 </div>
 </div>
 </div>
-<p>Falls Sie prinzipiell nochmal die Berechnung des Mittelwertes wiederholen
-wollen, können Sie folgendes Video ansehen.</p>
+<p>Das folgende Video wiederholt das Konzept des Mittelwerts.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Mittelwert” von Datatab</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -745,129 +754,56 @@ clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
 </details></section>
 <section id="standardabweichung-std">
 <h2>Standardabweichung std()<a class="headerlink" href="#standardabweichung-std" title="Link to this heading">#</a></h2>
-<p>Der Mittelwert ist eine sehr wichtige statistische Kennzahl. Allerdings verrät
-der Mittelwert nicht, wie sich die einzelnen Autopreise relativ zum Mittelwert
-verhalten. Bei den 10 Autos sehen wir mit einem Blick, dass einzelne Autos sehr
-stark vom Mittelwert abweichen. Audi Nr. 1 kostet nur 1999 EUR und damit nur
-circa 10 % vom durchschnittlichen Verkaufspreis. Dafür ist BMW Nr. 1 mehr als
-doppelt so teuer. Es ist daher wichtig, sich zusätzlich zum Mittelwert
-anzusehen, wie die anderen Datenpunkte vom Mittelwert abweichen. In der
-Statistik wird das als <strong>Streuung</strong> bezeichnet. Eine statistische Kennzahl, die
-die Streuung von Daten um den Mittelwert angibt, ist die <strong>Standardabweichung</strong>.</p>
-<p>Zur Berechnung der Standardabweichung werden zuerst die Abweichungen jedes
-Datenpunktes zum Mittelwert berechnet.</p>
+<p>Der Mittelwert ist wichtig, aber er erzählt nicht die ganze Geschichte. Betrachten wir unsere Autopreise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">differenzen</span> <span class="o">=</span> <span class="n">preise</span> <span class="o">-</span> <span class="n">mittelwert</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">differenzen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Durchschnittspreis: </span><span class="si">{</span><span class="n">mittelwert</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Aber schauen wir genauer hin:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Günstigstes Auto: </span><span class="si">{</span><span class="n">preise</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Teuerstes Auto: </span><span class="si">{</span><span class="n">preise</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spanne: </span><span class="si">{</span><span class="n">preise</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">preise</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Audi Nr. 1      -19470.2
-Audi Nr. 2       14520.8
-Audi Nr. 3       -3619.2
-BMW Nr. 1        25360.8
-BMW Nr. 2         5973.8
-Citroen Nr. 1    -7229.2
-Citroen Nr. 2    -1519.2
-Citroen Nr. 3    -5519.2
-Citroen Nr. 4      520.8
-Citroen Nr. 5    -9019.2
-dtype: float64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Durchschnittspreis: 21469.20 EUR
+
+Aber schauen wir genauer hin:
+Günstigstes Auto: 1999.00 EUR
+Teuerstes Auto: 46830.00 EUR
+Spanne: 44831.00 EUR
 </pre></div>
 </div>
 </div>
 </div>
-<p>Die negativen Vorzeichen stören, wir wollen ja die Abweichung. Daher quadrieren
-wir die Differenzen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadrate</span> <span class="o">=</span> <span class="n">differenzen</span> <span class="o">*</span> <span class="n">differenzen</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">quadrate</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Audi Nr. 1       3.790887e+08
-Audi Nr. 2       2.108536e+08
-Audi Nr. 3       1.309861e+07
-BMW Nr. 1        6.431702e+08
-BMW Nr. 2        3.568629e+07
-Citroen Nr. 1    5.226133e+07
-Citroen Nr. 2    2.307969e+06
-Citroen Nr. 3    3.046157e+07
-Citroen Nr. 4    2.712326e+05
-Citroen Nr. 5    8.134597e+07
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die durchschnittliche Abweichung beschreibt nun, wie weit “weg” die anderen
-Verkaufspreise vom Mittelwert sind. Daher bilden wir nun von den Abweichungen
-wiederum den Mittelwert. Da Quadrate ein Series-Objekt ist, machen wir das
-diesmal nicht händisch, sondern nutzen die Methode <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">durchschnittliche_abweichungen</span> <span class="o">=</span> <span class="n">quadrate</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die durchschnittliche Abweichung ist </span><span class="si">{</span><span class="n">durchschnittliche_abweichungen</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die durchschnittliche Abweichung ist 144854546.36000004.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Wenn wir die durchschnittliche Abweichung wiederum als Verkaufspreis gemessen in
-Euro interpretieren wollen, gibt es ein Problem. Offensichtlich ist diese Zahl
-soviel größer als das teuerste Auto. Das ist nicht verwunderlich, denn wir haben
-ja die quadrierten Differenzen genommen. Die Einheit der durchschnittlichen
-Abweichung ist also EUR². Das ist aber unpraktisch. Also ziehen wir wieder die
-Wurzel, damit wir ein Maß für die durchschnittliche Abweichung haben, das auch
-direkt Verkaufspreise widerspiegelt. Das nennen wir dann Standardabweichung.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardabweichung</span> <span class="o">=</span> <span class="n">quadrate</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">**</span><span class="mf">0.5</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Standardabweichung ist </span><span class="si">{</span><span class="n">standardabweichung</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die Standardabweichung ist 12035.55 EUR.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Benutzen wir Pandas, so liefert die Methode <code class="docutils literal notranslate"><span class="pre">.std()</span></code> die Standardabweichung. Das
-‘st’ in <code class="docutils literal notranslate"><span class="pre">.std()</span></code> für Standard steht, ist nachvollziehbar. Der dritte Buchstabe
-‘d’ kommt von ‘deviation’, also Abweichung. Somit ist wiederum die Methode nach
-dem englischen Fachbegriff ‘standard deviation’ benannt. Probieren wir die
-Methode für die Autopreise aus.</p>
+<p>Die Spanne von über 44.000 EUR zeigt: Diese Autos sind sehr unterschiedlich! Die <strong>Standardabweichung</strong> beschreibt diese Streuung in einer einzigen Zahl:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardabweichung</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Standardabweichung bei den Verkaufspreisen beträgt </span><span class="si">{</span><span class="n">standardabweichung</span><span class="si">}</span><span class="s1"> Euro.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Standardabweichung: </span><span class="si">{</span><span class="n">standardabweichung</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> EUR&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Die Standardabweichung bei den Verkaufspreisen beträgt 12686.587246204379 Euro.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standardabweichung: 12686.59 EUR
 </pre></div>
 </div>
 </div>
 </div>
-<p>Der Wert, den Pandas berechnet, unterscheidet sich von dem Wert, den wir
-“händisch” berechnet haben. Der Unterschied kommt daher, dass es zwei Formeln
-zur Berechnung der Standardabweichung gibt. Einmal wird der Durchschnitt über
-die Quadrate gebildet, indem die Summe durch die Anzahl aller Elemente geteilt
-wird, so wie wir es getan haben. Wir haben durch 10 geteilt. Bei der anderen
-Formel wird die Summe der Quadrate durch 9 geteilt.</p>
-<p>Was war eigentlich nochmal die Standardabweichung? Falls Sie dazu eine kurze
-Wiederholung der Theorie benötigen, empfehle ich Ihnen dieses Video.</p>
+<p>Was bedeutet das konkret? Eine Standardabweichung von 13.000 EUR bei einem
+Mittelwert von 21.500 EUR bedeutet: Die Preise schwanken stark. Wenn wir ein
+“durchschnittliches” Auto für 21.500 EUR erwarten, müssen wir mit Abweichungen
+von ±13.000 EUR rechnen.</p>
+<p>Schauen wir uns das an unseren konkreten Daten an:</p>
+<ul class="simple">
+<li><p>Mittelwert ± Standardabweichung = 21.469 ± 13.000 EUR</p></li>
+<li><p>Das ergibt den Bereich: [8.469 EUR, 34.469 EUR]</p></li>
+<li><p>Tatsächlich liegen 7 von 10 Autos in diesem Bereich</p></li>
+</ul>
+<p>Die Standardabweichung hat dieselbe Einheit wie die Originaldaten (hier: EUR).
+Das macht sie direkt interpretierbar im Gegensatz zur Varianz, die in EUR²
+gemessen wird.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">Video zu “Standardabweichung” von Datatab</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
@@ -905,16 +841,15 @@ Das teuerste oder die teuersten Autos werden für 46830 EUR angeboten.
 </section>
 <section id="quantil-mit-quantile">
 <h2>Quantil mit quantile()<a class="headerlink" href="#quantil-mit-quantile" title="Link to this heading">#</a></h2>
-<p>Das Quantil <span class="math notranslate nohighlight">\(p \%\)</span> ist der Wert, bei dem <span class="math notranslate nohighlight">\(p %\)</span> der Einträge kleiner oder gleich
-als diese Zahl sind und <span class="math notranslate nohighlight">\(100 \% - p \%\)</span> sind größer. Meist werden nicht
-Prozentzahlen verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 %
-steht.</p>
+<p>Das Quantil <span class="math notranslate nohighlight">\(p\%\)</span> ist der Wert, bei dem <span class="math notranslate nohighlight">\(p\%\)</span> der Einträge kleiner oder gleich
+diesem Wert sind und <span class="math notranslate nohighlight">\(100\% - p\%\)</span> sind größer. Meist werden nicht Prozentzahlen
+verwendet, sondern p ist zwischen 0 und 1, wobei die 1 für 100 % steht.</p>
 <p>Angenommen, wir würden gerne das 0.5-Quantil (auch Median genannt) der Preise
 wissen. Mit der Methode <code class="docutils literal notranslate"><span class="pre">.quantile()</span></code> können wir diesen Wert leicht aus den
 Daten holen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantil50</span> <span class="o">=</span><span class="n">preise</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantil50</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Der Median, d.h. das 50 % Quantil, liegt bei </span><span class="si">{</span><span class="n">quantil50</span><span class="si">}</span><span class="s1"> EUR.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -927,7 +862,7 @@ Daten holen.</p>
 </div>
 <p>Das 50 % -Quantil liegt bei 18900 EUR. 50 % aller Autos werden zu einem Preis
 angeboten, der kleiner oder gleich 18900 EUR ist. Und 50 % aller Autos werden
-teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an.</p>
+teurer angeboten. Wir schauen uns jetzt das 75 % Quantil an.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantil75</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
@@ -941,9 +876,10 @@ teuer angeboten. Wir schauen uns jetzt das 75 % Quantil an.</p>
 </div>
 </div>
 </div>
-<p>75 % aller Autos werden günstiger als 26079.75 EUR angeboten. Auch wenn Sie sich
-natürlich für jede beliebigen Prozentsatz zwischen 0 % und 100 % das Quantil
-ansehen können, interessieren wir uns noch für das 25 % Quantil.</p>
+<p>75 % aller Autos werden günstiger als 26079.75 EUR angeboten. Wir können uns für
+jeden beliebigen Prozentsatz zwischen 0 % und 100 % das Quantil ansehen, aber
+häufig wird neben dem 75 % Quantil, dem 50 % Quantil noch das 25 % Quantil
+betrachtet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quantil25</span> <span class="o">=</span> <span class="n">preise</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>

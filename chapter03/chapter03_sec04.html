@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -541,8 +541,8 @@
 <p class="admonition-title">Übung 3.1</p>
 <p>Speichern Sie die Daten zu den Studentinnen an Fachhochschulen als Pandas-Series.
 Verschaffen Sie sich einen Überblick über die statistischen Kennzahlen. Lesen
-Sie dann ab: In welchem Bundesland studieren am wenigsten Studentinnen und im
-welchem Bundesland am meisten?</p>
+Sie dann ab: In welchem Bundesland studieren die wenigsten Studentinnen und im
+welchem Bundesland die meisten?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
@@ -563,129 +563,268 @@ lassen wir den kompletten Datensatz anzeigen:</p>
 <p>Wir lesen ab: am wenigsten Studentinnen an Fachhochschulen studieren im Saarland
 und am meisten in Nordrhein-Westfalen.</p>
 </div>
-<div class="tip admonition">
+<div class="miniexercise admonition">
 <p class="admonition-title">Übung 3.2</p>
-<p>Überprüfen Sie für die anderen drei Datensätze, ob auch dort die beiden gleichen
-Bundesländer herauskommen. Lassen Sie dazu zuerst das Minimum und das Maximum
-eines jeden Datensatzes direkt mit einer f-print-Anweisung ausgeben und
-kontrollieren Sie mit der Anzeige des kompletten Datensatzes, welches Bundesland
-zum Minimum oder Maximum gehört. Fügen Sie Ihre Antwort als Markdown-Zelle ein.</p>
+<p>Wählen Sie <strong>einen</strong> der drei verbleibenden Datensätze aus:</p>
+<ul class="simple">
+<li><p>Studenten an Universitäten</p></li>
+<li><p>Studentinnen an Universitäten</p></li>
+<li><p>Studenten an Fachhochschulen</p></li>
+</ul>
+<p>Erstellen Sie ein Series-Objekt für diesen Datensatz und überprüfen Sie, ob auch
+dort das Saarland das Minimum und Nordrhein-Westfalen das Maximum hat. Lassen
+Sie Minimum und Maximum mit <code class="docutils literal notranslate"><span class="pre">.min()</span></code> und <code class="docutils literal notranslate"><span class="pre">.max()</span></code> ausgeben und kontrollieren Sie
+durch Anzeige des Datensatzes, welches Bundesland dazugehört.</p>
+<p>Zusatzfrage: Was vermuten Sie für die anderen beiden Datensätze, die Sie nicht
+untersucht haben? Begründen Sie Ihre Vermutung.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stud_uni_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span> <span class="n">studierende_universitaeten_maennlich</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten an Universitäten&#39;</span><span class="p">)</span>
-<span class="n">stud_uni_weiblich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_universitaeten_weiblich</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studentinnen an Universitäten&#39;</span><span class="p">)</span>
-<span class="n">stud_fh_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_fachhochschulen_maennlich</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten an Fachhochschulen&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Uni, männlich: minimale Anzahl = </span><span class="si">{</span><span class="n">stud_uni_maennlich</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">, maximale Anzahl = </span><span class="si">{</span><span class="n">stud_uni_maennlich</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<p>Beispiel für Studenten an Universitäten:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">stud_uni_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_universitaeten_maennlich</span><span class="p">,</span> 
+                                <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> 
+                                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten an Universitäten&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Minimum: </span><span class="si">{</span><span class="n">stud_uni_maennlich</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">, Maximum: </span><span class="si">{</span><span class="n">stud_uni_maennlich</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">stud_uni_maennlich</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ergebnis: minimal im Saarland und maximal in Nordrhein-Westfalen</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Uni, weiblich: minimale Anzahl = </span><span class="si">{</span><span class="n">stud_uni_weiblich</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">, maximale Anzahl = </span><span class="si">{</span><span class="n">stud_uni_weiblich</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stud_uni_weiblich</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Ergebnis: minimal im Saarland und maximal in Nordrhein-Westfalen</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fachhochschule, männlich: minimale Anzahl = </span><span class="si">{</span><span class="n">stud_fh_maennlich</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">}</span><span class="s1">, maximale Anzahl = </span><span class="si">{</span><span class="n">stud_fh_maennlich</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stud_fh_maennlich</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Ergebnis: minimal in Mecklenburg-Vorpommern und maximal in Nordrhein-Westfalen</p>
-<p>Zusammenfassung: bei den Universitäten studieren die wenigsten Studierenden im
-Saarland und die meisten Studierenden in Nordrhein-Westfalen. An Fachhochschulen
-studieren die meisten Studierenden (männlich und weiblich) in
-Nordrhein-Westfalen. Beim Minimum gibt es jedoch einen Unterschied bei den
-Geschlechtern. Die wenigsten Studenten findet man in Mecklenburg-Vorpommern, die
-wenigsten Studentinnen erneut im Saarland.</p>
+<p>Ergebnis: Minimum im Saarland (7806) und Maximum in Nordrhein-Westfalen (235564).</p>
+<p>Zusatzfrage: Vermutlich haben auch die anderen beiden Datensätze das Minimum im
+Saarland und das Maximum in Nordrhein-Westfalen. Begründung: Die Studierendenzahlen
+hängen stark von der Größe und Bevölkerungszahl des Bundeslandes ab. Das Saarland
+ist das kleinste Flächenland, Nordrhein-Westfalen das bevölkerungsreichste
+Bundesland Deutschlands.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Übung 3.3</p>
-<p>Lassen Sie jeden der vier Datensätze durch einen Boxplot darstellen. Verwenden
-Sie dabei unterschiedliche Variablen zum Speichern des Boxplots (also
-beispielsweise fig1, fig2, fig3 und fig4). Gibt es Ausreißer?</p>
+<p>Lassen Sie die Datensätze zu Studentinnen an Fachhochschulen und Studenten an
+Fachhochschulen durch Boxplots visualisieren.</p>
+<p>Teil A: Erstellen Sie den ersten Boxplot für Studentinnen an Fachhochschulen
+mit folgenden Eigenschaften:</p>
+<ul class="simple">
+<li><p>Benennen Sie das Series-Objekt mit ‘Studentinnen FH’.</p></li>
+<li><p>Beschriften Sie die y-Achse mit ‘Anzahl Studierende’.</p></li>
+<li><p>Setzen Sie den Titel ‘Studentinnen an Fachhochschulen’.</p></li>
+<li><p>Zeigen Sie alle Datenpunkte neben dem Boxplot an.</p></li>
+</ul>
+<p>Teil B: Erstellen Sie analog einen zweiten Boxplot für Studenten an
+Fachhochschulen. Achten Sie darauf, eine andere Variablennamen für das Diagramm
+zu verwenden (z.B. <code class="docutils literal notranslate"><span class="pre">diagramm2</span></code> statt <code class="docutils literal notranslate"><span class="pre">diagramm</span></code>), damit der erste Boxplot nicht
+überschrieben wird.</p>
+<p>Interpretationsfrage: Gibt es Ausreißer? Wenn ja, bei welchem Datensatz und
+welches Bundesland ist betroffen?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<p>Teil A: Boxplot für Studentinnen an Fachhochschulen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
+<span class="n">stud_fh_weiblich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_fachhochschulen_weiblich</span><span class="p">,</span>
+                              <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span>
+                              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studentinnen FH&#39;</span><span class="p">)</span>
 
-<span class="n">fig1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_uni_maennlich</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">})</span>
-<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">diagramm1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_weiblich</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studentinnen an Fachhochschulen&#39;</span><span class="p">,</span>
+                   <span class="n">points</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">diagramm1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_uni_weiblich</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">})</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p>Teil B: Boxplot für Studenten an Fachhochschulen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">stud_fh_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_fachhochschulen_maennlich</span><span class="p">,</span>
+                               <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span>
+                               <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten FH&#39;</span><span class="p">)</span>
+
+<span class="n">diagramm2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_maennlich</span><span class="p">,</span>
+                   <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+                   <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studenten an Fachhochschulen&#39;</span><span class="p">,</span>
+                   <span class="n">points</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<span class="n">diagramm2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig3</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_maennlich</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">})</span>
-<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig4</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_weiblich</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">})</span>
-<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Bei den Studierenden an Universitäten und bei den Studenten an Fachhochschulen
-ist das Bundesland Nordrhein-Westfalen jeweils als Ausreißer markiert. Dies gilt
-nicht für die Studentinnen an Fachhochschulen.</p>
+<p>Interpretationsfrage: Ja, es gibt einen Ausreißer beim Datensatz “Studenten an
+Fachhochschulen”. Das betroffene Bundesland ist Nordrhein-Westfalen mit 132.976
+Studenten. Bei den Studentinnen an Fachhochschulen gibt es keinen Ausreißer.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Übung 3.4</p>
-<p>Es wäre schön, die Boxplots in einer Grafik nebeneinander zu stellen. Dazu
-benötigen wir das Untermodul <code class="docutils literal notranslate"><span class="pre">Graph</span> <span class="pre">Objects</span></code> von <code class="docutils literal notranslate"><span class="pre">Plotly</span></code>. Danach können die
-Grafiken wie folgt kombiniert werden.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig2</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig3</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig4</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Verteilung Studierende 2022&#39;</span><span class="p">)</span>
-
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Kopieren Sie den oben Code in eine Code-Zelle und führen Sie die Code-Zelle aus.
-Vergleichen Sie die vier Boxplots miteinander. Wo liegt der Median am ehesten in
-der Mitte des Interquartilabstandes?</p>
+<p>Erstellen Sie für alle vier Datensätze Boxplots mit aussagekräftigen
+Beschriftungen:</p>
+<ul class="simple">
+<li><p>Studentinnen an Fachhochschulen</p></li>
+<li><p>Studenten an Fachhochschulen</p></li>
+<li><p>Studenten an Universitäten</p></li>
+<li><p>Studentinnen an Universitäten</p></li>
+</ul>
+<p>Verwenden Sie für jeden Boxplot:</p>
+<ul class="simple">
+<li><p>Einen Namen für das Series-Objekt</p></li>
+<li><p>Die Beschriftung <code class="docutils literal notranslate"><span class="pre">'Anzahl</span> <span class="pre">Studierende'</span></code> für die y-Achse</p></li>
+<li><p>Einen passenden Titel</p></li>
+</ul>
+<p>Hinweis: Die Boxplots müssen nicht einzeln angezeigt werden, speichern Sie
+sie aber in den Variablen <code class="docutils literal notranslate"><span class="pre">fig1</span></code>, <code class="docutils literal notranslate"><span class="pre">fig2</span></code>, <code class="docutils literal notranslate"><span class="pre">fig3</span></code> und <code class="docutils literal notranslate"><span class="pre">fig4</span></code>, damit Sie sie in
+der nächsten Aufgabe vergleichen können.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig2</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig3</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig4</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Verteilung Studierende 2022&#39;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Series-Objekte erstellen</span>
+<span class="n">stud_fh_weiblich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_fachhochschulen_weiblich</span><span class="p">,</span> 
+                              <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> 
+                              <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studentinnen FH&#39;</span><span class="p">)</span>
+<span class="n">stud_fh_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_fachhochschulen_maennlich</span><span class="p">,</span> 
+                               <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> 
+                               <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten FH&#39;</span><span class="p">)</span>
+<span class="n">stud_uni_maennlich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_universitaeten_maennlich</span><span class="p">,</span> 
+                                <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> 
+                                <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studenten Uni&#39;</span><span class="p">)</span>
+<span class="n">stud_uni_weiblich</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">studierende_universitaeten_weiblich</span><span class="p">,</span> 
+                               <span class="n">index</span><span class="o">=</span><span class="n">bundeslaender</span><span class="p">,</span> 
+                               <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Studentinnen Uni&#39;</span><span class="p">)</span>
+
+<span class="c1"># Boxplots erstellen</span>
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_weiblich</span><span class="p">,</span>
+              <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studentinnen an Fachhochschulen&#39;</span><span class="p">)</span>
+
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_fh_maennlich</span><span class="p">,</span>
+              <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studenten an Fachhochschulen&#39;</span><span class="p">)</span>
+
+<span class="n">fig3</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_uni_maennlich</span><span class="p">,</span>
+              <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studenten an Universitäten&#39;</span><span class="p">)</span>
+
+<span class="n">fig4</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">stud_uni_weiblich</span><span class="p">,</span>
+              <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl Studierende&#39;</span><span class="p">},</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Studentinnen an Universitäten&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optional: Einen oder alle anzeigen</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Am ehesten liegt der Median bei den Studenten an Fachhochschulen in der Mitte
-des Interquartilabstandes. Allerdings ist es visuell schwer einzuordnen, die
-wenigen Ausreißer führen dazu, dass die Boxplots im unteren Drittel der Grafik
-platziert sind.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Übung 3.5</p>
-<p>Recherchieren Sie im Internet (auch KI-Chatbots wie ChatGPT oder Bard sind
-erlaubt), wie die y-Achse auf das Intervall [0, 135000] begrenzt wird, damit der
-Vergleich leichter fällt und die Ausreißer “abgeschnitten” werden. Modifizieren
-Sie den gemeinsamen Plot der vier Boxplots entsprechend und beurteilen Sie
-erneut, wo der Median am ehesten in der Mitte des Interquartilabstandes liegt.</p>
+<p>Vergleichen Sie die vier Boxplots miteinander, indem Sie sie nacheinander mit
+<code class="docutils literal notranslate"><span class="pre">.show()</span></code> anzeigen lassen. Nutzen Sie die Hover-Funktion (Maus über die Box
+bewegen), um die Werte abzulesen.</p>
+<p>Teil A: Erstellen Sie eine Vergleichstabelle in einer Markdown-Zelle:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Datensatz</p></th>
+<th class="head"><p>Median</p></th>
+<th class="head"><p>Q1 (25%)</p></th>
+<th class="head"><p>Q3 (75%)</p></th>
+<th class="head"><p>Ausreißer vorhanden?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Studentinnen FH</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>ja/nein</p></td>
+</tr>
+<tr class="row-odd"><td><p>Studenten FH</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>ja/nein</p></td>
+</tr>
+<tr class="row-even"><td><p>Studentinnen Uni</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>ja/nein</p></td>
+</tr>
+<tr class="row-odd"><td><p>Studenten Uni</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>…</p></td>
+<td><p>ja/nein</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Teil B: Beantworten Sie folgende Fragen:</p>
+<ol class="arabic simple">
+<li><p>An welcher Hochschulart (Uni oder FH) ist die Streuung der Studierendenzahlen
+größer?</p></li>
+<li><p>Bei welchem Datensatz liegt der Median am weitesten von der Mitte zwischen
+Q1 und Q3 entfernt? Was bedeutet das?</p></li>
+<li><p>Welche Bundesländer tauchen als Ausreißer auf?</p></li>
+</ol>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># gemeinsame Darstellung der vier Boxplots</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig2</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig3</span><span class="o">.</span><span class="n">data</span> <span class="o">+</span> <span class="n">fig4</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-
-<span class="c1"># Begrenzung der y-Achse auf das Intervall [0, 150000]</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Verteilung Studierende 2022&#39;</span><span class="p">,</span> <span class="n">yaxis_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">135000</span><span class="p">])</span>
-
-<span class="c1"># Anzeige des Plots</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<p>Teil A: Boxplots anzeigen und Werte ablesen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alle vier Boxplots nacheinander anzeigen</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Studentinnen FH</span>
+<span class="n">fig2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Studenten FH</span>
+<span class="n">fig3</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Studenten Uni</span>
+<span class="n">fig4</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  <span class="c1"># Studentinnen Uni</span>
 </pre></div>
 </div>
+<p>Vergleichstabelle:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Datensatz</p></th>
+<th class="head"><p>Median</p></th>
+<th class="head"><p>Q1 (25%)</p></th>
+<th class="head"><p>Q3 (75%)</p></th>
+<th class="head"><p>Ausreißer vorhanden?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Studentinnen FH</p></td>
+<td><p>22599.5</p></td>
+<td><p>8162</p></td>
+<td><p>51499.5</p></td>
+<td><p>nein</p></td>
+</tr>
+<tr class="row-odd"><td><p>Studenten FH</p></td>
+<td><p>24288.5</p></td>
+<td><p>11092</p></td>
+<td><p>42997.0</p></td>
+<td><p>ja (NRW)</p></td>
+</tr>
+<tr class="row-even"><td><p>Studentinnen Uni</p></td>
+<td><p>33053.5</p></td>
+<td><p>17199.0</p></td>
+<td><p>71222.5</p></td>
+<td><p>ja (NRW)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Studenten Uni</p></td>
+<td><p>29465.5</p></td>
+<td><p>15471.25</p></td>
+<td><p>63832.25</p></td>
+<td><p>ja (NRW)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Teil B: Interpretation:</p>
+<ol class="arabic simple">
+<li><p><em>Streuung Uni vs. FH:</em> Die Streuung ist an Universitäten deutlich größer. Der
+Interquartilabstand (Q3 - Q1) beträgt bei Unis ca. 48000 (Männer) bzw. 54000
+(Frauen), bei FH nur ca. 32000 (Männer) bzw. 43000 (Frauen). Das liegt
+vermutlich daran, dass es in großen Bundesländern mehr Universitäten gibt.</p></li>
+<li><p><em>Asymmetrische Verteilung:</em> Bei Studentinnen an Fachhochschulen liegt der
+Median (22599.5) deutlich näher an Q1 (11092) als an Q3 (51499.5). Das
+bedeutet: Die Mehrzahl der Bundesländer hat wenige Studentinnen an
+Fachhochschulen, aber einige wenige Bundesländer haben sehr viele.</p></li>
+<li><p><em>Ausreißer:</em> Nordrhein-Westfalen taucht bei drei Datensätzen als Ausreißer
+auf (nicht bei Studentinnen FH). Das ist plausibel, da NRW das
+bevölkerungsreichste Bundesland ist.</p></li>
+</ol>
 </div>
 </section>
 
