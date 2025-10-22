@@ -47,8 +47,8 @@ studierende_fachhochschulen_weiblich = [65332, 63198, 33333, 6323,
 :class: miniexercise
 Speichern Sie die Daten zu den Studentinnen an Fachhochschulen als Pandas-Series.
 Verschaffen Sie sich einen Überblick über die statistischen Kennzahlen. Lesen
-Sie dann ab: In welchem Bundesland studieren am wenigsten Studentinnen und im
-welchem Bundesland am meisten?
+Sie dann ab: In welchem Bundesland studieren die wenigsten Studentinnen und im
+welchem Bundesland die meisten?
 ```
 
 ````{admonition} Lösung
@@ -76,147 +76,220 @@ und am meisten in Nordrhein-Westfalen.
 ````
 
 ```{admonition} Übung 3.2
-:class: tip
-Überprüfen Sie für die anderen drei Datensätze, ob auch dort die beiden gleichen
-Bundesländer herauskommen. Lassen Sie dazu zuerst das Minimum und das Maximum
-eines jeden Datensatzes direkt mit einer f-print-Anweisung ausgeben und
-kontrollieren Sie mit der Anzeige des kompletten Datensatzes, welches Bundesland
-zum Minimum oder Maximum gehört. Fügen Sie Ihre Antwort als Markdown-Zelle ein.
+:class: miniexercise
+Wählen Sie **einen** der drei verbleibenden Datensätze aus:
+
+* Studenten an Universitäten
+* Studentinnen an Universitäten  
+* Studenten an Fachhochschulen
+
+Erstellen Sie ein Series-Objekt für diesen Datensatz und überprüfen Sie, ob auch
+dort das Saarland das Minimum und Nordrhein-Westfalen das Maximum hat. Lassen
+Sie Minimum und Maximum mit `.min()` und `.max()` ausgeben und kontrollieren Sie
+durch Anzeige des Datensatzes, welches Bundesland dazugehört.
+
+Zusatzfrage: Was vermuten Sie für die anderen beiden Datensätze, die Sie nicht
+untersucht haben? Begründen Sie Ihre Vermutung.
 ```
 
 ````{admonition} Lösung
 :class: minisolution, toggle
+Beispiel für Studenten an Universitäten:
 ```python
-stud_uni_maennlich = pd.Series(data= studierende_universitaeten_maennlich, index=bundeslaender, name='Studenten an Universitäten')
-stud_uni_weiblich = pd.Series(data=studierende_universitaeten_weiblich, index=bundeslaender, name='Studentinnen an Universitäten')
-stud_fh_maennlich = pd.Series(data=studierende_fachhochschulen_maennlich, index=bundeslaender, name='Studenten an Fachhochschulen')
-```
+import pandas as pd
 
-```python
-print(f'Uni, männlich: minimale Anzahl = {stud_uni_maennlich.min()}, maximale Anzahl = {stud_uni_maennlich.max()}')
+stud_uni_maennlich = pd.Series(data=studierende_universitaeten_maennlich, 
+                                index=bundeslaender, 
+                                name='Studenten an Universitäten')
+
+print(f'Minimum: {stud_uni_maennlich.min()}, Maximum: {stud_uni_maennlich.max()}')
 print(stud_uni_maennlich)
 ```
 
-Ergebnis: minimal im Saarland und maximal in Nordrhein-Westfalen
+Ergebnis: Minimum im Saarland (7806) und Maximum in Nordrhein-Westfalen (235564).
 
-```python
-print(f'Uni, weiblich: minimale Anzahl = {stud_uni_weiblich.min()}, maximale Anzahl = {stud_uni_weiblich.max()}')
-print(stud_uni_weiblich)
-```
-
-Ergebnis: minimal im Saarland und maximal in Nordrhein-Westfalen
-
-```python
-print(f'Fachhochschule, männlich: minimale Anzahl = {stud_fh_maennlich.min()}, maximale Anzahl = {stud_fh_maennlich.max()}')
-print(stud_fh_maennlich)
-```
-
-Ergebnis: minimal in Mecklenburg-Vorpommern und maximal in Nordrhein-Westfalen
-
-Zusammenfassung: bei den Universitäten studieren die wenigsten Studierenden im
-Saarland und die meisten Studierenden in Nordrhein-Westfalen. An Fachhochschulen
-studieren die meisten Studierenden (männlich und weiblich) in
-Nordrhein-Westfalen. Beim Minimum gibt es jedoch einen Unterschied bei den
-Geschlechtern. Die wenigsten Studenten findet man in Mecklenburg-Vorpommern, die
-wenigsten Studentinnen erneut im Saarland.
+Zusatzfrage: Vermutlich haben auch die anderen beiden Datensätze das Minimum im 
+Saarland und das Maximum in Nordrhein-Westfalen. Begründung: Die Studierendenzahlen 
+hängen stark von der Größe und Bevölkerungszahl des Bundeslandes ab. Das Saarland 
+ist das kleinste Flächenland, Nordrhein-Westfalen das bevölkerungsreichste 
+Bundesland Deutschlands.
 ````
 
 ```{admonition} Übung 3.3
 :class: miniexercise
-Lassen Sie jeden der vier Datensätze durch einen Boxplot darstellen. Verwenden
-Sie dabei unterschiedliche Variablen zum Speichern des Boxplots (also
-beispielsweise fig1, fig2, fig3 und fig4). Gibt es Ausreißer?
+Lassen Sie die Datensätze zu Studentinnen an Fachhochschulen und Studenten an
+Fachhochschulen durch Boxplots visualisieren.
+
+Teil A: Erstellen Sie den ersten Boxplot für Studentinnen an Fachhochschulen
+mit folgenden Eigenschaften:
+
+* Benennen Sie das Series-Objekt mit 'Studentinnen FH'.
+* Beschriften Sie die y-Achse mit 'Anzahl Studierende'.
+* Setzen Sie den Titel 'Studentinnen an Fachhochschulen'.
+* Zeigen Sie alle Datenpunkte neben dem Boxplot an.
+
+Teil B: Erstellen Sie analog einen zweiten Boxplot für Studenten an
+Fachhochschulen. Achten Sie darauf, eine andere Variablennamen für das Diagramm
+zu verwenden (z.B. `diagramm2` statt `diagramm`), damit der erste Boxplot nicht
+überschrieben wird.
+
+Interpretationsfrage: Gibt es Ausreißer? Wenn ja, bei welchem Datensatz und
+welches Bundesland ist betroffen?
 ```
 
 ````{admonition} Lösung
 :class: minisolution, toggle
+Teil A: Boxplot für Studentinnen an Fachhochschulen:
 ```python
+import pandas as pd
 import plotly.express as px
 
+stud_fh_weiblich = pd.Series(data=studierende_fachhochschulen_weiblich,
+                              index=bundeslaender,
+                              name='Studentinnen FH')
 
-fig1 = px.box(stud_uni_maennlich,
-             labels={'variable': '', 'value': 'Anzahl'})
-fig1.show()
+diagramm1 = px.box(stud_fh_weiblich,
+                   labels={'value': 'Anzahl Studierende'},
+                   title='Studentinnen an Fachhochschulen',
+                   points='all')
+diagramm1.show()
 ```
 
+Teil B: Boxplot für Studenten an Fachhochschulen:
 ```python
-fig2 = px.box(stud_uni_weiblich,
-             labels={'variable': '', 'value': 'Anzahl'})
-fig2.show()
+stud_fh_maennlich = pd.Series(data=studierende_fachhochschulen_maennlich,
+                               index=bundeslaender,
+                               name='Studenten FH')
+
+diagramm2 = px.box(stud_fh_maennlich,
+                   labels={'value': 'Anzahl Studierende'},
+                   title='Studenten an Fachhochschulen',
+                   points='all')
+diagramm2.show()
 ```
 
-```python
-fig3 = px.box(stud_fh_maennlich,
-             labels={'variable': '', 'value': 'Anzahl'})
-fig3.show()
-```
-
-```python
-fig4 = px.box(stud_fh_weiblich,
-             labels={'variable': '', 'value': 'Anzahl'})
-fig4.show()
-```
-
-Bei den Studierenden an Universitäten und bei den Studenten an Fachhochschulen
-ist das Bundesland Nordrhein-Westfalen jeweils als Ausreißer markiert. Dies gilt
-nicht für die Studentinnen an Fachhochschulen.
+Interpretationsfrage: Ja, es gibt einen Ausreißer beim Datensatz "Studenten an 
+Fachhochschulen". Das betroffene Bundesland ist Nordrhein-Westfalen mit 132.976 
+Studenten. Bei den Studentinnen an Fachhochschulen gibt es keinen Ausreißer.
 ````
 
-````{admonition} Übung 3.4
+```{admonition} Übung 3.4
 :class: miniexercise
-Es wäre schön, die Boxplots in einer Grafik nebeneinander zu stellen. Dazu
-benötigen wir das Untermodul `Graph Objects` von `Plotly`. Danach können die
-Grafiken wie folgt kombiniert werden.
+Erstellen Sie für alle vier Datensätze Boxplots mit aussagekräftigen 
+Beschriftungen:
+- Studentinnen an Fachhochschulen
+- Studenten an Fachhochschulen
+- Studenten an Universitäten
+- Studentinnen an Universitäten
 
-```python
-import plotly.graph_objects as go
+Verwenden Sie für jeden Boxplot:
+- Einen Namen für das Series-Objekt
+- Die Beschriftung `'Anzahl Studierende'` für die y-Achse
+- Einen passenden Titel
 
-fig = go.Figure(data = fig1.data + fig2.data + fig3.data + fig4.data)
-fig.update_layout(title='Verteilung Studierende 2022')
-
-fig.show()
+Hinweis: Die Boxplots müssen nicht einzeln angezeigt werden, speichern Sie 
+sie aber in den Variablen `fig1`, `fig2`, `fig3` und `fig4`, damit Sie sie in 
+der nächsten Aufgabe vergleichen können.
 ```
-
-Kopieren Sie den oben Code in eine Code-Zelle und führen Sie die Code-Zelle aus.
-Vergleichen Sie die vier Boxplots miteinander. Wo liegt der Median am ehesten in
-der Mitte des Interquartilabstandes?
-````
 
 ````{admonition} Lösung
 :class: minisolution, toggle
 ```python
-import plotly.graph_objects as go
+import pandas as pd
+import plotly.express as px
 
-fig = go.Figure(data = fig1.data + fig2.data + fig3.data + fig4.data)
-fig.update_layout(title='Verteilung Studierende 2022')
-fig.show()
+# Series-Objekte erstellen
+stud_fh_weiblich = pd.Series(data=studierende_fachhochschulen_weiblich, 
+                              index=bundeslaender, 
+                              name='Studentinnen FH')
+stud_fh_maennlich = pd.Series(data=studierende_fachhochschulen_maennlich, 
+                               index=bundeslaender, 
+                               name='Studenten FH')
+stud_uni_maennlich = pd.Series(data=studierende_universitaeten_maennlich, 
+                                index=bundeslaender, 
+                                name='Studenten Uni')
+stud_uni_weiblich = pd.Series(data=studierende_universitaeten_weiblich, 
+                               index=bundeslaender, 
+                               name='Studentinnen Uni')
+
+# Boxplots erstellen
+fig1 = px.box(stud_fh_weiblich,
+              labels={'value': 'Anzahl Studierende'},
+              title='Studentinnen an Fachhochschulen')
+
+fig2 = px.box(stud_fh_maennlich,
+              labels={'value': 'Anzahl Studierende'},
+              title='Studenten an Fachhochschulen')
+
+fig3 = px.box(stud_uni_maennlich,
+              labels={'value': 'Anzahl Studierende'},
+              title='Studenten an Universitäten')
+
+fig4 = px.box(stud_uni_weiblich,
+              labels={'value': 'Anzahl Studierende'},
+              title='Studentinnen an Universitäten')
+
+# Optional: Einen oder alle anzeigen
+fig1.show()
 ```
-
-Am ehesten liegt der Median bei den Studenten an Fachhochschulen in der Mitte
-des Interquartilabstandes. Allerdings ist es visuell schwer einzuordnen, die
-wenigen Ausreißer führen dazu, dass die Boxplots im unteren Drittel der Grafik
-platziert sind.
 ````
 
 ```{admonition} Übung 3.5
 :class: miniexercise
-Recherchieren Sie im Internet (auch KI-Chatbots wie ChatGPT oder Bard sind
-erlaubt), wie die y-Achse auf das Intervall [0, 135000] begrenzt wird, damit der
-Vergleich leichter fällt und die Ausreißer "abgeschnitten" werden. Modifizieren
-Sie den gemeinsamen Plot der vier Boxplots entsprechend und beurteilen Sie
-erneut, wo der Median am ehesten in der Mitte des Interquartilabstandes liegt.
+Vergleichen Sie die vier Boxplots miteinander, indem Sie sie nacheinander mit 
+`.show()` anzeigen lassen. Nutzen Sie die Hover-Funktion (Maus über die Box 
+bewegen), um die Werte abzulesen.
+
+Teil A: Erstellen Sie eine Vergleichstabelle in einer Markdown-Zelle:
+
+| Datensatz | Median | Q1 (25%) | Q3 (75%) | Ausreißer vorhanden? |
+|-----------|--------|----------|----------|----------------------|
+| Studentinnen FH | ... | ... | ... | ja/nein |
+| Studenten FH | ... | ... | ... | ja/nein |
+| Studentinnen Uni | ... | ... | ... | ja/nein |
+| Studenten Uni | ... | ... | ... | ja/nein |
+
+Teil B: Beantworten Sie folgende Fragen:
+1. An welcher Hochschulart (Uni oder FH) ist die Streuung der Studierendenzahlen 
+   größer?
+2. Bei welchem Datensatz liegt der Median am weitesten von der Mitte zwischen 
+   Q1 und Q3 entfernt? Was bedeutet das?
+3. Welche Bundesländer tauchen als Ausreißer auf?
 ```
 
 ````{admonition} Lösung
 :class: minisolution, toggle
+Teil A: Boxplots anzeigen und Werte ablesen:
 ```python
-# gemeinsame Darstellung der vier Boxplots
-fig = go.Figure(data = fig1.data + fig2.data + fig3.data + fig4.data)
-
-# Begrenzung der y-Achse auf das Intervall [0, 150000]
-fig.update_layout(title='Verteilung Studierende 2022', yaxis_range=[0,135000])
-
-# Anzeige des Plots
-fig.show()
+# Alle vier Boxplots nacheinander anzeigen
+fig1.show()  # Studentinnen FH
+fig2.show()  # Studenten FH
+fig3.show()  # Studenten Uni
+fig4.show()  # Studentinnen Uni
 ```
+
+Vergleichstabelle:
+
+| Datensatz | Median | Q1 (25%) | Q3 (75%) | Ausreißer vorhanden? |
+|-----------|--------|----------|----------|----------------------|
+| Studentinnen FH | 22599.5| 8162 | 51499.5 | nein |
+| Studenten FH | 24288.5 | 11092 | 42997.0 | ja (NRW) |
+| Studentinnen Uni | 33053.5 | 17199.0 | 71222.5 | ja (NRW) |
+| Studenten Uni | 29465.5 | 15471.25 | 63832.25 | ja (NRW) |
+
+Teil B: Interpretation:
+
+1. *Streuung Uni vs. FH:* Die Streuung ist an Universitäten deutlich größer. Der
+   Interquartilabstand (Q3 - Q1) beträgt bei Unis ca. 48000 (Männer) bzw. 54000
+   (Frauen), bei FH nur ca. 32000 (Männer) bzw. 43000 (Frauen). Das liegt
+   vermutlich daran, dass es in großen Bundesländern mehr Universitäten gibt.
+
+2. *Asymmetrische Verteilung:* Bei Studentinnen an Fachhochschulen liegt der
+   Median (22599.5) deutlich näher an Q1 (11092) als an Q3 (51499.5). Das
+   bedeutet: Die Mehrzahl der Bundesländer hat wenige Studentinnen an
+   Fachhochschulen, aber einige wenige Bundesländer haben sehr viele.
+
+3. *Ausreißer:* Nordrhein-Westfalen taucht bei drei Datensätzen als Ausreißer
+   auf (nicht bei Studentinnen FH). Das ist plausibel, da NRW das
+   bevölkerungsreichste Bundesland ist.
 ````
