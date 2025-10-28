@@ -70,7 +70,7 @@ data.describe()
 ```
 ````
 
-````{admonition} Übung 4.1 - Teilaufgabe a)
+````{admonition} Übung 4.1 - Teilaufgabe b)
 :class: miniexercise
 Kontrollieren Sie, ob die Spalte 'insgesamt' tatsächlich die Summe der beiden
 Spalten 'männlich' und 'weiblich' ist. Bilden Sie dazu die Differenz 'insgesamt' - 
@@ -132,7 +132,7 @@ auf eine asymmetrische Verteilung der Geburten über die Jahre hin.
 Wahrscheinlich gibt es wenige Ausreißer mit geburtenstarken Jahrgängen.
 ````
 
-````{admonition} Übung 4.1 - Teilaufgabe c)
+````{admonition} Übung 4.1 - Teilaufgabe d)
 :class: miniexercise
 Visualisieren Sie die Anzahl der männlichen und weiblichen Lebendgeburten pro
 Jahr als Scatterplot. Beschriften Sie auch die Achsen und setzen Sie einen
