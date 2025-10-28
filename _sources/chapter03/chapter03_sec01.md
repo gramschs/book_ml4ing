@@ -166,7 +166,7 @@ Offensichtlich sind die gespeicherten Werte Integer. Die Zusatzinformation
 :class: miniexercise 
 Erzeugen Sie ein Series-Objekt mit den Wochentagen als Index. Verwenden Sie
 dabei nur die Werktage und speichern Sie, wie viele Stunden Sie an diesem Tag
-schlafen (nicht die Vorlesungsstunden). Welchen Datentyp haben die Elemente?
+schlafen. Welchen Datentyp haben die Elemente?
 ```
 
 ```{code-cell} ipython3
