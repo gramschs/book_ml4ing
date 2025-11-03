@@ -274,7 +274,7 @@ Es gibt keine Ausreißer, der Median ist ungefähr mittig zwischen Q1 und Q3.
 ````{admonition} Übung 4.2 - Teilaufgabe d)
 :class: miniexercise
 
-Visualisieren Sie den Stromverbrauch der drei relvanten Sektoren Industrie,
+Visualisieren Sie den Stromverbrauch der drei relevanten Sektoren Industrie,
 Verkehr und Haushalte abhängig vom Jahr in einem gemeinsamen Scatterplot. Setzen
 Sie einen Titel und beschriften Sie auch die Achsen.
 
