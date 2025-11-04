@@ -17,8 +17,8 @@ kernelspec:
 
 Daten für die Übungen:
 
-* [12612-0001_de.csv](https://nextcloud.frankfurt-university.de/s/ddfDzAAnJtJ4FZQ)
-* [stromverbrauch_hessen.csv](https://nextcloud.frankfurt-university.de/s/bpZ8TZrzafKqAxq)
+* [12612-0001_de.csv](https://nextcloud.frankfurt-university.de/s/bpZ8TZrzafKqAxq)
+* [stromverbrauch_hessen.csv](https://nextcloud.frankfurt-university.de/s/ddfDzAAnJtJ4FZQ)
 
 ````{admonition} Übung 4.1 - Teilaufgabe a)
 :class: miniexercise
