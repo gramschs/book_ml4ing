@@ -187,7 +187,7 @@ Es gibt 11.793 Autos in dieser Preisklasse.
 Wichtig: Die Klammern um die einzelnen Bedingungen sind notwendig!
 ````
 
-## Gruppieren
+## Daten gruppieren
 
 Eine Filterung nach Kilometerstand ermöglicht es uns, die Autos in zwei
 Datensätze zu teilen: Autos mit bis zu 200000 km Laufleistung und jene mit mehr
