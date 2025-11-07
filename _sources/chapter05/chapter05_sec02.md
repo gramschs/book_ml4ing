@@ -53,6 +53,7 @@ Länge der Rechtecke repräsentativ für den Zahlenwert dieser Kategorie. Diese
 Variante wird **Balkendiagramm** genannt.
 
 ```{admonition} Was ist ... ein Barplot?
+:class: note
 Ein Barplot ist ein Diagramm, das kategoriale Daten visualisiert. Jede Kategorie
 wird durch die Höhe oder Länge eines Rechtecks repräsentiert, das den
 zugehörigen Wert darstellt.

@@ -230,7 +230,7 @@ können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
 wird der **Modus** oder **Modalwert** bestimmt.
 
 ```{admonition} Was ist ... der Modus (Modalwert)?
-:class: notes
+:class: note
 Der Modus, auch Modalwert genannt, ist der häufigste auftretende Wert in dem
 Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
 für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.

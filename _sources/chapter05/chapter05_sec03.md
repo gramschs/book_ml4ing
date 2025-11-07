@@ -112,6 +112,7 @@ ist. In dieser Vorlesung benutzen wir bool-Werte hauptsächlich zum Filtern von
 Daten.
 
 ```{admonition} Welche Vergleichsoperatoren kennt Python
+:class: note
 In Python können die mathematischen Vergleichsoperatoren in ihrer gewohnten
 Schreibweise verwendet werden:
 * `<` kleiner als
