@@ -15,12 +15,11 @@ kernelspec:
 # 5.1 Was sind kategoriale Daten?
 
 In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
-Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt.
-Unsere statistischen Analysen und Visualisierungen konzentrierten sich
-hauptsächlich auf numerische Werte wie den Kilometerstand. Dies liegt daran,
-dass es für Daten wie Farben oder Automarken keine Rechenoperationen gibt. In
-diesem Kapitel werden wir uns intensiver mit diesen nicht-numerischen Daten
-auseinandersetzen.
+Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt. In
+den vorherigen Kapiteln konzentrierten sich unsere Analysen hauptsächlich auf
+numerische Werte wie den Kilometerstand. Dies liegt daran, dass es für Daten wie
+Farben oder Automarken keine Rechenoperationen gibt. In diesem Kapitel werden
+wir uns intensiver mit diesen nicht-numerischen Daten auseinandersetzen.
 
 ## Lernziele
 
@@ -45,8 +44,9 @@ Die Methode `.describe()` in Pandas bietet eine schnelle Möglichkeit, einen
 Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
 Interessanterweise berücksichtigt die `describe()`-Methode nur numerische Werte
 (also Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch
-die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Wer würde
-schon ein Auto in Pink bevorzugen?
+die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Die Farbe
+eines Autos beispielsweise beeinflusst häufig die Kaufentscheidung und damit den
+Preis.
 
 Bevor wir uns den nicht-numerischen Daten widmen, vertiefen wir unser
 Verständnis für numerische Daten. Diese werden oft auch als **metrische oder
@@ -109,7 +109,7 @@ Ein gutes Beispiel für kategoriale Daten ist die Farbe eines Autos. Oft gibt de
 Datentyp einer bestimmten Eigenschaft in einem Datensatz bereits Hinweise
 darauf, ob es sich um kategoriale oder numerische Daten handelt.
 
-Der obige Ausführung der Anweisung `data.info()` hat gezeigt, dass einige Daten
+Die obige Ausführung der Anweisung `data.info()` hat gezeigt, dass einige Daten
 als `objects` gespeichert sind, was oft auf kategoriale Daten hinweist. Ein
 Blick in die Spalte »Marke« gibt uns weitere Einblicke.
 
@@ -152,11 +152,13 @@ qualitative Daten.
 
 Diese Definition ist nicht präzise. Der Begriff 'begrenzte Anzahl' von Werten
 ist etwas schwammig. Sind damit 10 Kategorien gemeint oder 100 oder 1000? Welche
-Eigenschaften des Auto-Datensatzes sind kategorial?
+Eigenschaften des Auto-Datensatzes sind kategorial? In der Praxis spricht man
+von kategorialen Daten, wenn die Anzahl der Kategorien deutlich kleiner als die
+Anzahl der Datenpunkte ist (oft als Faustregel: < 5-10 % der Beobachtungen).
 
 ```{admonition} Mini-Übung
 :class: miniexercise
-Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen sie
+Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen Sie
 die Anzahl der einzigartigen Einträge dieser Eigenschaft.
 
 Tipp: Die Methode `.unique()` liefert ein sogenanntes NumPy-Array zurück, das
@@ -173,7 +175,10 @@ print(f'Die Spalte/Eigenschaft Modell hat {anzahl_einzigartige_werte} einzigarti
 
 Offensichtlich gibt es 561 einzigartige Werte für die Spalte/Eigenschaft Modell.
 
-Mit einer for-Schleife können wir auch alle Eigenschaften durchgehen, indem wir das Attribut `.columns` nutzen, in dem alle Spaltenüberschriften gespeichert sind. Damit betrachten wir natürlich auch die metrischen/quantitativen Eigenschaften.
+Mit einer for-Schleife können wir auch alle Eigenschaften durchgehen, indem wir
+das Attribut `.columns` nutzen, in dem alle Spaltenüberschriften gespeichert
+sind. Damit betrachten wir natürlich auch die metrischen/quantitativen
+Eigenschaften.
 
 ```python
 for col in data.columns:
@@ -217,6 +222,10 @@ von Datentypen:
 * ungeordnete kategoriale Daten und
 * geordnete kategoriale Daten.
 
+Ungeordnete kategoriale Daten werden in der Statistik auch **nominalskalierte
+Daten** genannt, während die geordneten kategorialen Daten auch als
+**ordinalskalierte Daten** bezeichnet werden.
+
 Ein typisches Beispiel für ungeordnete kategoriale Daten sind die Farben der
 Autos. Es gibt keine natürliche Reihenfolge für Farben. Wir könnten die Farbe
 alphabetisch anordnen, doch sobald wir eine andere Sprache benutzen, wäre auch
@@ -225,7 +234,7 @@ Analysen heißt das, dass nur bestimmt werden kann, ob die Farbe eines Autos in
 eine bestimmte Kategorie fällt oder nicht. Entweder das Auto ist gelb oder es
 ist nicht gelb. Mathematisch gesehen können wir also nur auf Gleichheit oder
 Ungleichheit prüfen. Es gibt keine Vergleiche bzgl. der Reihenfolge und auch
-keine Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
+kein Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
 können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
 wird der **Modus** oder **Modalwert** bestimmt.
 
@@ -234,12 +243,15 @@ wird der **Modus** oder **Modalwert** bestimmt.
 Der Modus, auch Modalwert genannt, ist der häufigste auftretende Wert in dem
 Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
 für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.
+Ein Datensatz kann auch mehrere Modi haben, wenn mehrere Werte gleich häufig
+vorkommen.
 ```
 
 Pandas bietet eine Methode zur Bestimmung des Modus namens `.mode()`. Diese
 Methode funktioniert wieder nur für ein Pandas-Series-Objekt, so dass zuerst
 eine einzelne Spalte aus der Tabelle herausgeschnitten wird. Auf diese Spalte
-wird dann die Methode angewendet.
+wird dann die Methode angewendet. Gibt es mehrere Modi, so werden alle
+zurückgegeben.
 
 ```{code-cell}
 modus_farben = data['Farbe'].mode()
@@ -253,79 +265,44 @@ zählt die Anzahl an Autos mit einer bestimmten Farbe.
 data['Farbe'].value_counts()
 ```
 
-Bleiben noch die geordneten kategorialen Daten. Dazu inspizieren wir die
-einzigartigen Werte der Erstzulassung.
+## Der Mehrwert geordneter kategorialer Daten
+
+Was macht geordnete kategoriale Daten besonders? Bei ungeordneten kategorialen
+Daten wie Farben gibt es keine sinnvolle Reihenfolge. Bei geordneten
+kategorialen Daten wie Monaten dagegen schon:
 
 ```{code-cell}
-data['Erstzulassung'].unique()
+# Bei Farben: Sortierung ist willkürlich (alphabetisch)
+print("Farben alphabetisch:")
+print(data['Farbe'].value_counts())
+
+# Bei Monaten: Sortierung ist sinnvoll (chronologisch)
+print("\nMonate chronologisch:")
+print(data['Erstzulassung'].value_counts().sort_index())
 ```
 
-Offensichtlich verbergen sich hinter der Erstzulassung die Monate Januar bis
-Dezember des Jahres 2020. Diese haben eine natürliche Ordnung, Januar ist der
-erste Monat des Jahres und Dezember ist der letzte Monat des Jahres. Bei
-geordneten kategorialen Daten lässt sich ebenfalls der Modus (Modalwert)
-bestimmen.
+Jetzt können wir erkennen: Im ersten Quartal (01/2020, 02/2020, 03/2020) wurden
+deutlich mehr Autos zugelassen als im letzten Quartal. Diese Aussage setzt
+voraus, dass die Kategorien eine **Reihenfolge** haben.
 
-```{code-cell}
-data['Erstzulassung'].mode()
-```
+Bei Farben wäre die Aussage "Im ersten Drittel der Farben wurden mehr Autos
+verkauft" sinnlos, denn was ist das "erste Drittel" von Farben?
 
-Die meisten Autos wurden im Februar zugelassen. Wir können auch mit
-`.value_counts()` für jeden Monat die Anzahl der Zulassungen auszählen lassen.
-
-```{code-cell}
-data['Erstzulassung'].value_counts()
-```
-
-Insgesamt scheinen im ersten Quartal besonders viele Autos zugelassen zu werden.
-Dadurch, dass aber die Monate geordnet werden können, ist auch möglich den
-Median oder allgemein Quantile zu bestimmen. Allerdings kennt Pandas nicht die
-natürliche Reihenfolge der Monatsangaben 01/2020, 02/2020, 03/2020, usw. Wir
-ersetzen daher die Strings durch Integer, also '01/2020' --> 1, '02/2020' --> 2,
-usw. Diesen Vorgang nennt man in der Informatik **Kodierung**. Das Thema, wie
-kategoriale (qualitative Daten) am geschicktesten kodiert werden, wird uns noch
-intensiver beschäftigen. Jetzt gehen wir händisch vor und benutzen die
-`.replace()`-Methode von Pandas. Zunächst erstellen wir ein Dictionary mit den
-alten und neuen String-Werten. Aus `'01/2020'` wird beispielsweise `'1'`. Nach
-der Ersetzung mit `.replace()` wandeln wir die Strings noch mit der Methode
-`.astype('int')` in Integers um.
-
-```{code-cell}
-kodierung = {'01/2020': '1', '02/2020': '2', '03/2020': '3', '04/2020': '4', 
-'05/2020': '5', '06/2020': '6', '07/2020': '7', '08/2020': '8', '09/2020': '9',
-'10/2020': '10', '11/2020': '11', '12/2020': '12'}
-
-# Ersetzung der alten Datenwerte durch die neue Kodierung
-data['Erstzulassung'] = data['Erstzulassung'].replace(kodierung)
-
-# Umwandlung des Datentyps String in einen Integer
-data['Erstzulassung'] = data['Erstzulassung'].astype('int')
-
-# Anzeige, ob alles funktioniert hat
-data['Erstzulassung'].unique()
-```
-
-Jetzt können wir von Pandas den Median berechnen lassen, den die ganzen Zahlen
-von 1 bis 12 haben eine natürliche Reihenfolge. Der Median ist
-
-```{code-cell}
-data['Erstzulassung'].median()
-```
-
-Die Hälfte aller Autos wurde von Januar bis irgendwann im Juni zugelassen. Den
-genauen Stichtag im Juni können wir aufgrund fehlender Informationen über den
-Tag der Zulassung nicht ermitteln.
+Das ist der entscheidende Unterschied: Bei nominalen Daten können wir nur
+Häufigkeiten zählen. Bei ordinalen Daten können wir zusätzlich die Reihenfolge
+nutzen, um Aussagen wie 'im ersten Quartal' oder 'mehr als in der zweiten
+Hälfte' zu treffen.
 
 ## Zusammenfassung und Ausblick
 
 In diesem Kapitel haben wir uns mit dem Unterschied zwischen numerischen
 (metrischen bzw. quantitativen) und kategorialen (qualitativen) Daten
 beschäftigt. Dabei wird bei kategorialen Daten noch zwischen ungeordneten und
-geordneten Kategorien unterschieden. Abhängig von der Art der Daten können
+geordneten Kategorien unterschieden. Je nach Art der Daten können
 unterschiedliche statistische Kennzahlen erhoben werden. Bei ungeordneten
 kategorialen Daten kann nur der Modus (Modalwert) berechnet werden. Bei
 geordneten kategorialen Daten können zusätzlich noch Quantile (insbesondere der
-Median) berechnet werden. Nur bei numerischen (metrischen bzw. qualitativen)
+Median) berechnet werden. Nur bei numerischen (metrischen bzw. quantitativen)
 Daten ist es möglich, den Mittelwert und zusätzlich die Streuungsmaße
 (Spannbreite, Standardabweichung und Interquartilsabstand) zu bestimmen. Im
 nächsten Kapitel werden wir uns mit der Visualisierung der kategorialen Daten

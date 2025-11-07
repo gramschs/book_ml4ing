@@ -35,7 +35,7 @@ Ermitteln Sie die statistischen Kennzahlen und visualisieren Sie die
 statistischen Kennzahlen als Boxplot. Ist es sinnvoll, einen gemeinsamen Boxplot
 zu verwenden? Interpretieren Sie die statistischen Kennzahlen.
 
-Visualisieren Sie die drei Eigenschaften als Sctterplots. Welche
+Visualisieren Sie die drei Eigenschaften als Scatterplots. Welche
 Schlussfolgerungen ziehen Sie aus den Plots?
 
 Visualisieren Sie drei Eigenschaften als Scattermatrix. Gibt es Abhängigkeiten?
@@ -112,7 +112,7 @@ fig.show()
 Die Temperatur ist gleichmäßig verteilt, der Median liegt mittig zwischen Q1 und
 Q3 und passt auch sehr gut zum Mittelwert 10.5 Grad Celsius.
 
-Als nächstes visualisieren wir dden zeitlichen Verlauf der drei Eigenschaften.
+Als nächstes visualisieren wir den zeitlichen Verlauf der drei Eigenschaften.
 
 ```python
 fig = px.scatter(data, y = 'wind_generation_actual')
@@ -128,8 +128,8 @@ fig.show()
 ```
 
 Die Windkapazität wurde seit Januar 2017 beständig ausgebaut. Im Januar 2017
-betrug sie nur 37149 MW, im Dezember 2020 waren es 50542 MW. Das ist eine
-Steigerung um 73 %.
+betrug sie nur 37149 MW, im Dezember 2019 waren es 50542 MW. Das ist eine
+Steigerung um 36 %.
 
 ```python
 fig = px.scatter(data, y = 'temperature')
@@ -148,7 +148,7 @@ fig.show()
 ```
 
 Bei der Kombination wind_generation_actual - wind_capacity ist kein funktionaler
-Zusammenhang erkennbar. Bei der Kombination wind_capacity - tmeperature sieht es
+Zusammenhang erkennbar. Bei der Kombination wind_capacity - temperature sieht es
 nach einem Zusammenhang aus, aber die Temperatur kann nicht vom Ausbau der
 Infrastruktur in Deutschland abhängen und umgekehrt. Bleibt noch die Kombination
 temperature - wind_generation_actual. Scheinbar wird bei Temperaturen von
@@ -163,11 +163,11 @@ weniger als die Hälfte des Maximalwertes erzeugt.
 Importieren Sie den Datensatz 'kaggle_ikea.csv' und verschaffen Sie sich einen
 Überblick über die Daten (Quelle: [Kaggle](https://www.kaggle.com/datasets/thedevastator/ikea-product)).
 
-In welche verschiedenen Katgorien (category) sind die IKEA-Artikel unterteilt?
+In welche verschiedenen Kategorien (category) sind die IKEA-Artikel unterteilt?
 Erstellen Sie für jede Kategorie einen Boxplot der Verkaufspreise und ziehen Sie 
 Schlussfolgerungen daraus.
 
-Lassen Sie für jede Katgeorie den durschschnittlichen Preis dieser Kategorie als
+Lassen Sie für jede Kategorie den durchschnittlichen Preis dieser Kategorie als
 Barplot visualisieren. Lesen Sie danach ab: welche Kategorie hat den geringsten
 Durchschnittspreis?
 
@@ -236,7 +236,7 @@ Preis 9585 EUR ist. Vielleicht ist das ein Artikel, der sowohl als Bett als auch
 Sofa kategorisiert wurde, ein Schlafsofa zum Beispiel. 
 
 ```python
-fig = px.bar(categories['price'].mean(), title='Durschnittspreis IKEA',
+fig = px.bar(categories['price'].mean(), title='Durchnittspreis IKEA',
              labels={'value': 'Preis in Euro', 'variable': 'Legende'})
 fig.show()
 ```
@@ -274,9 +274,17 @@ print(most_expensive_children_furniture['link'])
 
 ```{admonition} Übung 5.3
 :class: miniexercise
-Lesen Sie die csv-Datei 'statistic_id1301764_formel1-fahrerwertung-saison-2022.csv' (Formel 1 Fahrerwertung, Stand 30.10.2022, Quelle: https://de.statista.com/statistik/daten/studie/1301764/umfrage/formel-1-wm-stand/) ein. 
+Lesen Sie die csv-Datei
+'statistic_id1301764_formel1-fahrerwertung-saison-2022.csv' (Formel 1
+Fahrerwertung, Stand 30.10.2022, Quelle:
+https://de.statista.com/statistik/daten/studie/1301764/umfrage/formel-1-wm-stand/)
+ein. 
 
-Führen Sie eine statistische Datenanalyse inklusive Visualisierung durch. Visualisieren Sie zusätzlich die Fahrerwertung.
+Führen Sie eine statistische Datenanalyse inklusive Visualisierung durch.
+Visualisieren Sie zusätzlich die Fahrerwertung.
+
+Hinweis: Diese Übung ist bewusst offener formuliert. Nutzen Sie die Methoden aus
+den vorherigen Kapiteln bzw. Übungen selbstständig.
 ```
 
 ````{admonition} Lösung
