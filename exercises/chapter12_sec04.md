@@ -261,7 +261,7 @@ data.info()
 
 Der Datensatz enthält 768 Einträge. Alle Einträge sind vorhanden und numerisch.
 Die beiden Eigenschaften BMI und DiabetesPedigreeFunction enthalten Floats, die
-anderen Eigenschaften werden durch Integers repräsentiert. 
+anderen Eigenschaften werden durch Integer repräsentiert. 
 
 Als nächstes ermitteln wir die statistischen Kennzahlen.
 

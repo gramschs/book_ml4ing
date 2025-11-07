@@ -43,7 +43,7 @@ data.info()
 
 Der Datensatz zur Weinqualität enthält 1599 Einträge mit 12 Eigenschaften. Die
 ersten 11 Eigenschaften werden durch Floats repräsentiert, nur die letzte
-Eigenschaft 'Qualität' wird durch Integers repräsentiert. Alle Einträge sind
+Eigenschaft 'Qualität' wird durch Integer repräsentiert. Alle Einträge sind
 gültig.
 
 ```{code-cell} ipython3

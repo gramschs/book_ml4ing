@@ -79,7 +79,7 @@ daten.head()
 
 Der Datensatz enthält 53940 Diamanten mit 11 Attributen/Eigenschaften. Alle
 Einträge sind gültige Einträge. Die Eigenschaften 'Unnamed: 0' und 'Preis' sind
-Integers. Die Eigenschaften 'Karat', 'Tiefe', 'Tafel', 'x', 'y' und 'z' sind
+Integer. Die Eigenschaften 'Karat', 'Tiefe', 'Tafel', 'x', 'y' und 'z' sind
 Floats. Die Eigenschaften 'Schliff', 'Farbe' und 'Reinheit' sind Objekte.
 
 Der Datensatz enthält nur gültige Werte, aber sollte dennoch bereinigt werden,

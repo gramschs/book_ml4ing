@@ -57,7 +57,7 @@ Die Daten sind für jedes Merkmal vollständig. In jeder Spalte gibt es 768 non-
 3. Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und
    welche sind kategorial?
 
-Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integers. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
+Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integer. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
 
 4. Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen
    Daten. Visualisieren Sie anschließend die statistischen Merkmale mit

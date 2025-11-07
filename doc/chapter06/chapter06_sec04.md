@@ -65,7 +65,7 @@ sind kategorial?
 
 ````{admonition} Lösung
 :class: minisolution, toggle
-Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integers. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
+Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
 
 ```python
 daten.head()
@@ -271,7 +271,7 @@ sind kategorial?
 ````{admonition} Lösung
 :class: minisolution, toggle
 
-Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integers. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
+Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integer. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
 ````
 
 ```{admonition} Statistik

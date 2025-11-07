@@ -43,7 +43,7 @@ In den bisherigen Kapiteln lag unser Fokus auf den Verkaufspreisen von Autos.
 Die Methode `.describe()` in Pandas bietet eine schnelle Möglichkeit, einen
 Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
 Interessanterweise berücksichtigt die `describe()`-Methode nur numerische Werte
-(also Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch
+(also Zahlen wie Integer und Floats) für die Auswertung. Dennoch bestimmen auch
 die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Die Farbe
 eines Autos beispielsweise beeinflusst häufig die Kaufentscheidung und damit den
 Preis.
@@ -83,7 +83,7 @@ bei anderen Eigenschaften ebenfalls einen metrischen Datentyp erwarten?
 
 ```{admonition} Lösung
 :class: minisolution, toggle
-Das Jahr und der Preis (Euro) sind ganze Zahlen (Integers). Die Leistung der
+Das Jahr und der Preis (Euro) sind ganze Zahlen (Integer). Die Leistung der
 Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
 oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
 repräsentiert. Das hätte man auch für den Verbrauch in Spalte 10 oder 11

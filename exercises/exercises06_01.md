@@ -61,7 +61,7 @@ Die Daten sind vollständig. Für jedes Merkmal werden 183 non-null Einträge an
 
 +++
 
-Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integers. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
+Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
 
 ```{code-cell} ipython3
 daten.head()

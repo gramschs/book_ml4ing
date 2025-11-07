@@ -43,7 +43,7 @@ Kilometerstand. Es gibt jedoch weitere Merkmale, die die Kaufentscheidung
 beeinflussen, wie der Kraftstofftyp (Diesel oder Benzin) und die Marke des
 Autos. Diese würden wir ebenfalls gerne in die Prognose des Preises einfließen
 lassen. Dazu müssen die kategorialen Daten, die in der Regel durch den Datentyp
-String gekennzeichnet sind, vorab in Integers oder Floats umgewandelt werden. Je
+String gekennzeichnet sind, vorab in Integer oder Floats umgewandelt werden. Je
 nachdem, ob die kategorialen Daten geordnet oder ungeordnet sind, gibt es
 verschiedene Vorgehensweisen, wie wir uns im Folgenden anhand eines Beispiels
 erarbeiten.
@@ -86,7 +86,7 @@ daten['Getriebe'].unique()
 ```
 
 Es gibt nur zwei Kategorien: Automatik und Schaltgetriebe. Diese beiden Werte
-wollen wir durch Integers ersetzen:
+wollen wir durch Integer ersetzen:
 
 - Automatik --> 0 und
 - Schaltgetriebe --> 1.
@@ -104,7 +104,7 @@ getriebe_kodierung = {
 ```
 
 Dann verwenden wir `replace()`, um die Ersetzung vorzunehmen. Zuletzt wandeln
-wir die Strings `'0'` und `'1'` noch mit der Methode `astype()` in Integers um:
+wir die Strings `'0'` und `'1'` noch mit der Methode `astype()` in Integer um:
 
 ```{code-cell}
 daten['Getriebe'] = daten['Getriebe'].replace(getriebe_kodierung)
@@ -125,7 +125,7 @@ daten['Zustand'].unique()
 Die vier Zustände haben eine Ordnung, denn ein Neuwagen ist wertvoller als ein
 Jahreswagen. Der Jahreswagen wiederum ist im Allgmeinen wertvoller als der junge
 Gebrauchtwagen. Am wenigsten wertvoll ist der Gebrauchtwagen. Durch diese
-Ordnung ist es sinnvoll, beim Kodieren der Zustände durch Integers die Ordnung
+Ordnung ist es sinnvoll, beim Kodieren der Zustände durch Integer die Ordnung
 beizubehalten. Ob wir jetzt die 0 für den Neuwagen vergeben und die 3 für den
 Gebrauchtwagen oder umgekehrt, ist Geschmackssache.
 
@@ -154,7 +154,7 @@ daten['Farbe'].unique()
 ```
 
 14 verschiedene Farben haben die Autos in dem Datensatz. Es wäre jedoch falsch,
-nun Integers von 0 bis 13 zu vergeben, denn das würde eine Ordnung der Farben
+nun Integer von 0 bis 13 zu vergeben, denn das würde eine Ordnung der Farben
 voraussetzen, die es nicht gibt. Wir verwenden daher das Verfahren der
 **One-Hot-Kodierung**. Anstatt einer Spalte mir den Farben führen wir 14 neue
 Spalten mit den Farben 'grau', 'grün', 'schwarz', 'blau', usw. ein. Wenn ein
