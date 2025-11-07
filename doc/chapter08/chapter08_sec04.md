@@ -294,7 +294,7 @@ data = pd.read_csv('statistic_id226994_korrigiert.csv')
 data.info()
 ```
 
-Der Datensatz enthält 32 Zeilen und zwei Spalten. Das Jahr wird durch Integers repräsentiert, die Arbeitslosenzahl durch Floats.
+Der Datensatz enthält 32 Zeilen und zwei Spalten. Das Jahr wird durch Integer repräsentiert, die Arbeitslosenzahl durch Floats.
 
 ```python
 einzigartige_jahre = len(data['Jahr'].unique())
