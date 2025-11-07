@@ -138,7 +138,7 @@ balkendiagramm_hafen.show()
 6. Trainieren Sie mit den numerischen Merkmalen einen Entscheidungsbaum/Decision Tree.
 
 ```{code-cell} ipython3
-X = daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner',	'Anzahl_Eltern_Kinder',	'Ticketpreis']]
+X = daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder', 'Ticketpreis']]
 y = daten['ueberlebt']
 
 from sklearn.tree import DecisionTreeClassifier
@@ -173,7 +173,7 @@ finales_modell = DecisionTreeClassifier(max_depth=2)
 finales_modell.fit(X,y)
 
 plot_tree(finales_modell,
-    feature_names=['Klasse', 'Alter', 'Anzahl_Geschwister_Partner',	'Anzahl_Eltern_Kinder',	'Ticketpreis'],
+    feature_names=['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder', 'Ticketpreis'],
     class_names=['nicht ueberlebt', 'ueberlebt']);
 ```
 
