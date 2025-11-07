@@ -63,7 +63,7 @@ data = pd.read_csv('data/12612-0001_de.csv', skiprows=5, skipfooter=4, index_col
 data.info()
 ```
 
-Der Datensatz enthält 3 Spalten: männlich, weiblich und insgesamt. Jede Spalte enthält 73 gültige Einträge. Jede Spalte enthält Integers.
+Der Datensatz enthält 3 Spalten: männlich, weiblich und insgesamt. Jede Spalte enthält 73 gültige Einträge. Jede Spalte enthält Integer.
 
 ```python
 data.describe()

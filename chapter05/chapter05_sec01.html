@@ -510,6 +510,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-numerische-daten">Was wir bisher hatten: numerische Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-numerischen-daten-kategoriale-daten">Das Gegenteil von numerischen Daten: kategoriale Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#der-mehrwert-geordneter-kategorialer-daten">Der Mehrwert geordneter kategorialer Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
             </nav>
@@ -525,12 +526,11 @@
   <section class="tex2jax_ignore mathjax_ignore" id="was-sind-kategoriale-daten">
 <h1>5.1 Was sind kategoriale Daten?<a class="headerlink" href="#was-sind-kategoriale-daten" title="Link to this heading">#</a></h1>
 <p>In unserem bisherigen Beispiel zu den Autoverkaufspreisen haben wir bestimmte
-Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt.
-Unsere statistischen Analysen und Visualisierungen konzentrierten sich
-hauptsächlich auf numerische Werte wie den Kilometerstand. Dies liegt daran,
-dass es für Daten wie Farben oder Automarken keine Rechenoperationen gibt. In
-diesem Kapitel werden wir uns intensiver mit diesen nicht-numerischen Daten
-auseinandersetzen.</p>
+Eigenschaften der Autos, wie die Marke oder die Farbe, nicht berücksichtigt. In
+den vorherigen Kapiteln konzentrierten sich unsere Analysen hauptsächlich auf
+numerische Werte wie den Kilometerstand. Dies liegt daran, dass es für Daten wie
+Farben oder Automarken keine Rechenoperationen gibt. In diesem Kapitel werden
+wir uns intensiver mit diesen nicht-numerischen Daten auseinandersetzen.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
@@ -555,9 +555,10 @@ können diesen mit der Methode <strong>.mode()</strong> bestimmen lassen.</p></l
 Die Methode <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> in Pandas bietet eine schnelle Möglichkeit, einen
 Überblick über die statistischen Kennzahlen eines Datensatzes zu erhalten.
 Interessanterweise berücksichtigt die <code class="docutils literal notranslate"><span class="pre">describe()</span></code>-Methode nur numerische Werte
-(also Zahlen wie Integers und Floats) für die Auswertung. Dennoch bestimmen auch
-die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Wer würde
-schon ein Auto in Pink bevorzugen?</p>
+(also Zahlen wie Integer und Floats) für die Auswertung. Dennoch bestimmen auch
+die nicht-numerischen Eigenschaften eines Autos den Verkaufspreis. Die Farbe
+eines Autos beispielsweise beeinflusst häufig die Kaufentscheidung und damit den
+Preis.</p>
 <p>Bevor wir uns den nicht-numerischen Daten widmen, vertiefen wir unser
 Verständnis für numerische Daten. Diese werden oft auch als <strong>metrische oder
 quantitative Daten</strong> bezeichnet.</p>
@@ -615,7 +616,7 @@ bei anderen Eigenschaften ebenfalls einen metrischen Datentyp erwarten?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Das Jahr und der Preis (Euro) sind ganze Zahlen (Integers). Die Leistung der
+<p>Das Jahr und der Preis (Euro) sind ganze Zahlen (Integer). Die Leistung der
 Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
 oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
 repräsentiert. Das hätte man auch für den Verbrauch in Spalte 10 oder 11
@@ -639,7 +640,7 @@ definiert. Ein weiterer Begriff für kategoriale Daten ist <strong>qualitative D
 Ein gutes Beispiel für kategoriale Daten ist die Farbe eines Autos. Oft gibt der
 Datentyp einer bestimmten Eigenschaft in einem Datensatz bereits Hinweise
 darauf, ob es sich um kategoriale oder numerische Daten handelt.</p>
-<p>Der obige Ausführung der Anweisung <code class="docutils literal notranslate"><span class="pre">data.info()</span></code> hat gezeigt, dass einige Daten
+<p>Die obige Ausführung der Anweisung <code class="docutils literal notranslate"><span class="pre">data.info()</span></code> hat gezeigt, dass einige Daten
 als <code class="docutils literal notranslate"><span class="pre">objects</span></code> gespeichert sind, was oft auf kategoriale Daten hinweist. Ein
 Blick in die Spalte »Marke« gibt uns weitere Einblicke.</p>
 <div class="cell docutils container">
@@ -727,10 +728,12 @@ qualitative Daten.</p>
 </div>
 <p>Diese Definition ist nicht präzise. Der Begriff ‘begrenzte Anzahl’ von Werten
 ist etwas schwammig. Sind damit 10 Kategorien gemeint oder 100 oder 1000? Welche
-Eigenschaften des Auto-Datensatzes sind kategorial?</p>
+Eigenschaften des Auto-Datensatzes sind kategorial? In der Praxis spricht man
+von kategorialen Daten, wenn die Anzahl der Kategorien deutlich kleiner als die
+Anzahl der Datenpunkte ist (oft als Faustregel: &lt; 5-10 % der Beobachtungen).</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Mini-Übung</p>
-<p>Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen sie
+<p>Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen Sie
 die Anzahl der einzigartigen Einträge dieser Eigenschaft.</p>
 <p>Tipp: Die Methode <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> liefert ein sogenanntes NumPy-Array zurück, das
 hier wie eine Liste benutzt werden kann. Die Python-Funktion <code class="docutils literal notranslate"><span class="pre">len()</span></code> kann die
@@ -743,7 +746,10 @@ Länge einer Liste, also die Anzahl der Elemente der Liste, bestimmen.</p>
 </pre></div>
 </div>
 <p>Offensichtlich gibt es 561 einzigartige Werte für die Spalte/Eigenschaft Modell.</p>
-<p>Mit einer for-Schleife können wir auch alle Eigenschaften durchgehen, indem wir das Attribut <code class="docutils literal notranslate"><span class="pre">.columns</span></code> nutzen, in dem alle Spaltenüberschriften gespeichert sind. Damit betrachten wir natürlich auch die metrischen/quantitativen Eigenschaften.</p>
+<p>Mit einer for-Schleife können wir auch alle Eigenschaften durchgehen, indem wir
+das Attribut <code class="docutils literal notranslate"><span class="pre">.columns</span></code> nutzen, in dem alle Spaltenüberschriften gespeichert
+sind. Damit betrachten wir natürlich auch die metrischen/quantitativen
+Eigenschaften.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="n">anzahl_einzigartige_werte</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Die Spalte/Eigenschaft </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1"> hat </span><span class="si">{</span><span class="n">anzahl_einzigartige_werte</span><span class="si">}</span><span class="s1"> einzigartige Werte.&#39;</span><span class="p">)</span>
@@ -784,6 +790,9 @@ von Datentypen:</p>
 <li><p>ungeordnete kategoriale Daten und</p></li>
 <li><p>geordnete kategoriale Daten.</p></li>
 </ul>
+<p>Ungeordnete kategoriale Daten werden in der Statistik auch <strong>nominalskalierte
+Daten</strong> genannt, während die geordneten kategorialen Daten auch als
+<strong>ordinalskalierte Daten</strong> bezeichnet werden.</p>
 <p>Ein typisches Beispiel für ungeordnete kategoriale Daten sind die Farben der
 Autos. Es gibt keine natürliche Reihenfolge für Farben. Wir könnten die Farbe
 alphabetisch anordnen, doch sobald wir eine andere Sprache benutzen, wäre auch
@@ -792,19 +801,22 @@ Analysen heißt das, dass nur bestimmt werden kann, ob die Farbe eines Autos in
 eine bestimmte Kategorie fällt oder nicht. Entweder das Auto ist gelb oder es
 ist nicht gelb. Mathematisch gesehen können wir also nur auf Gleichheit oder
 Ungleichheit prüfen. Es gibt keine Vergleiche bzgl. der Reihenfolge und auch
-keine Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
+kein Minimum oder Maximum. Auch sämtliche Rechenoperationen entfallen und daher
 können auch nicht Mittelwerte oder Streuungsmaße bestimmt werden. Stattdessen
 wird der <strong>Modus</strong> oder <strong>Modalwert</strong> bestimmt.</p>
 <div class="note admonition">
 <p class="admonition-title">Was ist … der Modus (Modalwert)?</p>
 <p>Der Modus, auch Modalwert genannt, ist der häufigste auftretende Wert in dem
 Datensatz. Er gehört zu den Lageparametern in der Statistik. Er existiert sowohl
-für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.</p>
+für ungeordnete und geordnete kategoriale Daten als auch für metrische Daten.
+Ein Datensatz kann auch mehrere Modi haben, wenn mehrere Werte gleich häufig
+vorkommen.</p>
 </div>
 <p>Pandas bietet eine Methode zur Bestimmung des Modus namens <code class="docutils literal notranslate"><span class="pre">.mode()</span></code>. Diese
 Methode funktioniert wieder nur für ein Pandas-Series-Objekt, so dass zuerst
 eine einzelne Spalte aus der Tabelle herausgeschnitten wird. Auf diese Spalte
-wird dann die Methode angewendet.</p>
+wird dann die Methode angewendet. Gibt es mehrere Modi, so werden alle
+zurückgegeben.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">modus_farben</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Farbe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
@@ -848,130 +860,82 @@ Name: count, dtype: int64
 </div>
 </div>
 </div>
-<p>Bleiben noch die geordneten kategorialen Daten. Dazu inspizieren wir die
-einzigartigen Werte der Erstzulassung.</p>
+</section>
+<section id="der-mehrwert-geordneter-kategorialer-daten">
+<h2>Der Mehrwert geordneter kategorialer Daten<a class="headerlink" href="#der-mehrwert-geordneter-kategorialer-daten" title="Link to this heading">#</a></h2>
+<p>Was macht geordnete kategoriale Daten besonders? Bei ungeordneten kategorialen
+Daten wie Farben gibt es keine sinnvolle Reihenfolge. Bei geordneten
+kategorialen Daten wie Monaten dagegen schon:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bei Farben: Sortierung ist willkürlich (alphabetisch)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Farben alphabetisch:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Farbe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># Bei Monaten: Sortierung ist sinnvoll (chronologisch)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Monate chronologisch:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;09/2020&#39;, &#39;06/2020&#39;, &#39;04/2020&#39;, &#39;12/2020&#39;, &#39;05/2020&#39;, &#39;10/2020&#39;,
-       &#39;02/2020&#39;, &#39;11/2020&#39;, &#39;08/2020&#39;, &#39;07/2020&#39;, &#39;03/2020&#39;, &#39;01/2020&#39;],
-      dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Offensichtlich verbergen sich hinter der Erstzulassung die Monate Januar bis
-Dezember des Jahres 2020. Diese haben eine natürliche Ordnung, Januar ist der
-erste Monat des Jahres und Dezember ist der letzte Monat des Jahres. Bei
-geordneten kategorialen Daten lässt sich ebenfalls der Modus (Modalwert)
-bestimmen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    02/2020
-Name: Erstzulassung, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die meisten Autos wurden im Februar zugelassen. Wir können auch mit
-<code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> für jeden Monat die Anzahl der Zulassungen auszählen lassen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Erstzulassung
-02/2020    1954
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Farben alphabetisch:
+Farbe
+schwarz    3612
+grau       3561
+weiß       3397
+blau       2442
+silber     2155
+rot        2044
+orange      418
+grün        290
+braun       238
+gelb        148
+beige       129
+bronze       47
+gold         36
+violett      29
+Name: count, dtype: int64
+
+Monate chronologisch:
+Erstzulassung
 01/2020    1934
+02/2020    1954
 03/2020    1892
-12/2020    1748
-11/2020    1522
-10/2020    1435
-07/2020    1432
-09/2020    1424
-05/2020    1383
 04/2020    1350
+05/2020    1383
 06/2020    1299
+07/2020    1432
 08/2020    1193
+09/2020    1424
+10/2020    1435
+11/2020    1522
+12/2020    1748
 Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<p>Insgesamt scheinen im ersten Quartal besonders viele Autos zugelassen zu werden.
-Dadurch, dass aber die Monate geordnet werden können, ist auch möglich den
-Median oder allgemein Quantile zu bestimmen. Allerdings kennt Pandas nicht die
-natürliche Reihenfolge der Monatsangaben 01/2020, 02/2020, 03/2020, usw. Wir
-ersetzen daher die Strings durch Integer, also ‘01/2020’ –&gt; 1, ‘02/2020’ –&gt; 2,
-usw. Diesen Vorgang nennt man in der Informatik <strong>Kodierung</strong>. Das Thema, wie
-kategoriale (qualitative Daten) am geschicktesten kodiert werden, wird uns noch
-intensiver beschäftigen. Jetzt gehen wir händisch vor und benutzen die
-<code class="docutils literal notranslate"><span class="pre">.replace()</span></code>-Methode von Pandas. Zunächst erstellen wir ein Dictionary mit den
-alten und neuen String-Werten. Aus <code class="docutils literal notranslate"><span class="pre">'01/2020'</span></code> wird beispielsweise <code class="docutils literal notranslate"><span class="pre">'1'</span></code>. Nach
-der Ersetzung mit <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> wandeln wir die Strings noch mit der Methode
-<code class="docutils literal notranslate"><span class="pre">.astype('int')</span></code> in Integers um.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kodierung</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;01/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;02/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;03/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;04/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> 
-<span class="s1">&#39;05/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;06/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;07/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;08/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;09/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span>
-<span class="s1">&#39;10/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;11/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;12/2020&#39;</span><span class="p">:</span> <span class="s1">&#39;12&#39;</span><span class="p">}</span>
-
-<span class="c1"># Ersetzung der alten Datenwerte durch die neue Kodierung</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">kodierung</span><span class="p">)</span>
-
-<span class="c1"># Umwandlung des Datentyps String in einen Integer</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
-
-<span class="c1"># Anzeige, ob alles funktioniert hat</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9,  6,  4, 12,  5, 10,  2, 11,  8,  7,  3,  1])
-</pre></div>
-</div>
-</div>
-</div>
-<p>Jetzt können wir von Pandas den Median berechnen lassen, den die ganzen Zahlen
-von 1 bis 12 haben eine natürliche Reihenfolge. Der Median ist</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;Erstzulassung&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Die Hälfte aller Autos wurde von Januar bis irgendwann im Juni zugelassen. Den
-genauen Stichtag im Juni können wir aufgrund fehlender Informationen über den
-Tag der Zulassung nicht ermitteln.</p>
+<p>Jetzt können wir erkennen: Im ersten Quartal (01/2020, 02/2020, 03/2020) wurden
+deutlich mehr Autos zugelassen als im letzten Quartal. Diese Aussage setzt
+voraus, dass die Kategorien eine <strong>Reihenfolge</strong> haben.</p>
+<p>Bei Farben wäre die Aussage “Im ersten Drittel der Farben wurden mehr Autos
+verkauft” sinnlos, denn was ist das “erste Drittel” von Farben?</p>
+<p>Das ist der entscheidende Unterschied: Bei nominalen Daten können wir nur
+Häufigkeiten zählen. Bei ordinalen Daten können wir zusätzlich die Reihenfolge
+nutzen, um Aussagen wie ‘im ersten Quartal’ oder ‘mehr als in der zweiten
+Hälfte’ zu treffen.</p>
 </section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>
 <p>In diesem Kapitel haben wir uns mit dem Unterschied zwischen numerischen
 (metrischen bzw. quantitativen) und kategorialen (qualitativen) Daten
 beschäftigt. Dabei wird bei kategorialen Daten noch zwischen ungeordneten und
-geordneten Kategorien unterschieden. Abhängig von der Art der Daten können
+geordneten Kategorien unterschieden. Je nach Art der Daten können
 unterschiedliche statistische Kennzahlen erhoben werden. Bei ungeordneten
 kategorialen Daten kann nur der Modus (Modalwert) berechnet werden. Bei
 geordneten kategorialen Daten können zusätzlich noch Quantile (insbesondere der
-Median) berechnet werden. Nur bei numerischen (metrischen bzw. qualitativen)
+Median) berechnet werden. Nur bei numerischen (metrischen bzw. quantitativen)
 Daten ist es möglich, den Mittelwert und zusätzlich die Streuungsmaße
 (Spannbreite, Standardabweichung und Interquartilsabstand) zu bestimmen. Im
 nächsten Kapitel werden wir uns mit der Visualisierung der kategorialen Daten
@@ -1048,6 +1012,7 @@ beschäftigen.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#was-wir-bisher-hatten-numerische-daten">Was wir bisher hatten: numerische Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#das-gegenteil-von-numerischen-daten-kategoriale-daten">Das Gegenteil von numerischen Daten: kategoriale Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kategoriale-daten-ungeordnet-oder-geordnet">Kategoriale Daten: ungeordnet oder geordnet?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#der-mehrwert-geordneter-kategorialer-daten">Der Mehrwert geordneter kategorialer Daten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammenfassung-und-ausblick">Zusammenfassung und Ausblick</a></li>
 </ul>
   </nav></div>

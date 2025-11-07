@@ -42,7 +42,7 @@ daten.info()
 
 Es liegen 222 Einträge vor und 4 Merkmale: Region, Code, Jahr, Population. Die
 ersten beiden Eigenschaften Region und Code sind Objects. Die Eigenschaften Jahr
-und Population sind Integers.
+und Population sind Integer.
 ````
 
 ```{admonition} Statistik der numerischen Daten

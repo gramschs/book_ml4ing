@@ -88,7 +88,7 @@ ausführen:
 ```
 
 Mit einer Operation verlassen wir aber bereits den Bereich der ganzen Zahlen,
-den Bereich der Integers. `25/5` ist wieder eine ganze Zahl, nicht jedoch
+den Bereich der Integer. `25/5` ist wieder eine ganze Zahl, nicht jedoch
 `25/3`. Damit sind wir bei den Fließkommazahlen. Auch hier wird üblicherweise
 der englische Begriff **Float** für **Fließkommazahl** verwendet.
 
