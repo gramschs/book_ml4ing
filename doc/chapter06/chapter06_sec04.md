@@ -32,9 +32,8 @@ Laden sie den Datensatz 'titanic_DE_cleaned.csv'.
 
 ### EDA Titanic
 
-Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
-Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
-auf die folgenden Frage an.
+Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
+Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.
 
 ```{admonition} Überblick über die Daten
 :class: miniexercise
@@ -65,7 +64,7 @@ sind kategorial?
 
 ````{admonition} Lösung
 :class: minisolution, toggle
-Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()`schauen wir uns die ersten fünf Zeilen an:
+Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()` schauen wir uns die ersten fünf Zeilen an:
 
 ```python
 daten.head()
@@ -93,7 +92,7 @@ Die statistischen Daten zu `'ueberlebt'` sind unplausibel. Auch wenn hier Intege
 
 Auf der Titanic gab es drei Preisklassen von 1 bis 3. Minimum und Maximum sind plausibel, aber dass 75 % der Passagiere in Klasse 1 (der teuersten Klasse) mitgereist sind, erscheint unwahrscheinlich.
 
-Beim Alter fällt auf, dass das minimale Alter 0.92 ist. Da Jahre normalerweise als ganze Zahlen angegeben werden, ist das ungewöhnlich, aber nicht unplausibel. Die älteste Person war 80 Jahre alt. Der Durchschnitt lag bei 35.6 Jahren und der Median bei 36. 75 % der Passagiere waren jünger als 47.5 Jahre. Es erscheint plausibel, das vor allem jüngere Passagiere die Strapazen der Schifffahrt auf sich genommen haben.  
+Beim Alter fällt auf, dass das minimale Alter 0.92 ist. Da Jahre normalerweise als ganze Zahlen angegeben werden, ist das ungewöhnlich, aber nicht unplausibel. Die älteste Person war 80 Jahre alt. Der Durchschnitt lag bei 35.6 Jahren und der Median bei 36. 75 % der Passagiere waren jünger als 47.5 Jahre. Es erscheint plausibel, dass vor allem jüngere Passagiere die Strapazen der Schifffahrt auf sich genommen haben.  
 
 50 % der Passagiere reisten alleine, nur sehr wenige in Familien.
 
@@ -108,7 +107,7 @@ kastendiagramm = px.box(daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 
 kastendiagramm.show()
 ```
 
-Beim Ticketpreis gibt es deutiche Ausreißer, bei den anderen Merkmalen gibt es vereinzelte Ausreißer.
+Beim Ticketpreis gibt es deutliche Ausreißer, bei den anderen Merkmalen gibt es vereinzelte Ausreißer.
 ````
 
 ```{admonition} Analyse der kategorialen Daten
@@ -168,6 +167,8 @@ from sklearn.tree import DecisionTreeClassifier
 entscheidungsbaum =  DecisionTreeClassifier()
 entscheidungsbaum.fit(X,y)
 entscheidungsbaum.score(X,y)
+score = entscheidungsbaum.score(X,y)
+print(f'Score: {score:.2f}')
 ```
 
 ```python
@@ -208,7 +209,7 @@ plot_tree(finales_modell,
     class_names=['nicht ueberlebt', 'ueberlebt']);
 ```
 
-Zunächst einmal erscheint ein jüngeres Alter die Überlebenschance erhöht zu haben. Danach wirkt es so, also ob der Ticketpreis eine wichtige Rolle gepsielt haben könnte.
+Zunächst einmal scheint ein jüngeres Alter die Überlebenschance erhöht zu haben. Danach wirkt es so, also ob der Ticketpreis eine wichtige Rolle gespielt haben könnte.
 ````
 
 ## Aufgabe 6.2
@@ -234,9 +235,8 @@ Enthalten ist auch, ob bei der Person Diabetes festgestellt wurde oder nicht.
 
 ### EDA Diabetes
 
-Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
-Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
-auf die folgenden Frage an.
+Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
+Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.
 
 ```{admonition} Überblick
 :class: miniexercise
@@ -298,16 +298,16 @@ Der Glucose-Wert reicht von 0 bis 199. An der Stelle müsste mit einem Mediziner
 Rücksprache gehalten werden, ob ein Glucose-Wert von 0 plausibel ist.
 
 Beim BloodPressure, also den Blutdruck, ist der minimale Wert von 0 jedoch
-unplausibel. Eine PErson mit einem Blutdruck von 0 ist tot.
+unplausibel. Eine Person mit einem Blutdruck von 0 ist tot. Diese Null-Werte sind wahrscheinlich fehlende Messwerte, die fälschlicherweise als 0 kodiert wurden. In einer vollständigen Datenanalyse müssten diese Werte entweder durch sinnvolle Methoden ersetzt oder die betroffenen Zeilen entfernt werden.
 
 SkinThickness kann erneut nur von Medizinern korrekt eingeordnet werden. Ob eine
 minimale SkinThickness von 0 und eine maximale SkinThickness von 99 sinnvolle
 Werte darstellen, können Nichtmediziner nicht sinnvoll beurteilen.
 
-Auch der minimale Insulin-Wert von 0 wirkt seltsam sowie der Body-Maß-Index BMI.
+Auch der minimale Insulin-Wert von 0 sowie der Body-Maß-Index BMI wirken seltsam.
 Ein BMI von 0 kann nicht sein, denn beim BMI wird das Gewicht einer Person durch
 die quadrierte Körpergröße geteilt. Ein BMI von 0 bedeutet ein Gewicht von 0,
-was nicht sein kann.
+was nicht sein kann. Wahrscheinlich wurden hier wiederum Werte nicht erfasst.
 
 Die DiabetesPedigree-Funktion können wir ohne medizinisches Fachwissen nicht
 bewerten.
@@ -411,8 +411,8 @@ for baumtiefe in [2, 3, 4]:
     print(f'Score für eine Baumtiefe von {baumtiefe}: {score: .2f}')
 ```
 
-Wieder gibt es kaum Unetrschiede im Score für die verschiedenen Baumtiefen. Wir
-betrachten nun ein Modell das Baumtiefe 2.
+Wieder gibt es kaum Unterschiede im Score für die verschiedenen Baumtiefen. Wir
+betrachten nun ein Modell der Baumtiefe 2.
 
 ```python
 finales_modell = DecisionTreeClassifier(max_depth=2)
@@ -424,7 +424,7 @@ plot_tree(finales_modell,
     class_names=['kein Diabetes', 'Diabetes']);
 ```
 
-Als erstes Entscheidungskriteriujm wird der Glucose-Wert benutzt. Je nachdem, ob
+Als erstes Entscheidungskriterium wird der Glucose-Wert benutzt. Je nachdem, ob
 der Glucose-Wert kleiner 127.5 ist oder nicht, wird danach das Alter (jünger als
 28.5 bedeutet dann kein Diabetes) oder der BMI (kleiner als 29.95 kein Diabetes)
 als Entscheidungsmerkmal verwendet.
