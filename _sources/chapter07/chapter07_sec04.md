@@ -31,7 +31,7 @@ es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: minisolution, toggle
 
 ```python
 import pandas as pd
