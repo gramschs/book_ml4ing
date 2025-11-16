@@ -16,7 +16,7 @@ kernelspec:
 
 Entscheidungsbäume bieten viele Vorteile, haben aber auch Nachteile, die wir in
 diesem Kapitel diskutieren werden. Darüber hinaus lernen wir Methoden kennen,
-bei Entscheidungsbäumen diese Nachteile zu reduzieren.
+um bei Entscheidungsbäumen diese Nachteile zu reduzieren.
 
 ## Lernziele
 
@@ -78,7 +78,6 @@ import pandas as pd
 
 # Transformation der Merkmalswerte in einen positiven Bereich und 
 # Umwandlung in eine Integer-Matrix
-X_array = X_array + 1.2 * np.abs(np.min(X_array))
 X_array = X_array + 1.2 * np.abs(np.min(X_array))
 X_array[:,0] = np.ceil(X_array[:,0] * 30000)
 X_array[:,1] = np.ceil(X_array[:,1] * 10000)
@@ -159,19 +158,18 @@ das Zurechtschneiden der Entscheidungsbäume.
 
 ## Zurechtschneiden von Entscheidungsbäumen
 
-Eine effektive Strategie zur Bekämpfung des Overfitting-Problems bei
-Entscheidungsbäumen ist das sogenannte **Pruning**, also das Beschneiden des
-Baumes. Pruning hilft, die Komplexität des Modells zu reduzieren, indem weniger
-relevante Entscheidungszweige nach bestimmten Kriterien entfernt werden. Im
-Kontext unseres Autohaus-Beispiels würde dies bedeuten, dass
-Entscheidungszweige, die beispielsweise aufgrund von Ausreißern entstanden sind,
-abgeschnitten werden. Dies könnte beispielsweise den zuvor erwähnten dünnen
-blauen Streifen bei einem Kilometerstand von ungefähr 97000 km betreffen, der
-wahrscheinlich durch einen Ausreißer entstanden ist. Durch das Entfernen solcher
-spezifischen Anpassungen kann der Entscheidungsbaum besser verallgemeinern und
-wird robuster gegenüber neuen, unbekannten Daten. Das Ergebnis ist ein Modell,
-das eine bessere Balance zwischen Anpassung an die Trainingsdaten und
-Generalisierungsfähigkeit aufweist.
+Eine effektive Strategie zur Bekämpfung des Overfittings bei Entscheidungsbäumen
+ist das sogenannte **Pruning**, also das Beschneiden des Baumes. Pruning hilft,
+die Komplexität des Modells zu reduzieren, indem weniger relevante
+Entscheidungszweige nach bestimmten Kriterien entfernt werden. Im Kontext
+unseres Autohaus-Beispiels würde dies bedeuten, dass Entscheidungszweige, die
+beispielsweise aufgrund von Ausreißern entstanden sind, abgeschnitten werden.
+Dies könnte beispielsweise den zuvor erwähnten dünnen blauen Streifen bei einem
+Kilometerstand von ungefähr 97000 km betreffen, der wahrscheinlich durch einen
+Ausreißer entstanden ist. Durch das Entfernen solcher spezifischen Anpassungen
+kann der Entscheidungsbaum besser verallgemeinern und wird robuster gegenüber
+neuen, unbekannten Daten. Das Ergebnis ist ein Modell, das eine bessere Balance
+zwischen Anpassung an die Trainingsdaten und Generalisierungsfähigkeit aufweist.
 
 Für Entscheidungsbäume gibt es prinzipiell zwei Methoden des Prunings:
 **Prä-Pruning** und **Post-Pruning**. Das Prä-Pruning findet *vor* dem Training
@@ -267,6 +265,14 @@ Hyperparameter steuern den gesamten Lernprozess und haben einen wesentlichen
 Einfluss auf die Leistung des Modells.
 ```
 
+Ein Score von 1.0 auf den Trainingsdaten deutet auf Overfitting hin, d.h. das
+Modell hat die Daten auswendig gelernt. Ein sehr niedriger Score (z.B. 0.72)
+deutet auf Underfitting hin, d.h. das Modell ist zu einfach. Das Ziel ist ein
+Gleichgewicht: ein Score, der hoch genug ist, um die Daten gut zu beschreiben,
+aber nicht 1.0, um Generalisierung zu ermöglichen. Werte zwischen 0.8 und 0.95
+sind oft ein guter Kompromiss, aber dies muss mit separaten Testdaten validiert
+werden.
+
 Kommen wir nun zu einem anderen Hyperparameter der Entscheidungsbäume, der
 Mindestanzahl von Datenpunkten.
 
@@ -317,13 +323,52 @@ plot_tree(modell_blattbegrenzung,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 
-print(f'Score des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Knoten: {modell_blattbegrenzung.score(X,y)}')
+print(f'Score des Entscheidungsbaumes mit Prä-Pruning Mindestanzahl Datenpunkte pro Blatt: {modell_blattbegrenzung.score(X,y)}')
 ```
 
 In diesem Fall erhalten wir einen Entscheidungsbaum mit einem Score von 0.82.
 Was jetzt die bessere Wahl ist -- Begrenzung der Baumtiefe oder Festlegung einer
-Mindestanzahl von Datenpunkten Knoten/Blatt -- und vor allem welche Wert der
-Hyperparameter haben soll, muss gesondert untersucht werden.
+Mindestanzahl von Datenpunkten Knoten/Blatt -- und vor allem welchen Wert der
+Hyperparameter haben soll, ist eine zentrale Herausforderung im maschinellen
+Lernen. In späteren Kapiteln werden wir systematische Methoden wie Grid Search
+und Cross-Validation kennenlernen, um die besten Hyperparameter-Werte zu finden.
+
+```{admonition} Mini-Übung
+:class: miniexercise
+Welcher Entscheidungsbaum zeigt vermutlich die stärkste Tendenz zum Overfitting?
+Stellen Sie eine Vermuting an und überprüfen Sie Ihre Vermutung durch Ausprobieren.
+
+A) `DecisionTreeClassifier(max_depth=2)`  
+B) `DecisionTreeClassifier(max_depth=10)`  
+C) `DecisionTreeClassifier(min_samples_leaf=20)`
+```
+
+```{code-cell}
+# Hier Ihr Code
+```
+
+````{admonition} Lösung
+:class: minisolution, dropdown
+Antwort B, denn eine große maximale Tiefe erlaubt sehr komplexe Bäume.
+
+Überprüfung durch Code:
+```python
+# Die drei Modelle trainieren und Scores vergleichen
+modell_a = DecisionTreeClassifier(max_depth=2, random_state=0)
+modell_a.fit(X, y)
+print(f'Score A (max_depth=2): {modell_a.score(X, y):.3f}')
+
+modell_b = DecisionTreeClassifier(max_depth=10, random_state=0)
+modell_b.fit(X, y)
+print(f'Score B (max_depth=10): {modell_b.score(X, y):.3f}')
+
+modell_c = DecisionTreeClassifier(min_samples_leaf=20, random_state=0)
+modell_c.fit(X, y)
+print(f'Score C (min_samples_leaf=20): {modell_c.score(X, y):.3f}')
+
+# Modell B hat vermutlich den höchsten Score (nahe 1.0) → Overfitting!
+```
+````
 
 ```{dropdown} Video "How to Implement Decision Trees in Python / Scikit-Learn" von Misra Turp
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wxS5P7yDHRA?si=rawkRWRmUi0ZZAub" 
@@ -338,7 +383,7 @@ diskutiert. Um dem Problem des Overfittings zu begegnen, bietet Scikit-Learn die
 Möglichkeit des Prä-Prunings. Durch die Begrenzung der maximalen Baumtiefe oder
 die Festlegung einer Mindestanzahl von Datenpunkten in Knoten oder Blättern kann
 Overfitting reduziert werden. Diese zusätzlichen Parameter des
-Entscheidungsbaum-Modells werden Hyperparameter genannt und müssen adjustiert
-werden. Eine weitere Alternative, das Overfitting von Entscheidungsbäumen zu
-minimieren, bieten die Random Forests, die wir in einem späteren Kapitel
-kennenlernen werden.
+Entscheidungsbaums werden Hyperparameter genannt und müssen angepasst werden.
+Eine weitere Alternative, das Overfitting von Entscheidungsbäumen zu minimieren,
+bieten die Random Forests, die wir in einem späteren Kapitel kennenlernen
+werden.

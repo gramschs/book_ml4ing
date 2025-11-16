@@ -14,7 +14,7 @@ kernelspec:
 
 # 6.1 Was ist ein Entscheidungsbaum?
 
-Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregel sind
+Ein beliebtes Partyspiel ist das Spiel "Wer bin ich?". Die Spielregeln sind
 simpel. Eine Person wählt eine berühmte Person oder eine Figur aus einem Film
 oder Buch, die die Mitspieler:innen erraten müssen. Die Mitspieler:innen
 dürfen jedoch nur Fragen stellen, die mit "Ja" oder "Nein" beantwortet werden.
@@ -61,24 +61,24 @@ anstatt des deutschen Begriffes zu nutzen. Ein großer Vorteil von
 Entscheidungsbäumen ist ihre Flexibilität, denn sie können sowohl für
 Klassifikations- als auch Regressionsaufgaben eingesetzt werden. Im Folgenden
 betrachten wir als Beispiel eine Klassifikationsaufgabe. In einem Autohaus
-vereinbaren zehn Personen eine Probefahrt. In der folgenden Tabelle ist notiert,
-welchen
+vereinbaren zehn Personen eine Probefahrt. In der folgenden Tabelle ist für
+jedes Auto notiert, welchen
 
 * `Kilometerstand [in km]` und
 * `Preis [in EUR]`
 
-das jeweilige Auto hat. In der dritten Spalte `verkauft` ist vermerkt, ob das
-Auto nach der Probefahrt verkauft wurde (`True`) oder nicht (`False`). Diese
-Information ist die Zielgröße. Die Tabelle mit den Daten lässt sich effizient
-mit einem Pandas-DataFrame organisieren:
+es hat. In der dritten Spalte `verkauft` ist vermerkt, ob das Auto nach der
+Probefahrt verkauft wurde (`True`) oder nicht (`False`). Diese Information ist
+die Zielgröße. Die Tabelle mit den Daten lässt sich effizient mit einem
+Pandas-DataFrame organisieren:
 
 ```{code-cell}
 import pandas as pd 
 
 daten = pd.DataFrame({
-    'Kilometerstand [km]': [32908, 20328, 13285, 17162, 27449, 13715, 32889,  3111, 15607, 18295],
-    'Preis [EUR]': [15960, 20495, 17227, 17851, 5428, 22772, 13581, 16793, 23253, 11382],
-    'verkauft': [False, True, False, True, False, True, False, True, True, False],
+      'Kilometerstand [km]': [32908, 20328, 13285, 17162, 27449, 13715, 32889,  3111, 15607, 18295],
+      'Preis [EUR]': [15960, 20495, 17227, 17851, 5428, 22772, 13581, 16793, 23253, 11382],
+      'verkauft': [False, True, False, True, False, True, False, True, True, False],
     },
     index=['Auto 1', 'Auto 2', 'Auto 3', 'Auto 4', 'Auto 5', 'Auto 6', 'Auto 7', 'Auto 8', 'Auto 9', 'Auto 10'])
 daten.head(10)
@@ -95,7 +95,7 @@ verkauft« (False).
 ```{code-cell}
 import plotly.express as px
 
-fig = px.scatter(daten, x = 'Kilometerstand [km]', y = 'Preis [EUR]', 
+fig = px.scatter(daten, x='Kilometerstand [km]', y='Preis [EUR]', 
                  color='verkauft', title='Künstliche Daten: Verkaufsaktion im Autohaus')
 fig.show()
 ```
@@ -128,15 +128,17 @@ width=100%>
 
 Dann wird eine erste Frage gestellt. *Ist der Verkaufspreis kleiner oder gleich
 16376.50 EUR?* Entsprechend dieser Entscheidung werden die Autos in zwei Gruppen
-aufgeteilt. Wenn ja, wandern die Autos nach links und ansonsten nach rechts. Im
-Entscheidungsbaum wird diese Aufteilung durch einen **Zweig** (Branch) nach
-links und einen Zweig nach rechts symbolisiert. Ein alternativer Name für Zweig
-ist **Kante**. Die Autos »rutschen« die Zweige/Kanten entlang und landen in zwei
-separaten Knoten. Im Streudiagramm (Scatterplot) entspricht diese Fragestellung
-dem Vergleich mit einer horizontalen Linie bei y = 16376.5. Da alle Autos mit
-einem Verkaufspreis kleiner/gleich 16376.5 EUR blau sind, also »nicht verkauft«
-wurden, wird im Streudiagramm (Scatterplot) alles unterhalb der horizontalen
-Linie blau eingefärbt.
+aufgeteilt. Wenn ja, wandern die Autos nach links und ansonsten nach rechts.
+Warum wir die Grenze 16376.50 gewählt haben, werden wir in einem späteren
+Kapitel besprechen. Im Entscheidungsbaum wird diese Aufteilung durch einen
+**Zweig** (Branch) nach links und einen Zweig nach rechts symbolisiert. Ein
+alternativer Name für Zweig ist **Kante**. Die Autos »rutschen« die
+Zweige/Kanten entlang und landen in zwei separaten Knoten. Im Streudiagramm
+(Scatterplot) entspricht diese Fragestellung dem Vergleich mit einer
+horizontalen Linie bei y = 16376.5. Da alle Autos mit einem Verkaufspreis
+kleiner/gleich 16376.5 EUR blau sind, also »nicht verkauft« wurden, wird im
+Streudiagramm (Scatterplot) alles unterhalb der horizontalen Linie blau
+eingefärbt.
 
 <img src="pics/combined_decisiontree01.svg"
 alt="Entscheidungsbaum - 1. Entscheidung"
@@ -163,12 +165,10 @@ separiert werden soll, ist dies nicht durch nur eine einzige Frage möglich.
 Lautet die Frage: »Ist der Preis kleiner oder gleich 17300 EUR?«, dann wandern
 das rote Auto 8 und das blaue Auto 3 nach links. Wählen wir die Frage: »Ist der
 Kilometerstand kleiner oder gleich 13500 km?«, dann wandern ebenfalls Auto 3 und
-Auto 8 nach links. Beide Fragen sind also gleichwertig, welches sollen wir
-nehmen? Wir gehen nach der Reihenfolge der Eigenschaften vor. Da der
-Kilometerstand in der Tabelle in der ersten Spalte steht und der Preis in der
-zweiten Spalte, entscheiden wir uns für die Frage nach dem Kilometerstand: *»Ist
-der Kilometerstand kleiner oder gleich 13500 km?«* Alternativ könnten wir auch
-den Zufall entscheiden lassen.
+Auto 8 nach links. Beide Fragen sind also gleichwertig, welche sollen wir
+nehmen? In diesem vereinfachten Beispiel wählen wir willkürlich den
+Kilometerstand. Der Algorithmus brauchte jedoch Kriterien, um die beste Trennung
+zu finden. Darauf gehen wir im nächsten Kapitel ein.
   
 <img src="pics/combined_decisiontree02.svg"
 alt="Entscheidungsbaum - 2. Entscheidung"
@@ -212,8 +212,9 @@ indem auch die letzte verbleibende Fläche (oberhalb eines Preises von 16376.50
 EUR) links von Kilometerstand 8198 km rot und rechts davon blau eingefärbt wird.
 
 ```{admonition} Was ist ... ein Entscheidungsbaum?
+:class: note
 Ein Entscheidungsbaum (Decision Tree) ist ein Modell zur Entscheidungsfindung,
-das Daten mit Hilfe einer Baumstruktur sortiert. Die Datenobjekte starten beim
+das Daten mit Hilfe einer Baumstruktur sortiert. Die Datenobjekte beginnen beim
 Wurzelknoten (= Ausgangssituation) und werden dann über Knoten (=
 Entscheidungsfrage) und Zweige/Kanten (= Ergebnis der Entscheidung) in Blätter
 (= Endzustand des Entscheidungsprozesses) sortiert.
@@ -225,7 +226,7 @@ title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; cli
 encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 ```
 
-```{dropdown} Video "Maschinelles Lernen - Beispiel Entscheidungsbaum
+```{dropdown} Video "Maschinelles Lernen - Beispiel Entscheidungsbaum"
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F9ArN1JIhCY?si=bG0rauYn2XdukIzI" 
 title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -299,7 +300,10 @@ hat der `DecisionTreeClassifier` basierend auf den Eingabedaten `X` eine
 Prognose erstellt und diese Prognose mit den echten Daten in `y` verglichen. Für
 die Trainingsdaten funktioniert der Entscheidungsbaum also perfekt. Ob der
 Entscheidungsbaum ein neues, elftes Auto korrekt klassifizieren würde, kann so
-erst einmal nicht entschieden werden.
+erst einmal nicht entschieden werden. Möglicherweise hat der Entscheidungsbaum
+die Trainingsdaten auswendig gelernt, anstatt allgemeine Muster zu erkennen. Es
+besteht die Gefahr des sogenannten Overfittings, auf die wir im übernächsten
+Kapitel noch eingehen werden.
 
 ## Prognosen mit Entscheidungsbäumen treffen
 
@@ -321,24 +325,18 @@ Mit Hilfe der `predict()`-Methode kann dann der Entscheidungsbaum
 prognostizieren, ob die Autos verkauft werden oder nicht.
 
 ```{code-cell}
-:tags: [remove-input]
-modell = DecisionTreeClassifier(random_state=0);
-modell.fit(X,y);
-```
-
-```{code-cell}
 prognose = modell.predict(neue_autos)
 print(prognose)
 ```
 
 Um für ein neues Auto eine Prognose abzugeben, werden zunächst den Blättern
-Klassen zugeordnet. Sind alle Blätter **rein**, d.h. befinden sich nur Autos
-einer einzigen Klasse in einem Blatt, dann bekommt das Blatt diese Klasse
-zugeordnet. Ist ein Blatt nicht rein, sondern enthält noch Autos mit
-unterschiedlichen Klassen »verkauft« oder »nicht verkauft« so wird diesem Blatt
-diejenige Klasse zugeordnet, die am häufigsten auftritt. Um diese Idee zu
-visualisieren, färben wir im Entscheidungsbaum die Blätter entsprechend rot und
-blau ein.
+Klassen zugeordnet. Dazu wird die sogenannte Reinheit der Blätter untersucht.
+Befinden sich nur Autos einer einzigen Klasse in einem Blatt, so nennen wir das
+Blatt **rein** und es bekommt diese Klasse zugeordnet. Ist ein Blatt nicht rein,
+sondern enthält noch Autos mit unterschiedlichen Klassen »verkauft« oder »nicht
+verkauft«, so wird diesem Blatt diejenige Klasse zugeordnet, die am häufigsten
+auftritt. Um diese Idee zu visualisieren, färben wir im Entscheidungsbaum die
+Blätter entsprechend rot und blau ein.
 
 Jedes neue Auto durchläuft jetzt die Entscheidungen, bis es in einem Blatt
 angekommen ist. Die Klasse des Blattes ist dann die Prognose für dieses Auto.
@@ -360,6 +358,44 @@ width=100%>
 
 Der Entscheidungsbaum prognostiziert, dass Auto 11 und Auto 12 nicht verkauft
 werden, aber Auto 13 könnte verkaufbar sein.
+
+````{admonition} Mini-Übung
+:class: miniexercise
+Trainieren Sie einen Entscheidungsbaum für die folgenden Daten:
+
+```python
+test_daten = pd.DataFrame({
+    'Kilometerstand [km]': [5000, 25000, 15000, 30000],
+    'Preis [EUR]': [18000, 14000, 19000, 12000],
+    'verkauft': [True, False, True, False]
+})
+```
+
+Geben Sie eine Prognose für ein Auto mit 10.000 km und 16.000 EUR ab.
+````
+
+```{code-cell}
+# Hier Ihr Code
+```
+
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
+X_test = test_daten[['Kilometerstand [km]', 'Preis [EUR]']]
+y_test = test_daten['verkauft']
+
+modell_test = DecisionTreeClassifier()
+modell_test.fit(X_test, y_test)
+
+neues_auto = pd.DataFrame({
+    'Kilometerstand [km]': [10000],
+    'Preis [EUR]': [16000]
+})
+
+prognose = modell_test.predict(neues_auto)
+print(f"Prognose für das neue Auto: {prognose[0]}")
+```
+````
 
 ## Zusammenfassung und Ausblick
 

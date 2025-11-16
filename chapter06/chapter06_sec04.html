@@ -544,9 +544,8 @@ deren Quelle hier ist:
 <p>Laden sie den Datensatz ‘titanic_DE_cleaned.csv’.</p>
 <section id="eda-titanic">
 <h3>EDA Titanic<a class="headerlink" href="#eda-titanic" title="Link to this heading">#</a></h3>
-<p>Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
-Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
-auf die folgenden Frage an.</p>
+<p>Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
+Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Überblick über die Daten</p>
 <p>Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
@@ -572,7 +571,7 @@ sind kategorial?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit <code class="docutils literal notranslate"><span class="pre">.head()</span></code>schauen wir uns die ersten fünf Zeilen an:</p>
+<p>Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit <code class="docutils literal notranslate"><span class="pre">.head()</span></code> schauen wir uns die ersten fünf Zeilen an:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -592,7 +591,7 @@ plausibel?</p>
 </div>
 <p>Die statistischen Daten zu <code class="docutils literal notranslate"><span class="pre">'ueberlebt'</span></code> sind unplausibel. Auch wenn hier Integer verwendet wurden, um überlebt/nicht überlebt zu klassifizieren, sind es eigentlich Klassen und sollten daher nicht statistisch ausgewertet werden.</p>
 <p>Auf der Titanic gab es drei Preisklassen von 1 bis 3. Minimum und Maximum sind plausibel, aber dass 75 % der Passagiere in Klasse 1 (der teuersten Klasse) mitgereist sind, erscheint unwahrscheinlich.</p>
-<p>Beim Alter fällt auf, dass das minimale Alter 0.92 ist. Da Jahre normalerweise als ganze Zahlen angegeben werden, ist das ungewöhnlich, aber nicht unplausibel. Die älteste Person war 80 Jahre alt. Der Durchschnitt lag bei 35.6 Jahren und der Median bei 36. 75 % der Passagiere waren jünger als 47.5 Jahre. Es erscheint plausibel, das vor allem jüngere Passagiere die Strapazen der Schifffahrt auf sich genommen haben.</p>
+<p>Beim Alter fällt auf, dass das minimale Alter 0.92 ist. Da Jahre normalerweise als ganze Zahlen angegeben werden, ist das ungewöhnlich, aber nicht unplausibel. Die älteste Person war 80 Jahre alt. Der Durchschnitt lag bei 35.6 Jahren und der Median bei 36. 75 % der Passagiere waren jünger als 47.5 Jahre. Es erscheint plausibel, dass vor allem jüngere Passagiere die Strapazen der Schifffahrt auf sich genommen haben.</p>
 <p>50 % der Passagiere reisten alleine, nur sehr wenige in Familien.</p>
 <p>Offensichtlich wurden Passagiere auch kostenlos mitgenommen, denn der minimale Ticketpreis ist 0. Das Maximum verwundert, vielleicht eine Umrechnung der Währungen, denn normalerweise werden nur 2 Nachkommastellen angegeben.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span> 
@@ -603,7 +602,7 @@ plausibel?</p>
 <span class="n">kastendiagramm</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Beim Ticketpreis gibt es deutiche Ausreißer, bei den anderen Merkmalen gibt es vereinzelte Ausreißer.</p>
+<p>Beim Ticketpreis gibt es deutliche Ausreißer, bei den anderen Merkmalen gibt es vereinzelte Ausreißer.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Analyse der kategorialen Daten</p>
@@ -656,6 +655,8 @@ Tree. Visualisieren Sie den Entscheidungsbaum.</p>
 <span class="n">entscheidungsbaum</span> <span class="o">=</span>  <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
 <span class="n">entscheidungsbaum</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 <span class="n">entscheidungsbaum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">entscheidungsbaum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
@@ -690,7 +691,7 @@ Entscheidungsbaum mit einer Baumtiefe von 2 aus:</p>
     <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nicht ueberlebt&#39;</span><span class="p">,</span> <span class="s1">&#39;ueberlebt&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>Zunächst einmal erscheint ein jüngeres Alter die Überlebenschance erhöht zu haben. Danach wirkt es so, also ob der Ticketpreis eine wichtige Rolle gepsielt haben könnte.</p>
+<p>Zunächst einmal scheint ein jüngeres Alter die Überlebenschance erhöht zu haben. Danach wirkt es so, also ob der Ticketpreis eine wichtige Rolle gespielt haben könnte.</p>
 </div>
 </section>
 </section>
@@ -717,9 +718,8 @@ Bei Frauen des Pima-Stammes wurden folgende medizinische Daten erhoben:</p>
 </ul>
 <section id="eda-diabetes">
 <h3>EDA Diabetes<a class="headerlink" href="#eda-diabetes" title="Link to this heading">#</a></h3>
-<p>Führen Sie eine explorative Datenanalyse (EDA) durch. Führen Sie dazu
-Python-Code in Code-Zellen aus und geben Sie in Markdown-Zellen Ihre Antworten
-auf die folgenden Frage an.</p>
+<p>Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
+Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Überblick</p>
 <p>Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
@@ -764,14 +764,14 @@ plausibel, 50 % der Frauen waren maximal dreimal schwanger.</p>
 <p>Der Glucose-Wert reicht von 0 bis 199. An der Stelle müsste mit einem Mediziner
 Rücksprache gehalten werden, ob ein Glucose-Wert von 0 plausibel ist.</p>
 <p>Beim BloodPressure, also den Blutdruck, ist der minimale Wert von 0 jedoch
-unplausibel. Eine PErson mit einem Blutdruck von 0 ist tot.</p>
+unplausibel. Eine Person mit einem Blutdruck von 0 ist tot. Diese Null-Werte sind wahrscheinlich fehlende Messwerte, die fälschlicherweise als 0 kodiert wurden. In einer vollständigen Datenanalyse müssten diese Werte entweder durch sinnvolle Methoden ersetzt oder die betroffenen Zeilen entfernt werden.</p>
 <p>SkinThickness kann erneut nur von Medizinern korrekt eingeordnet werden. Ob eine
 minimale SkinThickness von 0 und eine maximale SkinThickness von 99 sinnvolle
 Werte darstellen, können Nichtmediziner nicht sinnvoll beurteilen.</p>
-<p>Auch der minimale Insulin-Wert von 0 wirkt seltsam sowie der Body-Maß-Index BMI.
+<p>Auch der minimale Insulin-Wert von 0 sowie der Body-Maß-Index BMI wirken seltsam.
 Ein BMI von 0 kann nicht sein, denn beim BMI wird das Gewicht einer Person durch
 die quadrierte Körpergröße geteilt. Ein BMI von 0 bedeutet ein Gewicht von 0,
-was nicht sein kann.</p>
+was nicht sein kann. Wahrscheinlich wurden hier wiederum Werte nicht erfasst.</p>
 <p>Die DiabetesPedigree-Funktion können wir ohne medizinisches Fachwissen nicht
 bewerten.</p>
 <p>Beim Alter fällt auf, dass keine Kinder dabei waren. Die jüngste Person ist 21,
@@ -855,8 +855,8 @@ die Diabetes auslösen können?</p>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score für eine Baumtiefe von </span><span class="si">{</span><span class="n">baumtiefe</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1"> .2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wieder gibt es kaum Unetrschiede im Score für die verschiedenen Baumtiefen. Wir
-betrachten nun ein Modell das Baumtiefe 2.</p>
+<p>Wieder gibt es kaum Unterschiede im Score für die verschiedenen Baumtiefen. Wir
+betrachten nun ein Modell der Baumtiefe 2.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">finales_modell</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">finales_modell</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
@@ -866,7 +866,7 @@ betrachten nun ein Modell das Baumtiefe 2.</p>
     <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;kein Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
-<p>Als erstes Entscheidungskriteriujm wird der Glucose-Wert benutzt. Je nachdem, ob
+<p>Als erstes Entscheidungskriterium wird der Glucose-Wert benutzt. Je nachdem, ob
 der Glucose-Wert kleiner 127.5 ist oder nicht, wird danach das Alter (jünger als
 28.5 bedeutet dann kein Diabetes) oder der BMI (kleiner als 29.95 kein Diabetes)
 als Entscheidungsmerkmal verwendet.</p>

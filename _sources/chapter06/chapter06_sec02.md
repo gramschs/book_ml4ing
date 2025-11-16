@@ -80,11 +80,11 @@ plot_tree(modell)
 unterdrückt werden, indem hinter den Funktionsaufruf `plot_tree(modell)` ein
 Semikolon `;` gesetzt wird. Das Diagramm zeichnet wie erwartet die Baumstruktur
 vom Wurzelknoten über die Knoten und Zweige bis hin zu den Blättern. Die
-Entscheidungsfragen stehen in der erste Zeile der Knoten. Danach folgen weitere
+Entscheidungsfragen stehen in der ersten Zeile der Knoten. Danach folgen weitere
 Angaben wie `gini`, `samples` und `value`. Um diese Angaben zu erklären,
 ergänzen wir zunächst weitere Angaben. Mit der Option `feature_names=` wird eine
 Liste mit den Eigenschaften ergänzt, die Option `class_names=` ergänzt die
-Klassenbezeichnugnen. So erhalten wir folgendes Diagramm:
+Klassenbezeichnungen. So erhalten wir folgendes Diagramm:
 
 ```{code-cell} ipython3
 plot_tree(modell, 
@@ -109,14 +109,14 @@ Als nächstes widmen wir uns der Bedeutung von `gini`.
 
 Das Gini-Impurity-Kriterium ist ein Maß für die Unreinheit eines Datensatzes.
 Beim Beispiel mit dem Autohaus sind im Wurzelknoten fünf Autos, die nicht
-verkauft wurden, und fünf verkaufte Autos. Bei zwei Klassen ist das die maximale
-Unreinheit, die auftreten kann. Der Anteil der verkauften Autos ist genau 50 %.
-Diesem prozentualen Anteil wird das Gini-Impurity-Kriterium von 0.5 zugeordnet.
-Es gibt zwei weitere Extremfälle. Entweder sind nur verkaufte Autos im Datensatz
-(100 % verkaufte Autos) oder gar keine verkaufte Autos (0 % verkaufte Autos). In
-beiden Fällen ist der Datensatz rein, das Gini-Impurity-Kriterium ist 0. In
-allen anderen Fällen liegt das Gini-Impurity-Kriterium zwischen 0 und 0.5. Die
-Formel zur Berechnung des genauen Wertes des Gini-Impurity-Kriteriums lautet
+verkauft wurden, und fünf verkaufte Autos. Bei zwei Klassen mit je 50 % Anteil
+ist das die maximale Unreinheit, die auftreten kann. Der Anteil der verkauften
+Autos ist genau 50 %. Bei dieser Verteilung beträgt das Gini-Impurity-Kriterium
+0.5. Es gibt zwei weitere Extremfälle. Entweder sind nur verkaufte Autos im
+Datensatz (100 % verkaufte Autos) oder gar keine verkaufte Autos (0 % verkaufte
+Autos). In beiden Fällen ist der Datensatz rein, das Gini-Impurity-Kriterium ist
+0. In allen anderen Fällen liegt das Gini-Impurity-Kriterium zwischen 0 und 0.5.
+Die Formel zur Berechnung des genauen Wertes des Gini-Impurity-Kriteriums lautet
 
 $$\text{GI} = 1 - p^2 - (1-p)^2,$$
 
@@ -151,14 +151,18 @@ Möglichkeiten durch, mit Hilfe der Entscheidungsfragen den Datensatz zu
 splitten. Zu jedem Split werden dann die zugehörigen Werte des
 Gini-Impurity-Kriteriums berechnet. Dann wählt der Algorithmus den Split aus,
 der die höchste Reinheit hat (also den niedrigsten Gini-Impurity-Wert). Gilt das
-für mehrere Splits, dann wird zufällig ein Split ausgewählt.  
+für mehrere Splits, dann wird zufällig ein Split ausgewählt. Jedes Training kann
+daher zu einem anderen Entscheidungsbaum führen. Ist dieses Verhalten nicht
+gewünscht, kann der optionale Parameter `random_state=` auf einen Integer
+gesetzt werden, um die Zufallszahlen zu fixieren. Das haben wir auch bereits im vorherigen Kapitel gemacht, damit die Ergebnisse vergleichbar waren.
 
 Neben dem Gini-Impurity-Kriterium gibt es noch weitere Bewertungsmaße, um einen
 Entscheidungsbaum zu trainieren. In Scikit-Learn sind die beiden Alternativen
-`log_less` und `entropy` für den **Shannonschen Informationsgewinn** verfügbar.
-Wir schauen uns im Folgenden an, wie diese ausgewählt werden können. Wer zuvor
-sich noch ein wenig mehr mit den Details von Entscheidungsbäumen beschäftigen
-möchte, kann sich die folgenden Videos ansehen.
+`log_loss` und `entropy` verfügbar, die auf der **Shannon-Entropie** basieren
+und den Informationsgewinn durch Splits maximieren. Wir schauen uns im Folgenden
+an, wie diese ausgewählt werden können. Wer zuvor sich noch ein wenig mehr mit
+den Details von Entscheidungsbäumen beschäftigen möchte, kann sich die folgenden
+Videos ansehen.
 
 ```{dropdown} Optionales Video "Entscheidungsbäume #2 - Der ID3-Algorithmus" von The Morpheus Tutorials
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SYyyuHG9qBs?si=MgACjs1hSdFTPu5s" 
@@ -181,23 +185,21 @@ encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="stric
 ## Entscheidungsbäume trainieren
 
 Der Entscheidungsbaum-Klassifikationsalgorithmus von Scikit-Learn bietet noch
-weitere Optionen an, wie die Hilfe verrät
+weitere Optionen an, wie in der [Dokumentation Scikit-Learn →
+DecisionTreeClassifier()](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier)
+nachgelesen werden kann.
 
-```python
-help(DecisionTreeClassifier())
-```
-
-oder in der [Dokumentation Scikit-Learn → DecisionTreeClassifier()](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html#sklearn.tree.DecisionTreeClassifier) nachgelesen werden kann.
-
-Sowohl bei der Initalisierung des Entscheidungsbaumes können Parameter gesetzt
+Sowohl bei der Initialisierung des Entscheidungsbaumes können Parameter gesetzt
 werden, als auch beim Verwenden der verschiedenen Methoden. Tatsächlich haben
 wir bereits weiter oben aus didaktischen Gründen den Parameter `random_state=0`
 bei der Initialisierung gesetzt, damit immer der gleiche Entscheidungsbaum
 entsteht. In einem echten Projekt würde dieser Parameter nie verwendet werden.
 
-Probieren Sie andere Werte für den Start des Zufallszahlengenerators aus und
-testen Sie, was sich verändert, wenn Sie andere Kriterien für das Splitting
-verwenden.
+Experimentieren Sie mit verschiedenen Werten für `random_state` (z.B. 0, 1, 2,
+3). Sie werden feststellen, dass sich die Struktur des Baumes ändern kann,
+obwohl die Klassifikationsgenauigkeit oft ähnlich bleibt. Testen Sie auch
+verschiedene Splitting-Kriterien (`criterion='gini'` vs. `criterion='entropy'`)
+und vergleichen Sie die entstehenden Bäume.
 
 ```{code-cell} ipython3
 modell = DecisionTreeClassifier(criterion='entropy', random_state=3)
@@ -207,6 +209,46 @@ plot_tree(modell,
     feature_names=['Kilometerstand [km]', 'Preis [EUR]'],
     class_names=['nicht verkauft', 'verkauft']);
 ```
+
+Durch die Verwendung von `entropy` als Kriterium kann sich die Struktur des
+Entscheidungsbaums ändern. Statt `gini=...` wird nun `entropy=...` im Diagramm
+angezeigt. Die grundlegende Funktionsweise bleibt jedoch gleich: Der Algorithmus
+wählt die Splits, die die Unreinheit am stärksten reduzieren.
+
+````{admonition} Mini-Übung
+:class: miniexercise
+Gegeben sind folgende Trainingsdaten für eine Pflanzenklassifikation:
+```python
+pflanzen_daten = pd.DataFrame({
+    'Blattlaenge [cm]': [2.5, 4.9, 6.3, 7.1, 3.2],
+    'Blattbreite [cm]': [0.8, 1.5, 2.1, 2.5, 1.0],
+    'giftig': [False, False, True, True, False]
+})
+```
+1. Trainieren Sie einen Entscheidungsbaum mit `random_state=42`.
+2. Visualisieren Sie den Baum mit aussagekräftigen Feature- und Klassennamen.
+````
+
+```{code-cell}
+# Hier Ihr Code
+```
+
+````{admonition} Lösung
+:class: minisolution, dropdown
+```python
+# 1. Training
+X_pflanzen = pflanzen_daten[['Blattlaenge [cm]', 'Blattbreite [cm]']]
+y_pflanzen = pflanzen_daten['giftig']
+
+modell_pflanzen = DecisionTreeClassifier(random_state=42)
+modell_pflanzen.fit(X_pflanzen, y_pflanzen)
+
+# 2. Visualisierung
+plot_tree(modell_pflanzen,
+    feature_names=['Blattlänge [cm]', 'Blattbreite [cm]'],
+    class_names=['nicht giftig', 'giftig']);
+```
+````
 
 ## Zusammenfassung und Ausblick
 
