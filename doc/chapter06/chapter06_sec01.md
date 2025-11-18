@@ -315,8 +315,8 @@ Eigenschaft ihr Preis.
 
 ```{code-cell}
 neue_autos = pd.DataFrame({
-    'Kilometerstand [km]': [7580, 11300, 20000],
-    'Preis [EUR]': [20999, 12000, 14999]
+    'Kilometerstand [km]': [11300, 20000, 7580],
+    'Preis [EUR]': [12000, 14999, 20999]
     },
     index=['Auto 11', 'Auto 12', 'Auto 13']) 
 ```
@@ -381,6 +381,12 @@ Geben Sie eine Prognose für ein Auto mit 10.000 km und 16.000 EUR ab.
 ````{admonition} Lösung
 :class: minisolution, dropdown
 ```python
+test_daten = pd.DataFrame({
+    'Kilometerstand [km]': [5000, 25000, 15000, 30000],
+    'Preis [EUR]': [18000, 14000, 19000, 12000],
+    'verkauft': [True, False, True, False]
+})
+
 X_test = test_daten[['Kilometerstand [km]', 'Preis [EUR]']]
 y_test = test_daten['verkauft']
 
