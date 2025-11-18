@@ -236,6 +236,12 @@ pflanzen_daten = pd.DataFrame({
 ````{admonition} Lösung
 :class: minisolution, dropdown
 ```python
+pflanzen_daten = pd.DataFrame({
+    'Blattlaenge [cm]': [2.5, 4.9, 6.3, 7.1, 3.2],
+    'Blattbreite [cm]': [0.8, 1.5, 2.1, 2.5, 1.0],
+    'giftig': [False, False, True, True, False]
+})
+
 # 1. Training
 X_pflanzen = pflanzen_daten[['Blattlaenge [cm]', 'Blattbreite [cm]']]
 y_pflanzen = pflanzen_daten['giftig']
