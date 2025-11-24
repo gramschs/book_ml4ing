@@ -70,9 +70,9 @@ betrachtet.
 Das zweite numerische Merkmal sind die Bevölkerungszahlen. Die minimale
 Population sind 18 Mio. Einwohner, die maximale Einwohnerzahl 83.9 Mio.
 Einwohner. Der Mittelwert von 55.4 Mio. Einwohner ist deutlich unter dem Median
-von 62.4 Mio. Einwohner. Es scheint einige Jahre mit hohen Bevölkerungszahlen zu
-geben, die den Mittelwert nach oben ziehen. Die Verteilung könnte rechtsschief
-sein. Das bestätigt auch der Boxplot.
+von 62.4 Mio. Einwohner. Es gibt einige Jahre mit hohen Bevölkerungszahlen, die 
+den Mittelwert nach oben ziehen. Die Verteilung könnte rechtsschief sein. Das
+bestätigt auch der Boxplot.
 
 ```python
 import plotly.express as px 
@@ -121,12 +121,12 @@ Nein, in beiden Fällen gibt es nur einen einzigen Wert, nämlich `'Germany'` un
 daher auch keinen Barplot für die Häufigkeiten.
 ````
 
-```{admonition} Ursache - Wirkung
+```{admonition} Korrelationen
 :class: miniexercise
-
 Erstellen Sie einen Scatterplot mit dem Jahr auf der x-Achse und der Population
 auf der y-Achse. Beschriften Sie den Scatterplot sinnvoll. Vermuten Sie einen
-Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können Sie die Besonderheiten mit Geschichtswissen erklären?
+Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können
+Sie die Besonderheiten mit Geschichtswissen erklären?
 ```
 
 ````{admonition} Lösung
@@ -144,7 +144,7 @@ Die Bevölkerung ist seit 1800 gewachsen. Zu Beginn der 1910er Jahr gibt es eine
 Bevölkerungsrückgang bis 1919/1920, dann steigt die Bevölkerung wieder an. Auch
 in den 1940er Jahren kam es zu einem Bevölkerungsrückgang. In beiden Fällen
 können wir vermuten, dass diese mit den beiden Weltkriegen zu tun hat. Aber auch
-in späteren Zeiten kam es trotz einer beständig wachsenden Bevölkerung immer
+in späteren Zeiten kam es trotz des langfristigen Wachstumstrends immer
 wieder zu einem kurzen Bevölkerungsrückgang, z.B. um 1984 oder 2010.
 ````
 
@@ -153,7 +153,7 @@ wieder zu einem kurzen Bevölkerungsrückgang, z.B. um 1984 oder 2010.
 
 Adaptieren Sie die Daten. Wählen Sie als Input das Jahr und als Output die
 Population. Trainieren Sie ein lineares Regressionsmodell und lassen Sie den
-Score berechnen und ausgeben.
+R²-Score berechnen und ausgeben.
 ```
 
 ````{admonition} Lösung
@@ -167,16 +167,16 @@ from sklearn.linear_model import LinearRegression
 
 modell_linear = LinearRegression()
 modell_linear.fit(X,y)
-score_lineares_modell = modell_linear.score(X,y)
-print(f'Score lineares Modell: {score_lineares_modell:.2f}')
+r2_score_lineares_modell = modell_linear.score(X,y)
+print(f'R2-Score lineares Modell: {r2_score_lineares_modell:.2f}')
 ```
 
-Der Score ist mit 0.97 sehr gut.
+Der R²-Score ist mit 0.97 sehr gut.
 ````
 
 ```{admonition} Entscheidungsbaum/Decision Tree
 :class: miniexercise
-Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den Score
+Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den R²-Score
 ausgeben. 
 
 Tipp: Das Scikit-Learn-Modell heißt DecisionTreeRegressor.
@@ -190,11 +190,11 @@ from sklearn.tree import DecisionTreeRegressor
 
 modell_entscheidungsbaum = DecisionTreeRegressor()
 modell_entscheidungsbaum.fit(X,y)
-score_entscheidungsbaum = modell_entscheidungsbaum.score(X,y)
-print(f'Score Entscheidungsbaum: {score_entscheidungsbaum:.2f}')
+r2_score_entscheidungsbaum = modell_entscheidungsbaum.score(X,y)
+print(f'R2-Score Entscheidungsbaum: {r2_score_entscheidungsbaum:.2f}')
 ```
-
-Der Score ist mit 1.0 perfekt.
+Der R²-Score ist mit 1.0 scheinbar perfekt, aber das ist ein Zeichen für
+Overfitting auf den Trainingsdaten.
 ````
 
 ````{admonition} Bewertung und Prognose
@@ -220,15 +220,17 @@ Tipp: Mit
 
 `fig.add_scatter(x = prognosedaten['Jahr'],y = prognose_linear, name='lineare Regression')``
 
-können Sie einen weiteren Scatterplot zu einem schon existierenden (hier in der Variable `fig` gespeichert) hinzufügen.
+können Sie einen weiteren Scatterplot zu einem schon existierenden (hier in der
+Variable `fig` gespeichert) hinzufügen.
 
 Welches Modell würden Sie nach der Visualisierung bevorzugen?
 ````
 
 ````{admonition} Lösung
 :class: minisolution, toggle
-
-Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare Regressionsmodell, da der Score besser ist. Daher könnte man sich für einen Entscheidungsbaum/Decision Tree entscheiden.
+Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare
+Regressionsmodell, da der R²-Score besser ist. Daher könnte man sich für einen
+Entscheidungsbaum/Decision Tree entscheiden.
 
 ```python
 prognosedaten = pd.DataFrame({
@@ -256,7 +258,7 @@ print(f'Prognose im Jahr 2100: {prognose_linear[-1]:.1f}')
 ```
 ````
 
-## Aufgabe 7.2 Marketing über soziale Medien
+## Aufgabe 7.2 Marketing-Budget für soziale Medien und Zeitungen
 
 Eine Firma erhebt statistische Daten zu ihren Verkaufszahlen (angegeben in
 Tausend US-Dollar) abhängig von dem eingesetzten Marketing-Budget in den
@@ -264,11 +266,11 @@ jeweiligen Sozialen Medien (Quelle siehe
 <https://www.kaggle.com/datasets/fayejavad/marketing-linear-multiple-regression>).
 
 Erstellen Sie eine explorative Datenanalyse (EDA). Trainieren Sie dann
-ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt zu investieren.
+ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt
+zu investieren.
 
 ```{admonition} Überblick über die Daten
 :class: miniexercise 
-
 Laden Sie die csv-Datei `marketing_data.csv`. Welche Daten enthält die
 Datei? Wie viele Datenpunkte sind vorhanden? Wie viele und welche Merkmale gibt
 es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
@@ -293,7 +295,7 @@ der Marketing-Budgets. Wir werfen noch einen Blick auf die ersten 10 Zeilen der
 Tabelle:
 
 ```python
-data.head(10)
+daten.head(10)
 ```
 ````
 
@@ -350,18 +352,17 @@ Auch bei den Verkäufen gibt es keine Ausreißer. Der Median liegt näher an Q1 
 an Q3 und unterhalb des Mittelwertes von 16 Tsd. US-Dollar.
 ````
 
-```{admonition} Ursache - Wirkung
+```{admonition} Korrelationen
 :class: miniexercise
-
-Erstellen Sie zuerst eine Scattermatrix, um Ursache und Wirkung zu analysieren.
-Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und interpretieren
-Sie das Ergebnis.
+Erstellen Sie zuerst eine Scattermatrix, um Zusammenhänge zwischen den Merkmalen
+zu analysieren. Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und
+interpretieren Sie das Ergebnis.
 ```
 
 ````{admonition} Lösung
 :class: minisolution, toggle
 
-Alle drei Ursachen YouTube, Facebook und Newspaper könnten eine Wirkung auf die
+Alle drei Merkmale YouTube, Facebook und Newspaper könnten eine Wirkung auf die
 Verkaufszahlen haben. Am einfachsten ist zunächst die Visualisierung als
 Scattermatrix.
 
@@ -380,7 +381,9 @@ fig = px.imshow(korrelationsmatrix, text_auto=True)
 fig.show()
 ```
 
-Alle drei soziale Medien sind positiv korreliert, also je mehr Marketing-Budget desto mehr Reichweite. Am stärksten wirkt YouTube gefolgt von Facebook und Newspaper haben den geringsten Einfluss.
+Alle drei sozialen Medien sind positiv korreliert, also je mehr
+Marketing-Budget, desto höhere Verkaufszahlen. Am stärksten korreliert YouTube
+gefolgt von Facebook. Newspaper haben den geringsten Einfluss.
 ````
 
 ```{admonition} Lineares Regressionsmodell
@@ -388,14 +391,14 @@ Alle drei soziale Medien sind positiv korreliert, also je mehr Marketing-Budget 
 
 Trainieren Sie drei lineare Regressinsmodelle, jeweils mit einem anderen Merkmal
 als Input, d.h. mit jeweils `youtube`, `facebook`, `newspaper`. Adaptieren Sie
-dazu passend die Daten. Lassen Sie jeweils den Score berechnen und ausgeben.
+dazu passend die Daten. Lassen Sie jeweils den R²-Score berechnen und ausgeben.
 ```
 
 ````{admonition} Lösung
 :class: minisolution, toggle
 
 Wir trainieren zunächst drei einzelne lineare
-Regressionsmodelle und bestimmen den jeweiligen R2-Score.
+Regressionsmodelle und bestimmen den jeweiligen R²-Score.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -405,19 +408,19 @@ for merkmal in ['youtube', 'facebook', 'newspaper']:
     X = daten[[merkmal]]
     modell = LinearRegression()
     modell.fit(X,y)
-    score = modell.score(X,y)
-    print(f'Input: {merkmal}, Score = {score:.2f}')
+    r2_score = modell.score(X,y)
+    print(f'Input: {merkmal}, R2-Score = {r2_score:.2f}')
 ```
 
-Wie erwartet sind die Scores bei YouTube besser als bei Facebook und den
+Wie erwartet sind die R²-Scores bei YouTube besser als bei Facebook und den
 Newspapern, da dort ein lineares Modell besser passt.
 ````
 
 ```{admonition} Finales Modell
 :class: miniexercise
-
 Trainieren Sie nun als finales Modell ein multiples Regressionsmodell und
-stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die dazugehörige Modellfunktion auf.
+stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
+dazugehörige Modellfunktion auf.
 ```
 
 ````{admonition} Lösung
@@ -429,15 +432,16 @@ y = daten['sales']
 
 modell_multiple_regression = LinearRegression()
 modell_multiple_regression.fit(X,y)
-score = modell_multiple_regression.score(X,y)
+r2_score = modell_multiple_regression.score(X,y)
 
-print(f'Score multiples Regressionsmodell: {score:.2f}')
+print(f'R2-Score multiples Regressionsmodell: {r2_score:.2f}')
 
-print(modell_multiple_regression.coef_)
-print(modell_multiple_regression.intercept_)
+print(f'Koeffizienten: {modell_multiple_regression.coef_}')
+print(f'Achsenabschnitt: {modell_multiple_regression.intercept_:.4f}')
 ```
 
 Modellfunktion: 
 
-$$y = 0.0452\cdot x_{\text{youtube}} + 0.1884\cdot x_{\text{facebook}} + 0.0043\cdot x_{\text{newspaper}} + 3.5059.$$
+$$y = 0.0452\cdot x_{\text{youtube}} + 0.1884\cdot x_{\text{facebook}}
++ 0.0043\cdot x_{\text{newspaper}} + 3.5059.$$
 ````

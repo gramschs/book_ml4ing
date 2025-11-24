@@ -509,7 +509,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-1-bevolkerungszahlen-in-deutschland">Aufgabe 7.1 Bevölkerungszahlen in Deutschland</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-2-marketing-uber-soziale-medien">Aufgabe 7.2 Marketing über soziale Medien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-2-marketing-budget-fur-soziale-medien-und-zeitungen">Aufgabe 7.2 Marketing-Budget für soziale Medien und Zeitungen</a></li>
 </ul>
             </nav>
         </div>
@@ -568,9 +568,9 @@ betrachtet.</p>
 <p>Das zweite numerische Merkmal sind die Bevölkerungszahlen. Die minimale
 Population sind 18 Mio. Einwohner, die maximale Einwohnerzahl 83.9 Mio.
 Einwohner. Der Mittelwert von 55.4 Mio. Einwohner ist deutlich unter dem Median
-von 62.4 Mio. Einwohner. Es scheint einige Jahre mit hohen Bevölkerungszahlen zu
-geben, die den Mittelwert nach oben ziehen. Die Verteilung könnte rechtsschief
-sein. Das bestätigt auch der Boxplot.</p>
+von 62.4 Mio. Einwohner. Es gibt einige Jahre mit hohen Bevölkerungszahlen, die
+den Mittelwert nach oben ziehen. Die Verteilung könnte rechtsschief sein. Das
+bestätigt auch der Boxplot.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span> 
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">],</span>
@@ -609,10 +609,11 @@ Sind diese Werte als kategoriale Daten einzuordnen?</p>
 daher auch keinen Barplot für die Häufigkeiten.</p>
 </div>
 <div class="miniexercise admonition">
-<p class="admonition-title">Ursache - Wirkung</p>
+<p class="admonition-title">Korrelationen</p>
 <p>Erstellen Sie einen Scatterplot mit dem Jahr auf der x-Achse und der Population
 auf der y-Achse. Beschriften Sie den Scatterplot sinnvoll. Vermuten Sie einen
-Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können Sie die Besonderheiten mit Geschichtswissen erklären?</p>
+Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können
+Sie die Besonderheiten mit Geschichtswissen erklären?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
@@ -626,14 +627,14 @@ Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Kön
 Bevölkerungsrückgang bis 1919/1920, dann steigt die Bevölkerung wieder an. Auch
 in den 1940er Jahren kam es zu einem Bevölkerungsrückgang. In beiden Fällen
 können wir vermuten, dass diese mit den beiden Weltkriegen zu tun hat. Aber auch
-in späteren Zeiten kam es trotz einer beständig wachsenden Bevölkerung immer
+in späteren Zeiten kam es trotz des langfristigen Wachstumstrends immer
 wieder zu einem kurzen Bevölkerungsrückgang, z.B. um 1984 oder 2010.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Lineares Regressionsmodell</p>
 <p>Adaptieren Sie die Daten. Wählen Sie als Input das Jahr und als Output die
 Population. Trainieren Sie ein lineares Regressionsmodell und lassen Sie den
-Score berechnen und ausgeben.</p>
+R²-Score berechnen und ausgeben.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
@@ -644,15 +645,15 @@ Score berechnen und ausgeben.</p>
 
 <span class="n">modell_linear</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">modell_linear</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">score_lineares_modell</span> <span class="o">=</span> <span class="n">modell_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score lineares Modell: </span><span class="si">{</span><span class="n">score_lineares_modell</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">r2_score_lineares_modell</span> <span class="o">=</span> <span class="n">modell_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2-Score lineares Modell: </span><span class="si">{</span><span class="n">r2_score_lineares_modell</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Der Score ist mit 0.97 sehr gut.</p>
+<p>Der R²-Score ist mit 0.97 sehr gut.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Entscheidungsbaum/Decision Tree</p>
-<p>Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den Score
+<p>Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den R²-Score
 ausgeben.</p>
 <p>Tipp: Das Scikit-Learn-Modell heißt DecisionTreeRegressor.</p>
 </div>
@@ -662,11 +663,12 @@ ausgeben.</p>
 
 <span class="n">modell_entscheidungsbaum</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">()</span>
 <span class="n">modell_entscheidungsbaum</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">score_entscheidungsbaum</span> <span class="o">=</span> <span class="n">modell_entscheidungsbaum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Entscheidungsbaum: </span><span class="si">{</span><span class="n">score_entscheidungsbaum</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">r2_score_entscheidungsbaum</span> <span class="o">=</span> <span class="n">modell_entscheidungsbaum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2-Score Entscheidungsbaum: </span><span class="si">{</span><span class="n">r2_score_entscheidungsbaum</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Der Score ist mit 1.0 perfekt.</p>
+<p>Der R²-Score ist mit 1.0 scheinbar perfekt, aber das ist ein Zeichen für
+Overfitting auf den Trainingsdaten.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Bewertung und Prognose</p>
@@ -683,12 +685,15 @@ Sie dazu den folgenden Datensatz:</p>
 einem gemeinsamen Scatterplot.</p>
 <p>Tipp: Mit</p>
 <p>`fig.add_scatter(x = prognosedaten[‘Jahr’],y = prognose_linear, name=‘lineare Regression’)``</p>
-<p>können Sie einen weiteren Scatterplot zu einem schon existierenden (hier in der Variable <code class="docutils literal notranslate"><span class="pre">fig</span></code> gespeichert) hinzufügen.</p>
+<p>können Sie einen weiteren Scatterplot zu einem schon existierenden (hier in der
+Variable <code class="docutils literal notranslate"><span class="pre">fig</span></code> gespeichert) hinzufügen.</p>
 <p>Welches Modell würden Sie nach der Visualisierung bevorzugen?</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare Regressionsmodell, da der Score besser ist. Daher könnte man sich für einen Entscheidungsbaum/Decision Tree entscheiden.</p>
+<p>Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare
+Regressionsmodell, da der R²-Score besser ist. Daher könnte man sich für einen
+Entscheidungsbaum/Decision Tree entscheiden.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prognosedaten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s1">&#39;Jahr&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1800</span><span class="p">,</span> <span class="mi">2101</span><span class="p">)</span>
 <span class="p">})</span>
@@ -713,14 +718,15 @@ Regressionsmodell zu bevorzugen.</p>
 </div>
 </div>
 </section>
-<section id="aufgabe-7-2-marketing-uber-soziale-medien">
-<h2>Aufgabe 7.2 Marketing über soziale Medien<a class="headerlink" href="#aufgabe-7-2-marketing-uber-soziale-medien" title="Link to this heading">#</a></h2>
+<section id="aufgabe-7-2-marketing-budget-fur-soziale-medien-und-zeitungen">
+<h2>Aufgabe 7.2 Marketing-Budget für soziale Medien und Zeitungen<a class="headerlink" href="#aufgabe-7-2-marketing-budget-fur-soziale-medien-und-zeitungen" title="Link to this heading">#</a></h2>
 <p>Eine Firma erhebt statistische Daten zu ihren Verkaufszahlen (angegeben in
 Tausend US-Dollar) abhängig von dem eingesetzten Marketing-Budget in den
 jeweiligen Sozialen Medien (Quelle siehe
 <a class="reference external" href="https://www.kaggle.com/datasets/fayejavad/marketing-linear-multiple-regression">https://www.kaggle.com/datasets/fayejavad/marketing-linear-multiple-regression</a>).</p>
 <p>Erstellen Sie eine explorative Datenanalyse (EDA). Trainieren Sie dann
-ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt zu investieren.</p>
+ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt
+zu investieren.</p>
 <div class="miniexercise admonition">
 <p class="admonition-title">Überblick über die Daten</p>
 <p>Laden Sie die csv-Datei <code class="docutils literal notranslate"><span class="pre">marketing_data.csv</span></code>. Welche Daten enthält die
@@ -742,7 +748,7 @@ investierte Marketing-Budget in die sozialen Medien YouTube, Facebook und
 Newspaper darstellen. Die Spalte ‘sales’ repräsentiert dahingehend die Wirkung
 der Marketing-Budgets. Wir werfen noch einen Blick auf die ersten 10 Zeilen der
 Tabelle:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -790,14 +796,14 @@ Newspaper gibt es einen Ausreißer.</p>
 an Q3 und unterhalb des Mittelwertes von 16 Tsd. US-Dollar.</p>
 </div>
 <div class="miniexercise admonition">
-<p class="admonition-title">Ursache - Wirkung</p>
-<p>Erstellen Sie zuerst eine Scattermatrix, um Ursache und Wirkung zu analysieren.
-Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und interpretieren
-Sie das Ergebnis.</p>
+<p class="admonition-title">Korrelationen</p>
+<p>Erstellen Sie zuerst eine Scattermatrix, um Zusammenhänge zwischen den Merkmalen
+zu analysieren. Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und
+interpretieren Sie das Ergebnis.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Alle drei Ursachen YouTube, Facebook und Newspaper könnten eine Wirkung auf die
+<p>Alle drei Merkmale YouTube, Facebook und Newspaper könnten eine Wirkung auf die
 Verkaufszahlen haben. Am einfachsten ist zunächst die Visualisierung als
 Scattermatrix.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">daten</span><span class="p">)</span>
@@ -812,18 +818,20 @@ zu haben als die Zeitungen. Genaueres zeigt uns die Korrelationsmatrix:</p>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Alle drei soziale Medien sind positiv korreliert, also je mehr Marketing-Budget desto mehr Reichweite. Am stärksten wirkt YouTube gefolgt von Facebook und Newspaper haben den geringsten Einfluss.</p>
+<p>Alle drei sozialen Medien sind positiv korreliert, also je mehr
+Marketing-Budget, desto höhere Verkaufszahlen. Am stärksten korreliert YouTube
+gefolgt von Facebook. Newspaper haben den geringsten Einfluss.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Lineares Regressionsmodell</p>
 <p>Trainieren Sie drei lineare Regressinsmodelle, jeweils mit einem anderen Merkmal
 als Input, d.h. mit jeweils <code class="docutils literal notranslate"><span class="pre">youtube</span></code>, <code class="docutils literal notranslate"><span class="pre">facebook</span></code>, <code class="docutils literal notranslate"><span class="pre">newspaper</span></code>. Adaptieren Sie
-dazu passend die Daten. Lassen Sie jeweils den Score berechnen und ausgeben.</p>
+dazu passend die Daten. Lassen Sie jeweils den R²-Score berechnen und ausgeben.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
 <p>Wir trainieren zunächst drei einzelne lineare
-Regressionsmodelle und bestimmen den jeweiligen R2-Score.</p>
+Regressionsmodelle und bestimmen den jeweiligen R²-Score.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="s1">&#39;sales&#39;</span><span class="p">]</span>
@@ -831,17 +839,18 @@ Regressionsmodelle und bestimmen den jeweiligen R2-Score.</p>
     <span class="n">X</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[[</span><span class="n">merkmal</span><span class="p">]]</span>
     <span class="n">modell</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
     <span class="n">modell</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">score</span> <span class="o">=</span> <span class="n">modell</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Input: </span><span class="si">{</span><span class="n">merkmal</span><span class="si">}</span><span class="s1">, Score = </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">r2_score</span> <span class="o">=</span> <span class="n">modell</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Input: </span><span class="si">{</span><span class="n">merkmal</span><span class="si">}</span><span class="s1">, R2-Score = </span><span class="si">{</span><span class="n">r2_score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Wie erwartet sind die Scores bei YouTube besser als bei Facebook und den
+<p>Wie erwartet sind die R²-Scores bei YouTube besser als bei Facebook und den
 Newspapern, da dort ein lineares Modell besser passt.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Finales Modell</p>
 <p>Trainieren Sie nun als finales Modell ein multiples Regressionsmodell und
-stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die dazugehörige Modellfunktion auf.</p>
+stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
+dazugehörige Modellfunktion auf.</p>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
@@ -850,17 +859,18 @@ stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
 
 <span class="n">modell_multiple_regression</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">r2_score</span> <span class="o">=</span> <span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score multiples Regressionsmodell: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2-Score multiples Regressionsmodell: </span><span class="si">{</span><span class="n">r2_score</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Koeffizienten: </span><span class="si">{</span><span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">coef_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Achsenabschnitt: </span><span class="si">{</span><span class="n">modell_multiple_regression</span><span class="o">.</span><span class="n">intercept_</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Modellfunktion:</p>
 <div class="math notranslate nohighlight">
-\[y = 0.0452\cdot x_{\text{youtube}} + 0.1884\cdot x_{\text{facebook}} + 0.0043\cdot x_{\text{newspaper}} + 3.5059.\]</div>
+\[y = 0.0452\cdot x_{\text{youtube}} + 0.1884\cdot x_{\text{facebook}}
++ 0.0043\cdot x_{\text{newspaper}} + 3.5059.\]</div>
 </div>
 </section>
 </section>
@@ -931,7 +941,7 @@ stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-1-bevolkerungszahlen-in-deutschland">Aufgabe 7.1 Bevölkerungszahlen in Deutschland</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-2-marketing-uber-soziale-medien">Aufgabe 7.2 Marketing über soziale Medien</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7-2-marketing-budget-fur-soziale-medien-und-zeitungen">Aufgabe 7.2 Marketing-Budget für soziale Medien und Zeitungen</a></li>
 </ul>
   </nav></div>
 
