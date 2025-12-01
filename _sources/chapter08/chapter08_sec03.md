@@ -18,7 +18,7 @@ ML-Algorithmen können nur Zahlen verarbeiten. In diesem Kapitel werden wir uns
 zunächst damit beschäftigen, wie auch kategoriale Daten wie beispielsweise die
 Farbe eines Autos verarbeitet werden können. Da viele ML-Modelle empfindlich
 darauf reagieren, wenn die numerischen Werte in sehr unterschiedlichen
-Größenordnungen liegen, beschäftigen wiruns auch mit der Sklaierung von
+Größenordnungen liegen, beschäftigen wir uns auch mit der Skalierung von
 numerischen Daten.
 
 ## Lernziele
@@ -27,7 +27,7 @@ numerischen Daten.
 :class: goals
 * Sie können geordnete kategoriale (= ordinale) Daten mit Hilfe eines
   Dictionaries und der `replace()`-Methode als Zahlen kodieren.
-* Sie können ungeordnete kategoriale (= nominame) Daten mit Hilfe der
+* Sie können ungeordnete kategoriale (= nominale) Daten mit Hilfe der
   `get_dummies()`-Methode als Zahlen kodieren. Diese Methode nennt man
   **One-Hot-Kodierung**.
 * Sie können numerische Daten skalieren, indem Sie 
@@ -54,7 +54,7 @@ herunterladen {download}`Download autoscout24_kodierung.csv
 <https://gramschs.github.io/book_ml4ing/data/autoscout24_kodierung.csv>` und in
 das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei auch über
 die URL importieren, wie es in der folgenden Code-Zelle gemacht wird. Mit der
-Methode `.info()`lassen wir uns anzeigen, welchen Datentyp die Merkmale haben.
+Methode `.info()` lassen wir uns anzeigen, welchen Datentyp die Merkmale haben.
 
 ```{code-cell}
 import pandas as pd 
@@ -91,6 +91,8 @@ wollen wir durch Integer ersetzen:
 - Automatik --> 0 und
 - Schaltgetriebe --> 1.
 
+0 ist dabei nicht besser als 1, wir wollen nur zwei verschiedene Integer nehmen,
+um die beiden Werte 'Automatik' und 'Schaltgetriebe' als Zahlen darzustellen.
 Pandas bietet dazu die Methode `replace()` an. Bei der Verwendung dieser Methode
 darf sich der Datentyp nicht ändern (in Pandas Version 2 noch erlaubt, ab
 Version 3 verboten). Daher kodieren wir zunächst die Strings `'Automatik'` und
@@ -123,11 +125,10 @@ daten['Zustand'].unique()
 ```
 
 Die vier Zustände haben eine Ordnung, denn ein Neuwagen ist wertvoller als ein
-Jahreswagen. Der Jahreswagen wiederum ist im Allgmeinen wertvoller als der junge
+Jahreswagen. Der Jahreswagen wiederum ist im Allgemeinen wertvoller als der junge
 Gebrauchtwagen. Am wenigsten wertvoll ist der Gebrauchtwagen. Durch diese
 Ordnung ist es sinnvoll, beim Kodieren der Zustände durch Integer die Ordnung
-beizubehalten. Ob wir jetzt die 0 für den Neuwagen vergeben und die 3 für den
-Gebrauchtwagen oder umgekehrt, ist Geschmackssache.
+beizubehalten.
 
 ```{code-cell}
 zustand_kodierung = {
@@ -146,8 +147,8 @@ daten['Zustand'].unique()
 
 ### Ungeordnete kategoriale Daten (nominale Daten): One-Hot-Kodierung
 
-Anders verhät es sich bei den ungeordnetem kategorialen Daten wie beispielsweise
-den Farben der Autos.
+Anders verhält es sich bei den ungeordneten kategorialen Daten wie
+beispielsweise den Farben der Autos.
 
 ```{code-cell}
 daten['Farbe'].unique()
@@ -156,7 +157,7 @@ daten['Farbe'].unique()
 14 verschiedene Farben haben die Autos in dem Datensatz. Es wäre jedoch falsch,
 nun Integer von 0 bis 13 zu vergeben, denn das würde eine Ordnung der Farben
 voraussetzen, die es nicht gibt. Wir verwenden daher das Verfahren der
-**One-Hot-Kodierung**. Anstatt einer Spalte mir den Farben führen wir 14 neue
+**One-Hot-Kodierung**. Anstatt einer Spalte mit den Farben führen wir 14 neue
 Spalten mit den Farben 'grau', 'grün', 'schwarz', 'blau', usw. ein. Wenn ein
 Auto die Farbe 'grau' hat, notieren wir in der Spalte 'grau' in dieser Zeile
 eine 1 und in den übrigen 13 Spalten mit den anderen Farben eine 0. So können
@@ -206,7 +207,7 @@ daten.head()
 ```
 
 Der Verbrauch gemessen in Litern pro 100 Kilometer liegt zwischen 5 und 10,
-wohingegen der Kilometerstand die 100000 km übersteigt.Das zeigt auch die
+wohingegen der Kilometerstand die 100000 km übersteigt. Das zeigt auch die
 Übersicht der statistischen Kennzahlen:
 
 ```{code-cell} ipython3
@@ -225,9 +226,10 @@ fig.show()
 Das hat auch Auswirkungen auf das Training der ML-Modelle. Daher beschäftigen
 wir uns nun mit der Skalierung von Daten.
 
-Sind die Bereich der Daten von ihren Zahlenwerten sehr verschieden, sollten alle
-numerischen Werte in dieselbe Größenordnung gebracht werden. Dieser Vorgang
-heißt **Skalieren** der Daten. Gebräulich sind dabei zwei verschiedene Methoden:
+Sind die Bereiche der Daten von ihren Zahlenwerten sehr verschieden, sollten
+alle numerischen Werte in dieselbe Größenordnung gebracht werden. Dieser Vorgang
+heißt **Skalieren** der Daten. Gebräuchlich sind dabei zwei verschiedene
+Methoden:
 
 - **Normierung** und
 - **Standardisierung**.
@@ -236,7 +238,7 @@ heißt **Skalieren** der Daten. Gebräulich sind dabei zwei verschiedene Methode
 
 Bei der Normierung wird festgelegt, dass alle Zahlenwerte in einem festen
 Intervall liegen. Besonders häufig wird das Intervall $[0,1]$ genommen. Die
-Verbrauch (l/ 100 km), der zwischen 3.5 und 14.9 liegt, würde so transformiert
+Verbrauch (l/100 km), der zwischen 3.5 und 14.9 liegt, würde so transformiert
 werden, dass das Minimum 3.5 der 0 entspricht und das Maximum 14.9 der 1.
 Genauso würde mit den anderen Eigenschaften verfahren werden. Wir nutzen zur
 praktischen Umsetzung Scikit-Learn.
@@ -244,8 +246,8 @@ praktischen Umsetzung Scikit-Learn.
 Damit keine Informationen über die Testdaten in das Training des ML-Modells
 sickern (Data Leakage), wird die Normierung an das Minimum und das Maximum der
 Trainingsdaten angepasst und ggf. für die Testdaten angewendet. Damit können
-einzelne Testdaten auch außerhalb des Intervalls $[0,1]$ liegen. Wir splitten
-daher zunächst unsere Daten in Trainings- und Testdaten.
+Testdaten auch außerhalb des Intervalls $[0,1]$ liegen. Wir splitten daher
+zunächst unsere Daten in Trainings- und Testdaten.
 
 ```{code-cell}
 from sklearn.model_selection import train_test_split
@@ -278,7 +280,7 @@ MinMaxScaler übergeben und die transformierten Daten in neuen Variablen
 gespeichert.
 
 ```{code-cell}
-# Transformation der Trainungs- und Testdaten
+# Transformation der Trainings- und Testdaten
 X_train_normiert = normierung.transform(daten_train)
 X_test_normiert = normierung.transform(daten_test)
 ```
@@ -324,10 +326,10 @@ Auch hier geht die Pandas-DataFrame-Struktur verloren.
 
 ## Zusammenfassung und Ausblick
 
-Kategoriale Daten müssen kodiert werden, damit sind in einem ML-Algorithmus
-verarbeitet werden können. Geordnete kategoriale (ordinale) Daen können dabei
+Kategoriale Daten müssen kodiert werden, damit sie in einem ML-Algorithmus
+verarbeitet werden können. Geordnete kategoriale (ordinale) Daten können dabei
 über ein Dictionary und die `replace()`-Methode kodiert werden. Für ungeordnete
-kategoriale (nominale) Daten muss die One-Hot-Kodierung verwendet werden. 
+kategoriale (nominale) Daten muss die One-Hot-Kodierung verwendet werden.
 
 Auch numerische Daten müssen häufig für ML-Algorithmen aufbereitet werden, vor
 allem, wenn die Daten in sehr unterschiedlichen Zahlenbereichen liegen. Bei den

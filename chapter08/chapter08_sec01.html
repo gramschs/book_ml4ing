@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -525,13 +525,11 @@
   <section class="tex2jax_ignore mathjax_ignore" id="fehlende-daten">
 <h1>8.1 Fehlende Daten<a class="headerlink" href="#fehlende-daten" title="Link to this heading">#</a></h1>
 <p>Realistische Datensätze sind oft unvollständig. In einer Umfrage hat eine Person
-mit einer Frage nichts anfangen können und daher nichts angekreuzt. Ein
+mit einer Frage nichts anfangen können und daher nichts angekreuzt. Oder ein
 Messsensor an der Produktionsanlage ist abends ausgefallen, was erst am nächsten
-Morgen bemerkt wurde. Die Mitarbeitenden einer Arztpraxis sind im Urlaub und
-lassen die Meldung der verabreichten Impfungen noch bis nach dem Urlaub liegen.
-Es gibt viele Gründe, warum Datensätze unvollständig sind. In diesem Abschnitt
-beschäftigen eir uns damit, fehlende Daten aufzuspüren und lernen einfache
-Methoden kennen, damit umzugehen.</p>
+Morgen bemerkt wird. Es gibt viele Gründe, warum Datensätze unvollständig sind.
+In diesem Abschnitt beschäftigen wir uns damit, fehlende Daten aufzuspüren und
+lernen einfache Methoden kennen, damit umzugehen.</p>
 <section id="lernziele">
 <h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
@@ -539,7 +537,7 @@ Methoden kennen, damit umzugehen.</p>
 <ul class="simple">
 <li><p>Sie können in einem Datensatz mit <strong>isnull()</strong> fehlende Daten aufspüren und
 analysieren.</p></li>
-<li><p>Sie kennen die beiden grundlegenen Strategien, mit fehlenden Daten umzugehen:</p>
+<li><p>Sie kennen die beiden grundlegenden Strategien, mit fehlenden Daten umzugehen:</p>
 <ul>
 <li><p><strong>Elimination</strong> (Löschen) und</p></li>
 <li><p><strong>Imputation</strong> (Vervollständigen).</p></li>
@@ -594,16 +592,17 @@ memory usage: 109.5+ KB
 </div>
 </div>
 </div>
-<p>Wir hatten bereits festgestellt, dass die Anzahl der <code class="docutils literal notranslate"><span class="pre">non-null</span></code>-Einträge für die
-verschiedenen Merkmale unterschiedlich ist. Offensichtlich ist nur bei 963 Autos
-eine »Farbe« eingetragen und die »Leistung (PS)« ist nur bei 987 Autos gültig.
-Am wenigsten gültige Einträge hat das Merkmal »Verbrauch (l/100 km)«, wohingegen
-bei der Eigenschaft »Kilometerstand (km)« nur ein ungültiger Eintrag auftaucht.
-Welche Einträge ungültig sind, können wir mit der Methode <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> bestimmen.
-Die Methode liefert ein Pandas DataFrame zurück, das True/False-Werte enthält.
-True steht dabei dafür, dass ein Wert fehlt bzw. mit dem Eintrag <code class="docutils literal notranslate"><span class="pre">NaN</span></code>
-gekennzeichnet ist (= not a number). Weitere Details finden Sie in der
-<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.isnull.html">Pandas-Dokumentation →
+<p>Der Datensatz enthält 1000 Autos, also 1000 Zeilen bzw. 1000 Datenpunkte, und 14
+Merkmale. Wir hatten bereits festgestellt, dass die Anzahl der
+<code class="docutils literal notranslate"><span class="pre">non-null</span></code>-Einträge für die verschiedenen Merkmale unterschiedlich ist.
+Offensichtlich ist nur bei 963 Autos eine »Farbe« eingetragen und die »Leistung
+(PS)« ist nur bei 987 Autos gültig. Am wenigsten gültige Einträge hat das
+Merkmal »Verbrauch (l/100 km)«, wohingegen bei der Eigenschaft »Kilometerstand
+(km)« nur ein ungültiger Eintrag auftaucht. Welche Einträge ungültig sind,
+können wir mit der Methode <code class="docutils literal notranslate"><span class="pre">isnull()</span></code> bestimmen. Die Methode liefert ein
+Pandas-DataFrame zurück, das True/False-Werte enthält. True steht dabei dafür,
+dass ein Wert fehlt bzw. mit dem Eintrag <code class="docutils literal notranslate"><span class="pre">NaN</span></code> gekennzeichnet ist (= not a
+number). Weitere Details finden Sie in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.isnull.html">Pandas-Dokumentation →
 isnull()</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,10 +840,10 @@ isnull()</a>.</p>
 </div>
 <p>Bereits in der zweiten Zeile befindet sich ein Auto, bei dem das Merkmal
 »Verbrauch (l/100 km)« nicht gültig ist (ggf. müssen Sie weiter nach rechts
-scrollen), den dort steht <code class="docutils literal notranslate"><span class="pre">True</span></code>. Wir betrachten uns diesen Eintrag:</p>
+scrollen), denn dort steht <code class="docutils literal notranslate"><span class="pre">True</span></code>. Wir betrachten uns diesen Eintrag:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -868,14 +867,14 @@ Name: 1, dtype: object
 </div>
 </div>
 </div>
-<p>Bei dem Auto handelt es sich um einen Hybrid, vielleicht wurde deshalb der
-»Verbrauch (l/100 km)« nicht angegeben. Ist das vielleicht auch bei den anderen
-Autos der Grund? Wir speichern zunächst die isnull()-Datenstruktur in einer
-eigenen Variable ab und ermitteln zunächst, wie viele Autos keinen gültigen
-Eintrag bei diesem Merkmal haben. Dazu nutzen wir aus, dass der boolesche Wert
-<code class="docutils literal notranslate"><span class="pre">False</span></code> bei Rechnungen als 0 interpretiert wird und der boolesche Wert <code class="docutils literal notranslate"><span class="pre">True</span></code>
-als 1. Die Methode <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> summiert pro Spalte alle Werte, so dass sie direkt
-die Anzahl der ungültigen Werte pro Spalte liefert.</p>
+<p>Bei dem Auto handelt es sich um ein Hybrid-Fahrzeug, vielleicht wurde deshalb
+der »Verbrauch (l/100 km)« nicht angegeben? Ist das vielleicht auch bei den
+anderen Autos der Grund? Wir speichern zunächst die <code class="docutils literal notranslate"><span class="pre">isnull()</span></code>-Datenstruktur in
+einer eigenen Variable ab und ermitteln, wie viele Autos keinen gültigen Eintrag
+bei diesem Merkmal haben. Dazu nutzen wir aus, dass der boolesche Wert <code class="docutils literal notranslate"><span class="pre">False</span></code>
+bei Rechnungen als 0 interpretiert wird und der boolesche Wert <code class="docutils literal notranslate"><span class="pre">True</span></code> als 1. Die
+Methode <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> summiert pro Spalte alle Werte, so dass sie direkt die Anzahl
+der ungültigen Werte pro Spalte liefert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fehlende_daten</span> <span class="o">=</span> <span class="n">daten</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
@@ -1299,7 +1298,7 @@ anzeigen.</p>
 <p>Bemerkung: Der Vergleich <code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">True</span></code> ist redundant und kann auch weggelassen werden.</p>
 <p>Beim Kraftstoff werden alle möglichen Angaben gemacht: Hybrid, Benzin, Diesel
 und Elektro. Wir müssten jetzt systematisch den fehlenden Angaben nachgehen. Für
-Elektrofahrzeuge und ggf. Hybridautos ist die Angabe »Verbrauch (l/ 100 km)«
+Elektrofahrzeuge und ggf. Hybridautos ist die Angabe »Verbrauch (l/100 km)«
 unsinnig. Aber das zweite Auto mit der Nr. 5 wird mit Benzin betrieben, da
 scheint Nachlässigkeit beim Ausfüllen der Merkmale vorzuliegen. Beim fünften
 Auto mit der Nr. 77 ist zwar der »Verbrauch (l/100 km)« nicht angegeben, aber
@@ -1318,14 +1317,14 @@ Verfahren werden wir nun etwas detaillierter betrachten.</p>
 <section id="loschen-elimination-mit-drop">
 <h2>Löschen (Elimination) mit drop()<a class="headerlink" href="#loschen-elimination-mit-drop" title="Link to this heading">#</a></h2>
 <p>Bei der Elimination (Löschen) können wir filigran vorgehen oder die
-Holzhammer-Methode verwenden. Beispielsweise könnten wir entscheiden, das
-Merkmal »Verbrauch (l/100 km)« komplett zu löschen und einfach nur den
-»Verbrauch (g/km)« zu berücksichtigen. Aber ein kurzer Blick auf die Daten hatte
-ja bereits gezeigt, dass diese Werte auch nur unzuverlässig gefüllt waren, auch
-wenn sie technisch gültig sind. Wir löschen beide Merkmale. Dazu benutzen wir
-die Methode <code class="docutils literal notranslate"><span class="pre">drop()</span></code> mit dem zusätzlichen Argument <code class="docutils literal notranslate"><span class="pre">columns=['Verbrauch</span> <span class="pre">(l/</span> <span class="pre">100</span> <span class="pre">km)',</span> <span class="pre">'Verbrauch</span> <span class="pre">(g/km)']</span></code>. Da wir gleich zwei Spalten aufeinmal eliminieren
-möchten, müssen wir die Spalten (Columns) als Liste übergeben. Danach überprüfen
-wir mit der Methode <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, ob das Löschen geklappt hat.</p>
+Holzhammer-Methode verwenden. Beispielsweise können wir entscheiden, das Merkmal
+»Verbrauch (l/100 km)« komplett zu löschen und einfach nur den »Verbrauch
+(g/km)« zu berücksichtigen. Aber ein kurzer Blick auf die Daten hatte ja bereits
+gezeigt, dass diese Werte auch nur unzuverlässig gefüllt waren, auch wenn sie
+technisch gültig sind. Wir löschen beide Merkmale. Dazu benutzen wir die Methode
+<code class="docutils literal notranslate"><span class="pre">drop()</span></code> mit dem zusätzlichen Argument <code class="docutils literal notranslate"><span class="pre">columns=['Verbrauch</span> <span class="pre">(l/</span> <span class="pre">100</span> <span class="pre">km)',</span> <span class="pre">'Verbrauch</span> <span class="pre">(g/km)']</span></code>. Da wir gleich zwei Spalten auf einmal eliminieren möchten,
+müssen wir die Spalten (Columns) als Liste übergeben. Danach überprüfen wir mit
+der Methode <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, ob das Löschen geklappt hat.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Verbrauch (l/100 km)&#39;</span><span class="p">,</span> <span class="s1">&#39;Verbrauch (g/km)&#39;</span><span class="p">])</span>
@@ -1359,12 +1358,12 @@ memory usage: 109.5+ KB
 </div>
 </div>
 </div>
-<p>Leider hat der Befehl <code class="docutils literal notranslate"><span class="pre">drop()</span></code> nicht funktioniert! Was ist da los? Python und
-Pandas verfolgen das Programmierparadigma »Explizit ist besser als implizit!«
-Daher werden zwar werden durch den <code class="docutils literal notranslate"><span class="pre">drop()</span></code>-Befehl die beiden Spalten gelöscht,
-aber der Datensatz <code class="docutils literal notranslate"><span class="pre">daten</span></code> selbst bleibt aus Sicherheitsgründen unverändert.
-Möchten wir den Datensatz mit den gelöschten Merkmalen weiter verwenden, müssen
-wir ihn in einer neuen Variable speichern oder die alte Variable <code class="docutils literal notranslate"><span class="pre">daten</span></code> damit
+<p>Leider hat der Befehl <code class="docutils literal notranslate"><span class="pre">drop()</span></code> nicht funktioniert! Was ist da los? Python
+verfolgt das Programmierparadigma »Explizit ist besser als implizit!« Daher
+werden zwar durch den <code class="docutils literal notranslate"><span class="pre">drop()</span></code>-Befehl die beiden Spalten gelöscht, aber der
+Datensatz <code class="docutils literal notranslate"><span class="pre">daten</span></code> selbst bleibt aus Sicherheitsgründen unverändert. Möchten wir
+den Datensatz mit den gelöschten Merkmalen weiter verwenden, müssen wir ihn in
+einer neuen Variable speichern oder die alte Variable <code class="docutils literal notranslate"><span class="pre">daten</span></code> damit
 überschreiben. Wir nehmen eine neue Variable namens <code class="docutils literal notranslate"><span class="pre">daten_ohne_verbrauch</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1496,11 +1495,11 @@ memory usage: 101.5+ KB
 </div>
 </div>
 </div>
-<p>Wie Sie in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html">Dokumentation Scikit-Learn →
+<p>Wie wir in der <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html">Dokumentation Pandas →
 drop()</a>
 nachlesen können, gibt es zum expliziten Überschreiben der alten Variable auch
-die Alternative, die Option <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> zu setzen. Welche Option Sie nutzen,
-ist Geschmackssache.</p>
+die Alternative, die Option <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> zu setzen. Welche Option genutzt
+wird, ist Geschmackssache.</p>
 <p>Ob alle Angaben plausibel sind, ist nicht gesagt. Bei dem Peugeot mit dem Index
 708 hatten wir ja gesehen, dass bei der Erstzulassung eine Kilometerangabe
 stand. Tatsächlich gab es bereits erste Hinweise darauf, dass manche Werte
@@ -1535,7 +1534,7 @@ werden, um statistische Aussagen zu treffen oder ein ML-Modell zu trainieren.</p
 dem Index 2 ist unvollständig.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daten_ohne_verbrauch</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1558,7 +1557,7 @@ Name: 2, dtype: object
 </div>
 </div>
 <p>Diesmal entscheiden wir uns dazu, diese Eigenschaft nicht wegzulassen.
-ML-Verfahren brauchen aber immer einen gültigen Wert und nicht <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Wir müssen
+ML-Verfahren brauchen immer einen gültigen Wert und nicht <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Wir müssen
 daher den fehlenden Wert ersetzen. Eine Möglichkeit ist, eine Farbe zu erfinden,
 z.B. ‘bunt’, oder die fehlenden Werte explizit durch einen Eintrag ‘keine
 Angabe’ zu vervollständigen. Dazu benutzen wir die Methode <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> (siehe
@@ -1567,7 +1566,7 @@ fillna()</a>).
 Die Vervollständigung soll nur die NaN-Werte der Spalte »Farbe« füllen. Daher
 filtern wir zuerst diese Spalte und wenden darauf die <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode an. Das
 erste Argument der <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode ist der Wert, durch den die NaN-Werte
-ersetzt werden sollen (hier <code class="docutils literal notranslate"><span class="pre">'keine</span> <span class="pre">Angabe'</span></code>). Damit die Verwollständigung
+ersetzt werden sollen (hier <code class="docutils literal notranslate"><span class="pre">'keine</span> <span class="pre">Angabe'</span></code>). Damit die Vervollständigung
 explizit gespeichert wird, überschreiben wir die Spalte.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1622,13 +1621,13 @@ Name: 2, dtype: object
 </div>
 </div>
 </div>
-<p>Bei den PS-Zahlen haben wir ebenfalls nicht vollständige Daten vorliegen.
-Diesmal haben wir nicht kategoriale Daten wie die Farben, sondern numerische
-Werte. Daher bietet es sich hier eine zweite Methode der Ersetzung (Imputation)
-an. Wenn wir überall da, wo keine PS-Zahlen vorliegen, den Mittelwert der
-vorhandenen PS-Zahlen einsetzen, machen wir zumindest den Mittelwert des
-gesamten Datensatzes nicht kaputt. Wir berechnen daher zuerst den Mittelwert mit
-der Methode <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> und nutzen dann die <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode.</p>
+<p>Bei den PS-Zahlen haben wir ebenfalls keine vollständigen Daten. Diesmal haben
+wir nicht kategoriale Daten wie die Farben, sondern numerische Werte. Daher
+bietet es sich hier eine zweite Methode der Ersetzung (Imputation) an. Wenn wir
+überall da, wo keine PS-Zahlen vorliegen, den Mittelwert der vorhandenen
+PS-Zahlen einsetzen, verändern wir zumindest den Mittelwert des gesamten
+Datensatzes nur wenig. Wir berechnen daher zuerst den Mittelwert mit der Methode
+<code class="docutils literal notranslate"><span class="pre">.mean()</span></code> und nutzen dann die <code class="docutils literal notranslate"><span class="pre">fillna()</span></code>-Methode.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mittelwert</span> <span class="o">=</span> <span class="n">daten_ohne_verbrauch</span><span class="p">[</span><span class="s1">&#39;Leistung (PS)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1672,15 +1671,16 @@ dtype: int64
 </div>
 <p>Der Mittelwert der »Leistung (PS)« ist sehr hoch. Vielleicht haben wir doch den
 Datensatz eher verschlechtert, indem wir fehlende Werte durch den Mittelwert
-ersetzt haben. Beispielsweise könnte der Median eine bessere Alternative sein.
-Auch könnten wir zunächst die Autos mit fehlenden PS-Zahlen weglassen, für die
-übrigen Autos ein lineares Regressionsmodell oder einen Entscheidungsbaum
-trainieren und damit die fehlenden PS-Zahlen abschätzen. Bei diesem Beispiel
-wäre die beste Lösung zur Imputation der ungültigen Werte »Leistung (PS)« die
-Umrechung der vorhandenen, gültigen Werte der Spalte »Leistung (kW)«.
-Tatsächlich sind die beiden Merkmale redundant, da es sich um dasselbe Merkmal
-in zwei verschiedenen Einheiten handelt, so dass wir die Spalte »Leistung (PS)«
-auch entfernen könnten.</p>
+ersetzt haben. Mit großer Wahrscheinlichkeit haben wir die Varianz im Datensatz
+reduziert und es könnte auch sein, dass wir Korrelationen verfälscht haben.
+Vielleicht wäre der Median eine bessere Alternative. Auch könnten wir zunächst
+die Autos mit fehlenden PS-Zahlen weglassen, für die übrigen Autos ein lineares
+Regressionsmodell oder einen Entscheidungsbaum trainieren und damit die
+fehlenden PS-Zahlen abschätzen. Bei diesem Beispiel wäre die beste Lösung zur
+Imputation der ungültigen Werte »Leistung (PS)« die Umrechung der vorhandenen,
+gültigen Werte der Spalte »Leistung (kW)«. Tatsächlich sind die beiden Merkmale
+redundant, da es sich um dasselbe Merkmal in zwei verschiedenen Einheiten
+handelt, so dass wir die Spalte »Leistung (PS)« auch entfernen könnten.</p>
 </section>
 <section id="zusammenfassung-und-ausblick">
 <h2>Zusammenfassung und Ausblick<a class="headerlink" href="#zusammenfassung-und-ausblick" title="Link to this heading">#</a></h2>

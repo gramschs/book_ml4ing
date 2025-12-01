@@ -533,6 +533,8 @@ Ausreißern.</p></li>
 Split in Trainings- und Testdaten.</p></li>
 <li><p>Validieren Sie das Modell. Erhöhen Sie die Modellkomplexität und beurteilen
 Sie, ob Over- oder Underfitting vorliegt.</p></li>
+<li><p>Kodieren Sie das Geschlecht mit One-Hot-Kodierung und trainieren Sie das
+Modell erneut. Verbessert sich die Prognose?</p></li>
 </ol>
 </div>
 <div class="minisolution toggle admonition">
@@ -660,13 +662,14 @@ zeigt aber auch eine ganz leichte Rechtsschiefe.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-<span class="c1"># Split der Daten in Trainiongsdaten und Testdaten</span>
+<span class="c1"># Split der Daten in Trainingsdaten und Testdaten</span>
 <span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Wahl des linearen Regressionsmodells</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># Adaption der Daten für das lineare Regressionsmodell</span>
+<span class="c1"># Geschlecht wird weggelassen, da kategorial</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Länge [mm]&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gewicht der Schale [g]&#39;</span><span class="p">]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">]</span>
 
@@ -685,11 +688,11 @@ zeigt aber auch eine ganz leichte Rechtsschiefe.</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2-Score Testdaten: </span><span class="si">{</span><span class="n">r2_score_test</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Bei den Trainingsdaten und bei den Testdaten erzielen wir R2-Scores von ca. 0.55
+<p>Bei den Trainingsdaten und bei den Testdaten erzielen wir R²-Scores von ca. 0.55
 (leicht variierend je nach zufälliger Aufteilung in Test- und Trainingsdaten).
 Damit scheint die gewählte Modellkomplexität für die Daten zu gering zu sein.
 Wir erhöhen die Modellkomplexität, gehen also zu einer polynomialen Regression
-über. Zu jedem Polynomgrad betrachten wir den jeweiligen R2-Score für
+über. Zu jedem Polynomgrad betrachten wir den jeweiligen R²-Score für
 Trainingsdaten und Testdaten.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
 
@@ -706,7 +709,7 @@ Trainingsdaten und Testdaten.</p>
     <span class="c1"># Validierung</span>
     <span class="n">r2_score_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-    <span class="n">X_test</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Länge [mm]&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gewicht der Schale [g]&#39;</span><span class="p">])</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data_test</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Länge [mm]&#39;</span> <span class="p">:</span> <span class="s1">&#39;Gewicht der Schale [g]&#39;</span><span class="p">])</span>
     <span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">]</span>
 
     <span class="n">r2_score_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
@@ -716,12 +719,36 @@ Trainingsdaten und Testdaten.</p>
 </div>
 <p>Der Wechsel von einem linearen auf ein quadratisches Regressionspolynom scheint
 eine leichte Verbesserung des R2-Wertes zu bringen. Aber bereits bei Grad 3
-fällt der R2-Score bei den Testdaten auf 0.25 ab, während er für die
-Traingsdaten auf 0.61 steigt. Damit befinden wir uns bereits im Overfitting. Bei
-Grad 4 und 5 sind die R2-Scores sogar negativ. Daher darf allerhöchstens Grad 2
+fällt der R²-Score bei den Testdaten auf 0.25 ab, während er für die
+Trainingsdaten auf 0.61 steigt. Damit befinden wir uns bereits im Overfitting. Bei
+Grad 4 und 5 sind die R²-Scores sogar negativ. Daher darf allerhöchstens Grad 2
 für das Regressionspolynom gewählt werden. Da aber die Verbesserung von Grad 1
 auf 2 nur marginal ist, ist weiterhin das lineare multiple Regressionsmodell
 empfehlenswert.</p>
+<p>Nun beziehen wir noch das Geschlecht ein. Dazu kodieren wir es mit
+One-Hot-Kodierung und trainieren dann das lineare multiple Regressionsmodell
+erneut.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># One-Hot-Kodierung des Geschlechts</span>
+<span class="n">data_kodiert</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Geschlecht&#39;</span><span class="p">])</span>
+
+ <span class="c1"># Erneuter Split (mit gleichem random_state für Vergleichbarkeit)</span>
+<span class="n">data_train</span><span class="p">,</span> <span class="n">data_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data_kodiert</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Training mit Geschlecht</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">])</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validierung</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">data_test</span><span class="p">[</span><span class="s1">&#39;Ringe&#39;</span><span class="p">]</span>
+<span class="n">r2_score_test</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2-Score mit Geschlecht: </span><span class="si">{</span><span class="n">r2_score_test</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Der R²-Score ist bei den Testdaten minimal von 0.56 auf 0.57 gestiegen. Eine
+signifikante Verbesserung des Modells ist es nicht, das Geschlecht mit
+hinzuzunehmen.</p>
 </div>
 <div class="miniexercise admonition">
 <p class="admonition-title">Aufgabe 2</p>
@@ -777,7 +804,7 @@ Jahre, bei denen mehr als 4 Mio. Arbeitslose (Q3) gibt. Es gibt keine Ausreißer
 </div>
 <p>Aufgrund der Visualisierung ist abzusehen, dass das lineare Regressionsmodell
 kein gutes Modell sein wird. Wir probieren polynomiale Regression für Grad 1 bis
-10 und notieren den jeweiligen R2-Score.</p>
+10 und notieren den jeweiligen R²-Score.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
@@ -805,16 +832,15 @@ kein gutes Modell sein wird. Wir probieren polynomiale Regression für Grad 1 bi
 
     <span class="c1"># Validierung mit Testdaten</span>
     <span class="n">r2_score_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_transformiert</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="n">X_test_transformiert</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">X_test_transformiert</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
     <span class="n">r2_score_test</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_transformiert</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 
     <span class="c1"># Vergleich der Modelle</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Grad </span><span class="si">{</span><span class="n">grad</span><span class="si">}</span><span class="s1">: R2-Score Trainingsdaten: </span><span class="si">{</span><span class="n">r2_score_train</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> </span><span class="se">\t</span><span class="s1"> R2-Score Testdaten: </span><span class="si">{</span><span class="n">r2_score_test</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ab Grad 3 gibt es keine Veränderung mehr, der R2-Score für die Testdaten ist
-deutlich kleiner als für die Trainingsdaten. Daher sind wir noch nicht im
-Overfitting. Wir wählen daher als Modell Grad 3.</p>
+<p>Ab Grad 3 gibt es keine Veränderung mehr. Der R²-Score für die Testdaten ist
+deutlich kleiner als für die Trainingsdaten.  Dies deutet darauf hin, dass das Modell bereits anfängt zu overfitten. Dennoch wählen wir Grad 3, da höhere Grade zu noch schlechteren Testscores führen.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Wähle Grad 3</span>
 <span class="n">polynom_transformator</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
@@ -824,7 +850,7 @@ Overfitting. Wir wählen daher als Modell Grad 3.</p>
 
 <span class="c1"># Validierung mit Testdaten</span>
 <span class="n">r2_score_train</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train_transformiert</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">X_test_transformiert</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">X_test_transformiert</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">r2_score_test</span>  <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_transformiert</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 
 <span class="c1"># Vergleich der Modelle</span>
@@ -838,7 +864,7 @@ Overfitting. Wir wählen daher als Modell Grad 3.</p>
 <span class="n">prognose</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">prognose</span><span class="p">[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">2031</span><span class="p">)</span>
 
-<span class="n">X_prognose</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">prognose</span><span class="p">[[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]])</span>
+<span class="n">X_prognose</span> <span class="o">=</span> <span class="n">polynom_transformator</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">prognose</span><span class="p">[[</span><span class="s1">&#39;Jahr&#39;</span><span class="p">]])</span>
 <span class="n">prognose</span><span class="p">[</span><span class="s1">&#39;Arbeitslosenzahl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_prognose</span><span class="p">)</span>
 
 </pre></div>
