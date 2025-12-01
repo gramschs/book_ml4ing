@@ -75,7 +75,7 @@ class AuswendigLerner:
 Wir trainieren unser Modell und lassen es dann bewerten. Um nicht selbst den
 R²-Score implementieren zu müssen, verwenden wir die allgemeine Funktion aus
 Scikit-Learn (siehe [Dokumentation Scikit-Learn →
-r2_score()}(https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)).
+r2_score](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html)).
 
 ```{code-cell}
 # Adaption der Daten
@@ -114,7 +114,7 @@ sofort abschätzen wollen, wie gut das Modell auf neue Daten reagiert, und nicht
 warten möchten, bis die nächsten Messungen vorliegen, legen wir jetzt schon
 einen Teil der vorhandenen Daten zur Seite. Diese Daten nennen wir
 **Testdaten**. Die verbleibenden Daten verwenden wir für das Training des
-Modells ﹣ sie heißen **Trainingsdaten**. Später nutzen wir die Testdaten, um zu
+Modells, sie heißen **Trainingsdaten**. Später nutzen wir die Testdaten, um zu
 überprüfen, wie gut das Modell bei Daten funktioniert, die nicht zum Training
 verwendet wurden.
 
@@ -141,7 +141,7 @@ Zugehörigkeit (Trainings- oder Testdaten) eingefärbt werden.
 
 ```{code-cell}
 # Anreicherung der Daten mit dem Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Traingsdaten'
+daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
 daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
 
 # Visualisierung
@@ -171,12 +171,30 @@ anzupassen:
   Zufallszahlengenerators verhindern möchten, können wir den Ausgangszustand des
   Generators mit einem festen Wert (Integer) festlegen. Das ist vor allem für
   Präsentationen oder Lehrmaterialien nützlich.
+- `shuffle`: Die Option `shuffle` bestimmt, ob die Daten vor der Aufteilung
+  durchmischt werden. Der Standard ist `True`, d.h. die Datenpunkte werden
+  zufällig durchmischt, bevor sie aufgeteilt werden. Wird diese Option auf
+  `False` gesetzt, behalten die Daten ihre ursprüngliche Reihenfolge. Bei einem
+  üblichen Split von 80/20 in Trainingsdaten und Testdaten werden die ersten 80
+  \% für die Trainingsdaten genommen und die letzten 20 % für die Testdaten. Sind
+  die Daten sortiert, kann es dadurch zu Verzerrungen kommen. Kommen
+  beispielsweise erst alle billigen Autos und dann die teuren, lernt das
+  ML-Modell mit den billigeren Autos und testet mit den teureren Autos.
+- `stratify`: Diese Option ist vor allem wichtig, wenn die Verteilung zwischen
+  verschiedenen Klassen erhalten bleiben soll. Sind im gesamten Datensatz 30 \%
+  der Autos Diesel-Fahrzeuge, sollen auch in den Trainingsdaten 30 \% der Autos
+  Diesel-Fahrzeuge sein. Diese Option erfordert, dass die Option `shuffle` auf
+  `True` gesetzt ist. Mehr Informationen zum Gebrauch von `stratify` finden wir
+  in der [Dokumentation Scikit-Learn →
+  train_test_split](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html).
+
+Nun verwenden wir `train_test_split` für unsere Daten.
 
 ```{code-cell}
 daten_train, daten_test = train_test_split(daten, test_size=7, random_state=0)
 
 # Aktualisierung des Splitstatus
-daten.loc[daten_train.index,'Splitstatus'] = 'Traingsdaten'
+daten.loc[daten_train.index,'Splitstatus'] = 'Trainingsdaten'
 daten.loc[daten_test.index, 'Splitstatus'] = 'Testdaten'
 
 # Visualisierung

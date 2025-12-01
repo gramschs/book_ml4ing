@@ -34,6 +34,8 @@ Die Anzahl der Ringe +1.5 gibt das Alter der Abalone an.
    Split in Trainings- und Testdaten.
 5. Validieren Sie das Modell. Erhöhen Sie die Modellkomplexität und beurteilen
    Sie, ob Over- oder Underfitting vorliegt.
+6. Kodieren Sie das Geschlecht mit One-Hot-Kodierung und trainieren Sie das
+   Modell erneut. Verbessert sich die Prognose?
 ```
 
 ````{admonition} Lösung
@@ -199,13 +201,14 @@ Zuletzt trainieren wir ein multiples lineares Regressionsmodell.
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
-# Split der Daten in Trainiongsdaten und Testdaten
+# Split der Daten in Trainingsdaten und Testdaten
 data_train, data_test = train_test_split(data, random_state=42)
 
 # Wahl des linearen Regressionsmodells
 model = LinearRegression()
 
 # Adaption der Daten für das lineare Regressionsmodell
+# Geschlecht wird weggelassen, da kategorial
 X_train = data_train.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]']
 y_train = data_train['Ringe']
 
@@ -224,11 +227,11 @@ print(f'R2-Score Trainingsdaten: {r2_score_train:.2f}')
 print(f'R2-Score Testdaten: {r2_score_test:.2f}')
 ```
 
-Bei den Trainingsdaten und bei den Testdaten erzielen wir R2-Scores von ca. 0.55
+Bei den Trainingsdaten und bei den Testdaten erzielen wir R²-Scores von ca. 0.55
 (leicht variierend je nach zufälliger Aufteilung in Test- und Trainingsdaten).
 Damit scheint die gewählte Modellkomplexität für die Daten zu gering zu sein.
 Wir erhöhen die Modellkomplexität, gehen also zu einer polynomialen Regression
-über. Zu jedem Polynomgrad betrachten wir den jeweiligen R2-Score für
+über. Zu jedem Polynomgrad betrachten wir den jeweiligen R²-Score für
 Trainingsdaten und Testdaten.
 
 ```python
@@ -247,7 +250,7 @@ for d in [2, 3, 4, 5]:
     # Validierung
     r2_score_train = model.score(X_train, y_train)
 
-    X_test = polynom_transformator.fit_transform(data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]'])
+    X_test = polynom_transformator.transform(data_test.loc[:, 'Länge [mm]' : 'Gewicht der Schale [g]'])
     y_test = data_test['Ringe']
 
     r2_score_test = model.score(X_test, y_test)
@@ -257,12 +260,39 @@ for d in [2, 3, 4, 5]:
 
 Der Wechsel von einem linearen auf ein quadratisches Regressionspolynom scheint
 eine leichte Verbesserung des R2-Wertes zu bringen. Aber bereits bei Grad 3
-fällt der R2-Score bei den Testdaten auf 0.25 ab, während er für die
-Traingsdaten auf 0.61 steigt. Damit befinden wir uns bereits im Overfitting. Bei
-Grad 4 und 5 sind die R2-Scores sogar negativ. Daher darf allerhöchstens Grad 2
+fällt der R²-Score bei den Testdaten auf 0.25 ab, während er für die
+Trainingsdaten auf 0.61 steigt. Damit befinden wir uns bereits im Overfitting. Bei
+Grad 4 und 5 sind die R²-Scores sogar negativ. Daher darf allerhöchstens Grad 2
 für das Regressionspolynom gewählt werden. Da aber die Verbesserung von Grad 1
 auf 2 nur marginal ist, ist weiterhin das lineare multiple Regressionsmodell
 empfehlenswert.
+
+Nun beziehen wir noch das Geschlecht ein. Dazu kodieren wir es mit
+One-Hot-Kodierung und trainieren dann das lineare multiple Regressionsmodell
+erneut.
+
+```python
+# One-Hot-Kodierung des Geschlechts
+data_kodiert = pd.get_dummies(data, columns=['Geschlecht'])
+
+ # Erneuter Split (mit gleichem random_state für Vergleichbarkeit)
+data_train, data_test = train_test_split(data_kodiert, random_state=42)
+
+# Training mit Geschlecht
+X_train = data_train.drop(columns=['Ringe'])
+y_train = data_train['Ringe']
+model.fit(X_train, y_train)
+
+# Validierung
+X_test = data_test.drop(columns=['Ringe'])
+y_test = data_test['Ringe']
+r2_score_test = model.score(X_test, y_test)
+print(f'R2-Score mit Geschlecht: {r2_score_test:.2f}')
+```
+
+Der R²-Score ist bei den Testdaten minimal von 0.56 auf 0.57 gestiegen. Eine
+signifikante Verbesserung des Modells ist es nicht, das Geschlecht mit
+hinzuzunehmen.
 ````
 
 ```{admonition} Aufgabe 2
@@ -331,7 +361,7 @@ fig.show()
 
 Aufgrund der Visualisierung ist abzusehen, dass das lineare Regressionsmodell
 kein gutes Modell sein wird. Wir probieren polynomiale Regression für Grad 1 bis
-10 und notieren den jeweiligen R2-Score.
+10 und notieren den jeweiligen R²-Score.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -361,16 +391,15 @@ for grad in [1, 2, 3, 4, 5]:
 
     # Validierung mit Testdaten
     r2_score_train = model.score(X_train_transformiert, y_train)
-    X_test_transformiert = polynom_transformator.fit_transform(X_test)
+    X_test_transformiert = polynom_transformator.transform(X_test)
     r2_score_test  = model.score(X_test_transformiert, y_test)
 
     # Vergleich der Modelle
     print(f'Grad {grad}: R2-Score Trainingsdaten: {r2_score_train:.2f} \t R2-Score Testdaten: {r2_score_test}')
 ```
 
-Ab Grad 3 gibt es keine Veränderung mehr, der R2-Score für die Testdaten ist
-deutlich kleiner als für die Trainingsdaten. Daher sind wir noch nicht im
-Overfitting. Wir wählen daher als Modell Grad 3.
+Ab Grad 3 gibt es keine Veränderung mehr. Der R²-Score für die Testdaten ist
+deutlich kleiner als für die Trainingsdaten.  Dies deutet darauf hin, dass das Modell bereits anfängt zu overfitten. Dennoch wählen wir Grad 3, da höhere Grade zu noch schlechteren Testscores führen.
 
 ```python
 
@@ -382,7 +411,7 @@ model.fit(X_train_transformiert, y_train)
 
 # Validierung mit Testdaten
 r2_score_train = model.score(X_train_transformiert, y_train)
-X_test_transformiert = polynom_transformator.fit_transform(X_test)
+X_test_transformiert = polynom_transformator.transform(X_test)
 r2_score_test  = model.score(X_test_transformiert, y_test)
 
 # Vergleich der Modelle
@@ -397,7 +426,7 @@ import plotly.graph_objects as go
 prognose = pd.DataFrame()
 prognose['Jahr'] = np.arange(1990, 2031)
 
-X_prognose = polynom_transformator.fit_transform(prognose[['Jahr']])
+X_prognose = polynom_transformator.transform(prognose[['Jahr']])
 prognose['Arbeitslosenzahl'] = model.predict(X_prognose)
 
 ```
