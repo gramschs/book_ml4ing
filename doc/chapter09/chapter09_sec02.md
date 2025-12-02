@@ -33,12 +33,13 @@ Entscheidungsbäume (Decision Trees) haben wir bereits betrachtet. Sie sind
 aufgrund ihrer Einfachheit und vor allem aufgrund ihrer Interpretierbarkeit sehr
 beliebt. Allerdings ist ihre Tendenz zum Overfitting problematisch. Daher
 kombinieren wir die Ensemble-Methode Bagging mit Entscheidungsbäumen (Decision
-Trees). Indem aus den Trainingsdaten zufällig kleinere Bootstrap-Stichproben
-ausgewählt werden, erhalten wir unterschiedliche Entscheidungsbäume (Decision
-Trees). Zusätzlich wird beim Training der Entscheidungsbäume nicht mit allen
-Merkmalen (Features) trainiert, sondern auch hier wählen wir die Merkmale
-zufällig aus. Durch diese zwei Maßnahmen wird die Anpassung der
-Entscheidungsbäume an die Trainingsdaten (Overfitting) reduziert.
+Trees). Indem aus den Trainingsdaten zufällig Bootstrap-Stichproben ausgewählt
+werden, erhalten wir unterschiedliche Entscheidungsbäume (Decision Trees).
+Zusätzlich wird beim Training der Entscheidungsbäume nicht mit allen Merkmalen
+(Features) trainiert. Bei jedem Split eines Baumes wird nur eine zufällige
+Teilmenge der Merkmale betrachtet, um die beste Trennung zu finden. Durch diese
+zwei Maßnahmen wird die Anpassung der Entscheidungsbäume an die Trainingsdaten
+(Overfitting) reduziert.
 
 Um den Random Forest von Scikit-Learn praktisch auszuprobieren, erzeugen wir
 künstliche Daten. Dazu verwenden wir die Funktion `make_moons` von Scikit-Learn,
@@ -86,7 +87,7 @@ Entscheidungsbäumen (Decision Trees) ist, haben wir nun die Möglichkeit, die
 Anzahl der Entscheidungsbäume festzulegen. Voreingestellt sind 100
 Entscheidungsbäume. Aus didaktischen Gründen reduzieren wir diese Anzahl auf
 vier und setzen das Argument `n_estimators=` auf `4`. Ebenfalls aus didaktischen
-Gründen fixieren wir die Zufallszahlen, mit Hilfer derer das Bootstrapping und
+Gründen fixieren wir die Zufallszahlen, mit Hilfe derer das Bootstrapping und
 die Auswahl der Merkmale (Features) umgesetzt wird, mit `random_state=0`. In
 einem echten Projekt würden wir das unterlassen. Zuletzt führen wir das Training
 mit der `.fit()`-Methode durch. Weitere Details finden Sie unter [Scikit-Learn
@@ -100,7 +101,7 @@ model_random_forest = RandomForestClassifier(n_estimators=4, random_state=0)
 model_random_forest.fit(X,y)
 ```
 
-Als nächstes lassen wir den Random Forest für jeden Punkte des Gebiets
+Als nächstes lassen wir den Random Forest für jeden Punkt des Gebiets
 prognostizieren, ob ein Auto mit diesem Kilometerstand und diese Preis
 verkaufbar wäre oder nicht.
 
@@ -155,9 +156,9 @@ Training des Entscheidungsbaumes zusammenfassen, wie oft und wieviel ein
 bestimmtes Merkmal zur Reduktion beiträgt. In der Praxis kommt es aber oft vor,
 dass bei einem Split mehrere Merkmale gleichermaßen die Gini-Impurity
 reduzieren. Dann wird eines der Merkmale zufällig ausgewählt. Daher kann es
-schwieirg sein, bei einem Entscheidungsbaum die Feature Importance zu bewerten.
+schwierig sein, bei einem Entscheidungsbaum die Feature Importance zu bewerten.
 Bei einem Random Forest hingegen werden viele Entscheidungsbäume trainiert. Wenn
-wir jetzt bei allen Entscheiungsbäumen die Feature Importance berechnen und den
+wir jetzt bei allen Entscheidungsbäumen die Feature Importance berechnen und den
 Mittelwert bilden, erhalten wir ein aussagekräftiges Bewertungskriterium, wie
 stark einzelne Merkmale die Prognosefähigkeit beeinflussen.
 

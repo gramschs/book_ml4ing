@@ -57,11 +57,11 @@ parts:
     - file: chapter08/chapter08_sec02.md
     - file: chapter08/chapter08_sec03.md
     - file: chapter08/chapter08_sec04.md
-  - file: chapter09/sec00.md
+  - file: chapter09/chapter09_sec00.md
     sections:
-    - file: chapter09/sec01.md
-    - file: chapter09/sec02.md
-    - file: chapter09/sec03.md
+    - file: chapter09/chapter09_sec01.md
+    - file: chapter09/chapter09_sec02.md
+    - file: chapter09/chapter09_sec03.md
   - file: chapter10/sec00.md
     sections:
     - file: chapter10/sec01.md
