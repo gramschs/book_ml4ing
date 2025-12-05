@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -233,10 +233,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapter08/chapter08_sec04.html">Übungen</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec01.html">9.1 Stacking, Bagging und Boosting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec02.html">9.2 Random Forests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter09/sec03.html">9.3 XGBoost</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter09/chapter09_sec00.html">9. Ensemble-Methoden (Random Forests und XGBoost)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec01.html">9.1 Grundideen der Ensemble-Methoden</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec02.html">9.2 Random Forests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec03.html">9.3 XGBoost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter09/chapter09_sec04.html">Übungen</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -581,7 +582,7 @@ einzulesen. Mit <code class="docutils literal notranslate"><span class="pre">ims
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_4575/29253908.py:4: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_9013/29253908.py:4: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
   imshow(foto);
 </pre></div>
 </div>
@@ -710,7 +711,7 @@ dem Untermodul <code class="docutils literal notranslate"><span class="pre">skim
 (1800, 2400)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_4575/584360878.py:8: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_9013/584360878.py:8: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
   imshow(foto_grau);
 </pre></div>
 </div>
@@ -739,11 +740,11 @@ probieren wir den Canny-Filter aus. Dazu importieren wir zunächst die
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_4575/1420486150.py:9: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/hd/xdjzhymn4x393gh7v6ws4v880000gn/T/ipykernel_9013/1420486150.py:9: FutureWarning: `imshow` is deprecated since version 0.25 and will be removed in version 0.27. Please use `matplotlib`, `napari`, etc. to visualize images.
   imshow(kanten)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x137370b90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x11f616060&gt;
 </pre></div>
 </div>
 <img alt="../_images/3e1937ef783fca6b0822ba9670b16c45c72e5cd33582024eebb667e9d7bbf78d.png" src="../_images/3e1937ef783fca6b0822ba9670b16c45c72e5cd33582024eebb667e9d7bbf78d.png" />
@@ -791,7 +792,7 @@ benötigen wir eine weitere Funktion aus dem Untermodul <code class="docutils li
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x1378028d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.patches.Circle at 0x11f5c6600&gt;
 </pre></div>
 </div>
 <img alt="../_images/072d0d863de4e0063a5389d3d5a07e714e1d19adf9c511c306b62113e731ffbc.png" src="../_images/072d0d863de4e0063a5389d3d5a07e714e1d19adf9c511c306b62113e731ffbc.png" />
