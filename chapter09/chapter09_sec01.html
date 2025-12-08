@@ -240,11 +240,11 @@
 <li class="toctree-l2"><a class="reference internal" href="chapter09_sec04.html">Übungen</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec03.html">10.3 Nichtlineare SVM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter10/sec04.html">Übung</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter10/chapter10_sec00.html">10. Support Vector Machines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec01.html">10.1 Maximiere den Rand, aber soft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec02.html">10.2 Training SVM mit Scikit-Learn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec03.html">10.3 Nichtlineare SVM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter10/chapter10_sec04.html">Übung</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter11/sec00.html">11. ML-Workflow: Modellbewertung und Auswahl</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -507,6 +507,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methoden">Ensemble-Methoden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voting-averaging-und-stacking">Voting, Averaging und Stacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging">Bagging</a></li>
@@ -532,6 +533,8 @@ indem sie die individuellen Stärken der Modelle nutzen und deren Schwächen
 ausgleichen. In diesem Kapitel werden wir die grundlegenden Konzepte und
 Unterschiede zwischen diesen Methoden erläutern, um ein besseres
 Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.</p>
+<section id="lernziele">
+<h2>Lernziele<a class="headerlink" href="#lernziele" title="Link to this heading">#</a></h2>
 <div class="goals admonition">
 <p class="admonition-title">Lernziele</p>
 <ul class="simple">
@@ -547,6 +550,7 @@ Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.</p>
 </li>
 </ul>
 </div>
+</section>
 <section id="ensemble-methoden">
 <h2>Ensemble-Methoden<a class="headerlink" href="#ensemble-methoden" title="Link to this heading">#</a></h2>
 <p>Der Begriff »Ensemble« wird im Allgemeinen eher mit Musik und Kunst in
@@ -695,7 +699,7 @@ Adaboost</a>.</p>
 aber der Fokus liegt auf der Minimierung der Fehler. Im ersten Schritt wird ein
 ML-Modell (häufig ein Entscheidungsbaum) trainiert. Danach wird für jeden
 Datenpunkt der Fehler des Modells, das sogenannte <strong>Residuum</strong>, berechnet, indem
-die Differenzen zwischen dem tatsächlichen Wert und de Prognosen bestimmt wird.
+die Differenzen zwischen dem tatsächlichen Wert und den Prognosen bestimmt wird.
 Im nächsten Schritt wird ein neues Modell trainiert, das darauf abzielt, diese
 Residuen vorherzusagen. Dieses neue Modell wird dann zu dem vorherigen Modell
 hinzugefügt, um die Gesamtprognose zu verbessern. Dieser Prozess wird
@@ -798,6 +802,7 @@ auch mit praktischen Beispielen vertiefen.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lernziele">Lernziele</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-methoden">Ensemble-Methoden</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voting-averaging-und-stacking">Voting, Averaging und Stacking</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging">Bagging</a></li>

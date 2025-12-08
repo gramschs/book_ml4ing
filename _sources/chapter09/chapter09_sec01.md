@@ -22,6 +22,8 @@ ausgleichen. In diesem Kapitel werden wir die grundlegenden Konzepte und
 Unterschiede zwischen diesen Methoden erläutern, um ein besseres
 Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: goals
 * Sie können in eigenen Worten erklären, was **Ensemble-Methoden** sind.
@@ -193,7 +195,7 @@ Beim **Gradient Boosting** wird ebenfalls ein sequentieller Ansatz verfolgt,
 aber der Fokus liegt auf der Minimierung der Fehler. Im ersten Schritt wird ein
 ML-Modell (häufig ein Entscheidungsbaum) trainiert. Danach wird für jeden
 Datenpunkt der Fehler des Modells, das sogenannte **Residuum**, berechnet, indem
-die Differenzen zwischen dem tatsächlichen Wert und de Prognosen bestimmt wird.
+die Differenzen zwischen dem tatsächlichen Wert und den Prognosen bestimmt wird.
 Im nächsten Schritt wird ein neues Modell trainiert, das darauf abzielt, diese
 Residuen vorherzusagen. Dieses neue Modell wird dann zu dem vorherigen Modell
 hinzugefügt, um die Gesamtprognose zu verbessern. Dieser Prozess wird
