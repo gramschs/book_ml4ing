@@ -20,6 +20,8 @@ Ensemble-Methoden werden besonders häufig Entscheidungsbäume (Decision Trees)
 eingesetzt. Daher betrachten wir in diesem Kapitel die praktische Umsetzung von
 Bagging mit Entscheidungsbäumen, die sogenannten Random Forests.
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: goals
 * Sie können das ML-Modell **Random Forest** in der Praxis anwenden.

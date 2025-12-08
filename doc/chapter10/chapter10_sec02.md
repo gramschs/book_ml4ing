@@ -14,12 +14,12 @@ kernelspec:
 
 # 10.2 Training SVM mit Scikit-Learn
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: goals
-* Sie können ein SVM-Modell mit Scikit-Learn trainieren.
+Sie können ein SVM-Modell mit Scikit-Learn trainieren.
 ```
-
-+++
 
 ## Scikit-Learn bietet mehrere Implementierungen
 

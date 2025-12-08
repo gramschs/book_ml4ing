@@ -14,6 +14,8 @@ kernelspec:
 
 # 10.1 Maximiere den Rand, aber soft
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: goals
 * Sie kennen die Abkürzung **SVM** für **Support Vector Machines**.

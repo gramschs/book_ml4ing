@@ -14,13 +14,14 @@ kernelspec:
 
 # 10.3 Nichtlineare SVM
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: goals
 * Sie kennen den **Kernel-Trick**.
-* Sie können mit den **radialen Basisfunktionen** als neue Option für SVM-Verfahren nichtlinear trennbare Daten klassifizieren.
+* Sie können mit den **radialen Basisfunktionen** als neue Option für
+  SVM-Verfahren nichtlinear trennbare Daten klassifizieren.
 ```
-
-+++
 
 ## Nichtlineare trennbare Daten
 
