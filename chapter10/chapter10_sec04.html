@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../_static/myadmonitions.css?v=02871fee" />
@@ -511,139 +511,282 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ubung">
 <h1>Übung<a class="headerlink" href="#ubung" title="Link to this heading">#</a></h1>
-<div class="miniexercise admonition">
-<p class="admonition-title">Aufgabe</p>
 <p>Auf der Internetseite
-<a class="reference external" href="https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks">https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks</a>
-finden Sie einen Datensatz mit Sonarsignalen. Die Muster der Signals sind durch
-60 Zahlenwerte codiert (es handelt sich um die Energie zu bestimmten
-Frequenzen). Darüber hinaus wird angegeben, ob das Sonarsignal Gestein (= Stein)
-oder Metall detektiert hat.</p>
+[<a class="reference external" href="https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks">https://archive.ics.uci.edu/dataset/151/connectionist+bench+sonar+mines+vs+rocks</a>]
+finden Sie einen Datensatz mit Sonarsignalen. Die Muster der Signale sind durch
+60 Zahlenwerte codiert (es handelt sich um die Energie zu bestimmten Frequenzen,
+normalisiert auf [0,1]). Darüber hinaus wird angegeben, ob das Sonarsignal
+Gestein (= Stein) oder Metall detektiert hat.</p>
 <p>Laden Sie nun die Datei ‘metall_oder_stein.csv’. Führen Sie eine explorative
-Datenanalyse durch. Lassen Sie dann alle Ihnen bekannten Klassifikations-Modelle
+Datenanalyse durch. Lassen Sie dann alle Ihnen bekannten Klassifikationsmodelle
 trainieren und validieren, um die Materialeigenschaft Stein/Metall auf Basis der
 numerischen Werte zu prognostizieren.</p>
+<div class="miniexercise admonition">
+<p class="admonition-title">Überblick über die Daten</p>
+<ul class="simple">
+<li><p>Welche Daten enthält der Datensatz?</p></li>
+<li><p>Wie viele Datenpunkte und Merkmale gibt es?</p></li>
+<li><p>Sind die Daten vollständig?</p></li>
+<li><p>Welche Datentypen haben die Merkmale?</p></li>
+<li><p>Gibt es Merkmale mit unerwarteten Datentypen?</p></li>
+</ul>
 </div>
 <div class="minisolution toggle admonition">
 <p class="admonition-title">Lösung</p>
-<p>Import der Daten (es gibt keine Spaltenüberschriften, daher wird das optionale Argument ‘header=None’ gesetzt):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;metall_oder_stein.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="c1"># Import der Daten (zwei Kommentarzeilen werden übersprungen)</span>
+<span class="n">daten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;metall_oder_stein.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">daten</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="c1"># Check der Vollständigkeit:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daten</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Blick in die Daten:</span>
+<span class="n">daten</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Blick in die Daten:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<p>Der Datensatz enthält 208 Einträge (Datenpunkte) und 61 Merkmale. Die ersten 60
+Merkmale Signal01 bis Signal60 werden durch Floats repräsentiert, das Merkmal
+Material wird durch Objekte repräsentiert.</p>
+<p>Die Daten sind vollständig.</p>
+<p>Die ersten 10 Zeilen zeigen in den Spalten Signal01 bis Signal60 numerische
+Werte. In der letzten Spalte Material wird der String ‘Stein’ aufgelistet. Ein
+kurzer Test mit</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Der Datensatz enthält 208 Einträge und 61 Eigenschaften. Die ersten 60
-Eigenschaften werden durch Floats repräsentiert, die Eigenschaft ‘60’ wird durch
-Objekte repräsentiert.</p>
-<p>Allerdings ist die Ausgabe beschränkt, so dass wir nicht mehr ablesen können, ob
-alle Einträge gefüllt sind. Wir nutzen daher die Methode ‘.isnull()’, um
-NA-Werte aufzuspüren. Die Methode liefert Booleans zurück. Wir summieren über
-das Ergebnis spaltenweise (False = 0, True = 1).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">anzahl_ungueltige_eintraege</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">anzahl_ungueltige_eintraege</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<p>zeigt, dass in dieser Spalte lediglich die beiden Einträge ‘Stein’ und ‘Metall’
+auftreten. Insgesamt sind die Werte der Merkmale für die Datentypen plausibel.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Statistik der numerischen Daten</p>
+<p>Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
+Daten. Interpretieren Sie die statistischen Kennzahlen. Gibt es Auffälligkeiten?
+Sind die Werte plausibel?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Offensichtlich sind alle Spalten in der Summe 0, bestehen also nur aus False.
-Daher sind alle Einträge gültig.</p>
-<p>Als nächstes untersuchen wir, welche Einträge in der 61. Spalte, also
-Eigenschaft 60 enthalten sind.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Die letzte Spalte enthält nur zwei verschiedene String-Werte: Stein oder Metall.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Die statistischen Kennzahlen lassen sich so kaum interpretieren. Daher hilft hier ein Boxplot.</p>
+<p>Die statistischen Kennzahlen lassen sich aufgrund der großen Anzahl an Merkmalen
+so kaum interpretieren. Daher hilft hier ein Boxplot der numerischen Daten
+weiter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">59</span><span class="p">],</span> 
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">daten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Material&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> 
              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stein oder Metall&#39;</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Eigenschaft&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Wert&#39;</span><span class="p">})</span>
+             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Merkmal&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;Wert&#39;</span><span class="p">})</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Die Median-Werte scheinen einem Muster zu folgen. Beginnend bei Eigenschaft 0 steigen sie bis zu Eigenschaft 25, wo der Median den Wert 0.7545 erreicht, um dann wieder abzufallen. Ab Eigenschaft 49 liegt der Median unter 0.0179. Bei Eigenschaften mit einem größeren Median ist auch der Interquartilsabstand größer, dafür gibt es keine Ausreißer. Das Maximum scheint bei 1 zu liegen, wobei man das noch genauer untersuchen müsste.</p>
-<p>Als nächstes schauen wir uns, wie die Zielgröße verteilt ist.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">60</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
-             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stein oder Metall&#39;</span><span class="p">,</span>
-             <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;Material&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span> <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;Eigenschaft&#39;</span><span class="p">})</span>
+<p>Die Medianwerte scheinen einem Muster zu folgen. Beginnend bei Merkmal Signal01
+steigen sie bis zu Signal26, wo der Median den Wert 0.7545 erreicht, um dann
+wieder abzufallen. Ab Signal50 liegt der Median unter 0.0179. Bei Eigenschaften
+mit einem größeren Median ist auch der Interquartilsabstand (IQR) größer, dafür
+gibt es keine Ausreißer. Das Maximum liegt bei 1, was konsistent mit der
+Normalisierung auf [0,1] ist.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Statistik der kategorialen Merkmale</p>
+<p>Wie viele Einträge gibt es für Metall oder Stein? Visualisieren Sie die
+Verteilung mit einem Balkendiagramm der Klassenverteilung. Ist der Datensatz
+ausgewogen?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Berechnung der Anzahl der Einträge</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 
+<span class="c1"># Visualisierung als Balkendiagramm</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span>
+             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Stein oder Metall&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;Anzahl&#39;</span><span class="p">,</span>
+    <span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;Material&#39;</span><span class="p">,</span>
+    <span class="n">showlegend</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Die beiden Materialen sind ungefähr gleich verteilt, 53 % der untersuchten
-Proben sind Metall, 47 % sind Stein.</p>
+<p>Im Datensatz sind 111 Proben Metall und 97 Stein. Damit sind 53 % der Proben
+Metall und 47 % Stein, was ungefähr gleichverteilt ist.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">Vorbereitung der Daten für das Training</p>
+<p>Bereiten Sie die Daten für das maschinelle Lernen vor:</p>
+<ol class="arabic simple">
+<li><p>Kodieren Sie die kategoriale Variable Material mit <code class="docutils literal notranslate"><span class="pre">replace()</span></code>.</p></li>
+<li><p>Trennen Sie die Merkmale (Input X) und die Zielgröße (Output y).</p></li>
+<li><p>Teilen Sie die Daten in Trainings- und Testdaten im Verhältnis 80:20 auf.</p></li>
+<li><p>Skalieren Sie - falls notwendig - die Trainingsdaten mit <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code>
+und die Testdaten mit <code class="docutils literal notranslate"><span class="pre">transform()</span></code>.</p></li>
+</ol>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">59</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">60</span><span class="p">]</span>
-<span class="n">y</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">y</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;Metall&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Kodierung mit Check (sollte [0 1] ausgeben)</span>
+<span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Stein&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;Metall&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># Aufteilung in Input/Output</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">daten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Material&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">daten</span><span class="p">[</span><span class="s1">&#39;Material&#39;</span><span class="p">]</span>
+
+<span class="c1"># Split 80:20</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Prüfen der Wertebereiche</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span>  <span class="kn">import</span> <span class="n">SVC</span>
-
-<span class="n">model_svm_linear</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
-<span class="n">model_svm_linear</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">score_svm_linear_train</span> <span class="o">=</span> <span class="n">model_svm_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">score_svm_linear_test</span> <span class="o">=</span> <span class="n">model_svm_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten lineare SVM: </span><span class="si">{</span><span class="n">score_svm_linear_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten lineare SVM: </span><span class="si">{</span><span class="n">score_svm_linear_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="n">model_svm_rbf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">)</span>
-<span class="n">model_svm_rbf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">score_svm_rbf_train</span> <span class="o">=</span> <span class="n">model_svm_rbf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">score_svm_rbf_test</span> <span class="o">=</span> <span class="n">model_svm_rbf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten RBF SVM: </span><span class="si">{</span><span class="n">score_svm_rbf_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten RBF SVM: </span><span class="si">{</span><span class="n">score_svm_rbf_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
+<p>Da die Signaldaten alle im Intervall [0,1] liegen, brauchen wir die Daten
+nicht skalieren.</p>
 </div>
+<div class="miniexercise admonition">
+<p class="admonition-title">ML-Modell Entscheidungsbaum</p>
+<p>Trainieren Sie einen Entscheidungsbaum und bewerten Sie das trainierte Modell.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 
-<span class="n">model_decision_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
-<span class="n">model_decision_tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Instanziierung des Entscheidungsbaums mit Training</span>
+<span class="n">modell_baum</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">modell_baum</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 
-<span class="n">score_decision_tree_train</span> <span class="o">=</span> <span class="n">model_decision_tree</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">score_decision_tree_test</span> <span class="o">=</span> <span class="n">model_decision_tree</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten Entscheidungsbaum: </span><span class="si">{</span><span class="n">score_decision_tree_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten Entscheidungsbaum: </span><span class="si">{</span><span class="n">score_decision_tree_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># Bewertung</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">modell_baum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">modell_baum</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten Entscheidungsbaum: </span><span class="si">{</span><span class="n">score_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten Entscheidungsbaum: </span><span class="si">{</span><span class="n">score_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Der Trainingsscore ist 1.00, der Testscore 0.79; ein Zeichen für Overfitting.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">ML-Modell Random Forest</p>
+<p>Trainieren Sie nun einen Random Forest mit 1, 5, 10, 20, 50 und 100 Bäumen auf
+denselben Daten. Berechnen Sie wieder die Scores für Training und Test. Wie
+unterscheiden sich die Ergebnisse vom einzelnen Entscheidungsbaum? Welches
+Random-Forest-Modell würden Sie wählen?</p>
+<p>Bewerten Sie darüber hinaus mit der Feature Importance, welche Signale am
+wichtigsten sind.</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
-<span class="n">list_score_train</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">list_score_test</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">101</span><span class="p">):</span>
-    <span class="n">model_random_forest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">model_random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+    <span class="c1"># Instanziierung des Random-Forest-Modells und Training</span>
+    <span class="n">modell_rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">modell_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-    <span class="n">score_random_forest_train</span> <span class="o">=</span> <span class="n">model_random_forest</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-    <span class="n">score_random_forest_test</span> <span class="o">=</span> <span class="n">model_random_forest</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="c1"># Bewertung</span>
+    <span class="n">score_train</span> <span class="o">=</span> <span class="n">modell_rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">score_test</span> <span class="o">=</span> <span class="n">modell_rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl Entscheidungsbäume: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Training: </span><span class="si">{</span><span class="n">score_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | Score Test: </span><span class="si">{</span><span class="n">score_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl Entscheidungsbäume: </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> </span><span class="se">\t</span><span class="s1"> Score Training: </span><span class="si">{</span><span class="n">score_random_forest_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> | Score Test: </span><span class="si">{</span><span class="n">score_random_forest_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># bestes RF-Modell wählen</span>
+<span class="n">modell_rf_final</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">modell_rf_final</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-    <span class="n">list_score_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_random_forest_train</span><span class="p">)</span>
-    <span class="n">list_score_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score_random_forest_test</span><span class="p">)</span>
+<span class="c1"># Feature Importance extrahieren</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Merkmal&#39;</span><span class="p">:</span> <span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s1">&#39;Feature Importance&#39;</span><span class="p">:</span> <span class="n">modell_rf_final</span><span class="o">.</span><span class="n">feature_importances_</span>
+<span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="n">score_random_forest</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Trainingsscore&#39;</span><span class="p">:</span> <span class="n">list_score_train</span><span class="p">,</span> <span class="s1">&#39;Testscore&#39;</span><span class="p">:</span> <span class="n">list_score_test</span><span class="p">})</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">score_random_forest</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># die 5 wichtigsten Merkmale anzeigen</span>
+<span class="n">importance</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Ab Index 51 scheint sich Trainingsscore und Testscore zu stabilisieren, wir
-wählen daher ‘n_estimators’ = 51. Damit hat der Random Forest den höchsten
-Trainings- und Testscore.</p>
+<p>Das Random-Forest-Modell ist besser verallgemeinerbar als der Entscheidungsbaum.
+Für einen Random Forest aus 50 Entscheidungsbäumen erhalten wir einen
+Trainingsscore von 1.00 und einen Testscore von 0.88. Noch mehr
+Entscheidungsbäume führen zu keinem besseren Ergebnis, so dass wir dieses
+Modell wählen würden.</p>
+<p>Mit dem besten Modell berechnen wir dann die Feature Importance. Am wichtigsten
+sind die Signale Signal09 bis Signal12 und Signal52.</p>
+</div>
+<div class="miniexercise admonition">
+<p class="admonition-title">ML-Modelle SVM und finales Modell</p>
+<p>Trainieren Sie nun sowohl eine lineare SVM als auch eine nichtlineare SVM.
+Ordnen Sie ein: welches ML-Modell würden Sie final wählen?</p>
+</div>
+<div class="minisolution toggle admonition">
+<p class="admonition-title">Lösung</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c1"># Instanziierung einer linearen SVM und Training</span>
+<span class="n">svm_linear</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">svm_linear</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Bewertung lineare SVM</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">svm_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">svm_linear</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten lineare SVM: </span><span class="si">{</span><span class="n">score_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten lineare SVM: </span><span class="si">{</span><span class="n">score_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Instanziierung einer nichtlinearen SVM und Training</span>
+<span class="n">svm_rbf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">svm_rbf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Bewertung nichtlineare SVM</span>
+<span class="n">score_train</span> <span class="o">=</span> <span class="n">svm_rbf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score_test</span> <span class="o">=</span> <span class="n">svm_rbf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Trainingsdaten nichtlineare SVM: </span><span class="si">{</span><span class="n">score_train</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Score Testdaten nichtlineare SVM: </span><span class="si">{</span><span class="n">score_test</span><span class="w"> </span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Wir erhalten die folgenden Scores (zusammen mit den vorherigen):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ML-Modell</p></th>
+<th class="head"><p>Score Training</p></th>
+<th class="head"><p>Score Test</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Entscheidungsbaum</p></td>
+<td><p>1.00</p></td>
+<td><p>0.79</p></td>
+</tr>
+<tr class="row-odd"><td><p>Random Forest</p></td>
+<td><p>1.00</p></td>
+<td><p>0.88</p></td>
+</tr>
+<tr class="row-even"><td><p>lineare SVM</p></td>
+<td><p>0.86</p></td>
+<td><p>0.86</p></td>
+</tr>
+<tr class="row-odd"><td><p>nichtlineare SVM (RBF-Kernel)</p></td>
+<td><p>0.88</p></td>
+<td><p>0.79</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Die lineare SVM generalisiert am besten (gleicher Score auf Train/Test), während
+die nichtlineare SVM (mit RBF-Kernel) leichtes Overfitting zeigt (0.88 vs. 0.79)</p>
+<p>Obwohl der Random Forest das beste Ergebnis auf den Testdaten erzielt (Testscore
+0.88), entscheiden wir uns nicht für dieses Modell. Der Random Forest besteht
+aus vielen Entscheidungsbäumen und ist dadurch zwar leistungsstark, aber nur
+eingeschränkt interpretierbar.</p>
+<p>Die lineare SVM erreicht mit einem Trainings- und Testscore von jeweils 0.86
+eine ähnlich gute Prognosegüte wie der Random Forest, zeigt aber keinerlei
+Overfitting. Außerdem ist sie deutlich einfacher interpretierbar, da die
+Entscheidungsregel auf einem linearen Modell basiert. Die gelernten Gewichte
+geben direkt an, wie stark und in welche Richtung jedes Signal die
+Klassifikation beeinflusst. Das macht das lineare SVM-Modell transparent.</p>
+<p>Daher wählen wir als finales Modell die lineare SVM, da sie stabile Ergebnisse
+liefert, gut verallgemeinert und die zugrunde liegende Entscheidungslogik
+nachvollziehbar bleibt.</p>
 </div>
 </section>
 

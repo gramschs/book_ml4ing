@@ -14,6 +14,10 @@ kernelspec:
 
 # 10.1 Maximiere den Rand, aber soft
 
+Wir bleiben weiter bei den klassischen ML-Methoden und beschäftigen uns in
+diesem Kapitel mit den Support Vector Machines. Zunächst jedoch ergründen wir
+das Konzept, das hinter den Support Vector Machines steht.
+
 ## Lernziele
 
 ```{admonition} Lernziele
@@ -24,25 +28,26 @@ kernelspec:
 * Sie wissen, was Stützvektoren bzw. **Support Vectors** sind.
 * Sie wissen, dass ein harter Randabstand nur bei linear trennbaren Datensätzen
   möglich ist.
-* Sie wissen, dass eigentlich nicht trennbare Datensätzen mit der Technik **Soft
+* Sie wissen, dass eigentlich nicht trennbare Datensätze mit der Technik **Soft
   Margin** (= weicher Randabstand) dennoch klassifiziert werden können.
 ```
 
-## Welche Trenn-Gerade soll es sein?
+## Welche Trenngerade soll es sein?
 
 Support Vector Machines (SVM) können sowohl für Klassifikations- als auch
 Regressionsprobleme genutzt werden. Insbesondere wenn viele Merkmale (Features)
 vorliegen, sind SVMs gut geeignet. Auch neigen SVMs weniger zu Overfitting.
 Daher lohnt es sich, Support Vector Machines anzusehen.
 
-Warum es weniger zu Overfitting neigt und mit Ausreißern besser umgehen kann,
-sehen wir bereits an der zugrundeliegenden Idee, die hinter dem Verfahren
-steckt. Um das Basis-Konzept der SVMs zu erläutern, besorgen wir uns zunächst
+Warum SVMs weniger zu Overfitting neigen und mit Ausreißern besser umgehen
+können, sehen wir bereits an der zugrundeliegenden Idee, die hinter dem
+Verfahren steckt. Um das Basis-Konzept der SVMs zu erläutern, erzeugen wir
 künstliche Messdaten. Dazu verwenden wir die Funktion `make_blobs` aus dem
-Scikit-Learn-Modul. Mehr Details zum Aufruf der Funktion finden Sie in der
+Scikit-Learn-Modul `Datasets`. Weitere Details zum Aufruf der Funktion finden
+wir in der
 [Scikit-Learn-Dokumentation/make_blobs](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html?highlight=make+blobs#sklearn.datasets.make_blobs).
 
-```{code-cell} ipython3
+```{code-cell}
 from sklearn.datasets import make_blobs
 
 # generate artificial data
@@ -57,10 +62,10 @@ Option `n_features` auf den Wert 2 voreingestellt ist, und einen Output, bei dem
 die Labels entweder durch 0 oder 1 gekennzeichnet sind. Durch die Option
 `random_state=0` wird der Zufall ausgeschaltet.
 
-Wenn wir die Daten in einen Pandas-DataFrame packen und anschließend
+Wenn wir die Daten in ein Pandas-DataFrame packen und anschließend
 visualisieren, erhalten wir folgenden Plot.
 
-```{code-cell} ipython3
+```{code-cell}
 import pandas as pd 
 import plotly.express as px
 
@@ -85,6 +90,7 @@ width: 600px
 name: fig10_01_annotated
 ---
 Drei Geraden trennen die roten von den blauen Punkten, aber welche ist die bessere Wahl?
+(Quelle: eigene Darstellung; Lizenz CC-BY-NC-SA 4.0)
 ```
 
 Alle drei Geraden trennen die blauen von den roten Punkten. Jedoch könnte Gerade
@@ -101,7 +107,9 @@ visualisieren.
 width: 600px
 name: fig10_02_annotated
 ---
-Ein Sicherheitsstreifen bzw. breiter Rand, im Englischen **Margin** genannt, trennt die beiden Klassen. 
+Ein Sicherheitsstreifen bzw. breiter Rand, im Englischen **Margin** genannt,
+trennt die beiden Klassen.
+(Quelle: eigene Darstellung; Lizenz CC-BY-NC-SA 4.0)
 ```
 
 Der Support-Vector-Algorithmus sucht nun die Gerade, die die Datenpunkte mit dem
@@ -119,27 +127,29 @@ auf der Grenze des Sicherheitsbereichs liegen.
 width: 600px
 name: fig10_03
 ---
-Einige wenige Punkte (gelb markiert) bestimmen den Verlauf des Randabstandes. Die Vektoren, 
-die vom Ursprung des Koordinatensystems zu diesen Punkten zeigen, werden Stützvektoren (= Support Vectors) genannt.
+Einige wenige Punkte (gelb markiert) bestimmen den Verlauf des Randabstandes.
+Die Vektoren, die vom Ursprung des Koordinatensystems zu diesen Punkten zeigen,
+werden Stützvektoren (= Support Vectors) genannt.
+(Quelle: eigene Darstellung; Lizenz CC-BY-NC-SA 4.0)
 ```
 
 ## Großer, aber weicher Randabstand
 
-Bei dem oben betrachteten Beispiel lassen sich blaue und rote Datenpunkte
-komplett voneinander trennen. Für den Fall, dass einige wenige Datenpunkte
-"falsch" liegen, erlauben wir Ausnahmen. Wie viele Ausnahmen wir erlauben
-wollen, die im Sicherheitsstreifen liegen, steuern wir mit dem Parameter `C`.
-Ein großes `C` bedeutet, dass wir eine große Mauer an den Grenzen des
-Sicherheitsabstandes errichten. Es kommt kaum vor, dass Datenpunkte innerhalb
-des Margins liegen. Je kleiner `C` wird, desto mehr Datenpunkte sind innerhalb
-des Sicherheitsbereichs erlaubt.
+Die bisherigen Beispiele zeigten perfekt trennbare Daten. In der Praxis sind
+Datensätze jedoch oft nicht linear trennbar. Für den Fall, dass einige wenige
+Datenpunkte "falsch" liegen, erlauben wir Ausnahmen. Wie viele Ausnahmen wir
+erlauben wollen, die im Sicherheitsstreifen liegen, steuern wir mit dem
+Parameter `C`. Ein großes `C` bedeutet, dass wir eine große Mauer an den Grenzen
+des Sicherheitsabstandes errichten. Es kommt kaum vor, dass Datenpunkte
+innerhalb des Margins liegen. Je kleiner `C` wird, desto mehr Datenpunkte sind
+innerhalb des Sicherheitsbereichs erlaubt.
 
 Im Folgenden betrachten wir einen neuen künstlichen Datensatz, bei dem die
 blauen von den roten Punkte nicht mehr ganz so stark getrennt sind. Schauen Sie
 sich die fünf verschiedenen Margins an, die entstehen, wenn der Parameter `C`
 variiert wird.
 
-```{code-cell} ipython3
+```{code-cell}
 :tags: [remove-input]
 from IPython.display import HTML
 HTML('../assets/chapter10/fig04.html')
