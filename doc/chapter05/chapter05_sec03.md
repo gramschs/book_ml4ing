@@ -22,7 +22,7 @@ gruppierten Daten zugreifen und zusätzliche Analysen durchführen können.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie wissen, dass die Wahrheitswerte `True` (wahr)  oder `False` (falsch) in
   dem Datentyp **bool** gespeichert werden.
 * Sie kennen die wichtigsten Vergleichsoperatoren (`<`, `<=`, `>`, `>=`, `==`,
@@ -169,14 +169,15 @@ autos_ab_200000km.head(10)
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Filtern Sie den Datensatz so, dass nur Autos mit einem Preis zwischen 
 10.000 und 30.000 Euro übrig bleiben. Wie viele Autos erfüllen diese 
 Bedingung? Tipp: Sie können zwei Bedingungen mit `&` (und) verknüpfen.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 bedingung_preis = (data['Preis (Euro)'] >= 10000) & (data['Preis (Euro)'] <= 30000)
 autos_mittlerer_preis = data[bedingung_preis]
@@ -260,14 +261,15 @@ nacheinander untersuchen möchten, da wir die Gruppierung nur einmal durchführe
 müssen.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Gruppieren Sie die Autos nach 'Kraftstoff' und berechnen Sie den 
 durchschnittlichen Preis für jede Kraftstoffart. Welche Kraftstoffart 
 ist im Durchschnitt am teuersten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 autos_nach_kraftstoff = data.groupby('Kraftstoff')
 durchschnittspreis = autos_nach_kraftstoff['Preis (Euro)'].mean()

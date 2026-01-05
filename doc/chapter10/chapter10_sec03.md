@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen den **Kernel-Trick**.
 * Sie können mit den **radialen Basisfunktionen** als neue Option für
   SVM-Verfahren nichtlinear trennbare Daten klassifizieren.

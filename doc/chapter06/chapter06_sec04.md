@@ -36,14 +36,15 @@ Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
 Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise
+:class: tip
 Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
 enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten
 vollständig?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import pandas as pd 
 daten = pd.read_csv('titanic_DE_cleaned.csv')
@@ -57,13 +58,14 @@ angezeigt.
 ````
 
 ```{admonition} Datentypen
-:class: miniexercise
+:class: tip
 Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche
 sind kategorial?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Die Merkmale ueberlebt, Klasse, Anzahl_Geschwister_Partner, Anzahl_Eltern_Kinder sind Integer. Die Merkmale Alter und Ticketpreis sind Floats. Die Merkmale Name, Geschlecht, Ticket, Kabine und Einstiegshafen sind Objekte. Mit `.head()` schauen wir uns die ersten fünf Zeilen an:
 
 ```python
@@ -74,7 +76,7 @@ Name, Tickets und Kabine sind Strings. Geschlecht und Einstiegshafen sind zwar v
 ````
 
 ```{admonition} Statistik und Ausreißer
-:class: miniexercise
+:class: tip
 
 Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen
 Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots.
@@ -83,7 +85,8 @@ plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 daten.describe()
 ```
@@ -111,14 +114,15 @@ Beim Ticketpreis gibt es deutliche Ausreißer, bei den anderen Merkmalen gibt es
 ````
 
 ```{admonition} Analyse der kategorialen Daten
-:class: miniexercise
+:class: tip
 Untersuchen Sie die kategorialen Daten. Sind es wirklich kategoriale Daten?
 Prüfen Sie für jedes kategoriale Merkmal die Einzigartigkeit der auftretenden
 Werte und erstellen Sie ein Balkendiagramm mit den Häufigkeiten.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 merkmale = ['Name', 'Geschlecht', 'Ticket', 'Kabine', 'Einstiegshafen']
 for m in merkmale:
@@ -151,13 +155,14 @@ balkendiagramm_hafen.show()
 ### ML-Modell Titanic
 
 ```{admonition} Entscheidungsbaum
-:class: miniexercise
+:class: tip
 Trainieren Sie mit den numerischen Merkmalen einen Entscheidungsbaum/Decision
 Tree. Visualisieren Sie den Entscheidungsbaum.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 X = daten[['Klasse', 'Alter', 'Anzahl_Geschwister_Partner', 'Anzahl_Eltern_Kinder','Ticketpreis']]
 y = daten['ueberlebt']
@@ -179,7 +184,7 @@ plot_tree(entscheidungsbaum);
 ````
 
 ```{admonition} Hyperparameter-Tuning und Interpretation
-:class: miniexercise
+:class: tip
 
 Spielen Sie mit den Hyperparametern des Entscheidungsbaumes/Decision Trees.
 Begrenzen Sie die Baumtiefe auf 2, 3 und 4. Was sind die wichtigsten Merkmale,
@@ -187,7 +192,8 @@ die ein Überleben der Passagiere gesichert haben?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 for baumtiefe in [2, 3, 4]:
     baum = DecisionTreeClassifier(max_depth=baumtiefe)
@@ -239,7 +245,7 @@ Führen Sie eine explorative Datenanalyse (EDA) durch, indem  Sie Python-Code in
 Code-Zellen ausführen und schreiben Sie in Markdown-Zellen Ihre Antworten.
 
 ```{admonition} Überblick
-:class: miniexercise
+:class: tip
 
 Welche Daten enthält der Datensatz? Wie viele Personen sind in der Tabelle
 enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten
@@ -247,7 +253,8 @@ vollständig?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd 
@@ -262,20 +269,21 @@ Die Daten sind für jedes Merkmal vollständig. In jeder Spalte gibt es 768 non-
 ````
 
 ```{admonition} Datentyp
-:class: miniexercise
+:class: tip
 
 Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche
 sind kategorial?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, Age und Outcome sind Integer. BMI und DiabetesPedigreeFunction sind Floats. Kein Merkmal wird als object eingestuft.
 ````
 
 ```{admonition} Statistik
-:class: miniexercise
+:class: tip
 
 Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen
 Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots.
@@ -284,7 +292,8 @@ plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 daten.describe()
@@ -323,7 +332,7 @@ sogar die kategoriale Zielgröße unserer Problemstellung.
 ````
 
 ```{admonition} Untersuchung Ursache - Wirkung
-:class: miniexercise
+:class: tip
 
 Erstellen Sie eine Scatter-Matrix mit Insulin, BMI und Outcome. Welche der
 beiden Eigeschaften Insulin oder BMI könnte ehr geeignet sein, Diabetes ja/nein
@@ -334,7 +343,8 @@ Vermuten Sie einen Zusammenhang?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import plotly.express as px 
@@ -362,14 +372,15 @@ anscheinend häufiger mit Diabetes korreliert ist als niedriger BMI.
 ### ML-Modell Diabetes
 
 ```{admonition} Entscheidungsbaum
-:class: miniexercise
+:class: tip
 
 Trainieren Sie mit den numerischen Merkmalen einen Entscheidungsbaum/Decision
 Tree. Visualisieren Sie den Entscheidungsbaum.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 X = daten.loc[:, 'Pregnancies' : 'Age']
 y = daten['Outcome']
@@ -393,7 +404,7 @@ plot_tree(modell);
 ````
 
 ```{admonition} Hyperparameter und Interpretation
-:class: miniexercise
+:class: tip
 
 Spielen Sie mit den Hyperparametern des Entscheidungsbaumes/Decision Trees.
 Begrenzen Sie die Baumtiefe auf 2, 3 und 4. Was sind die wichtigsten Merkmale,
@@ -401,7 +412,8 @@ die Diabetes auslösen können?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 for baumtiefe in [2, 3, 4]:

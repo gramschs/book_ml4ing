@@ -28,7 +28,7 @@ grundlegenenden Bestandteile eines ML-Systems ein.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie wissen, wie langes es das Forschungsgebiet **maschinelles Lernen** gibt
   und warum es sich in den letzten beiden Jahrzehnten so stark entwickelt hat.
 * Sie kennen die Bestandteile eines ML-Systems: **Daten**, **Algorithmus** und
@@ -84,7 +84,7 @@ andere Gründe, die zum aktuellen Boom des maschinellen Lernens beigetragen
 haben.
 
 ````{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Schauen Sie sich das folgende Video an. Welche drei Gründe werden dort genannt,
 warum maschinelles Lernen zuletzt so stark nachgefragt wurde? 
 
@@ -94,7 +94,8 @@ encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ````
 
 ```{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 Jannik nennt bei Zeitindex 2:44 min drei Gründe, warum in den letzten zwei Jahrzehnten maschinelles Lernen an Bedeutung gewonnen hat:
 
 1. mehr Daten
@@ -153,7 +154,7 @@ was ein Algorithmus ist. Danach werden die ersten grundlegenden Fachbegriffe des
 maschinellen Lernens eingeführt.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Schauen Sie sich das folgende Video an und beantworten Sie die folgenden Fragen:
 
 1. Welche drei Beispiele für Algorithmen werden aufgezählt?
@@ -167,7 +168,8 @@ encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
 ```{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 1. Bei Zeitindex 0:28 min wird erklärt, dass ein Algorithmus eine exakte
    Handlungsvorschrift zum Lösen eines Problems ist. Als erstes Beispiel wird
    die Anweisung, wie ein mathematisches Problem zu lösen ist, genannt. Als

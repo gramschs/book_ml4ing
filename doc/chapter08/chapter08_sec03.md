@@ -24,7 +24,7 @@ numerischen Daten.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können geordnete kategoriale (= ordinale) Daten mit Hilfe eines
   Dictionaries und der `replace()`-Methode als Zahlen kodieren.
 * Sie können ungeordnete kategoriale (= nominale) Daten mit Hilfe der

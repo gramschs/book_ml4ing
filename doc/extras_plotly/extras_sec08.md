@@ -37,7 +37,7 @@ Zusatzinformationen mit dem Python-Modul Folium widmen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen das Modul **Folium** und können es importieren.
 * Sie können eine Basiskarte mit **.Map()** erstellen.
 * Sie können Positionen auf dieser Karte mit **.Marker()** markieren.
@@ -75,7 +75,6 @@ karte = folium.Map(location=[50.110880, 8.679490], zoom_start=13)
 # Anzeige der Karte
 karte
 ```
-
 
 ## Karten markieren
 
@@ -135,7 +134,7 @@ Eine GeoJSON-Datei ist ein Dateiformat, das Geodaten im JSON-Format enthält. Es
 wird häufig verwendet, um geometrische Formen (z.B. Linien, Polygone) und ihre
 zugehörigen Eigenschaften (z.B. Name, ID) zu beschreiben. Es gibt verschiedene
 Möglichkeiten, eine GeoJSON-Datei zu erstellen, abhängig von den vorhandenen
-Daten und Werkzeugen. 
+Daten und Werkzeugen.
 
 Der folgende Screencast demonstriert, wie eine GeoJSON-Datei mit Hilfe der
 Webseite [http://geojson.io/](http://geojson.io/) erstellt wird.
@@ -179,6 +178,3 @@ die beispielsweise Eigenschaften dieses Gebietes repräsentiert. Für mehr Detai
 können Sie gerne die [Dokumentation von
 Folium](https://python-visualization.github.io/folium/quickstart.html)
 hinzuziehen.
-
-
-

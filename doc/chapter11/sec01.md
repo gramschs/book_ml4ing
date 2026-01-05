@@ -27,7 +27,7 @@ Modellleistung ermöglicht.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 - Sie sind in der Lage, das Konzept der **Kreuzvalidierung (Cross Validation)**
   verständlich zu erklären.
 - Sie können die Vor- und Nachteile der Kreuzvalidierung aufzählen und bewerten.

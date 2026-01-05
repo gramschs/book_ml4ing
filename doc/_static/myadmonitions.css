@@ -1,46 +1,69 @@
-/* anything related to the light theme */
+/* Light theme colors */
 html[data-theme="light"] {
     --my-color-goals: #ffc107;
     --my-color-goals-bg: #FFF8E6;
 }
 
-/* anything related to the dark theme */
+/* Dark theme colors */
 html[data-theme="dark"] {
     --my-color-goals: #ffc107;
     --my-color-goals-bg: #584306;
 }
 
-div.admonition.goals {
-    border-color: var(--my-color-goals); 
-  }
-  div.admonition.goals > .admonition-title {
-    background-color: var(--my-color-goals-bg); 
-  }
-  div.admonition.goals > .admonition-title:after {
-    color: var(--my-color-goals);
-    content: "\f046"; /* fa-solid fa-tv */
-  }
+/* Goals admonition */
+.myst-admonition.goals {
+    border-left-color: var(--my-color-goals) !important;
+}
 
-  div.admonition.miniexercise {
-    border-color: var(--pst-color-success); 
-  }
-  div.admonition.miniexercise > .admonition-title {
-    background-color: var(--pst-color-success-bg); 
-  }
-  div.admonition.miniexercise > .admonition-title:after {
-    color: var(--pst-color-success);
-    content: var(--pst-icon-admonition-todo);
-  }
-  div.admonition.minisolution {
-    border-color: var(--pst-color-success); 
-  }
-  div.admonition.minisolution > .admonition-title {
-    background-color: var(--pst-color-success-bg); 
-  }
-  div.admonition.minisolution > .admonition-title:after {
-    color: var(--pst-color-success);
-    content: var(--pst-icon-admonition-todo);
-  }
+.myst-admonition.goals .myst-admonition-header {
+    background-color: var(--my-color-goals-bg) !important;
+}
+
+.myst-admonition.goals .myst-admonition-header-text {
+    color: var(--my-color-goals) !important;
+}
+
+.myst-admonition.goals .myst-admonition-header-icon {
+    color: var(--my-color-goals) !important;
+}
+
+/* Mini Exercise admonition */
+.myst-admonition.miniexercise {
+    border-left-color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header {
+    background-color: var(--pst-color-success-bg, #d4edda) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header-text {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header-icon {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+/* Mini Solution admonition */
+.myst-admonition.minisolution {
+    border-left-color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header {
+    background-color: var(--pst-color-success-bg, #d4edda) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header-text {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header-icon {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+
+
+
 /* Start by hiding the tablet/laptop image */
 .image43 {
     display: none;
@@ -64,4 +87,13 @@ div.admonition.goals {
     .image169 {
         display: none; /* Hide tablet/laptop image */
     }
+}
+
+/* ===== CODE-ZELLEN GRÜN ===== */
+div.myst-code {
+  border-left-color: #19a249 !important;
+}
+
+.dark div.myst-code {
+  border-left-color: #18a046 !important;
 }

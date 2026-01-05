@@ -30,7 +30,7 @@ und installieren Sie XGBoost jetzt nach.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können XGBoost für Regressions- und Klassifikationsaufgaben einsetzen.
 * Sie wissen, wie Sie mit Analysen der Maßzahlen Fehler und Log Loss für
   Trainings- und Testdaten beurteilen können, ob Überanpassung (Overfitting)
@@ -350,7 +350,7 @@ nicht behandelt.
 Zum Abschluss dieses Kapitels beschäftigen wir uns noch mit einem Vergleich der beiden Verfahren Random Forest und XGBoost.
 
 | Aspekt | Random Forest | XGBoost |
-|--------|---------------|---------|
+| -------- | --------------- | --------- |
 | Training | parallel | sequentiell |
 | Overfitting | weniger anfällig | stark anfällig |
 | Hyperparameter-Tuning | wenig nötig | intensiv nötig |

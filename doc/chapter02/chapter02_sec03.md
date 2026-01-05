@@ -25,7 +25,7 @@ werden **Methoden** genannt.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen den Datentyp **Dictionary** und können Schlüssel-Wert-Paare
 erstellen und nutzen.
 * Sie verstehen, wie Funktionen aufgerufen werden und können mit Argumenten und
@@ -99,7 +99,7 @@ print(f'Name (Dictionary): {person_dict["name"]}')
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Erstellen Sie ein Dictionary für einen Datenpunkt mit folgenden Informationen:
 - temperatur: 23.5
 - luftfeuchtigkeit: 65
@@ -113,7 +113,8 @@ Geben Sie dann die Temperatur und den Standort mit passenden Beschriftungen aus.
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 # Dictionary für Datenpunkt erstellen
 messwert = {

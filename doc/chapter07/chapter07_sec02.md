@@ -23,7 +23,7 @@ lineare Regression** in diesem Kapitel im Fokus.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie wissen, was eine **multiple lineare Regression** ist und können sie mit
   Scikit-Learn durchführen.
 * Sie wissen, was **positive lineare Korrelation** und **negative lineare
@@ -190,7 +190,7 @@ Zeile und der dritten Spalte findet sich der Eintrag 0.914003. Je größer die
 Leistung des Autos, desto höher sein Preis.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Interpretieren Sie die folgenden Korrelationswerte aus der Matrix:
 1. Alter vs. Preis -0.471406: Was bedeutet das Vorzeichen? Ist der Zusammenhang
    stark oder schwach?
@@ -201,7 +201,8 @@ Interpretieren Sie die folgenden Korrelationswerte aus der Matrix:
 ```
 
 ```{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 1\. Alter vs. Preis: -0.471406
 
 Das negative Vorzeichen bedeutet, dass ein negativer Zusammenhang besteht:

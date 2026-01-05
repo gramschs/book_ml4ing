@@ -29,12 +29,13 @@ Trainieren Sie dann ML-Modelle ggf. mit Gittersuche und wählen Sie das beste
 Modell aus. Welchen Score erreicht Ihr Modell für die Testdaten?
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise
+:class: tip
 Welche Daten enthält der Datensatz? Wie viele Pinguine sind in der Tabelle enthalten? Wie viele Merkmale werden dort beschrieben? Sind die Daten vollständig?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 import pandas as pd 
 
@@ -46,12 +47,13 @@ Die Tabelle enthält 344 Pinguine. Es sind 8 Merkmale enthalten, nämlich die Me
 ````
 
 ```{admonition} Datentypen
-:class: miniexercise
+:class: tip
 Welchen Datentyp haben die Merkmale? Welche Merkmale sind numerisch und welche sind kategorial?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 * Art --> object
 * Insel --> object
 * Schnabellaenge_mm --> float
@@ -73,12 +75,13 @@ Die Merkmale Art, Insel, Geschlecht und Jahr sind kategorial. Die Merkmale Schna
 ````
 
 ```{admonition} Fehlende Einträge
-:class: miniexercise
+:class: tip
 In welcher Spalte fehlen am meisten Einträge? Filtern Sie den Datensatz nach den fehlenden Einträgen und geben Sie eine Liste mit den Indizes (Zeilennummern) aus, wo Einträge fehlen. Löschen Sie anschließend diese Zeilen aus dem Datensatz. Sind jetzt alle Einträge gültig?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 fehlende_geschlechtsangaben = daten[ daten['Geschlecht'].isnull() ].index
 print(fehlende_geschlechtsangaben)
@@ -93,12 +96,13 @@ Jetzt sind alle Einträge gültig.
 ````
 
 ```{admonition} Analyse numerische Daten
-:class: miniexercise
+:class: tip
 Erstellen Sie eine Übersicht der statistischen Merkmale für die numerischen Daten. Visualisieren Sie anschließend die statistischen Merkmale mit Boxplots. Verwenden Sie ein Diagramm für die Merkmale, die in Millimetern gemessen werden und ein Diagramm für das Körpergewicht. Interpretieren Sie die statistischen Merkmale. Gibt es Ausreißer? Sind die Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 numerische_merkmale = ['Schnabellaenge_mm', 'Schnabeltiefe_mm', 'Flossenlaenge_mm', 'Koerpergewicht_g']
 
@@ -129,14 +133,15 @@ Beim Körpergewicht gibt es keine Besonderheiten, die Werte erscheinen plausibel
 ````
 
 ```{admonition} Analyse der kategorialen Werte
-:class: miniexercise
+:class: tip
 Untersuchen Sie die kategorialen Daten. Sind es wirklich kategoriale Daten? Prüfen Sie für jedes kategoriale Merkmal die Einzigartigkeit der auftretenden Werte und erstellen Sie ein Balkendiagramm mit den Häufigkeiten.
 
 Kommen alle Pinguin-Arten auf allen Inseln vor?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 kategoriale_merkmale = ['Art', 'Insel', 'Geschlecht', 'Jahr']
 
@@ -170,7 +175,7 @@ Die Pinguin-Art Adelie kommt auf allen drei Inseln vor. Die Pinguin-Art Gentoo i
 ````
 
 ```{admonition} ML-Modell
-:class: miniexercise
+:class: tip
 
 Im Folgenden soll die Art der Pinguine anhand der numerischen Merkmale Schnabellaenge_mm, Schnabeltiefe_mm, Flossenlaenge_mm und Koerpergewicht_g klassifiziert werden.
 
@@ -184,7 +189,8 @@ Führen Sie dazu vorab einen Split in Trainings- und Testdaten durch. Verwenden 
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 X = daten[['Schnabellaenge_mm', 'Schnabeltiefe_mm', 'Flossenlaenge_mm', 'Koerpergewicht_g']]
 

@@ -27,7 +27,7 @@ trainieren und validieren, um die Materialeigenschaft Stein/Metall auf Basis der
 numerischen Werte zu prognostizieren.
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise
+:class: tip
 * Welche Daten enthält der Datensatz?
 * Wie viele Datenpunkte und Merkmale gibt es?
 * Sind die Daten vollständig?
@@ -36,7 +36,8 @@ numerischen Werte zu prognostizieren.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import pandas as pd
 
@@ -69,14 +70,15 @@ auftreten. Insgesamt sind die Werte der Merkmale für die Datentypen plausibel.
 ````
 
 ```{admonition} Statistik der numerischen Daten
-:class: miniexercise
+:class: tip
 Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
 Daten. Interpretieren Sie die statistischen Kennzahlen. Gibt es Auffälligkeiten?
 Sind die Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 daten.describe()
 ```
@@ -101,14 +103,15 @@ Normalisierung auf \[0,1\] ist.
 ````
 
 ```{admonition} Statistik der kategorialen Merkmale
-:class: miniexercise
+:class: tip
 Wie viele Einträge gibt es für Metall oder Stein? Visualisieren Sie die
 Verteilung mit einem Balkendiagramm der Klassenverteilung. Ist der Datensatz
 ausgewogen?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 # Berechnung der Anzahl der Einträge
 print(daten['Material'].value_counts())
@@ -128,7 +131,7 @@ Metall und 47 % Stein, was ungefähr gleichverteilt ist.
 ````
 
 ```{admonition} Vorbereitung der Daten für das Training
-:class: miniexercise
+:class: tip
 Bereiten Sie die Daten für das maschinelle Lernen vor:
 1. Kodieren Sie die kategoriale Variable Material mit `replace()`.
 2. Trennen Sie die Merkmale (Input X) und die Zielgröße (Output y).
@@ -138,7 +141,8 @@ Bereiten Sie die Daten für das maschinelle Lernen vor:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -161,12 +165,13 @@ nicht skalieren.
 ````
 
 ```{admonition} ML-Modell Entscheidungsbaum
-:class: miniexercise
+:class: tip
 Trainieren Sie einen Entscheidungsbaum und bewerten Sie das trainierte Modell.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.tree import DecisionTreeClassifier
 
@@ -184,7 +189,7 @@ Der Trainingsscore ist 1.00, der Testscore 0.79; ein Zeichen für Overfitting.
 ````
 
 ```{admonition} ML-Modell Random Forest
-:class: miniexercise
+:class: tip
 Trainieren Sie nun einen Random Forest mit 1, 5, 10, 20, 50 und 100 Bäumen auf
 denselben Daten. Berechnen Sie wieder die Scores für Training und Test. Wie
 unterscheiden sich die Ergebnisse vom einzelnen Entscheidungsbaum? Welches
@@ -195,7 +200,8 @@ wichtigsten sind.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.ensemble import RandomForestClassifier
 
@@ -235,13 +241,14 @@ sind die Signale Signal09 bis Signal12 und Signal52.
 ````
 
 ```{admonition} ML-Modelle SVM und finales Modell
-:class: miniexercise
+:class: tip
 Trainieren Sie nun sowohl eine lineare SVM als auch eine nichtlineare SVM.
 Ordnen Sie ein: welches ML-Modell würden Sie final wählen?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.svm import SVC
 

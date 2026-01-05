@@ -21,7 +21,7 @@ Daten für die Übungen:
 * [stromverbrauch_hessen.csv](https://nextcloud.frankfurt-university.de/s/ddfDzAAnJtJ4FZQ)
 
 ````{admonition} Übung 4.1 - Teilaufgabe a)
-:class: miniexercise
+:class: tip
 
 Schauen Sie sich die csv-Datei '12612-0001_de.csv' im Texteditor an. Der
 Datensatz enthält die Lebendgeburten in Deutschland getrennt nach männlich,
@@ -49,7 +49,8 @@ erstellen Sie eine Übersicht der statistischen Kennzahlen.
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```none
 import pandas as pd
@@ -71,7 +72,7 @@ data.describe()
 ````
 
 ````{admonition} Übung 4.1 - Teilaufgabe b)
-:class: miniexercise
+:class: tip
 Kontrollieren Sie, ob die Spalte 'insgesamt' tatsächlich die Summe der beiden
 Spalten 'männlich' und 'weiblich' ist. Bilden Sie dazu die Differenz 'insgesamt' - 
 'männlich' - 'weiblich' und fügen Sie diese Differenz als neue Spalte dem
@@ -80,7 +81,8 @@ Schluss ziehen Sie daraus? Haben Sie eine Vermutung, was passiert ist?
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 data['Differenz'] = data['insgesamt'] - data['männlich'] - data['weiblich']
 data['Differenz'].describe()
@@ -109,14 +111,15 @@ unbestimmt war.
 ````
 
 ````{admonition} Übung 4.1 - Teilaufgabe c)
-:class: miniexercise
+:class: tip
 Lassen Sie die statistischen Kennzahlen der Lebendgeburten 'männlich' und
 'weiblich' als Boxplot visualisieren. Wurden mehr Jungen oder Mädchen geboren?
 Liegt der Median mittig zwischen Q1 und Q3?
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import plotly.express as px
 
@@ -133,14 +136,15 @@ Wahrscheinlich gibt es wenige Ausreißer mit geburtenstarken Jahrgängen.
 ````
 
 ````{admonition} Übung 4.1 - Teilaufgabe d)
-:class: miniexercise
+:class: tip
 Visualisieren Sie die Anzahl der männlichen und weiblichen Lebendgeburten pro
 Jahr als Scatterplot. Beschriften Sie auch die Achsen und setzen Sie einen
 Titel.
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 fig = px.scatter(data[['männlich','weiblich']], 
                  title='Lebendgeborene in Deutschland',
@@ -150,7 +154,7 @@ fig.show()
 ````
 
 ````{admonition} Übung 4.2 - Teilaufgabe a)
-:class: miniexercise
+:class: tip
 Schauen Sie sich die csv-Datei 'stromverbrauch_hessen.csv' im Texteditor an.
 Welche Daten enthält die Datei? Ab welcher Zeile beginnen die Daten und in
 welcher Zeile enden sie? Importieren Sie dann die Daten, wobei Kopf- und
@@ -162,7 +166,8 @@ Verbrauchergruppen.
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Die Datei enthält den Stromverbrauch in Hessen 2000 bis 2021 nach
 Verbrauchergruppen in Gigawattstunden. Es bietet sich an, das Jahr als Index zu
 wählen.
@@ -196,12 +201,13 @@ Haushalte, Gewerbe, etc.
 ````
 
 ````{admonition} Übung 4.2 - Teilaufgabe b)
-:class: miniexercise
+:class: tip
 Checken Sie, ob die Spalte 'insgesamt' tatsächlich die Summe der anderen Spalten ist. 
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 data['Differenz'] = data['insgesamt'] - data['Industrie'] - data['Verkehr'] - data['Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher']
 data['Differenz'].describe()
@@ -213,12 +219,13 @@ und bedarf keiner weiteren Maßnahmen.
 ````
 
 ````{admonition} Übung 4.2 - Teilaufgabe c)
-:class: miniexercise
+:class: tip
 Fertigen Sie Boxplots an und interpretieren Sie die statistischen Kennzahlen. 
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import plotly.express as px
 
@@ -272,7 +279,7 @@ Es gibt keine Ausreißer, der Median ist ungefähr mittig zwischen Q1 und Q3.
 ````
 
 ````{admonition} Übung 4.2 - Teilaufgabe d)
-:class: miniexercise
+:class: tip
 
 Visualisieren Sie den Stromverbrauch der drei relevanten Sektoren Industrie,
 Verkehr und Haushalte abhängig vom Jahr in einem gemeinsamen Scatterplot. Setzen
@@ -282,7 +289,8 @@ Gibt es Auffälligkeiten?
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 fig = px.scatter(data[['Industrie', 'Verkehr', 'Haushalte, Gewerbe, Handel, Dienstleistungen und übrige Verbraucher']],
                  title='Stromverbrauch Hessen von 2000 bis 2021',

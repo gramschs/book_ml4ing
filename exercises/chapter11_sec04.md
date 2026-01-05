@@ -46,7 +46,8 @@ Fragen:
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 ```python
 import pandas as pd
 

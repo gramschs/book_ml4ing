@@ -24,7 +24,7 @@ lernen einfache Methoden kennen, damit umzugehen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können in einem Datensatz mit **isnull()** fehlende Daten aufspüren und
   analysieren.
 * Sie kennen die beiden grundlegenden Strategien, mit fehlenden Daten umzugehen:

@@ -21,16 +21,17 @@ Scikit-Learn.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
-* Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen Trainingsdaten trainieren.
+:class: attention
+* Sie können das Perzeptron-Modell von Scikit-Learn laden und mit den gegebenen
+  Trainingsdaten trainieren.
 * Sie wissen, wie Sie auf die Gewichte des gelernten Modells zugreifen.
 ```
 
 ## Das logische Oder Klassifikationsproblem - diesmal mit Scikit-Learn
 
-Im letzten Abschnitt {ref}`perzeptron_training_logisches_oder` haben wir
-händisch ein Perzeptron trainiert. Zur Erinnerung, wenn wir die Bias-Einheit
-weglassen, lautet das logische Oder in Tabellenform wie folgt:
+Im letzten Abschnitt haben wir händisch ein Perzeptron trainiert. Zur
+Erinnerung, wenn wir die Bias-Einheit weglassen, lautet das logische Oder in
+Tabellenform wie folgt:
 
 x1 | x2 | y
 ---|----|---

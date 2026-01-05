@@ -40,7 +40,7 @@ importieren. Schreiben Sie Ihre Antworten in eine Markdown-Zelle.
 ```
 
 ```{admonition} Import und Bereinigung der Daten
-:class: miniexercise
+:class: tip
 Importieren Sie die Daten 'automarkt_polen_DE.csv'. Verschaffen Sie sich einen
 Überblick und beantworten Sie folgende Fragen:
 
@@ -57,7 +57,8 @@ bereinigen Sie ihn.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 data = pd.read_csv('automarkt_polen_DE.csv', skiprows=3)
 data.info()
@@ -91,7 +92,7 @@ data.info()
 ````
 
 ```{admonition} Statistische Kennzahlen (numerische Eigenschaften)
-:class: miniexercise
+:class: tip
 
 * Ermitteln Sie von den numerischen Eigenschaften die statistischen Kennzahlen
   und visualisieren Sie sie. Verwenden Sie beim Plot eine aussagefähige
@@ -106,7 +107,8 @@ data.info()
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 data.describe()
 ```
@@ -175,7 +177,7 @@ Verkauf stehen. Es sind 1395 Autos.
 ````
 
 ```{admonition} Statistische Kennzahlen (kategoriale Eigenschaften)
-:class: miniexercise
+:class: tip
 Beantworten Sie durch Datenanalyse die folgenden Fragen. Fassen Sie die
 Ergebnisse bzw. die Interpretation davon jeweils kurz zusammen (als Kommentar in
 der Code-Zelle oder in einer Markdown-Zelle).
@@ -190,7 +192,8 @@ der Code-Zelle oder in einer Markdown-Zelle).
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 marken = data['Marke'].value_counts()
 print(marken)
@@ -225,7 +228,7 @@ data['Getriebe'].value_counts()
 ````
 
 ```{admonition} Regression
-:class: miniexercise
+:class: tip
 Ziel der Regressionsaufgabe ist es, den Preis der Autos zu prognostizieren.
 
 * Wählen Sie zwei Regressionsmodelle aus. Begründen Sie Ihre Auswahl mit einer
@@ -240,7 +243,8 @@ Ziel der Regressionsaufgabe ist es, den Preis der Autos zu prognostizieren.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 fig = px.scatter_matrix(data[['Preis [Zloty]', 'Kilometerstand [km]', 'Hubraum [cm3]', 'Jahr']])
 fig.show()
@@ -305,7 +309,7 @@ Hyperparameter tunen.
 ````
 
 ```{admonition} Klassifikation
-:class: miniexercise
+:class: tip
 Ziel der Klassifikationsaufgabe ist es, die Preisklasse "billig" oder "teuer"
 der Autos zu prognostizieren.
 
@@ -329,7 +333,8 @@ als "teuer" klassifiziert werden.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 # Vorbereitung
 

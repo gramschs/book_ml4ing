@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können ein logistisches Regressionsmodell mit Scikit-Learn trainieren.
 ```
 

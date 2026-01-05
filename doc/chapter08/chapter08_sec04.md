@@ -15,7 +15,7 @@ kernelspec:
 # Übungen
 
 ```{admonition} Aufgabe 1
-:class: miniexercise
+:class: tip
 Eine Abalone oder ein Seeohr ist eine Schnecke mit Schale, die einer Ohrmuschel
 ähnelt (siehe https://de.wikipedia.org/wiki/Seeohren). Laden Sie den Datensatz
 'abalone_DE.csv'. Ziel dieser Aufgabe ist ein Modell zu trainieren, das aus den
@@ -39,7 +39,8 @@ Die Anzahl der Ringe +1.5 gibt das Alter der Abalone an.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -296,7 +297,7 @@ hinzuzunehmen.
 ````
 
 ```{admonition} Aufgabe 2
-:class: miniexercise
+:class: tip
 Der Datensatz
 'statistic_id226994_annual-average-unemployment-figures-for-germany-2005-2022.csv'
 stammt von Statista. Die Daten beschreiben die Entwicklung der
@@ -315,7 +316,8 @@ Ungereimtheiten, die sich auch so im csv-File befinden.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd

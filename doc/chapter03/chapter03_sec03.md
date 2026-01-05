@@ -24,7 +24,7 @@ visualisieren, um so leicht einen Vergleich der Datensätze zu ermöglichen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können **Plotly Express** mit der typischen Abkürzung **px** importieren.
 * Sie können mit **px.box()** einen Boxplot eines Pandas-Series-Objektes
   visualisieren.
@@ -92,7 +92,7 @@ Quartil Q3 begrenzt. Oder anders formuliert: In der Box liegen 50 % aller
 Datenpunkte. Der Median wird durch die horizontale Linie in der Box dargestellt.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Erstellen Sie einen Boxplot der Autopreise und beantworten Sie anhand des 
 Diagramms:
 1. Was ist der Median (die mittlere Linie in der Box)?
@@ -106,7 +106,8 @@ Diagramms:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 diagramm = px.box(preise)
 diagramm.show()
@@ -239,7 +240,7 @@ diagramm.show()
 Wir beenden dieses Kapitel mit einer Mini-Übung.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Erstellen Sie einen Boxplot mit folgenden Eigenschaften:
 1. Benennen Sie das Series-Objekt mit dem Namen "Gebrauchtwagen"
 2. Beschriften Sie die y-Achse mit "Preis [EUR]"
@@ -254,7 +255,8 @@ Erstellen Sie einen Boxplot mit folgenden Eigenschaften:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 preise_benannt = pd.Series(preisliste, 
                            index=['Audi Nr. 1', 'Audi Nr. 2', 'Audi Nr. 3',

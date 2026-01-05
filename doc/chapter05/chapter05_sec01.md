@@ -24,7 +24,7 @@ wir uns intensiver mit diesen nicht-numerischen Daten auseinandersetzen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie wissen, was **numerische (metrische oder quantitative) Daten** sind.
 * Sie wissen, was **kategoriale (qualitative) Daten** sind.
 * Sie können die Methode **.unique()** benutzen, um die eindeutigen Werte eines
@@ -75,14 +75,15 @@ data.info()
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 
 Welche Eigenschaften der Autos sind numerisch (metrisch/quantitativ)? Würden Sie
 bei anderen Eigenschaften ebenfalls einen metrischen Datentyp erwarten?
 ```
 
 ```{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Das Jahr und der Preis (Euro) sind ganze Zahlen (Integer). Die Leistung der
 Autos wird als Fließkommazahl (Float) angegeben, unabhängig von der Einheit kW
 oder PS. Auch der Kilometerstand wird durch eine Fließkommazahl (Float)
@@ -157,7 +158,7 @@ von kategorialen Daten, wenn die Anzahl der Kategorien deutlich kleiner als die
 Anzahl der Datenpunkte ist (oft als Faustregel: < 5-10 % der Beobachtungen).
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Suchen Sie sich drei nicht-metrische Eigenschaften aus und bestimmen Sie
 die Anzahl der einzigartigen Einträge dieser Eigenschaft.
 
@@ -167,7 +168,8 @@ Länge einer Liste, also die Anzahl der Elemente der Liste, bestimmen.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 anzahl_einzigartige_werte = len(data['Modell'].unique())
 print(f'Die Spalte/Eigenschaft Modell hat {anzahl_einzigartige_werte} einzigartige Werte.')

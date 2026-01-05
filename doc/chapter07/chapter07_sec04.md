@@ -23,7 +23,7 @@ jeweils eine Prognose ab, wie viele Menschen in Deutschland im Jahr 2100 leben
 werden. Unterscheiden sich die beiden Prognosen?
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise 
+:class: tip 
 
 Laden Sie die csv-Datei `population_germany.csv`. Welche Daten enthält die
 Datei? Wie viele Datenpunkte sind vorhanden? Wie viele und welche Merkmale gibt
@@ -31,7 +31,8 @@ es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -46,7 +47,7 @@ und Population sind Integer.
 ````
 
 ```{admonition} Statistik der numerischen Daten
-:class: miniexercise 
+:class: tip 
 
 Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
 Daten. Visualisieren Sie anschließend die statistischen Kennzahlen mit Boxplots.
@@ -55,7 +56,8 @@ Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 daten.describe()
@@ -87,7 +89,7 @@ Der Boxplot zeigt keine Ausreißer. Insgesamt erscheinen die Werte plausibel.
 ````
 
 ```{admonition} Statistik der kategorialen Daten
-:class: miniexercise 
+:class: tip 
 
 Erstellen Sie eine Übersicht der Häufigkeiten für die kategorialen Daten.
 Visualisieren Sie anschließend die Häufigkeiten mit Barplots. Interpretieren Sie
@@ -95,7 +97,8 @@ die Häufigkeiten. Sind die Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 Als erstes schauen wir uns an, was sich hinter den Objekten verbirgt.
 
@@ -122,7 +125,7 @@ daher auch keinen Barplot für die Häufigkeiten.
 ````
 
 ```{admonition} Korrelationen
-:class: miniexercise
+:class: tip
 Erstellen Sie einen Scatterplot mit dem Jahr auf der x-Achse und der Population
 auf der y-Achse. Beschriften Sie den Scatterplot sinnvoll. Vermuten Sie einen
 Zusammenhang zwischen Jahr und Bevölkerung? Was fällt Ihnen generell auf? Können
@@ -130,7 +133,8 @@ Sie die Besonderheiten mit Geschichtswissen erklären?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 fig = px.scatter(daten, x = 'Jahr', y = 'Population',
@@ -149,7 +153,7 @@ wieder zu einem kurzen Bevölkerungsrückgang, z.B. um 1984 oder 2010.
 ````
 
 ```{admonition} Lineares Regressionsmodell
-:class: miniexercise
+:class: tip
 
 Adaptieren Sie die Daten. Wählen Sie als Input das Jahr und als Output die
 Population. Trainieren Sie ein lineares Regressionsmodell und lassen Sie den
@@ -157,7 +161,8 @@ R²-Score berechnen und ausgeben.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 X = daten[['Jahr']]
@@ -175,7 +180,7 @@ Der R²-Score ist mit 0.97 sehr gut.
 ````
 
 ```{admonition} Entscheidungsbaum/Decision Tree
-:class: miniexercise
+:class: tip
 Lassen Sie nun einen Entscheidungsbaum/Decision Tree trainieren und den R²-Score
 ausgeben. 
 
@@ -183,7 +188,8 @@ Tipp: Das Scikit-Learn-Modell heißt DecisionTreeRegressor.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 from sklearn.tree import DecisionTreeRegressor
@@ -198,7 +204,7 @@ Overfitting auf den Trainingsdaten.
 ````
 
 ````{admonition} Bewertung und Prognose
-:class: miniexercise
+:class: tip
 
 Für welches Modell würden Sie sich entscheiden? Begründen Sie Ihre Wahl. 
 
@@ -227,7 +233,8 @@ Welches Modell würden Sie nach der Visualisierung bevorzugen?
 ````
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Zunächst einmal erscheint der Entscheidungsbaum besser zu sein als das lineare
 Regressionsmodell, da der R²-Score besser ist. Daher könnte man sich für einen
 Entscheidungsbaum/Decision Tree entscheiden.
@@ -270,14 +277,15 @@ ML-Modelle und bewerten Sie, bei welchem sozialen Medium sich am ehesten lohnt
 zu investieren.
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise 
+:class: tip 
 Laden Sie die csv-Datei `marketing_data.csv`. Welche Daten enthält die
 Datei? Wie viele Datenpunkte sind vorhanden? Wie viele und welche Merkmale gibt
 es? Sind die Daten vollständig? Welche Datentypen haben die Merkmale?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd 
@@ -300,7 +308,7 @@ daten.head(10)
 ````
 
 ```{admonition} Statistik der numerischen Daten
-:class: miniexercise 
+:class: tip 
 
 Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
 Daten. Visualisieren Sie anschließend die statistischen Kennzahlen mit Boxplots.
@@ -309,7 +317,8 @@ Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 daten.describe()
@@ -353,14 +362,15 @@ an Q3 und unterhalb des Mittelwertes von 16 Tsd. US-Dollar.
 ````
 
 ```{admonition} Korrelationen
-:class: miniexercise
+:class: tip
 Erstellen Sie zuerst eine Scattermatrix, um Zusammenhänge zwischen den Merkmalen
 zu analysieren. Lassen Sie dann die Korrelationsmatrix als Heatmap anzeigen und
 interpretieren Sie das Ergebnis.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 Alle drei Merkmale YouTube, Facebook und Newspaper könnten eine Wirkung auf die
 Verkaufszahlen haben. Am einfachsten ist zunächst die Visualisierung als
@@ -387,7 +397,7 @@ gefolgt von Facebook. Newspaper haben den geringsten Einfluss.
 ````
 
 ```{admonition} Lineares Regressionsmodell
-:class: miniexercise
+:class: tip
 
 Trainieren Sie drei lineare Regressinsmodelle, jeweils mit einem anderen Merkmal
 als Input, d.h. mit jeweils `youtube`, `facebook`, `newspaper`. Adaptieren Sie
@@ -395,7 +405,8 @@ dazu passend die Daten. Lassen Sie jeweils den R²-Score berechnen und ausgeben.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 Wir trainieren zunächst drei einzelne lineare
 Regressionsmodelle und bestimmen den jeweiligen R²-Score.
@@ -417,14 +428,15 @@ Newspapern, da dort ein lineares Modell besser passt.
 ````
 
 ```{admonition} Finales Modell
-:class: miniexercise
+:class: tip
 Trainieren Sie nun als finales Modell ein multiples Regressionsmodell und
 stellen Sie mit den Koeffizienten (Gewichten) und dem Achsenabschnitt (Bias) die
 dazugehörige Modellfunktion auf.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 X = daten[['youtube', 'facebook', 'newspaper']]

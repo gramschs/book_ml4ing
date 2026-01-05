@@ -22,7 +22,7 @@ Ausgabe auf dem Bildschirm.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen die einfachen Datentypen:
     * **Integer**
     * **Float**
@@ -208,12 +208,13 @@ Variablen müssen initalisiert (erstmalig mit einem Wert versehen) werden, bevor
 sie verwendet werden können, sonst tritt ein Fehler auf.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Fügen Sie eine Code-Zelle ein und schreiben Sie in die Code-Zelle einfach nur `n`. Lassen Sie die Code-Zelle ausführen. Was passiert?
 ```
 
 ```{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 Es erscheint eine Fehlermeldung, da eine Variable einen Wert haben muss, bevor
 sie das erste Mal benutzt wird.
 ```
@@ -375,7 +376,7 @@ und übergibt dann die `6` an die print()-Funktion. Die print()-Funktion wiederu
 zeigt dann die `6` am Bildschirm an.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Lassen Sie Python den Term $3:4$ berechnen und geben Sie das Ergebnis mit der print()-Funktion aus. 
 ```
 
@@ -384,7 +385,8 @@ Lassen Sie Python den Term $3:4$ berechnen und geben Sie das Ergebnis mit der pr
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 print(3/4)
 ```
@@ -398,7 +400,7 @@ print('Hallo')
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Probieren Sie aus was passiert, wenn Sie die einfachen Anführungszeichen `'`
 durch doppelte Anführungszeichen `"` ersetzen. Lassen Sie den Text Hallo Welt
 ausgeben :-)
@@ -409,7 +411,8 @@ ausgeben :-)
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 print("Hallo Welt")
 ```
@@ -455,12 +458,13 @@ finden Sie eine umfangreiche Übersicht und können sich zudem ein pdf-Dokument
 herunterladen.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Schreiben Sie ein Programm, mit dem der Flächeninhalt eines Rechtecks berechnet werden soll. Die beiden Seitenlängen werden jeweils in den Variablen `laenge` und `breite` gespeichert (suchen Sie sich eigene Zahlen aus). Ausgegeben werden soll dann: "Der Flächeninhalt eines Rechtecks mit den Seiten XX und XX ist XX.", wobei XX durch die korrekten Zahlen ersetzt werden und der Flächeninhalt auf eine Nachkommastelle gerundet werden soll.
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 # Eingabe
 laenge = 5.5

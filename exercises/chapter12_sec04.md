@@ -41,7 +41,8 @@ In dem Datensatz sind Beispiele für die drei Irisarten
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -250,7 +251,8 @@ Regression.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd

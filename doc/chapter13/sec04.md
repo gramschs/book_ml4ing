@@ -53,7 +53,7 @@ ausführen, bevor Sie es abgeben.
 ## Explorative Datenanalyse
 
 ```{admonition} Import und Bereinigung der Daten
-:class: miniexercise
+:class: tip
 Importieren Sie die Daten 'diamonds_DE.csv'. Verschaffen Sie sich einen
 Überblick und beantworten Sie folgende Fragen in einer Markdown-Zelle:
 
@@ -67,7 +67,8 @@ bereinigen Sie ihn.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 daten = pd.read_csv('diamonds_DE.csv', skiprows=3)
 daten.info()
@@ -104,7 +105,7 @@ daten.info()
 ````
 
 ```{admonition} Statistische Kennzahlen der numerischen Eigenschaften
-:class: miniexercise
+:class: tip
 * Ermitteln Sie von den numerischen Eigenschaften die statistischen Kennzahlen
   und visualisieren Sie sie. Verwenden Sie beim Plot eine aussagefähige
   Beschriftung.
@@ -115,7 +116,8 @@ daten.info()
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 numerische_merkmale = ['Karat', 'Tiefe', 'Tafel', 'Preis', 'x', 'y', 'z']
 daten.describe()
@@ -238,7 +240,7 @@ Die Verteilung der Preise ist rechtsschief (linkssteil).
 ````
 
 ```{admonition} Statistische Kennzahlen (kategoriale Eigenschaften)
-:class: miniexercise
+:class: tip
 * Ermitteln Sie, wie häufig jeder Wert einer Kategorie in der jeweiligen Spalte
   vorkommt.
 * Lassen Sie die Anzahl der Werte auch visualisieren. Beschriften Sie die
@@ -248,7 +250,8 @@ Die Verteilung der Preise ist rechtsschief (linkssteil).
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 for kategorie in ['Schliff', 'Farbe', 'Reinheit']:
     print(f'Eigenschaft {kategorie}: {daten[kategorie].unique()}')
@@ -294,7 +297,7 @@ im Datensatz haben eine mittlere Reinheitsstufe SI1.
 ## ML-Modelle
 
 ```{admonition} Regression
-:class: miniexercise
+:class: tip
 Ziel der Regressionsaufgabe ist es, den Preis der Diamanten zu prognostizieren.
 
 * Wählen Sie zwei Regressionsmodelle aus.
@@ -310,7 +313,8 @@ Ziel der Regressionsaufgabe ist es, den Preis der Diamanten zu prognostizieren.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 Wahl der Regressionsmodelle: lineare Regression und SVM.
 
 ```python
@@ -378,7 +382,7 @@ Modell zu bevorzugen.
 ````
 
 ```{admonition} Klassifikation
-:class: miniexercise
+:class: tip
 Ziel der Klassifikationsaufgabe ist es, die Preisklasse "billig" oder "teuer"
 der Diamanten zu prognostizieren.
 
@@ -401,7 +405,8 @@ in einer neuen Spalte "Preisklasse".
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 
 Vorbereitung: Filterung der Daten bezogen auf den Median des Preises
 

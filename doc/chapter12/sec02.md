@@ -14,10 +14,13 @@ kernelspec:
 
 # 12.2 Die Perzeptron-Lernregel
 
-In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann.
+In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert
+vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns
+damit, wie die Gewichte und der Schwellenwert gewählt werden müssen, damit das
+Perzeptron seine binäre Klassifikationsaufgabe erfüllen kann.
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen die drei Phasen, in denen ein Perzeptron trainiert wird:
   * Initialisierung der Gewichte und Festlegung der Lernrate;
   * Berechnung des prognostizierten Outputs und Aktualisierung der Gewichte sowie
@@ -48,17 +51,24 @@ Inputs verstärkt oder nicht. Dieser Prozess — Vergleichen und Abändern der
 Gewichte — wird solange wiederholt, bis die passenden Gewichte gefunden sind.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
-Angenommen, in unserem "Ist-der-Rasen-nass-Problem" (siehe [](rasen_nass_problem)) sind die Gewichte alle Null, also $\omega_0 = \omega_1 = \omega_2 = 0$. Was prognostiziert das Perzeptron für "es regnet nicht" ($x_1=0$) und "der Rasensprenger ist aus" ($x_2=0$)?
+:class: tip
+Angenommen, in unserem "Ist-der-Rasen-nass-Problem" (siehe letztes Kapitel) sind
+die Gewichte alle Null, also $\omega_0 = \omega_1 = \omega_2 = 0$. Was
+prognostiziert das Perzeptron für "es regnet nicht" ($x_1=0$) und "der
+Rasensprenger ist aus" ($x_2=0$)?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
-Das Perzeptron prognostiziert fälschlicherweise, dass der Rasen nass ist. Die gewichtete Summe wird zu
+:class: tip
+:class: dropdown
+Das Perzeptron prognostiziert fälschlicherweise, dass der Rasen nass ist. Die
+gewichtete Summe wird zu
 
-$$\mathbf{x}^{T} \boldsymbol{\omega} = \begin{pmatrix} 0, 0, 0 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = 0$$
+$$\mathbf{x}^{T} \boldsymbol{\omega} = \begin{pmatrix} 0, 0, 0 \end{pmatrix}
+\cdot \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = 0$$
 
-berechnet. Da aber dann noch die Aktivierungsfunktion (Heaviside-Funktion) angewendet werden muss, erhalten wir
+berechnet. Da aber dann noch die Aktivierungsfunktion (Heaviside-Funktion)
+angewendet werden muss, erhalten wir
 
 $$\Phi(0)=1,$$
 
@@ -72,7 +82,7 @@ prognostizierte Output nicht mit dem echten Output übereinstimmt? Die Lernregel
 für das Perzeptron sieht zunächst einmal kompliziert aus:
 
 $$\omega_i^{\text{neu}} = \omega_i^{\text{aktuell}} + \alpha \cdot(y -
-\hat{y}^{\text{aktuell}}) \cdot x_i.\strut$$
+\hat{y}^{\text{aktuell}}) \cdot x_i.$$
 
 Gehen wir die Rechenvorschrift Stück für Stück durch. Zunächst einmal fällt auf,
 dass ein Index $i$ auftaucht. Das liegt daran, dass wir mehrere Eingabewerte
@@ -116,12 +126,12 @@ werden, werden sie noch mit einem Vorfaktor $\alpha$ multipliziert, der zwischen
 $\alpha$ wird **Lernrate** genannt.
 
 ```{admonition} Was ist ... die Lernrate?
-Die Lernrate ist eine Zahl, die zu Beginn des ML-Trainings gesetzt wird (ein sogenannter Hyperparameter). Sie bestimmt, wie stark die neuen Gewichte auf Fehler zwischen Prognose und tatsächlichem Output des aktuellen Durchgangs reagieren.
+Die Lernrate ist eine Zahl, die zu Beginn des ML-Trainings gesetzt wird (ein
+sogenannter Hyperparameter). Sie bestimmt, wie stark die neuen Gewichte auf
+Fehler zwischen Prognose und tatsächlichem Output des aktuellen Durchgangs
+reagieren.
 ```
 
-+++
-
-(perzeptron_training_logisches_oder)=
 ## Perzeptron-Training am Beispiel des logischen ODER
 
 Das logische Oder ist bereits durch die Angabe der folgenden vier Datensätzen
@@ -143,7 +153,8 @@ Im Folgenden wird das Training eines Perzeptrons Schritt für Schritt vorgerechn
 Wir brauchen für die drei Inputs drei Gewichte und setzen diese drei Gewichte
 jeweils auf 0. Wir sammeln die Gewichte als Vektor, also
 
-$$\boldsymbol{\omega} = \begin{pmatrix}\omega_0 \\ \omega_1 \\ \omega_2\end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0\end{pmatrix}.$$
+$$\boldsymbol{\omega} = \begin{pmatrix}\omega_0 \\ \omega_1 \\
+\omega_2\end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0\end{pmatrix}.$$
 
 Darüber hinaus müssen wir uns für eine Lernrate $\alpha$ entscheiden. Obwohl
 normalerweise ein kleiner (aber positiver) Wert gewählt wird, setzen wir der
@@ -160,9 +171,11 @@ Zur Erinnerung, wir berechnen den aktuellen Output des Perzeptrons mit der
 Formel
 
 $$\hat{y}^{aktuell} = \Phi(\mathbf{x}^{T}\boldsymbol{\omega}) = \Phi(x_0
-\omega_0 + x_1 \omega_1 + x_2 \omega_2 ).\strut$$
+\omega_0 + x_1 \omega_1 + x_2 \omega_2 ).$$
 
-Blättern Sie Seite für Seite durch. Jede Seite entspricht einem Durchgang. Ein Durchgang wird im ML (wie auch in der Mathematik) als eine **Iteration** bezeichnet.
+Blättern Sie Seite für Seite durch. Jede Seite entspricht einem Durchgang. Ein
+Durchgang wird im ML (wie auch in der Mathematik) als eine **Iteration**
+bezeichnet.
 
 ```{code-cell} ipython3
 :tags: [remove-input]
@@ -175,7 +188,13 @@ HTML('../assets/chapter08/Perzeptron-Lernregel.html')
 Die letzten vier Iterationen mit den Gewichten $(-1,1,1)$ prognostizierten
 jeweils das richtige Ergebnis. Daher können wir nun mit den Iterationen stoppen.
 
-Insgesamt brauchten wir 13 Iterationen, bis wir die Gewichte für unser Perzeptron gefunden haben. Die finalen Gewichte haben wir bereits nach neun Iterationen gefunden. Weitere vier Iterationen brauchten wir, um zu überprüfen, ob das Perzeptron die vier Datensätze korrekt prognostiziert. Oder anders ausgedrückt, mussten alle vier Datensätze noch einmal durchlaufen werden. Das Durchlaufen aller Datensätze kommt beim mschinellen Lernen häufig vor, so dass es dafür einen eigenen Fachbegriff gibt, nämlich die Epoche.
+Insgesamt brauchten wir 13 Iterationen, bis wir die Gewichte für unser
+Perzeptron gefunden haben. Die finalen Gewichte haben wir bereits nach neun
+Iterationen gefunden. Weitere vier Iterationen brauchten wir, um zu überprüfen,
+ob das Perzeptron die vier Datensätze korrekt prognostiziert. Oder anders
+ausgedrückt, mussten alle vier Datensätze noch einmal durchlaufen werden. Das
+Durchlaufen aller Datensätze kommt beim mschinellen Lernen häufig vor, so dass
+es dafür einen eigenen Fachbegriff gibt, nämlich die Epoche.
 
 ```{admonition} Was ist ... eine Epoche?
 Das komplette Durchlaufen aller Trainingsdaten wird eine Epoche genannt.
@@ -183,4 +202,6 @@ Das komplette Durchlaufen aller Trainingsdaten wird eine Epoche genannt.
 
 ## Zusammenfassung und Ausblick
 
-In diesem Abschnitt haben wir uns mit dem händischen Training eines Perzeptrons beschäftigt. Als nächstes werden wir dazu eine Bibliothek kennenlernen, die diese Arbeit für uns übernimmt.
+In diesem Abschnitt haben wir uns mit dem händischen Training eines Perzeptrons
+beschäftigt. Als nächstes werden wir dazu eine Bibliothek kennenlernen, die
+diese Arbeit für uns übernimmt.

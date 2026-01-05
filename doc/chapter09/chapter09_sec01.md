@@ -25,7 +25,7 @@ Verständnis ihrer Funktionsweise und Anwendungen zu vermitteln.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können in eigenen Worten erklären, was **Ensemble-Methoden** sind.
 * Sie kennen die Grundideen der Ensemble-Methoden
   * **Voting**,

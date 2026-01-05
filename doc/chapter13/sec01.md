@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können die **logistische Funktion** zeichnen.
 * Sie können die **Funktionsgleichung der logistischen Funktion** angeben.
 * Sie können das **logistische Regressionsmodell** schematisch darstellen. 
@@ -99,10 +99,9 @@ Als nächstes ersetzen wir die Klassenbezeichnungen durch numerische Werte. Mit
 Bezeichnungen wie "3. Liga" und "2. Bundesliga" kann Python nämlich nicht
 rechnen. Bei einem binären Klassifikationsverfahren wie hier werden hierfür
 üblicherweise die Zahlen 0 und 1 verwendet, also
-<ul>
-    <li>3. Liga --> 0</li>
-    <li>2. Bundesliga --> 1</li>
-</ul>
+
+* 3\. Liga --> 0
+* 2\. Bundesliga --> 1
 
 Das Klassifikationsproblem lautet also: angenommen, ein
 Verein hat den Marktwert x. Gehört der Verein dann zur Klasse 1 (= 2.

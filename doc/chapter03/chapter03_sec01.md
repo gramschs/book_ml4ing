@@ -22,7 +22,7 @@ machen wir uns aber zuerst mit dem **Modul Pandas** vertraut.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können erklären, was ein **Modul** in Python ist.
 * Sie kennen das Modul **Pandas** und können es mit seiner üblichen Abkürzung
   **pd** importieren.
@@ -163,7 +163,7 @@ Offensichtlich sind die gespeicherten Werte Integer. Die Zusatzinformation
 `int64` bedeutet, dass es sich um einen 64-Bit-Integer handelt.
 
 ```{admonition} Mini-Übung
-:class: miniexercise 
+:class: tip 
 Erzeugen Sie ein Series-Objekt mit den Wochentagen als Index. Verwenden Sie
 dabei nur die Werktage und speichern Sie, wie viele Stunden Sie an diesem Tag
 schlafen. Welchen Datentyp haben die Elemente?
@@ -174,7 +174,8 @@ schlafen. Welchen Datentyp haben die Elemente?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 schlafzeiten = pd.Series([8, 9.5, 7.8, 8.1, 8.3], 
   index=['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'])
@@ -240,7 +241,7 @@ sort_values()](https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_v
 nachlesen können.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Alice, Bob, Charlie und Dora sind 22, 20, 24 und 22 Jahre alt. Speichern Sie
 diese Informationen in einem Series-Objekt und sortieren Sie von alt nach jung.
 Zusatzfrage: Was fällt Ihnen bei der Sortierung auf, wenn zwei Personen gleich
@@ -252,7 +253,8 @@ alt sind? Bleibt ihre ursprüngliche Reihenfolge erhalten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 # Erzeugung des Series-Objektes
 namen = ['Alice', 'Bob', 'Charlie', 'Dora']

@@ -23,7 +23,7 @@ Bagging mit Entscheidungsbäumen, die sogenannten Random Forests.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können das ML-Modell **Random Forest** in der Praxis anwenden.
 * Sie können mit Hilfe der **Feature Importance** bewerten, wie groß der
   Einfluss eines Merkmals auf die Prognosegenauigkeit des Random Forests ist.

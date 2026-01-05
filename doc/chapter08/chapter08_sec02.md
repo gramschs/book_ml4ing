@@ -25,7 +25,7 @@ Aufteilung von Daten in Trainings- und Testdaten.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie verstehen, warum Daten in **Trainingsdaten** und **Testdaten** aufgeteilt
   werden.
 * Sie können mit der Funktion **train_test_split()** Pandas-DataFrames in

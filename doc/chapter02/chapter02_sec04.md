@@ -15,7 +15,7 @@ kernelspec:
 # Übungen
 
 ```{admonition} Übung 2.1
-:class: miniexercise 
+:class: tip 
 Welcher Datentyp liegt vor? Kopieren Sie diesen Text in eine Markdown-Zelle und
 schreiben Sie Ihre Antwort hinter den Pfeil.
 
@@ -32,7 +32,8 @@ Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
 ```
 
 ```{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 * 3 –> int, also Integer
 * -3 –> int, also Integer
 * ‘drei’–> str, also String
@@ -43,13 +44,14 @@ Verwenden Sie anschließend `type()` in einer Code-Zelle, um Ihre Antwort zu
 ```
 
 ```{admonition} Übung 2.2
-:class: miniexercise 
+:class: tip 
 Schreiben Sie ein Programm, das die Zahlen von 5 bis 15 mit ihrem Quadrat
 ausgibt, also "Das Quadrat von 5 ist 25." usw.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 for zahl in range(5, 16):
     print(f'Das Quadrat von {zahl} ist {zahl**2}.')
@@ -57,7 +59,7 @@ for zahl in range(5, 16):
 ````
 
 ````{admonition} Übung 2.3
-:class: miniexercise 
+:class: tip 
 Schreiben Sie eine For-Schleife, die die Brüche 1/7, 2/7, 3/7, bis 7/7 als
 Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
 ```{code}
@@ -72,7 +74,8 @@ Fließkommazahl gerundet auf 2 Nachkommastellen ausgibt. Beispielausgabe:
 ````
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 for zahl in range(1, 8):
     print(f'{zahl}/7 = {zahl/7:.2f}.')
@@ -80,7 +83,7 @@ for zahl in range(1, 8):
 ````
 
 ````{admonition} Übung 2.4
-:class: miniexercise 
+:class: tip 
 Schreiben Sie ein Programm, das eine Liste von Namen durchläuft und jede Person
 begrüßt. Wenn beispielsweise die Namen Alice, Bob und Charlie in der Liste
 stehen, lauten die Begrüßungen:
@@ -93,7 +96,8 @@ Hallo, Charlie!
 ````
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 namensliste = ['Alice', 'Bob', 'Charlie']
 for name in namensliste:
@@ -102,7 +106,7 @@ for name in namensliste:
 ````
 
 ```{admonition} Übung 2.5
-:class: miniexercise
+:class: tip
 Erstellen Sie ein Dictionary für einen Studierenden mit folgenden Informationen:
 
 - vorname: "Max"
@@ -114,7 +118,8 @@ Geben Sie dann folgende Information aus: "Max Mustermann (123456) studiert Masch
 ````
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 studierender = {
     "vorname": "Max",
@@ -128,7 +133,7 @@ print(f'{studierender["vorname"]} {studierender["nachname"]} ({studierender["mat
 ````
 
 ```{admonition} Übung 2.6
-:class: miniexercise
+:class: tip
 Gegeben ist die Liste: `zahlen = [5, 12, 3, 8, 1]`
 
 1. Fügen Sie die Zahl 7 am Ende der Liste hinzu.
@@ -137,7 +142,8 @@ Gegeben ist die Liste: `zahlen = [5, 12, 3, 8, 1]`
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 # Liste bearbeiten
 zahlen = [5, 12, 3, 8, 1]

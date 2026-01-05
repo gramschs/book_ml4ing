@@ -24,7 +24,7 @@ Entscheidungsbäume in Scikit-Learn gibt.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können einen Entscheidungsbaum mit `plot_tree` visualisieren.
 * Sie wissen, was die Angaben `samples` und `value` bei der Visualisierung des
   Entscheidungsbaumes bedeuten.
@@ -216,7 +216,7 @@ angezeigt. Die grundlegende Funktionsweise bleibt jedoch gleich: Der Algorithmus
 wählt die Splits, die die Unreinheit am stärksten reduzieren.
 
 ````{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Gegeben sind folgende Trainingsdaten für eine Pflanzenklassifikation:
 ```python
 pflanzen_daten = pd.DataFrame({
@@ -234,7 +234,8 @@ pflanzen_daten = pd.DataFrame({
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 pflanzen_daten = pd.DataFrame({
     'Blattlaenge [cm]': [2.5, 4.9, 6.3, 7.1, 3.2],

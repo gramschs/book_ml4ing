@@ -22,7 +22,7 @@ jedoch werden ein Kaggle- bzw. ein Statista-Account benötigt.
 ```
 
 ```{admonition} Übung 5.1
-:class: miniexercise
+:class: tip
 Schauen Sie sich die Datei 'kaggle_germany-wind-energy.csv' im Texteditor bzw.
 im JupyterLab an. Welche Spalte könnte als Zeilenindex dienen? Importieren Sie
 passend die Daten.
@@ -42,7 +42,8 @@ Visualisieren Sie drei Eigenschaften als Scattermatrix. Gibt es Abhängigkeiten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -158,7 +159,7 @@ weniger als die Hälfte des Maximalwertes erzeugt.
 ````
 
 ```{admonition} Übung 5.2
-:class: miniexercise
+:class: tip
 
 Importieren Sie den Datensatz 'kaggle_ikea.csv' und verschaffen Sie sich einen
 Überblick über die Daten (Quelle: [Kaggle](https://www.kaggle.com/datasets/thedevastator/ikea-product)).
@@ -178,7 +179,8 @@ Artikel (ID?) in dieser Kategorie und wie wird er beschrieben?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -273,7 +275,7 @@ print(most_expensive_children_furniture['link'])
 ````
 
 ```{admonition} Übung 5.3
-:class: miniexercise
+:class: tip
 Lesen Sie die csv-Datei
 'statistic_id1301764_formel1-fahrerwertung-saison-2022.csv' (Formel 1
 Fahrerwertung, Stand 30.10.2022, Quelle:
@@ -288,7 +290,8 @@ den vorherigen Kapiteln bzw. Übungen selbstständig.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd

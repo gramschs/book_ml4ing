@@ -34,7 +34,7 @@ Code-Abschnitten mittels der sogenannten **for-Schleife** beschäftigen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen den Datentyp **Liste**.
 * Sie können Listen mit eckigen Klammern erzeugen. 
 * Sie können Listen mit dem **Plus-Operator** verketten und Elemente mit
@@ -100,7 +100,7 @@ print(a)
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Erzeugen Sie eine Einkaufsliste, um einen Obstsalat zuzubereiten und speichern
 Sie diese Liste in der Variablen `einkaufsliste`. Lassen Sie dann den Computer
 bzw. den Python-Interpreter zählen, wie viele Zutaten Ihre Liste enthält und
@@ -112,7 +112,8 @@ geben Sie dann die Anzahl aus.
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
 anzahl_zutaten = len(einkaufsliste)
@@ -147,7 +148,7 @@ print(a)
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Nehmen Sie Ihre Einkaufsliste für den Obstsalat von vorhin. Fügen Sie noch Zimt
 und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.
 ```
@@ -157,7 +158,8 @@ und Zucker hinzu und lassen Sie die Anzahl der Elemente ausgeben.
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 einkaufsliste = ['Apfel', 'Banane', 'Trauben', 'Joghurt']
 einkaufsliste.append('Zimt')
@@ -260,7 +262,7 @@ print('Ich bin fertig!')
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise  
+:class: tip  
 Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben. 
 ```
 
@@ -269,7 +271,8 @@ Lassen Sie nacheinander die Zutaten Ihrer Einkaufsliste ausgeben.
 ```
 
 ````{admonition} Lösung
-:class: miniexercise, toggle
+:class: tip
+:class: dropdown
 ```python
 einkaufsliste = ['Apfel', 'Bananen', 'Trauben', 'Joghurt', 'Honig', 'Zimt']
 for zutat in einkaufsliste:

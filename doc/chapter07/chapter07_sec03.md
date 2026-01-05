@@ -25,7 +25,7 @@ Darüber hinaus diskutieren wir die Probleme Overfitting und Underfitting.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können eine **polynomiale Regression** durchführen.
 * Sie wissen, dass die Wahl des Polynomgrades entscheidend dafür ist, ob
   **Underfitting (Unteranpassung)**, **Overfitting (Überanpassung)** oder ein
@@ -309,12 +309,12 @@ die R²-Scores in einer Tabelle zusammen:
 
 | Polynomgrad | R² (Trainingsdaten) | R² (Testdaten) |
 | --- | --- | --- |
-| 1  | 0.9641 | 0.9698 |
-| 2  | 0.9979 | 0.9999 |
+| 1 | 0.9641 | 0.9698 |
+| 2 | 0.9979 | 0.9999 |
 | 14 | 0.9899 | 0.9895 |
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Vergleichen Sie die drei trainierten Modelle anhand der Tabelle:
 
 1. Welches Modell hat den besten R²-Score auf den *Testdaten*?
@@ -326,7 +326,8 @@ Vergleichen Sie die drei trainierten Modelle anhand der Tabelle:
 ```
 
 ```{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 1. Grad 2 (quadratisch) hat mit R² ≈ 0.9999 den besten Test-Score.
 2. Beim Polynom Grad 14 ist der Test-Score niedriger als der Train-Score, weil
    das Modell zu stark an die Trainingsdaten angepasst ist (Overfitting). Es

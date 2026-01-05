@@ -23,7 +23,7 @@ interpretieren.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können sich mit **.describe()** eine Übersicht über statistische Kennzahlen
   verschaffen.
 * Sie wissen, wie Sie die Anzahl der gültigen Einträge mit **.count()** ermitteln.
@@ -89,7 +89,7 @@ print(f'Das billigste Auto wird für {minimaler_preis} EUR angeboten.')
 ```
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Lassen Sie die Verkaufspreise aufsteigend sortieren und ausgeben. Welches Auto
 ist am teuersten und für wie viel EUR wird es angeboten?
 
@@ -105,7 +105,8 @@ die Streuung der Daten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 # Sortierung und Ausgabe
 preise_aufsteigend = preise.sort_values()

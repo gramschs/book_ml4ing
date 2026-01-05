@@ -21,7 +21,7 @@ das Konzept, das hinter den Support Vector Machines steht.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen die Abkürzung **SVM** für **Support Vector Machines**.
 * Sie kennen die Idee, bei Support Vector Machines den **Margin** (=
   Randabstand) zu maximieren.

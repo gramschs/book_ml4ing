@@ -22,7 +22,7 @@ der Kreuzvalidierung, bevor wir sie im Rahmen der Gittersuche anwenden.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie verstehen, dass Daten für die Modellauswahl in Trainingsdaten,
   **Validierungsdaten** und Testdaten unterteilt werden.
 * Sie sind in der Lage, Hyperparameter mittels Gittersuche und Kreuzvalidierung
@@ -33,7 +33,7 @@ der Kreuzvalidierung, bevor wir sie im Rahmen der Gittersuche anwenden.
 
 Im letzten Kapitel haben wir die Kreuzvalidierung eingeführt. Ihr Ziel ist es,
 eine robustere Bewertung der Modellleistung zu ermöglichen. Besonders bei der
-Beurteilung und der verbesserung der Verallgemeinerungsfähigkeit eines Modells
+Beurteilung und der Verbesserung der Verallgemeinerungsfähigkeit eines Modells
 (Reduktion von Overfitting), ist die Kreuzvalidierung ein wertvolles Werkzeug.
 In diesem Abschnitt nutzen wir die Kreuzvalidierung, um zwischen zwei Modellen
 zu wählen.

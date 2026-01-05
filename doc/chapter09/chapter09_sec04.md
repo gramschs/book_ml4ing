@@ -22,7 +22,7 @@ Merkmale sind Durchschnittswerte für alle Haushalte in diesem Block. Das Ziel
 ist, den Median-Hauswert (in US-Dollar) vorherzusagen.
 
 ```{admonition} Überblick über die Daten
-:class: miniexercise
+:class: tip
 Laden Sie den Datensatz `california_housing_DE.csv`.
 
 * Welche Daten enthält der Datensatz?
@@ -33,7 +33,8 @@ Laden Sie den Datensatz `california_housing_DE.csv`.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import pandas as pd
 
@@ -66,14 +67,15 @@ Die Datentypen sind für die Merkmale angemessen.
 ````
 
 ```{admonition} Datenvorverarbeitung
-:class: miniexercise
+:class: tip
 Der Datensatz enthält fehlende Werte in der Spalte `Schlafzimmer`. Entscheiden
 Sie, wie Sie diese behandeln möchten. Begründen Sie Ihre Wahl. Führen Sie die
 gewählte Methode durch.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Es fehlen 207 Werte (ca. 1 \% des Datensatzes). Da es sich um eine numerische
 Spalte handelt und der Anteil der fehlenden Werte gering ist, ist eine
 *Imputation mit dem Median* sinnvoll. Der Median ist robust gegenüber Ausreißern
@@ -101,14 +103,15 @@ aufwendig).
 ````
 
 ```{admonition} Statistik der numerischen Daten
-:class: miniexercise 
+:class: tip 
 Erstellen Sie eine Übersicht der statistischen Kennzahlen für die numerischen
 Daten. Interpretieren Sie die statistischen Kennzahlen. Gibt es Auffälligkeiten?
 Sind die Werte plausibel?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import plotly.express as px
 
@@ -138,13 +141,14 @@ Die Werte erscheinen grundsätzlich plausibel, zeigen aber deutliche Ausreißer.
 ````
 
 ```{admonition} Statistik der kategorialen Merkmale
-:class: miniexercise 
+:class: tip 
 Wie viele Beobachtungen gibt es pro Kategorie in Küstennähe? Visualisieren
 Sie die Verteilung mit einem Balkendiagramm. Ist der Datensatz ausgewogen?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 haeufigkeiten = daten['Kuestennaehe'].value_counts()
 print(haeufigkeiten)
@@ -161,13 +165,14 @@ Einträgen. 'nahe_Bucht' und 'nahe_Ozean' haben deutlich weniger Einträge, und
 ````
 
 ```{admonition} Analyse der Zielgröße
-:class: miniexercise 
+:class: tip 
 Visualisieren Sie die Verteilung der Zielgröße `Hauswert` mit einem
 Histogramm. Ist die Verteilung normalverteilt? Gibt es Auffälligkeiten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 fig = px.histogram(daten, x='Hauswert', 
                    nbins=50,
@@ -185,14 +190,15 @@ die man bei der Interpretation der Ergebnisse berücksichtigen sollte.
 ````
 
 ```{admonition} Korrelationen
-:class: miniexercise
+:class: tip
 Erstellen Sie eine Korrelationsmatrix für alle numerischen Variablen und
 visualisieren Sie diese als Heatmap. Welche Merkmale korrelieren am stärksten
 mit dem Hauswert? Gibt es starke Korrelationen zwischen den Merkmalen?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 numerische_daten = daten.loc[:, 'Laenge' : 'Hauswert']
 korrelation = numerische_daten.corr()
@@ -220,7 +226,7 @@ Zimmern, Schlafzimmern, Bevölkerung und Haushalten (0.86 bis 0.93).
 ````
 
 ```{admonition} Analyse der Positionen
-:class: miniexercise
+:class: tip
 Erstellen Sie einen Scatterplot mit Längengrad (x-Achse) und Breitengrad
 (y-Achse). Färben Sie die Punkte nach Hauswert ein. Erkennen Sie geografische
 Muster?
@@ -230,7 +236,8 @@ Tipp: Benutzen Sie das optionale Argument `opacity=0.5`, damit knapp
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 fig = px.scatter(daten, 
                  x='Laenge', 
@@ -255,7 +262,7 @@ erhalten.
 ````
 
 ```{admonition} Neue Merkmale
-:class: miniexercise
+:class: tip
 Wir haben festgestellt, dass die Merkmale Zimmer, Schlafzimmer, Bevölkerung und
 Haushalte stark linear korreliert sind.
 
@@ -269,7 +276,8 @@ dieser neuen Merkmale mit der Zielgröße.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Die statische Analyse ergab, dass das Minimum der Haushalte 1 ist und die
 minimale Anzahl der Zimmer 2. Null kommt nicht vor, so dass alle drei Divisionen
 durchgeführt werden können.
@@ -300,7 +308,7 @@ Prognose des Hauswertes sein.
 ````
 
 ```{admonition} Vorbereitung der Daten für das Training
-:class: miniexercise
+:class: tip
 Bereiten Sie die Daten für das maschinelle Lernen vor:
 
 1. Kodieren Sie die kategoriale Variable Küstennähe mit One-Hot-Encoding.
@@ -309,7 +317,8 @@ Bereiten Sie die Daten für das maschinelle Lernen vor:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.model_selection import train_test_split
 
@@ -331,14 +340,15 @@ print(f'Anzahl Merkmale: {X_train.shape[1]}')
 ````
 
 ```{admonition} ML-Modell: Entscheidungsbaum
-:class: miniexercise
+:class: tip
 Trainieren Sie einen Entscheidungsbaum (DecisionTreeRegressor) auf den
 Trainingsdaten. Berechnen Sie den R²-Score auf den Trainings- und Testdaten. Was
 fällt Ihnen auf?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.tree import DecisionTreeRegressor
 
@@ -358,7 +368,7 @@ schlecht auf neue Daten verallgemeinern.
 ````
 
 ```{admonition} ML-Modell: Random Forest
-:class: miniexercise
+:class: tip
 
 Trainieren Sie nun einen Random Forest (RandomForestRegressor) mit 100 Bäumen
 auf denselben Daten. Berechnen Sie wieder die R²-Scores für Training und Test.
@@ -366,7 +376,8 @@ Wie unterscheiden sich die Ergebnisse vom einzelnen Entscheidungsbaum?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.ensemble import RandomForestRegressor
 
@@ -386,14 +397,15 @@ dem Trainings- und dem Testscore ist kleiner.
 ````
 
 ```{admonition} Feature Importance
-:class: miniexercise
+:class: tip
 Lassen Sie sich die Feature Importance des Random-Forest-Modells ausgeben und
 visualisieren Sie die Top 10 wichtigsten Merkmale als Balkendiagramm. Welche
 Merkmale sind am wichtigsten für die Vorhersage?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 # Feature Importance extrahieren
 importance = pd.DataFrame({
@@ -416,7 +428,7 @@ Personen pro Haushalt.
 ````
 
 ```{admonition} ML-Modell: lineare Regression
-:class: miniexercise
+:class: tip
 Trainieren Sie nun ein lineares Regressionsmodell auf denselben Daten. Berechnen
 Sie wieder die R²-Scores für Training und Test. Wie unterscheiden sich die
 Ergebnisse vom den beiden vorherigen Modellen?
@@ -425,7 +437,8 @@ Wählen Sie dann ein finales Modell.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 from sklearn.linear_model import LinearRegression
 

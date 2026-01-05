@@ -21,7 +21,7 @@ Plotly ein Barplot erstellt und von einem Histogramm unterschieden wird.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen **Barplots** zur Visualisierung kategorialer Daten und können 
   Säulen- und Balkendiagramme unterscheiden.
 * Sie können mit **px.bar()** Barplots erstellen und anpassen.
@@ -180,14 +180,15 @@ Werden zu wenige Kategorien gewählt, werden auch nicht die Unterschiede
 sichtbar. Werden zu viele Kategorien gewählt, sind ggf. einige Kategorien leer.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Experimentieren Sie mit verschiedenen Werten für `nbins=`. Probieren Sie 
 `nbins=5`, `nbins=20` und `nbins=50` aus. Was beobachten Sie? Welche 
 Vor- und Nachteile haben wenige vs. viele Bins?
 ```
 
 ```{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 * Mit `nbins=5` sind die Kategorien sehr breit - man erkennt nur grobe Muster.
 * Mit `nbins=50` werden viele Kategorien leer oder haben nur wenige Werte - das
 Diagramm wird unübersichtlich.

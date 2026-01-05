@@ -30,7 +30,7 @@ Danach beschäftigen wir uns mit der Gestaltung bzw. dem Styling von Diagrammen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können mit der Funktion **scatter()** einen **Scatterplot** erzeugen, der
   numerische Daten als Ursache-Wirkungs-Diagramm visualisiert.
 * Sie kennen die folgenden Styling-Optionen 

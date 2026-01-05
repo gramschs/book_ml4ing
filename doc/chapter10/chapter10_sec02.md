@@ -24,7 +24,7 @@ Regression. Wir benutzen in diesem Kapitel das Modell SVC.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können ein SVM-Modell mit der Klasse SVC erzeugen.
 * Sie können den Parameter C zur Steuerung der Margins einsetzen.
 ```

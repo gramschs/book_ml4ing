@@ -31,7 +31,8 @@ numerischen Werte zu prognostizieren.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 
 Import der Daten (es gibt keine Spaltenüberschriften, daher wird das optionale Argument 'header=None' gesetzt):
 

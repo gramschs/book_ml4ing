@@ -21,7 +21,7 @@ um bei Entscheidungsbäumen diese Nachteile zu reduzieren.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie können in eigenen Worten erklären, was **Overfitting** (deutsch:
   **Überanpassung**) ist.
 * Sie wissen, was **Underfitting** bedeutet.
@@ -334,7 +334,7 @@ Lernen. In späteren Kapiteln werden wir systematische Methoden wie Grid Search
 und Cross-Validation kennenlernen, um die besten Hyperparameter-Werte zu finden.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Welcher Entscheidungsbaum zeigt vermutlich die stärkste Tendenz zum Overfitting?
 Stellen Sie eine Vermuting an und überprüfen Sie Ihre Vermutung durch Ausprobieren.
 
@@ -348,7 +348,8 @@ C) `DecisionTreeClassifier(min_samples_leaf=20)`
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 Antwort B, denn eine große maximale Tiefe erlaubt sehr komplexe Bäume.
 
 Überprüfung durch Code:

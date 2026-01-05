@@ -44,7 +44,7 @@ studierende_fachhochschulen_weiblich = [65332, 63198, 33333, 6323,
 ```
 
 ```{admonition} Übung 3.1
-:class: miniexercise
+:class: tip
 Speichern Sie die Daten zu den Studentinnen an Fachhochschulen als Pandas-Series.
 Verschaffen Sie sich einen Überblick über die statistischen Kennzahlen. Lesen
 Sie dann ab: In welchem Bundesland studieren die wenigsten Studentinnen und im
@@ -52,7 +52,8 @@ welchem Bundesland die meisten?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Zuerst speichern wir den Datensatz als Pandas-Series in der Variable
 `stud_fh_weiblich` und verschaffen uns einen Überblick über die statistischen
 Kennzahlen, um Minimum und Maximum zu bestimmen.
@@ -76,7 +77,7 @@ und am meisten in Nordrhein-Westfalen.
 ````
 
 ```{admonition} Übung 3.2
-:class: miniexercise
+:class: tip
 Wählen Sie **einen** der drei verbleibenden Datensätze aus:
 
 * Studenten an Universitäten
@@ -93,7 +94,8 @@ untersucht haben? Begründen Sie Ihre Vermutung.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Beispiel für Studenten an Universitäten:
 ```python
 import pandas as pd
@@ -116,7 +118,7 @@ Bundesland Deutschlands.
 ````
 
 ```{admonition} Übung 3.3
-:class: miniexercise
+:class: tip
 Lassen Sie die Datensätze zu Studentinnen an Fachhochschulen und Studenten an
 Fachhochschulen durch Boxplots visualisieren.
 
@@ -138,7 +140,8 @@ welches Bundesland ist betroffen?
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Teil A: Boxplot für Studentinnen an Fachhochschulen:
 ```python
 import pandas as pd
@@ -174,7 +177,7 @@ Studenten. Bei den Studentinnen an Fachhochschulen gibt es keinen Ausreißer.
 ````
 
 ```{admonition} Übung 3.4
-:class: miniexercise
+:class: tip
 Erstellen Sie für alle vier Datensätze Boxplots mit aussagekräftigen 
 Beschriftungen:
 - Studentinnen an Fachhochschulen
@@ -193,7 +196,8 @@ der nächsten Aufgabe vergleichen können.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 ```python
 import pandas as pd
 import plotly.express as px
@@ -235,7 +239,7 @@ fig1.show()
 ````
 
 ```{admonition} Übung 3.5
-:class: miniexercise
+:class: tip
 Vergleichen Sie die vier Boxplots miteinander, indem Sie sie nacheinander mit 
 `.show()` anzeigen lassen. Nutzen Sie die Hover-Funktion (Maus über die Box 
 bewegen), um die Werte abzulesen.
@@ -258,7 +262,8 @@ Teil B: Beantworten Sie folgende Fragen:
 ```
 
 ````{admonition} Lösung
-:class: minisolution, toggle
+:class: tip
+:class: dropdown
 Teil A: Boxplots anzeigen und Werte ablesen:
 ```python
 # Alle vier Boxplots nacheinander anzeigen

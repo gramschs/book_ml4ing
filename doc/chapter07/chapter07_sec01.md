@@ -22,7 +22,7 @@ und die Umsetzung der einfachen linearen Regression mit Scikit-Learn ein.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen das **lineare Regressionsmodell**.
 * Sie können erklären, was die **Fehlerquadratsumme** ist.
 * Sie wissen, dass das Training des lineare Regressionsmodells durch die
@@ -72,7 +72,7 @@ Lineare Regression: die erklärende Variable (= Input oder unabhängige Variable
 oder Ursache) ist auf der x-Achse, die abhängige Variable (= Output oder
 Wirkung) ist auf der y-Achse aufgetragen, Paare von Messungen sind in blau
 gekennzeichnet, das Modell in rot.
-([Quelle:](https://en.wikipedia.org/wiki/Linear_regression#/media/File:Linear_regression.svg)
+([Quelle:](https://commons.wikimedia.org/wiki/File:Linear_regression.svg)
 "Example of simple linear regression, which has one independent variable" von
 Sewaqu. Lizenz: Public domain))
 ```
@@ -106,7 +106,7 @@ width: 600px
 name: kq_regression
 ---
 Messpunkte (blau) und der Abstand (grün) zu einer Modellfunktion (rot)
-([Quelle:](https://de.wikipedia.org/wiki/Methode_der_kleinsten_Quadrate#/media/Datei:MDKQ1.svg) Autor: Christian Schirm, Lizenz: CC0) 
+([Quelle:](https://commons.wikimedia.org/wiki/File:MDKQ1.svg) Autor: Christian Schirm, Lizenz: CC0) 
 ```
 
 Unsere rote Modellfunktion trifft die Messpunkte mal mehr und mal weniger gut.
@@ -279,7 +279,7 @@ Aufgaben und interaktiven Demonstrationen rund um die Mathematik. Insbesondere
 gibt es dort auch eine interaktive Demonstration des R²-Scores.
 
 ```{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 <iframe width="560" height="315"
 src="https://lti.mint-web.de/examples/index.php?id=01010320"  allowfullscreen>
 </iframe>

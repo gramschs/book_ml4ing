@@ -42,7 +42,7 @@ Dieser Partyklassiker lässt sich auch auf das maschinelle Lernen übertragen.
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie wissen, was ein **Entscheidungsbaum (Decision Tree)** ist.
 * Sie kennen die Bestandteile eines Entscheidungsbaumes:
   * Wurzelknoten (Root Node)
@@ -111,20 +111,11 @@ Entscheidungsbaumes, der visuell durch einen rechteckigen Kasten symbolisiert
 wird. Dieser erste Knoten wird als **Wurzelknoten** (Root Node) bezeichnet, da
 er die Wurzel des Entscheidungsbaumes darstellt.
 
-<img src="pics/combined_decisiontree00.svg"
-alt="Entscheidungsbaum - Start"
-class="image169"
-width=100%>
+![Entscheidungsbaum - Start](pics/combined_decisiontree00.svg)
 
-<img src="pics/scatterplot00.svg"
-alt="Entscheidungsbaum - Start"
-class="image43"
-width=100%>
+![Entscheidungsbaum - Start](pics/scatterplot00.svg)
 
-<img src="pics/decisiontree_cars00.svg"
-alt="Entscheidungsbaum - Start"
-class="image43"
-width=100%>
+![Entscheidungsbaum - Start](pics/decisiontree_cars00.svg)
 
 Dann wird eine erste Frage gestellt. *Ist der Verkaufspreis kleiner oder gleich
 16376.50 EUR?* Entsprechend dieser Entscheidung werden die Autos in zwei Gruppen
@@ -140,20 +131,11 @@ kleiner/gleich 16376.5 EUR blau sind, also »nicht verkauft« wurden, wird im
 Streudiagramm (Scatterplot) alles unterhalb der horizontalen Linie blau
 eingefärbt.
 
-<img src="pics/combined_decisiontree01.svg"
-alt="Entscheidungsbaum - 1. Entscheidung"
-class="image169"
-width=100%>
+![Entscheidungsbaum - 1. Entscheidung](pics/combined_decisiontree01.svg)
 
-<img src="pics/scatterplot01.svg"
-alt="Entscheidungsbaum - 1. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 1. Entscheidung](pics/scatterplot01.svg)
 
-<img src="pics/decisiontree_cars01.svg"
-alt="Entscheidungsbaum - 1. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 1. Entscheidung](pics/decisiontree_cars01.svg)
 
 Bei den Autos mit einem Preis kleiner oder gleich 16376.50 EUR müssen wir nicht
 weiter sortieren bzw. weitere Fragen stellen. Da aus diesem Knoten keine Zweige
@@ -169,21 +151,12 @@ Auto 8 nach links. Beide Fragen sind also gleichwertig, welche sollen wir
 nehmen? In diesem vereinfachten Beispiel wählen wir willkürlich den
 Kilometerstand. Der Algorithmus brauchte jedoch Kriterien, um die beste Trennung
 zu finden. Darauf gehen wir im nächsten Kapitel ein.
-  
-<img src="pics/combined_decisiontree02.svg"
-alt="Entscheidungsbaum - 2. Entscheidung"
-class="image169"
-width=100%>
 
-<img src="pics/scatterplot02.svg"
-alt="Entscheidungsbaum - 2. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 2. Entscheidung](pics/combined_decisiontree02.svg)
 
-<img src="pics/decisiontree_cars02.svg"
-alt="Entscheidungsbaum - 2. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 2. Entscheidung](pics/scatterplot02.svg)
+
+![Entscheidungsbaum - 2. Entscheidung](pics/decisiontree_cars02.svg)
 
 Im Streudiagramm (Scatterplot) wird die noch nicht eingefärbte Fläche rechts der
 vertikalen Linie 13500 km rot gefärbt. Im linken Knoten (Node) sind aber nur
@@ -191,20 +164,11 @@ noch zwei Autos, so dass diesmal eine weitere Frage ausreicht, die beiden Autos
 in zwei Klassen zu sortieren. Wir fragen: *»Ist der Kilometerstand kleiner oder
 gleich 8198 km?«*
 
-<img src="pics/combined_decisiontree03.svg"
-alt="Entscheidungsbaum - 3. Entscheidung"
-class="image169"
-width=100%>
+![Entscheidungsbaum - 3. Entscheidung](pics/combined_decisiontree03.svg)
 
-<img src="pics/scatterplot03.svg"
-alt="Entscheidungsbaum - 3. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 3. Entscheidung](pics/scatterplot03.svg)
 
-<img src="pics/decisiontree_cars03.svg"
-alt="Entscheidungsbaum - 3. Entscheidung"
-class="image43"
-width=100%>
+![Entscheidungsbaum - 3. Entscheidung](pics/decisiontree_cars03.svg)
 
 Alle Autos sind nun durch die Fragen sortiert und befinden sich in Blättern
 (Leaves). Im Streudiagramm (Scatterplot) wird dieser Zustand kenntlich gemacht,
@@ -341,26 +305,17 @@ Blätter entsprechend rot und blau ein.
 Jedes neue Auto durchläuft jetzt die Entscheidungen, bis es in einem Blatt
 angekommen ist. Die Klasse des Blattes ist dann die Prognose für dieses Auto.
 
-<img src="pics/combined_decisiontree_prediction.svg"
-alt="Entscheidungsbaum - Prognose"
-class="image169"
-width=100%>
+![Entscheidungsbaum - Prognose](pics/combined_decisiontree_prediction.svg)
 
-<img src="pics/scatterplot_prediction.svg"
-alt="Entscheidungsbaum - Prognose"
-class="image43"
-width=100%>
+![Entscheidungsbaum - Prognose](pics/scatterplot_prediction.svg)
 
-<img src="pics/decisiontree_cars_prediction.svg"
-alt="Entscheidungsbaum - Prognose"
-class="image43"
-width=100%>
+![Entscheidungsbaum - Prognose](pics/decisiontree_cars_prediction.svg)
 
 Der Entscheidungsbaum prognostiziert, dass Auto 11 und Auto 12 nicht verkauft
 werden, aber Auto 13 könnte verkaufbar sein.
 
 ````{admonition} Mini-Übung
-:class: miniexercise
+:class: tip
 Trainieren Sie einen Entscheidungsbaum für die folgenden Daten:
 
 ```python
@@ -379,7 +334,8 @@ Geben Sie eine Prognose für ein Auto mit 10.000 km und 16.000 EUR ab.
 ```
 
 ````{admonition} Lösung
-:class: minisolution, dropdown
+:class: tip
+:class: dropdown, dropdown
 ```python
 test_daten = pd.DataFrame({
     'Kilometerstand [km]': [5000, 25000, 15000, 30000],

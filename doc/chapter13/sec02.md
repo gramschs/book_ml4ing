@@ -17,7 +17,7 @@ kernelspec:
 ## Lernziele
 
 ```{admonition} Lernziele
-:class: goals
+:class: attention
 * Sie kennen die Begriffe **Fehlermaß**, **Kostenfunktion** und **Verlustfunktion**.
 ```
 

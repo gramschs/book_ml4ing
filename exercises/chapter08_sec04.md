@@ -37,7 +37,8 @@ Die Anzahl der Ringe +1.5 gibt das Alter der Abalone an.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
@@ -285,7 +286,8 @@ Ungereimtheiten, die sich auch so im csv-File befinden.
 ```
 
 ````{admonition} Lösung
-:class: tip, toggle
+:class: tip
+:class: dropdown
 
 ```python
 import pandas as pd
