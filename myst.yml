@@ -43,7 +43,7 @@ project:
         - file: chapter05/chapter05_sec02.md
         - file: chapter05/chapter05_sec03.md
         - file: chapter05/chapter05_sec04.md
-    - title: 6. Entscheid (Decision Trees)
+    - title: 6. Entscheidungsbäume (Decision Trees)
       children:
         - file: chapter06/chapter06_sec01.md
         - file: chapter06/chapter06_sec02.md
