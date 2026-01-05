@@ -105,6 +105,8 @@ project:
   
 site:
   template: book-theme
-  # options:
+  options:
+    style: _static/myadmonitions.css
   #   favicon: favicon.ico
   #   logo: site_logo.png
+
