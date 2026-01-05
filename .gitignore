@@ -1,6 +1,5 @@
 # Project specific settings
-doc/_build
-doc/.vscode/
+_build
 .vscode/
 
 ## MacOs ##
