@@ -1,0 +1,101 @@
+/* User Provided Stylesheet */
+
+/* Light theme colors */
+html[data-theme="light"] {
+    --my-color-goals: #ffc107;
+    --my-color-goals-bg: #FFF8E6;
+}
+
+/* Dark theme colors */
+html[data-theme="dark"] {
+    --my-color-goals: #ffc107;
+    --my-color-goals-bg: #584306;
+}
+
+/* Goals admonition */
+.myst-admonition.goals {
+    border-left-color: var(--my-color-goals) !important;
+}
+
+.myst-admonition.goals .myst-admonition-header {
+    background-color: var(--my-color-goals-bg) !important;
+}
+
+.myst-admonition.goals .myst-admonition-header-text {
+    color: var(--my-color-goals) !important;
+}
+
+.myst-admonition.goals .myst-admonition-header-icon {
+    color: var(--my-color-goals) !important;
+}
+
+/* Mini Exercise admonition */
+.myst-admonition.miniexercise {
+    border-left-color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header {
+    background-color: var(--pst-color-success-bg, #d4edda) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header-text {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.miniexercise .myst-admonition-header-icon {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+/* Mini Solution admonition */
+.myst-admonition.minisolution {
+    border-left-color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header {
+    background-color: var(--pst-color-success-bg, #d4edda) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header-text {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+.myst-admonition.minisolution .myst-admonition-header-icon {
+    color: var(--pst-color-success, #28a745) !important;
+}
+
+
+
+
+/* Start by hiding the tablet/laptop image */
+.image43 {
+    display: none;
+}
+
+/* For devices with a width of at least 768px, hide the smartphone image and show the tablet/laptop image */
+@media (min-width: 768px) {
+    .image43 {
+        display: none; /* Hide smartphone image */
+    }
+    .image169 {
+        display: block; /* Show tablet/laptop image */
+    }
+}
+
+/* For devices smaller than 768px (typically smartphones), show the smartphone image */
+@media (max-width: 767px) {
+    .image43 {
+        display: block; /* Show smartphone image */
+    }
+    .image169 {
+        display: none; /* Hide tablet/laptop image */
+    }
+}
+
+/* ===== CODE-ZELLEN GRÜN ===== */
+div.myst-code {
+  border-left-color: #19a249 !important;
+}
+
+.dark div.myst-code {
+  border-left-color: #18a046 !important;
+}
