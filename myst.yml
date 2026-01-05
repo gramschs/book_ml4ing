@@ -1,113 +1,102 @@
 version: 1
 project:
   title: Maschinelles Lernen für Studierende der Ingenieurwissenschaften
-  authors:
-    - name: Simone Gramsch
-  github: gramschs/book_ml4ing
-  thebe:
-    binder:
-      repo: gramschs/book_ml4ing
-      provider: github
-      url: https://mybinder.org
-      ref: main
+  authors: ["Simone Gramsch"]
+  github: https://github.com/gramschs/book_ml4ing
+  license: CC-BY-NC-SA-4.0
+  open_access: true
   bibliography:
     - references.bib
-  exports:
-    - format: pdf
-      template: plain_latex_book
-      output: exports/book.pdf
   toc:
     - file: intro.md
     - title: 1. Grundbegriffe des maschinellen Lernens
       children:
-        - file: chapter01/chapter01_sec01.md
-        - file: chapter01/chapter01_sec02.md
-        - file: chapter01/chapter01_sec03.md
+      - file: chapter01/chapter01_sec01.md
+      - file: chapter01/chapter01_sec02.md
+      - file: chapter01/chapter01_sec03.md
     - title: 2. Crashkurs Python
       children:
-        - file: chapter02/chapter02_sec01.md
-        - file: chapter02/chapter02_sec02.md
-        - file: chapter02/chapter02_sec03.md
-        - file: chapter02/chapter02_sec04.md
+      - file: chapter02/chapter02_sec01.md
+      - file: chapter02/chapter02_sec02.md
+      - file: chapter02/chapter02_sec03.md
+      - file: chapter02/chapter02_sec04.md
     - title: 3. Pandas und Plotly anstatt Excel
       children:
-        - file: chapter03/chapter03_sec01.md
-        - file: chapter03/chapter03_sec02.md
-        - file: chapter03/chapter03_sec03.md
-        - file: chapter03/chapter03_sec04.md
+      - file: chapter03/chapter03_sec01.md
+      - file: chapter03/chapter03_sec02.md
+      - file: chapter03/chapter03_sec03.md
+      - file: chapter03/chapter03_sec04.md
     - title: 4. Tabellarische Daten erkunden
       children:
-        - file: chapter04/chapter04_sec01.md
-        - file: chapter04/chapter04_sec02.md
-        - file: chapter04/chapter04_sec03.md
-        - file: chapter04/chapter04_sec04.md
+      - file: chapter04/chapter04_sec01.md
+      - file: chapter04/chapter04_sec02.md
+      - file: chapter04/chapter04_sec03.md
+      - file: chapter04/chapter04_sec04.md
     - title: 5. Kategoriale Daten erkunden
       children:
-        - file: chapter05/chapter05_sec01.md
-        - file: chapter05/chapter05_sec02.md
-        - file: chapter05/chapter05_sec03.md
-        - file: chapter05/chapter05_sec04.md
+      - file: chapter05/chapter05_sec01.md
+      - file: chapter05/chapter05_sec02.md
+      - file: chapter05/chapter05_sec03.md
+      - file: chapter05/chapter05_sec04.md
     - title: 6. Entscheidungsbäume (Decision Trees)
       children:
-        - file: chapter06/chapter06_sec01.md
-        - file: chapter06/chapter06_sec02.md
-        - file: chapter06/chapter06_sec03.md
-        - file: chapter06/chapter06_sec04.md
+      - file: chapter06/chapter06_sec01.md
+      - file: chapter06/chapter06_sec02.md
+      - file: chapter06/chapter06_sec03.md
+      - file: chapter06/chapter06_sec04.md
     - title: 7. Lineare Regression
       children:
-        - file: chapter07/chapter07_sec01.md
-        - file: chapter07/chapter07_sec02.md
-        - file: chapter07/chapter07_sec03.md
-        - file: chapter07/chapter07_sec04.md
+      - file: chapter07/chapter07_sec01.md
+      - file: chapter07/chapter07_sec02.md
+      - file: chapter07/chapter07_sec03.md
+      - file: chapter07/chapter07_sec04.md
     - title: 8. ML-Workflow Datenvorverarbeitung
       children:
-        - file: chapter08/chapter08_sec01.md
-        - file: chapter08/chapter08_sec02.md
-        - file: chapter08/chapter08_sec03.md
-        - file: chapter08/chapter08_sec04.md
+      - file: chapter08/chapter08_sec01.md
+      - file: chapter08/chapter08_sec02.md
+      - file: chapter08/chapter08_sec03.md
+      - file: chapter08/chapter08_sec04.md
     - title: 9. Ensemble-Methoden (Random Forests und XGBoost)
       children:
-        - file: chapter09/chapter09_sec01.md
-        - file: chapter09/chapter09_sec02.md
-        - file: chapter09/chapter09_sec03.md
-        - file: chapter09/chapter09_sec04.md
+      - file: chapter09/chapter09_sec01.md
+      - file: chapter09/chapter09_sec02.md
+      - file: chapter09/chapter09_sec03.md
+      - file: chapter09/chapter09_sec04.md
     - title: 10. Support Vector Machines
       children:
-        - file: chapter10/chapter10_sec01.md
-        - file: chapter10/chapter10_sec02.md
-        - file: chapter10/chapter10_sec03.md
-        - file: chapter10/chapter10_sec04.md
+      - file: chapter10/chapter10_sec01.md
+      - file: chapter10/chapter10_sec02.md
+      - file: chapter10/chapter10_sec03.md
+      - file: chapter10/chapter10_sec04.md
     - title: 11. ML-Workflow Modellbewertung und Auswahl
       children:
-        - file: chapter11/sec01.md
-        - file: chapter11/sec02.md
-        - file: chapter11/sec04.md
+      - file: chapter11/sec01.md
+      - file: chapter11/sec02.md
+      - file: chapter11/sec04.md
     - title: 12. Perzeptron
       children:
-        - file: chapter12/sec01.md
-        - file: chapter12/sec02.md
-        - file: chapter12/sec03.md
-        - file: chapter12/sec04.md
+      - file: chapter12/sec01.md
+      - file: chapter12/sec02.md
+      - file: chapter12/sec03.md
+      - file: chapter12/sec04.md
     - title: 13. Logistische Regression
       children:
-        - file: chapter13/sec01.md
-        - file: chapter13/sec02.md
-        - file: chapter13/sec03.md
-        - file: chapter13/sec04.md
+      - file: chapter13/sec01.md
+      - file: chapter13/sec02.md
+      - file: chapter13/sec03.md
+      - file: chapter13/sec04.md
     - title: 14. Neuronale Netze
       children:
-        - file: chapter14/sec01.md
-        - file: chapter14/sec02.md
+      - file: chapter14/sec01.md
+      - file: chapter14/sec02.md
     - title: Extras
       children:
-        - file: extras_skimage/extras_skimage_sec00.md
-        - file: extras_plotly/extras_sec08.md
+      - file: extras_skimage/extras_skimage_sec00.md
+      - file: extras_plotly/extras_sec08.md
     - title: Anhang
       children:
-        - file: appendix.md
+      - file: appendix.md
 site:
   options:
-    logo: logo.png
-    folders: true
     style: _static/myadmonitions.css
   template: book-theme
