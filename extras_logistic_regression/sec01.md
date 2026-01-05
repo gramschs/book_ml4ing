@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 13.1 Logistische Regression ersetzt Perzeptron
+# Logistische Regression ersetzt Perzeptron
 
 ## Lernziele
 

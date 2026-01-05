@@ -10,6 +10,11 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: autoscout24_xxs.csv
+    title: autoscout24_xxs.csv
+  - file: chapter04_sec01.md
+    title: chapter04_sec01.md
 ---
 
 # 4.1 Datenstruktur DataFrame
@@ -72,21 +77,18 @@ eingestellt werden.
 
 Am besten sehen wir uns die Funktionsweise von `read_csv` an einem Beispiel an.
 Sollten Sie mit einem lokalen Jupyter Notebook arbeiten, laden Sie bitte die
-Datei {download}`Download autoscout24_xxs.csv
-<https://gramschs.github.io/book_ml4ing/data/autoscout24_xxs.csv>` herunter und
-speichern Sie sie in denselben Ordner, in dem auch dieses Jupyter Notebook
-liegt. Alternativ können Sie die csv-Datei auch über die URL importieren, wie es
-in der folgenden Code-Zelle gemacht wird. Die csv-Datei enthält die Angaben zu
-10 Autos, die auf [Autoscout24](https://www.autoscout24.de) zum Verkauf
-angeboten wurden.
+Datei {download}`autoscout24_xxs.csv` herunter und speichern Sie sie in
+denselben Ordner, in dem auch dieses Jupyter Notebook liegt. Alternativ können
+Sie die csv-Datei auch über die URL importieren, wie es in der folgenden
+Code-Zelle gemacht wird. Die csv-Datei enthält die Angaben zu 10 Autos, die auf
+[Autoscout24](https://www.autoscout24.de) zum Verkauf angeboten wurden.
 
 Führen Sie dann anschließend die folgende Code-Zelle aus.
 
 ```{code-cell}
 import pandas as pd
 
-url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_xxs.csv'
-tabelle = pd.read_csv(url)
+tabelle = pd.read_csv('autoscout24_xxs.csv')
 ```
 
 Es erscheint keine Fehlermeldung, aber den Inhalt der geladenen Datei sehen wir

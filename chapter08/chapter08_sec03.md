@@ -59,7 +59,7 @@ Methode `.info()` lassen wir uns anzeigen, welchen Datentyp die Merkmale haben.
 ```{code-cell}
 import pandas as pd 
 
-url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_kodierung.csv'
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_kodierung.csv'
 daten = pd.read_csv(url)
 
 daten.info()
@@ -191,7 +191,7 @@ betrachten wir nun die numerischen Daten. Wir laden den Original-Datensatz und
 entfernen die kategorialen Daten.
 
 ```{code-cell}
-url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_kodierung.csv'
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_kodierung.csv'
 daten = pd.read_csv(url)
 
 daten = daten.drop(columns=['Marke', 'Modell', 'Farbe', 'Erstzulassung', 

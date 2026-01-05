@@ -60,7 +60,7 @@ laden wir die Daten und verschaffen uns einen Überblick.
 ```{code-cell}
 import pandas as pd
 
-url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_DE_2020.csv'
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_DE_2020.csv'
 data = pd.read_csv(url)
 data.info()
 ```

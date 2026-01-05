@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 13.2 Logistische Regression lernt mit Maximum-Likelihood
+# Logistische Regression lernt mit Maximum-Likelihood
 
 ## Lernziele
 

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 13.3 Logistische Regression mit Scikit-Learn
+# Logistische Regression mit Scikit-Learn
 
 ## Lernziele
 

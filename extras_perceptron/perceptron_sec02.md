@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 12.2 Die Perzeptron-Lernregel
+# Die Perzeptron-Lernregel
 
 In dem Abschnitt über das Perzeptron waren die Gewichte und der Schwellenwert
 vorgegeben. Aber wie kommt man dazu? In diesem Abschnitt beschäftigen wir uns

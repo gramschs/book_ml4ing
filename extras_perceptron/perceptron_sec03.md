@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 12.3 Training eines Perzeptrons mit Scikit-Learn
+# Training eines Perzeptrons mit Scikit-Learn
 
 Nachdem wir im letzten Abschnitt ein Perzeptron händisch für die
 Klassifikationsaufgabe des logischen Oders trainiert haben, benutzen wir nun

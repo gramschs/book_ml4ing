@@ -38,16 +38,12 @@ lernen einfache Methoden kennen, damit umzugehen.
 
 Wir arbeiten im Folgenden mit einem echten Datensatz der Verkaufsplattform
 [Autoscout24.de](https://www.autoscout24.de), der Verkaufsdaten zu 1000 Autos
-enthält. Sie können die csv-Datei hier herunterladen {download}`Download
-autoscout24_fehlende_daten.csv
-<https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv>`
-und in das Jupyter Notebook importieren. Alternativ können Sie die csv-Datei
-auch über die URL importieren, wie es in der folgenden Code-Zelle gemacht wird.
+enthält.
 
 ```{code-cell}
 import pandas as pd
 
-url = 'https://gramschs.github.io/book_ml4ing/data/autoscout24_fehlende_daten.csv'
+url = 'https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/autoscout24_fehlende_daten.csv'
 daten = pd.read_csv(url)
 
 daten.info()

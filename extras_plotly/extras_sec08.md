@@ -154,8 +154,7 @@ angegeben werden.
 import requests
 
 geojson_datei = requests.get(
-    "https://raw.githubusercontent.com/gramschs/book_ml4ing/refs/heads/main/doc/extras_plotly/data/geojson_frankfurt_uas.json"
-).json()
+    "https://raw.githubusercontent.com/gramschs/assets/refs/heads/main/ml4ing/data/geojson_frankfurt_uas.json").json()
 ```
 
 ```{code-cell} ipython3

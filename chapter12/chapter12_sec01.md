@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 12.1 Grundbaustein neuronaler Netze
+# 12.1 Perzeptron = Grundbaustein neuronaler Netze
 
 Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste
 künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir
@@ -393,5 +393,4 @@ Schematische Darstellung eines Perzeptrons
 
 In diesem Abschnitt haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
 aus den Daten mit Hilfe von Gewichten und einer Aktivierungsfunktion der binäre
-Zustand prognostiziert wird. Im nächsten Abschnitt beschäftigen wir uns mit der
-Frage, wie die Gewichte gefunden werden.
+Zustand prognostiziert wird.
