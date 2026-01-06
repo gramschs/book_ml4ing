@@ -196,11 +196,11 @@ Ergebnisse mit dem Vorlesungsskript vergleichbar zu machen.
 ## Automatische Kreuzvalidierung mit cross_validate
 
 Wie so oft bietet Scikit-Learn eine elegantere und einfachere Möglichkeit, die
-Kreuzvalidierung (Cross Validation) durchzuführen, ohne manuell eine for-Schleife programmieren zu
-müssen. Die Funktion `cross_validate()` übernimmt die Durchführung der
-Kreuzvalidierung automatisch. Wir importieren sie aus dem Untermodul
-`sklearn.model_selection` und teilen anschließend die Daten in Eingabedaten `X`
-und Zielgröße `y` auf.
+Kreuzvalidierung (Cross Validation) durchzuführen, ohne manuell eine
+for-Schleife programmieren zu müssen. Die Funktion `cross_validate()` übernimmt
+die Durchführung der Kreuzvalidierung automatisch. Wir importieren sie aus dem
+Untermodul `sklearn.model_selection` und teilen anschließend die Daten in
+Eingabedaten `X` und Zielgröße `y` auf.
 
 Die Funktion `cross_validate()` wird mit dem ML-Modell (hier einem
 Entscheidungsbaum), den Eingabedaten `X` und der Zielgröße `y` aufgerufen.

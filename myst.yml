@@ -3,8 +3,6 @@ version: 1
 project:
   id: 8312bbb5-c2ab-495b-accc-a6773ec93d28
   title: Maschinelles Lernen für Ingenieurwissenschaften
-  # description:
-  # keywords: []
   authors: ["Simone Gramsch"]
   github: https://github.com/gramschs/book_ml4ing
   license: CC-BY-NC-SA-4.0

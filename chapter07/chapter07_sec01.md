@@ -72,14 +72,13 @@ Lineare Regression: die erklärende Variable (= Input oder unabhängige Variable
 oder Ursache) ist auf der x-Achse, die abhängige Variable (= Output oder
 Wirkung) ist auf der y-Achse aufgetragen, Paare von Messungen sind in blau
 gekennzeichnet, das Modell in rot.
-([Quelle:](https://commons.wikimedia.org/wiki/File:Linear_regression.svg)
-"Example of simple linear regression, which has one independent variable" von
-Sewaqu. Lizenz: Public domain))
+(Quelle:[Wikimedia](https://commons.wikimedia.org/wiki/File:Linear_regression.svg)
+ von Sewaqu. Lizenz: Public domain))
 ```
 
 In der Praxis werden die Daten nicht perfekt auf der Geraden liegen. Die Fehler
-zwischen dem echten $y^{(i)}$ und dem Funktionswert der Gerade $f(x^{(i)}) = w_0 +
-w_1 x^{(i)}$ werden unterschiedlich groß sein, je nachdem, welche Parameter
+zwischen dem echten $y^{(i)}$ und dem Funktionswert der Gerade $f(x^{(i)}) =
+w_0 + w_1 x^{(i)}$ werden unterschiedlich groß sein, je nachdem, welche Parameter
 $w_0$ und $w_1$ gewählt werden. Wie finden wir jetzt die beste Kombination $w_0$
 und $w_1$, so dass diese Fehler möglichst klein sind?
 

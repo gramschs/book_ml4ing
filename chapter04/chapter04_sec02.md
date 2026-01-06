@@ -181,7 +181,7 @@ Nach demselben Prinzip können wir einen neuen Datensatz aufnehmen und eine neue
 Zeile einfügen. Da wir uns auf die Zeilen beziehen, verwenden wir wieder
 `loc[]`.
 
-```{code-cell} ipython3
+```{code-cell}
 tabelle.loc['Dacia Nr. 1'] = ['dacia', 'Dacia Duster', 'orange', '03/2023', 2023, 25749, 84, 114, 'Schaltgetriebe', 'Diesel', 5.3, 140, 5.0, 'Journey Blue dCi 115 4x4', 5.3/114] 
 tabelle.head(11)
 ```

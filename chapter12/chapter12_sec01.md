@@ -1,11 +1,4 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -18,15 +11,17 @@ Neuronale Netze sind sehr beliebte maschinelle Lernverfahren. Das einfachste
 künstliche neuronale Netz ist das **Perzeptron**. In diesem Abschnitt werden wir
 das Perzeptron vorstellen.
 
+## Lernziele
+
 ```{admonition} Lernziele
-:class: admonition-goals
-* Sie können das Perzeptron als mathematische Funktion formulieren und in dem
+:class: attention
+* Sie können das Perzeptron als mathematische Funktion formulieren und in diesem
   Zusammenhang die folgenden Begriffe erklären:
-    * gewichtete Summe (Weighted Sum),
-    * Bias oder Bias-Einheit (Bias),
-    * Schwellenwert (Threshold)  
-    * Heaviside-Funktion (Heaviside Function) und
-    * Aktivierungsfunktion (Activation Function).
+    * **gewichtete Summe** (Weighted Sum),
+    * **Bias** oder Bias-Einheit (Bias),
+    * **Schwellenwert** (Threshold)  
+    * **Heaviside-Funktion** (Heaviside Function) und
+    * **Aktivierungsfunktion** (Activation Function).
 * Sie können das Perzeptron als ein binäres Klassifikationsproblem des
   überwachten Lernens einordnen.
 ```
@@ -36,32 +31,29 @@ das Perzeptron vorstellen.
 1943 haben die Forscher Warren McCulloch und Walter Pitts das erste Modell einer
 vereinfachten Hirnzelle präsentiert. Zu Ehren der beiden Forscher heißt dieses
 Modell MCP-Neuron. Darauf aufbauend publizierte Frank Rosenblatt 1957 seine Idee
-einer Lernregel für das künstliche Neuron. Das sogenannte Perzeptron bildet bis
-heute die Grundlage der künstlichen neuronalen Netze. Inspiriert wurden die
-Forscher dabei durch den Aufbau des Gehirns und der Verknüpfung der
-Nervenzellen.
+einer Lernregel für das künstliche Neuron. Das sogenannte Perzeptron bildet die
+Grundlage der künstlichen neuronalen Netze. Inspiriert wurden die Forscher dabei
+durch den Aufbau des Gehirns und der Verknüpfung der Nervenzellen.
 
 ```{figure} pics/neuron_wikipedia.svg
 ---
 width: 600px
 name: fig_neuron_wikipedia
 ---
-Schematische Darstellung einer Nervenzelle 
-
-([Quelle:](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg)
-"Schematische Darstellung einer Nervenzelle" von Autor unbekannt. Lizenz: [CC
-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
+Schematische Darstellung einer Nervenzelle
+(Quelle:[Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
+Lizenz: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
 ```
 
 Elektrische und chemische Eingabesignale kommen bei den Dendriten an und laufen
 im Zellkörper zusammen. Sobald ein bestimmter Schwellwert überschritten wird,
 wird ein Ausgabesignal erzeugt und über das Axon weitergeleitet. Mehr Details zu
-Nervenzellen finden Sie bei
+Nervenzellen finden Sie auf
 [Wikipedia/Nervenzelle](https://de.wikipedia.org/wiki/Nervenzelle).
 
 +++
 
-## Eine mathematische Ungleichung ersetzt das logische Oder
+## Von logischem ODER zur mathematischen Ungleichung
 
 Das einfachste künstliche Neuron besteht aus zwei Inputs und einem Output. Dabei
 sind für die beiden Inputs nur zwei Zustände zugelassen und auch der Output
@@ -119,12 +111,12 @@ else:
 
 +++
 
-Für das maschinelle Lernen müssen die Daten als Zahlen aufbereitet werde, damit
+Für das maschinelle Lernen müssen die Daten als Zahlen aufbereitet werden, damit
 die maschinellen Lernverfahren in der Lage sind, Muster in den Daten zu
 erlernen. Anstatt "Regnet es? Nein." oder Variablen mit True/False setzen wir
-jetzt Zahlen ein. Die Inputklassen kürzen wir mit x1 für Regen und x2 für
-Rasensprenger ab. Die 1 steht für ja, die 0 für nein. Den Output bezeichnen wir
-mit y. Dann lautet die obige Tabelle für das "Ist-der-Rasen-nass-Problem":
+jetzt Zahlen ein. Die Eingabewerte bezeichnen wir mit x1 für Regen und x2 für
+Rasensprenger. Die 1 steht für ja, die 0 für nein. Den Output bezeichnen wir mit
+y. Dann lautet die obige Tabelle für das "Ist-der-Rasen-nass-Problem":
 
 x1 | x2 | y
 ---|----|---
@@ -169,15 +161,17 @@ else:
 Nun ersetzen wir das logische ODER durch ein mathematisches Konstrukt:
 Wenn die Ungleichung
 
-$$x_1 \omega_1  +  x_2 \omega_2 \geq \theta$$
+\begin{equation*}
+x_1 w_1  +  x_2 w_2 \geq \theta
+\end{equation*}
 
 erfüllt ist, dann ist $y = 1$ oder anders ausgedrückt, der Rasen wird nass. Und
 ansonsten ist $y = 0$, der Rasen wird nicht nass. Allerdings müssen wir noch die
-**Gewichte** $\omega_1$ und $\omega_2$ (auf Englisch: weights) geschickt wählen.
-Die Zahl $\theta$ ist der griechische Buchstabe Theta und steht als Abkürzung
-für den sogenannten **Schwellenwert** (auf Englisch: threshold).
+**Gewichte** $w_1$ und $w_2$ (auf Englisch: weights) geschickt wählen. Die Zahl
+$\theta$ ist der griechische Buchstabe Theta und steht als Abkürzung für den
+sogenannten **Schwellenwert** (auf Englisch: threshold).
 
-Beispielsweise $\omega_1 = 0.3$, $\omega_2=0.3$ und $\theta = 0.2$ passen:
+Beispielsweise würde $w_1 = 0.3$, $w_2=0.3$ und $\theta = 0.2$ passen:
 
 * $0 \cdot 0.3 + 0 \cdot 0.3 = 0.0 \geq 0.2$ nicht erfüllt
 * $0 \cdot 0.3 + 1 \cdot 0.3 = 0.3 \geq 0.2$ erfüllt
@@ -218,34 +212,31 @@ else:
 
 +++
 
-## Die Heaviside-Funktion ersetzt die Ungleichung
+## Die Heaviside-Funktion ersetzt die Ungleichungsprüfung
 
 Noch sind wir aber nicht fertig, denn auch die Frage "Ist die Ungleichung
 erfüllt oder nicht?" muss noch in eine mathematische Funktion umgeschrieben
 werden. Dazu subtrahieren wir zuerst auf beiden Seiten der Ungleichung den
 Schwellenwert $\theta$:
 
-$$-\theta + x_1 \omega_1  +  x_2 \omega_2 \geq 0.$$
+$$-\theta + x_1 w_1  +  x_2 w_2 \geq 0.$$
 
 Damit haben wir jetzt nicht mehr einen Vergleich mit dem Schwellenwert, sondern
-müssen nur noch entscheiden, ob der Ausdruck $-\theta + x_1 \omega_1 + x_2
-\omega_2$ negativ oder positiv ist. Bei negativen Werten, soll $y = 0$ sein und
-bei positiven Werten (inklusive der Null) soll $y = 1$ sein. Dafür gibt es in
-der Mathematik eine passende Funktion, die sogenannte
+müssen nur noch entscheiden, ob der Ausdruck $-\theta + x_1 w_1 + x_2 w_2$
+negativ oder positiv ist. Bei negativen Werten, soll $y = 0$ sein und bei
+positiven Werten (inklusive der Null) soll $y = 1$ sein. Dafür gibt es in der
+Mathematik eine passende Funktion, die sogenannte
 [Heaviside-Funktion](https://de.wikipedia.org/wiki/Heaviside-Funktion) (manchmal
 auch Theta-, Stufen- oder Treppenfunktion genannt).
 
 ```{figure} pics/heaviside_wikipedia.svg
 ---
-width: 600px
 name: fig_heaviside_wikipedia
 ---
 Schaubild der Heaviside-Funktion
-
-([Quelle:](https://commons.wikimedia.org/wiki/File:Heaviside.svg) "Verlauf der Heaviside-Funktion auf $\mathbb{R}$" von Lennart Kudling. Lizenz: gemeinfrei)
+(Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Heaviside.svg) von
+Lennart Kudling; Lizenz: gemeinfrei)
 ```
-
-+++
 
 Definiert ist die Heaviside-Funktion folgendermaßen:
 
@@ -261,8 +252,10 @@ In dem Modul NumPy ist die Heaviside-Funktion schon hinterlegt, siehe
 Visualisieren Sie die Heaviside-Funktion für das Intervall $[-3,3]$ mit 101
 Punkten. Setzen Sie das zweite Argument einmal auf 0 und einmal auf 2. Was
 bewirkt das zweite Argument? Sehen Sie einen Unterschied in der Visualisierung?
+
 Erhöhen Sie auch die Anzahl der Punkte im Intervall. Wählen Sie dabei immer eine
-ungerade Anzahl, damit die 0 dabei ist.
+ungerade Anzahl an Punkten, damit die 0 dabei ist und der Sprung an der Stelle
+$x = 0$ besser sichtbar wird.
 ```
 
 ```{code-cell}
@@ -294,11 +287,13 @@ fig.show()
 ```
 ````
 
-+++
+Das zweite Argument der Heaviside-Funktion `heaviside` in NumPy gibt an, welchen
+Funktionswert die Heaviside-Funktion an der Stelle $x=0$ hat. Der Standard ist
+$0.5$.
 
 Mit der Heaviside-Funktion können wir nun den Vergleich in der
-Programmverzweigung mit $0.2$ durch eine direkte Berechnung ersetzen. Schauen
-Sie sich im folgenden Programm-Code an, wie wir jetzt ohne logisches Oder und
+Programmverzweigung mit $0.2$ durch eine direkte Berechnung ersetzen. Betrachten
+wir den folgenden Programm-Code, der zeigt, wie wir ohne logisches Oder bzw.
 ohne Programmverzweigung if-else auskommen.
 
 +++
@@ -330,41 +325,50 @@ werden können, die wir mit 0 und 1 bezeichnen. Wir betrachten also weiterhin
 binäre Klassifikationsaufgaben.
 
 Wenn wir nicht nur zwei, sondern $n$ Eingabewerte $x_i$ haben, brauchen wir
-entsprechend auch $n$ Gewichte $\omega_i$. Die Eingabewerte können wir in einem
-Spaltenvektor zusammenfassen, also
+entsprechend auch $n$ Gewichte $w_i$. Um die Notation zu vereinfachen, fassen
+wir die Eingabewerte in einem Spaltenvektor zusammen, also
 
-$$\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.$$
+\begin{equation*}
+\mathbf{x} = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}.
+\end{equation*}
 
-Auch die Gewichte können wir in einem Spaltenvektor zusammenfassen, also
+Auch die Gewichte fassen wir in einem Spaltenvektor zusammen, also
 
-$$\boldsymbol{\omega} = \begin{pmatrix} \omega_1 \\ \omega_2 \\ \vdots \\
-\omega_n\end{pmatrix}.$$
+\begin{equation*}
+\mathbf{w} =
+\begin{pmatrix} w_1 \\ w_2 \\ \vdots \\ w_n\end{pmatrix}.
+\end{equation*}
 
 Nun lässt sich die Ungleichung recht einfach durch das Skalarprodukt abkürzen:
 
-$$\mathbf{x}^{T}\boldsymbol{\omega} = x_1 \omega_1 +  x_2 \omega_2 + \ldots +
-x_n \omega_n \geq \theta.$$
+\begin{equation*}
+\mathbf{x}^{T}\mathbf{w} =
+x_1 w_1 +  x_2 w_2 + \ldots + x_n w_n \geq \theta.
+\end{equation*}
 
 Wie bei dem Perzeptron mit zwei Eingängen wird der Schwellenwert $\theta$ durch
 Subtraktion auf die linke Seite gebracht. Wenn wir jetzt bei dem Vektor
-$\boldsymbol{\omega}$ mit den Gewichten vorne den Vektor um das Element
-$\omega_0 = -\theta$ ergänzen und den Vektor $\mathbf{x}$ mit $x_0 = 1$
-erweitern, dann erhalten wir
+$\mathbf{w}$ mit den Gewichten vorne den Vektor um das Element $w_0 = -\theta$
+ergänzen und den Vektor $\mathbf{x}$ mit $x_0 = 1$ erweitern, dann erhalten wir
 
-$$\mathbf{x}^{T}\boldsymbol{\omega} = 1 \cdot (-\theta) + x_1 \omega_1 + x_2
-\omega_2 + \ldots + x_n \omega_n \geq 0.$$
+\begin{equation*}
+\mathbf{x}^{T}\mathbf{w} =
+1 \cdot (-\theta) + x_1 w_1 + x_2 w_2 + \ldots + x_n w_n \geq 0.
+\end{equation*}
 
-Genaugenommen hätten wir jetzt natürlich für die Vektoren $\boldsymbol{\omega}$
-und $\mathbf{x}$ neue Bezeichnungen einführen müssen, aber ab sofort gehen wir
-immer davon aus, dass die mit dem negativen Schwellenwert $-\theta$ und $1$
-erweiterten Vektoren gemeint sind. Der negative Schwellenwert wird übrigens in
-der ML-Community **Bias** oder **Bias-Einheit (Bias Unit)** genannt.
+Genaugenommen hätten wir jetzt natürlich für die Vektoren $\mathbf{w}$ und
+$\mathbf{x}$ neue Bezeichnungen einführen müssen, aber ab sofort gehen wir immer
+davon aus, dass ab jetzt immer die erweiterten Vektoren gemeint sind, die um den
+negativen Schwellenwert $-\theta$ bzw. die 1 ergänzt wurden. Der negative
+Schwellenwert wird in der ML-Community **Bias** oder **Bias-Einheit (Bias
+Unit)** genannt.
 
-Um jetzt klassfizieren zu können, wird auf die gewichtete Summe
-$\mathbf{x}^{T}\boldsymbol{\omega}$ die Heaviside-Funktion angewendet. Manchmal
-wird anstatt der Heaviside-Funktion auch die Signum-Funktion verwendet. Im
-Folgenden nennen wir die Funktion, die auf die gewichtete Summe angewendet wird,
-**Aktivierungsfunktion**.
+Um jetzt klassifizieren zu können, wird auf die gewichtete Summe
+$\mathbf{x}^{T}\mathbf{w}$ die Heaviside-Funktion angewendet. In späteren
+Kapiteln werden wir sehen, dass auch andere Funktionstypen anstatt der
+Heaviside-Funktion verwendet werden, die bessere mathematische Eigenschaften
+haben. Im Folgenden nennen wir die Funktion, die auf die gewichtete Summe
+angewendet wird, **Aktivierungsfunktion**.
 
 ```{admonition} Was ist ... ein Perzeptron?
 :class: note
@@ -374,23 +378,25 @@ anwendet.
 ```
 
 Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
-{ref}`fig_perzeptron` gezeigt. Die Eingaben werden durch Kreise symbolisiert.
-Die Multiplikation der Inputs $x_i$ mit den Gewichten $\omega_i$ wird durch
- Kanten dargestellt. Die einzelnen Summanden $x_i \omega_i$ treffen sich
-sozusagen im mittleren Kreis, wo auf die gewichtete Summe dann eine
-Aktivierungsfunktion angewendet wird. Das Ergebnis, der Output $\wedge{y}$ wird
-dann berechnet und wiederum als Kreis gezeichnet.
+gezeigt. Die Eingaben werden durch Kreise symbolisiert. Die Multiplikation der
+Inputs $x_i$ mit den Gewichten $w_i$ wird durch Kanten dargestellt. Die
+einzelnen Summanden $x_i w_i$ treffen sich sozusagen im mittleren Kreis, wo auf
+die gewichtete Summe dann eine Aktivierungsfunktion angewendet wird. Das
+Ergebnis, der Output $\hat{y}$ wird dann berechnet und wiederum als Kreis
+gezeichnet.
 
 ```{figure} pics/topology_perceptron.svg
 ---
 width: 600px
 name: fig_perzeptron
 ---
-Schematische Darstellung eines Perzeptrons
+Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
 
 ## Zusammenfassung und Ausblick
 
-In diesem Abschnitt haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
+In diesem Kapitel haben wir gelernt, wie ein Perzeptron aufgebaut ist und wie
 aus den Daten mit Hilfe von Gewichten und einer Aktivierungsfunktion der binäre
-Zustand prognostiziert wird.
+Zustand prognostiziert wird. Im nächsten Kapitel werden wir mehrere Perzeptrons
+zu mehrschichtigen Netzen verbinden und erhalten ein neuronales Netz.
