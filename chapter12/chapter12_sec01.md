@@ -3,6 +3,9 @@ kernelspec:
   display_name: Python 3
   language: python
   name: python3
+downloads:
+  - file: ../notebooks/chapter12/chapter12_sec01.ipynb
+    title: chapter12_sec01.ipynb
 ---
 
 # 12.1 Perzeptron = Grundbaustein neuronaler Netze
@@ -41,7 +44,7 @@ width: 600px
 name: fig_neuron_wikipedia
 ---
 Schematische Darstellung einer Nervenzelle
-(Quelle:[Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
+(Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Neuron_(deutsch)-1.svg);
 Lizenz: [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/))
 ```
 

@@ -1,11 +1,4 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -14,11 +7,13 @@ kernelspec:
 
 # 12.2 Mehrschichtiges Perzeptron
 
+## Lernziele
+
 ```{admonition} Lernziele
 :class: attention
-* Sie wissen, was ein **Multilayer-Perzeptron** (MLP), also ein mehrschichtiges Perzeptron, ist.
+* Sie wissen, was ein **Multilayer-Perzeptron** (MLP), also ein mehrschichtiges
+  Perzeptron, ist.
 * Sie können den Begriff **Deep Learning** erklären.
-* Sie können mit Scikit-Learn ein neuronales Netz trainieren.
 ```
 
 +++
@@ -105,8 +100,12 @@ Perzeptron** oder **Multilayer Perceptron** oder **neuronales Netz**.
 Das folgende Video fasst die Struktur eines neuronalen Netzes noch einmal zusammen.
 
 ```{dropdown} Video
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2dBu9wgW2-s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2dBu9wgW2-s"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
+
++++
 
 ## Viele Schichten = Deep Learning
 
