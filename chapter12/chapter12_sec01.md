@@ -381,21 +381,34 @@ anwendet.
 ```
 
 Eine typische Visualisierung des Perzeptrons ist in der folgenden Abbildung
-gezeigt. Die Eingaben werden durch Kreise symbolisiert. Die Multiplikation der
-Inputs $x_i$ mit den Gewichten $w_i$ wird durch Kanten dargestellt. Die
-einzelnen Summanden $x_i w_i$ treffen sich sozusagen im mittleren Kreis, wo auf
-die gewichtete Summe dann eine Aktivierungsfunktion angewendet wird. Das
-Ergebnis, der Output $\hat{y}$ wird dann berechnet und wiederum als Kreis
-gezeichnet.
+gezeigt. Wir lesen es von links nach rechts und beginnen mit den Eingaben der
+Merkmale, die durch (hellblaue) Kreise symbolisiert werden. In manchen
+Darstellungen wird die Bias-Einheit ebenfalls durch einen Kreis symbolisiert und
+als Eingabe dargestellt. Manchmal wird auf die Darstellung der Bias-Einheit
+komplett verzichtet. Als Kompromiss zwischen diesen beiden Ansätzen ist in
+dieser Grafik die Bias-Einheit zwar als Kreis symbolisiert, aber der Kreis
+befindet sich nicht in einer Reihe mit den Merkmalen, sondern ist etwas nach
+rechts eingerückt. Die Multiplikation der Inputs $x_j$ mit den Gewichten $w_j$
+wird durch Kanten dargestellt. Die einzelnen Summanden $x_j w_j$ treffen sich
+sozusagen im linken, mittleren Kreis, wo die gewichtete Summe $\sum_{j=0}^{n}
+x_j w_j$ gebildet wird. Auf die gewichtete Summe wird dann im rechten, mittleren
+Kreis eine Aktivierungsfunktion angewendet. Um zu verdeutlichen, dass hier zwei
+mathematische Operationen durchgeführt werden, sind die beiden Kreise weiß
+eingefärbt. Das Perzeptron berechnet dann die Ausgabe $\hat{y}$ und dieser Wert
+wird dann ganz rechts als (dunkelblauer) Kreis dargestellt. Um berechnete
+Ausgaben zu kennzeichnen, verwenden wir das $\wedge$-Symbol und setzen es über
+das $y$, so dass das Symbol $\hat{y}$ entsteht.
 
-```{figure} pics/topology_perceptron.svg
+```{figure} pics/fig_12_01_topology_perceptron.svg
 ---
-width: 600px
 name: fig_perzeptron
 ---
 Schematische Darstellung eines Perzeptrons (Quelle: eigene Darstellung; Lizenz
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/))
 ```
+
+Selbstverständlich können die Farben in anderen Abbildungen anders gewählt sein.
+Wichtig ist die Darstellung mit Kreisen und Kanten.
 
 ## Zusammenfassung und Ausblick
 
