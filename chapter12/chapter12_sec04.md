@@ -406,7 +406,8 @@ Modell zu bevorzugen.
 :class: tip
 :class: dropdown
 
-Datenvorbereitung:
+**Datenvorbereitung**
+
 ```python
 # Auswahl der numerischen Eigenschaften
 selected_data = daten.loc[:, ['Karat', 'Tiefe', 'Tafel', 'x', 'y', 'z']]
@@ -422,7 +423,8 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
-Manuelle Experimente mit verschiedenen Architekturen:
+**Manuelle Experimente mit verschiedenen Architekturen**
+
 ```python
 from sklearn.neural_network import MLPRegressor
 
@@ -474,7 +476,8 @@ Erneut erhalten wir einen Trainings- und Testscore von 0.88. Die Rechenzeit ist
 vergleichbar mit Fall 2 und liegt bei ca. 20 s. Eine Erhöhung der maximalen
 Anzahl von Iterationen ist nicht notwendig.
 
-Systematische Optimierung mit Gittersuche:
+**Systematische Optimierung mit Gittersuche**
+
 ```python
 from sklearn.model_selection import GridSearchCV
 
@@ -522,7 +525,7 @@ Neuronales Netz (alle numerischen Features): Score Testdaten = 0.88
 
 Das neuronale Netz erreicht mit allen Features den besten Score!
 
-**Interpretation und Bewertun**
+**Interpretation und Bewertung**
 
 Das neuronale Netz kann die komplexen nichtlinearen Zusammenhänge zwischen den
 Eigenschaften (Karat, Abmessungen, Tiefe, Tafel) und dem Preis etwas besser
