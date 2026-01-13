@@ -81,6 +81,7 @@ project:
         - file: chapter12/chapter12_sec01.md
         - file: chapter12/chapter12_sec02.md
         - file: chapter12/chapter12_sec03.md
+        - file: chapter12/chapter12_sec04.md
 #    - title: Extras Folium
 #      children:
 #        - file: extras_plotly/extras_sec08.md

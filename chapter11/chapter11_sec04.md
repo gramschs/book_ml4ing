@@ -13,7 +13,9 @@ kernelspec:
 
 # Übungen
 
-Der Datensatz Pinguine stammt von [HuggingFace](https://huggingface.co/datasets/SIH/palmer-penguins). Der Datensatz umfasst Daten von Pinguinen, insbesondere die Merkmale
+Der Datensatz Pinguine stammt von
+[HuggingFace](https://huggingface.co/datasets/SIH/palmer-penguins). Der
+Datensatz umfasst Daten von Pinguinen, insbesondere die Merkmale
 
 * Art,
 * Insel,
