@@ -395,8 +395,8 @@ Modell zu bevorzugen.
 * Notieren Sie für jede Architektur die Scores für Trainings- und Testdaten.
 * Verwenden Sie dann Gittersuche, um systematisch die beste Architektur zu
   finden. Testen Sie dabei:
-   * `hidden_layer_sizes`: [(10,), (20,), (10, 10), (20, 10), (50, 25, 10)]
-   * `alpha`: [0.0001, 0.001, 0.01]
+   * `hidden_layer_sizes`: [(10,), (20,), (10, 10), (20, 10)]
+   * `alpha`: [0.001, 0.01]
 * Vergleichen Sie das beste neuronale Netz mit der linearen Regression aus der
   vorherigen Aufgabe.
 * Bewerten Sie: Wann lohnt sich der Einsatz eines neuronalen Netzes?
